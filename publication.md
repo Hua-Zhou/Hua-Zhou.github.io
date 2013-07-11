@@ -1,41 +1,33 @@
-
 # Publication - Hua Zhou
 
 Please feel free to email me (hua_zhou at ncsu dot edu) if you have any comments.
 
-E Chi, **H Zhou **and K Lange. (2013) Distance majorization and its applications, _Mathematical Programming Series A_, accepted. [[arXiv][1]]
+E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, _Mathematical Programming Series A_, accepted. [[arXiv][1]]
 
 K Lange, E Chi, and **H Zhou**. (2013) A brief survey of modern optimization for statisticians, _International Statistical Review_, accepted. [[pdf][2]]
 
-**H Zhou** and L Li. (2013) Regularized matrix regression, _Journal of Royal Statistical Society Series B_, accepted. [[arXiv][3]]
-
+**H Zhou** and L Li. (2013) Regularized matrix regression, _Journal of Royal Statistical Society Series B_, accepted. [[arXiv][3]]  
 Soft-thresholding for regression with matrix covariates.
 
-K Lange, JC Papp, JS Sinsheimer, R Sripracha, **H Zhou**, and E Sobel. (2013) Mendel: the Swiss army knife of genetic analysis programs, _[Bioinformatics][4]_, 29(12):1568-1570. [[pdf][5]][[Mendel][6]]
-
+K Lange, JC Papp, JS Sinsheimer, R Sripracha, **H Zhou**, and E Sobel. (2013) Mendel: the Swiss army knife of genetic analysis programs, _[Bioinformatics][4]_, 29(12):1568-1570. [[pdf][5]][[Mendel][6]]  
 Summary of the new version of the comprehensive genetic analysis software Mendel.
 
-E Chi, G Allen, **H Zhou**, O Kohannim, K Lange, and P Thompson. (2013) New developments in sparse canonical correlation analysis for imaging genetics studies, _Information Processing in Medical Imaging_, accepted.
-
+E Chi, G Allen, **H Zhou**, O Kohannim, K Lange, and P Thompson. (2013) New developments in sparse canonical correlation analysis for imaging genetics studies, _Information Processing in Medical Imaging_, accepted.  
 Sparse canonical correlation analysis (CCA) for the tensor data.
 
-**H Zhou**, J Zhou, E Sobel, and K Lange. (2013) Fast genome-wide pedigree QTL analysis using Mendel, _BMC Proceedings_, accepted.
-
+**H Zhou**, J Zhou, E Sobel, and K Lange. (2013) Fast genome-wide pedigree QTL analysis using Mendel, _BMC Proceedings_, accepted.  
 Multivariate QTL analysis of the [GAW18][7] data.
 
+**H Zhou**, L Li, and H Zhu. (2013) Tensor regression with applications in neuroimaging data analysis, _[Journal of American Statistical Association](http://www.tandfonline.com/doi/abs/10.1080/01621459.2013.776499#.Ud7Ytz7Xjbw)_, 108(502):540-552. [pdf]  
 Traditional regression takes a vector of covariates. We consider regression that takes an array, aka tensor, of covariates, such as in neuroimaging studies.
 
+E Chi, **H Zhou**, G Chen, D Ortega, and K Lange. (2013) Genotype imputation via matrix completion, _[Genome Research](http://genome.cshlp.org/content/23/3/509)_, 23:509-518. [[pdf]()][[Mendel Impute](http://www.genetics.ucla.edu/software/)]  
 We successfully applied matrix completion method to the difficult genotype imputation problem. Similar imputation accuracy is achieved in order of magnitude less time than current methods.
-
 
 K Lange and **H Zhou**. (2012) MM algorithms for geometric and signomial programming, _[Mathematical Programming Series A][8]_, in press. [[pdf][9]]
 A simple algorithm for minimizing posynomials and signomials.
 
-L Riley, **H Zhou**, K Lange, J Sinsheimer, and M Sehl. (2012) 
-
-Determining duration of HER2-targeted therapy using stem cell extinction models, _[PLoS ONE][10]_, 7(12):e46613. [[pdf][11]]
-
-
+L Riley, **H Zhou**, K Lange, J Sinsheimer, and M Sehl. (2012) Determining duration of HER2-targeted therapy using stem cell extinction models, _[PLoS ONE][10]_, 7(12):e46613. [[pdf][11]]  
 Prediction of optimal duration of stem-cell target treatment based on a stochastic model.
 
 H Zhu, L Li, and **H Zhou**. (2012) Nonlinear dimension reduction with Wright-Fisher kernel for genotype aggregation and association mapping, _[Bioinformatics_][12], 28:i375--i381. [[pdf][13]]
