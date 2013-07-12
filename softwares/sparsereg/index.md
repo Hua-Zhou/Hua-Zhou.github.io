@@ -35,7 +35,6 @@ mv SparseReg_toolbox_0.0.1 SparseReg
 
 * [Sparse linear regression (enet, power, log, MC+, SCAD)](./html/demo_lsq.html)
 * [Sparse generalized linear model (GLM) (enet, power, log, MC+, SCAD](./html/demo_glm.html)
-* [Path algorithm for linearly constrained linear regression](./html/demo_lsqlin_path.html)
 
 ### Legal stuff
 
@@ -52,4 +51,4 @@ If you use this software in your research, please cite the following papers.
 
 ### Contacts
 
-Hua Zhou <hua_zhou@ncsu.edu> and Artin Armagan <Artin.Armagan@sas.com> and David Dunson <dunson@stat.duke.edu>
+Hua Zhou <hua_zhou@ncsu.edu> | Artin Armagan <Artin.Armagan@sas.com> | David Dunson <dunson@stat.duke.edu>
