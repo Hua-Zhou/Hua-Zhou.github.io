@@ -38,7 +38,7 @@ Prediction of optimal duration of stem-cell target treatment based on a stochast
 H Zhu, L Li, and **H Zhou**. (2012) Nonlinear dimension reduction with Wright-Fisher kernel for genotype aggregation and association mapping, [_Bioinformatics_][12], 28:i375--i381. \[[pdf](./media/pdf/ZhuLiZhou12SDR-Seq.pdf)\]  
 Path following for a quadratic criterion plus a generalized lasso penalty.
 
-**H Zhou** and K Lange. (2013) A path algorithm for constrained estimation, [Journal of Computational and Graphical Statistics](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2012.681248), 22(2):261-283. \[[pdf](./media/pdf/ZhouLange13LSPath.pdf)\]   
+**H Zhou** and K Lange. (2013) A path algorithm for constrained estimation, [_Journal of Computational and Graphical Statistics_](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2012.681248), 22(2):261-283. \[[pdf](./media/pdf/ZhouLange13LSPath.pdf)\]   
 Path following for a quadratic criterion plus a generalized lasso penalty.
 
 H Zhou and Y Zhang. (2012) EM vs MM: a case study, [Computational Statistics & Data Analysis](http://www.sciencedirect.com/science/article/pii/S0167947312002174), 56:3909--3920. \[[pdf](./media/pdf/ZhouZhang12EMvsMM.pdf)\]  
