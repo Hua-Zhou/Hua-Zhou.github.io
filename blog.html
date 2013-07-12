@@ -8,7 +8,7 @@ title: Posts
   {% for post in site.posts %}
 <li class="post">
   <span class="date">{{ post.date | date_to_string }}</span>
-  <a href="{{ site.url }}/{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+  <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
 </li>
   {% endfor %}
 </ul>
