@@ -5,7 +5,7 @@ title: Software
 
 ### Software
 
-* MGLM  
+* [MGLM](/softwares/mglm/)  
 Matalb® toolbox and R package for fitting multi-response generalized linear modesl (GLMs).
 
 * SparseReg  
