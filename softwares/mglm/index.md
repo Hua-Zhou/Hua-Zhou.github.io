@@ -5,7 +5,7 @@ title: MGLM
 
 ## MGLM Toolbox for Matlab
 
-MGLM toolbox is a collection of Matlab functions for multi-response GLM regression and sparse regression.
+MGLM toolbox is a collection of Matlab functions for multi-response GLM regression and sparse regression. It is developed by [Yiwen Zhang](http://www4.ncsu.edu/~yzhang31/) and myself.
 
 ### Compatibility
 
@@ -17,13 +17,23 @@ The code is tested on Matlab 8.0.0 (R2012b), but should work on other versions o
 
 ### Installation
 
-1. Download the zip package
-2. Extract the zip file
-3. Rename the folder from `MGLM_toolbox_0.0.1` to `MGLM`
-4. Add the `MGLM` folder to Matlab search path (File -> Set Path ... -> Add Folder...)
-5. Go through the documentation or following tutorials for the usage
+1. Download the zip package.
+2. Extract the zip file.  
+```
+unzip MGLM_toolbox_0.0.1.zip
+```
+3. Rename the folder from `MGLM_toolbox_0.0.1` to `MGLM`.  
+```
+mv MGLM_toolbox_0.0.1 MGLM
+```
+4. Add the `MGLM` folder to Matlab search path. Start Matlab, cd to the `MGLM` directory, and execute the following commands  
+```Matlab  
+addpath(pwd)	%<-- Add the toolbox to the Matlab path  
+save path		%<-- Save for future Matlab sessions
+```
+5. Go through following tutorials for the usage. For help of individual functions, type `?` followed by the function name in Matalb.
 
-### Tutorials
+### Tutorial
 
 * [Dirichlet-Multinomial distribution](./html/demo_dirmn.html)
 * [Generalized Dirichlet-Multinomial distribution](./html/demo_gendirmn.html)
@@ -35,7 +45,7 @@ The code is tested on Matlab 8.0.0 (R2012b), but should work on other versions o
 
 ### Legal stuff
 
-MGLM Toolbox for Matlab by [Hua Zhou](http://www4.stat.ncsu.edu/~hzhou3/) and Yiwen Zhang <yzhang31@ncsu.edu> is licensed under the [BSD](./html/COPYRIGHT.txt) license. Please use at your own risk.
+MGLM Toolbox for Matlab is licensed under the [BSD](./html/COPYRIGHT.txt) license. Please use at your own risk.
 
 ### Citation
 
