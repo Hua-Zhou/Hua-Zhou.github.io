@@ -8,10 +8,10 @@ title: Software
 * [MGLM](./softwares/mglm/)  
 Matalb® toolbox and R package for fitting multi-response generalized linear modesl (GLMs).
 
-* [SparseReg](./softwares/sparsereg/)  
+* SparseReg  
 A Matlab® toolbox for sparse regression.
 
-* [TensorReg](./softwares/tensorreg/)  
+* TensorReg  
 A Matlab® toolbox for tensor regression.
 
 * [Mendel](http://www.genetics.ucla.edu/software/)  
@@ -20,5 +20,5 @@ I participate in the development of some functionalities of the comprehensive ge
 * [Mendel-Impute](http://www.genetics.ucla.edu/software/)    
 The Mendel-Impute program performs genotype imputation by solving matrix completion problems over a sliding window of SNPs.
 
-* [Bradley-Terry model](./softwares/bradleyterry/)  
+* Bradley-Terry model  
 Newton's method for fitting Bradley-Terry model.
