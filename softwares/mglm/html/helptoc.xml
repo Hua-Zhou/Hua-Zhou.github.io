@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding="utf-8"?>
+<toc version="2.0">
+    <!-- First tocitem specifies top level in Help browser Contents pane -->
+    <!-- This can be a roadmap page, as shown below, or a content page -->
+
+    <tocitem target="./mglm_toolbox_product_page.html">MGLM Toolbox
+        
+        <tocitem image="$toolbox/matlab/icons/pageicon.gif"
+                 target="./demo_dirmn.html">Dirichlet-Multinomial distribution
+             </tocitem>
+        <tocitem image="$toolbox/matlab/icons/pageicon.gif"
+                 target="./demo_gendirmn.html">Generalized Dirichlet-Multinomial distribution
+             </tocitem>                 
+        <tocitem image="$toolbox/matlab/icons/pageicon.gif"
+                 target="./demo_negmn.html">Negative multinomial distribution
+             </tocitem>
+        <tocitem image="$toolbox/matlab/icons/pageicon.gif"
+                 target="./demo_mnlogitreg.html">Multinomial-logit regression and sparse regression
+             </tocitem>
+        <tocitem image="$toolbox/matlab/icons/pageicon.gif"
+                 target="./demo_dirmnreg.html">Dirichlet-Multinomial regression and sparse regression
+             </tocitem>
+        <tocitem image="$toolbox/matlab/icons/pageicon.gif"
+                 target="./demo_gendirmnreg.html">Generalized Dirichlet-Multinomial regression and sparse regression
+             </tocitem>
+        <tocitem image="$toolbox/matlab/icons/pageicon.gif"
+                 target="./demo_negmnreg.html">Negative multinomial regression and sparse regression
+             </tocitem>
+                 
+        <!-- Optional link or links to your or other Web sites -->
+        <tocitem target="http://www4.stat.ncsu.edu/~hzhou3/softwares/mglm" 
+                 image="$toolbox/matlab/icons/webicon.gif">MGLM Toolbox Site
+            </tocitem>
+        
+    </tocitem>
+</toc>

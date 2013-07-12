@@ -3,7 +3,7 @@ layout: default
 title: Publication
 ---
 
-# Publication
+### Publication
 
 Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments.
 

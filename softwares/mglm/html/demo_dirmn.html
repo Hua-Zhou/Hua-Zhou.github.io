@@ -1,0 +1,165 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Dirichlet-Multinomial distribution</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-07-09"><meta name="DC.source" content="demo_dirmn.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Dirichlet-Multinomial distribution</h1><!--introduction--><p>A demo of random number generation, density evaluation, and distribution fitting for the Dirichlet-Mutlinomial distribution</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generate Dirichlet-Multinomial random vectors</a></li><li><a href="#2">Evaluate Dirichlet-Multinomial (log) pdf at true parameter value</a></li><li><a href="#3">Fit Dirichlet-Multinomial distribution</a></li></ul></div><h2>Generate Dirichlet-Multinomial random vectors<a name="1"></a></h2><pre class="codeinput">clear;
+<span class="comment">% reset random seed</span>
+s = RandStream(<span class="string">'mt19937ar'</span>,<span class="string">'Seed'</span>,2);
+RandStream.setGlobalStream(s);
+<span class="comment">% sample size</span>
+n = 100;
+<span class="comment">% # bins</span>
+d = 5;
+<span class="comment">% true parameter values</span>
+alpha = 1:d;
+<span class="comment">% set batch sizes (ranges from 25 to 50)</span>
+batchsize = 25+unidrnd(25,n,1);
+<span class="comment">% generate random vectors</span>
+X = dirmnrnd(batchsize,alpha,n);
+</pre><h2>Evaluate Dirichlet-Multinomial (log) pdf at true parameter value<a name="2"></a></h2><pre class="codeinput">logL = dirmnpdfln(X,alpha);
+display(sum(logL));
+</pre><pre class="codeoutput">
+ans =
+
+  -1.0282e+03
+
+</pre><h2>Fit Dirichlet-Multinomial distribution<a name="3"></a></h2><pre class="codeinput">tic;
+[alpha_hat, stats_dm] = dirmnfit(X);
+toc;
+display([alpha_hat, stats_dm.se]);
+display(stats_dm);
+
+figure;
+plot(stats_dm.logL_iter);
+xlabel(<span class="string">'iteration'</span>);
+ylabel(<span class="string">'log-likelihood'</span>);
+</pre><pre class="codeoutput">Elapsed time is 0.004149 seconds.
+
+ans =
+
+    0.9495    0.1300
+    2.1979    0.2670
+    2.7269    0.3231
+    3.9027    0.4525
+    4.7257    0.5470
+
+
+stats_dm = 
+
+           BIC: 2.0753e+03
+           AIC: 2.0623e+03
+           dof: 5
+    iterations: 6
+          logL: -1.0261e+03
+     logL_iter: [1x6 double]
+            se: [5x1 double]
+      gradient: [5x1 double]
+           LRT: 445.1073
+        pvalue: 0
+
+</pre><img vspace="5" hspace="5" src="demo_dirmn_01.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Dirichlet-Multinomial distribution
+% A demo of random number generation, density evaluation, and distribution
+% fitting for the Dirichlet-Mutlinomial distribution
+
+%% Generate Dirichlet-Multinomial random vectors
+
+clear;
+% reset random seed
+s = RandStream('mt19937ar','Seed',2);
+RandStream.setGlobalStream(s);
+% sample size
+n = 100;
+% # bins
+d = 5;
+% true parameter values
+alpha = 1:d;
+% set batch sizes (ranges from 25 to 50)
+batchsize = 25+unidrnd(25,n,1);
+% generate random vectors
+X = dirmnrnd(batchsize,alpha,n);
+
+%% Evaluate Dirichlet-Multinomial (log) pdf at true parameter value
+
+logL = dirmnpdfln(X,alpha);
+display(sum(logL));
+
+%% Fit Dirichlet-Multinomial distribution
+
+tic;
+[alpha_hat, stats_dm] = dirmnfit(X);
+toc;
+display([alpha_hat, stats_dm.se]);
+display(stats_dm);
+
+figure;
+plot(stats_dm.logL_iter);
+xlabel('iteration');
+ylabel('log-likelihood');
+
+##### SOURCE END #####
+--></body></html>
