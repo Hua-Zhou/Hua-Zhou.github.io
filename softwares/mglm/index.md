@@ -53,4 +53,4 @@ An R package `mglm` with similar functions is available at CRAN. (to be posted s
 
 ### Contacts
 
-Hua Zhou <hua_zhou@ncsu.edu> and Yiwen Zhang <yzhang@ncsu.edu>
+Hua Zhou <hua_zhou@ncsu.edu> and Yiwen Zhang <yzhang31@ncsu.edu>
