@@ -22,16 +22,14 @@ The code is tested on Matlab 8.0.0 (R2012b), but should work on other versions o
 ```
 unzip MGLM_toolbox_0.0.1.zip
 ```
-3. Rename the folder from `MGLM_toolbox_0.0.1` to `MGLM`.  
+3. Rename the folder from *MGLM_toolbox_0.0.1* to *MGLM*.  
 ```
 mv MGLM_toolbox_0.0.1 MGLM
 ```
-4. Add the `MGLM` folder to Matlab search path. Start Matlab, cd to the `MGLM` directory, and execute the following commands  
-```Matlab  
-addpath(pwd)	%<-- Add the toolbox to the Matlab path  
-save path		%<-- Save for future Matlab sessions
-```
-5. Go through following tutorials for the usage. For help of individual functions, type `?` followed by the function name in Matalb.
+4. Add the *MGLM* folder to Matlab search path. Start Matlab, cd to the *MGLM* directory, and execute the following commands  
+`addpath(pwd)	%<-- Add the toolbox to the Matlab path`  
+`save path		%<-- Save for future Matlab sessions`
+5. Go through following tutorials for the usage. For help of individual functions, type `?` followed by the function name in Matlab.
 
 ### Tutorial
 
