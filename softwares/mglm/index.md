@@ -49,8 +49,8 @@ If you use this software in your research, please cite the following papers.
 
 ### R package
 
-An R package 'mglm' with similar functions is available at CRAN. (to be posted soon)
+An R package `mglm` with similar functions is available at CRAN. (to be posted soon)
 
 ### Contacts
 
-Hua Zhou <hua_zhou@ncsu.edu> and Yiwen Zhang <yzhang@ncsu.edu>  
+Hua Zhou <hua_zhou@ncsu.edu> and Yiwen Zhang <yzhang@ncsu.edu>
