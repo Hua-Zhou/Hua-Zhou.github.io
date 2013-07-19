@@ -127,7 +127,7 @@ We compute the character tables of the pocket cube (2-by-2-by-2 Rubik's cube) gr
    [36]: http://projecteuclid.org/DPubS?service=UI&version=1.0&verb=Display&handle=euclid.aap/1240319585
    [37]: https://sites.google.com/site/hwachou/publication/ZhouLange09CompositionChains.pdf?attredirects=0
    [38]: http://www.stats.ox.ac.uk/%7Egriff/
-   [39]: http://sankhya.isical.ac.in/search/69_2/2007007.pdf
+   [39]: http://sankhya.isical.ac.in/search/69_2/2007007.html
    [40]: http://projecteuclid.org/DPubS?service=UI&version=1.0&verb=Display&handle=euclid.aoap/1241702249
    [41]: https://sites.google.com/site/hwachou/publication/KhareZhou09AAP.pdf?attredirects=0
    [42]: https://sites.google.com/site/hwachou/publication/rubik.pdf?attredirects=0
