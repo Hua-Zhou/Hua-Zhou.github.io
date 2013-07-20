@@ -3,7 +3,7 @@ layout: post
 title: Ken's Advice to Young Mathematical Biologists
 ---
 
-"Have you seen this [note](./Lange-Advice.pdf) by Ken before?" My friend Ake asked me the other day. [Ken](http://research.mednet.ucla.edu/institution/personnel?personnel_id=45702) is my post-doc mentor. We've co-authored about 20 papers but I don't know existence of this note.  Actually Ken never bothers to publish this note. 
+"Have you seen this [note](/media/pdf/Lange-Advice.pdf) by Ken before?" My friend Ake asked me the other day. [Ken](http://research.mednet.ucla.edu/institution/personnel?personnel_id=45702) is my post-doc mentor. We've co-authored about 20 papers but I don't know existence of this note.  Actually Ken never bothers to publish this note. 
 
 Here is one I really wish someone told me when I was in college:  
   
