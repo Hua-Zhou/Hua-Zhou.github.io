@@ -7,7 +7,7 @@ title: Publication
 
 Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments.
 
-E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, _Mathematical Programming Series A_, accepted. \[[arXiv][1]\]
+E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), in press. \[[pdf](./media/pdf/ChiZhouLange13Distance.pdf)\]
 
 K Lange, E Chi, and **H Zhou**. (2013) A brief survey of modern optimization for statisticians, _International Statistical Review_, accepted. \[[pdf][2]\]
 
@@ -88,8 +88,6 @@ We apply the numerical methods for continuous-time multi-type branching processe
 **H Zhou**. (2006) Scrambling a Rubik's cube. \[[pdf](./media/pdf/rubik.pdf)\]  
 We compute the character tables of the pocket cube (2-by-2-by-2 Rubik's cube) group and the Rubik's cube group and considered some specific random walks on these groups. The question of  "How many twists are needed to thoroughly scramble the full Rubic's cube?" is still open.
 
-
-   [1]: http://arxiv.org/abs/1211.3907
    [2]: http://www.stat.ncsu.edu/people/zhou/courses/st810/notes/SurveyPaper.pdf
    [3]: http://arxiv.org/abs/1204.3331
    [4]: http://bioinformatics.oxfordjournals.org/content/29/12/1568
