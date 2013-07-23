@@ -1,0 +1,362 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>demo_resize</title><meta name="generator" content="MATLAB 7.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-07-23"><meta name="DC.source" content="demo_resize.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Downsize an array using different methods</a></li><li><a href="#7">Upsize an array using different methods</a></li><li><a href="#11">Downsizing-analysis-upsizing</a></li></ul></div><h2>Downsize an array using different methods<a name="1"></a></h2><pre class="codeinput">clear;
+<span class="comment">% load an RBG image: 135-by-198-by-3 array</span>
+I = imread(<span class="string">'onion.png'</span>);
+display(size(I));
+figure; imagesc(I);
+</pre><pre class="codeoutput">
+ans =
+
+   135   198     3
+
+</pre><img vspace="5" hspace="5" src="demo_resize_01.png" alt=""> <p>Set target dimension</p><pre class="codeinput">targetdim = round([100 150 3]);
+display(targetdim);
+</pre><pre class="codeoutput">
+targetdim =
+
+   100   150     3
+
+</pre><p>Downsize using interpolation</p><pre class="codeinput">I_interp = array_resize(I, targetdim); <span class="comment">%&lt;-- default method is interpolate</span>
+display(size(I_interp));
+figure; imagesc(I_interp);
+</pre><pre class="codeoutput">
+ans =
+
+   100   150     3
+
+</pre><img vspace="5" hspace="5" src="demo_resize_02.png" alt=""> <p>Downsize using discrete cosine transform (DCT)</p><pre class="codeinput">I_dct = array_resize(I, targetdim, <span class="string">'method'</span>, <span class="string">'dct'</span>);
+display(size(I_dct));
+figure; imagesc(I_dct);
+</pre><pre class="codeoutput">
+ans =
+
+   100   150     3
+
+</pre><img vspace="5" hspace="5" src="demo_resize_03.png" alt=""> <p>Downsize to PCA scores using HOSVD. PC scores loose original interpretation</p><pre class="codeinput">I_hosvd = array_resize(I, targetdim, <span class="string">'method'</span>, <span class="string">'hosvd'</span>);
+display(size(I_hosvd));
+figure; imagesc(I_hosvd);
+</pre><pre class="codeoutput">
+ans =
+
+   100   150     3
+
+</pre><img vspace="5" hspace="5" src="demo_resize_04.png" alt=""> <p>Downsize to PCA scores using marginal SVD. PC scores loose original interpretation</p><pre class="codeinput">I_2dsvd = array_resize(I, targetdim, <span class="string">'method'</span>, <span class="string">'2dsvd'</span>);
+display(size(I_2dsvd));
+figure; imagesc(I_2dsvd);
+</pre><pre class="codeoutput">
+ans =
+
+   100   150     3
+
+</pre><img vspace="5" hspace="5" src="demo_resize_05.png" alt=""> <h2>Upsize an array using different methods<a name="7"></a></h2><p>Set target dimension</p><pre class="codeinput">targetdim = round([200 300 3]);
+display(targetdim);
+</pre><pre class="codeoutput">
+targetdim =
+
+   200   300     3
+
+</pre><p>Upsize using interpolation</p><pre class="codeinput">I_interp = array_resize(I, targetdim); <span class="comment">%&lt;-- default method is interpolate</span>
+display(size(I_interp));
+figure; imagesc(I_interp);
+</pre><pre class="codeoutput">
+ans =
+
+   200   300     3
+
+</pre><img vspace="5" hspace="5" src="demo_resize_06.png" alt=""> <p>Upsize using discrete cosine transform (DCT)</p><pre class="codeinput">I_dct = array_resize(I, targetdim, <span class="string">'method'</span>, <span class="string">'dct'</span>);
+display(size(I_dct));
+figure; imagesc(I_dct);
+</pre><pre class="codeoutput">
+ans =
+
+   200   300     3
+
+</pre><img vspace="5" hspace="5" src="demo_resize_07.png" alt=""> <h2>Downsizing-analysis-upsizing<a name="11"></a></h2><pre class="codeinput">clear;
+<span class="comment">% reset random seed</span>
+s = RandStream(<span class="string">'mt19937ar'</span>,<span class="string">'Seed'</span>,2);
+RandStream.setGlobalStream(s);
+</pre><p>True coefficients for regular (non-array) covariates</p><pre class="codeinput">p0 = 5;
+b0 = ones(p0,1);
+</pre><p>2D true signal: 64-by-64 cross</p><pre class="codeinput">shape = imread(<span class="string">'cross.gif'</span>);
+shape = array_resize(shape,[32,32]); <span class="comment">% 32-by-32</span>
+b = zeros(2*size(shape));
+b((size(b,1)/4):(size(b,1)/4)+size(shape,1)-1, <span class="keyword">...</span>
+    (size(b,2)/4):(size(b,2)/4)+size(shape,2)-1) = shape;
+[p1,p2] = size(b);
+display(size(b));
+
+figure; imagesc(-b);
+colormap(gray);
+title(<span class="string">'True Signal'</span>);
+axis <span class="string">equal</span>;
+axis <span class="string">tight</span>;
+</pre><pre class="codeoutput">
+ans =
+
+    64    64
+
+</pre><img vspace="5" hspace="5" src="demo_resize_08.png" alt=""> <p>Simulate covariates</p><pre class="codeinput">n = 500;    <span class="comment">% sample size</span>
+X = randn(n,p0);   <span class="comment">% n-by-p0 regular design matrix</span>
+M = tensor(randn(p1,p2,n));  <span class="comment">% p1-by-p2-by-n matrix variates</span>
+display(size(M));
+</pre><pre class="codeoutput">
+ans =
+
+    64    64   500
+
+</pre><p>Simulate responses</p><pre class="codeinput">mu = X*b0 + double(ttt(tensor(b), M, 1:2));
+sigma = 1;  <span class="comment">% noise level</span>
+y = mu + sigma*randn(n,1);
+</pre><p>Rank 2 Kruskal regression with 64-by-64 covariates</p><pre class="codeinput">tic;
+[~,beta1,glmstats1] = kruskal_reg(X,M,y,2,<span class="string">'normal'</span>);
+toc;
+display(size(beta1));
+
+figure;
+imagesc(-double(beta1));
+colormap(gray);
+title(<span class="string">'Estimate using 64x64 covariates'</span>);
+axis <span class="string">equal</span>;
+axis <span class="string">tight</span>;
+</pre><pre class="codeoutput">Elapsed time is 3.969735 seconds.
+
+ans =
+
+    64    64
+
+</pre><img vspace="5" hspace="5" src="demo_resize_09.png" alt=""> <p>Resize 2D covariates to 32-by-32</p><pre class="codeinput">M_reduce = array_resize(double(M), [32 32 n], <span class="string">'method'</span>, <span class="string">'dct'</span>);
+display(size(M_reduce));
+</pre><pre class="codeoutput">
+ans =
+
+    32    32   500
+
+</pre><p>Rank 2 Kruskal regression with 32-by-32 covariates</p><pre class="codeinput">tic;
+[~,beta2,glmstats2] = kruskal_reg(X,M_reduce,y,2,<span class="string">'normal'</span>);
+toc;
+display(size(beta2));
+</pre><pre class="codeoutput">Elapsed time is 0.854817 seconds.
+
+ans =
+
+    32    32
+
+</pre><p>Resize estimate and display in original size</p><pre class="codeinput">beta2 = array_resize(double(beta2), [64 64], <span class="string">'method'</span>, <span class="string">'dct'</span>);
+display(size(beta2));
+
+figure;
+imagesc(-double(beta2));
+colormap(gray);
+title(<span class="string">'Estimate using 32x32 covariates'</span>);
+axis <span class="string">equal</span>;
+axis <span class="string">tight</span>;
+</pre><pre class="codeoutput">
+ans =
+
+    64    64
+
+</pre><img vspace="5" hspace="5" src="demo_resize_10.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.12<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Downsize an array using different methods
+
+clear;
+% load an RBG image: 135-by-198-by-3 array
+I = imread('onion.png');
+display(size(I));
+figure; imagesc(I);
+
+%%
+% Set target dimension
+targetdim = round([100 150 3]);
+display(targetdim);
+
+%%
+% Downsize using interpolation
+I_interp = array_resize(I, targetdim); %<REPLACE_WITH_DASH_DASH default method is interpolate
+display(size(I_interp));
+figure; imagesc(I_interp);
+
+%%
+% Downsize using discrete cosine transform (DCT)
+I_dct = array_resize(I, targetdim, 'method', 'dct');
+display(size(I_dct));
+figure; imagesc(I_dct);
+
+%%
+% Downsize to PCA scores using HOSVD. PC scores loose original
+% interpretation
+I_hosvd = array_resize(I, targetdim, 'method', 'hosvd');
+display(size(I_hosvd));
+figure; imagesc(I_hosvd);
+
+%%
+% Downsize to PCA scores using marginal SVD. PC scores loose original
+% interpretation
+I_2dsvd = array_resize(I, targetdim, 'method', '2dsvd');
+display(size(I_2dsvd));
+figure; imagesc(I_2dsvd);
+
+%% Upsize an array using different methods
+
+%%
+% Set target dimension
+targetdim = round([200 300 3]);
+display(targetdim);
+
+%%
+% Upsize using interpolation
+I_interp = array_resize(I, targetdim); %<REPLACE_WITH_DASH_DASH default method is interpolate
+display(size(I_interp));
+figure; imagesc(I_interp);
+
+%%
+% Upsize using discrete cosine transform (DCT)
+I_dct = array_resize(I, targetdim, 'method', 'dct');
+display(size(I_dct));
+figure; imagesc(I_dct);
+
+%% Downsizing-analysis-upsizing
+
+clear;
+% reset random seed
+s = RandStream('mt19937ar','Seed',2);
+RandStream.setGlobalStream(s);
+
+%%
+% True coefficients for regular (non-array) covariates
+p0 = 5;
+b0 = ones(p0,1);
+
+%%
+% 2D true signal: 64-by-64 cross
+shape = imread('cross.gif'); 
+shape = array_resize(shape,[32,32]); % 32-by-32
+b = zeros(2*size(shape));
+b((size(b,1)/4):(size(b,1)/4)+size(shape,1)-1, ...
+    (size(b,2)/4):(size(b,2)/4)+size(shape,2)-1) = shape;
+[p1,p2] = size(b);
+display(size(b));
+
+figure; imagesc(-b);
+colormap(gray);
+title('True Signal');
+axis equal;
+axis tight;
+
+%%
+% Simulate covariates
+n = 500;    % sample size
+X = randn(n,p0);   % n-by-p0 regular design matrix
+M = tensor(randn(p1,p2,n));  % p1-by-p2-by-n matrix variates
+display(size(M));
+
+%%
+% Simulate responses
+mu = X*b0 + double(ttt(tensor(b), M, 1:2));
+sigma = 1;  % noise level
+y = mu + sigma*randn(n,1);
+
+%%
+% Rank 2 Kruskal regression with 64-by-64 covariates
+tic;
+[~,beta1,glmstats1] = kruskal_reg(X,M,y,2,'normal');
+toc;
+display(size(beta1));
+
+figure;
+imagesc(-double(beta1));
+colormap(gray);
+title('Estimate using 64x64 covariates');
+axis equal;
+axis tight;
+
+%%
+% Resize 2D covariates to 32-by-32
+M_reduce = array_resize(double(M), [32 32 n], 'method', 'dct');
+display(size(M_reduce));
+
+%%
+% Rank 2 Kruskal regression with 32-by-32 covariates
+tic;
+[~,beta2,glmstats2] = kruskal_reg(X,M_reduce,y,2,'normal');
+toc;
+display(size(beta2));
+
+%%
+% Resize estimate and display in original size
+beta2 = array_resize(double(beta2), [64 64], 'method', 'dct');
+display(size(beta2));
+
+figure;
+imagesc(-double(beta2));
+colormap(gray);
+title('Estimate using 32x32 covariates');
+axis equal;
+axis tight;
+
+##### SOURCE END #####
+--></body></html>

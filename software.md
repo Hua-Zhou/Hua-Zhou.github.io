@@ -11,7 +11,7 @@ Matlab® toolbox and R package for fitting multi-response generalized linear mod
 * [SparseReg](./softwares/sparsereg/)  
 A Matlab® toolbox for sparse regression.
 
-* TensorReg (coming soon)  
+* [TensorReg](./softwares/tensorreg/)  
 A Matlab® toolbox for tensor regression.
 
 * [Mendel](http://www.genetics.ucla.edu/software/)  
