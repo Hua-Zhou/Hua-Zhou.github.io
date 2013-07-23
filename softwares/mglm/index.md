@@ -52,7 +52,7 @@ MGLM Toolbox for Matlab is licensed under the [BSD](./html/COPYRIGHT.txt) licens
 If you use this toolbox in any way, please cite the software itself along with at least one publication or preprint.
 
 * Software reference:  
-H Zhou and Y Zhang. Matlab TensorReg Toolbox Version 0.0.1, Available online, July 2013.   
+H Zhou and Y Zhang. Matlab MGLM Toolbox Version 0.0.1, Available online, July 2013.   
 Y Zhang and H Zhou (2013) MGLM: R package and Matlab toolbox for multivariate categorical data analysis. \[arXiv\], \[R sweave\] (to be posted soon)
 * Default article to cite for methodology:  
 Y Zhang, H Zhou and W Sun (2013) On some generalized linear models with multivariate categorical responses. \[arXiv\] (to be posted soon)
