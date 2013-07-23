@@ -13,7 +13,7 @@ The code is tested on Matlab 8.0.0 (R2012b), but should work on other versions o
 
 ### Download
 
-[MGLM_toolbox_0.0.1.zip](../MGLM_toolbox_0.0.1.zip) (693KB)
+[MGLM_toolbox_0.0.1.zip](./MGLM_toolbox_0.0.1.zip) (693KB)
 
 ### Installation
 

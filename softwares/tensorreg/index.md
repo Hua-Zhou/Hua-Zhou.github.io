@@ -19,7 +19,7 @@ If you want to run sparse tensor regression, you also need to download and insta
 
 ### Download
 
-[TensorReg_toolbox_0.0.1.zip](../TensorReg_toolbox_0.0.1.zip) (693KB)
+[TensorReg_toolbox_0.0.1.zip](./TensorReg_toolbox_0.0.1.zip) (693KB)
 
 ### Installation
 

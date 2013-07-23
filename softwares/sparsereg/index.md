@@ -13,7 +13,7 @@ The code is tested on Matlab 7.12 (R2011a), but should work on other versions of
 
 ### Download
 
-[SparseReg_toolbox_0.0.1.zip](../SparseReg_toolbox_0.0.1.zip) (525KB)
+[SparseReg_toolbox_0.0.1.zip](./SparseReg_toolbox_0.0.1.zip) (1.2MB)
 
 ### Installation
 
