@@ -5,7 +5,9 @@ title: MGLM
 
 ## MGLM Toolbox for Matlab
 
-MGLM toolbox is a collection of Matlab functions for multi-response GLM regression and sparse regression. It is developed by [Yiwen Zhang](http://www4.ncsu.edu/~yzhang31/) and myself.
+MGLM toolbox is a collection of Matlab functions for multi-response GLM regression and sparse regression. 
+
+The toolbox is developed by [Hua Zhou](http://hua-zhou.github.com) and [Yiwen Zhang](http://www4.ncsu.edu/~yzhang31/).
 
 ### Compatibility
 
@@ -41,19 +43,19 @@ mv MGLM_toolbox_0.0.1 MGLM
 * [Generalized Dirichlet-Multinomial regression and sparse regression](./html/demo_gendirmnreg.html)
 * [Negative multinomial regression and sparse regression](./html/demo_negmnreg.html)
 
-### Legal stuff
+### Licensing
 
 MGLM Toolbox for Matlab is licensed under the [BSD](./html/COPYRIGHT.txt) license. Please use at your own risk.
 
-### Citation
+### How to cite
 
-If you use this software in your research, please cite the following papers.
+If you use this toolbox in any way, please cite the software itself along with at least one publication or preprint.
 
-* Y Zhang and H Zhou (2013) MGLM: R package and Matlab toolbox for multivariate categorical data analysis.  
-\[arXiv\], \[R sweave\] (to be posted soon)
-
-* Y Zhang, H Zhou and W Sun (2013) On some generalized linear models with multivariate categorical responses.  
-\[arXiv\] (to be posted soon)
+* Software reference:  
+H Zhou and Y Zhang. Matlab TensorReg Toolbox Version 0.0.1, Available online, July 2013.   
+Y Zhang and H Zhou (2013) MGLM: R package and Matlab toolbox for multivariate categorical data analysis. \[arXiv\], \[R sweave\] (to be posted soon)
+* Default article to cite for methodology:  
+Y Zhang, H Zhou and W Sun (2013) On some generalized linear models with multivariate categorical responses. \[arXiv\] (to be posted soon)
 
 ### R package
 

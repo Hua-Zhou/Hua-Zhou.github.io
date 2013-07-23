@@ -5,7 +5,9 @@ title: SparseReg
 
 ## SparseReg Toolbox for Matlab
 
-SparseReg toolbox is a collection of Matlab functions for sparse regressions. It is developed by Artin Armagan and myself.
+SparseReg toolbox is a collection of Matlab functions for sparse regressions. 
+
+The toolbox is developed by [Hua Zhou](http://hua-zhou.github.io). Argin Armagan and David Dunson provide testing and invaluable feedback.
 
 ### Compatibility
 
@@ -36,18 +38,23 @@ mv SparseReg_toolbox_0.0.1 SparseReg
 * [Sparse linear regression (enet, power, log, MC+, SCAD)](./html/demo_lsq.html)
 * [Sparse generalized linear model (GLM) (enet, power, log, MC+, SCAD](./html/demo_glm.html)
 
-### Legal stuff
+### Licensing
 
 SparseReg Toolbox for Matlab is licensed under the [BSD](./html/COPYRIGHT.txt) license. Please use at your own risk.
 
-### Citation
+### How to cite
 
-If you use this software in your research, please cite the following papers.
+If you use this toolbox in any way, please cite the software itself along with at least one publication or preprint.
 
-* H Zhou and K Lange (2013) A path algorithm for constrained estimation, [_Journal of Computational and Graphical Statistics_](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2012.681248), 22(2):261-283.
-* H Zhou and Y Wu (2011)  A generic path algorithm for regularized statistical estimation. \[[arXiv](http://arxiv.org/abs/1201.3571)\]
-* H Zhou, A Armagan, and D Dunson (2011) Path following and empirical Bayes model selection for sparse regressions. \[[arXiv](http://arxiv.org/abs/1201.3528)\]
-* H Zhou and K Lange (2011) Path following in the exact penalty method of convex programming. \[[arXiv](http://arxiv.org/abs/1201.3593)\]
+* Software reference  
+H Zhou. Matlab SparseReg Toolbox Version 0.0.1, Available online, July 2013.  
+H Zhou, A Armagan, and D Dunson (2011) Path following and empirical Bayes model selection for sparse regressions. \[[arXiv](http://arxiv.org/abs/1201.3528)\]
+* Default article to cite for least squares + generalized lasso penalty  
+H Zhou and K Lange (2013) A path algorithm for constrained estimation, [_Journal of Computational and Graphical Statistics_](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2012.681248), 22(2):261-283.
+* Default article to cite for convex loss + generalized lasso penalty  
+H Zhou and Y Wu (2012)  A generic path algorithm for regularized statistical estimation. \[[arXiv:1201.3571](http://arxiv.org/abs/1201.3571)\]
+* Default article to cite for path following in constrained convex programming  
+H Zhou and K Lange (2011) Path following in the exact penalty method of convex programming. \[[arXiv](http://arxiv.org/abs/1201.3593)\]
 
 ### Contacts
 
