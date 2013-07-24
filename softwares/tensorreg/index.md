@@ -27,9 +27,17 @@ If you want to run sparse tensor regression, you also need to download and insta
 
 1. Download the zip package
 2. Extract the zip file
+```
+unzip TensorReg_toolbox_0.0.1.zip
+```
 3. Rename the folder from `TensorReg_toolbox_0.0.1` to `TensorReg`
+```
+mv TensorReg_toolbox_0.0.1 TensorReg
+```
 4. Add the `TensorReg` folder to Matlab search path (File -> Set Path ... -> Add Folder...)
-5. Go through the documentation or following tutorials for the usage
+`addpath(pwd)	%<-- Add the toolbox to the Matlab path`  
+`save path		%<-- Save for future Matlab sessions`
+5. Go through following tutorials for the usage. For help of individual functions, type `?` followed by the function name in Matlab.
 
 ### Tutorials
 
@@ -37,7 +45,6 @@ If you want to run sparse tensor regression, you also need to download and insta
 * [Kruskal regression and sparse Kruskal regression](./html/demo_kruskal.html)
 * [Tucker regression and sparse Tucker regression](./html/demo_tucker.html)
 * [Regularized matrix regression](./html/demo_matrixreg.html)
-
 
 ### Licensing
 
