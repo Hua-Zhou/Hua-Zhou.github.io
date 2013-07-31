@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>demo_matrixreg</title><meta name="generator" content="MATLAB 7.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-07-23"><meta name="DC.source" content="demo_matrixreg.m"><style type="text/css">
+      --><title>demo_matrixreg</title><meta name="generator" content="MATLAB 7.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2013-07-31"><meta name="DC.source" content="demo_matrixreg.m"><style type="text/css">
 
 body {
   background-color: white;
@@ -114,7 +114,7 @@ tic;
     BIC(i) = stats.BIC;
 <span class="keyword">end</span>
 toc;
-</pre><pre class="codeoutput">Elapsed time is 1.647468 seconds.
+</pre><pre class="codeoutput">Elapsed time is 1.597956 seconds.
 </pre><p>Display true signal and snapshots along nuclear norm solution path</p><pre class="codeinput">figure; hold <span class="string">on</span>;
 set(gca,<span class="string">'FontSize'</span>,20);
 
@@ -169,7 +169,7 @@ tic;
     BIC_lasso(i) = .5*norm(y-Xall*beta)^2+log(n)*nnz(abs(beta)&gt;1e-8);
 <span class="keyword">end</span>
 toc;
-</pre><pre class="codeoutput">Elapsed time is 0.451854 seconds.
+</pre><pre class="codeoutput">Elapsed time is 0.433877 seconds.
 </pre><p>Display true signal and snapshots along lasso solution path</p><pre class="codeinput">figure; hold <span class="string">on</span>;
 set(gca,<span class="string">'FontSize'</span>,20);
 
@@ -252,7 +252,7 @@ tic;
     BIC(i) = stats.BIC;
 <span class="keyword">end</span>
 toc
-</pre><pre class="codeoutput">Elapsed time is 4.235523 seconds.
+</pre><pre class="codeoutput">Elapsed time is 3.958110 seconds.
 </pre><p>Display true signal and snapshots along nuclear norm solution path</p><pre class="codeinput">figure; hold <span class="string">on</span>;
 set(gca,<span class="string">'FontSize'</span>,20);
 
@@ -312,7 +312,7 @@ tic;
         + log(n)*nnz(abs(beta)&gt;1e-8);
 <span class="keyword">end</span>
 toc;
-</pre><pre class="codeoutput">Elapsed time is 67.808552 seconds.
+</pre><pre class="codeoutput">Elapsed time is 66.000598 seconds.
 </pre><p>Display true sinal and snapshots along lasso solution path</p><pre class="codeinput">figure; hold <span class="string">on</span>;
 set(gca,<span class="string">'FontSize'</span>,20);
 
@@ -394,7 +394,7 @@ tic;
     BIC(i) = stats.BIC;
 <span class="keyword">end</span>
 toc
-</pre><pre class="codeoutput">Elapsed time is 3.028371 seconds.
+</pre><pre class="codeoutput">Elapsed time is 2.765088 seconds.
 </pre><p>Display true signal and and snapshots along nuclear norm solution path</p><pre class="codeinput">figure; hold <span class="string">on</span>;
 set(gca,<span class="string">'FontSize'</span>,20);
 
@@ -416,7 +416,7 @@ ploti = 1;
     axis <span class="string">equal</span>;
     axis <span class="string">tight</span>;
 <span class="keyword">end</span>
-</pre><p>Display AIC/BIC trace plot</p><pre class="codeinput">figure;
+</pre><img vspace="5" hspace="5" src="demo_matrixreg_09.png" alt=""> <p>Display AIC/BIC trace plot</p><pre class="codeinput">figure;
 set(gca,<span class="string">'FontSize'</span>,20);
 semilogx(lambdas, AIC, <span class="string">'-+'</span>, lambdas, BIC, <span class="string">'-o'</span>);
 xlabel(<span class="string">'\lambda'</span>);
@@ -424,7 +424,7 @@ ylabel(<span class="string">'BIC'</span>);
 xlim([min(lambdas) max(lambdas)]);
 title(<span class="string">'Nuclear norm AIC/BIC'</span>);
 legend(<span class="string">'AIC'</span>, <span class="string">'BIC'</span>, <span class="string">'Location'</span>, <span class="string">'northwest'</span>);
-</pre><h2>Compare to lasso penalized logistic regression<a name="39"></a></h2><p>Transform matrix variates to vector form</p><pre class="codeinput">TM = tenmat(tensor(M),3,[1 2]);
+</pre><img vspace="5" hspace="5" src="demo_matrixreg_10.png" alt=""> <h2>Compare to lasso penalized logistic regression<a name="39"></a></h2><p>Transform matrix variates to vector form</p><pre class="codeinput">TM = tenmat(tensor(M),3,[1 2]);
 Xall = [double(TM) X];
 </pre><p>Determine max lambda to start</p><pre class="codeinput">lambdastart = 0;            <span class="comment">% find the maximum tuning parameter to start</span>
 <span class="keyword">for</span> j=1:numel(b)
@@ -455,7 +455,7 @@ tic;
         + log(n)*nnz(abs(beta)&gt;1e-8);
 <span class="keyword">end</span>
 toc;
-</pre><pre class="codeoutput">Elapsed time is 111.108797 seconds.
+</pre><pre class="codeoutput">Elapsed time is 111.274021 seconds.
 </pre><p>Display true signal and snapshots along lasso solution path</p><pre class="codeinput">figure; hold <span class="string">on</span>;
 set(gca,<span class="string">'FontSize'</span>,20);
 
@@ -477,14 +477,14 @@ ploti = 1;
     axis <span class="string">equal</span>;
     axis <span class="string">tight</span>;
 <span class="keyword">end</span>
-</pre><img vspace="5" hspace="5" src="demo_matrixreg_09.png" alt=""> <p>Lasso BIC path</p><pre class="codeinput">figure;
+</pre><img vspace="5" hspace="5" src="demo_matrixreg_11.png" alt=""> <p>Lasso BIC path</p><pre class="codeinput">figure;
 set(gca,<span class="string">'FontSize'</span>,20);
 semilogx(lambdas_lasso,BIC_lasso,<span class="string">'-o'</span>);
 title(<span class="string">'lasso BIC'</span>);
 xlabel(<span class="string">'\lambda'</span>);
 ylabel(<span class="string">'BIC'</span>);
 xlim([min(lambdas_lasso),max(lambdas_lasso)]);
-</pre><img vspace="5" hspace="5" src="demo_matrixreg_10.png" alt=""> <p class="footer"><br>
+</pre><img vspace="5" hspace="5" src="demo_matrixreg_12.png" alt=""> <p class="footer"><br>
       Published with MATLAB&reg; 7.12<br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Regularized matrix linear regression
