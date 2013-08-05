@@ -41,7 +41,7 @@ Path following for a quadratic criterion plus a generalized lasso penalty.
 **H Zhou** and K Lange. (2013) A path algorithm for constrained estimation, [_Journal of Computational and Graphical Statistics_](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2012.681248), 22(2):261-283. \[[pdf](./media/pdf/ZhouLange13LSPath.pdf)\]   
 Path following for a quadratic criterion plus a generalized lasso penalty.
 
-H Zhou and Y Zhang. (2012) EM vs MM: a case study, [Computational Statistics & Data Analysis](http://www.sciencedirect.com/science/article/pii/S0167947312002174), 56:3909--3920. \[[pdf](./media/pdf/ZhouZhang12EMvsMM.pdf)\]  
+**H Zhou** and Y Zhang. (2012) EM vs MM: a case study, [Computational Statistics & Data Analysis](http://www.sciencedirect.com/science/article/pii/S0167947312002174), 56:3909--3920. \[[pdf](./media/pdf/ZhouZhang12EMvsMM.pdf)\]  
 A comparison of EM (expectation-maximization) and MM (minorization-maximization) algorithms in the case of MLE for the Dirichlet-Multinomial distribution.
 
 M Sehl, **H Zhou**, J Sinsheimer, and K Lange. (2011) Extinction models for cancer stem cell therapy, [_Mathematical Biosciences_][14], 234(2):132-146. \[[pdf](./media/pdf/SehlZhouSinsheimerLange12StemCell.pdf)\]  
