@@ -9,12 +9,12 @@ ST758 tentative schedule and handouts (expect frequent updates)
 
 | **Tuesday** | **Thursday** |  
 |:-----------|:------------|
-| | **8/22** introduction, course logistics |
-| **8/27** computer storage/arithmetic | **8/29** algorithm, software, computer languages |
-| **9/03** matrix and linear algebra | **9/05** solving linear equations |
-| **9/10** R and programming practice | **9/12** writing R functions |
-| **9/17** GE, LU decomposition | **9/19** Cholesky decomposition |
-| **9/24** QR decomposition | **9/26** regression computations |
+| | **08/22** introduction, course logistics |
+| **08/27** computer storage/arithmetic | **08/29** algorithm, software, computer languages |
+| **09/03** matrix and linear algebra | **09/05** solving linear equations |
+| **09/10** R and programming practice | **09/12** writing R functions |
+| **09/17** GE, LU decomposition | **09/19** Cholesky decomposition |
+| **09/24** QR decomposition | **09/26** regression computations |
 | **10/08** condition number | **10/10** **fall break, no class** |
 | **10/15** special linear systems | **10/17** iterative method for linear system |
 | **1022** eigen-decomposition | **10/24** SVD |
