@@ -15,4 +15,4 @@ title: Teaching
 [2013 spring](http://www.stat.ncsu.edu/people/zhou/courses/st810/)
 
 * ST552, Linear Models and Variance Components  
-2013 fall
+[2013 fall](./teaching/st552-2013fall/)

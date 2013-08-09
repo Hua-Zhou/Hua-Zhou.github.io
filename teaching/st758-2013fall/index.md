@@ -9,13 +9,17 @@ title: Stat 758
 
 Computational tools for research in statistics, including applications of numerical linear algebra, optimization and random number generation, using the statistical language R. A project encompassing a simulation experiment will be required.
 
+### Time and Location
+
+Tue/Thu, 10:15am-11:30am, 1108 SAS Hall
+
 ### Instructor
 
 Dr Hua Zhou  
 Office: 5264 SAS Hall  
 Phone: (919)515-2570  
 Email: <hua_zhou@ncsu.edu>  
-Office hours: ??? or by appointment
+Office hours: Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
 
 ### Teaching Assistant
 

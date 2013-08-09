@@ -14,7 +14,7 @@ Email: <hua_zhou@ncsu.edu>
 
 ### Office Hours
 
-Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
+Mon 2pm-4pm, Wed 3pm-5pm, or by appointment
 
 ### Teaching Assistant
 
