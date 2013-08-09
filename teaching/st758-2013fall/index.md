@@ -1,7 +1,9 @@
 ---
 layout: course
-title: Stat 758 - Computation for Statistical Research - 2013 Fall
+title: Stat 758
 ---
+
+## Stat 758 - Computation for Statistical Research - 2013 Fall
 
 ### Instructor 
 
