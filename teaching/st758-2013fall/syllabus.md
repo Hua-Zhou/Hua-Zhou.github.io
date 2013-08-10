@@ -43,17 +43,17 @@ Email: <???>
 PDF is available through NCSU library [link](http://catalog.lib.ncsu.edu/record/NCSU2410898)
 * R Manual: [http://cran.r-project.org/doc/manuals/R-intro.html](http://cran.r-project.org/doc/manuals/R-intro.html)
 
-### Attendence
+### Attendance
 
-I will not take attendance, but I expect students to attend class
+I will not take attendance, but I expect students to attend class.
 
 ### Homework
 
-Approximately 6-8 homeworks will be assigned involving both analysis and computation. One of those homework’s will be a project and carry twice the weight of other homework assignments.
+Approximately 6 homework assignments will be assigned involving both analysis and computation. One of those homeworks will be a project and carry twice the weight of other homework assignments.
 
 ### Exam
 
-There will be a final exam which involves computation and will be weighted as another homework.
+There will be a final exam which involves computation and will carry twice the weight of a homework assignment.
 
 ### Final Grade
 
