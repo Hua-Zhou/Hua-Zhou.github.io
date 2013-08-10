@@ -23,4 +23,4 @@ ST758 tentative schedule and handouts (expect frequent updates)
 | **11/19** EM algorithm | **11/21** conjugate gradient, quasi-Newton |
 | **11/26** random number generation | **11/28** **Thanksgiving, no class** |
 | **12/03** Monte Carlo | **12/05** sorting, FFT |
-| **Tuesday 12/10 8am-11am, SAS 1108, final exam** | |
+| **12/10 8am-11am, SAS 1108, final exam** ||

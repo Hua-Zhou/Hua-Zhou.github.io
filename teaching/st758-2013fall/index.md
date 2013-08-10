@@ -15,11 +15,11 @@ Tue/Thu, 10:15am-11:30am, 1108 SAS Hall
 
 ### Instructor
 
-Dr Hua Zhou  
+[Dr Hua Zhou](http://hua-zhou.github.io/)  
 Office: 5264 SAS Hall  
 Phone: (919)515-2570  
 Email: <hua_zhou@ncsu.edu>  
-Office hours: Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
+Office hours: Mon 2pm-4pm, Wed 3pm-5pm, or by appointment
 
 ### Teaching Assistant
 
