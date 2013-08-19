@@ -11,19 +11,18 @@ Theory of estimation and testing in full and non-full rank linear models. Normal
 
 ### Time and Location
 
-Mon/Wed, 11:45am-1:00pm, 5270 SAS Hall
+Lectures: Mon/Wed, 11:45am-1:00pm, 5270 SAS Hall  
+Recitation: Wed, 1:30pm-2:45pm, 5270 SAS Hall  
 
 ### Instructor
 
-Dr Hua Zhou  
+[Dr Hua Zhou](http://hua-zhou.github.io/)  
 Office: 5264 SAS Hall  
 Phone: (919)515-2570  
 Email: <hua_zhou@ncsu.edu>  
-Office hours: Mon 2pm-4pm, Wed 3pm-5pm, or by appointment
+Office hours: Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
 
 ### Teaching Assistant
 
 ???  
 Office hours: ??? at Tutorial Center in 1101 SAS Hall
-
-

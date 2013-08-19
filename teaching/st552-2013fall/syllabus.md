@@ -1,6 +1,6 @@
 ---
 layout: course
-title: Stat 758
+title: Stat 552
 ---
 
 ## Syllabus
@@ -14,7 +14,7 @@ Email: <hua_zhou@ncsu.edu>
 
 ### Office Hours
 
-Mon 2pm-4pm, Wed 3pm-5pm, or by appointment
+Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
 
 ### Teaching Assistant
 
@@ -27,10 +27,8 @@ Email: <???>
 
 ### Prerequisite
 
-* MA205: Linear Algebra
-* ST522: Linear Models 
+* MA405: Linear Algebra
 * ST521-522: Statistical Theory I/II
-* Basics of R programming
 
 ### Course Webpage
 
@@ -38,26 +36,23 @@ Email: <???>
 
 ### Materials
 
-* J Monahan, _Numerical Methods of Statistics_, 2nd Edition, Cambridge University Press (2011)
-* K Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
-PDF is available through NCSU library [link](http://catalog.lib.ncsu.edu/record/NCSU2410898)
-* R Manual: [http://cran.r-project.org/doc/manuals/R-intro.html](http://cran.r-project.org/doc/manuals/R-intro.html)
+* J Monahan, _A Primer on Linear Models_, 1st Edition, Chapman & Hall/CRC (2008)
 
-### Attendence
+### Attendance
 
-I will not take attendance, but I expect students to attend class
+Class attendance is mandatory.
 
 ### Homework
 
-Approximately 6-8 homeworks will be assigned involving both analysis and computation. One of those homework’s will be a project and carry twice the weight of other homework assignments.
+Approximately 10 homework assignments.
 
 ### Exam
 
-There will be a final exam which involves computation and will be weighted as another homework.
+There will be two midterm and one final exam.
 
 ### Final Grade
 
-Letter grade will be assigned based on the final score.
+Letter grade will be assigned based on the final score: 20% homework + 20% midterm 1 + 20% midterm 2 + 40% final.
 
 ### Academic Integrity
 
