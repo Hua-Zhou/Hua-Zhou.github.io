@@ -48,11 +48,11 @@ Approximately 10 homework assignments.
 
 ### Exam
 
-There will be two midterm and one final exam.
+There will be two midterms and one final exam.
 
 ### Final Grade
 
-Letter grade will be assigned based on the final score: 20% homework + 20% midterm 1 + 20% midterm 2 + 40% final.
+Letter grade will be assigned based on the final score: 30% homework + 20% midterm 1 + 20% midterm 2 + 30% final.
 
 ### Academic Integrity
 
