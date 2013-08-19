@@ -45,11 +45,15 @@ PDF is available through NCSU library [link](http://catalog.lib.ncsu.edu/record/
 
 ### Attendance
 
-I will not take attendance, but I expect students to attend class.
+Class attendance is mandatory.
 
 ### Homework
 
-Approximately 6 homework assignments will be assigned involving both analysis and computation. One of those homeworks will be a project and carry twice the weight of other homework assignments.
+Approximately 6 homework assignments will be assigned involving both analysis and computation. 
+
+### Proejct
+
+There will be a course project, which carries twice the weight of a homework assignment.
 
 ### Exam
 
