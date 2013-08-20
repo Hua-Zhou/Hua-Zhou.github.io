@@ -18,8 +18,7 @@ Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
 
 ### Teaching Assistant
 
-???  
-Email: <???>
+Fan Wu <fwu5@ncsu.edu>
 
 ### TA Office Hours
 
@@ -51,7 +50,7 @@ Class attendance is mandatory.
 
 Approximately 6 homework assignments will be assigned involving both analysis and computation. 
 
-### Proejct
+### Project
 
 There will be a course project, which carries twice the weight of a homework assignment.
 
@@ -61,7 +60,7 @@ There will be a final exam which involves computation and will carry twice the w
 
 ### Final Grade
 
-Letter grade will be assigned based on the final score.
+Letter grade will be assigned based on the final score: 60% homework + 20% project + 20% final.
 
 ### Academic Integrity
 
