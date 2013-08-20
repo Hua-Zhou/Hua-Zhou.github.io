@@ -18,8 +18,7 @@ Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
 
 ### Teaching Assistant
 
-???  
-Email: <???>
+William Weimin Yoo <wyoo@ncsu.edu>
 
 ### TA Office Hours
 

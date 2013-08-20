@@ -24,5 +24,5 @@ Office hours: Mon 2pm-4pm, Wed 3pm-4pm, or by appointment
 
 ### Teaching Assistant
 
-???  
+William Weimin Yoo <wyoo@ncsu.edu>  
 Office hours: ??? at Tutorial Center in 1101 SAS Hall
