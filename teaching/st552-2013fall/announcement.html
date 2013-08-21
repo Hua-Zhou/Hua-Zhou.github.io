@@ -1,0 +1,15 @@
+---
+layout: default
+title: Announcements
+---
+
+<h3>Posts</h3>
+<ul>
+  {% for post in ./.posts %}
+<li class="post">
+  <span class="date">{{ post.date | date_to_string }}</span>
+  <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+</li>
+  {% endfor %}
+</ul>
+
