@@ -6,12 +6,12 @@ title: Stat 552
 <h3>Announcements</h3>
 <ul>
 {% for post in site.posts %}
-<!--  {% if post.category == "st552fall2013" %} -->
+{% if post.category == "st552fall2013" %}
 <li class="post">
   <span class="date">{{ post.date | date_to_string }}</span>
   <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
 </li>
-<!--  {% endif %} -->
+{% endif %}
 {% endfor %}
 </ul>
 
