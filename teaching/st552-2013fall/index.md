@@ -3,7 +3,7 @@ layout: course
 title: Stat 552
 ---
 
-## Stat 758 - Linear Models and Variance Components - 2013 Fall
+## Stat 552 - Linear Models and Variance Components - 2013 Fall
 
 ### Course Description
 
