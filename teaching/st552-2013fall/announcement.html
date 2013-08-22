@@ -5,11 +5,11 @@ title: Stat 552
 
 <h3>Announcements</h3>
 <ul>
-  {% unless post.category == "st552fall2013" %}
+  {% if post.category == "st552fall2013" %}
 <li class="post">
   <span class="date">{{ post.date | date_to_string }}</span>
   <a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
 </li>
-  {% endunless %}
+  {% endif %}
 </ul>
 
