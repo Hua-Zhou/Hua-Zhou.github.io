@@ -7,6 +7,10 @@ title: Stat 758
 
 ST758 tentative schedule and handouts (expect frequent updates)
 
+[Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes.pdf)  
+[Lecture notes (2 pages/sheet)](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes-ForPrint.pdf)
+
+
 | **Tuesday** | **Thursday** |  
 |:-----------|:------------|
 | | **08/22** introduction, course logistics |
@@ -23,4 +27,5 @@ ST758 tentative schedule and handouts (expect frequent updates)
 | **11/19** EM algorithm | **11/21** conjugate gradient, quasi-Newton |
 | **11/26** random number generation | **11/28** **Thanksgiving, no class** |
 | **12/03** Monte Carlo | **12/05** sorting, FFT |
-| **12/10 8am-11am, SAS 1108, final exam** ||
+
+**Final exam: 12/10 Tuesday @ 8am-11am, SAS 1107**

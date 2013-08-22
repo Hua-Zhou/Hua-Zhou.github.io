@@ -64,7 +64,7 @@ Letter grade will be assigned based on the final score: 60% homework + 20% proje
 
 ### Academic Integrity
 
-Cheating will not be tolerated. See the university’s policy on academic integrity at [http://policies.ncsu.edu/policy/pol-11-35-01](http://policies.ncsu.edu/policy/pol-11-35-01). You may work together on homework assignments, but simply giving or receiving answers or code to or from another student is cheating. Cheating also includes copying from another students paper, using unauthorized materials during exams, and falsifying data.
+Cheating will not be tolerated. See the university’s policy on academic integrity at [http://policies.ncsu.edu/policy/pol-11-35-01](http://policies.ncsu.edu/policy/pol-11-35-01). You may work together on homework assignments, but simply giving or receiving answers or code to or from another student is cheating. Cheating also includes copying from another student's paper, using unauthorized materials during exams, and falsifying data.
 
 ### Disability
 
