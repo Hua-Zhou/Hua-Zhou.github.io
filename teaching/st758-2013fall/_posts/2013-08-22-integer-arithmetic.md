@@ -1,6 +1,6 @@
 ---
 layout: post_teaching
-title: Tracking Overflow/Underflow in Integer Arithmetic
+title: Tracking overflow/underflow in integer arithmetic
 category: st758fall2013
 ---
 
