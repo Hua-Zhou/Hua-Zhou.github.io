@@ -15,6 +15,6 @@ We only need to keep track of underflow in this case.
 If the resulting binary number has a leading bit of 0, we know underflow occurs since the sum cannot be positive. We crossed the lower boundary 00…0 and should subtract 2^M from the result.  
 If the resulting binary number has a leading bit of 1, no underflow occurs.
 * Adding a negative integer and a nonnegative integer: 1XX…X + 0YY…Y  
-Just as one of you (Irina?) mentioned in class, the result is always between the two summands. **No overflow or underflow could happen**.
+Just as one of you (Cassie?) mentioned in class, the result is always between the two summands. **No overflow or underflow could happen**.
 
 JM p18-p19 talks about these issues.
