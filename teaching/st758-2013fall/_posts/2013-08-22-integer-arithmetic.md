@@ -6,7 +6,7 @@ category: st758fall2013
 
 During lecture I was confused about how to track overflow or underflow when adding a positive number and a negative number. 
 
-* Adding two nonnegative integers: 0XX…X + 0YY…Y, where X and Y are arbitrary binary digits
+* Adding two nonnegative integers: 0XX…X + 0YY…Y, where X and Y are arbitrary binary digits  
 We only need to keep track of overflow in this case.  
 If the resulting binary number has a leading bit of 1, we know overflow occurs since the sum cannot be negative. We should treat that sign bit as a regular numeric bit. In other words, we crossed the upper boundary 10…0 and should add 2^M to the result.  
 If the resulting binary number has a leading bit of 0, no overflow occurs.
