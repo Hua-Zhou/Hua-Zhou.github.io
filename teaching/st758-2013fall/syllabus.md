@@ -22,7 +22,7 @@ Fan Wu <fwu5@ncsu.edu>
 
 ### TA Office Hours
 
-??? at Tutorial Center in 1101 SAS Hall
+Tue/Thu @ 3pm-4pm, Tutorial Center in 1101 SAS Hall
 
 ### Prerequisite
 
