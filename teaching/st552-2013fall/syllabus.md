@@ -22,7 +22,7 @@ William Weimin Yoo <wyoo@ncsu.edu>
 
 ### TA Office Hours
 
-??? at Tutorial Center in 1101 SAS Hall
+Friday @ 12pm-2pm at the Tutorial Center in 1101 SAS Hall
 
 ### Prerequisite
 
