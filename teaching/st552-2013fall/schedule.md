@@ -13,7 +13,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **Monday** | **Wednesday** |  
 |:-----------|:------------|
 | | **08/21** introduction, linear algebra |
-| **08/26** least squares estimation (JM2), [[HW1]](./ST552-2013-HW1.pdf)  | **08/28**  |
+| **08/26** linear algebra, [[HW1]](./ST552-2013-HW1.pdf)  | **08/28** least squares estimation (JM2) |
 | **09/02** **Labor Day**, **no class** | **09/04**  |
 | **09/09**  | **09/11** |
 | **09/16** estimability and identifiability (JM3) | **09/18** |
