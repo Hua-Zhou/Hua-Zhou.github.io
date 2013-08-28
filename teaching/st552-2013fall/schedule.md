@@ -7,7 +7,7 @@ title: Stat 552
 
 ST552 tentative schedule and handouts (expect frequent updates)
 
-[Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-LecNotes.pdf) (last updated Aug 16)  
+[Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-LecNotes.pdf) (last updated Aug 28)  
 [Lecture notes (2 pages/sheet)](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-LecNotes-ForPrint.pdf)  
 [pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-Pre-LecNotes.pdf) (last updated Aug 27)
 
