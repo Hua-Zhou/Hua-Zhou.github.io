@@ -1,6 +1,6 @@
 ---
 layout: post_teaching
-title: Change TA's office hours
+title: Change of TA's office hours
 category: st552fall2013
 ---
 
