@@ -14,7 +14,7 @@ ST758 tentative schedule and handouts (expect frequent updates)
 | **Tuesday** | **Thursday** |  
 |:-----------|:------------|
 | | **08/22** introduction, course logistics |
-| **08/27** computer storage/arithmetic, [[weird.r](./weird.r)/[weird.html](./weird.html)] | **08/29** algorithm, software, computer languages, [[HW1](./ST758-2013-HW1.pdf)],[[hoium.dat](./hoium.dat)] |
+| **08/27** computer storage/arithmetic, \[[weird.r](./weird.r)/[weird.html](./weird.html)\] | **08/29** algorithm, software, computer languages, \[[HW1](./ST758-2013-HW1.pdf),[hoium.dat](./hoium.dat)\] |
 | **09/03** matrix and linear algebra | **09/05** solving linear equations |
 | **09/10** R and programming practice | **09/12** writing R functions |
 | **09/17** GE, LU decomposition | **09/19** Cholesky decomposition |
