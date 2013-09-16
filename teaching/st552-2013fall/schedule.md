@@ -14,10 +14,10 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **Monday** | **Wednesday** |  
 |:-----------|:------------|
 | | **08/21** introduction, linear algebra |
-| **08/26** linear algebra, [[HW1]](./ST552-2013-HW1.pdf)  | **08/28** least squares estimation (JM2) |
+| **08/26** linear algebra, [\[HW1\]](./ST552-2013-HW1.pdf)  | **08/28** least squares estimation (JM2) |
 | **09/02** **Labor Day**, **no class** | **09/04**  |
 | **09/09** **instructor out of town, no class** | **09/11** **instructor out of town, no class** |
-| **09/16** estimability (JM3), [[HW2]](./ST552-2013-HW2.pdf) | **09/18** |
+| **09/16** estimability (JM3), [\[HW2\]](./ST552-2013-HW2.pdf) | **09/18** |
 | **09/23** | **09/25** |
 | **09/30** Gauss-Markov model (JM4) | **10/02** |
 | **10/07** | **10/09** **midterm 1, 11:45am-1pm** |
