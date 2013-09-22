@@ -19,7 +19,7 @@ ST758 tentative schedule and handouts (expect frequent updates)
 | **09/03** matrix and linear algebra | **09/05** numerical linear algebra intro, \[[mxmult.r](./mxmult.r)/[mxmult.html](./mxmult.html)\] |
 | **09/10** R programming (Yiwen, \[[part 1](./YiwenZhang_Part1_Introduction.pdf)\], \[[part 2](./YiwenZhang_Part2_Data_Objects.pdf)\], \[[part 3](./YiwenZhang_Part3_R_Functions.pdf)\]) | **09/12** R programming (Yiwen, \[[slides](./YiwenZhang_RProgramming.htm)\], \[[R code](./YiwenZhang_codeThur.R)\]) |
 | **09/17** GE, LU decomposition | **09/19** Cholesky decomposition \[[HW2](./ST758-2013-HW2.pdf),[longley.dat](./longley.dat)\] |
-| **09/24** QR decomposition | **09/26** regression computations |
+| **09/24** QR decomposition \[[HW3](./ST758-2013-HW3.pdf),[stat-ncsu.zip](./stat-ncsu.zip)\] | **09/26** regression computations |
 | **10/08** condition number | **10/10** **fall break, no class** |
 | **10/15** special linear systems | **10/17** iterative method for linear system |
 | **10/22** eigen-decomposition | **10/24** SVD |
