@@ -18,7 +18,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **09/02** **Labor Day**, **no class** | **09/04**  |
 | **09/09** **instructor out of town, no class** | **09/11** **instructor out of town, no class** |
 | **09/16** estimability (JM3), [\[HW2\]](./ST552-2013-HW2.pdf) | **09/18** |
-| **09/23** Gauss-Markov model (JM4) | **09/25** |
+| **09/23** Gauss-Markov model (JM4) [\[HW3\]](./ST552-2013-HW3.pdf) | **09/25** |
 | **09/30** | **10/02** |
 | **10/07** | **10/09** **midterm 1, 11:45am-1pm** |
 | **10/14** distribution theory (JM5) | **10/16** |
