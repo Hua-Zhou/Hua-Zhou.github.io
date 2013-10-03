@@ -9,7 +9,7 @@ ST758 tentative schedule and handouts (expect frequent updates)
 
 [Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes.pdf) (last updated Oct 1)  
 [Lecture notes (2 pages/sheet)](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes-ForPrint.pdf)  
-[pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-Pre-LecNotes.pdf) (last updated Sep 30)
+[pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-Pre-LecNotes.pdf) (last updated Oct 2)
 
 
 | **Tuesday** | **Thursday** |  
@@ -20,7 +20,7 @@ ST758 tentative schedule and handouts (expect frequent updates)
 | **09/10** R programming (Yiwen, \[[part 1](./YiwenZhang_Part1_Introduction.pdf)\], \[[part 2](./YiwenZhang_Part2_Data_Objects.pdf)\], \[[part 3](./YiwenZhang_Part3_R_Functions.pdf)\]) | **09/12** R programming (Yiwen, \[[slides](./YiwenZhang_RProgramming.htm)\], \[[R code](./YiwenZhang_codeThur.R)\]) |
 | **09/17** GE, LU decomposition | **09/19** Cholesky decomposition \[[HW2](./ST758-2013-HW2.pdf),[longley.dat](./longley.dat)\] |
 | **09/24** QR decomposition \[[HW3](./ST758-2013-HW3.pdf),[stat-ncsu.zip](./stat-ncsu.zip)\] | **09/26** sweeping, regression computations, \[[sweep.r](./sweep.r)/[sweep.html](./sweep.html)\] |
-| **10/01** more least squares, condition number | **10/03** iterative method for linear system |
+| **10/01** more least squares, condition number \[[condition.r](./condition.r)/[condition.html](./condition.html)\], \[[longley_cond.r](./longley_cond.r)/[longley_cond.html](./longley_cond.html)\] | **10/03** iterative method for linear system |
 | **10/08** special linear systems | **10/10** **fall break, no class** |
 | **10/15** eigen-decomposition | **10/17** eigen-decomposition |
 | **10/22** generalized eigen-problem | **10/24** SVD |
