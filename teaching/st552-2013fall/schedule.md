@@ -21,7 +21,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **09/23** Gauss-Markov model (JM4) [\[HW3\]](./ST552-2013-HW3.pdf) | **09/25** Aitken model (JM4) [\[HW4\]](./ST552-2013-HW4.pdf) |
 | **09/30** | **10/02** |
 | **10/07** | **10/09** **midterm 1, 11:45am-1pm** |
-| **10/14** distribution theory (JM5) | **10/16** |
+| **10/14** **no class** | **10/16** distribution theory (JM5) |
 | **10/21** | **10/23** |
 | **10/28** statistical inference (JM6,7) | **10/30** |
 | **11/04** | **11/06** |
