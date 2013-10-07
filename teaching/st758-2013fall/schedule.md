@@ -21,13 +21,13 @@ ST758 tentative schedule and handouts (expect frequent updates)
 | **09/17** GE, LU decomposition | **09/19** Cholesky decomposition \[[HW2](./ST758-2013-HW2.pdf),[longley.dat](./longley.dat)\] |
 | **09/24** QR decomposition \[[HW3](./ST758-2013-HW3.pdf),[stat-ncsu.zip](./stat-ncsu.zip)\] | **09/26** sweeping, regression computations, \[[sweep.r](./sweep.r)/[sweep.html](./sweep.html)\] |
 | **10/01** more least squares, condition number \[[condition.r](./condition.r)/[condition.html](./condition.html)\], \[[longley_cond.r](./longley_cond.r)/[longley_cond.html](./longley_cond.html)\] | **10/03** iterative method for linear system |
-| **10/08** special linear systems | **10/10** **fall break, no class** |
-| **10/15** eigen-decomposition | **10/17** eigen-decomposition |
-| **10/22** generalized eigen-problem | **10/24** SVD |
-| **11/05** general optimization theory | **11/07** general optimization theory |
-| **11/12** Newton and scoring method | **11/14** nonlinear regression |
-| **11/19** EM algorithm | **11/21** conjugate gradient, quasi-Newton |
-| **11/26** random number generation | **11/28** **Thanksgiving, no class** |
-| **12/03** Monte Carlo | **12/05** sorting, FFT |
+| **10/08** special linear systems, eigen-decomposition | **10/10** **fall break, no class** |
+| **10/15** eigen-decomposition, SVD | **10/17** generalized eigen-problem |
+| **10/22** general optimization theory | **10/24** general optimization theory |
+| **11/05** Newton and scoring method | **11/07** nonlinear regression |
+| **11/12** EM algorithm | **11/14** MM algorithm |
+| **11/19** conjugate gradient, quasi-Newton | **11/21** random number generation |
+| **11/26** Monte Carlo | **11/28** **Thanksgiving, no class** |
+| **12/03** MCMC | **12/05** sorting, FFT |
 
 **Final exam: 12/10 Tuesday @ 8am-11am, SAS 1107**
