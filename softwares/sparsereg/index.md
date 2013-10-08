@@ -52,7 +52,7 @@ H Zhou, A Armagan, and D Dunson (2011) Path following and empirical Bayes model 
 * Default article to cite for least squares + generalized lasso penalty  
 H Zhou and K Lange (2013) A path algorithm for constrained estimation, [_Journal of Computational and Graphical Statistics_](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2012.681248), 22(2):261-283.
 * Default article to cite for convex loss + generalized lasso penalty  
-H Zhou and Y Wu (2012)  A generic path algorithm for regularized statistical estimation. \[[arXiv:1201.3571](http://arxiv.org/abs/1201.3571)\]
+H Zhou and Y Wu (2012)  A generic path algorithm for regularized statistical estimation, _Journal of American Statistical Association_, accepted. \[[arXiv:1201.3571](http://arxiv.org/abs/1201.3571)\]
 * Default article to cite for path following in constrained convex programming  
 H Zhou and K Lange (2011) Path following in the exact penalty method of convex programming. \[[arXiv](http://arxiv.org/abs/1201.3593)\]
 
