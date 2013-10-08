@@ -19,7 +19,7 @@ Soft-thresholding for regression with matrix covariates.
 K Lange, JC Papp, JS Sinsheimer, R Sripracha, **H Zhou**, and E Sobel. (2013) Mendel: the Swiss army knife of genetic analysis programs, [_Bioinformatics_][4], 29(12):1568-1570. \[[pdf](./media/pdf/Lange13Mendel.pdf)\]\[[Mendel][6]\]  
 Summary of the new version of the comprehensive genetic analysis software Mendel.
 
-E Chi, G Allen, **H Zhou**, O Kohannim, K Lange, and P Thompson. (2013) New developments in sparse canonical correlation analysis for imaging genetics studies, [_Information Processing in Medical Imaging_](http://ieeexplore.ieee.org/xpl/login.jsp?reload=true&tp=&arnumber=6556581&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6556581), accepted. \[[pdf](./media/pdf/Chi13TensorCCA.pdf)]  
+E Chi, G Allen, **H Zhou**, O Kohannim, K Lange, and P Thompson. (2013) New developments in sparse canonical correlation analysis for imaging genetics studies, [_Information Processing in Medical Imaging_](http://ieeexplore.ieee.org/xpl/login.jsp?reload=true&tp=&arnumber=6556581&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6556581), pp740-743. \[[pdf](./media/pdf/Chi13TensorCCA.pdf)]  
 Sparse canonical correlation analysis (CCA) for the tensor data.
 
 **H Zhou**, J Zhou, E Sobel, and K Lange. (2013) Fast genome-wide pedigree QTL analysis using Mendel, _BMC Proceedings_, accepted.  
