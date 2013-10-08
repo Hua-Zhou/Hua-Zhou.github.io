@@ -13,7 +13,7 @@ E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications
 
 K Lange, E Chi, and **H Zhou**. (2013) A brief survey of modern optimization for statisticians, _International Statistical Review_, accepted. \[[pdf][2]\]
 
-**H Zhou** and L Li. (2013) Regularized matrix regression, [_Journal of Royal Statistical Society Series B_](http://onlinelibrary.wiley.com/doi/10.1111/rssb.12031/abstract), accepted. \[[pdf](./media/pdf/ZhouLi14RegMatrixReg.pdf)\]  
+**H Zhou** and L Li. (2013) Regularized matrix regression, [_Journal of Royal Statistical Society Series B_](http://onlinelibrary.wiley.com/doi/10.1111/rssb.12031/abstract), accepted. \[[pdf](./media/pdf/ZhouLi14RegMatrixReg.pdf)\]\[[software](./softwares/tensorreg)\]  
 Soft-thresholding for regression with matrix covariates.
 
 K Lange, JC Papp, JS Sinsheimer, R Sripracha, **H Zhou**, and E Sobel. (2013) Mendel: the Swiss army knife of genetic analysis programs, [_Bioinformatics_][4], 29(12):1568-1570. \[[pdf](./media/pdf/Lange13Mendel.pdf)\]\[[Mendel][6]\]  
@@ -25,7 +25,7 @@ Sparse canonical correlation analysis (CCA) for the tensor data.
 **H Zhou**, J Zhou, E Sobel, and K Lange. (2013) Fast genome-wide pedigree QTL analysis using Mendel, _BMC Proceedings_, accepted.  
 Multivariate QTL analysis of the [GAW18][7] data.
 
-**H Zhou**, L Li, and H Zhu. (2013) Tensor regression with applications in neuroimaging data analysis, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/abs/10.1080/01621459.2013.776499#.Ud7Ytz7Xjbw), 108(502):540-552. \[[pdf](./media/pdf/ZhouLiZhu13CPReg.pdf)\]  
+**H Zhou**, L Li, and H Zhu. (2013) Tensor regression with applications in neuroimaging data analysis, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/abs/10.1080/01621459.2013.776499#.Ud7Ytz7Xjbw), 108(502):540-552. \[[pdf](./media/pdf/ZhouLiZhu13CPReg.pdf)\]\[[software](./softwares/tensorreg)\]  
 Traditional regression takes a vector of covariates. We consider regression that takes an array, aka tensor, of covariates, such as in neuroimaging studies.
 
 E Chi, **H Zhou**, G Chen, D Ortega, and K Lange. (2013) Genotype imputation via matrix completion, [_Genome Research_](http://genome.cshlp.org/content/23/3/509), 23:509-518. \[[pdf](./media/pdf/ChiZhouChenLange13Impute.pdf)\]\[[Mendel Impute](http://www.genetics.ucla.edu/software/)\]  
