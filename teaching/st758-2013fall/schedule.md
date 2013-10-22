@@ -11,6 +11,10 @@ ST758 tentative schedule and handouts (expect frequent updates)
 [Lecture notes (2 pages/sheet)](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes-ForPrint.pdf)  
 [pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-Pre-LecNotes.pdf) (last updated Oct 21)
 
+Readings:  
+* Top 10 algorithms in the 20th century  
+[Metropolis](top10/metropolis.pdf), [Simplex](top10/simplex.pdf), [Krylov](top10/krylov.pdf), [Matrix decomposition](top10/decomp.pdf), [Fortran](top10/fortran.pdf), [QR algorithm](top10/qr.pdf), [Quicksort](top10/qsort.pdf), [FFT](top10/fft.pdf), [Integer relation](top10/integer.pdf), [FMM](top10/fmm.pdf)
+
 
 | **Tuesday** | **Thursday** |  
 |:-----------|:------------|
