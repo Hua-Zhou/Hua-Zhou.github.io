@@ -7,11 +7,12 @@ title: Publication
 
 Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments.
 
-**H Zhou** and Y Wu. (2013) A generic path algorithm for regularized statistical estimation, _Journal of American Statistical Association_, accepted. \[[arXiv](http://arxiv.org/abs/1201.3571)\]
+**H Zhou** and Y Wu. (2013) A generic path algorithm for regularized statistical estimation, _Journal of American Statistical Association_, accepted. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
+Path following for a convex loss plus a generalized lasso penalty.
 
 E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), in press. \[[pdf](./media/pdf/ChiZhouLange13Distance.pdf)\]
 
-K Lange, E Chi, and **H Zhou**. (2013) A brief survey of modern optimization for statisticians, _International Statistical Review_, accepted. \[[pdf][2]\]
+K Lange, E Chi, and **H Zhou**. (2013) A brief survey of modern optimization for statisticians (with discussion), _International Statistical Review_, accepted. \[[pdf][2]\]
 
 **H Zhou** and L Li. (2013) Regularized matrix regression, [_Journal of Royal Statistical Society Series B_](http://onlinelibrary.wiley.com/doi/10.1111/rssb.12031/abstract), accepted. \[[pdf](./media/pdf/ZhouLi14RegMatrixReg.pdf)\]\[[software](./softwares/tensorreg)\]  
 Soft-thresholding for regression with matrix covariates.
