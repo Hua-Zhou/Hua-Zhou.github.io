@@ -38,7 +38,7 @@ L Riley, **H Zhou**, K Lange, J Sinsheimer, and M Sehl. (2012) Determining durat
 Prediction of optimal duration of stem-cell target treatment based on a stochastic model.
 
 H Zhu, L Li, and **H Zhou**. (2012) Nonlinear dimension reduction with Wright-Fisher kernel for genotype aggregation and association mapping, [_Bioinformatics_][12], 28:i375--i381. \[[pdf](./media/pdf/ZhuLiZhou12SDR-Seq.pdf)\]  
-Path following for a quadratic criterion plus a generalized lasso penalty.
+Nonlinear dimension reduction using Markov chain kernels.
 
 **H Zhou** and K Lange. (2013) A path algorithm for constrained estimation, [_Journal of Computational and Graphical Statistics_](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2012.681248), 22(2):261-283. \[[pdf](./media/pdf/ZhouLange13LSPath.pdf)\]   
 Path following for a quadratic criterion plus a generalized lasso penalty.
