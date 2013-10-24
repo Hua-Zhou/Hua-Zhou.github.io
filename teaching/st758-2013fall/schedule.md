@@ -28,10 +28,11 @@ Readings:
 | **10/08** special linear systems \[[HW4](./ST758-2013-HW4.pdf),[HW5](./ST758-2013-HW5.pdf),[allele.dat](./allele.dat)\] | **10/10** **fall break, no class** |
 | **10/15** eigen-decomposition, SVD | **10/17** generalized eigen-problem |
 | **10/22** MLE | **10/24** general optimization theory |
-| **11/05** Newton and scoring method | **11/07** nonlinear regression |
-| **11/12** EM algorithm | **11/14** MM algorithm |
-| **11/19** conjugate gradient, quasi-Newton | **11/21** random number generation |
-| **11/26** Monte Carlo | **11/28** **Thanksgiving, no class** |
-| **12/03** MCMC | **12/05** sorting, FFT |
+| **10/29** Newton and scoring method | **10/31** nonlinear regression |
+| **11/05** EM algorithm | **11/07** MM algorithm |
+| **11/12** Krylov subspace method, quasi-Newton | **11/14** Monte Carlo |
+| **11/19** MCMC | **11/21** sorting, FFt |
+| **11/26**  | **11/28** **Thanksgiving, no class** |
+| **12/03** | **12/05** |
 
 **Final exam: 12/10 Tuesday @ 8am-11am, SAS 1107**
