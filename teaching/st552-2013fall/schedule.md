@@ -22,7 +22,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **09/30** | **10/02** |
 | **10/07** | **10/09** **midterm 1, 11:45am-1pm** |
 | **10/14** **no class** | **10/16** distribution theory (JM5) [\[HW5\]](./ST552-2013-HW5.pdf) |
-| **10/21** | **10/23** | statistical inference (JM6,7)
+| **10/21** | **10/23** | statistical inference (JM6,7) |
 | **10/28** [\[HW6\]](./ST552-2013-HW6.pdf) | **10/30** |
 | **11/04** | **11/06** |
 | **11/11** **midterm 2, 11:45am-1pm** | **11/13** |
