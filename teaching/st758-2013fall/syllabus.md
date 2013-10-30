@@ -40,6 +40,8 @@ Tue/Thu @ 3pm-4pm, Tutorial Center in 1101 SAS Hall
 * J Monahan, _Numerical Methods of Statistics_, 2nd Edition, Cambridge University Press (2011)
 * K Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
 PDF is available through NCSU library [link](http://catalog.lib.ncsu.edu/record/NCSU2410898)
+* S Boyd and L Vandenberghe, _Convex Optimization_, Cambridge (2004)  
+PDF is available through the author's website [link](http://www.stanford.edu/~boyd/cvxbook/)
 * R Manual: [http://cran.r-project.org/doc/manuals/R-intro.html](http://cran.r-project.org/doc/manuals/R-intro.html)
 
 ### Attendance
