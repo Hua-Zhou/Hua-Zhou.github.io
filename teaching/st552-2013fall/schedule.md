@@ -25,7 +25,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **10/21** | **10/23** statistical inference (JM6,7) |
 | **10/28** [\[HW6\]](./ST552-2013-HW6.pdf) | **10/30** [\[HW7\]](./ST552-2013-HW7.pdf) |
 | **11/04** | **11/06** |
-| **11/11** **midterm 2, 11:45am-1pm** | **11/13** |
+| **11/11** | **11/13** **midterm 2, 11:45am-1pm** |
 | **11/18** variance components (JM8) | **11/20** |
 | **11/25** | **11/27** **Thanksgiving**, **no class** |
 | **12/02** multivariate linear model (JM9) | **12/04** |  
