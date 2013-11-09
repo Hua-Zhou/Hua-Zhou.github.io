@@ -13,7 +13,12 @@ ST758 tentative schedule and handouts (expect frequent updates)
 
 Readings:  
 * Top 10 algorithms in the 20th century  
-[Metropolis](top10/metropolis.pdf), [Simplex](top10/simplex.pdf), [Krylov](top10/krylov.pdf), [Matrix decomposition](top10/decomp.pdf), [Fortran](top10/fortran.pdf), [QR algorithm](top10/qr.pdf), [Quicksort](top10/qsort.pdf), [FFT](top10/fft.pdf), [Integer relation](top10/integer.pdf), [FMM](top10/fmm.pdf)
+[Metropolis](top10/metropolis.pdf), [Simplex](top10/simplex.pdf), [Krylov](top10/krylov.pdf), [Matrix decomposition](top10/decomp.pdf), [Fortran](top10/fortran.pdf), [QR algorithm](top10/qr.pdf), [Quicksort](top10/qsort.pdf), [FFT](top10/fft.pdf), [Integer relation](top10/integer.pdf), [FMM](top10/fmm.pdf)  
+* (Monte Carlo) simulation studies in statistics  
+  * Marie Davidian's [slides](http://www4.stat.ncsu.edu/~davidian/st810a/simulation_handout.pdf)  
+  * John Monahan's [notes](./monte-carlo/Monahan09SimGuide.pdf)  
+  * Swallow & Monahan's [Monte Carlo study](./monte-carlo/SwallowMonahan84VCMonteCarlo.pdf) on variance component estimation  
+  * [*Let's practice what we preach: turning tables into graphs*](./monte-carlo/GelmanPasarikaDodhia02Graph.pdf), by Gelman, Pasarica, and Dodhia
 
 
 | **Tuesday** | **Thursday** |  
@@ -30,8 +35,8 @@ Readings:
 | **10/22** MLE | **10/24** general optimization theory |
 | **10/29** Newton and scoring method | **10/31** GLM, nonlinear regression |
 | **11/05** EM algorithm | **11/07** MM algorithm \[[HW6](./ST758-2013-HW6.pdf),[AL-standings-20131108.csv](./AL-standings-20131108.csv)\] |
-| **11/12** Krylov subspace method, quasi-Newton | **11/14** Monte Carlo |
-| **11/19** MCMC | **11/21** sorting, FFt |
+| **11/12** Monte Carlo \[[HW7](./ST758-2013-HW7.pdf)\] | **11/14** Krylov subspace method, quasi-Newton |
+| **11/19** MCMC | **11/21** sorting, FFT |
 | **11/26**  | **11/28** **Thanksgiving, no class** |
 | **12/03** | **12/05** |
 
