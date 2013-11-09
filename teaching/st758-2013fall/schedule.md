@@ -11,7 +11,9 @@ ST758 tentative schedule and handouts (expect frequent updates)
 [Lecture notes (2 pages/sheet)](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes-ForPrint.pdf)  
 [pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-Pre-LecNotes.pdf) (last updated Nov 7)
 
+
 Readings:  
+
 * Top 10 algorithms in the 20th century  
 [Metropolis](top10/metropolis.pdf), [Simplex](top10/simplex.pdf), [Krylov](top10/krylov.pdf), [Matrix decomposition](top10/decomp.pdf), [Fortran](top10/fortran.pdf), [QR algorithm](top10/qr.pdf), [Quicksort](top10/qsort.pdf), [FFT](top10/fft.pdf), [Integer relation](top10/integer.pdf), [FMM](top10/fmm.pdf)  
 * (Monte Carlo) simulation studies in statistics  
@@ -35,9 +37,9 @@ Readings:
 | **10/22** MLE | **10/24** general optimization theory |
 | **10/29** Newton and scoring method | **10/31** GLM, nonlinear regression |
 | **11/05** EM algorithm | **11/07** MM algorithm \[[HW6](./ST758-2013-HW6.pdf),[AL-standings-20131108.csv](./AL-standings-20131108.csv)\] |
-| **11/12** Monte Carlo \[[HW7](./ST758-2013-HW7.pdf)\] | **11/14** Krylov subspace method, quasi-Newton |
-| **11/19** MCMC | **11/21** sorting, FFT |
-| **11/26**  | **11/28** **Thanksgiving, no class** |
+| **11/12** Monte Carlo simulation studies \[[HW7](./ST758-2013-HW7.pdf)\] | **11/14** Krylov subspace method |
+| **11/19** quasi-Newton | **11/21** MCMC |
+| **11/26** sorting, FFT | **11/28** **Thanksgiving, no class** |
 | **12/03** | **12/05** |
 
 **Final exam: 12/10 Tuesday @ 8am-11am, SAS 1107**
