@@ -29,7 +29,7 @@ Readings:
 | **10/15** eigen-decomposition, SVD | **10/17** generalized eigen-problem |
 | **10/22** MLE | **10/24** general optimization theory |
 | **10/29** Newton and scoring method | **10/31** GLM, nonlinear regression |
-| **11/05** EM algorithm | **11/07** MM algorithm |
+| **11/05** EM algorithm | **11/07** MM algorithm \[[HW6](./ST758-2013-HW6.pdf),[AL-standings-20131108.csv](./AL-standings-20131108.csv)\] |
 | **11/12** Krylov subspace method, quasi-Newton | **11/14** Monte Carlo |
 | **11/19** MCMC | **11/21** sorting, FFt |
 | **11/26**  | **11/28** **Thanksgiving, no class** |
