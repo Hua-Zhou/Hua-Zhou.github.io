@@ -27,7 +27,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **11/04** | **11/06** |
 | **11/11** | **11/13** **midterm 2, 11:45am-1pm** |
 | **11/18** variance components (JM8) | **11/20** |
-| **11/25** | **11/27** **Thanksgiving**, **no class** |
+| **11/25** | **11/27** **Thanksgiving**, **have class** |
 | **12/02** multivariate linear model (JM9) | **12/04** |  
 
 **Final exam: 12/13 Friday @ 8am-11am, SAS 5270**
