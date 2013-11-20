@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>hw05sol.r</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<!-- Automatically generated by RStudio [12861c30b10411e1afa60800200c9a66] -->
+
+<h3>hw05sol.r</h3>
+
+<p>Hua Zhou &mdash; <em>Nov 18, 2013, 9:22 PM</em></p>
+
+<pre><code class="r"># ST758 HW4/5, 2013
+# Solution by Hua Zhou
+
+# clean up
+rm(list=ls())
+
+# read in Houston allele count data &quot;alelle.dat&quot;
+houston &lt;- read.table(file=&quot;http://hua-zhou.github.io/teaching/st758-2013fall/allele.dat&quot;, header=TRUE)
+houston
+</code></pre>
+
+<pre><code>  Allele White Black Chicano Asian
+1      5     2     0       0     0
+2      6    84    50      80    16
+3      7    59   137     128    40
+4      8    41    78      26     8
+5      9    53    54      55    68
+6     10   131    51      95    14
+7     11     2     0       0     7
+8     12     0     0       0     1
+</code></pre>
+
+<pre><code class="r">
+# source the functions
+source(file=&quot;dirmult.r&quot;,keep.source=TRUE)
+print(ddirmult)
+</code></pre>
+
+<pre><code>function(x, alpha, log=FALSE) {
+
+  # check x is count data
+  if (any(x&lt;0))
+    stop(&quot;Error: x should be nonnegative count data&quot;)
+  # check positivity of alpha
+  if (any(alpha&lt;=0))
+    stop(&quot;Error: Dirichlet-multinomial parameter alpha should be positive&quot;)
+
+  # check dimensions of input arguments
+  if (is.vector(alpha) &amp;&amp; length(alpha)&gt;1) {
+    if (is.vector(x) &amp;&amp; length(x)&gt;1) {
+      if (length(x) != length(alpha)) {
+        stop(&quot;Error: size of x and alpha doesn&#39;t match.&quot;)
+      } else {  x &lt;- matrix(x, 1, length(x)) }
+    } else if (is.vector(x) &amp;&amp; length(x)&lt;=1) {
+      stop(&quot;Error: x can not be a scalar&quot;)
+    }
+    alpha &lt;- t( matrix(alpha, length(alpha) , dim(x)[1]) )
+  }
+  if (any(dim(alpha)!=dim(x)))
+    stop(&quot;Error: dimensions of alpha and x do not match&quot;)
+
+  # compute log-densities
+  alpha_rowsums &lt;- rowSums(alpha)
+  m &lt;- rowSums(x)
+  logl &lt;- lgamma(m+1) - rowSums(lgamma(x+1)) +
+    rowSums(lgamma(x+alpha)) - rowSums(lgamma(alpha)) +
+    lgamma(alpha_rowsums) - lgamma(alpha_rowsums+m)
+
+  # output
+  if (log) return(logl)
+  else return(exp(logl))
+}
+</code></pre>
+
+<pre><code class="r">print(dirmultfit)
+</code></pre>
+
+<pre><code>function( data, weights=NULL, alpha0=NULL, 
+                        tolfun=1e-6, maxiters=100, display=FALSE){
+
+  # check observation weights
+  if(!is.null(weights)) {
+    weights &lt;- weight[rowSums(data)!=0]
+    if (any(weights&lt;0))
+      stop(&quot;Error: observation weigths should be positive&quot;)
+  }
+
+  # remove data points with batch size 0
+  if( any(rowSums(data)==0) ){ 
+    rmv &lt;- sum(rowSums(data==0))
+    message(paste( &quot;Warning: &quot;, rmv,
+                   &quot; rows are removed because the row sums are 0&quot;, sep=&quot;&quot;))}
+
+  # remove the bins with no observations
+  if( any(colSums(data)==0) ){ 
+    rmv &lt;- sum(colSums(data==0))
+    message(paste( &quot;Warning: &quot;, rmv,
+                   &quot; columns are removed because the column sums are 0&quot;, sep=&quot;&quot;))}
+
+  # cleaned up data
+  data &lt;- data[rowSums(data)!=0,colSums(data)!=0]
+  N &lt;- nrow(data)           ## Sample size
+  d &lt;- ncol(data)           ## Number of parameters
+  m &lt;- rowSums(data)  ## batch sizes
+
+  # set default obs weights to be all 1s
+  if(is.null(weights)) { weights &lt;- rep(1,N) }
+  weightsum = sum(weights)
+
+  # set starting points
+  if (is.null(alpha0)) {
+    # method of moment estimate
+    rho &lt;- sum((colSums(weights*(data/m)^2))/(colSums(weights*data/m)))
+    alpha0 &lt;- as.vector((colSums(weights*data/m))*(d-rho)/(rho-1)/N)
+  } else if (!is.vector(alpha0) &amp;&amp; length(alpha0)!=d) {
+    stop(&quot;Error: dimension of alpha0 does not match data&quot;)
+  } else if (any(alpha0&lt;=0)) {
+    # user provided starting values
+    stop(&quot;Error: starting values should be positive&quot;)
+  }
+
+  # prepare some variables before looping
+  alpha_hat &lt;- alpha0
+  alpha_sum &lt;- sum(alpha_hat)
+  logl_iter &lt;- sum(weights*ddirmult(data, alpha0, log=TRUE))
+
+  # Print initial log-like if asked. 
+  if(display)
+    print(paste(&quot;iteration &quot;, 1, &quot;, logL = &quot;, logl_iter, sep=&quot;&quot;))
+
+  # backtrack max iterations
+  backtrack_maxiters &lt;- 10
+
+  ##----------------------------------------##
+  ## The Newton loop
+  if (maxiters==1) {iter &lt;- 1}
+  else { for (iter in 2:maxiters) {
+
+    # score vector
+    alpha_mat &lt;- matrix(alpha_hat,nrow=N,ncol=d,byrow=TRUE)
+    score &lt;- colSums(weights*digamma(data+alpha_mat)) - 
+      weightsum*(digamma(alpha_hat)-digamma(alpha_sum)) -
+      sum(weights*digamma(alpha_sum+m))
+    # observed inform. matrix = diag(obsinfo_d) - obsinfo_c
+    obsinfo_d &lt;- weightsum*trigamma(alpha_hat) - 
+      colSums(weights*trigamma(data+alpha_mat))
+    obsinfo_dinv &lt;- 1/obsinfo_d
+    obsinfo_c &lt;- weightsum*trigamma(alpha_sum) - 
+      sum(weights*trigamma(m+alpha_sum))
+    # shrink c if necessary to make obs. info. pos def
+    if (obsinfo_c*sum(obsinfo_dinv)&gt;=1) {
+      if (display) print(&quot;shrink c&quot;)
+      obsinfo_c &lt;- 0.9/sum(obsinfo_dinv)
+    }
+
+    # compute Newton direction
+    newtondir &lt;- obsinfo_dinv*score
+    newtondir &lt;- newtondir + 
+      (sum(newtondir)/(1/obsinfo_c-sum(obsinfo_dinv)))*obsinfo_dinv
+
+    # line search by backtracking
+    stepsize &lt;- 1
+    for (btiter in 1:backtrack_maxiters) {
+      alpha_new &lt;- alpha_hat + stepsize*newtondir
+      if (any(alpha_new&lt;=0)) {
+        # make sure Newton iterate land within boundary
+        if (display) print(&quot;out of boundary: retract&quot;)
+        stepsize &lt;- min(-alpha_hat[newtondir&lt;0]/newtondir[newtondir&lt;0])*0.95
+      } else {
+        logl_new &lt;- sum(weights*ddirmult(data,alpha_new,log=TRUE))
+        # line search successful if improving log-L
+        if (logl_new&gt;logl_iter) break
+        else {
+          if (display) print(&quot;step halving&quot;)
+          stepsize &lt;- stepsize/2
+        }
+      }
+    }
+    alpha_hat &lt;- alpha_new
+    alpha_sum &lt;- sum(alpha_hat)
+    logl_old &lt;- logl_iter
+    logl_iter &lt;- logl_new
+
+    # Print the iterate log-like if asked. 
+    if(display)
+      print(paste(&quot;iteration &quot;, iter, &quot;, logL = &quot;, logl_iter, sep=&quot;&quot;))
+
+    # check convergence criterion
+    if (abs(logl_iter-logl_old)&lt;tolfun*(abs(logl_old)+1)) break
+  } }
+  ##----------------------------------------##
+  ## End of Newton loop
+
+  # score, i.e., gradient
+  alpha_mat &lt;- matrix(alpha_hat,nrow=N,ncol=d,byrow=TRUE)
+  score &lt;- 
+    colSums(weights*digamma(data+alpha_mat)) - 
+    weightsum*(digamma(alpha_hat)-digamma(alpha_sum)) -
+    sum(weights*digamma(alpha_sum+m))
+  # diagonal part of the observed information matrix
+  obsinfo_d &lt;- weightsum*trigamma(alpha_hat) - 
+    colSums(weights*trigamma(data+alpha_mat))
+  obsinfo_dinv &lt;- 1/obsinfo_d
+  # the constant c in the observed information matrix
+  obsinfo_c &lt;- weightsum*trigamma(alpha_sum) - 
+    sum(weights*trigamma(m+alpha_sum))
+  # compute standard errors
+  obsinfo &lt;- diag(obsinfo_d) - obsinfo_c
+  obsinfo_inv &lt;- diag(obsinfo_dinv) + 
+    outer(obsinfo_dinv,obsinfo_dinv)/(1/obsinfo_c-sum(obsinfo_dinv))
+  se &lt;- sqrt(diag(obsinfo_inv))
+
+  # output
+  list(estimate=alpha_hat, se=se, maximum=logl_iter, iterations=iter, 
+       gradient=score, obsinfo=obsinfo, obsinfo_inv=obsinfo_inv)
+}
+</code></pre>
+
+<pre><code class="r">
+# MLE by Newton, using default starting value (method of moment)
+houston.fit1 &lt;- dirmultfit(data=t(houston[,2:5]),display=TRUE)
+</code></pre>
+
+<pre><code>[1] &quot;iteration 1, logL = -87.9422160788042&quot;
+[1] &quot;iteration 2, logL = -87.2924785477785&quot;
+[1] &quot;iteration 3, logL = -87.1085561184452&quot;
+[1] &quot;iteration 4, logL = -87.0878976803428&quot;
+[1] &quot;iteration 5, logL = -87.0873991540457&quot;
+[1] &quot;iteration 6, logL = -87.0873987042445&quot;
+</code></pre>
+
+<pre><code class="r">houston.fit1$estimate
+</code></pre>
+
+<pre><code>[1] 0.10737 4.63647 7.33177 2.96849 5.31541 5.26242 0.27332 0.09788
+</code></pre>
+
+<pre><code class="r">houston.fit1$se
+</code></pre>
+
+<pre><code>[1] 0.10802 1.90710 2.91679 1.27151 2.13414 2.17006 0.19375 0.09876
+</code></pre>
+
+<pre><code class="r">houston.fit1$maximum
+</code></pre>
+
+<pre><code>[1] -87.09
+</code></pre>
+
+<pre><code class="r">houston.fit1$gradient
+</code></pre>
+
+<pre><code>[1]  8.446e-06  9.883e-11  3.806e-11  1.575e-10 -5.924e-11  2.547e-10
+[7] -1.096e-10  5.088e-08
+</code></pre>
+
+<pre><code class="r">
+# MLE by Newton, using starting value (100,100,...,100)
+houston.fit2 &lt;- dirmultfit(data=t(houston[,2:5]),alpha0=rep(100,8),display=TRUE)
+</code></pre>
+
+<pre><code>[1] &quot;iteration 1, logL = -587.919485721388&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;out of boundary: retract&quot;
+[1] &quot;iteration 2, logL = -370.271262564142&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;out of boundary: retract&quot;
+[1] &quot;iteration 3, logL = -239.647541087787&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;out of boundary: retract&quot;
+[1] &quot;iteration 4, logL = -151.009094813653&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;out of boundary: retract&quot;
+[1] &quot;iteration 5, logL = -129.680239519045&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;step halving&quot;
+[1] &quot;iteration 6, logL = -114.452045598742&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;iteration 7, logL = -103.641423438987&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;iteration 8, logL = -94.0907846935604&quot;
+[1] &quot;shrink c&quot;
+[1] &quot;iteration 9, logL = -88.6369488442517&quot;
+[1] &quot;out of boundary: retract&quot;
+[1] &quot;step halving&quot;
+[1] &quot;iteration 10, logL = -87.0903959924068&quot;
+[1] &quot;iteration 11, logL = -87.0874008008328&quot;
+[1] &quot;iteration 12, logL = -87.087398704246&quot;
+</code></pre>
+
+<pre><code class="r">houston.fit2$estimate
+</code></pre>
+
+<pre><code>[1] 0.10737 4.63647 7.33176 2.96849 5.31540 5.26241 0.27332 0.09788
+</code></pre>
+
+<pre><code class="r">houston.fit2$se
+</code></pre>
+
+<pre><code>[1] 0.10802 1.90710 2.91679 1.27151 2.13414 2.17006 0.19375 0.09876
+</code></pre>
+
+<pre><code class="r">houston.fit2$maximum
+</code></pre>
+
+<pre><code>[1] -87.09
+</code></pre>
+
+<pre><code class="r">houston.fit2$gradient
+</code></pre>
+
+<pre><code>[1]  1.261e-06  3.103e-07 -1.368e-07  3.387e-07 -1.529e-07  7.237e-07
+[7] -3.299e-07 -4.142e-07
+</code></pre>
+
+<pre><code class="r">
+# MLE by Newton, using starting value (0.01,0.01,...,0.01)
+houston.fit3 &lt;- dirmultfit(data=t(houston[,2:5]),alpha0=rep(0.01,8),display=TRUE)
+</code></pre>
+
+<pre><code>[1] &quot;iteration 1, logL = -160.610944625916&quot;
+[1] &quot;iteration 2, logL = -148.111061448417&quot;
+[1] &quot;iteration 3, logL = -136.478874382407&quot;
+[1] &quot;iteration 4, logL = -125.949976045349&quot;
+[1] &quot;iteration 5, logL = -116.675154757294&quot;
+[1] &quot;iteration 6, logL = -108.709685507455&quot;
+[1] &quot;iteration 7, logL = -102.008944126936&quot;
+[1] &quot;iteration 8, logL = -96.4825799684785&quot;
+[1] &quot;iteration 9, logL = -92.1339670632519&quot;
+[1] &quot;iteration 10, logL = -89.1417786915537&quot;
+[1] &quot;iteration 11, logL = -87.6004460256127&quot;
+[1] &quot;iteration 12, logL = -87.1386426735463&quot;
+[1] &quot;iteration 13, logL = -87.0881834645691&quot;
+[1] &quot;iteration 14, logL = -87.0873989325954&quot;
+[1] &quot;iteration 15, logL = -87.0873987042442&quot;
+</code></pre>
+
+<pre><code class="r">houston.fit3$estimate
+</code></pre>
+
+<pre><code>[1] 0.10737 4.63647 7.33177 2.96849 5.31541 5.26242 0.27332 0.09788
+</code></pre>
+
+<pre><code class="r">houston.fit3$se
+</code></pre>
+
+<pre><code>[1] 0.10802 1.90710 2.91679 1.27151 2.13414 2.17006 0.19375 0.09876
+</code></pre>
+
+<pre><code class="r">houston.fit3$maximum
+</code></pre>
+
+<pre><code>[1] -87.09
+</code></pre>
+
+<pre><code class="r">houston.fit3$gradient
+</code></pre>
+
+<pre><code>[1] -6.840e-08  2.044e-08  2.632e-08  1.494e-08  1.067e-08  3.352e-08
+[7] -5.118e-08 -7.444e-08
+</code></pre>
+
+<pre><code class="r">
+# LRT: multinomial vs Dirichlet-multinomial
+# A p-value of 4.9e-35 indicates Dirichlet-mulitnomial is significant
+#
+# multinomial MLE and log-likelihood
+prop &lt;- rowSums(houston[,2:5])
+prop &lt;- prop/sum(prop)
+prop
+</code></pre>
+
+<pre><code>[1] 0.0015625 0.1796875 0.2843750 0.1195313 0.1796875 0.2273438 0.0070313
+[8] 0.0007813
+</code></pre>
+
+<pre><code class="r">logL.MN &lt;- sum(lgamma(colSums(houston[,2:5])+1)) -
+  sum(lgamma(houston[,2:5]+1)) + sum(houston[,2:5]*log(prop))
+logL.MN
+</code></pre>
+
+<pre><code>[1] -163.3
+</code></pre>
+
+<pre><code class="r"># Dirichlet-multinomial log-likelihood
+logL.DM &lt;- houston.fit1$maximum
+logL.DM
+</code></pre>
+
+<pre><code>[1] -87.09
+</code></pre>
+
+<pre><code class="r"># LRT statistics and p-value
+LRT.stat &lt;- 2*(logL.DM-logL.MN)
+LRT.stat
+</code></pre>
+
+<pre><code>[1] 152.5
+</code></pre>
+
+<pre><code class="r">p_value &lt;- pchisq(q=LRT.stat, df=1, ncp=0, lower.tail=FALSE,log.p=FALSE)
+p_value
+</code></pre>
+
+<pre><code>[1] 4.919e-35
+</code></pre>
+
+<pre><code class="r">
+# source the function &quot;ddirmultfit.MM&quot;
+source(file=&quot;dirmult.r&quot;,keep.source=TRUE)
+print(dirmultfit.MM)
+</code></pre>
+
+<pre><code>function(data, weights=NULL, alpha0=NULL, 
+                          tolfun=1e-6, maxiters=1000, display=FALSE){
+
+  # check observation weights
+  if(!is.null(weights)) {
+    weights &lt;- weight[rowSums(data)!=0]
+    if (any(weights&lt;0))
+      stop(&quot;Error: observation weigths should be positive&quot;)
+  }
+
+  # remove data points with batch size 0
+  if( any(rowSums(data)==0) ){ 
+    rmv &lt;- sum(rowSums(data==0))
+    message(paste( &quot;Warning: &quot;, rmv,
+                   &quot; rows are removed because the row sums are 0&quot;, sep=&quot;&quot;))}
+
+  # remove the bins with no observations
+  if( any(colSums(data)==0) ){ 
+    rmv &lt;- sum(colSums(data==0))
+    message(paste( &quot;Warning: &quot;, rmv,
+                   &quot; columns are removed because the column sums are 0&quot;, sep=&quot;&quot;))}
+
+  # cleaned up data
+  data &lt;- data[rowSums(data)!=0,colSums(data)!=0]
+  N &lt;- nrow(data)       ## Sample size
+  d &lt;- ncol(data)           ## Number of parameters
+  m &lt;- rowSums(data)  ## batch sizes
+
+  # set default obs weights to be all 1s
+  if(is.null(weights)){ weights &lt;- rep(1,N) }
+  weightsum = sum(weights)
+
+  # set starting points
+  if (is.null(alpha0)) {
+    # method of moment estimate
+    rho &lt;- sum((colSums(weights*(data/m)^2))/(colSums(weights*data/m)))
+    alpha0 &lt;- as.vector((colSums(weights*data/m))*(d-rho)/(rho-1)/N)
+  } else if (!is.vector(alpha0) &amp;&amp; length(alpha0)!=d) {
+    stop(&quot;Error: dimension of alpha0 does not match data&quot;)
+  } else if (any(alpha0&lt;=0)) {
+    # user provided starting values
+    stop(&quot;Error: starting values should be positive&quot;)
+  }
+
+  # pre-compute some auxillary variables based on data
+  # scts: a matrix of size n-by-max(data)
+  # scts[j,k] is # data points with j-th component &gt; k-1
+  # rcts: a vector of size max(m)
+  # rcts[k] is # data points with batch size &gt; k-1
+  Sj &lt;- function( xj,kvec,weight ) Sj &lt;- colSums(weight*outer(xj,kvec,&quot;&gt;&quot;))
+  scts &lt;- apply(data, 2, Sj, kvec=0:(max(data)-1), weight=weights)
+  rcts &lt;- Sj(m, kvec=0:(max(m)-1), weight=weights)
+
+  # prepare some variables before looping
+  alpha_hat &lt;- alpha0
+  logl_iter &lt;- sum(weights*ddirmult(data, alpha0, log=TRUE))
+
+  # Print initial log-like if asked. 
+  if(display)
+    print(paste(&quot;iteration &quot;, 1, &quot;, logL = &quot;, logl_iter, sep=&quot;&quot;))
+
+  ##----------------------------------------##
+  ## MM loop
+  for (iter in 2:maxiters) {
+
+    # MM update
+    numerator &lt;- colSums( scts/(outer(0:(max(data)-1),alpha_hat,&quot;+&quot;)) )
+    denominator &lt;- sum( rcts/(sum(alpha_hat)+(0:(max(m)-1))) )
+    alpha_hat &lt;- alpha_hat*numerator/denominator
+
+    # log-likelihood at new iterate
+    logl_old &lt;- logl_iter
+    logl_iter &lt;- sum(weights*ddirmult(data, alpha_hat, log=TRUE))
+
+    # Print the iterate log-like if asked. 
+    if(display)
+      print(paste(&quot;iteration &quot;, iter, &quot;, logL = &quot;, logl_iter, sep=&quot;&quot;))
+
+    # check convergence criterion
+    if (abs(logl_iter-logl_old)&lt;tolfun*(abs(logl_old)+1)) break
+  }
+  ##----------------------------------------##
+  ## End of MM loop
+
+  # score, i.e., gradient
+  alpha_sum &lt;- sum(alpha_hat)
+  alpha_mat &lt;- matrix(alpha_hat,nrow=N,ncol=d,byrow=TRUE)
+  score &lt;- 
+    colSums(weights*digamma(data+alpha_mat)) - 
+    weightsum*(digamma(alpha_hat)-digamma(alpha_sum)) -
+    sum(weights*digamma(alpha_sum+m))
+  # diagonal part of the observed information matrix
+  obsinfo_d &lt;- weightsum*trigamma(alpha_hat) - 
+    colSums(weights*trigamma(data+alpha_mat))
+  obsinfo_dinv &lt;- 1/obsinfo_d
+  # the constant c in the observed information matrix
+  obsinfo_c &lt;- weightsum*trigamma(alpha_sum) - 
+    sum(weights*trigamma(m+alpha_sum))
+  # compute standard errors
+  obsinfo &lt;- diag(obsinfo_d) - obsinfo_c
+  obsinfo_inv &lt;- diag(obsinfo_dinv) + 
+    outer(obsinfo_dinv,obsinfo_dinv)/(1/obsinfo_c-sum(obsinfo_dinv))
+  se &lt;- sqrt(diag(obsinfo_inv))
+
+  # output
+  list(estimate=alpha_hat, se=se, maximum=logl_iter, iterations=iter, 
+       gradient=score, obsinfo=obsinfo, obsinfo_inv=obsinfo_inv)
+}
+</code></pre>
+
+<pre><code class="r">
+# MLE by MM, using default starting value (method of moment)
+houston.fit1 &lt;- dirmultfit.MM(data=t(houston[,2:5]),display=TRUE)
+</code></pre>
+
+<pre><code>[1] &quot;iteration 1, logL = -87.9422160788042&quot;
+[1] &quot;iteration 2, logL = -87.1646145226032&quot;
+[1] &quot;iteration 3, logL = -87.1346680768754&quot;
+[1] &quot;iteration 4, logL = -87.1245578472904&quot;
+[1] &quot;iteration 5, logL = -87.1198712613292&quot;
+[1] &quot;iteration 6, logL = -87.1170993675505&quot;
+[1] &quot;iteration 7, logL = -87.1150646376267&quot;
+[1] &quot;iteration 8, logL = -87.113351102299&quot;
+[1] &quot;iteration 9, logL = -87.1118083471122&quot;
+[1] &quot;iteration 10, logL = -87.110379852421&quot;
+[1] &quot;iteration 11, logL = -87.1090425237517&quot;
+[1] &quot;iteration 12, logL = -87.1077852901921&quot;
+[1] &quot;iteration 13, logL = -87.1066015097796&quot;
+[1] &quot;iteration 14, logL = -87.1054862655049&quot;
+[1] &quot;iteration 15, logL = -87.1044353964189&quot;
+[1] &quot;iteration 16, logL = -87.1034451453327&quot;
+[1] &quot;iteration 17, logL = -87.1025120260772&quot;
+[1] &quot;iteration 18, logL = -87.1016327693144&quot;
+[1] &quot;iteration 19, logL = -87.1008042966623&quot;
+[1] &quot;iteration 20, logL = -87.100023705251&quot;
+[1] &quot;iteration 21, logL = -87.0992882563525&quot;
+[1] &quot;iteration 22, logL = -87.0985953657254&quot;
+[1] &quot;iteration 23, logL = -87.0979425949208&quot;
+[1] &quot;iteration 24, logL = -87.0973276431682&quot;
+[1] &quot;iteration 25, logL = -87.0967483397518&quot;
+[1] &quot;iteration 26, logL = -87.0962026368138&quot;
+[1] &quot;iteration 27, logL = -87.0956886025459&quot;
+[1] &quot;iteration 28, logL = -87.0952044147451&quot;
+[1] &quot;iteration 29, logL = -87.0947483547213&quot;
+[1] &quot;iteration 30, logL = -87.094318801531&quot;
+[1] &quot;iteration 31, logL = -87.093914226522&quot;
+[1] &quot;iteration 32, logL = -87.0935331881732&quot;
+[1] &quot;iteration 33, logL = -87.0931743272168&quot;
+[1] &quot;iteration 34, logL = -87.0928363620291&quot;
+[1] &quot;iteration 35, logL = -87.0925180842589&quot;
+[1] &quot;iteration 36, logL = -87.0922183547204&quot;
+[1] &quot;iteration 37, logL = -87.0919360994809&quot;
+[1] &quot;iteration 38, logL = -87.0916703061838&quot;
+[1] &quot;iteration 39, logL = -87.0914200205796&quot;
+[1] &quot;iteration 40, logL = -87.0911843432268&quot;
+[1] &quot;iteration 41, logL = -87.090962426385&quot;
+[1] &quot;iteration 42, logL = -87.0907534710959&quot;
+[1] &quot;iteration 43, logL = -87.0905567244&quot;
+[1] &quot;iteration 44, logL = -87.0903714767301&quot;
+[1] &quot;iteration 45, logL = -87.0901970594331&quot;
+[1] &quot;iteration 46, logL = -87.0900328424406&quot;
+[1] &quot;iteration 47, logL = -87.0898782320767&quot;
+[1] &quot;iteration 48, logL = -87.0897326689644&quot;
+[1] &quot;iteration 49, logL = -87.0895956260787&quot;
+[1] &quot;iteration 50, logL = -87.0894666068858&quot;
+[1] &quot;iteration 51, logL = -87.0893451436003&quot;
+[1] &quot;iteration 52, logL = -87.0892307955397&quot;
+[1] &quot;iteration 53, logL = -87.0891231475616&quot;
+[1] &quot;iteration 54, logL = -87.0890218086039&quot;
+[1] &quot;iteration 55, logL = -87.0889264102987&quot;
+[1] &quot;iteration 56, logL = -87.0888366056648&quot;
+[1] &quot;iteration 57, logL = -87.0887520678776&quot;
+</code></pre>
+
+<pre><code class="r">houston.fit1$estimate
+</code></pre>
+
+<pre><code>[1] 0.10819 4.72248 7.47252 3.02055 5.41353 5.36277 0.27586 0.09856
+</code></pre>
+
+<pre><code class="r">houston.fit1$se
+</code></pre>
+
+<pre><code>[1] 0.10885 1.94512 2.97803 1.29508 2.17627 2.21515 0.19559 0.09947
+</code></pre>
+
+<pre><code class="r">houston.fit1$maximum
+</code></pre>
+
+<pre><code>[1] -87.09
+</code></pre>
+
+<pre><code class="r">houston.fit1$gradient
+</code></pre>
+
+<pre><code>[1] -0.002292 -0.005557 -0.005746 -0.005259 -0.005528 -0.005711 -0.002797
+[8] -0.002102
+</code></pre>
+
+<pre><code class="r">
+# MLE by MM, using starting value (100,100,...,100)
+houston.fit2 &lt;- dirmultfit.MM(data=t(houston[,2:5]),alpha0=rep(100,8),display=TRUE)
+</code></pre>
+
+<pre><code>[1] &quot;iteration 1, logL = -587.919485721388&quot;
+[1] &quot;iteration 2, logL = -136.922531023994&quot;
+[1] &quot;iteration 3, logL = -134.437706819518&quot;
+[1] &quot;iteration 4, logL = -133.998254020074&quot;
+[1] &quot;iteration 5, logL = -133.623732461348&quot;
+[1] &quot;iteration 6, logL = -133.246042316165&quot;
+[1] &quot;iteration 7, logL = -132.862470709373&quot;
+[1] &quot;iteration 8, logL = -132.472861170229&quot;
+[1] &quot;iteration 9, logL = -132.077170975427&quot;
+[1] &quot;iteration 10, logL = -131.675367558854&quot;
+[1] &quot;iteration 11, logL = -131.267424124663&quot;
+[1] &quot;iteration 12, logL = -130.85331982612&quot;
+[1] &quot;iteration 13, logL = -130.43304018055&quot;
+[1] &quot;iteration 14, logL = -130.006577507005&quot;
+[1] &quot;iteration 15, logL = -129.573931374121&quot;
+[1] &quot;iteration 16, logL = -129.135109056389&quot;
+[1] &quot;iteration 17, logL = -128.690125996841&quot;
+[1] &quot;iteration 18, logL = -128.2390062743&quot;
+[1] &quot;iteration 19, logL = -127.781783073052&quot;
+[1] &quot;iteration 20, logL = -127.31849915246&quot;
+[1] &quot;iteration 21, logL = -126.849207313895&quot;
+[1] &quot;iteration 22, logL = -126.373970862047&quot;
+[1] &quot;iteration 23, logL = -125.892864057458&quot;
+[1] &quot;iteration 24, logL = -125.40597255681&quot;
+[1] &quot;iteration 25, logL = -124.913393837433&quot;
+[1] &quot;iteration 26, logL = -124.415237602038&quot;
+[1] &quot;iteration 27, logL = -123.911626159625&quot;
+[1] &quot;iteration 28, logL = -123.402694778354&quot;
+[1] &quot;iteration 29, logL = -122.88859200589&quot;
+[1] &quot;iteration 30, logL = -122.369479952644&quot;
+[1] &quot;iteration 31, logL = -121.845534533456&quot;
+[1] &quot;iteration 32, logL = -121.316945662759&quot;
+[1] &quot;iteration 33, logL = -120.783917398815&quot;
+[1] &quot;iteration 34, logL = -120.246668032283&quot;
+[1] &quot;iteration 35, logL = -119.705430114644&quot;
+[1] &quot;iteration 36, logL = -119.1604504223&quot;
+[1] &quot;iteration 37, logL = -118.61198985211&quot;
+[1] &quot;iteration 38, logL = -118.060323244835&quot;
+[1] &quot;iteration 39, logL = -117.505739133113&quot;
+[1] &quot;iteration 40, logL = -116.948539411104&quot;
+[1] &quot;iteration 41, logL = -116.389038923471&quot;
+[1] &quot;iteration 42, logL = -115.827564972127&quot;
+[1] &quot;iteration 43, logL = -115.264456739634&quot;
+[1] &quot;iteration 44, logL = -114.700064629006&quot;
+[1] &quot;iteration 45, logL = -114.1347495205&quot;
+[1] &quot;iteration 46, logL = -113.568881946675&quot;
+[1] &quot;iteration 47, logL = -113.002841188044&quot;
+[1] &quot;iteration 48, logL = -112.437014292367&quot;
+[1] &quot;iteration 49, logL = -111.871795021706&quot;
+[1] &quot;iteration 50, logL = -111.307582732118&quot;
+[1] &quot;iteration 51, logL = -110.744781191872&quot;
+[1] &quot;iteration 52, logL = -110.183797344794&quot;
+[1] &quot;iteration 53, logL = -109.625040026264&quot;
+[1] &quot;iteration 54, logL = -109.068918640034&quot;
+[1] &quot;iteration 55, logL = -108.515841804727&quot;
+[1] &quot;iteration 56, logL = -107.966215979405&quot;
+[1] &quot;iteration 57, logL = -107.42044407806&quot;
+[1] &quot;iteration 58, logL = -106.878924083239&quot;
+[1] &quot;iteration 59, logL = -106.342047669113&quot;
+[1] &quot;iteration 60, logL = -105.81019884451&quot;
+[1] &quot;iteration 61, logL = -105.283752626248&quot;
+[1] &quot;iteration 62, logL = -104.763073752982&quot;
+[1] &quot;iteration 63, logL = -104.248515449351&quot;
+[1] &quot;iteration 64, logL = -103.740418249862&quot;
+[1] &quot;iteration 65, logL = -103.239108891166&quot;
+[1] &quot;iteration 66, logL = -102.744899280905&quot;
+[1] &quot;iteration 67, logL = -102.258085550294&quot;
+[1] &quot;iteration 68, logL = -101.77894719675&quot;
+[1] &quot;iteration 69, logL = -101.307746322046&quot;
+[1] &quot;iteration 70, logL = -100.844726970193&quot;
+[1] &quot;iteration 71, logL = -100.390114568417&quot;
+[1] &quot;iteration 72, logL = -99.9441154733563&quot;
+[1] &quot;iteration 73, logL = -99.5069166235942&quot;
+[1] &quot;iteration 74, logL = -99.0786852985648&quot;
+[1] &quot;iteration 75, logL = -98.6595689827693&quot;
+[1] &quot;iteration 76, logL = -98.2496953333684&quot;
+[1] &quot;iteration 77, logL = -97.8491722481285&quot;
+[1] &quot;iteration 78, logL = -97.4580880300061&quot;
+[1] &quot;iteration 79, logL = -97.0765116437581&quot;
+[1] &quot;iteration 80, logL = -96.7044930593727&quot;
+[1] &quot;iteration 81, logL = -96.3420636764538&quot;
+[1] &quot;iteration 82, logL = -95.9892368232865&quot;
+[1] &quot;iteration 83, logL = -95.6460083238749&quot;
+[1] &quot;iteration 84, logL = -95.3123571259932&quot;
+[1] &quot;iteration 85, logL = -94.9882459830812&quot;
+[1] &quot;iteration 86, logL = -94.6736221827864&quot;
+[1] &quot;iteration 87, logL = -94.3684183148778&quot;
+[1] &quot;iteration 88, logL = -94.0725530714285&quot;
+[1] &quot;iteration 89, logL = -93.7859320722541&quot;
+[1] &quot;iteration 90, logL = -93.5084487088773&quot;
+[1] &quot;iteration 91, logL = -93.2399850005303&quot;
+[1] &quot;iteration 92, logL = -92.9804124560983&quot;
+[1] &quot;iteration 93, logL = -92.7295929362266&quot;
+[1] &quot;iteration 94, logL = -92.4873795102717&quot;
+[1] &quot;iteration 95, logL = -92.2536173031635&quot;
+[1] &quot;iteration 96, logL = -92.0281443277705&quot;
+[1] &quot;iteration 97, logL = -91.8107922987107&quot;
+[1] &quot;iteration 98, logL = -91.6013874240984&quot;
+[1] &quot;iteration 99, logL = -91.3997511721516&quot;
+[1] &quot;iteration 100, logL = -91.2057010099741&quot;
+[1] &quot;iteration 101, logL = -91.0190511123398&quot;
+[1] &quot;iteration 102, logL = -90.8396130386499&quot;
+[1] &quot;iteration 103, logL = -90.6671963766652&quot;
+[1] &quot;iteration 104, logL = -90.5016093519507&quot;
+[1] &quot;iteration 105, logL = -90.3426594023365&quot;
+[1] &quot;iteration 106, logL = -90.1901537169865&quot;
+[1] &quot;iteration 107, logL = -90.0438997399901&quot;
+[1] &quot;iteration 108, logL = -89.903705638591&quot;
+[1] &quot;iteration 109, logL = -89.7693807364519&quot;
+[1] &quot;iteration 110, logL = -89.640735912539&quot;
+[1] &quot;iteration 111, logL = -89.5175839663784&quot;
+[1] &quot;iteration 112, logL = -89.3997399505837&quot;
+[1] &quot;iteration 113, logL = -89.2870214717208&quot;
+[1] &quot;iteration 114, logL = -89.1792489606294&quot;
+[1] &quot;iteration 115, logL = -89.0762459134538&quot;
+[1] &quot;iteration 116, logL = -88.9778391046682&quot;
+[1] &quot;iteration 117, logL = -88.8838587734348&quot;
+[1] &quot;iteration 118, logL = -88.7941387847089&quot;
+[1] &quot;iteration 119, logL = -88.708516766452&quot;
+[1] &quot;iteration 120, logL = -88.6268342243873&quot;
+[1] &quot;iteration 121, logL = -88.5489366356712&quot;
+[1] &quot;iteration 122, logL = -88.4746735229024&quot;
+[1] &quot;iteration 123, logL = -88.4038985097982&quot;
+[1] &quot;iteration 124, logL = -88.3364693598952&quot;
+[1] &quot;iteration 125, logL = -88.2722479995498&quot;
+[1] &quot;iteration 126, logL = -88.2111005265265&quot;
+[1] &quot;iteration 127, logL = -88.1528972053387&quot;
+[1] &quot;iteration 128, logL = -88.0975124505517&quot;
+[1] &quot;iteration 129, logL = -88.0448247991186&quot;
+[1] &quot;iteration 130, logL = -87.9947168728377&quot;
+[1] &quot;iteration 131, logL = -87.9470753319206&quot;
+[1] &quot;iteration 132, logL = -87.9017908206264&quot;
+[1] &quot;iteration 133, logL = -87.8587579058614&quot;
+[1] &quot;iteration 134, logL = -87.8178750095731&quot;
+[1] &quot;iteration 135, logL = -87.7790443357725&quot;
+[1] &quot;iteration 136, logL = -87.742171792865&quot;
+[1] &quot;iteration 137, logL = -87.7071669120214&quot;
+[1] &quot;iteration 138, logL = -87.673942762221&quot;
+[1] &quot;iteration 139, logL = -87.6424158625451&quot;
+[1] &quot;iteration 140, logL = -87.6125060922974&quot;
+[1] &quot;iteration 141, logL = -87.5841365994091&quot;
+[1] &quot;iteration 142, logL = -87.557233707657&quot;
+[1] &quot;iteration 143, logL = -87.5317268230442&quot;
+[1] &quot;iteration 144, logL = -87.5075483397928&quot;
+[1] &quot;iteration 145, logL = -87.4846335462588&quot;
+[1] &quot;iteration 146, logL = -87.4629205310979&quot;
+[1] &quot;iteration 147, logL = -87.4423500899715&quot;
+[1] &quot;iteration 148, logL = -87.4228656330438&quot;
+[1] &quot;iteration 149, logL = -87.4044130934902&quot;
+[1] &quot;iteration 150, logL = -87.3869408372375&quot;
+[1] &quot;iteration 151, logL = -87.3703995740879&quot;
+[1] &quot;iteration 152, logL = -87.3547422703998&quot;
+[1] &quot;iteration 153, logL = -87.339924063459&quot;
+[1] &quot;iteration 154, logL = -87.3259021776391&quot;
+[1] &quot;iteration 155, logL = -87.3126358424636&quot;
+[1] &quot;iteration 156, logL = -87.3000862126411&quot;
+[1] &quot;iteration 157, logL = -87.2882162901492&quot;
+[1] &quot;iteration 158, logL = -87.2769908483961&quot;
+[1] &quot;iteration 159, logL = -87.266376358531&quot;
+[1] &quot;iteration 160, logL = -87.2563409178953&quot;
+[1] &quot;iteration 161, logL = -87.2468541806628&quot;
+[1] &quot;iteration 162, logL = -87.2378872906545&quot;
+[1] &quot;iteration 163, logL = -87.2294128163359&quot;
+[1] &quot;iteration 164, logL = -87.2214046879936&quot;
+[1] &quot;iteration 165, logL = -87.2138381370581&quot;
+[1] &quot;iteration 166, logL = -87.2066896375736&quot;
+[1] &quot;iteration 167, logL = -87.1999368497734&quot;
+[1] &quot;iteration 168, logL = -87.1935585657321&quot;
+[1] &quot;iteration 169, logL = -87.1875346570617&quot;
+[1] &quot;iteration 170, logL = -87.1818460246164&quot;
+[1] &quot;iteration 171, logL = -87.1764745501522&quot;
+[1] &quot;iteration 172, logL = -87.1714030499116&quot;
+[1] &quot;iteration 173, logL = -87.1666152300759&quot;
+[1] &quot;iteration 174, logL = -87.1620956440404&quot;
+[1] &quot;iteration 175, logL = -87.157829651472&quot;
+[1] &quot;iteration 176, logL = -87.1538033790805&quot;
+[1] &quot;iteration 177, logL = -87.1500036830656&quot;
+[1] &quot;iteration 178, logL = -87.1464181131901&quot;
+[1] &quot;iteration 179, logL = -87.1430348784186&quot;
+[1] &quot;iteration 180, logL = -87.1398428140728&quot;
+[1] &quot;iteration 181, logL = -87.1368313504555&quot;
+[1] &quot;iteration 182, logL = -87.1339904828889&quot;
+[1] &quot;iteration 183, logL = -87.1313107431133&quot;
+[1] &quot;iteration 184, logL = -87.128783172016&quot;
+[1] &quot;iteration 185, logL = -87.126399293593&quot;
+[1] &quot;iteration 186, logL = -87.1241510901663&quot;
+[1] &quot;iteration 187, logL = -87.1220309787453&quot;
+[1] &quot;iteration 188, logL = -87.120031788506&quot;
+[1] &quot;iteration 189, logL = -87.1181467393847&quot;
+[1] &quot;iteration 190, logL = -87.1163694216528&quot;
+[1] &quot;iteration 191, logL = -87.1146937765252&quot;
+[1] &quot;iteration 192, logL = -87.1131140776924&quot;
+[1] &quot;iteration 193, logL = -87.1116249137777&quot;
+[1] &quot;iteration 194, logL = -87.1102211716393&quot;
+[1] &quot;iteration 195, logL = -87.1088980205377&quot;
+[1] &quot;iteration 196, logL = -87.1076508970542&quot;
+[1] &quot;iteration 197, logL = -87.1064754908101&quot;
+[1] &quot;iteration 198, logL = -87.1053677308743&quot;
+[1] &quot;iteration 199, logL = -87.1043237728838&quot;
+[1] &quot;iteration 200, logL = -87.1033399868153&quot;
+[1] &quot;iteration 201, logL = -87.1024129453821&quot;
+[1] &quot;iteration 202, logL = -87.1015394130295&quot;
+[1] &quot;iteration 203, logL = -87.1007163355121&quot;
+[1] &quot;iteration 204, logL = -87.0999408299953&quot;
+[1] &quot;iteration 205, logL = -87.0992101756827&quot;
+[1] &quot;iteration 206, logL = -87.0985218049457&quot;
+[1] &quot;iteration 207, logL = -87.0978732948963&quot;
+[1] &quot;iteration 208, logL = -87.0972623594225&quot;
+[1] &quot;iteration 209, logL = -87.0966868416484&quot;
+[1] &quot;iteration 210, logL = -87.0961447067807&quot;
+[1] &quot;iteration 211, logL = -87.0956340353484&quot;
+[1] &quot;iteration 212, logL = -87.0951530168021&quot;
+[1] &quot;iteration 213, logL = -87.0946999434556&quot;
+[1] &quot;iteration 214, logL = -87.0942732047569&quot;
+[1] &quot;iteration 215, logL = -87.0938712818589&quot;
+[1] &quot;iteration 216, logL = -87.0934927425067&quot;
+[1] &quot;iteration 217, logL = -87.0931362361742&quot;
+[1] &quot;iteration 218, logL = -87.0928004894844&quot;
+[1] &quot;iteration 219, logL = -87.0924843018801&quot;
+[1] &quot;iteration 220, logL = -87.0921865415164&quot;
+[1] &quot;iteration 221, logL = -87.0919061413997&quot;
+[1] &quot;iteration 222, logL = -87.0916420957195&quot;
+[1] &quot;iteration 223, logL = -87.0913934563937&quot;
+[1] &quot;iteration 224, logL = -87.0911593298043&quot;
+[1] &quot;iteration 225, logL = -87.0909388737092&quot;
+[1] &quot;iteration 226, logL = -87.090731294327&quot;
+[1] &quot;iteration 227, logL = -87.0905358435891&quot;
+[1] &quot;iteration 228, logL = -87.0903518165326&quot;
+[1] &quot;iteration 229, logL = -87.0901785488517&quot;
+[1] &quot;iteration 230, logL = -87.0900154145812&quot;
+[1] &quot;iteration 231, logL = -87.0898618239057&quot;
+[1] &quot;iteration 232, logL = -87.0897172210948&quot;
+[1] &quot;iteration 233, logL = -87.089581082555&quot;
+[1] &quot;iteration 234, logL = -87.0894529149951&quot;
+[1] &quot;iteration 235, logL = -87.0893322536814&quot;
+[1] &quot;iteration 236, logL = -87.0892186608065&quot;
+[1] &quot;iteration 237, logL = -87.0891117239453&quot;
+[1] &quot;iteration 238, logL = -87.0890110545907&quot;
+[1] &quot;iteration 239, logL = -87.0889162867837&quot;
+[1] &quot;iteration 240, logL = -87.0888270758155&quot;
+[1] &quot;iteration 241, logL = -87.0887430970006&quot;
+</code></pre>
+
+<pre><code class="r">houston.fit2$estimate
+</code></pre>
+
+<pre><code>[1] 0.10818 4.72219 7.47205 3.02037 5.41320 5.36243 0.27585 0.09856
+</code></pre>
+
+<pre><code class="r">houston.fit2$se
+</code></pre>
+
+<pre><code>[1] 0.10885 1.94499 2.97783 1.29500 2.17613 2.21500 0.19558 0.09946
+</code></pre>
+
+<pre><code class="r">houston.fit2$maximum
+</code></pre>
+
+<pre><code>[1] -87.09
+</code></pre>
+
+<pre><code class="r">houston.fit2$gradient
+</code></pre>
+
+<pre><code>[1] -0.002284 -0.005539 -0.005727 -0.005242 -0.005510 -0.005692 -0.002788
+[8] -0.002095
+</code></pre>
+
+<pre><code class="r">
+# MLE by MM, using starting value (0.01,0.01,...,0.01)
+houston.fit3 &lt;- dirmultfit.MM(data=t(houston[,2:5]),alpha0=rep(0.01,8),display=TRUE)
+</code></pre>
+
+<pre><code>[1] &quot;iteration 1, logL = -160.610944625916&quot;
+[1] &quot;iteration 2, logL = -131.210316540882&quot;
+[1] &quot;iteration 3, logL = -116.661135264168&quot;
+[1] &quot;iteration 4, logL = -109.448934247084&quot;
+[1] &quot;iteration 5, logL = -105.189732401186&quot;
+[1] &quot;iteration 6, logL = -102.308143446581&quot;
+[1] &quot;iteration 7, logL = -100.187603509062&quot;
+[1] &quot;iteration 8, logL = -98.5399462137204&quot;
+[1] &quot;iteration 9, logL = -97.2113529843648&quot;
+[1] &quot;iteration 10, logL = -96.1113270108963&quot;
+[1] &quot;iteration 11, logL = -95.1825529948144&quot;
+[1] &quot;iteration 12, logL = -94.3865802658562&quot;
+[1] &quot;iteration 13, logL = -93.6964010136264&quot;
+[1] &quot;iteration 14, logL = -93.0923248978664&quot;
+[1] &quot;iteration 15, logL = -92.5595508375833&quot;
+[1] &quot;iteration 16, logL = -92.0866674046272&quot;
+[1] &quot;iteration 17, logL = -91.6646879343551&quot;
+[1] &quot;iteration 18, logL = -91.2864073287939&quot;
+[1] &quot;iteration 19, logL = -90.94595991696&quot;
+[1] &quot;iteration 20, logL = -90.6385072618143&quot;
+[1] &quot;iteration 21, logL = -90.3600124834269&quot;
+[1] &quot;iteration 22, logL = -90.1070737198335&quot;
+[1] &quot;iteration 23, logL = -89.8767989680035&quot;
+[1] &quot;iteration 24, logL = -89.6667104888376&quot;
+[1] &quot;iteration 25, logL = -89.4746707302762&quot;
+[1] &quot;iteration 26, logL = -89.2988241751169&quot;
+[1] &quot;iteration 27, logL = -89.1375511517666&quot;
+[1] &quot;iteration 28, logL = -88.9894307542576&quot;
+[1] &quot;iteration 29, logL = -88.8532107844709&quot;
+[1] &quot;iteration 30, logL = -88.7277831689325&quot;
+[1] &quot;iteration 31, logL = -88.612163687975&quot;
+[1] &quot;iteration 32, logL = -88.5054751343407&quot;
+[1] &quot;iteration 33, logL = -88.4069332232472&quot;
+[1] &quot;iteration 34, logL = -88.3158347281646&quot;
+[1] &quot;iteration 35, logL = -88.2315474308002&quot;
+[1] &quot;iteration 36, logL = -88.1535015604562&quot;
+[1] &quot;iteration 37, logL = -88.0811824642585&quot;
+[1] &quot;iteration 38, logL = -88.0141243009966&quot;
+[1] &quot;iteration 39, logL = -87.9519045911736&quot;
+[1] &quot;iteration 40, logL = -87.8941394872568&quot;
+[1] &quot;iteration 41, logL = -87.840479652778&quot;
+[1] &quot;iteration 42, logL = -87.7906066587078&quot;
+[1] &quot;iteration 43, logL = -87.744229821324&quot;
+[1] &quot;iteration 44, logL = -87.7010834184559&quot;
+[1] &quot;iteration 45, logL = -87.6609242314429&quot;
+[1] &quot;iteration 46, logL = -87.6235293684323&quot;
+[1] &quot;iteration 47, logL = -87.5886943316713&quot;
+[1] &quot;iteration 48, logL = -87.5562312970699&quot;
+[1] &quot;iteration 49, logL = -87.5259675790777&quot;
+[1] &quot;iteration 50, logL = -87.4977442578089&quot;
+[1] &quot;iteration 51, logL = -87.471414948652&quot;
+[1] &quot;iteration 52, logL = -87.4468446973517&quot;
+[1] &quot;iteration 53, logL = -87.4239089858917&quot;
+[1] &quot;iteration 54, logL = -87.4024928364112&quot;
+[1] &quot;iteration 55, logL = -87.3824900021395&quot;
+[1] &quot;iteration 56, logL = -87.3638022356905&quot;
+[1] &quot;iteration 57, logL = -87.3463386263041&quot;
+[1] &quot;iteration 58, logL = -87.3300149986364&quot;
+[1] &quot;iteration 59, logL = -87.3147533666572&quot;
+[1] &quot;iteration 60, logL = -87.3004814369082&quot;
+[1] &quot;iteration 61, logL = -87.2871321560984&quot;
+[1] &quot;iteration 62, logL = -87.2746432985861&quot;
+[1] &quot;iteration 63, logL = -87.2629570897966&quot;
+[1] &quot;iteration 64, logL = -87.2520198620562&quot;
+[1] &quot;iteration 65, logL = -87.2417817397261&quot;
+[1] &quot;iteration 66, logL = -87.232196350859&quot;
+[1] &quot;iteration 67, logL = -87.2232205628782&quot;
+[1] &quot;iteration 68, logL = -87.2148142400646&quot;
+[1] &quot;iteration 69, logL = -87.2069400208431&quot;
+[1] &quot;iteration 70, logL = -87.1995631130941&quot;
+[1] &quot;iteration 71, logL = -87.1926511058656&quot;
+[1] &quot;iteration 72, logL = -87.186173796053&quot;
+[1] &quot;iteration 73, logL = -87.1801030287106&quot;
+[1] &quot;iteration 74, logL = -87.174412549847&quot;
+[1] &quot;iteration 75, logL = -87.1690778706169&quot;
+[1] &quot;iteration 76, logL = -87.1640761419462&quot;
+[1] &quot;iteration 77, logL = -87.1593860387263&quot;
+[1] &quot;iteration 78, logL = -87.1549876527572&quot;
+[1] &quot;iteration 79, logL = -87.1508623937593&quot;
+[1] &quot;iteration 80, logL = -87.146992897743&quot;
+[1] &quot;iteration 81, logL = -87.1433629421904&quot;
+[1] &quot;iteration 82, logL = -87.1399573674814&quot;
+[1] &quot;iteration 83, logL = -87.1367620040497&quot;
+[1] &quot;iteration 84, logL = -87.1337636048539&quot;
+[1] &quot;iteration 85, logL = -87.1309497827218&quot;
+[1] &quot;iteration 86, logL = -87.1283089521924&quot;
+[1] &quot;iteration 87, logL = -87.1258302755192&quot;
+[1] &quot;iteration 88, logL = -87.1235036125039&quot;
+[1] &quot;iteration 89, logL = -87.1213194738766&quot;
+[1] &quot;iteration 90, logL = -87.1192689779624&quot;
+[1] &quot;iteration 91, logL = -87.1173438103549&quot;
+[1] &quot;iteration 92, logL = -87.1155361864327&quot;
+[1] &quot;iteration 93, logL = -87.1138388164302&quot;
+[1] &quot;iteration 94, logL = -87.1122448729574&quot;
+[1] &quot;iteration 95, logL = -87.1107479607206&quot;
+[1] &quot;iteration 96, logL = -87.1093420883232&quot;
+[1] &quot;iteration 97, logL = -87.1080216419891&quot;
+[1] &quot;iteration 98, logL = -87.1067813610565&quot;
+[1] &quot;iteration 99, logL = -87.1056163151404&quot;
+[1] &quot;iteration 100, logL = -87.1045218828134&quot;
+[1] &quot;iteration 101, logL = -87.1034937317341&quot;
+[1] &quot;iteration 102, logL = -87.1025278000855&quot;
+[1] &quot;iteration 103, logL = -87.1016202792508&quot;
+[1] &quot;iteration 104, logL = -87.1007675976521&quot;
+[1] &quot;iteration 105, logL = -87.0999664056411&quot;
+[1] &quot;iteration 106, logL = -87.0992135613795&quot;
+[1] &quot;iteration 107, logL = -87.0985061176692&quot;
+[1] &quot;iteration 108, logL = -87.0978413096263&quot;
+[1] &quot;iteration 109, logL = -87.0972165431625&quot;
+[1] &quot;iteration 110, logL = -87.0966293842165&quot;
+[1] &quot;iteration 111, logL = -87.096077548689&quot;
+[1] &quot;iteration 112, logL = -87.0955588930196&quot;
+[1] &quot;iteration 113, logL = -87.0950714053802&quot;
+[1] &quot;iteration 114, logL = -87.0946131974272&quot;
+[1] &quot;iteration 115, logL = -87.0941824965945&quot;
+[1] &quot;iteration 116, logL = -87.0937776388677&quot;
+[1] &quot;iteration 117, logL = -87.0933970620215&quot;
+[1] &quot;iteration 118, logL = -87.0930392993046&quot;
+[1] &quot;iteration 119, logL = -87.0927029735001&quot;
+[1] &quot;iteration 120, logL = -87.0923867913821&quot;
+[1] &quot;iteration 121, logL = -87.0920895385198&quot;
+[1] &quot;iteration 122, logL = -87.0918100744016&quot;
+[1] &quot;iteration 123, logL = -87.0915473278786&quot;
+[1] &quot;iteration 124, logL = -87.0913002928853&quot;
+[1] &quot;iteration 125, logL = -87.0910680244363&quot;
+[1] &quot;iteration 126, logL = -87.0908496348643&quot;
+[1] &quot;iteration 127, logL = -87.090644290308&quot;
+[1] &quot;iteration 128, logL = -87.0904512074106&quot;
+[1] &quot;iteration 129, logL = -87.0902696502161&quot;
+[1] &quot;iteration 130, logL = -87.0900989272811&quot;
+[1] &quot;iteration 131, logL = -87.0899383889431&quot;
+[1] &quot;iteration 132, logL = -87.0897874247743&quot;
+[1] &quot;iteration 133, logL = -87.0896454611864&quot;
+[1] &quot;iteration 134, logL = -87.0895119591851&quot;
+[1] &quot;iteration 135, logL = -87.0893864122637&quot;
+[1] &quot;iteration 136, logL = -87.0892683444223&quot;
+[1] &quot;iteration 137, logL = -87.0891573083214&quot;
+[1] &quot;iteration 138, logL = -87.0890528835316&quot;
+[1] &quot;iteration 139, logL = -87.0889546749081&quot;
+[1] &quot;iteration 140, logL = -87.0888623110568&quot;
+[1] &quot;iteration 141, logL = -87.0887754428892&quot;
+</code></pre>
+
+<pre><code class="r">houston.fit3$estimate
+</code></pre>
+
+<pre><code>[1] 0.1066 4.5510 7.1919 2.9168 5.2179 5.1628 0.2708 0.0972
+</code></pre>
+
+<pre><code class="r">houston.fit3$se
+</code></pre>
+
+<pre><code>[1] 0.10718 1.86964 2.85647 1.24829 2.09261 2.12568 0.19193 0.09806
+</code></pre>
+
+<pre><code class="r">houston.fit3$maximum
+</code></pre>
+
+<pre><code>[1] -87.09
+</code></pre>
+
+<pre><code class="r">houston.fit3$gradient
+</code></pre>
+
+<pre><code>[1] 0.002357 0.005774 0.005983 0.005449 0.005751 0.005934 0.002872 0.002164
+</code></pre>
+
+<pre><code class="r">
+# Let&#39;s try a &quot;black-box&quot; optimizer in R
+# using the bad starting point (100,100,...,100)
+#
+objfun &lt;- function(alpha,x) { -sum(ddirmult(x,alpha,log=TRUE)) }
+objfun.grad &lt;- function(alpha,x) {
+  alpha_sum &lt;- sum(alpha)
+  alpha_mat &lt;- matrix(alpha,nrow=nrow(x),ncol=ncol(x),byrow=TRUE)
+  grad &lt;- - (colSums(digamma(x+alpha_mat)) - 
+               nrow(x)*(digamma(alpha)-digamma(alpha_sum)) -
+               sum(digamma(alpha_sum+rowSums(x))))
+}
+optim.ans1 &lt;- optim(rep(100,8), fn=objfun, gr=NULL, t(houston[,2:5]),
+                    method=&quot;L-BFGS-B&quot;, lower=1e-16, upper=Inf)
+optim.ans1
+</code></pre>
+
+<pre><code>$par
+[1] 0.10730 4.63368 7.32470 2.96645 5.30961 5.25651 0.27306 0.09795
+
+$value
+[1] 87.09
+
+$counts
+function gradient 
+     138      138 
+
+$convergence
+[1] 1
+
+$message
+[1] &quot;NEW_X&quot;
+</code></pre>
+
+<pre><code class="r">optim.ans2 &lt;- optim(rep(100,8), fn=objfun, gr=objfun.grad, t(houston[,2:5]),
+                    method=&quot;L-BFGS-B&quot;, lower=1e-16, upper=Inf)
+optim.ans2
+</code></pre>
+
+<pre><code>$par
+[1] 0.1074 4.6413 7.3408 2.9691 5.3150 5.2637 0.2734 0.0979
+
+$value
+[1] 87.09
+
+$counts
+function gradient 
+     131      131 
+
+$convergence
+[1] 1
+
+$message
+[1] &quot;NEW_X&quot;
+</code></pre>
+
+<pre><code class="r">
+# use numerical differentiation -- too many iterations
+nlminb.ans1 &lt;- nlminb(rep(100,8), objective=objfun, gradient=NULL,
+                      hessian=NULL, t(houston[,2:5]), lower=1e-8)
+nlminb.ans1
+</code></pre>
+
+<pre><code>$par
+[1] 0.10737 4.63648 7.33180 2.96849 5.31540 5.26242 0.27332 0.09788
+
+$objective
+[1] 87.09
+
+$convergence
+[1] 0
+
+$iterations
+[1] 74
+
+$evaluations
+function gradient 
+     100      727 
+
+$message
+[1] &quot;relative convergence (4)&quot;
+</code></pre>
+
+<pre><code class="r"># use analytical gradient -- much less gradient evaluations
+nlminb.ans2 &lt;- nlminb(rep(100,8), objective=objfun, gradient=objfun.grad, 
+                      hessian=NULL, t(houston[,2:5]), lower=1e-8)
+nlminb.ans2
+</code></pre>
+
+<pre><code>$par
+[1] 0.10737 4.63647 7.33177 2.96849 5.31541 5.26242 0.27332 0.09788
+
+$objective
+[1] 87.09
+
+$convergence
+[1] 0
+
+$iterations
+[1] 84
+
+$evaluations
+function gradient 
+     117       85 
+
+$message
+[1] &quot;relative convergence (4)&quot;
+</code></pre>
+
+</body>
+
+</html>
+
