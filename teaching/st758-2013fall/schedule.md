@@ -21,6 +21,7 @@ Readings:
   * John Monahan's [notes](./monte-carlo/Monahan09SimGuide.pdf)  
   * Swallow & Monahan's [Monte Carlo study](./monte-carlo/SwallowMonahan84VCMonteCarlo.pdf) on variance component estimation  
   * [*Let's practice what we preach: turning tables into graphs*](./monte-carlo/GelmanPasarikaDodhia02Graph.pdf), by Gelman, Pasarica, and Dodhia
+  * Crainiceanu and Ruppert (2004) [paper](./monte-carlo/CrainiceanuRuppert04VC-LRT.pdf) on testing variance component
 
 
 | **Tuesday** | **Thursday** |  
