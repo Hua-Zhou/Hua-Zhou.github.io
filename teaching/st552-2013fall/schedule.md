@@ -7,7 +7,7 @@ title: Stat 552
 
 ST552 tentative schedule and handouts (expect frequent updates)
 
-[Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-LecNotes.pdf) (last updated Dec 2)  
+[Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-LecNotes.pdf) (last updated Dec 4)  
 [Lecture notes (2 pages/sheet)](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-LecNotes-ForPrint.pdf)  
 [pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-Pre-LecNotes.pdf) (last updated Dec 4)
 
@@ -28,7 +28,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 | **11/11** | **11/13** **midterm 2, 11:45am-1pm** |
 | **11/18** variance components (JM8) | **11/20** [\[HW8\]](./ST552-2013-HW8.pdf) |
 | **11/25** | **11/27** **Thanksgiving**, **no class** |
-| **12/02** multivariate linear model (JM9) | **12/04** |  
+| **12/02** | **12/04** Prediction: BLP, BLUP (JM9) |  
 
 **Final exam: 12/13 Friday @ 8am-11am, SAS 5270**
 
