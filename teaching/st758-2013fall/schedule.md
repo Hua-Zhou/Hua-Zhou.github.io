@@ -37,7 +37,7 @@ Readings:
 | **10/15** eigen-decomposition, SVD | **10/17** generalized eigen-problem |
 | **10/22** MLE | **10/24** general optimization theory |
 | **10/29** Newton and scoring method | **10/31** GLM, nonlinear regression |
-| **11/05** EM algorithm | **11/07** MM algorithm \[[HW6](./ST758-2013-HW6.pdf),[AL-standings-20131108.csv](./AL-standings-20131108.csv),[Python](./download-espn-mlb-standings.py)\] |
+| **11/05** EM algorithm | **11/07** MM algorithm \[[HW6](./ST758-2013-HW6.pdf),[AL-standings-20131108.csv](./AL-standings-20131108.csv),[Python](./download-espn-mlb-standings.py),[R code by David Hunter](./DavidHunterRCode.zip)\] |
 | **11/12** Monte Carlo simulation studies \[[HW7](./ST758-2013-HW7.pdf)\] | **11/14**  |
 | **11/19** quasi-Newton | **11/21** Krylov subspace method |
 | **11/26** PCG and others | **11/28** **Thanksgiving, no class** |
