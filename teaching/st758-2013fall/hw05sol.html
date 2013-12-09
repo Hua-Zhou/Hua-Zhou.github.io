@@ -182,7 +182,7 @@ hljs.initHighlightingOnLoad();
 
 <h3>hw05sol.r</h3>
 
-<p>Hua Zhou &mdash; <em>Nov 18, 2013, 9:22 PM</em></p>
+<p>Hua Zhou &mdash; <em>Dec 8, 2013, 7:59 PM</em></p>
 
 <pre><code class="r"># ST758 HW4/5, 2013
 # Solution by Hua Zhou
@@ -288,6 +288,7 @@ print(ddirmult)
     # method of moment estimate
     rho &lt;- sum((colSums(weights*(data/m)^2))/(colSums(weights*data/m)))
     alpha0 &lt;- as.vector((colSums(weights*data/m))*(d-rho)/(rho-1)/N)
+    alpha0[alpha0&lt;=0] = 1e-6
   } else if (!is.vector(alpha0) &amp;&amp; length(alpha0)!=d) {
     stop(&quot;Error: dimension of alpha0 does not match data&quot;)
   } else if (any(alpha0&lt;=0)) {
@@ -624,6 +625,7 @@ print(dirmultfit.MM)
     # method of moment estimate
     rho &lt;- sum((colSums(weights*(data/m)^2))/(colSums(weights*data/m)))
     alpha0 &lt;- as.vector((colSums(weights*data/m))*(d-rho)/(rho-1)/N)
+    alpha0[alpha0&lt;=0] = 1e-6
   } else if (!is.vector(alpha0) &amp;&amp; length(alpha0)!=d) {
     stop(&quot;Error: dimension of alpha0 does not match data&quot;)
   } else if (any(alpha0&lt;=0)) {
