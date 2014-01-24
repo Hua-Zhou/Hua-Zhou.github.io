@@ -32,7 +32,7 @@ Traditional regression takes a vector of covariates. We consider regression that
 E Chi, **H Zhou**, G Chen, D Ortega, and K Lange. (2013) Genotype imputation via matrix completion, [_Genome Research_](http://genome.cshlp.org/content/23/3/509), 23:509-518. \[[pdf](./media/pdf/ChiZhouChenLange13Impute.pdf)\]\[[Mendel Impute](http://www.genetics.ucla.edu/software/)\]  
 We successfully applied matrix completion method to the difficult genotype imputation problem. Similar imputation accuracy is achieved in order of magnitude less time than current methods.
 
-K Lange and **H Zhou**. (2014) MM algorithms for geometric and signomial programming, [_Mathematical Programming Series A_][8], 143:339-356. \[[pdf](./media/pdf/LangeZhou14GP.pdf)\]  
+K Lange and **H Zhou**. (2014) MM algorithms for geometric and signomial programming, [_Mathematical Programming Series A_][8], 143(1-2):339-356. \[[pdf](./media/pdf/LangeZhou14GP.pdf)\]  
 A simple algorithm for minimizing posynomials and signomials.
 
 L Riley, **H Zhou**, K Lange, J Sinsheimer, and M Sehl. (2012) Determining duration of HER2-targeted therapy using stem cell extinction models, [_PLoS ONE_][10], 7(12):e46613. \[[pdf](./media/pdf/Riley12Extinction.pdf)\]  
