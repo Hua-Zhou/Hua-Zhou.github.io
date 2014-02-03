@@ -24,7 +24,7 @@ Readings:
   * Crainiceanu and Ruppert (2004) [paper](./monte-carlo/CrainiceanuRuppert04VC-LRT.pdf) on testing variance component
 
 
-| **Tuesday** | **Thursday** |  
+| Tuesday | Thursday |
 |:-----------|:------------|
 | | **08/22** introduction, course logistics |
 | **08/27** computer storage/arithmetic, \[[weird.r](./weird.r)/[weird.html](./weird.html)\] | **08/29** algorithm, software, computer languages, \[[HW1](./ST758-2013-HW1.pdf),[hoium.dat](./hoium.dat)\] |

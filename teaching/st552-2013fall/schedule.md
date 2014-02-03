@@ -11,7 +11,7 @@ ST552 tentative schedule and handouts (expect frequent updates)
 [Lecture notes (2 pages/sheet)](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-LecNotes-ForPrint.pdf)  
 [pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st552-2013fall/ST552-2013-Fall-Pre-LecNotes.pdf) (last updated Dec 4)
 
-| **Monday** | **Wednesday** |  
+| Monday | Wednesday |
 |:-----------|:------------|
 | | **08/21** introduction, linear algebra |
 | **08/26** linear algebra, [\[HW1\]](./ST552-2013-HW1.pdf)  | **08/28** least squares estimation (JM2) |
