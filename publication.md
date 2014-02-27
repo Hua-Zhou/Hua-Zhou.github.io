@@ -14,7 +14,7 @@ E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications
 
 K Lange, E Chi, and **H Zhou**. (2013) A brief survey of modern optimization for statisticians (with discussion), [_International Statistical Review_](http://onlinelibrary.wiley.com/doi/10.1111/insr.12022/abstract), accepted. \[[pdf](./media/pdf/LangeChiZhou14OptmSurvey.pdf)\]
 
-**H Zhou** and L Li. (2013) Regularized matrix regression, [_Journal of Royal Statistical Society Series B_](http://onlinelibrary.wiley.com/doi/10.1111/rssb.12031/abstract), accepted. \[[pdf](./media/pdf/ZhouLi14RegMatrixReg.pdf)\]\[[software](./softwares/tensorreg)\]  
+**H Zhou** and L Li. (2014) Regularized matrix regression, [_Journal of Royal Statistical Society Series B_](http://onlinelibrary.wiley.com/doi/10.1111/rssb.12031/abstract), 76(2):463-483. \[[pdf](./media/pdf/ZhouLi14RegMatrixReg.pdf)\]\[[software](./softwares/tensorreg)\]  
 Soft-thresholding for regression with matrix covariates.
 
 K Lange, JC Papp, JS Sinsheimer, R Sripracha, **H Zhou**, and E Sobel. (2013) Mendel: the Swiss army knife of genetic analysis programs, [_Bioinformatics_][4], 29(12):1568-1570. \[[pdf](./media/pdf/Lange13Mendel.pdf)\]\[[Mendel][6]\]  
