@@ -12,7 +12,7 @@ Path following for a convex loss plus a generalized lasso penalty.
 
 E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), in press. \[[pdf](./media/pdf/ChiZhouLange13Distance.pdf)\]
 
-K Lange, E Chi, and **H Zhou**. (2013) A brief survey of modern optimization for statisticians (with discussion), [_International Statistical Review_](http://onlinelibrary.wiley.com/doi/10.1111/insr.12022/abstract), accepted. \[[pdf](./media/pdf/LangeChiZhou14OptmSurvey.pdf)\]
+K Lange, E Chi, and **H Zhou**. (2014) A brief survey of modern optimization for statisticians (with discussion), [_International Statistical Review_](http://onlinelibrary.wiley.com/doi/10.1111/insr.12022/abstract), 82(1):46-70. \[[pdf](./media/pdf/LangeChiZhou14OptmSurvey.pdf)\]
 
 **H Zhou** and L Li. (2014) Regularized matrix regression, [_Journal of Royal Statistical Society Series B_](http://onlinelibrary.wiley.com/doi/10.1111/rssb.12031/abstract), 76(2):463-483. \[[pdf](./media/pdf/ZhouLi14RegMatrixReg.pdf)\]\[[software](./softwares/tensorreg)\]  
 Soft-thresholding for regression with matrix covariates.
