@@ -7,7 +7,7 @@ title: Publication
 
 Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments.
 
-**H Zhou** and Y Wu. (2013) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109:686-699. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
+**H Zhou** and Y Wu. (2013) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
 Path following for a convex loss plus a generalized lasso penalty.
 
 E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), in press. \[[pdf](./media/pdf/ChiZhouLange13Distance.pdf)\]
@@ -23,7 +23,7 @@ Summary of the new version of the comprehensive genetic analysis software Mendel
 E Chi, G Allen, **H Zhou**, O Kohannim, K Lange, and P Thompson. (2013) Imaging genetics via sparse canonical correlation analysis, [_Biomedical Imaging (ISBI), 2013 IEEE 10th International Symposium on_](http://ieeexplore.ieee.org/xpl/login.jsp?reload=true&tp=&arnumber=6556581&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6556581), pp740-743. \[[pdf](./media/pdf/Chi13TensorCCA.pdf)]  
 Sparse canonical correlation analysis (CCA) for the tensor data.
 
-**H Zhou**, J Zhou, E Sobel, and K Lange. (2013) Fast genome-wide pedigree QTL analysis using Mendel, _BMC Proceedings_, accepted.  
+**H Zhou**, J Zhou, E Sobel, and K Lange. (2014) Fast genome-wide pedigree QTL analysis using Mendel, [_BMC Proceedings_](http://www.biomedcentral.com/1753-6561/8/S1/S93), 8(Suppl 1):S93. \[[pdf](./media/pdf/ZhouZhouSobelLange14GAW18.pdf)\]  
 Multivariate QTL analysis of the [GAW18][7] data.
 
 **H Zhou**, L Li, and H Zhu. (2013) Tensor regression with applications in neuroimaging data analysis, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/abs/10.1080/01621459.2013.776499#.Ud7Ytz7Xjbw), 108(502):540-552. \[[pdf](./media/pdf/ZhouLiZhu13CPReg.pdf)\]\[[software](./softwares/tensorreg)\]  
