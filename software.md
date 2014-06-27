@@ -20,5 +20,5 @@ I participate in the development of some functionalities of the comprehensive ge
 * [Mendel-Impute](http://www.genetics.ucla.edu/software/)   
 The Mendel-Impute program performs genotype imputation by solving matrix completion problems over a sliding window of SNPs.
 
-* [Bradley-Terry model](./softwares/bradleyterry/)  
-Newton's method for fitting Bradley-Terry model.
+* [svt](http://hua-zhou.github.io/svt/)  
+Singular value thresholding function for Matlab®
