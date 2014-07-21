@@ -10,7 +10,7 @@ Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments.
 **H Zhou** and Y Wu. (2013) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
 Path following for a convex loss plus a generalized lasso penalty.
 
-E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), in press. \[[pdf](./media/pdf/ChiZhouLange13Distance.pdf)\]
+E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), 146(1-2):409-436. \[[pdf](./media/pdf/ChiZhouLange14Distance.pdf)\]
 
 K Lange, E Chi, and **H Zhou**. (2014) A brief survey of modern optimization for statisticians (with discussion), [_International Statistical Review_](http://onlinelibrary.wiley.com/doi/10.1111/insr.12022/abstract), 82(1):46-70. \[[pdf](./media/pdf/LangeChiZhou14OptmSurvey.pdf)\]
 
