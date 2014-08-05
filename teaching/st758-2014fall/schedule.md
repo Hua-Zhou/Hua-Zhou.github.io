@@ -20,7 +20,7 @@ Readings:
 | Tuesday | Thursday |
 |:-----------|:------------|
 | | **08/21** introduction, course logistics |
-| **08/26** R programming | **08/28** R programming |
+| **08/26** R programming (Yiwen Zhang) | **08/28** R programming (Yiwen Zhang) |
 | **09/02** computer storage/arithmetic | **09/04** algorithm, software, computer languages |
 | **09/09** matrix and linear algebra | **09/11** numerical linear algebra intro |
 | **09/16** GE, LU decomposition | **09/18** Cholesky decomposition |
@@ -36,4 +36,4 @@ Readings:
 | **11/25** sorting, FFT | **11/27** **Thanksgiving, no class** |
 | **12/02** MCMC | |
 
-**Final exam: 12/10 Tuesday @ 8am-11am, SAS 1107**
+**Final exam: 12/09 Tuesday @ 8am-11am, SAS 1107**
