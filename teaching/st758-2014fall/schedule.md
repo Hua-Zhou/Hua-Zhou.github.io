@@ -7,15 +7,15 @@ title: Stat 758
 
 ST758 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes.pdf) (last updated ???)  
-[Pre-lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-Pre-LecNotes.pdf) (last updated ???)
+[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated ???)  
+[Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-Pre-LecNotes.pdf) (last updated Aug 18, 2014)
 
 
 Readings:  
 
 * Top 10 algorithms in the 20th century  
 [Metropolis](top10/metropolis.pdf), [Simplex](top10/simplex.pdf), [Krylov](top10/krylov.pdf), [Matrix decomposition](top10/decomp.pdf), [Fortran](top10/fortran.pdf), [QR algorithm](top10/qr.pdf), [Quicksort](top10/qsort.pdf), [FFT](top10/fft.pdf), [Integer relation](top10/integer.pdf), [FMM](top10/fmm.pdf)  
-
+ 
 
 | Tuesday | Thursday |
 |:-----------|:------------|
@@ -35,5 +35,3 @@ Readings:
 | **11/18** Krylov subspace method | **11/20** PCG and others |
 | **11/25** sorting, FFT | **11/27** **Thanksgiving, no class** |
 | **12/02** MCMC | |
-
-**Final exam: 12/09 Tuesday @ 8am-11am, SAS 1107**
