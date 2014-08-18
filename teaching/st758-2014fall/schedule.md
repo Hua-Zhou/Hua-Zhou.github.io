@@ -20,7 +20,7 @@ Readings:
 | Tuesday | Thursday |
 |:-----------|:------------|
 | | **08/21** introduction, course logistics |
-| **08/26** R programming (Yiwen Zhang) | **08/28** R programming (Yiwen Zhang) |
+| **08/26** R programming (Yiwen Zhang, \[[slides 1](./YiwenZhang_Slides1.html)\], \[[slides 2](./YiwenZhang_Slides2.html)\]) | **08/28** R programming (Yiwen Zhang, \[[part 1](./YiwenZhang_Part1_Introduction.pdf)\], \[[part 2](./YiwenZhang_Part2_Data_Objects.pdf)\], \[[part 3](./YiwenZhang_Part3_R_Functions.pdf)\]) |
 | **09/02** computer storage/arithmetic | **09/04** algorithm, software, computer languages |
 | **09/09** matrix and linear algebra | **09/11** numerical linear algebra intro |
 | **09/16** GE, LU decomposition | **09/18** Cholesky decomposition |
