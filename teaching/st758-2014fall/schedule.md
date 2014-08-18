@@ -7,8 +7,8 @@ title: Stat 758
 
 ST758 tentative schedule and handouts (expect frequent updates)
 
-[Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes.pdf) (last updated ???)  
-[pre-Lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-Pre-LecNotes.pdf) (last updated ???)
+[Cumulative lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-LecNotes.pdf) (last updated ???)  
+[Pre-lecture notes](https://github.ncsu.edu/pages/hzhou3/hzhou3.github.io/teaching/st758-2013fall/ST758-2013-Fall-Pre-LecNotes.pdf) (last updated ???)
 
 
 Readings:  
