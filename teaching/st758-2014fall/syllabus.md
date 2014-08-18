@@ -37,12 +37,10 @@ TBA, Tutorial Center in 1101 SAS Hall
 
 ### Materials
 
-* J Monahan, _Numerical Methods of Statistics_, 2nd Edition, Cambridge University Press (2011)
-* K Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
+* John Monahan, _Numerical Methods of Statistics_, 2nd Edition, Cambridge University Press (2011)
+* Kenneth Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
 PDF is available through NCSU library [link](http://catalog.lib.ncsu.edu/record/NCSU2410898)
-* S Boyd and L Vandenberghe, _Convex Optimization_, Cambridge (2004)  
-PDF is available through the author's website [link](http://www.stanford.edu/~boyd/cvxbook/)
-* R Manual: [http://cran.r-project.org/doc/manuals/R-intro.html](http://cran.r-project.org/doc/manuals/R-intro.html)
+* Hadley Wickham, _Advanced R_, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 
 ### Attendance
 
@@ -50,19 +48,19 @@ Class attendance is mandatory.
 
 ### Homework
 
-Approximately 8 homework assignments will be assigned involving both analysis and computation. 
+Approximately 6-8 homework assignments will be assigned involving both analysis and computation. 
 
 ### Project
 
-There will be a course project, which carries twice the weight of a homework assignment.
+There will be a simulation project, which carries twice the weight of a homework assignment.
 
 ### Exam
 
-There will be a final exam which involves computation and will carry twice the weight of a homework assignment.
+There will be a final exam (in-room or take-home) which involves computation and will carry twice the weight of a homework assignment.
 
 ### Final Grade
 
-Letter grade will be assigned based on the final score: 60% homework + 20% project + 20% final.
+Letter grade will be assigned based on the final score: 60% homework + 20% project + 20% final exam.
 
 ### Academic Integrity
 
