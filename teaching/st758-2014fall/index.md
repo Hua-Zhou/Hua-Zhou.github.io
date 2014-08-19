@@ -19,7 +19,7 @@ Tue/Thu @ 10:15am-11:30am, 1108 SAS Hall
 Office: 5264 SAS Hall  
 Phone: (919)515-2570  
 Email: <hua_zhou@ncsu.edu>  
-Office hours: Tue @ 4pm-5pm, Thu @ 3pm-4pm, or by appointment
+Office hours (starting Sep 2): Tue @ 4pm-5pm, Thu @ 3pm-4pm, or by appointment
 
 ### Teaching Assistant
 
