@@ -56,7 +56,7 @@ There will be a simulation project, which carries twice the weight of a homework
 
 ### Exam
 
-There will be a final exam (in-room or take-home) which involves computation and will carry twice the weight of a homework assignment.
+There will be a final exam (in-class or take-home) that involves computation and will carry twice the weight of a homework assignment.
 
 ### Final Grade
 
