@@ -1,6 +1,6 @@
 ---
 layout: post_teaching
-title: First day of class
+title: TA office hours
 category: st758fall2014
 ---
 
