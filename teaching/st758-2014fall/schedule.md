@@ -22,7 +22,7 @@ Readings:
 | | **08/21** introduction, course logistics |
 | **08/26** R programming (Yiwen Zhang, \[[slides 1](./YiwenZhang_Slides1.html)\], \[[slides 2](./YiwenZhang_Slides2.html)\], \[[R code 1](./YiwenZhang_lecture1_examples.R)\], \[[R code 2](./YiwenZhang_lecture2_examples.R)\]) | **08/28** R programming (Yiwen Zhang, \[[part 1](./YiwenZhang_Part1_Introduction.pdf)\], \[[part 2](./YiwenZhang_Part2_Data_Objects.pdf)\], \[[part 3](./YiwenZhang_Part3_R_Functions.pdf)\]) |
 | **09/02** computer storage/arithmetic \[[HW1](./ST758-2014-HW1.pdf), [oringp.dat](./oringp.dat)\] | **09/04** algorithm, software, computer languages |
-| **09/09** matrix and linear algebra | **09/11** numerical linear algebra intro |
+| **09/09** matrix and linear algebra \[[mxmult.r](./mxmult.r)/[mxmult.html](./mxmult.html)\] | **09/11** numerical linear algebra intro |
 | **09/16** GE, LU decomposition | **09/18** Cholesky decomposition |
 | **09/23** QR decomposition | **09/25** sweeping, regression computations |
 | **09/30** more least squares, condition number | **10/02** iterative method for linear system |
