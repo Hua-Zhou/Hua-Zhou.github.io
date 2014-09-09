@@ -1,0 +1,44 @@
+---
+title: "JIT"
+author: "Hua Zhou"
+date: "September 9, 2014"
+output: html_document
+---
+
+This example explores the JIT (just-in-time) compilation in R using the `compiler` package.
+
+Brute-force `for` loop for summing a vector
+```{r}
+testfor <- function(x) {
+  sumx <- 0.0
+  for (i in 1:length(x)) {
+    sumx <- sumx + x[i]
+  }
+  return(sumx)
+}
+```
+Vectorized form
+```{r}
+testvec <- function(x) {
+  return(sum(x))
+}
+```
+
+Run the code on 1e6 elements
+```{r}
+x = seq(from = 0, to = 100, by = 0.0001)
+system.time(testfor(x))
+system.time(testvec(x))
+```
+
+Let's load the `compiler` package and compile the `testfor` function
+```{r}
+library(compiler)
+ctestfor <- cmpfun(testfor)
+```
+Re-run the functions
+```{r}
+system.time(testfor(x))
+system.time(ctestfor(x))
+system.time(testvec(x))
+```
