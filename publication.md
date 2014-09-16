@@ -5,7 +5,9 @@ title: Publication
 
 ### Publication
 
-Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments.
+Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments. 
+
+W Xiao, Y Wu and **H Zhou**. (2014) ConvexLAR: an extension of least angle regression, _Journal of Computational and Graphical Statistics_, accepted.
 
 **H Zhou** and Y Wu. (2013) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
 Path following for a convex loss plus a generalized lasso penalty.
