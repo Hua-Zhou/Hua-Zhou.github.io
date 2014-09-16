@@ -193,7 +193,7 @@ cbind(c1, c2)</code></pre>
 </div>
 <div id="q3" class="section level1">
 <h1>Q3</h1>
-<p>This is simply the polynomial <span class="math">\(y = (x-1)^7\)</span> expanded. <span class="math">\(y\)</span> values are very close to 0 when <span class="math">\(x\)</span> are close to 0. This calculation is taking differences of very close numbers and lossing precision (catastropic cancellation 2). The results don’t appear like polynomials due to roundoff errors.</p>
+<p>This is simply the polynomial <span class="math">\(y = (x-1)^7\)</span> expanded. <span class="math">\(y\)</span> values are very close to 0 when <span class="math">\(x\)</span> are close to 0. This calculation is taking differences of very close numbers and losing precision (catastropic cancellation 2). The results don’t appear like polynomials due to roundoff errors.</p>
 <pre class="r"><code># ggplot2 for nicer graphics
 library(ggplot2)
 x = seq(from=0.988, to=1.012, by=0.001)
@@ -680,10 +680,10 @@ R</code></pre>
 <pre class="r"><code># two ways to find determinant of A; first way is much more efficient
 system.time(prod(diag(R))^2)</code></pre>
 <pre><code>##    user  system elapsed 
-##       0       0       0</code></pre>
+##   0.000   0.000   0.001</code></pre>
 <pre class="r"><code>system.time(det(A))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001</code></pre>
+##   0.001   0.000   0.000</code></pre>
 <pre class="r"><code># clean up
 rm(list=ls())</code></pre>
 <p>Clean up</p>
