@@ -680,12 +680,10 @@ R</code></pre>
 <pre class="r"><code># two ways to find determinant of A; first way is much more efficient
 system.time(prod(diag(R))^2)</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.000   0.000   0.001</code></pre>
+##       0       0       0</code></pre>
 <pre class="r"><code>system.time(det(A))</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.001   0.000   0.000</code></pre>
-<pre class="r"><code># clean up
-rm(list=ls())</code></pre>
+##   0.001   0.000   0.002</code></pre>
 <p>Clean up</p>
 <pre class="r"><code>rm(list = ls())</code></pre>
 </div>
