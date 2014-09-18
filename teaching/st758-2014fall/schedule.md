@@ -7,7 +7,7 @@ title: Stat 758
 
 ST758 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated Sep 16, 2014)  
+[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated Sep 18, 2014)  
 [Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-Pre-LecNotes.pdf) (last updated Sep 17, 2014)
 
 
@@ -25,7 +25,7 @@ Readings:
 | **09/02** computer storage/arithmetic \[[HW1](./ST758-2014-HW1.pdf), [oringp.dat](./oringp.dat)\] | **09/04** algorithm, software, computer languages |
 | **09/09** numerical linear algebra intro \[[mxmult.r](./mxmult.r)/[mxmult.html](./mxmult.html)\], \[[jit.Rmd](./jit.Rmd)/[jit.html](./jit.html)\] | **09/11** GE, LU decomposition \[[HW2](./ST758-2014-HW2.pdf)\] |
 | **09/16** Cholesky decomposition | **09/18** QR decomposition |
-| **09/23** sweeping | **09/25** regression computations |
+| **09/23** QR (Householder, Givens) | **09/25** sweep operator, regression computations |
 | **09/30** more least squares, condition number | **10/02** iterative method for linear system |
 | **10/07** special linear systems | **10/09** **fall break, no class** |
 | **10/14** eigen-decomposition, SVD | **10/16** generalized eigen-problem |
