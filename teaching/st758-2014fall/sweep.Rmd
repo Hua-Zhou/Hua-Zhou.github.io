@@ -1,0 +1,54 @@
+---
+title: "Sweep Operator"
+author: "Hua Zhou"
+date: "Sep 22th, 2014"
+output: html_document
+---
+```{r}
+# clean up workspace
+rm(list = ls())
+```
+Function for sweep and inverse sweep operator, as defined in Section 7.4 of Kenneth Lange's book *Numerical Analysis for Statisticians*. It's only for demostration purpose, without efficiency optimization.
+```{r}
+regsweep <- function(A, k, inv = FALSE) {
+  d <- A[k, k]              # sweep out row k, col k
+  A[k, ] <- A[k, ] / d
+  b <- A[, k]
+  b[k] <- 0                 # don't change row k here
+  A <- A - outer(b, A[k, ]) # main operation
+  A[, k] <- b / d           # fix col k
+  A[k, k] <- - 1 / d        # diagonal element & done
+  if (inv) {                # inverse sweep
+    A[k, ] = - A[k, ]
+    A[, k] = - A[, k]
+    }
+  regsweep <- A     
+  }
+```
+Try on the Longley data
+```{r}
+# read the Longley data
+all <- 
+  read.table("http://hua-zhou.github.io/teaching/st758-2014fall/longley.dat")
+Xy <- cbind(rep(1, 16), as.matrix(all[, c(2:7, 1)])) # X and y
+colnames(Xy) <- c("intercept", "GNPdef", "GNP", "unemployed", "armed", 
+                  "pop", "year", "employed")
+Xy
+# Grammian matrix
+yXXy <- crossprod(Xy)
+yXXy
+# sweep in 1:7
+for (k in 1:7) {
+  yXXy <- regsweep(yXXy, k)
+  }
+# reg coeff, s.e., and SSE appear
+print(yXXy)
+# then invere sweep out 1:7
+for (k in 1:7) {
+  yXXy <- regsweep(yXXy, k, inv = TRUE)
+  }
+# last tableau should be (save rounding) same as first
+print(yXXy)
+# clean and close
+rm(list = ls())
+```
