@@ -25,7 +25,7 @@ Readings:
 | **09/02** computer storage/arithmetic \[[HW1](./ST758-2014-HW1.pdf), [oringp.dat](./oringp.dat)\] | **09/04** algorithm, software, computer languages |
 | **09/09** numerical linear algebra intro \[[mxmult.r](./mxmult.r)/[mxmult.html](./mxmult.html)\], \[[jit.Rmd](./jit.Rmd)/[jit.html](./jit.html)\] | **09/11** GE, LU decomposition \[[HW2](./ST758-2014-HW2.pdf)\] |
 | **09/16** Cholesky decomposition | **09/18** QR decomposition \[[HW3](./ST758-2014-HW3.pdf), [longley.dat](./longley.dat)\] |
-| **09/23** QR (Householder, Givens) | **09/25** sweep operator, regression computations \[[sweep.Rmd](./sweep.Rmd)/[sweep.html](./sweep.html)\]|
+| **09/23** QR (Householder, Givens) | **09/25** sweep operator, regression computations \[[sweep.Rmd](./sweep.Rmd)/[sweep.html](./sweep.html)\], \[[HW4](./ST758-2014-HW4.pdf)\] |
 | **09/30** summary of solving linear equations, condition number | **10/02** iterative method for linear system |
 | **10/07** special linear systems | **10/09** **fall break, no class** |
 | **10/14** eigen-decomposition, SVD | **10/16** generalized eigen-problem |
