@@ -7,7 +7,7 @@ title: Stat 758
 
 ST758 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated Sep 25, 2014)  
+[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated Sep 30, 2014)  
 [Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-Pre-LecNotes.pdf) (last updated Sep 29, 2014)
 
 
