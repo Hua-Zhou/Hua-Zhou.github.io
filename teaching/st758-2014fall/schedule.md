@@ -27,7 +27,7 @@ Readings:
 | **09/16** Cholesky decomposition | **09/18** QR decomposition \[[HW3](./ST758-2014-HW3.pdf), [longley.dat](./longley.dat)\] |
 | **09/23** QR (Householder, Givens) | **09/25** sweep operator, regression computations \[[sweep.Rmd](./sweep.Rmd)/[sweep.html](./sweep.html)\], \[[HW4](./ST758-2014-HW4.pdf), [stat-ncsu.zip](./stat-ncsu.zip)\] |
 | **09/30** summary of solving linear equations, condition number \[[longleycond.Rmd](./longleycond.Rmd)/[longleycond.html](./longleycond.html)\] | **10/02** iterative method for linear system |
-| **10/07** special linear systems | **10/09** **fall break, no class** |
+| **10/07** special linear systems | **10/09** **fall break, no class** \[[HW5](./ST758-2014-HW5.pdf), [X.txt](./X.txt), [Y.txt](./Y.txt)\] |
 | **10/14** eigen-decomposition, SVD | **10/16** generalized eigen-problem |
 | **10/21** more least squares, MLE | **10/23** general optimization theory |
 | **10/28** Newton and scoring method | **10/30** GLM, nonlinear regression |
