@@ -7,7 +7,7 @@ title: Stat 758
 
 ST758 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated Oct 14, 2014)  
+[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated Oct 19, 2014)  
 [Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-Pre-LecNotes.pdf) (last updated Oct 13, 2014)
 
 
@@ -28,8 +28,8 @@ Readings:
 | **09/23** QR (Householder, Givens) | **09/25** sweep operator, regression computations \[[sweep.Rmd](./sweep.Rmd)/[sweep.html](./sweep.html)\], \[[HW4](./ST758-2014-HW4.pdf), [stat-ncsu.zip](./stat-ncsu.zip)\] |
 | **09/30** summary of solving linear equations, condition number \[[longleycond.Rmd](./longleycond.Rmd)/[longleycond.html](./longleycond.html)\] | **10/02** iterative method for linear system |
 | **10/07** special linear systems | **10/09** **fall break, no class** \[[HW5](./ST758-2014-HW5.pdf), [X.txt](./X.txt), [Y.txt](./Y.txt)\] |
-| **10/14** eigen-decomposition, SVD | **10/16** generalized eigen-problem |
-| **10/21** more least squares, MLE | **10/23** general optimization theory |
+| **10/14** eigen-decomposition | **10/16** SVD |
+| **10/21** more least squares, generalized eigen-problem | **10/23** MLE, general optimization theory |
 | **10/28** Newton and scoring method | **10/30** GLM, nonlinear regression |
 | **11/04** EM algorithm | **11/06** MM algorithm |
 | **11/11** Monte Carlo simulation studies | **11/13** quasi-Newton |
