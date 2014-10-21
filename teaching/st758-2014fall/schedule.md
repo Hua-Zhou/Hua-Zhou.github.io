@@ -16,6 +16,7 @@ Readings:
 * Top 10 algorithms in the 20th century  
 [Metropolis](top10/metropolis.pdf), [Simplex](top10/simplex.pdf), [Krylov](top10/krylov.pdf), [Matrix decomposition](top10/decomp.pdf), [Fortran](top10/fortran.pdf), [QR algorithm](top10/qr.pdf), [Quicksort](top10/qsort.pdf), [FFT](top10/fft.pdf), [Integer relation](top10/integer.pdf), [FMM](top10/fmm.pdf)  
 * [_What every computer scientist should know about floating-point arithmetic_](./Goldberg91FloatingPoint.pdf) by David Goldberg
+* [_Analysis and computation of Google's PageRank_](http://www4.ncsu.edu/~ipsen/ps/slides_imacs.pdf) by Ilse Ipsen
  
 
 | Tuesday | Thursday |
