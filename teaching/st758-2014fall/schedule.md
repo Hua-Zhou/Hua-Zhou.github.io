@@ -30,7 +30,7 @@ Readings:
 | **09/30** summary of solving linear equations, condition number \[[longleycond.Rmd](./longleycond.Rmd)/[longleycond.html](./longleycond.html)\] | **10/02** iterative method for linear system |
 | **10/07** special linear systems | **10/09** **fall break, no class** \[[HW5](./ST758-2014-HW5.pdf), [X.txt](./X.txt), [Y.txt](./Y.txt)\] |
 | **10/14** eigen-decomposition | **10/16** SVD |
-| **10/21** more least squares, generalized eigen-problem | **10/23** MLE, general optimization theory |
+| **10/21** more least squares, generalized eigen-problem | **10/23** MLE, general optimization theory \[[HW6](./ST758-2014-HW6.pdf), [optdigits.tra](./optdigits.tra), [optdigits.tes](./optdigits.tes)\] |
 | **10/28** Newton and scoring method | **10/30** GLM, nonlinear regression |
 | **11/04** EM algorithm | **11/06** MM algorithm |
 | **11/11** Monte Carlo simulation studies | **11/13** quasi-Newton |
