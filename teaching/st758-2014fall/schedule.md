@@ -8,7 +8,7 @@ title: Stat 758
 ST758 tentative schedule and handouts (expect frequent updates)
 
 [Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-LecNotes.pdf) (last updated Nov 4, 2014)  
-[Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-Pre-LecNotes.pdf) (last updated Nov 3, 2014)
+[Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st758/ST758-2014-Fall-Pre-LecNotes.pdf) (last updated Nov 5, 2014)
 
 
 Readings:  
@@ -31,9 +31,9 @@ Readings:
 | **10/07** special linear systems | **10/09** **fall break, no class** \[[HW5](./ST758-2014-HW5.pdf), [X.txt](./X.txt), [Y.txt](./Y.txt)\] |
 | **10/14** eigen-decomposition | **10/16** SVD |
 | **10/21** more least squares, generalized eigen-problem | **10/23** MLE, general optimization theory \[[HW6](./ST758-2014-HW6.pdf), [optdigits.tra](./optdigits.tra), [optdigits.tes](./optdigits.tes)\] |
-| **10/28** Newton and scoring method | **10/30** GLM, nonlinear regression \[[HW7](./ST758-2014-HW7.pdf)\] |
-| **11/04** EM algorithm | **11/06** MM algorithm \[[HW8](./ST758-2014-HW8.pdf), [AL-standings.csv](./AL-standings.csv)\] |
-| **11/11** Monte Carlo simulation studies | **11/13** quasi-Newton |
-| **11/18** Krylov subspace method | **11/20** PCG and others |
+| **10/28** Newton and scoring method | **10/30** optimality conditions \[[HW7](./ST758-2014-HW7.pdf)\] |
+| **11/04** KKT condition, GLM | **11/06** nonlinear regression, EM algorithm \[[HW8](./ST758-2014-HW8.pdf), [AL-standings.csv](./AL-standings.csv)\] |
+| **11/11** MM algorithm | **11/13** Monte Carlo simulation studies |
+| **11/18** quasi-Newton | **11/20** Krylov subspace method, PCG and others |
 | **11/25** sorting, FFT | **11/27** **Thanksgiving, no class** |
 | **12/02** MCMC | |
