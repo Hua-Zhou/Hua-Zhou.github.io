@@ -17,6 +17,11 @@ Readings:
 [Metropolis](top10/metropolis.pdf), [Simplex](top10/simplex.pdf), [Krylov](top10/krylov.pdf), [Matrix decomposition](top10/decomp.pdf), [Fortran](top10/fortran.pdf), [QR algorithm](top10/qr.pdf), [Quicksort](top10/qsort.pdf), [FFT](top10/fft.pdf), [Integer relation](top10/integer.pdf), [FMM](top10/fmm.pdf)  
 * [_What every computer scientist should know about floating-point arithmetic_](./Goldberg91FloatingPoint.pdf) by David Goldberg
 * [_Analysis and computation of Google's PageRank_](http://www4.ncsu.edu/~ipsen/ps/slides_imacs.pdf) by Ilse Ipsen
+* Monte Carlo simulation studies in statistics  
+  * Marie Davidian's [slides](http://www4.stat.ncsu.edu/~davidian/st810a/simulation_handout.pdf)  
+  * John Monahan's [notes](./monte-carlo/Monahan09SimGuide.pdf)  
+  * Swallow & Monahan's [Monte Carlo study](./monte-carlo/SwallowMonahan84VCMonteCarlo.pdf) on variance component estimation  
+
  
 
 | Tuesday | Thursday |
