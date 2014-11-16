@@ -38,7 +38,7 @@ Readings:
 | **10/21** more least squares, generalized eigen-problem | **10/23** MLE, general optimization theory \[[HW6](./ST758-2014-HW6.pdf), [optdigits.tra](./optdigits.tra), [optdigits.tes](./optdigits.tes)\] |
 | **10/28** Newton and scoring method | **10/30** optimality conditions \[[HW7](./ST758-2014-HW7.pdf)\] |
 | **11/04** KKT condition, GLM | **11/06** nonlinear regression, EM algorithm \[[HW8](./ST758-2014-HW8.pdf), [AL-standings.csv](./AL-standings.csv)\] |
-| **11/11** MM algorithm | **11/13** Monte Carlo simulation studies |
+| **11/11** MM algorithm | **11/13** Monte Carlo simulation studies \[[HW9](./ST758-2014-HW9.pdf)\] |
 | **11/18** quasi-Newton | **11/20** Krylov subspace method, PCG and others |
 | **11/25** sorting, FFT | **11/27** **Thanksgiving, no class** |
 | **12/02** MCMC | |
