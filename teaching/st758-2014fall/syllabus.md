@@ -40,6 +40,7 @@ Fri 10am-12pm, Tutorial Center in 1101 SAS Hall
 * John Monahan, _Numerical Methods of Statistics_, 2nd Edition, Cambridge University Press (2011)
 * Kenneth Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
 PDF is available through NCSU library [link](http://catalog.lib.ncsu.edu/record/NCSU2410898)
+* James Gentle, _Computational Statistics_, Springer (2009)   
 * Hadley Wickham, _Advanced R_, [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)
 
 ### Attendance
