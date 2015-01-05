@@ -22,7 +22,7 @@ Teng Zhang <tzhang9@ncsu.edu>
 
 ### TA Office Hours
 
-TBA, Tutorial Center in 1101 SAS Hall
+Tue 2pm-3pm, Fri 2pm-3pm, Tutorial Center in 1101 SAS Hall
 
 ### Prerequisite
 
