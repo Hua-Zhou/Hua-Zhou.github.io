@@ -24,6 +24,6 @@ Office hours: Mon @ 4pm-5pm, Wed @ 4pm-5pm, or by appointment
 ### Teaching Assistant
 
 Teng Zhang <tzhang9@ncsu.edu>  
-Office hours: Tue 2pm-3pm, Fri 2pm-3pm, at Tutorial Center in 1101 SAS Hall
+Office hours: Tue 1pm-2pm, Fri 2pm-3pm, at Tutorial Center in 1101 SAS Hall
 
 
