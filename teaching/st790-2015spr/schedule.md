@@ -19,9 +19,9 @@ Readings:
 | Monday | Wednesday |
 |:-----------|:------------|
 | | **01/07** introduction, Linux |
-| **01/12** collaborative research (git) \[[Cai Li's slides](gitslides-CaiLi.pdf)\] \[[HW1](./ST790-2015-HW1.pdf)\] | **01/14** reproducible research |
-| **01/19** **MLK Day, no class** | **01/21** R package development |
-| **01/26** Matlab toolbox development | **01/28** |
+| **01/12** collaborative research (git) \[[Cai Li's slides](gitslides-CaiLi.pdf)\] \[[HW1](./ST790-2015-HW1.pdf)\] | **01/14** [**class cancelled**](https://www.ncsu.edu/emergency-information/wolfalert-01-14-15.php) |
+| **01/19** **MLK Day, no class** | **01/21** reproducible research |
+| **01/26** R package development | **01/28** Matlab, Julia |
 | **02/02** convex optimization | **02/04** |
 | **02/09** | **02/11** |
 | **02/16** | **02/18** |
