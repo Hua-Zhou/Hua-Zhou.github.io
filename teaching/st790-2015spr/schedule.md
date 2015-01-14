@@ -7,8 +7,8 @@ title: Stat 790-003
 
 ST790-003 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spr-LecNotes.pdf) (last updated Jan 11, 2015)  
-[Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spring-Pre-LecNotes.pdf) (last updated Jan 11, 2015)
+[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spr-LecNotes.pdf) (last updated Jan 13, 2015)  
+[Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spring-Pre-LecNotes.pdf) (last updated Jan 13, 2015)
 
 
 Readings:  
