@@ -7,6 +7,8 @@ title: Publication
 
 Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments. 
 
+**H Zhou** and K Lange. (2015) Path following in the exact penalty method of convex programming, [_Computational Optimization and Applications_](http://www.springer.com/mathematics/journal/10589), in press.
+
 W Xiao, Y Wu and **H Zhou**. (2014) ConvexLAR: an extension of least angle regression, [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2014.962700#.VDWLPildXQk), in press.   
 Least angle regression with a general convex loss.
 
