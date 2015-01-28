@@ -20,7 +20,7 @@ Readings:
 | | **01/07** introduction, Linux |
 | **01/12** collaborative research (git) \[[Cai Li's slides](gitslides-CaiLi.pdf)\] \[[HW1](./ST790-2015-HW1.pdf)\] | **01/14** [**class cancelled**](https://www.ncsu.edu/emergency-information/wolfalert-01-14-15.php) |
 | **01/19** **MLK Day, no class** | **01/21** reproducible research |
-| **01/26** R (Josh Day \[[slides](http://rpubs.com/jtday/st790), [Rmd](./rslides-JoshDay.Rmd)\]) | **01/28** Matlab, Julia \[Gibbs sampler: [R](./gibbs_r.html), [Julia](./gibbs_julia.html)\]\[[HW2](./ST790-2015-HW2.pdf)\] |
+| **01/26** R (Josh Day \[[slides](http://rpubs.com/jtday/st790), [Rmd](./rslides-JoshDay.Rmd)\]) | **01/28** Matlab, Julia \[Gibbs sampler: [R](./gibbs_r.html), [Julia](./gibbs_julia.html)\]\[[HW2](./ST790-2015-HW2.pdf),[nnmf-2429-by-361-face.txt](./nnmf-2429-by-361-face.txt)\] |
 | **02/02** convex optimization | **02/04** |
 | **02/09** | **02/11** |
 | **02/16** | **02/18** |
