@@ -31,5 +31,5 @@ Readings:
 | **03/23** EM/MM and acceleration | **03/25** |
 | **03/30** dynamic programming | **04/01** |
 | **04/06** sparse regression | **04/08** |
-| **04/13** | **04/15** |
+| **04/13** online estimation | **04/15** |
 | **04/20** | **04/22** |
