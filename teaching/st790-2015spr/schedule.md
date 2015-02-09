@@ -22,8 +22,8 @@ Readings:
 | **01/19** **MLK Day, no class** | **01/21** reproducible research |
 | **01/26** R (Josh Day \[[slides](http://rpubs.com/jtday/st790), [Rmd](./rslides-JoshDay.Rmd)\]) | **01/28** Julia \[Gibbs sampler: [R](./gibbs_r.html), [Julia](./gibbs_julia.html)\]\[[HW2](./ST790-2015-HW2.pdf), [nnmf-2429-by-361-face.txt](./nnmf-2429-by-361-face.txt), [V0](./V0.txt), [W0](./W0.txt)\] |
 | **02/02** Matlab, parallel computing \[[HW3](./ST790-2015-HW3.pdf)\] | **02/04** parallel computing (multi-core) \[[R Demo](./vcsim.r)\] |
-| **02/09** parallel computing (GPU) | **02/11** |
-| **02/16** parallel computing (cluster) | **02/18** convex optimization |
+| **02/09** parallel computing (cluster) | **02/11** **no class, instructor out of town** |
+| **02/16** parallel computing (GPU) | **02/18** convex optimization |
 | **02/23** | **02/25** |
 | **03/02**  | **03/04** |
 | **03/09** **Spring Break, no class** | **03/11** **Spring Break, no class** |
