@@ -33,3 +33,5 @@ Readings:
 | **04/06** sparse regression | **04/08** |
 | **04/13** online estimation | **04/15** |
 | **04/20** | **04/22** |
+
+[Course projects](./project.html)
