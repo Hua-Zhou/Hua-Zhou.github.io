@@ -1,0 +1,405 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>face</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-02-14"><meta name="DC.source" content="face.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Read in face image data matrix and initial values</a></li><li><a href="#2">Display function content</a></li><li><a href="#3">Check CPU/GPU configuration</a></li><li><a href="#4">Timing CPU, GPU SP (single precision), and GPU DP (double precision) algos</a></li><li><a href="#5">Display timing results</a></li><li><a href="#6">Display basis images in W at rank = 25</a></li><li><a href="#7">Display first 9 faces and the approximate images at rank = 25</a></li></ul></div><h2>Read in face image data matrix and initial values<a name="1"></a></h2><p>Assume files 'nnmf-2429-by-361-face.txt', 'V0,txt', 'W0.txt' or symbolic links to them are in the current folder.</p><pre class="codeinput">clear;
+X = dlmread(<span class="string">'nnmf-2429-by-361-face.txt'</span>);
+V0full = dlmread(<span class="string">'V0.txt'</span>);
+W0full = dlmread(<span class="string">'W0.txt'</span>);
+</pre><h2>Display function content<a name="2"></a></h2><pre class="codeinput">type <span class="string">nnegmf</span>;
+</pre><pre class="codeoutput">
+function [V, W] = nnegmf(X, r, varargin)
+% NNEGMF Non-negative matrix factorization by multiplicative updates
+%   [V, W] = NNEGMF(X, r) finds m-by-r V and r-by-n W with nonnegative
+%   entries that such that norm(X - V * W, 'fro') is minimal.
+%
+% INPUT:
+%   X - m-by-n data matrix with nonnegative entries
+%   r - a positive rank
+%
+% OPTIONAL NAME-VALUE PAIRS:
+%   'device' - device for computation; 'cpu' (default) or 'gpu'
+%   'maxiter' - maximal number of iterations
+%   'precision' - precision for GPU; 'single' (default) or 'double'
+%   'tolfun' - convergence tolerance for relative change in objective value
+%   'V0' - starting point for V
+%   'W0' - starting point for W
+%
+% OUTPUT:
+%   V, W - optimal V and W
+%
+% See also nnmf.
+%
+% Example
+%
+% References
+%
+
+% Copyright 2015 North Carolina State University
+% Hua Zhou (hua_zhou@ncsu.edu)
+
+% input parsing rule
+[m, n] = size(X);
+argin = inputParser;
+argin.addRequired('X', @isnumeric);
+argin.addRequired('r', @(x) isnumeric(x) &amp;&amp; r &gt; 0);
+argin.addParamValue('device', 'cpu', @ischar);
+argin.addParamValue('maxiter', 1e4, @isnumeric);
+argin.addParamValue('precision', 'single', @ischar);
+argin.addParamValue('tolfun', 1e-4, @isnumeric);
+argin.addParamValue('V0', rand(m, r), @isnumeric);
+argin.addParamValue('W0', rand(r, n), @isnumeric);
+
+% parse inputs
+argin.parse(X, r, varargin{:});
+device = argin.Results.device;
+maxiter = argin.Results.maxiter;
+precision = argin.Results.precision;
+tolfun = argin.Results.tolfun;
+V = max(argin.Results.V0, 1e-8); % stay away from sticky boundary
+W = max(argin.Results.W0, 1e-8); % stay away from sticky boundary
+
+if strcmpi(device, 'cpu')
+  
+  % MM loop
+  B = V * W;
+  obj = norm(X - B, 'fro')^2;
+  for iter = 1:maxiter
+    % multiplicative update of V and W
+    V = V .* (X * W') ./ (B * W');
+    B = V * W;
+    W = W .* (V' * X) ./ (V' * B);
+    B = V * W;
+    % check stopping criterion
+    objold = obj;
+    obj = norm(X - B, 'fro')^2;
+    if abs(obj - objold) &lt; tolfun * (objold + 1)
+      break
+    end
+  end
+
+elseif strcmpi(device, 'gpu')
+  
+  % transfer data to GPU
+  if strcmpi(precision, 'single')
+    X_g = gpuArray(single(X));
+    V_g = gpuArray(single(V));
+    W_g = gpuArray(single(W));
+  elseif strcmpi(precision, 'double')
+    X_g = gpuArray(X);
+    V_g = gpuArray(V);
+    W_g = gpuArray(W);
+  end
+  
+  % MM loop
+  B_g = V_g * W_g;
+  obj = norm(X_g - B_g, 'fro')^2;
+  for iter = 1:maxiter
+    % multiplicative update of V and W
+    V_g = V_g .* (X_g * W_g') ./ (B_g * W_g');
+    B_g = V_g * W_g;
+    W_g = W_g .* (V_g' * X_g) ./ (V_g' * B_g);
+    B_g = V_g * W_g;
+    % check stopping criterion
+    objold = obj;
+    obj = norm(X_g - B_g, 'fro')^2;
+    if abs(obj - objold) &lt; tolfun * (objold + 1)
+      break
+    end
+  end
+  
+  % retrieve result from GPU
+  V = gather(V_g);
+  W = gather(W_g);
+  
+end
+
+end
+</pre><h2>Check CPU/GPU configuration<a name="3"></a></h2><pre class="codeinput">cpuinfo
+gpuDevice
+</pre><pre class="codeoutput">
+ans = 
+
+             Name: 'Intel(R) Core(TM) i7-3720QM CPU @ 2.60GHz'
+            Clock: '2600 MHz'
+            Cache: '256 KB'
+    NumProcessors: 4
+           OSType: 'Mac OS/X'
+        OSVersion: '10.9.5'
+
+
+ans = 
+
+  CUDADevice with properties:
+
+                      Name: 'GeForce GT 650M'
+                     Index: 1
+         ComputeCapability: '3.0'
+            SupportsDouble: 1
+             DriverVersion: 6.5000
+            ToolkitVersion: 5.5000
+        MaxThreadsPerBlock: 1024
+          MaxShmemPerBlock: 49152
+        MaxThreadBlockSize: [1024 1024 64]
+               MaxGridSize: [2.1475e+09 65535 65535]
+                 SIMDWidth: 32
+               TotalMemory: 1.0734e+09
+                FreeMemory: 466173952
+       MultiprocessorCount: 2
+              ClockRateKHz: 900000
+               ComputeMode: 'Default'
+      GPUOverlapsTransfers: 1
+    KernelExecutionTimeout: 1
+          CanMapHostMemory: 1
+           DeviceSupported: 1
+            DeviceSelected: 1
+
+</pre><h2>Timing CPU, GPU SP (single precision), and GPU DP (double precision) algos<a name="4"></a></h2><pre class="codeinput">rlist = 10:10:50;
+runtime = zeros(length(rlist), 3);
+objval = zeros(length(rlist), 3);
+<span class="keyword">for</span> i = 1:length(rlist)
+  <span class="comment">% rank</span>
+  r = rlist(i);
+  display([<span class="string">'rank = '</span> num2str(r)]);
+  <span class="comment">% starting value</span>
+  V0 = V0full(:, 1:r);
+  W0 = W0full(1:r, :);
+  <span class="comment">% CPU</span>
+  tic;
+  [V1, W1] = nnegmf(X, r, <span class="string">'V0'</span>, V0, <span class="string">'W0'</span>, W0);
+  runtime(i, 1) = toc;
+  objval(i, 1) = norm(X - V1 * W1, <span class="string">'fro'</span>)^2;
+  <span class="comment">% GPU SP</span>
+  tic;
+  [V2, W2] = nnegmf(X, r, <span class="string">'V0'</span>, V0, <span class="string">'W0'</span>, W0, <span class="string">'device'</span>, <span class="string">'gpu'</span>);
+  runtime(i, 2) = toc;
+  objval(i, 2) = norm(X - V2 * W2, <span class="string">'fro'</span>)^2;
+  <span class="comment">% GPU DP</span>
+  tic;
+  [V3, W3] = nnegmf(X, r, <span class="string">'V0'</span>, V0, <span class="string">'W0'</span>, W0, <span class="string">'device'</span>, <span class="string">'gpu'</span>, <span class="keyword">...</span>
+    <span class="string">'precision'</span>, <span class="string">'double'</span>);
+  runtime(i, 3) = toc;
+  objval(i, 3) = norm(X - V3 * W3, <span class="string">'fro'</span>)^2;
+<span class="keyword">end</span>
+</pre><pre class="codeoutput">rank = 10
+rank = 20
+rank = 30
+rank = 40
+rank = 50
+</pre><h2>Display timing results<a name="5"></a></h2><pre class="codeinput">table(rlist', runtime(:, 1), runtime(:, 2), runtime(:, 3), <span class="keyword">...</span>
+  objval(:, 1) / 1e3, objval(:, 2) / 1e3, objval(:, 3) / 1e3, <span class="keyword">...</span>
+  <span class="string">'VariableNames'</span>, {<span class="string">'Rank'</span>, <span class="string">'CPU_Time'</span>, <span class="keyword">...</span>
+  <span class="string">'GPU_SP_Time'</span>, <span class="string">'GPU_DP_Time'</span>, <span class="string">'CPU_Obj'</span>, <span class="string">'GPU_SP_Obj'</span>, <span class="string">'GPU_DP_Obj'</span>})
+</pre><pre class="codeoutput">
+ans = 
+
+    Rank    CPU_Time    GPU_SP_Time    GPU_DP_Time    CPU_Obj    GPU_SP_Obj
+    ____    ________    ___________    ___________    _______    __________
+
+    10      3.8774      3.6905         4.1904          11.73      11.73    
+    20      6.5695      2.5106         9.2822         8.4972     8.4972    
+    30      10.244      3.3449         11.704         6.6216     6.6223    
+    40      14.956      5.0202         19.689         5.2567     5.2567    
+    50      19.863      3.7412         27.173         4.4302     4.4302    
+
+
+    GPU_DP_Obj
+    __________
+
+     11.73    
+    8.4972    
+    6.6216    
+    5.2567    
+    4.4302    
+
+</pre><h2>Display basis images in W at rank = 25<a name="6"></a></h2><pre class="codeinput">r = 25;
+V0 = V0full(:, 1:r);
+W0 = W0full(1:r, :);
+[V, W] = nnegmf(X, r, <span class="string">'V0'</span>, V0, <span class="string">'W0'</span>, W0);
+
+<span class="comment">% display 25 basis images</span>
+figure; hold <span class="string">on</span>;
+set(gca, <span class="string">'FontSize'</span>, 20);
+<span class="keyword">for</span> i = 1:25
+  subplot(5, 5, i);
+  imagesc(reshape(W(i, :), 19, 19));
+  axis <span class="string">equal</span>;
+  axis <span class="string">tight</span>;
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="face_01.png" alt=""> <h2>Display first 9 faces and the approximate images at rank = 25<a name="7"></a></h2><pre class="codeinput"><span class="comment">% display the first 9 faces</span>
+figure; hold <span class="string">on</span>;
+set(gca, <span class="string">'FontSize'</span>, 20);
+<span class="keyword">for</span> i = 1:9
+  subplot(3, 3, i);
+  imagesc(reshape(X(i, :), 19, 19));
+  axis <span class="string">equal</span>;
+  axis <span class="string">tight</span>;
+<span class="keyword">end</span>
+
+<span class="comment">% approximation by NNMF at r = 25</span>
+figure; hold <span class="string">on</span>;
+set(gca, <span class="string">'FontSize'</span>, 20);
+<span class="keyword">for</span> i = 1:9
+  subplot(3, 3, i);
+  imagesc(reshape(V(i,:) * W, 19, 19));
+  axis <span class="string">equal</span>;
+  axis <span class="string">tight</span>;
+<span class="keyword">end</span>
+</pre><img vspace="5" hspace="5" src="face_02.png" alt=""> <img vspace="5" hspace="5" src="face_03.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Read in face image data matrix and initial values
+% Assume files 'nnmf-2429-by-361-face.txt', 'V0,txt', 'W0.txt' or symbolic
+% links to them are in the current folder.
+clear;
+X = dlmread('nnmf-2429-by-361-face.txt');
+V0full = dlmread('V0.txt');
+W0full = dlmread('W0.txt');
+
+%% Display function content
+type nnegmf;
+
+%% Check CPU/GPU configuration
+cpuinfo
+gpuDevice
+
+%% Timing CPU, GPU SP (single precision), and GPU DP (double precision) algos
+
+rlist = 10:10:50;
+runtime = zeros(length(rlist), 3);
+objval = zeros(length(rlist), 3);
+for i = 1:length(rlist)
+  % rank
+  r = rlist(i);
+  display(['rank = ' num2str(r)]);
+  % starting value
+  V0 = V0full(:, 1:r);
+  W0 = W0full(1:r, :);
+  % CPU
+  tic;
+  [V1, W1] = nnegmf(X, r, 'V0', V0, 'W0', W0);
+  runtime(i, 1) = toc;
+  objval(i, 1) = norm(X - V1 * W1, 'fro')^2;
+  % GPU SP
+  tic;
+  [V2, W2] = nnegmf(X, r, 'V0', V0, 'W0', W0, 'device', 'gpu');
+  runtime(i, 2) = toc;
+  objval(i, 2) = norm(X - V2 * W2, 'fro')^2;
+  % GPU DP
+  tic;
+  [V3, W3] = nnegmf(X, r, 'V0', V0, 'W0', W0, 'device', 'gpu', ...
+    'precision', 'double');
+  runtime(i, 3) = toc;
+  objval(i, 3) = norm(X - V3 * W3, 'fro')^2;
+end
+
+%% Display timing results
+
+table(rlist', runtime(:, 1), runtime(:, 2), runtime(:, 3), ...
+  objval(:, 1) / 1e3, objval(:, 2) / 1e3, objval(:, 3) / 1e3, ...
+  'VariableNames', {'Rank', 'CPU_Time', ...
+  'GPU_SP_Time', 'GPU_DP_Time', 'CPU_Obj', 'GPU_SP_Obj', 'GPU_DP_Obj'})
+
+%% Display basis images in W at rank = 25
+
+r = 25;
+V0 = V0full(:, 1:r);
+W0 = W0full(1:r, :);
+[V, W] = nnegmf(X, r, 'V0', V0, 'W0', W0);
+
+% display 25 basis images
+figure; hold on;
+set(gca, 'FontSize', 20);
+for i = 1:25
+  subplot(5, 5, i);
+  imagesc(reshape(W(i, :), 19, 19));
+  axis equal;
+  axis tight;
+end
+
+%% Display first 9 faces and the approximate images at rank = 25
+
+% display the first 9 faces
+figure; hold on;
+set(gca, 'FontSize', 20);
+for i = 1:9
+  subplot(3, 3, i);
+  imagesc(reshape(X(i, :), 19, 19));
+  axis equal;
+  axis tight;
+end
+
+% approximation by NNMF at r = 25
+figure; hold on;
+set(gca, 'FontSize', 20);
+for i = 1:9
+  subplot(3, 3, i);
+  imagesc(reshape(V(i,:) * W, 19, 19));
+  axis equal;
+  axis tight;
+end
+##### SOURCE END #####
+--></body></html>
