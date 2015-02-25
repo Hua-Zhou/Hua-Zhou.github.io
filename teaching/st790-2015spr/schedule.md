@@ -24,8 +24,8 @@ Readings:
 | **02/02** Matlab, parallel computing \[[HW3](./ST790-2015-HW3.pdf)\] | **02/04** parallel computing (multi-core) \[[R Demo](./vcsim.r)\] |
 | **02/09** parallel computing (cluster) | **02/11** **no class, instructor out of town** |
 | **02/16** parallel computing (GPU) \[[PET example](./pet.tar.gz), [MDS example](./mds.tar.gz)\] | **02/18** convex optimization \[[HW4](./ST790-2015-HW4.pdf), [prostate.txt](./prostate.txt), [prostate.info](./prostate.info), [saheart.txt](./saheart.txt)\] |
-| **02/23** | **02/25** |
-| **03/02**  | **03/04** |
+| **02/23** convex set, convex function | **02/25** optimization softwares, LP \[[Compressed Sensing](./demo_cs.html)\] |
+| **03/02** QP, SOCP, SDP | **03/04** |
 | **03/09** **Spring Break, no class** | **03/11** **Spring Break, no class** |
 | **03/16**  | **03/18** |
 | **03/23** EM/MM and acceleration | **03/25** |
