@@ -7,8 +7,8 @@ title: Stat 790-003
 
 ST790-003 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spring-LecNotes.pdf) (last updated Feb 25, 2015)  
-[Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spring-Pre-LecNotes.pdf) (last updated Mar 2, 2015)
+[Cumulative lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spring-LecNotes.pdf) (last updated Mar 2, 2015)  
+[Pre-lecture notes](http://www.stat.ncsu.edu/people/zhou/courses/st790/ST790-2015-Spring-Pre-LecNotes.pdf) (last updated Mar 3, 2015)
 
 
 Readings:  
@@ -25,9 +25,9 @@ Readings:
 | **02/09** parallel computing (cluster) | **02/11** **no class, instructor out of town** |
 | **02/16** parallel computing (GPU) \[[PET example](./pet.tar.gz), [MDS example](./mds.tar.gz)\] | **02/18** convex optimization \[[HW4](./ST790-2015-HW4.pdf), [prostate.txt](./prostate.txt), [prostate.info](./prostate.info), [saheart.txt](./saheart.txt)\] |
 | **02/23** convex set, convex function | **02/25** convex and log-convex functions, optimization softwares |
-| **03/02** LP \[[Compressed Sensing](./demo_cs.html)\] \[[HW5](./ST790-2015-HW5.pdf), [lena256noisy.png](./lena256noisy.png)\] | **03/04** QP, SOCP, SDP, cone problems, NLP |
+| **03/02** LP \[[Compressed Sensing](./demo_cs.html)\] \[[HW5](./ST790-2015-HW5.pdf), [lena256noisy.png](./lena256noisy.png)\] | **03/04** QP, SOCP |
 | **03/09** **Spring Break, no class** | **03/11** **Spring Break, no class** |
-| **03/16** mixed integer programming | **03/18** |
+| **03/16** SDP, cone problems, NLP | **03/18** mixed integer programming |
 | **03/23** EM/MM and acceleration | **03/25** |
 | **03/30** dynamic programming | **04/01** |
 | **04/06** sparse regression | **04/08** |
