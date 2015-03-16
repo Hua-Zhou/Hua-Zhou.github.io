@@ -1717,7 +1717,7 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[166]:
+In&nbsp;[9]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1767,7 +1767,7 @@ Platform Info:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[167]:
+In&nbsp;[10]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1798,7 +1798,7 @@ In&nbsp;[167]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[167]:</div>
+    Out[10]:</div>
 
 <div class="output_html rendered_html output_subarea output_pyout">
 <?xml version="1.0" encoding="UTF-8"?>
@@ -3351,7 +3351,7 @@ fig.select("#fig-4709a0a51c224f579fb0f8691b5c9216-element-17")
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[168]:
+In&nbsp;[11]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3382,7 +3382,7 @@ In&nbsp;[168]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[168]:</div>
+    Out[11]:</div>
 
 
 <div class="output_text output_subarea output_pyout">
@@ -3411,7 +3411,7 @@ Set up a grid of <span class="math">\(\lambda\)</span> and solve the lasso probl
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[169]:
+In&nbsp;[12]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3438,7 +3438,7 @@ In&nbsp;[169]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-elapsed time: 0.3372567 seconds (16268348 bytes allocated, 18.02% gc time)
+elapsed time: 0.292736674 seconds (16303884 bytes allocated)
 
 </pre>
 </div>
@@ -3460,7 +3460,7 @@ elapsed time: 0.3372567 seconds (16268348 bytes allocated, 18.02% gc time)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[170]:
+In&nbsp;[13]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -3470,7 +3470,7 @@ In&nbsp;[170]:
     <span class="n">Coeff</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="err">β</span><span class="n">path</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">,</span> <span class="p">:],</span> <span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="n">length</span><span class="p">(</span><span class="err">λ</span><span class="n">list</span><span class="p">))),</span> 
     <span class="err">λ</span> <span class="o">=</span> <span class="n">rep</span><span class="p">(</span><span class="err">λ</span><span class="n">list</span><span class="p">,</span> <span class="n">each</span><span class="o">=</span><span class="n">p</span><span class="p">))</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">lassopath</span><span class="p">,</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">:</span><span class="err">λ</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">:</span><span class="n">Coeff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">:</span><span class="n">Predictor</span><span class="p">,</span> <span class="n">Geom</span><span class="o">.</span><span class="n">line</span><span class="p">),</span>
-    <span class="n">Guide</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;λ&quot;</span><span class="p">),</span> <span class="n">Guide</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;βhat(λ)&quot;</span><span class="p">),</span> <span class="n">Guide</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Sqrt-Root Lasso&quot;</span><span class="p">))</span>
+    <span class="n">Guide</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;λ&quot;</span><span class="p">),</span> <span class="n">Guide</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;βhat(λ)&quot;</span><span class="p">),</span> <span class="n">Guide</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Lasso&quot;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -3482,7 +3482,7 @@ In&nbsp;[170]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[170]:</div>
+    Out[13]:</div>
 
 <div class="output_html rendered_html output_subarea output_pyout">
 <?xml version="1.0" encoding="UTF-8"?>
@@ -3617,10 +3617,10 @@ In&nbsp;[170]:
   <g class="guide colorkey" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-4">
     <g font-size="2.82" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" fill="#4C404B" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-5">
       <text x="125.67" y="55.79" dy="0.35em">5.0</text>
-      <text x="125.67" y="67.93" dy="0.35em">1.0</text>
       <text x="125.67" y="63.38" dy="0.35em">2.5</text>
       <text x="125.67" y="48.21" dy="0.35em">7.5</text>
       <text x="125.67" y="40.62" dy="0.35em">10.0</text>
+      <text x="125.67" y="67.93" dy="0.35em">1.0</text>
     </g>
     <g shape-rendering="crispEdges" stroke="none" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-6">
       <rect x="123.36" y="67.25" width="1.31" height="0.68" fill="#004D84"/>
@@ -3665,10 +3665,10 @@ In&nbsp;[170]:
       <rect x="123.36" y="40.62" width="1.31" height="0.68" fill="#7E273E"/>
       <g stroke="#FFFFFF" stroke-width="0.2" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-7">
         <path fill="none" d="M123.36,55.79 L 124.67 55.79"/>
-        <path fill="none" d="M123.36,67.93 L 124.67 67.93"/>
         <path fill="none" d="M123.36,63.38 L 124.67 63.38"/>
         <path fill="none" d="M123.36,48.21 L 124.67 48.21"/>
         <path fill="none" d="M123.36,40.62 L 124.67 40.62"/>
+        <path fill="none" d="M123.36,67.93 L 124.67 67.93"/>
       </g>
     </g>
     <g fill="#362A35" font-size="3.88" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" stroke="none" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-8">
@@ -3926,16 +3926,16 @@ In&nbsp;[170]:
     </g>
     <g class="plotpanel" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-14">
       <g stroke-width="0.3" fill="none" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-15">
-        <path fill="none" d="M19.4,59.93 L 24.4 58.18 29.39 56.85 34.39 55.57 39.39 54.28 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#BACBBC" class="geometry color_"/>
-        <path fill="none" d="M19.4,52.09 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#75B9BE" class="geometry color_"/>
-        <path fill="none" d="M19.4,52.69 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#CCA78A" class="geometry color_"/>
-        <path fill="none" d="M19.4,51.05 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#AD6B5D" class="geometry color_"/>
-        <path fill="none" d="M19.4,52.77 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#CFC6AE" class="geometry color_"/>
-        <path fill="none" d="M19.4,51.93 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#C3C9B6" class="geometry color_"/>
-        <path fill="none" d="M19.4,54.72 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#7E273E" class="geometry color_"/>
-        <path fill="none" d="M19.4,50.34 L 24.4 51.89 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#004D84" class="geometry color_"/>
-        <path fill="none" d="M19.4,25.86 L 24.4 27.53 29.39 29.04 34.39 30.43 39.39 31.82 44.39 33.2 49.39 34.47 54.39 35.75 59.38 37.03 64.38 38.31 69.38 39.58 74.38 40.86 79.38 42.13 84.37 43.38 89.37 44.63 94.37 45.88 99.37 47.12 104.37 48.36 109.36 49.55 114.36 50.82 119.36 52.09" stroke="#0C87A5" class="geometry color_"/>
-        <path fill="none" d="M19.4,67.93 L 24.4 66.7 29.39 65.57 34.39 64.42 39.39 63.27 44.39 62.12 49.39 60.94 54.39 59.73 59.38 58.53 64.38 57.33 69.38 56.13 74.38 54.94 79.38 53.74 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#ABCEC4" class="geometry color_"/>
+        <path fill="none" d="M19.4,54.72 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#7E273E"/>
+        <path fill="none" d="M19.4,25.86 L 24.4 27.53 29.39 29.04 34.39 30.43 39.39 31.82 44.39 33.2 49.39 34.47 54.39 35.75 59.38 37.03 64.38 38.31 69.38 39.58 74.38 40.86 79.38 42.13 84.37 43.38 89.37 44.63 94.37 45.88 99.37 47.12 104.37 48.36 109.36 49.55 114.36 50.82 119.36 52.09" class="geometry color_" stroke="#0C87A5"/>
+        <path fill="none" d="M19.4,51.05 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#AD6B5D"/>
+        <path fill="none" d="M19.4,50.34 L 24.4 51.89 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#004D84"/>
+        <path fill="none" d="M19.4,52.77 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#CFC6AE"/>
+        <path fill="none" d="M19.4,52.09 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#75B9BE"/>
+        <path fill="none" d="M19.4,51.93 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#C3C9B6"/>
+        <path fill="none" d="M19.4,59.93 L 24.4 58.18 29.39 56.85 34.39 55.57 39.39 54.28 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#BACBBC"/>
+        <path fill="none" d="M19.4,67.93 L 24.4 66.7 29.39 65.57 34.39 64.42 39.39 63.27 44.39 62.12 49.39 60.94 54.39 59.73 59.38 58.53 64.38 57.33 69.38 56.13 74.38 54.94 79.38 53.74 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#ABCEC4"/>
+        <path fill="none" d="M19.4,52.69 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#CCA78A"/>
       </g>
     </g>
     <g opacity="0" class="guide zoomslider" stroke="none" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-16">
@@ -4095,7 +4095,7 @@ In&nbsp;[170]:
     <text x="8.81" y="44.66" text-anchor="middle" dy="0.35em" transform="rotate(-90, 8.81, 46.66)">βhat(λ)</text>
   </g>
   <g font-size="3.88" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" fill="#564A55" stroke="none" id="fig-3c86b9ec35e24d7282b91d86cbaf20b5-element-25">
-    <text x="69.38" y="10.61" text-anchor="middle">Sqrt-Root Lasso</text>
+    <text x="69.38" y="10.61" text-anchor="middle">Lasso</text>
   </g>
 </g>
 <defs>
@@ -5146,7 +5146,7 @@ Set up a grid of <span class="math">\(\lambda\)</span> and solve the lasso probl
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[171]:
+In&nbsp;[14]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -5173,7 +5173,7 @@ In&nbsp;[171]:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-elapsed time: 0.161604913 seconds (13903844 bytes allocated)
+elapsed time: 0.175959256 seconds (13902084 bytes allocated)
 
 </pre>
 </div>
@@ -5195,7 +5195,7 @@ elapsed time: 0.161604913 seconds (13903844 bytes allocated)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[172]:
+In&nbsp;[15]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -5215,7 +5215,7 @@ In&nbsp;[172]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[172]:</div>
+    Out[15]:</div>
 
 <div class="output_html rendered_html output_subarea output_pyout">
 <?xml version="1.0" encoding="UTF-8"?>
@@ -5344,10 +5344,10 @@ In&nbsp;[172]:
   <g class="guide colorkey" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-4">
     <g font-size="2.82" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" fill="#4C404B" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-5">
       <text x="125.67" y="55.79" dy="0.35em">5.0</text>
-      <text x="125.67" y="67.93" dy="0.35em">1.0</text>
       <text x="125.67" y="63.38" dy="0.35em">2.5</text>
       <text x="125.67" y="48.21" dy="0.35em">7.5</text>
       <text x="125.67" y="40.62" dy="0.35em">10.0</text>
+      <text x="125.67" y="67.93" dy="0.35em">1.0</text>
     </g>
     <g shape-rendering="crispEdges" stroke="none" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-6">
       <rect x="123.36" y="67.25" width="1.31" height="0.68" fill="#004D84"/>
@@ -5392,10 +5392,10 @@ In&nbsp;[172]:
       <rect x="123.36" y="40.62" width="1.31" height="0.68" fill="#7E273E"/>
       <g stroke="#FFFFFF" stroke-width="0.2" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-7">
         <path fill="none" d="M123.36,55.79 L 124.67 55.79"/>
-        <path fill="none" d="M123.36,67.93 L 124.67 67.93"/>
         <path fill="none" d="M123.36,63.38 L 124.67 63.38"/>
         <path fill="none" d="M123.36,48.21 L 124.67 48.21"/>
         <path fill="none" d="M123.36,40.62 L 124.67 40.62"/>
+        <path fill="none" d="M123.36,67.93 L 124.67 67.93"/>
       </g>
     </g>
     <g fill="#362A35" font-size="3.88" font-family="'PT Sans','Helvetica Neue','Helvetica',sans-serif" stroke="none" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-8">
@@ -5647,16 +5647,16 @@ In&nbsp;[172]:
     </g>
     <g class="plotpanel" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-14">
       <g stroke-width="0.3" fill="none" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-15">
-        <path fill="none" d="M19.4,59.93 L 24.4 59.04 29.39 58.2 34.39 57.48 39.39 56.71 44.39 55.9 49.39 54.96 54.39 53.84 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#BACBBC" class="geometry color_"/>
-        <path fill="none" d="M19.4,52.09 L 24.4 52.74 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#75B9BE" class="geometry color_"/>
-        <path fill="none" d="M19.4,52.69 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#CCA78A" class="geometry color_"/>
-        <path fill="none" d="M19.4,51.05 L 24.4 52.17 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#AD6B5D" class="geometry color_"/>
-        <path fill="none" d="M19.4,52.77 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#CFC6AE" class="geometry color_"/>
-        <path fill="none" d="M19.4,51.93 L 24.4 52.75 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#C3C9B6" class="geometry color_"/>
-        <path fill="none" d="M19.4,54.72 L 24.4 53.87 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#7E273E" class="geometry color_"/>
-        <path fill="none" d="M19.4,50.34 L 24.4 51.08 29.39 51.87 34.39 52.68 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#004D84" class="geometry color_"/>
-        <path fill="none" d="M19.4,25.86 L 24.4 26.67 29.39 27.51 34.39 28.34 39.39 29.19 44.39 30.07 49.39 31.08 54.39 32.3 59.38 33.65 64.38 35 69.38 36.68 74.38 38.92 79.38 42.23 84.37 44.64 89.37 47.14 94.37 50.18 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#0C87A5" class="geometry color_"/>
-        <path fill="none" d="M19.4,67.93 L 24.4 67.28 29.39 66.71 34.39 66.11 39.39 65.45 44.39 64.72 49.39 63.89 54.39 62.88 59.38 61.71 64.38 60.44 69.38 58.86 74.38 56.75 79.38 53.66 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" stroke="#ABCEC4" class="geometry color_"/>
+        <path fill="none" d="M19.4,54.72 L 24.4 53.87 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#7E273E"/>
+        <path fill="none" d="M19.4,25.86 L 24.4 26.67 29.39 27.51 34.39 28.34 39.39 29.19 44.39 30.07 49.39 31.08 54.39 32.3 59.38 33.65 64.38 35 69.38 36.68 74.38 38.92 79.38 42.23 84.37 44.64 89.37 47.14 94.37 50.18 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#0C87A5"/>
+        <path fill="none" d="M19.4,51.05 L 24.4 52.17 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#AD6B5D"/>
+        <path fill="none" d="M19.4,50.34 L 24.4 51.08 29.39 51.87 34.39 52.68 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#004D84"/>
+        <path fill="none" d="M19.4,52.77 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#CFC6AE"/>
+        <path fill="none" d="M19.4,52.09 L 24.4 52.74 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#75B9BE"/>
+        <path fill="none" d="M19.4,51.93 L 24.4 52.75 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#C3C9B6"/>
+        <path fill="none" d="M19.4,59.93 L 24.4 59.04 29.39 58.2 34.39 57.48 39.39 56.71 44.39 55.9 49.39 54.96 54.39 53.84 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#BACBBC"/>
+        <path fill="none" d="M19.4,67.93 L 24.4 67.28 29.39 66.71 34.39 66.11 39.39 65.45 44.39 64.72 49.39 63.89 54.39 62.88 59.38 61.71 64.38 60.44 69.38 58.86 74.38 56.75 79.38 53.66 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#ABCEC4"/>
+        <path fill="none" d="M19.4,52.69 L 24.4 53.07 29.39 53.07 34.39 53.07 39.39 53.07 44.39 53.07 49.39 53.07 54.39 53.07 59.38 53.07 64.38 53.07 69.38 53.07 74.38 53.07 79.38 53.07 84.37 53.07 89.37 53.07 94.37 53.07 99.37 53.07 104.37 53.07 109.36 53.07 114.36 53.07 119.36 53.07" class="geometry color_" stroke="#CCA78A"/>
       </g>
     </g>
     <g opacity="0" class="guide zoomslider" stroke="none" id="fig-c24a816fe4c84d499c811cdadcdcf3eb-element-16">
@@ -6846,7 +6846,7 @@ fig.select("#fig-c24a816fe4c84d499c811cdadcdcf3eb-element-21")
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[173]:
+In&nbsp;[16]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
