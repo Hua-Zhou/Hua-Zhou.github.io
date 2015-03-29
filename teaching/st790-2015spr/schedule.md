@@ -25,12 +25,12 @@ Readings:
 | **02/09** parallel computing (cluster) | **02/11** **no class, instructor out of town** |
 | **02/16** parallel computing (GPU) \[[PET example](./pet.tar.gz), [MDS example](./mds.tar.gz)\] | **02/18** convex optimization \[[HW4](./ST790-2015-HW4.pdf), [prostate.txt](./prostate.txt), [prostate.info](./prostate.info), [saheart.txt](./saheart.txt)\] |
 | **02/23** convex set, convex function | **02/25** convex and log-convex functions, optimization softwares |
-| **03/02** LP \[[Compressed Sensing](./demo_cs.html)\] \[[HW5](./ST790-2015-HW5.pdf), [lena256noisy.png](./lena256noisy.png)\] | **03/04** QP, SOCP \[[Lasso and square-root lasso](./demo_lasso.html)\] |
+| **03/02** LP \[[Compressed Sensing](./demo_cs.html)\] \[[HW5](./ST790-2015-HW5.pdf), [lena256noisy.png](./lena256noisy.png)\] | **03/04** QP \[[Lasso and square-root lasso](./demo_lasso.html)\] |
 | **03/09** **Spring Break, no class** | **03/11** **Spring Break, no class** |
-| **03/16** SOCP, SDP | **03/18** SDP, GP, cone problems \[[HW6](./ST790-2015-HW6.pdf), [lena128missing.png](./lena128missing.png)\]  |
-| **03/23** MIP, NLP | **03/25** EM/MM and acceleration |
-| **03/30** dynamic programming | **04/01** |
-| **04/06** sparse regression | **04/08** |
+| **03/16** SOCP | **03/18** SDP \[[HW6](./ST790-2015-HW6.pdf), [lena128missing.png](./lena128missing.png)\] |
+| **03/23** SDP | **03/25** GP |
+| **03/30** Cone problems, MIP, NLP | **04/01** EM/MM and acceleration |
+| **04/06** dynamic programming | **04/08** sparse regression |
 | **04/13** online estimation | **04/15** |
 | **04/20** | **04/22** |
 
