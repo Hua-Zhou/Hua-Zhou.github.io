@@ -18,11 +18,14 @@ In 1802, Carl F. Gauss wrote an essay _Summarische Übersicht der Bestimmung der
 Quality numerical linear algebra libraries such as BLAS and LAPACK underlie most scientific computation. A similar library that encapsulates essential tensor computations is in great demand. The [Matlab Tensor Toolbox](http://www.sandia.gov/~tgkolda/TensorToolbox/index-2.5.html) developed at the Sandia National Laboratories represents such efforts and is being heavily used in many fields. The new language [Julia](http://julialang.org) offers many promising features for technical computing (high-performance JIT compiler, low level memory management, flexible typing, distributed computing, etc). Currently there seems no serious development for tensor computation in Julia.
 
 * Ranking sports teams with covariates  
-In HW6, we worked on the Bradley-Terry and a normal model for ranking teams based on win-loss data. Explore how to model the team's ability $a_i$ by a regression model $a_i = x_i^T \beta$, where the vector $x_i$ contains features of team $i$ and $\beta$ are the regression coefficients. If possible, formulate the models as convex problems and try on some real data.
+In [HW6 Q4](http://hua-zhou.github.io/teaching/st790-2015spr/ST790-2015-HW6.pdf), we worked on the Bradley-Terry and a normal model for ranking teams based on win-loss data. Explore how to model the team's ability $a_i$ by a regression model $a_i = x_i^T \beta$, where the vector $x_i$ contains features of team $i$ and $\beta$ are the regression coefficients. If possible, formulate the models as convex problems and try on some real data.
 
-* 
+* Optimal design for GLM or nonlinear models  
+In [HW6 Q1](http://hua-zhou.github.io/teaching/st790-2015spr/ST790-2015-HW6.pdf), we worked on some optimal designs for linear model. Finding the optimal design for generalized linear models (GLM) or nonlinear models is still a challenging problem. The difficulty lies in the fact that the Fisher information matrix $I(\beta) = \sum_i w_i(\beta) x_i x_i^T$ depends on the regression coefficients, which are unknown. One approach is to find the minimax optimal design. That is to
+$$
+	\text{minimize} \max_\beta \text{det} (\sum_i p_i w_i(\beta) x_i x_i^T)^{-1}
+$$
+subject to the simplex constraint on $p=(p_1, \ldots, p_m)$. Investigate whether the convex optimization tools have any bearing on solving this problem. I would start by (i) read a couple of recent papers, e.g., [paper 1](http://download.springer.com/static/pdf/359/art%253A10.1007%252Fs11222-014-9466-0.pdf?auth66=1427837209_c3416c70da326ce9f793668a5329c129&ext=.pdf) and [paper 2](http://www.sciencedirect.com/science/article/pii/S2210650214000492), to understand the problem and current status-of-art, (ii) read `cvx`'s capability of defining [partially specified problems](http://web.cvxr.com/cvx/doc/advanced.html#new-functions-via-partially-specified-problems) to see whether that's useful, (iii) try a general nonlinear optimization software, e.g., the `NLopt.jl` package in `Julia`.
 
-
-
-
-
+* Boosting PageRank by LP  
+In [ST758 HW4](http://hua-zhou.github.io/teaching/st758-2014fall/ST758-2014-HW4.pdf) (2014 fall), we worked on the numerical algorithms for computing Google's PageRank based on the webpage link structure. We may also ask the following question. Given the link structure, how to put links on my page to boost its PageRank score? Formulate this as a linear programming problem, try on the [stat-ncsu](http://hua-zhou.github.io/teaching/st758-2014fall/stat-ncsu.zip) data set, and report the results.
