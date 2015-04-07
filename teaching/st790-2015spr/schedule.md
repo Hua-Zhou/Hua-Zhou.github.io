@@ -29,9 +29,9 @@ Readings:
 | **03/09** **Spring Break, no class** | **03/11** **Spring Break, no class** |
 | **03/16** SOCP | **03/18** SDP \[[HW6](./ST790-2015-HW6.pdf), [lena128missing.png](./lena128missing.png)\] |
 | **03/23** SDP | **03/25** GP |
-| **03/30** Cone problems, MIP, NLP | **04/01** EM/MM and acceleration |
-| **04/06** dynamic programming | **04/08** sparse regression |
-| **04/13** online estimation | **04/15** |
-| **04/20** | **04/22** |
+| **03/30** Cone problems, MIP, NLP | **04/01** sparse regression: introduction |
+| **04/06** sparse regression: coordinate descent | **04/08** (accelerated) proximal gradient |
+| **04/13** online estimation (Josh) | **04/15** ALM, ADMM |
+| **04/20** dynamic programming| **04/22** EM/MM and acceleration |
 
 [Course projects](./project.html)
