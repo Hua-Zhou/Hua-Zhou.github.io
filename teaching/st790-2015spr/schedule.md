@@ -31,7 +31,7 @@ Readings:
 | **03/23** SDP | **03/25** GP |
 | **03/30** Cone problems, MIP, NLP | **04/01** sparse regression: introduction |
 | **04/06** sparse regression: coordinate descent | **04/08** (accelerated) proximal gradient |
-| **04/13** online estimation (Josh) | **04/15** ALM, ADMM |
+| **04/13** online estimation (Josh) | **04/15** path algorithm, ALM, ADMM |
 | **04/20** dynamic programming| **04/22** EM/MM and acceleration |
 
 [Course projects](./project.html)
