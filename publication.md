@@ -14,10 +14,10 @@ W Sun, Y Liu, JJ Crowley, TH Chen, **H Zhou**, H Chu, S Huang, PF Kuan, Y Li, D 
 W Xiao, Y Wu and **H Zhou**. (2014) ConvexLAR: an extension of least angle regression, [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2014.962700#.VDWLPildXQk), in press.   
 Least angle regression with a general convex loss.
 
-**H Zhou** and Y Wu. (2013) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
+**H Zhou** and Y Wu. (2014) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
 Path following for a convex loss plus a generalized lasso penalty.
 
-E Chi, **H Zhou** and K Lange. (2013) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), 146(1-2):409-436. \[[pdf](./media/pdf/ChiZhouLange14Distance.pdf)\]
+E Chi, **H Zhou** and K Lange. (2014) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), 146(1-2):409-436. \[[pdf](./media/pdf/ChiZhouLange14Distance.pdf)\]
 
 K Lange, E Chi, and **H Zhou**. (2014) A brief survey of modern optimization for statisticians (with discussions by [Atchade and Michailidis](http://onlinelibrary.wiley.com/doi/10.1111/insr.12033/full), [Hunter](http://onlinelibrary.wiley.com/doi/10.1111/insr.12027/full), [Robert](http://onlinelibrary.wiley.com/doi/10.1111/insr.12040/full), and [rejoinder](http://onlinelibrary.wiley.com/doi/10.1111/insr.12030/full)), [_International Statistical Review_](http://onlinelibrary.wiley.com/doi/10.1111/insr.12022/abstract), 82(1):46-70. \[[pdf](./media/pdf/LangeChiZhou14OptmSurvey.pdf)\]
 
