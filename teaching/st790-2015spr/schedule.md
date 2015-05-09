@@ -7,7 +7,7 @@ title: Stat 790-003
 
 ST790-003 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](./ST790-2015-Spring-LecNotes.pdf) (last updated Apr 22, 2015)  
+[Cumulative lecture notes](./ST790-2015-Spring-LecNotes.pdf) (last updated Apr 22, 2015, 33.6MB)  
 [Pre-lecture notes](./ST790-2015-Spring-Pre-LecNotes.pdf) (last updated Apr 21, 2015)
 
 
