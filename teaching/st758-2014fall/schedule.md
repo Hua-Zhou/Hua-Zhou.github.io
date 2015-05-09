@@ -7,7 +7,7 @@ title: Stat 758
 
 ST758 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](./ST758-2014-Fall-LecNotes.pdf) (last updated Dec 2, 2014)  
+[Cumulative lecture notes](./ST758-2014-Fall-LecNotes.pdf) (last updated Dec 2, 2014, 35.3MB)  
 [Pre-lecture notes](./ST758-2014-Fall-Pre-LecNotes.pdf) (last updated Dec 1, 2014)
 
 
