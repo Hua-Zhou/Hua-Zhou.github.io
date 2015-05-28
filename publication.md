@@ -7,16 +7,16 @@ title: Publication
 
 Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments. 
 
-N Zhao, J Chen, IM Carroll, T Ringel-Kulka, MP Epstein, **H Zhou**, J Zhou, Y Ringel, HZ Li, and MC Wu. (2015) Testing in microbiome profiling studies with the microbiome regression-based kernel association test (MiRKAT). [_The American Journal of Human Genetics_](), accepted.
+N Zhao, J Chen, IM Carroll, T Ringel-Kulka, MP Epstein, **H Zhou**, J Zhou, Y Ringel, HZ Li, and MC Wu. (2015) Testing in microbiome profiling studies with the microbiome regression-based kernel association test (MiRKAT). [_The American Journal of Human Genetics_](http://www.sciencedirect.com/science/article/pii/S0002929715001408#), 96(5):797-807. \[[pdf](./media/pdf/Zhao15MiRKAT.pdf)\]  
 
-W Sun, Y Liu, JJ Crowley, TH Chen, **H Zhou**, H Chu, S Huang, PF Kuan, Y Li, D Miller, G Shaw, Y Wu, V Zhabotynsky, L McMillan, F Zou, PF Sullivan and FPM de Villena. (2015) IsoDOT detects differential RNA-isoform expression/usage with respect to a categorical or continuous covariate with high sensitivity and specificity, [_Journal of American Statistical Association_](), accepted.
+W Sun, Y Liu, JJ Crowley, TH Chen, **H Zhou**, H Chu, S Huang, PF Kuan, Y Li, D Miller, G Shaw, Y Wu, V Zhabotynsky, L McMillan, F Zou, PF Sullivan and FPM de Villena. (2015) IsoDOT detects differential RNA-isoform expression/usage with respect to a categorical or continuous covariate with high sensitivity and specificity, [_Journal of American Statistical Association_](), accepted. \[[arXiv](http://arxiv.org/abs/1402.0136)\]
 
-**H Zhou** and K Lange. (2015) Path following in the exact penalty method of convex programming, [_Computational Optimization and Applications_](http://link.springer.com/article/10.1007/s10589-015-9732-x), in press.
+**H Zhou** and K Lange. (2015) Path following in the exact penalty method of convex programming, [_Computational Optimization and Applications_](http://link.springer.com/article/10.1007/s10589-015-9732-x), in press.  
 
 W Xiao, Y Wu and **H Zhou**. (2014) ConvexLAR: an extension of least angle regression, [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2014.962700#.VDWLPildXQk), in press.   
-Least angle regression with a general convex loss.
+Least angle regression (LAR) with a general convex loss.
 
-**H Zhou** and Y Wu. (2014) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[arXiv](http://arxiv.org/abs/1201.3571)\]  
+**H Zhou** and Y Wu. (2014) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[pdf](./media/pdf/ZhouWu14EPSODE.pdf)\]  
 Path following for a convex loss plus a generalized lasso penalty.
 
 E Chi, **H Zhou** and K Lange. (2014) Distance majorization and its applications, [_Mathematical Programming Series A_](http://link.springer.com/article/10.1007/s10107-013-0697-1), 146(1-2):409-436. \[[pdf](./media/pdf/ChiZhouLange14Distance.pdf)\]
