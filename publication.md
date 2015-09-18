@@ -13,7 +13,7 @@ W Sun, Y Liu, JJ Crowley, TH Chen, **H Zhou**, H Chu, S Huang, PF Kuan, Y Li, D 
 
 **H Zhou** and K Lange. (2015) Path following in the exact penalty method of convex programming, [_Computational Optimization and Applications_](http://link.springer.com/article/10.1007/s10589-015-9732-x), 61(3):609-634. \[[pdf](./media/pdf/ZhouLange15ConvProgPath.pdf)\]  
 
-W Xiao, Y Wu and **H Zhou**. (2014) ConvexLAR: an extension of least angle regression, [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2014.962700#.VDWLPildXQk), in press.   
+W Xiao, Y Wu and **H Zhou**. (2014) ConvexLAR: an extension of least angle regression, [_Journal of Computational and Graphical Statistics_](http://amstat.tandfonline.com/doi/full/10.1080/10618600.2014.962700), 24(3):603--626.   
 Least angle regression (LAR) with a general convex loss.
 
 **H Zhou** and Y Wu. (2014) A generic path algorithm for regularized statistical estimation, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/full/10.1080/01621459.2013.864166#.Up5KiGRDt4A), 109(506):686-699. \[[pdf](./media/pdf/ZhouWu14EPSODE.pdf)\]  
