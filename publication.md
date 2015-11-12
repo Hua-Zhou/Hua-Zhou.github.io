@@ -9,7 +9,7 @@ Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments.
 
 N Zhao, J Chen, IM Carroll, T Ringel-Kulka, MP Epstein, **H Zhou**, J Zhou, Y Ringel, HZ Li, and MC Wu. (2015) Testing in microbiome profiling studies with the microbiome regression-based kernel association test (MiRKAT). [_The American Journal of Human Genetics_](http://www.sciencedirect.com/science/article/pii/S0002929715001408#), 96(5):797-807. \[[pdf](./media/pdf/Zhao15MiRKAT.pdf)\]  
 
-W Sun, Y Liu, JJ Crowley, TH Chen, **H Zhou**, H Chu, S Huang, PF Kuan, Y Li, D Miller, G Shaw, Y Wu, V Zhabotynsky, L McMillan, F Zou, PF Sullivan and FPM de Villena. (2015) IsoDOT detects differential RNA-isoform expression/usage with respect to a categorical or continuous covariate with high sensitivity and specificity, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/abs/10.1080/01621459.2015.1040880), accepted. \[[arXiv](http://arxiv.org/abs/1402.0136)\]
+W Sun, Y Liu, JJ Crowley, TH Chen, **H Zhou**, H Chu, S Huang, PF Kuan, Y Li, D Miller, G Shaw, Y Wu, V Zhabotynsky, L McMillan, F Zou, PF Sullivan and FPM de Villena. (2015) IsoDOT detects differential RNA-isoform expression/usage with respect to a categorical or continuous covariate with high sensitivity and specificity, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/abs/10.1080/01621459.2015.1040880), 110:975-986. \[[pdf](./media/pdf/Sun15IsoDOT.pdf)\]  
 
 **H Zhou** and K Lange. (2015) Path following in the exact penalty method of convex programming, [_Computational Optimization and Applications_](http://link.springer.com/article/10.1007/s10589-015-9732-x), 61(3):609-634. \[[pdf](./media/pdf/ZhouLange15ConvProgPath.pdf)\]  
 
