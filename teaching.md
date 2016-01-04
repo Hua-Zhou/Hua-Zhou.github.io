@@ -20,3 +20,5 @@ title: Teaching
 * ST810, Advanced Statistical Computing  
 [2013 spring](http://www.stat.ncsu.edu/people/zhou/courses/st810/)
 
+* BIOSTAT M280/BIOMATH M280/STAT 230, Statistical Computing  
+[2016 winter](./teaching/biostatm280-2016winter/)
