@@ -13,6 +13,8 @@ BIOSTAT M280 tentative schedule and handouts (expect frequent updates)
 
 Readings:  
 
+* [_The future of data analysis_](./readings/Tukey61FutureDataAnalysis.pdf) by John Tukey (1961) 
+* [_50 years of data sicence_](./readings/Donoho15FiftyYearsDataScience.pdf) by David Donoho (2015)  
 * Top 10 algorithms in the 20th century  
 [Metropolis](readings/metropolis.pdf), [Simplex](readings/simplex.pdf), [Krylov](readings/krylov.pdf), [Matrix decomposition](readings/decomp.pdf), [Fortran](readings/fortran.pdf), [QR algorithm](readings/qr.pdf), [Quicksort](readings/qsort.pdf), [FFT](readings/fft.pdf), [Integer relation](readings/integer.pdf), [FMM](readings/fmm.pdf)  
 
