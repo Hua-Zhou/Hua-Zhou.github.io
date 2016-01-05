@@ -8,7 +8,7 @@ title: BIOSTAT M280
 ### Instructor
 
 [Dr. Hua Zhou](http://hua-zhou.github.io/)  
-Office: CHS 21-254  
+Office: CHS 21-254A  
 Phone: (310)794-7835  
 Email: <huazhou@ucla.edu>  
 
@@ -38,12 +38,12 @@ This is a tentative list of topics:
 * Basics of R programming  
 * Reproducible research  
 * Collaborative research  
-* Linux and clsuter computing  
+* Linux and cluster computing  
 * Cloud computing  
 
 ### Prerequisite
 
-The prerequisite for this course is linear algebra (MATH 115A) and linear models (STAT 100C or BIOSTAT 250A). Those wishing to enroll without these prerequisites will need to obtain consent from the instructor.  Homework and project will use statitiscal programming language R.    
+The prerequisite for this course is linear algebra (MATH 115A) and linear models (STAT 100C or BIOSTAT 250A). Those wishing to enroll without these prerequisites will need to obtain consent from the instructor.  Homework and project will use statitiscal programming language R. A substitute for R is the technical computing language [Julia](http://julialang.org). Please consult with instructure if you plan to use Julia for homework.   
 
 ### Course Webpage
 
@@ -54,7 +54,7 @@ The prerequisite for this course is linear algebra (MATH 115A) and linear models
 Some useful resources are listed below. None of them is required.  
 * Kenneth Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
 [UCLA library link](http://ucla.worldcat.org/title/numerical-analysis-for-statisticians)  
-* James Gentle, _Computational Statistics_, Sprcinger (2009)   
+* James Gentle, _Computational Statistics_, Springer (2009)   
 * Hadley Wickham, _Advanced R_, Chapman & Hall/CRC The R Series (2014)  
 Freely available at [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)  
 * Christopher Gandrud, _Reproducible Research With R and RStudio_, CRC Press/Taylor & Francis Group (2014)  
