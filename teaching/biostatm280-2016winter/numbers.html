@@ -63,12 +63,21 @@ img {
 <div id="header">
 <h1 class="title">Biomath M280: Computer Artithemtics in R</h1>
 <h4 class="author"><em>Hua Zhou</em></h4>
-<h4 class="date"><em>Jan 6th, 2016</em></h4>
+<h4 class="date"><em>Jan 7th, 2016</em></h4>
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#machine-variable"><code>.Machine</code> variable</a></li>
+<li><a href="#integers">Integers</a></li>
+<li><a href="#floating-point-numbers">Floating-point numbers</a></li>
+<li><a href="#rounding">Rounding</a></li>
+<li><a href="#cancellations">Cancellations</a></li>
+</ul>
+</div>
 
-<div id="machine-variable" class="section level1">
-<h1><code>.Machine</code> variable</h1>
+<div id="machine-variable" class="section level2">
+<h2><code>.Machine</code> variable</h2>
 <p>The <code>.Machine</code> variable in <code>R</code> stores machine dependent numerical characteristics.</p>
 <pre class="r"><code>.Machine</code></pre>
 <pre><code>## $double.eps
@@ -125,8 +134,8 @@ img {
 ## $sizeof.pointer
 ## [1] 8</code></pre>
 </div>
-<div id="integers-in-r" class="section level1">
-<h1>Integers in <code>R</code></h1>
+<div id="integers" class="section level2">
+<h2>Integers</h2>
 <p>The integer type in <code>R</code> uses M = 32 bits.</p>
 <pre class="r"><code>M &lt;- 32
 big &lt;- 2^(M - 1) - 1
@@ -145,8 +154,8 @@ as.integer(big)</code></pre>
 <pre><code>## [1] NA</code></pre>
 <p>Other languages such as <code>Julia</code> output result according to modular arithmetic instead of reporting underflow or overflow.</p>
 </div>
-<div id="floating-point-numbers-in-r" class="section level1">
-<h1>Floating-point numbers in <code>R</code></h1>
+<div id="floating-point-numbers" class="section level2">
+<h2>Floating-point numbers</h2>
 <p>Real numbers are represented as double precision floating-point numbers in <code>R</code>. Floating-point representation (in heximal format) of the real numbers 18 and -18 is</p>
 <pre class="r"><code>sprintf(&quot;%a&quot;, 18)</code></pre>
 <pre><code>## [1] &quot;0x1.2p+4&quot;</code></pre>
@@ -183,18 +192,18 @@ as.integer(big)</code></pre>
 <pre><code>## [1] 2.220446e-16</code></pre>
 <pre class="r"><code>.Machine$double.neg.eps</code></pre>
 <pre><code>## [1] 1.110223e-16</code></pre>
-<p>They should be <span class="math">\(2.0^{-52}\)</span> and <span class="math">\(2.0^{-53}\)</span> for double precision numbers.</p>
+<p>These should be <span class="math">\(2^{-52}\)</span> and <span class="math">\(2^{-53}\)</span> for double precision numbers.</p>
 </div>
-<div id="rounding" class="section level1">
-<h1>Rounding</h1>
+<div id="rounding" class="section level2">
+<h2>Rounding</h2>
 <p>Rounding in <code>R</code> follows the <em>go to the even digit</em> rule:</p>
 <pre class="r"><code>round(2.5)</code></pre>
 <pre><code>## [1] 2</code></pre>
 <pre class="r"><code>round(3.5)</code></pre>
 <pre><code>## [1] 4</code></pre>
 </div>
-<div id="cancellations" class="section level1">
-<h1>Cancellations</h1>
+<div id="cancellations" class="section level2">
+<h2>Cancellations</h2>
 <p>Cancellation: <span class="math">\(a + b = a\)</span></p>
 <pre class="r"><code>a = 1
 b = 2^(-53)
