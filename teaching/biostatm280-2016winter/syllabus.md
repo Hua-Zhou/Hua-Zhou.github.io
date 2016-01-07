@@ -18,7 +18,7 @@ Tue/Thu 11am-12pm @ CHS 21-254A
 
 ### Lectures  
 
-Tue/Thu 1pm-2:50pm @ CHS 41-235    
+Tue/Thu 1pm-2:50pm @ CHS 51-279    
 
 ### Teaching Assistant
 

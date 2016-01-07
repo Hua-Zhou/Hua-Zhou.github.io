@@ -11,7 +11,7 @@ Computational tools for research in statistics, including numerical linear algeb
 
 ### Time and Location
 
-Tue/Thu 1:00pm-2:50pm @ CHS 41-235
+Tue/Thu 1:00pm-2:50pm @ CHS 51-279
 
 ### Instructor
 
