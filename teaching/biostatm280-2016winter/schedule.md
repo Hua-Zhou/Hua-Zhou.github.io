@@ -25,8 +25,8 @@ Readings:
 | Tuesday | Thursday |
 |:-----------|:------------|
 | **01/05** introduction, course logistics | **01/07** computer storage and arithmetic \[[Arithmetics in R](./numbers.html)\] |
-| **01/12** computer languages \[Benchmark code: [R](http://r.research.att.com/benchmarks/R-benchmark-25.R), [Julia](./benchmark_julia.jl), [Matlab](./benchmark_matlab.m)\], \[Gibbs sampler benchmark: [R](./gibbs_r.html), [Julia](./gibbs_julia.html)\] | **01/14** numerical linear algebra |
-| **01/19** | **01/21** |
+| **01/12** computer languages \[Benchmark code: [R](http://r.research.att.com/benchmarks/R-benchmark-25.R), [Julia](./benchmark_julia.jl), [Matlab](./benchmark_matlab.m)\], \[Gibbs sampler benchmark: [R](./gibbs_r.html), [Julia](./gibbs_julia.html)\], introduction to R \[[rintro.html](./rintro.html), [rintro.Rmd](./rintro.Rmd)\] | **01/14** version control with Git |
+| **01/19** numerical linear algebra | **01/21** |
 | **01/26** | **01/28** |
 | **02/02** | **02/04** |
 | **02/09** numerical optimization | **02/11** |

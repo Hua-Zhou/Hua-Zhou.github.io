@@ -1,0 +1,570 @@
+---
+title: "Biomath M280: Introduction to R"
+author: "modified from Dr. Yiwen Zhang's lecture by Dr. Hua Zhou"
+date: "Jan 11, 2016"
+output: 
+  html_document: 
+    toc: yes
+---
+
+This document is modified from the lecture notes prepared by Dr. Yiwen Zhang. Besides a brief introduction to R language, it serves as an example R Markdown file that you may modify for your homework. Definitive resources for learning R are the exellent books [*Advanced R*](http://adv-r.had.co.nz) and [*R Packages*](http://r-pkgs.had.co.nz) by Dr. Hadley Wickham.
+
+# Why R?
+
+How do computers work? 
+
+![Turing Machine](http://www.worldofcomputing.net/wp-content/uploads/2013/01/turingMachine.gif)  
+The very first computer, Turing Machine, is a *hypothetical* device that, given instructions, will do someting and put the output in the designated location. You know Alan Turing is that guy who took a bite of a poisoned apple and then died. And [Apple Computer, Inc](http://www.apple.com) uses this sign to honor him.  
+![Apple Logo](https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg)  
+From that hypothetical device, people invented real computers. This is the picture of a computer constructed in 1950's. They are reading the program that's punched onto that strip. Later, computing languages are invented so that people do not have to write binary code. Fortran is a very popular language for scientific computing back in 1970's. But writing Fortran code is not trivial. First you had to write a main Fortran program to implement the model and call the right subroutines. Then you had to write the job control language code to submit your job and get it executed.  
+![Old Computers](http://2.bp.blogspot.com/-UEFVev3jBSI/VAjdixP-CBI/AAAAAAAAABg/iWQFw5i3Q0g/s1600/WITCH-2.jpg)  
+
+It is not exactly the focus of statisticians. Statisticians want to work on inference, simulation, data analysis, etc. So, in 1976, [John Chambers](https://en.wikipedia.org/wiki/John_Chambers_(statistician)) and his colleagues in Bell Lab started to work on this S lanuage that aims to make this process easier. Later, this S language branched into the most popular computing language among statisticians, R.
+
+I'm telling you this story to make the point that computing is not trivial. What you ask R to do is probably quite complex in the background. And we should appreciate that there is such a language that allows statisticians to do very complicated analysis without worrying about many computing details.
+
+Advantages of R:  
+
+* Open source. SAS and Matlab are not.  
+* Abundant statistical packages. Back in 2005, there were less than 500 R packages.  However, in 2014, a total of 5826 packages.  
+* Simplicity. Don't need to worry too much about variable type, memory allocation, loops. Very easy for beginners, and it speaks statistical language.  
+* Data visualization (ggplot2, googleVis, rChart...).  
+* Nice IDE (RStudio, Eclipse).  
+
+Disadvantages of R: it could be *slow* (Need to be smart while coding)  
+
+* Interpreted language.  
+* Memory management.
+
+
+# RStudio
+
+RStudio, reminiscent of Matlab's powerful IDE, makes R development a breeze. Download the [current version](https://www.rstudio.com/products/rstudio/download/) and keep this [cheat sheet](http://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf) handy. Besides standard IDE functionalities  
+
+* syntax highlighting  
+* online help  
+* indenting  
+* project management  
+* control R version  
+* vim editor  
+* themes  
+
+RStudio provides many more advanced features  
+
+* package development with roxygen documentation  
+* version control with Git or SVN  
+* Documents  
+    + pdf: LaTex, Sweave, Knitr  
+    + html: R Markdown, Rpres, Notebook  
+* Web application: Shiny  
+
+Read this [post](http://knightlab.northwestern.edu/2014/01/20/behind-the-dialect-map-interactive-how-an-intern-created-the-new-york-times-most-popular-piece-of-content-in-2013/) about how Josh Katz (a statistics graduate student at NCSU) created [The New York Times' most popular piece of content in 2013](http://www.nytimes.com/interactive/2013/12/20/sunday-review/dialect-quiz-map.html), using RStudio/Shiny.
+
+Useful shortcuts when writing R script:    
+* `Ctrl+Space` or `Tab`, give you more information of the function.  
+* `Tab` can also give you the details of the argument.  
+* `Ctrl+Shift+c` comment out one line or a block of highlighted code.  
+* `Ctrl+Shift+c` remove the "#" on a block of commented code.  
+* While executing code, environment tab shows the objects in your current environment.  
+* Executing the code: `Ctrl+R` or `Ctrl+Enter` or Source (useful for editing function: Source on save).  
+* Debugging mode.  
+
+# R Markdown
+
+Keep this [R Markdown cheat sheet](http://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) handy. Also resort to menu `Help > Markdown Quick Reference` in RStudio for help.
+
+# Adopt a good coding style
+
+Adopting a consistent coding style increases readability of your code tremendously and is one of the quickest way to make yourself appear as professional programmer. In this course, I will **strictly enforce** the style specified in [_Advanced R_](http://adv-r.had.co.nz/Style.html) by Hadley Wickham.
+
+# Basics of R programming
+
+## Getting help
+
+* Tab in RStudio
+* `help()`
+* `example()`
+* `?function`
+* Google
+
+## Data objects
+
+### Vectors
+
+Vectors consist of data of the same type, either all numbers or all characters. 
+Scalars do not really exist in R.  A scalar is a vector of length 1.
+
+* Creating vector
+```{r}
+a <- 1:3
+str(a)
+b <- c(1:3)
+str(b)
+c <- c(1, 2, 3)
+str(c)
+d <- seq(1, 3, by = 1)
+str(d)
+e <- seq(1, 3, length = 3)
+```
+
+* Recycling: when operating on two vectors, R requires them to be of the same length. If not, R would recycle the elements of the shorter one to match the length of the long one.  
+```{r}
+a <- 1:3
+b <- 1:5
+c <- 1:6
+a + b
+a + c
+```
+
+* Filter/subset
+```{r}
+b[c(1, 2)]
+b[b > 1]
+```
+
+* Vectorization
+```{r}
+a <- 1:5
+b <- 6:10
+a + b
+a * b
+exp(b)
+gamma(b)
+```
+
+* Loops. For example, to replace the `NA` with 0
+```{r}
+a <- c(1, 2, 3, 4, NA, 47, 10, 100)
+for (i in 1:length(a)) {
+  if (is.na(a[i])) a[i] <- 0
+}
+a
+```
+Avoid loops! This can be vectorized:
+```{r}
+a <- ifelse(is.na(a), 0, a)
+a
+```
+or
+```{r}
+a[is.na(a)] <- 0
+a
+```
+
+**Character strings** are vectors of characters.
+```{r}
+paste("Yiwen", "Zhang", sep = " ")
+strsplit("Yiwen Zhang", split = " ")
+c <- c("a", "b", "c", "d")
+paste(c, collapse = ".")
+```
+
+All elements in one vector must be of the same mode
+```{r}
+mix <- c(1, 2, 3, "C")
+mix
+```
+
+### Matrices
+
+Technically, matrices are vectors with some attributes, i.e., the number of columns and the number of rows. The internal storage of a matrix is in column-major order, meaning that first all of column 1 is stored, and then all of column 2, and so on. 
+
+```{r}
+x <- matrix(1:10, nrow = 2, ncol = 5)
+y <- matrix(nrow = 3, ncol = 3) ## create NA matrix
+```
+Matrix operation, dimensions match!
+```{r}
+y <- matrix(1, nrow = 2, ncol = 5)
+x * y
+x + y
+z <- t(y)
+x %*% z
+```
+Vector-matrix operation: R recycle the vector to match the size of the matrix.
+```{r}
+a <- c(10, 20)
+a + z
+```
+
+Matrix size matters!  
+
+* R 2.x: vector length limit is $2^{31} -1 \approx 2$billion elements. The biggest matrix is 50,000 by 50,000.  
+* R 3.0 allows vector of length $2^{52} \approx 4.5\times 10^{15}$.  Note that `save()` and `load()` handle vectors up to $2^{48}$ elements.  
+
+### List and data frame
+
+A list is an object that can have elements of different types. The concept is similar to `Matlab` data structure, `Python` dictionary, `Perl` hash, or `C` struct.
+
+A data frame is essentially a list, of which each element is a vector of the same length.  You can still construct a data frame with a list that each element is a matrix (or, even list), of the same length.  You don't want to do that on purpose because that would make a lot of weird errors in the analysis. 
+
+Example:
+```{r}
+data(iris)
+str(iris)
+```
+
+## Writing R function
+
+### Arguments
+
+There are no strict requirements of the types of arguments you put in the
+function.  Arguments can be numerical, factor, character, vector, matrix, data frame, list, or even another function.  
+
+Example 1:
+```{r}
+fun1 <- function(x) {
+  y <- 2 * x + 1
+  return(y)
+}
+out <- fun1(1)
+out
+
+out <- fun1(c(1:20))
+out
+```
+
+Example 2:
+```{r}
+fun2 <- function(x) {
+  a <- paste(x, "is easy!", sep = " ")
+  return(a)
+}
+x <- "Writing function"
+fun2(x)
+
+x2 <- c("Writing function", "Using R", "Learning stat")
+fun2(x2)
+```
+
+By assigning the function output to another variable, the result of running the
+function is saved in that variable.  It can be used as a global variable in the
+future, such as the "out" in Example 1.  But when running Example 2, I didn't
+save the function output in any variable, so there is no way to call the results directly in the future. The object `.Last.value` saves the previous output. 
+
+```{r}
+fun2(x2)
+fun2out <- .Last.value
+fun2out
+```
+
+
+### Namespace
+
+You can name the function with whatever name you like. But keep in mind that if
+you happen to give two functions the same name, the first function will be
+overwritten by the second one. If you use a name same as a native R function, R will remember your function by that name, and you will have trouble calling the native R function. 
+
+Example:
+```{r}
+rm(list = ls())
+x <- rnorm(10)
+y <- runif(10)
+lm(y ~ x)
+lm <- function(x, y) {
+	return(sum(x + y))
+}
+lm(x, y)
+```
+
+### Function output
+
+You can output anything you like: vector, matrix, data frame, or lists. Whatever
+you didn't output and is created within the R function will not
+be saved.  That is one of the reasons that we prefer functions most of the time.
+By default, R only output the last variable in the function.
+
+```{r}
+est <- function(x) {
+  mean <- mean(x)
+  var <- var(x)
+}
+
+vector <- seq(0, 100, by = 2)
+out <- est(vector)
+out
+```
+
+It is safer to put a line `return()` at the end of the function. If we need it to output more stuff, such as, both the mean and the variance.  We can
+
+* ouput a vector.
+```{r}
+est <- function(x) {
+  mean <- mean(x)
+  var <- var(x)
+  return(c(mean, var))
+}
+
+vector <- seq(0, 100, by = 2)
+out <- est(vector)
+out
+```
+One pitfall is that user of your function may forget whether the first element is the mean or the variance before long. 
+
+- outpu a data frame, then we can call the output elements with a
+dollar sign.
+```{r}
+est <- function(x) {
+  mean <- mean(x)
+  var <- var(x)
+  return(data.frame(mean.x = mean, var.x = var))
+}
+
+vector <- seq(0, 100, by = 2)
+out <- est(vector)
+out
+
+out$mean.x
+out$var.x
+```
+
+Most of the time, we want to output more complex things, for example we want one function to output vector, matrix, character string at the same time.  We'd better save them to a list. 
+
+* output a list.
+```{r}
+est <- function(x) {
+  mean <- mean(x)
+  var <- var(x)
+  y <- x^2 + 1
+  z <- outer(x, x)
+  out.list <- list(mean.x = mean, var.x = var, Y = y, Z = z)
+  return(out.list)
+}
+
+vector <- seq(0, 100, by = 2)
+out <- est(vector)
+out$Y
+```
+
+
+### Saving function
+
+Save everything in a .R file, and use `source()` function to call it when you
+need it. The `source()` function actually runs that .R file line by line. It is the same as you open the .R file yourself, highlight the code, and run it. 
+```{r eval=FALSE}
+source("example.R")
+```
+
+We can save the function by itself as an R object (.RData file).
+```{r eval=FALSE}
+save(est, file = "example.RData")
+```
+When using it, 
+```{r eval=FALSE}
+attach("example.RData")
+```
+
+```{r}
+est
+```
+
+### Function environments scope
+
+We always run the program in certain environment. In R, there is the most common global environment. 
+
+```{r}
+environment()
+```
+
+Environments are created implicitly by function calls. In this case the environment contains the variables local to the function (including the arguments), and its enclosure is the environment of the currently called function. 
+
+Environments may also be created directly by `new.env()`.  The `parent.env()` function may be used to access the enclosure of an environment.
+
+A simple example
+```{r error=TRUE}
+rm(list = ls()) # clean up workspace
+fun <- function(x) {
+  print(environment())
+  print(paste("x=", x, sep = ""))
+  z <- 3
+  print(paste("z=", z, sep = ""))
+  return(z)
+}
+out.z <- fun(1)
+z
+x
+out.z
+```
+
+Another example. Taking global environment variables when the function can not find it within the function environment.
+```{r error=TRUE}
+rm(list = ls()) # clean up workspace
+
+insidefun <- function(a, b) {
+  print(environment())
+  out <- a + b + z
+  print(paste("out=", out, sep = ""))
+  return(out)
+}
+
+out1 <- insidefun(a = 1, b = 2)
+
+z <- 1
+out1 <- insidefun(a = 1, b = 2)
+
+out1
+```
+This is a bad habit of coding. It's better to define all the variables in the
+function, instead of letting R use whatever it can find.
+
+
+### Function within function
+
+When defined and called inside another function, a function will try to find the missing variable in the upper level environment.
+```{r error=TRUE}
+rm(list = ls()) # clean up workspace
+z
+
+fun2 <- function(x, a, b) {
+  print("In fun2:")
+  print(environment())
+  print(paste("x=", x, sep = ""))
+  z <- 3
+  print(paste("z=", z, sep = ""))
+  
+  insidefun <- function(a, b) {
+    print("In insidefun")
+    print(environment())
+    out <- a + b + z
+    print(paste("out=", out, sep = ""))
+    return(out)	
+  }
+  
+  print("In fun2")
+  print(environment())
+  return(insidefun(a, b))
+}
+
+
+out2 <- fun2(1, 2, 3)
+out2
+```
+
+A bad example. If we separate the two functions in the last example:
+```{r error=TRUE}
+rm(list = ls())
+
+insidefun <- function(a, b) {
+  print(environment())
+  out <- a + b + z
+  print(paste("out=", out, sep = ""))
+  return(out)	
+}
+
+fun3 <- function(x, a, b) {
+  print("In fun2:")
+  print(environment())
+  print(paste("x=", x, sep = ""))
+  z <- 3
+  print(paste("z=", z, sep = ""))
+  
+  print("In fun2")
+  print(environment())
+  return(insidefun(a, b))
+}
+```
+
+Then, when we are calling function "insidefun" within "fun2", "insidefun" is
+searching variables in the global environment instead of the environment within "fun2".
+
+```{r error=TRUE}
+out3 <-  fun3(1, 2, 3)
+out3
+```
+
+It would work if we have variable `z` in our global environment. 
+```{r error=TRUE}
+z <- 1
+out3 <-  fun3(1, 2, 3)
+out3
+```
+
+#### Other tips for writting functions
+
+**Default variables**
+```{r}
+def.fun <- function(x = 1) {
+  print(environment())
+  print(paste("x=", x, sep = ""))
+  z <- 3
+  print(paste("z=", z, sep = ""))
+  return(z)
+}
+
+def.fun()
+```
+
+**Extra variables**
+```{r error=TRUE}
+rm(list = ls())
+
+fun4 <- function(x, ...) {
+  
+  list <- list(...)
+  
+  print("In fun4:")
+  print(environment())
+  print(paste("x=", x, sep = ""))
+  
+  print("In fun4")
+  print(environment())
+  
+  insidefun <- function(a, b, z) {
+    print(environment())
+    out <- a + b + z
+    print(paste("out=", out, sep = ""))
+    return(out)	
+  }
+  
+  return(insidefun(a = list[[1]], b = list[[2]], z = list[[3]]))
+}
+
+out4 <- fun4(x = 1, a = 2, b = 3, z = 1) 
+out4
+```
+
+
+## Debugging
+
+Read the RStudio debugging [tutorial](https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio). 
+
+## Memory management
+
+Function ```object_size()``` in the `pryr` package allows us peek into memory usage. 
+Objects point to the same location and do not increase memory usage.
+```{r}
+require(pryr)
+x <- 1:1e6
+object_size(x)
+
+y <- x
+object_size(y)
+
+object_size(x, y)
+```
+
+Garbage collection automatically releases memory when the object is no longer used.
+```{r}
+mem_change(rm(x))
+```
+There is little memory change, because `y` still points to that object. 
+```{r}
+mem_change(rm(y))
+```
+
+Modification in place
+```{r}
+x <- 1:1e6
+tracemem(x)
+mem_change(x[2] <- 5)
+
+y <- x
+tracemem(y)
+mem_change(y[2] <- 5)
+
+y <- list(x, x, x)
+object_size(y)
+
+y <- c(x, x, x)
+object_size(y)
+```
