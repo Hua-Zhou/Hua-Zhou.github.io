@@ -568,3 +568,9 @@ object_size(y)
 y <- c(x, x, x)
 object_size(y)
 ```
+
+Display system information and clean up.
+```{r}
+sessionInfo()
+rm(list = ls())
+```

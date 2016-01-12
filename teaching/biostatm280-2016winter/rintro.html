@@ -344,12 +344,12 @@ lm(y ~ x)</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##     0.32497      0.04912</code></pre>
+##      0.5171       0.0624</code></pre>
 <pre class="r"><code>lm &lt;- function(x, y) {
     return(sum(x + y))
 }
 lm(x, y)</code></pre>
-<pre><code>## [1] 0.05532118</code></pre>
+<pre><code>## [1] 3.17302</code></pre>
 </div>
 <div id="function-output" class="section level3">
 <h3>Function output</h3>
@@ -453,7 +453,7 @@ fun &lt;- function(x) {
   return(z)
 }
 out.z &lt;- fun(1)</code></pre>
-<pre><code>## &lt;environment: 0x7fe697ccbcd0&gt;
+<pre><code>## &lt;environment: 0x7f8f8bec7fb8&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;</code></pre>
 <pre class="r"><code>z</code></pre>
@@ -473,11 +473,11 @@ insidefun &lt;- function(a, b) {
 }
 
 out1 &lt;- insidefun(a = 1, b = 2)</code></pre>
-<pre><code>## &lt;environment: 0x7fe6979e0d80&gt;</code></pre>
+<pre><code>## &lt;environment: 0x7f8f8bbde7f0&gt;</code></pre>
 <pre><code>## Error in insidefun(a = 1, b = 2): object 'z' not found</code></pre>
 <pre class="r"><code>z &lt;- 1
 out1 &lt;- insidefun(a = 1, b = 2)</code></pre>
-<pre><code>## &lt;environment: 0x7fe697ac4d48&gt;
+<pre><code>## &lt;environment: 0x7f8f8bcc3108&gt;
 ## [1] &quot;out=4&quot;</code></pre>
 <pre class="r"><code>out1</code></pre>
 <pre><code>## [1] 4</code></pre>
@@ -512,13 +512,13 @@ z</code></pre>
 
 out2 &lt;- fun2(1, 2, 3)</code></pre>
 <pre><code>## [1] &quot;In fun2:&quot;
-## &lt;environment: 0x7fe6959ea2a0&gt;
+## &lt;environment: 0x7f8f8ae93980&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;
 ## [1] &quot;In fun2&quot;
-## &lt;environment: 0x7fe6959ea2a0&gt;
+## &lt;environment: 0x7f8f8ae93980&gt;
 ## [1] &quot;In insidefun&quot;
-## &lt;environment: 0x7fe6959e1640&gt;
+## &lt;environment: 0x7f8f8ae6c4e8&gt;
 ## [1] &quot;out=8&quot;</code></pre>
 <pre class="r"><code>out2</code></pre>
 <pre><code>## [1] 8</code></pre>
@@ -546,12 +546,12 @@ fun3 &lt;- function(x, a, b) {
 <p>Then, when we are calling function “insidefun” within “fun2”, “insidefun” is searching variables in the global environment instead of the environment within “fun2”.</p>
 <pre class="r"><code>out3 &lt;-  fun3(1, 2, 3)</code></pre>
 <pre><code>## [1] &quot;In fun2:&quot;
-## &lt;environment: 0x7fe694309520&gt;
+## &lt;environment: 0x7f8f8a4e0e30&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;
 ## [1] &quot;In fun2&quot;
-## &lt;environment: 0x7fe694309520&gt;
-## &lt;environment: 0x7fe6942ff4e8&gt;</code></pre>
+## &lt;environment: 0x7f8f8a4e0e30&gt;
+## &lt;environment: 0x7f8f8a4d5478&gt;</code></pre>
 <pre><code>## Error in insidefun(a, b): object 'z' not found</code></pre>
 <pre class="r"><code>out3</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object 'out3' not found</code></pre>
@@ -559,12 +559,12 @@ fun3 &lt;- function(x, a, b) {
 <pre class="r"><code>z &lt;- 1
 out3 &lt;-  fun3(1, 2, 3)</code></pre>
 <pre><code>## [1] &quot;In fun2:&quot;
-## &lt;environment: 0x7fe69781e1f8&gt;
+## &lt;environment: 0x7f8f8b8f2400&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;
 ## [1] &quot;In fun2&quot;
-## &lt;environment: 0x7fe69781e1f8&gt;
-## &lt;environment: 0x7fe697822fc8&gt;
+## &lt;environment: 0x7f8f8b8f2400&gt;
+## &lt;environment: 0x7f8f8b8f8178&gt;
 ## [1] &quot;out=6&quot;</code></pre>
 <pre class="r"><code>out3</code></pre>
 <pre><code>## [1] 6</code></pre>
@@ -580,7 +580,7 @@ out3 &lt;-  fun3(1, 2, 3)</code></pre>
 }
 
 def.fun()</code></pre>
-<pre><code>## &lt;environment: 0x7fe697afc310&gt;
+<pre><code>## &lt;environment: 0x7f8f8bce4438&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;</code></pre>
 <pre><code>## [1] 3</code></pre>
@@ -610,11 +610,11 @@ fun4 &lt;- function(x, ...) {
 
 out4 &lt;- fun4(x = 1, a = 2, b = 3, z = 1) </code></pre>
 <pre><code>## [1] &quot;In fun4:&quot;
-## &lt;environment: 0x7fe694bd7bc8&gt;
+## &lt;environment: 0x7f8f8aa342e8&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;In fun4&quot;
-## &lt;environment: 0x7fe694bd7bc8&gt;
-## &lt;environment: 0x7fe694bcf400&gt;
+## &lt;environment: 0x7f8f8aa342e8&gt;
+## &lt;environment: 0x7f8f8add5660&gt;
 ## [1] &quot;out=6&quot;</code></pre>
 <pre class="r"><code>out4</code></pre>
 <pre><code>## [1] 6</code></pre>
@@ -647,16 +647,16 @@ object_size(y)</code></pre>
 <p>Modification in place</p>
 <pre class="r"><code>x &lt;- 1:1e6
 tracemem(x)</code></pre>
-<pre><code>## [1] &quot;&lt;0x10c626000&gt;&quot;</code></pre>
+<pre><code>## [1] &quot;&lt;0x1081a5000&gt;&quot;</code></pre>
 <pre class="r"><code>mem_change(x[2] &lt;- 5)</code></pre>
-<pre><code>## tracemem[0x10c626000 -&gt; 0x10c9f7000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; 
-## tracemem[0x10c9f7000 -&gt; 0x10bd6e000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
+<pre><code>## tracemem[0x1081a5000 -&gt; 0x108576000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; 
+## tracemem[0x108576000 -&gt; 0x1078ed000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
 <pre><code>## 4 MB</code></pre>
 <pre class="r"><code>y &lt;- x
 tracemem(y)</code></pre>
-<pre><code>## [1] &quot;&lt;0x10bd6e000&gt;&quot;</code></pre>
+<pre><code>## [1] &quot;&lt;0x1078ed000&gt;&quot;</code></pre>
 <pre class="r"><code>mem_change(y[2] &lt;- 5)</code></pre>
-<pre><code>## tracemem[0x10bd6e000 -&gt; 0x10cdc8000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
+<pre><code>## tracemem[0x1078ed000 -&gt; 0x108947000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
 <pre><code>## 8 MB</code></pre>
 <pre class="r"><code>y &lt;- list(x, x, x)
 object_size(y)</code></pre>
@@ -664,6 +664,26 @@ object_size(y)</code></pre>
 <pre class="r"><code>y &lt;- c(x, x, x)
 object_size(y)</code></pre>
 <pre><code>## 24 MB</code></pre>
+<p>Display system information and clean up.</p>
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>## R version 3.2.3 (2015-12-10)
+## Platform: x86_64-apple-darwin13.4.0 (64-bit)
+## Running under: OS X 10.11.2 (El Capitan)
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] pryr_0.1.2
+## 
+## loaded via a namespace (and not attached):
+##  [1] formatR_1.2.1    tools_3.2.3      htmltools_0.2.6  yaml_2.1.13     
+##  [5] Rcpp_0.12.1      codetools_0.2-14 rmarkdown_0.9.2  knitr_1.11      
+##  [9] stringr_0.6.2    digest_0.6.8     evaluate_0.8</code></pre>
+<pre class="r"><code>rm(list = ls())</code></pre>
 </div>
 </div>
 
