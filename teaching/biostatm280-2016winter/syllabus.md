@@ -22,11 +22,11 @@ Tue/Thu 1pm-2:50pm @ CHS 51-279
 
 ### Teaching Assistant
 
-TBA <???@ucla.edu>
+Max Tolkoff <mtolkoff@ucla.edu>
 
 ### TA Office Hours
 
-TBA  
+Mon 11am-12pm, Wed 2pm-3pm @ the common area of the 6th floor of Gonda  
 
 ### Course Topics
 
