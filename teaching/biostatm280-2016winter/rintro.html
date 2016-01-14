@@ -138,7 +138,16 @@ img {
 <li>Web application: Shiny</li>
 </ul>
 <p>Read this <a href="http://knightlab.northwestern.edu/2014/01/20/behind-the-dialect-map-interactive-how-an-intern-created-the-new-york-times-most-popular-piece-of-content-in-2013/">post</a> about how Josh Katz (a statistics graduate student at NCSU) created <a href="http://www.nytimes.com/interactive/2013/12/20/sunday-review/dialect-quiz-map.html">The New York Times’ most popular piece of content in 2013</a>, using RStudio/Shiny.</p>
-<p>Useful shortcuts when writing R script:<br />* <code>Ctrl+Space</code> or <code>Tab</code>, give you more information of the function.<br />* <code>Tab</code> can also give you the details of the argument.<br />* <code>Ctrl+Shift+c</code> comment out one line or a block of highlighted code.<br />* <code>Ctrl+Shift+c</code> remove the “#” on a block of commented code.<br />* While executing code, environment tab shows the objects in your current environment.<br />* Executing the code: <code>Ctrl+R</code> or <code>Ctrl+Enter</code> or Source (useful for editing function: Source on save).<br />* Debugging mode.</p>
+<p>Useful shortcuts when writing R script:</p>
+<ul>
+<li><code>Ctrl+Space</code> or <code>Tab</code>, give you more information of the function.<br /></li>
+<li><code>Tab</code> can also give you the details of the argument.<br /></li>
+<li><code>Ctrl+Shift+c</code> comment out one line or a block of highlighted code.<br /></li>
+<li><code>Ctrl+Shift+c</code> remove the “#” on a block of commented code.<br /></li>
+<li>While executing code, environment tab shows the objects in your current environment.<br /></li>
+<li>Executing the code: <code>Ctrl+R</code> or <code>Ctrl+Enter</code> or Source (useful for editing function: Source on save).<br /></li>
+<li>Debugging mode.</li>
+</ul>
 </div>
 <div id="r-markdown" class="section level1">
 <h1>R Markdown</h1>
@@ -169,37 +178,49 @@ img {
 <li>Creating vector</li>
 </ul>
 <pre class="r"><code>a &lt;- 1:3
-str(a)</code></pre>
+a</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>str(a)</code></pre>
 <pre><code>##  int [1:3] 1 2 3</code></pre>
 <pre class="r"><code>b &lt;- c(1:3)
-str(b)</code></pre>
+b</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>str(b)</code></pre>
 <pre><code>##  int [1:3] 1 2 3</code></pre>
 <pre class="r"><code>c &lt;- c(1, 2, 3)
-str(c)</code></pre>
+c</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>str(c)</code></pre>
 <pre><code>##  num [1:3] 1 2 3</code></pre>
 <pre class="r"><code>d &lt;- seq(1, 3, by = 1)
-str(d)</code></pre>
+d</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>str(d)</code></pre>
 <pre><code>##  num [1:3] 1 2 3</code></pre>
-<pre class="r"><code>e &lt;- seq(1, 3, length = 3)</code></pre>
+<pre class="r"><code>e &lt;- seq(1, 3, length = 3)
+e</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>str(e)</code></pre>
+<pre><code>##  num [1:3] 1 2 3</code></pre>
 <ul>
 <li>Recycling: when operating on two vectors, R requires them to be of the same length. If not, R would recycle the elements of the shorter one to match the length of the long one.</li>
 </ul>
 <pre class="r"><code>a &lt;- 1:3
-b &lt;- 1:5
-c &lt;- 1:6
+b &lt;- 1:6
+c &lt;- 1:5
 a + b</code></pre>
-<pre><code>## Warning in a + b: longer object length is not a multiple of shorter object
+<pre><code>## [1] 2 4 6 5 7 9</code></pre>
+<pre class="r"><code>a + c</code></pre>
+<pre><code>## Warning in a + c: longer object length is not a multiple of shorter object
 ## length</code></pre>
 <pre><code>## [1] 2 4 6 5 7</code></pre>
-<pre class="r"><code>a + c</code></pre>
-<pre><code>## [1] 2 4 6 5 7 9</code></pre>
 <ul>
 <li>Filter/subset</li>
 </ul>
 <pre class="r"><code>b[c(1, 2)]</code></pre>
 <pre><code>## [1] 1 2</code></pre>
 <pre class="r"><code>b[b &gt; 1]</code></pre>
-<pre><code>## [1] 2 3 4 5</code></pre>
+<pre><code>## [1] 2 3 4 5 6</code></pre>
 <ul>
 <li>Vectorization</li>
 </ul>
@@ -249,7 +270,7 @@ mix</code></pre>
 <p>Technically, matrices are vectors with some attributes, i.e., the number of columns and the number of rows. The internal storage of a matrix is in column-major order, meaning that first all of column 1 is stored, and then all of column 2, and so on.</p>
 <pre class="r"><code>x &lt;- matrix(1:10, nrow = 2, ncol = 5)
 y &lt;- matrix(nrow = 3, ncol = 3) ## create NA matrix</code></pre>
-<p>Matrix operation, dimensions match!</p>
+<p>Matrix operation, dimensions have to match!</p>
 <pre class="r"><code>y &lt;- matrix(1, nrow = 2, ncol = 5)
 x * y</code></pre>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
@@ -310,6 +331,8 @@ out</code></pre>
 <pre class="r"><code>out &lt;- fun1(c(1:20))
 out</code></pre>
 <pre><code>##  [1]  3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41</code></pre>
+<pre class="r"><code>str(out)</code></pre>
+<pre><code>##  num [1:20] 3 5 7 9 11 13 15 17 19 21 ...</code></pre>
 <p>Example 2:</p>
 <pre class="r"><code>fun2 &lt;- function(x) {
   a &lt;- paste(x, &quot;is easy!&quot;, sep = &quot; &quot;)
@@ -344,12 +367,12 @@ lm(y ~ x)</code></pre>
 ## 
 ## Coefficients:
 ## (Intercept)            x  
-##      0.5171       0.0624</code></pre>
+##     0.48008      0.01192</code></pre>
 <pre class="r"><code>lm &lt;- function(x, y) {
     return(sum(x + y))
 }
 lm(x, y)</code></pre>
-<pre><code>## [1] 3.17302</code></pre>
+<pre><code>## [1] 3.418277</code></pre>
 </div>
 <div id="function-output" class="section level3">
 <h3>Function output</h3>
@@ -453,7 +476,7 @@ fun &lt;- function(x) {
   return(z)
 }
 out.z &lt;- fun(1)</code></pre>
-<pre><code>## &lt;environment: 0x7f8f8bec7fb8&gt;
+<pre><code>## &lt;environment: 0x7fa656022628&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;</code></pre>
 <pre class="r"><code>z</code></pre>
@@ -473,11 +496,11 @@ insidefun &lt;- function(a, b) {
 }
 
 out1 &lt;- insidefun(a = 1, b = 2)</code></pre>
-<pre><code>## &lt;environment: 0x7f8f8bbde7f0&gt;</code></pre>
+<pre><code>## &lt;environment: 0x7fa652dbd2a8&gt;</code></pre>
 <pre><code>## Error in insidefun(a = 1, b = 2): object 'z' not found</code></pre>
 <pre class="r"><code>z &lt;- 1
 out1 &lt;- insidefun(a = 1, b = 2)</code></pre>
-<pre><code>## &lt;environment: 0x7f8f8bcc3108&gt;
+<pre><code>## &lt;environment: 0x7fa656012d80&gt;
 ## [1] &quot;out=4&quot;</code></pre>
 <pre class="r"><code>out1</code></pre>
 <pre><code>## [1] 4</code></pre>
@@ -512,13 +535,13 @@ z</code></pre>
 
 out2 &lt;- fun2(1, 2, 3)</code></pre>
 <pre><code>## [1] &quot;In fun2:&quot;
-## &lt;environment: 0x7f8f8ae93980&gt;
+## &lt;environment: 0x7fa65374af40&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;
 ## [1] &quot;In fun2&quot;
-## &lt;environment: 0x7f8f8ae93980&gt;
+## &lt;environment: 0x7fa65374af40&gt;
 ## [1] &quot;In insidefun&quot;
-## &lt;environment: 0x7f8f8ae6c4e8&gt;
+## &lt;environment: 0x7fa6570a6788&gt;
 ## [1] &quot;out=8&quot;</code></pre>
 <pre class="r"><code>out2</code></pre>
 <pre><code>## [1] 8</code></pre>
@@ -546,12 +569,12 @@ fun3 &lt;- function(x, a, b) {
 <p>Then, when we are calling function “insidefun” within “fun2”, “insidefun” is searching variables in the global environment instead of the environment within “fun2”.</p>
 <pre class="r"><code>out3 &lt;-  fun3(1, 2, 3)</code></pre>
 <pre><code>## [1] &quot;In fun2:&quot;
-## &lt;environment: 0x7f8f8a4e0e30&gt;
+## &lt;environment: 0x7fa6555a50a8&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;
 ## [1] &quot;In fun2&quot;
-## &lt;environment: 0x7f8f8a4e0e30&gt;
-## &lt;environment: 0x7f8f8a4d5478&gt;</code></pre>
+## &lt;environment: 0x7fa6555a50a8&gt;
+## &lt;environment: 0x7fa657001078&gt;</code></pre>
 <pre><code>## Error in insidefun(a, b): object 'z' not found</code></pre>
 <pre class="r"><code>out3</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object 'out3' not found</code></pre>
@@ -559,12 +582,12 @@ fun3 &lt;- function(x, a, b) {
 <pre class="r"><code>z &lt;- 1
 out3 &lt;-  fun3(1, 2, 3)</code></pre>
 <pre><code>## [1] &quot;In fun2:&quot;
-## &lt;environment: 0x7f8f8b8f2400&gt;
+## &lt;environment: 0x7fa6534b8910&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;
 ## [1] &quot;In fun2&quot;
-## &lt;environment: 0x7f8f8b8f2400&gt;
-## &lt;environment: 0x7f8f8b8f8178&gt;
+## &lt;environment: 0x7fa6534b8910&gt;
+## &lt;environment: 0x7fa6534b32d0&gt;
 ## [1] &quot;out=6&quot;</code></pre>
 <pre class="r"><code>out3</code></pre>
 <pre><code>## [1] 6</code></pre>
@@ -580,7 +603,7 @@ out3 &lt;-  fun3(1, 2, 3)</code></pre>
 }
 
 def.fun()</code></pre>
-<pre><code>## &lt;environment: 0x7f8f8bce4438&gt;
+<pre><code>## &lt;environment: 0x7fa652aa9cb0&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;z=3&quot;</code></pre>
 <pre><code>## [1] 3</code></pre>
@@ -610,11 +633,11 @@ fun4 &lt;- function(x, ...) {
 
 out4 &lt;- fun4(x = 1, a = 2, b = 3, z = 1) </code></pre>
 <pre><code>## [1] &quot;In fun4:&quot;
-## &lt;environment: 0x7f8f8aa342e8&gt;
+## &lt;environment: 0x7fa6536bebb8&gt;
 ## [1] &quot;x=1&quot;
 ## [1] &quot;In fun4&quot;
-## &lt;environment: 0x7f8f8aa342e8&gt;
-## &lt;environment: 0x7f8f8add5660&gt;
+## &lt;environment: 0x7fa6536bebb8&gt;
+## &lt;environment: 0x7fa65705ab78&gt;
 ## [1] &quot;out=6&quot;</code></pre>
 <pre class="r"><code>out4</code></pre>
 <pre><code>## [1] 6</code></pre>
@@ -647,16 +670,16 @@ object_size(y)</code></pre>
 <p>Modification in place</p>
 <pre class="r"><code>x &lt;- 1:1e6
 tracemem(x)</code></pre>
-<pre><code>## [1] &quot;&lt;0x1081a5000&gt;&quot;</code></pre>
+<pre><code>## [1] &quot;&lt;0x1147e9000&gt;&quot;</code></pre>
 <pre class="r"><code>mem_change(x[2] &lt;- 5)</code></pre>
-<pre><code>## tracemem[0x1081a5000 -&gt; 0x108576000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; 
-## tracemem[0x108576000 -&gt; 0x1078ed000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
+<pre><code>## tracemem[0x1147e9000 -&gt; 0x114bba000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt; 
+## tracemem[0x114bba000 -&gt; 0x113f0e000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
 <pre><code>## 4 MB</code></pre>
 <pre class="r"><code>y &lt;- x
 tracemem(y)</code></pre>
-<pre><code>## [1] &quot;&lt;0x1078ed000&gt;&quot;</code></pre>
+<pre><code>## [1] &quot;&lt;0x113f0e000&gt;&quot;</code></pre>
 <pre class="r"><code>mem_change(y[2] &lt;- 5)</code></pre>
-<pre><code>## tracemem[0x1078ed000 -&gt; 0x108947000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
+<pre><code>## tracemem[0x113f0e000 -&gt; 0x114f8b000]: eval eval mem_change eval eval withVisible withCallingHandlers handle evaluate_call &lt;Anonymous&gt; in_dir block_exec call_block process_group.block process_group withCallingHandlers process_file &lt;Anonymous&gt; &lt;Anonymous&gt;</code></pre>
 <pre><code>## 8 MB</code></pre>
 <pre class="r"><code>y &lt;- list(x, x, x)
 object_size(y)</code></pre>
