@@ -7,7 +7,7 @@ title: BIOSTAT M280
 
 BIOSTAT M280 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](./BiostatM280-2016-Winter-LecNotes.pdf) (last updated Jan 13, 2016)  
+[Cumulative lecture notes](./BiostatM280-2016-Winter-LecNotes.pdf) (last updated Jan 15, 2016)  
 [Pre-lecture notes](./BiostatM280-2016-Winter-Pre-LecNotes.pdf) (last updated Jan 13, 2016)
 
 
