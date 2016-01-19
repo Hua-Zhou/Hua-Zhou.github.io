@@ -196,7 +196,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This example shows the effect of the looping order on computational efficiency.</p>
-<p>This is a <code>Julia</code> function for matrix multiplication by simple looping.</p>
+<p>This is a <code>Julia</code> function that overwrites $C$ matrix by $C + AB$.</p>
 
 </div>
 </div>
@@ -212,9 +212,6 @@ div#notebook {
     <span class="n">m</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-    <span class="c"># make sure C has entries 0</span>
-    <span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
     
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s">&quot;jki&quot;</span>
         <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
@@ -342,7 +339,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;jki&quot;</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;jki&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -357,7 +355,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2.161883603</pre>
+<pre>2.300684775</pre>
 </div>
 
 </div>
@@ -371,7 +369,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;kji&quot;</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;kji&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -386,7 +385,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2.180031129</pre>
+<pre>2.2071166</pre>
 </div>
 
 </div>
@@ -400,7 +399,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;ikj&quot;</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;ikj&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -415,7 +415,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>15.215429012</pre>
+<pre>15.338630057</pre>
 </div>
 
 </div>
@@ -429,7 +429,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;kij&quot;</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;kij&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -444,7 +445,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>14.882370612</pre>
+<pre>15.16295946</pre>
 </div>
 
 </div>
@@ -458,7 +459,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;ijk&quot;</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;ijk&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -473,7 +475,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>6.601579471</pre>
+<pre>6.901434749</pre>
 </div>
 
 </div>
@@ -487,7 +489,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;jik&quot;</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;jik&quot;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -502,7 +505,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>7.274852647</pre>
+<pre>7.334345596</pre>
 </div>
 
 </div>
@@ -541,7 +544,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.347075744</pre>
+<pre>0.397157616</pre>
 </div>
 
 </div>
