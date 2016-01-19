@@ -1,5 +1,5 @@
 ---
-title: "Biomath M280: Introduction to R"
+title: "Biostat M280: Introduction to R"
 author: "modified from Dr. Yiwen Zhang's lecture by Dr. Hua Zhou"
 date: "Jan 11, 2016"
 output: 
