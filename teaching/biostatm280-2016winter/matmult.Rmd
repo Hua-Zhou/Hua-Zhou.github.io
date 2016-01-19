@@ -1,0 +1,59 @@
+---
+title: 'Biostat M280: An Example of Matrix Computation'
+author: "Dr. Hua Zhou"
+date: "January 19, 2016"
+output: html_document
+---
+
+This example illustrates some common pitfalls of matrix computation using R. 
+
+First let's create a linear regression matrix $X$ and a weight vector $w$.
+```{r}
+# clean up workspace
+rm(list = ls())
+n <- 2000
+p <- 500
+# slr design matrix X
+X <- cbind(rep(1, n), matrix(rnorm(n * p), n, p))
+# weight vector w
+w <- sqrt(1:n)          # just so they're different
+# weight matrix
+W <- diag(w)
+```
+
+Now let's compute the matrix $X^T W^{-1} X$ in four ways.  
+
+1. Correct, but slow. $W$ takes lots of space.
+```{r}
+W <- diag(w)
+system.time(xwx1 <- t(X) %*% solve(W) %*% X)
+xwx1[1:3, 1:3]
+```
+
+2. Correct, less slow, still takes lots of space.
+```{r}
+system.time(xwx2 <- t(X) %*% diag(1 / w) %*% X)
+xwx2[1:3, 1:3]
+```
+
+3. Wrong, but faster. Recycles $w$ wrong.
+```{r}
+system.time(xwx3 <- (t(X) / w) %*% X)
+xwx3[1:3, 1:3]
+```
+
+4. Correct, but looks wrong.
+```{r}
+system.time(xwx4 <- t(X) %*% (X / w))
+xwx4[1:3, 1:3]
+```
+Looks different but same execution.
+```{r}
+system.time(crossprod(X, X / w))
+```
+
+Display system information and clean up.
+```{r}
+sessionInfo()
+rm(list = ls())
+```
