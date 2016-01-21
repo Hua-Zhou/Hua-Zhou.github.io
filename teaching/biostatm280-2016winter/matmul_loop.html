@@ -210,8 +210,8 @@ div#notebook {
     <span class="n">C</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">},</span> <span class="n">order</span><span class="p">::</span><span class="n">ASCIIString</span><span class="p">)</span>
     
     <span class="n">m</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s">&quot;jki&quot;</span>
         <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
@@ -266,7 +266,6 @@ div#notebook {
     <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s">&quot;jik&quot;</span>
         <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
             <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m</span>
-                <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
                 <span class="k">for</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">p</span>
                     <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
                 <span class="k">end</span>
@@ -313,10 +312,11 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-<span class="n">C</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
+<div class=" highlight hl-julia"><pre><span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>
 </pre></div>
 
 </div>
@@ -330,6 +330,18 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's compute matrix multiplication by different looping order.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$jki$ and $kji$ loop</li>
+</ul>
 
 </div>
 </div>
@@ -355,7 +367,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2.300684775</pre>
+<pre>0.869936677</pre>
 </div>
 
 </div>
@@ -385,7 +397,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2.2071166</pre>
+<pre>0.843544412</pre>
 </div>
 
 </div>
@@ -393,6 +405,18 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$ikj$ and $kij$ loop</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -415,7 +439,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>15.338630057</pre>
+<pre>4.157876637</pre>
 </div>
 
 </div>
@@ -445,7 +469,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>15.16295946</pre>
+<pre>4.50656364</pre>
 </div>
 
 </div>
@@ -453,6 +477,18 @@ div#notebook {
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$ijk$ and $jik$ loop</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -475,7 +511,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>6.901434749</pre>
+<pre>1.165143593</pre>
 </div>
 
 </div>
@@ -505,7 +541,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>7.334345596</pre>
+<pre>1.081677383</pre>
 </div>
 
 </div>
@@ -529,7 +565,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span class="p">@</span><span class="n">elapsed</span> <span class="n">C</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">C</span> <span class="o">+=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
 </pre></div>
 
 </div>
@@ -544,7 +581,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>0.397157616</pre>
+<pre>0.377898466</pre>
 </div>
 
 </div>
@@ -558,7 +595,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Show system information.</p>
+<p>Let's call BLAS directly.</p>
 
 </div>
 </div>
@@ -566,6 +603,99 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">elapsed</span> <span class="n">BLAS</span><span class="o">.</span><span class="n">gemm</span><span class="o">!</span><span class="p">(</span><span class="sc">&#39;N&#39;</span><span class="p">,</span> <span class="sc">&#39;N&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.013247082</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It's surprising calling BLAS directly is faster. What's going on? Let's put both in a loop and and profile using <code>@time</code> macro.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span class="n">gc</span><span class="p">()</span>
+<span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">time</span><span class="p">(</span><span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">;</span> <span class="n">C</span> <span class="o">+=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">;</span> <span class="k">end</span><span class="p">)</span>
+<span class="n">gc</span><span class="p">()</span>
+<span class="n">fill</span><span class="o">!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="p">@</span><span class="n">time</span><span class="p">(</span><span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="p">;</span> <span class="n">BLAS</span><span class="o">.</span><span class="n">gemm</span><span class="o">!</span><span class="p">(</span><span class="sc">&#39;N&#39;</span><span class="p">,</span> <span class="sc">&#39;N&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">C</span><span class="p">);</span> <span class="k">end</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  2.876988 seconds (1000 allocations: 5.960 GB, 20.28% gc time)
+  0.856120 seconds
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now it's clear that calling BLAS directly avoids creating intermediate, temporary matrices and therefore is more efficient.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Show system information.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span class="n">versioninfo</span><span class="p">()</span>
@@ -581,8 +711,8 @@ div#notebook {
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Julia Version 0.4.2
-Commit bb73f34 (2015-12-06 21:47 UTC)
+<pre>Julia Version 0.4.3
+Commit a2f713d (2016-01-12 21:37 UTC)
 Platform Info:
   System: Darwin (x86_64-apple-darwin13.4.0)
   CPU: Intel(R) Core(TM) i7-3720QM CPU @ 2.60GHz
@@ -595,6 +725,19 @@ Platform Info:
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre>
+</pre></div>
+
+</div>
 </div>
 </div>
 
