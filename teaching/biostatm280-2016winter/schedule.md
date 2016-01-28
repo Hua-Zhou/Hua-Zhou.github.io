@@ -28,7 +28,7 @@ Readings:
 | **01/12** computer languages, R introduction \[Benchmark code: [R](http://r.research.att.com/benchmarks/R-benchmark-25.R), [Julia](./benchmark_julia.jl), [Matlab](./benchmark_matlab.m)\], \[Gibbs sampler benchmark: [R](./gibbs_r.html), [Julia](./gibbs_julia.html)\], \[[rintro.html](./rintro.html), [rintro.Rmd](./rintro.Rmd)\], \[[jit.html](./jit.html), [jit.Rmd](./jit.Rmd)\], \[[HW1](./biostat_m280_2016_hw1.pdf), [oringp.dat](./oringp.dat)\] | **01/14** version control with Git |
 | **01/19** numerical linear algebra intro. \[[matmult.html](./matmult.html), [matmult.Rmd](./matmult.Rmd)\] | **01/21** BLAS, Gaussian elimination \[[matmul_loop.html](./matmul_loop.html), [matmul_loop.ipynb](./matmul_loop.ipynb)\], \[[HW2](./biostat_m280_2016_hw2.pdf)\] |
 | **01/26** LU, Cholesky | **01/28** QR, Sweep \[[sweep.html](./sweep.html), [sweep.Rmd](./sweep.Rmd)\] |
-| **02/02** | **02/04** |
+| **02/02** condition, iterative method for linear equation | **02/04** eigen-decomposition, SVD |
 | **02/09** numerical optimization | **02/11** |
 | **02/16** | **02/18** |
 | **02/23** | **02/25** |
