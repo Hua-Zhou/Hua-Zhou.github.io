@@ -1,0 +1,84 @@
+---
+title: "Biostat M280: Condition Number of Longley Data"
+author: "Dr. Hua Zhou"
+date: "Feb 2nd, 2016"
+output: html_document
+---
+
+First let's work on the Longley data in the original scale.
+```{r}
+# clean up workspace
+rm(list = ls())
+
+# read the Longley data
+all <- read.table(
+  "http://hua-zhou.github.io/teaching/biostatm280-2016winter/longley.dat",
+  col.names = c("employed", "GNPdef", "GNP", "unemployed", "armed", 
+                "pop", "year"))
+X <- cbind(1, as.matrix(all[, 2:7]))
+colnames(X)[1] <- "intercept"
+X
+# we see the smallest singular value (aka trouble number) is very small
+X.svd <- svd(X)
+X.svd$d
+# condition number of the design matrix
+X.cond <- max(X.svd$d) / min(X.svd$d)
+X.cond
+# R function for obtaining condition number; exact = FALSE (default)
+# is an approximation
+kappa(X)
+kappa(X, exact = TRUE)
+# fit linear regression
+beta.y <- lm(all[, 1] ~ X - 1)$coefficients
+beta.y
+# fit linear regression with perturbed y
+set.seed(2016)
+ye <- 1.0e3 * rnorm(nrow(all))
+beta.ye <- lm(all[, 1] + ye ~ X - 1)$coefficients
+beta.ye
+# relative error in y
+sqrt(crossprod(ye) / crossprod(all[, 1]))
+# relative error in regression coefficients
+sqrt(crossprod(beta.y - beta.ye) / crossprod(beta.y))
+```
+
+What happens if we center and scale predictors?
+```{r}
+# let's center and scale the predictors except intercept
+Xs <- cbind(1, scale(X[, -1], center = TRUE, scale = TRUE))
+colnames(Xs)[1] <- "intercept"
+Xs
+# condition number is much smaller
+Xs.svd <- svd(Xs)
+Xs.svd$d
+Xs.cond <- max(Xs.svd$d) / min(Xs.svd$d)
+Xs.cond
+# fit linear regression
+beta.ys <- lm(all[, 1] ~ Xs - 1)$coefficients
+beta.ys
+# fit linear regression with perturbed y
+beta.yes <- lm(all[, 1] + ye ~ Xs - 1)$coefficients
+beta.yes
+# relative error in y
+sqrt(crossprod(ye) / crossprod(all[, 1]))
+# relative error in regression coefficients
+sqrt(crossprod(beta.ys - beta.yes) / crossprod(beta.ys))
+```
+
+Some further experiments.
+```{r}
+# form the Grammian matrix
+xtx <- crossprod(X)
+# qr() of the original X shows it has rull column rank
+qr(X)$rank
+# but qr() thinks the Grammian matrix is rank deficient
+qr(xtx)$rank
+# chol() (without symmetric pivoting) considers Grammian matrix as full rank
+# and goes through without error
+chol(xtx)
+# solve() thinks the Grammian matrix is singular
+print(try(solve(xtx), silent = TRUE))
+# clean and close
+sessionInfo()
+rm(list = ls())
+```
