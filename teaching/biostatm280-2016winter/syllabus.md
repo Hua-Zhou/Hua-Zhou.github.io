@@ -31,6 +31,7 @@ Mon 11am-12pm, Wed 2pm-3pm @ the common area of the 6th floor of Gonda
 ### Course Topics
 
 This is a tentative list of topics:  
+
 * Computer arithmetic  
 * Computer languages  
 * Numerical linear algebra  
@@ -52,6 +53,7 @@ The prerequisite for this course is linear algebra (MATH 115A) and linear models
 ### Course Materials
 
 Some useful resources are listed below. None of them is required.  
+
 * Kenneth Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
 [UCLA library link](http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&referer=brief_results)  
 * James Gentle, _Computational Statistics_, Springer (2009)   
