@@ -24,6 +24,6 @@ Office hours: Tue/Thu 11am-12pm, or by appointment
 ### Teaching Assistant
 
 Max Tolkoff <mtolkoff@ucla.edu>  
-Office hours: Mon 11am-12pm, Wed 2pm-3pm @ the common area of the 6th floor of Gonda  
+Office hours: Mon 11am-12pm, Wed 2pm-3pm @ the common area of the 6th floor of Gonda or Gonda 6545 (Max's office)    
 
 
