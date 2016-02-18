@@ -29,8 +29,8 @@ Readings:
 | **01/19** numerical linear algebra intro. \[[matmult.html](./matmult.html), [matmult.Rmd](./matmult.Rmd)\] | **01/21** BLAS, Gaussian elimination \[[matmul_loop.html](./matmul_loop.html), [matmul_loop.ipynb](./matmul_loop.ipynb)\], \[[HW2](./biostat_m280_2016_hw2.pdf)\] |
 | **01/26** LU, Cholesky | **01/28** QR (GS, Householder, Givens)  |
 | **02/02** Sweep \[[sweep.html](./sweep.html), [sweep.Rmd](./sweep.Rmd)\], condition \[[longleycond.html](./longleycond.html), [longleycond.Rmd](./longleycond.Rmd)\], \[[HW3](./biostat_m280_2016_hw3.pdf), [longley.dat](./longley.dat), [ucla.zip](./ucla.zip)\] | **02/04** iterative method for linear equation |
-| **02/09** eigen-decomposition, SVD | **02/11** numerical optimization \[[HW4](./biostat_m280_2016_hw4.pdf), [X.txt](./X.txt), [Y.txt](./Y.txt)\] |
-| **02/16** optimality condition, Newton-Raphson | **02/18** Fisher scoring, GLM, nonlinear regression (Gauss-Newton) |
+| **02/09** eigen-decomposition, SVD | **02/11** numerical optimization, \[[HW4](./biostat_m280_2016_hw4.pdf), [X.txt](./X.txt), [Y.txt](./Y.txt)\] |
+| **02/16** optimality condition, Newton-Raphson | **02/18** Fisher scoring, GLM, nonlinear regression (Gauss-Newton), \[[HW5](./biostat_m280_2016_hw5.pdf), [optdigits.tra](./optdigits.tra), [optdigits.tes](./optdigits.tes)\] |
 | **02/23** EM algorithm | **02/25** MM algorithm |
 | **03/01** convex optimization | **03/03** |
 | **03/08** | **03/10** |
