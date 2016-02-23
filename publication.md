@@ -7,6 +7,9 @@ title: Publication
 
 Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments. 
 
+Y Zhang, **H Zhou**, J Zhou, and W Sun. (2016) Regression models for multivariate count data. [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2016.1154063).  
+Regression model using Dirichlet-multinomial, negative multinomial, and generalized Dirichlet-multinomial distributions.  
+
 N Zhao, J Chen, IM Carroll, T Ringel-Kulka, MP Epstein, **H Zhou**, J Zhou, Y Ringel, HZ Li, and MC Wu. (2015) Testing in microbiome profiling studies with the microbiome regression-based kernel association test (MiRKAT). [_The American Journal of Human Genetics_](http://www.sciencedirect.com/science/article/pii/S0002929715001408#), 96(5):797-807. \[[pdf](./media/pdf/Zhao15MiRKAT.pdf)\]  
 
 W Sun, Y Liu, JJ Crowley, TH Chen, **H Zhou**, H Chu, S Huang, PF Kuan, Y Li, D Miller, G Shaw, Y Wu, V Zhabotynsky, L McMillan, F Zou, PF Sullivan and FPM de Villena. (2015) IsoDOT detects differential RNA-isoform expression/usage with respect to a categorical or continuous covariate with high sensitivity and specificity, [_Journal of American Statistical Association_](http://www.tandfonline.com/doi/abs/10.1080/01621459.2015.1040880), 110:975-986. \[[pdf](./media/pdf/Sun15IsoDOT.pdf)\]  
