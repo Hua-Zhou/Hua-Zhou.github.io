@@ -32,5 +32,5 @@ Readings:
 | **02/09** eigen-decomposition, SVD | **02/11** numerical optimization, \[[HW4](./biostat_m280_2016_hw4.pdf), [X.txt](./X.txt), [Y.txt](./Y.txt)\] |
 | **02/16** optimality condition, Newton-Raphson | **02/18** Fisher scoring, GLM, nonlinear regression (Gauss-Newton), \[[HW5](./biostat_m280_2016_hw5.pdf), [optdigits.tra](./optdigits.tra), [optdigits.tes](./optdigits.tes)\] |
 | **02/23** EM algorithm | **02/25** MM algorithm |
-| **03/01** quasi-Newton, conjugate gradient, Krylov method | **03/03** convex optimization |
+| **03/01** quasi-Newton, conjugate gradient, Krylov method \[[HW6](./biostat_m280_2016_hw6.pdf)\] | **03/03** convex optimization |
 | **03/08** | **03/10** |
