@@ -33,4 +33,4 @@ Readings:
 | **02/16** optimality condition, Newton-Raphson | **02/18** Fisher scoring, GLM, nonlinear regression (Gauss-Newton), \[[HW5](./biostat_m280_2016_hw5.pdf), [optdigits.tra](./optdigits.tra), [optdigits.tes](./optdigits.tes)\] |
 | **02/23** EM algorithm | **02/25** MM algorithm, GPU |
 | **03/01** quasi-Newton, conjugate gradient (CG), pre-conditioned conjugate gradient (PCG) \[[HW6](./biostat_m280_2016_hw6.pdf)\] | **03/03** nonlinear CG, convex optimization: intro. \[[Brian Gaines' slides on cvx](http://brgaines.github.io/talks/cvx/cvxDemo.html)\], LP \[[Compressed Sensing](./cs.html)\] |
-| **03/08** QP, GP, SOCP, SDP | **03/10** |
+| **03/08** QP, GP, SOCP \[[Lasso and square-root lasso](./lasso.html)\], SDP | **03/10** |
