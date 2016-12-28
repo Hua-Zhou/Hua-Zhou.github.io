@@ -5,7 +5,7 @@ title: Publication
 
 ### Publication
 
-Please feel free to email me <hua_zhou@ncsu.edu> if you have any comments. 
+Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
 J Zhou, T Hu, D Qiao, M Cho, and **H Zhou**. (2016) Boosting gene mapping power and efficiency with efficient exact variance component tests of SNP sets, [_Genetics_](http://www.genetics.org/content/204/3/921), 204(3):921-931. \[[pdf](./media/pdf/ZhouHuQiaoChoZhou16Boost.pdf)\]  
 Exact score and likelihood ratio tests for testing SNP sets.  
