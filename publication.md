@@ -68,7 +68,7 @@ A comparison of EM (expectation-maximization) and MM (minorization-maximization)
 M Sehl, **H Zhou**, J Sinsheimer, and K Lange. (2011) Extinction models for cancer stem cell therapy, [_Mathematical Biosciences_][14], 234(2):132-146. \[[pdf](./media/pdf/SehlZhouSinsheimerLange12StemCell.pdf)\]  
 A Markov process model for the stem cells in cancer patients under treatment. A mix of techniques, e.g., extreme value theory, fast Fourier transform, and orthogonal polynomial expansions, are used.
 
-**H Zhou**, D Alexander, and K Lange. (2011) A quasi-Newton acceleration method for high-dimensional optimization algorithms, [_Statistics and Computing_][16], 21(2):261-273. \[[pdf](./media/pdf/ZhouAlexanderLange11QN.pdf)\]  
+**H Zhou**, D Alexander, and K Lange. (2011) A quasi-Newton acceleration for high-dimensional optimization algorithms, [_Statistics and Computing_][16], 21(2):261-273. \[[pdf](./media/pdf/ZhouAlexanderLange11QN.pdf)\]  
 A new quasi-Newton acceleration scheme particularly suitable for EM/MM algorithms on high dimensional problems.
 
 **H Zhou** and K Lange. (2011) A fast procedure for calculating importance weights in bootstrap sampling, [_Computational Statistics & Data Analysis_][18], 55(1):26-33. \[[pdf](./media/pdf/ZhouLange11ImportanceSampling.pdf)\]  
@@ -80,7 +80,7 @@ This companion paper introduces weights to calibrate the penalties and covers mo
 **H Zhou**, M Sehl, J Sinsheimer, and K Lange. (2010) Association screening of common and rare genetic variants by penalized regression, [_Bioinformatics_][22], 26(19):2357-2382. \[[pdf](./media/pdf/ZhouSehlSinsheimerSobelLange10RVLasso.pdf)\]\[[Mendel][6]\]  
 Application of penalized linear and logistic regressions to genome-wide association studies (GWAS). A mixture of lasso and group penalties are used to select causal rare variants present in sequence data.
 
-**H Zhou**, K Lange, and M Suchard. (2010) Graphical processing units and high-dimensional optimization, [_Statistical Science_][24], 25:311-324. \[[pdf](./media/pdf/ZhouSuchardLange10GPU.pdf)\]  
+**H Zhou**, K Lange, and M Suchard. (2010) Graphics processing units and high-dimensional optimization, [_Statistical Science_][24], 25:311-324. \[[pdf](./media/pdf/ZhouSuchardLange10GPU.pdf)\]  
 The marriage of MM principle and modern graphical processing unit (GPU) technology gives a boost to the classical EM/MM type algorithms widely used in statistics.
 
 **H Zhou** and K Lange. (2010) On the bumpy road to the dominant mode, [_Scandinavian Journal of Statistics_][26], 37:612-631. \[[pdf](./media/pdf/ZhouLange10Annealing.pdf)\]  
@@ -89,7 +89,7 @@ We propose several variants of deterministic annealing for finding the dominant 
 **H Zhou** and K Lange. (2010) MM algorithms for some discrete multivariate distributions, [_Journal of Computational and Graphical Statistics_][28], 19(3):656-665. \[[pdf](./media/pdf/ZhouLange10MM.pdf)\]  
 We designed MM algorithms (a generalization of the EM algorithm) for maximum likelihood estimation of some multivariate distributions frequently occurring in applications. Specific examples include Dirichlet-Multinomial, generalized Dirichlet-Multinomial, negative multinomial, a distribution due to Neerchal and Morel, the Ewens and Pitman sampling distributions, and the zero-truncated and zero-inflated version of these distributions.
 
-M Sehl, J Sinsheimer, **H Zhou**, and K Lange. (2009) Differential destruction of stem cells: implications for target cancer stem cell therapy, [_Cancer Research_][30], 69(24):9481-9489. \[[pdf](./media/pdf/SehlSinsheimerZhouLange09Extinction.pdf)\]  
+M Sehl, J Sinsheimer, **H Zhou**, and K Lange. (2009) Differential destruction of stem cells: implications for targeted cancer stem cell therapy, [_Cancer Research_][30], 69(24):9481-9489. \[[pdf](./media/pdf/SehlSinsheimerZhouLange09Extinction.pdf)\]  
 Clinical implications of the cancer extinction model are summarized in this paper.
 
 **H Zhou** and K Lange. (2009) Rating movies and rating the raters who rate them, [_The American Statistician_][32], 63(4):297–307. \[[pdf](./media/pdf/ZhouLange09MovieRating.pdf)\]  
