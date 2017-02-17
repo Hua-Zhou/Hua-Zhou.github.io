@@ -10,7 +10,7 @@ Please feel free to email me <huazhou@ucla.edu> if you have any comments.
 J Zhou, T Hu, D Qiao, M Cho, and **H Zhou**. (2016) Boosting gene mapping power and efficiency with efficient exact variance component tests of SNP sets, [_Genetics_](http://www.genetics.org/content/204/3/921), 204(3):921-931. \[[pdf](./media/pdf/ZhouHuQiaoChoZhou16Boost.pdf)\]  
 Exact score and likelihood ratio tests for testing SNP sets.  
 
-Y Zhang, **H Zhou**, J Zhou, and W Sun. (2016) Regression models for multivariate count data. [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2016.1154063).  
+Y Zhang, **H Zhou**, J Zhou, and W Sun. (2017) Regression models for multivariate count data. [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2016.1154063), 26(1):1-13. \[[pdf](./media/pdf/ZhangZhouZhouSun17mglm.pdf)\]  
 Regression model using Dirichlet-multinomial, negative multinomial, and generalized Dirichlet-multinomial distributions.  
 
 **H Zhou**, J Zhou, T Hu, E Sobel, and K Lange. (2016) Genome-wide QTL and eQTL analyses using Mendel, [_BMC Proceedings_](http://rdcu.be/mHtr), 10(Suppl 7):10. \[[pdf](./media/pdf/Zhou16GAW19.pdf)\]  
