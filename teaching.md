@@ -21,4 +21,4 @@ title: Teaching
 [2013 spring](http://www.stat.ncsu.edu/people/zhou/courses/st810/)
 
 * BIOSTAT M280/BIOMATH M280/STAT 230, Statistical Computing  
-[2016 winter](./teaching/biostatm280-2016winter/)
+[2017 spring](./teaching/biostatm280-2017spring/), 2016 winter
