@@ -5,10 +5,10 @@ title: Software
 
 ### Software
 
-* [MGLM](./softwares/mglm/)  
-Matlab® toolbox and R package for fitting multi-response generalized linear modesl (GLMs).
+* [MGLM](https://hua-zhou.github.io/MGLM/)  
+Matlab® toolbox and R package for fitting multi-response generalized linear modesl (GLMs).  
 
-* [SparseReg](https://github.com/Hua-Zhou/SparseReg)  
+* [SparseReg](http://hua-zhou.github.io/SparseReg/)  
 A Matlab® toolbox for sparse regression.
 
 * [TensorReg](./softwares/tensorreg/)  
