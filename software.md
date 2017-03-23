@@ -11,8 +11,11 @@ Matlab® toolbox and R package for fitting multi-response generalized linear mod
 * [SparseReg](http://hua-zhou.github.io/SparseReg/)  
 A Matlab® toolbox for sparse regression.
 
-* [TensorReg](./softwares/tensorreg/)  
-A Matlab® toolbox for tensor regression.
+* [TensorReg](http://hua-zhou.github.io/TensorReg/)  
+A Matlab® toolbox for tensor regression.  
+
+* [OpenMendel](https://openmendel.github.io)  
+An open source program for statistical genetics analysis, implemented in Julia language.
 
 * [Mendel](http://www.genetics.ucla.edu/software/)  
 I participate in the development of some functionalities of the comprehensive genetic analysis software Mendel: Option 24 (SNP Association GWAS), Option 29 (Pedigree GWAS).
