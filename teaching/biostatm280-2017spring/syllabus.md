@@ -14,16 +14,16 @@ Email: <huazhou@ucla.edu>
 
 ### Office Hours
 
-TBA
+Mon 10am-11am, Wed 11am-12pm
 
 ### Lectures  
 
 Mon 12pm-1:50pm @ CHS 61-262    
-Wed 11am-11:50am @ CHS 61-235 
+Wed 1pm-1:50pm @ CHS 71-257 
 
 ### Teaching Assistant
 
-TBA <???@ucla.edu>
+Juhyun Kim <juhkim111@ucla.edu>
 
 ### TA Office Hours
 
@@ -35,16 +35,15 @@ This is a tentative list of topics:
 
 * Computer arithmetic  
 * Computer languages  
+* Basics of Julia programming  
+* Reproducible research
 * Numerical linear algebra  
 * Numerical optimization  
-* Convex optimization
-* Basics of R/Julia programming  
-* Reproducible research  
-* Collaborative research    
+* Convex optimization  
 
 ### Prerequisite
 
-The prerequisite for this course is linear algebra (MATH 115A) and linear models (STAT 100C or BIOSTAT 250A). Those wishing to enroll without these prerequisites will need to obtain consent from the instructor.  Homework will use statitiscal programming language R. A substitute for R is a new technical computing language [Julia](http://julialang.org). Please consult with instructor if you plan to use Julia for homework.   
+The prerequisite for this course is linear algebra (MATH 115A) and linear models (STAT 100C or BIOSTAT 250A). Those wishing to enroll without these prerequisites will need to obtain consent from the instructor.  Homework will use a new technical computing language [Julia](http://julialang.org). Please consult with instructor if you plan to use other languages, such as R or Python, for homework.   
 
 ### Course Webpage
 
@@ -57,13 +56,7 @@ Some useful resources are listed below. None of them is required.
 * Kenneth Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
 [UCLA library link](http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&referer=brief_results)  
 * James Gentle, _Computational Statistics_, Springer (2009)   
-[UCLA library link](http://ucla.worldcat.org/title/computational-statistics/oclc/437345409&referer=brief_results)  
-* Hadley Wickham, _Advanced R_, Chapman & Hall/CRC The R Series (2014)  
-Freely available at [http://adv-r.had.co.nz/](http://adv-r.had.co.nz/)  
-* Christopher Gandrud, _Reproducible Research With R and RStudio_, CRC Press/Taylor & Francis Group (2014)  
-[UCLA library link](http://ucla.worldcat.org/title/reproducible-research-with-r-and-r-studio/oclc/800035632&referer=brief_results), source for reproducing the book is available on [github](https://github.com/christophergandrud/Rep-Res-Book)  
-* Norman Matloff, _The Art of R Programming_, No Starch Press (2011)  
-[UCLA library link](http://ucla.worldcat.org/title/art-of-r-programming-tour-of-statistical-software-design)   
+[UCLA library link](http://ucla.worldcat.org/title/computational-statistics/oclc/437345409&referer=brief_results)     
 
 ### Attendance
 

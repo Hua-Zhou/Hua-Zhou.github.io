@@ -7,12 +7,12 @@ title: Biostat M280
 
 ### Course Description
 
-Computational tools for research in statistics, including numerical linear algebra, optimization and random number generation, using the statistical language R or Julia.  
+Computational tools for research in statistics, including numerical linear algebra, optimization and random number generation, using the programming language Julia.  
 
 ### Time and Location
 
 Mon 12pm-1:50pm @ CHS 61-262    
-Wed 11am-11:50am @ CHS 61-235  
+Wed 1pm-1:50pm @ CHS 71-257  
 
 ### Instructor
 
@@ -20,9 +20,9 @@ Wed 11am-11:50am @ CHS 61-235
 Office: CHS 21-254A  
 Phone: (310)794-7835  
 Email: <huazhou@ucla.edu>  
-Office hours: TBA, or by appointment
+Office hours: Mon 10am-11am, Wed 11am-12pm
 
 ### Teaching Assistant
 
-TBA <???@ucla.edu>  
+Juhyun Kim <juhkim111@ucla.edu>  
 Office hours: TBA  
