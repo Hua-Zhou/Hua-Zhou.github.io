@@ -24,7 +24,7 @@ Readings:
 
 | Week | Monday | Wednesday |
 |:-----------|:-----------|:------------|
-| 1 | **4/3** introduction, course logistics | **4/5** computer storage and arithmetic |
+| 1 | **4/3** introduction, course logistics [\[survey\]](https://www.surveymonkey.com/r/ZLY9R6Y) | **4/5** computer storage and arithmetic |
 | 2 | **4/10** computer languages, introduction to Julia | **4/12** tools for reproducible research (git, Jupyter, Docker, cloud) |
 | 3 | **4/17** numerical linear algebra intro. | **4/19** BLAS, Gaussian elimination |
 | 4 | **4/24** LU, Cholesky | **4/26** QR (GS, Householder, Givens), Sweep operator |

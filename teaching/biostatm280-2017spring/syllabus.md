@@ -43,7 +43,7 @@ This is a tentative list of topics:
 
 ### Prerequisite
 
-The prerequisite for this course is linear algebra (MATH 115A) and linear models (STAT 100C or BIOSTAT 250A). Those wishing to enroll without these prerequisites will need to obtain consent from the instructor.  Homework will use a new technical computing language [Julia](http://julialang.org). Please consult with instructor if you plan to use other languages, such as R or Python, for homework.   
+The prerequisite for this course is linear algebra (MATH 115A) and linear models (STAT 100C or BIOSTAT 250A). Those wishing to enroll without these prerequisites will need to obtain consent from the instructor.  Homework will use the technical computing language [Julia](http://julialang.org).
 
 ### Course Webpage
 
