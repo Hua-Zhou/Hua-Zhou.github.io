@@ -35,8 +35,8 @@ This is a tentative list of topics:
 
 * Computer arithmetic  
 * Computer languages  
-* Basics of Julia programming  
-* Reproducible research
+* Julia programming  
+* Reproducible research (git, Jupyter, Docker, cloud)  
 * Numerical linear algebra  
 * Numerical optimization  
 * Convex optimization  
