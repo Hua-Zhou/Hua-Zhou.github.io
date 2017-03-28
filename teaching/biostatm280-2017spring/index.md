@@ -25,4 +25,4 @@ Office hours: Mon 10am-11am, Wed 11am-12pm
 ### Teaching Assistant
 
 Juhyun Kim <juhkim111@ucla.edu>  
-Office hours: TBA  
+Office hours: Tue/Thu 1p-2p @ TBA  

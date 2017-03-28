@@ -5,29 +5,24 @@ title: BIOSTAT M280
 
 ## Syllabus
 
+### Lectures  
+
+Mon 12pm-1:50pm @ CHS 61-262    
+Wed 1pm-1:50pm @ CHS 71-257 
+
+
 ### Instructor
 
 [Dr. Hua Zhou](http://hua-zhou.github.io/)  
 Office: CHS 21-254A  
 Phone: (310)794-7835  
 Email: <huazhou@ucla.edu>  
-
-### Office Hours
-
-Mon 10am-11am, Wed 11am-12pm
-
-### Lectures  
-
-Mon 12pm-1:50pm @ CHS 61-262    
-Wed 1pm-1:50pm @ CHS 71-257 
+Office hours: Mon 10am-11am, Wed 11am-12pm @ CHS 21-254A
 
 ### Teaching Assistant
 
-Juhyun Kim <juhkim111@ucla.edu>
-
-### TA Office Hours
-
-TBA  
+Juhyun Kim <juhkim111@ucla.edu>  
+Office hours: Tue/Thu 1p-2p @ TBA  
 
 ### Course Topics
 
