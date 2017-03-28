@@ -22,16 +22,15 @@ Readings:
 [_An invitation to reproducible computational research_](http://biostatistics.oxfordjournals.org/content/11/3/385.full) by Donoho (2010)  
 
 
-| Monday | Wednesday |
-|:-----------|:------------|
-| **04/03** introduction, course logistics | **04/05** computer storage and arithmetic |
-| **04/10** computer languages, introduction to Julia | **04/12** tools for reproducible research (git, Jupyter, Docker, cloud) |
-| **04/17** numerical linear algebra intro. | **04/19** BLAS, Gaussian elimination |
-| **04/24** LU, Cholesky | **04/26** QR (GS, Householder, Givens)  |
-| **05/01** Sweep operator | **05/03** iterative methods for linear equation |
-| **05/08** eigen-decomposition, SVD | **05/10** numerical optimization intro. |
-| **05/15** optimality condition, Newton-Raphson | **05/17** Fisher scoring, GLM, nonlinear regression (Gauss-Newton) |
-| **05/22** EM algorithm | **05/24** MM algorithm, GPU |
-| **03/01** quasi-Newton, conjugate gradient (CG), pre-conditioned conjugate gradient (PCG) | **03/03** nonlinear CG, convex optimization: intro. |
-| **05/29** **Memorial Day, no class** | **05/31** LP, QP |  
-| **06/05** SOCP | **06/07** SDP, GP |
+| Week | Monday | Wednesday |
+|:-----------|:-----------|:------------|
+| 1 | **4/3** introduction, course logistics | **4/5** computer storage and arithmetic |
+| 2 | **4/10** computer languages, introduction to Julia | **4/12** tools for reproducible research (git, Jupyter, Docker, cloud) |
+| 3 | **4/17** numerical linear algebra intro. | **4/19** BLAS, Gaussian elimination |
+| 4 | **4/24** LU, Cholesky | **4/26** QR (GS, Householder, Givens), Sweep operator |
+| 5 | **5/1** iterative methods for linear equation | **5/3** eigen-decomposition, SVD |
+| 6 | **5/8** numerical optimization intro., optimality condition | **5/10** Newton-Raphson, Fisher scoring, GLM, nonlinear regression (Gauss-Newton) |
+| 7 | **5/15** EM algorithm, MM algorithm, GPU | **5/17** quasi-Newton, conjugate gradient (CG), pre-conditioned conjugate gradient (PCG), nonlinear CG |
+| 8 | **5/22** convex optimization: intro. | **5/24** LP |
+| 9 | **5/29** **Memorial Day, no class** | **5/31** QP |  
+| 10 | **6/5** SOCP | **6/7** SDP, GP |
