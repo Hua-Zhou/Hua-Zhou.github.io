@@ -22,7 +22,7 @@ Office hours: Mon 10am-11am, Wed 11am-12pm @ CHS 21-254A
 ### Teaching Assistant
 
 Juhyun Kim <juhkim111@ucla.edu>  
-Office hours: Tue/Thu 1p-2p @ TBA  
+Office hours: Tue/Thu 1p-2p @ CHS A1-279  
 
 ### Course Topics
 
