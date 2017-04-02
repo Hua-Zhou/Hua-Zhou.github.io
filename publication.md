@@ -13,6 +13,10 @@ Exact score and likelihood ratio tests for testing SNP sets.
 Y Zhang, **H Zhou**, J Zhou, and W Sun. (2017) Regression models for multivariate count data. [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2016.1154063), 26(1):1-13. \[[pdf](./media/pdf/ZhangZhouZhouSun17mglm.pdf)\]  
 Regression model using Dirichlet-multinomial, negative multinomial, and generalized Dirichlet-multinomial distributions.  
 
+**H Zhou**, J Blangero, T Dyer, K Chan, K Lange, and E Sobel. (2017) Fast genome-wide QTL association mappingon pedigree and population data, [_Genetic Epidemiology_](http://onlinelibrary.wiley.com/doi/10.1002/gepi.21988/abstract), 41(3):174-186. \[[pdf](./media/pdf/ZhouBlangeroThomasChanLangeSobel17PedGWAS.pdf)\]  
+QTL and eQTL analyses of the GAW19 data.  
+
+
 **H Zhou**, J Zhou, T Hu, E Sobel, and K Lange. (2016) Genome-wide QTL and eQTL analyses using Mendel, [_BMC Proceedings_](http://rdcu.be/mHtr), 10(Suppl 7):10. \[[pdf](./media/pdf/Zhou16GAW19.pdf)\]  
 QTL and eQTL analyses of the GAW19 data.  
 
