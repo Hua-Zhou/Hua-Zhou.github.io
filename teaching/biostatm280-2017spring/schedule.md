@@ -7,8 +7,7 @@ title: BIOSTAT M280
 
 BIOSTAT M280 tentative schedule and handouts (expect frequent updates)
 
-[Cumulative lecture notes](./BiostatM280-2017-Spring-LecNotes.pdf) (last updated ???, 2017)  
-[Pre-lecture notes](./BiostatM280-2017-Spring-Pre-LecNotes.pdf) (last updated ???, 2017)
+[Lecture notes](https://github.com/Hua-Zhou/statistical-computing-with-julia) (last updated ???, 2017)  
 
 
 Readings:  
@@ -24,8 +23,8 @@ Readings:
 
 | Week | Monday | Wednesday |
 |:-----------|:-----------|:------------|
-| 1 | **4/3** introduction, course logistics [\[survey\]](https://www.surveymonkey.com/r/ZLY9R6Y) | **4/5** computer storage and arithmetic |
-| 2 | **4/10** computer languages, introduction to Julia | **4/12** tools for reproducible research (git, Jupyter, Docker, cloud) |
+| 1 | **4/3** introduction, course logistics [\[survey\]](https://www.surveymonkey.com/r/ZLY9R6Y) | **4/5** computer languages, Julia programming |
+| 2 | **4/10** tools for reproducible research | **4/12** computer storage and arithmetic |
 | 3 | **4/17** numerical linear algebra intro. | **4/19** BLAS, Gaussian elimination |
 | 4 | **4/24** LU, Cholesky | **4/26** QR (GS, Householder, Givens), Sweep operator |
 | 5 | **5/1** iterative methods for linear equation | **5/3** eigen-decomposition, SVD |
