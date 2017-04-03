@@ -10,7 +10,6 @@ title: BIOSTAT M280
 Mon 12pm-1:50pm @ CHS 61-262    
 Wed 1pm-1:50pm @ CHS 71-257 
 
-
 ### Instructor
 
 [Dr. Hua Zhou](http://hua-zhou.github.io/)  
@@ -21,7 +20,7 @@ Office hours: Mon 10am-11am, Wed 11am-12pm @ CHS 21-254A
 
 ### Teaching Assistant
 
-Juhyun Kim <juhkim111@ucla.edu>  
+Juhyun Kim, <juhkim111@ucla.edu>  
 Office hours: Tue/Thu 1p-2p @ CHS A1-279  
 
 ### Course Topics
@@ -48,10 +47,8 @@ The prerequisite for this course is linear algebra (MATH 115A) and linear models
 
 Some useful resources are listed below. None of them is required.  
 
-* Kenneth Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010)  
-[UCLA library link](http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&referer=brief_results)  
-* James Gentle, _Computational Statistics_, Springer (2009)   
-[UCLA library link](http://ucla.worldcat.org/title/computational-statistics/oclc/437345409&referer=brief_results)     
+* Kenneth Lange, _Numerical Analysis for Statisticians_, 2nd Edition, Springer (2010), [UCLA library link](http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&referer=brief_results)  
+* James Gentle, _Computational Statistics_, Springer (2009), [UCLA library link](http://ucla.worldcat.org/title/computational-statistics/oclc/437345409&referer=brief_results)     
 
 ### Attendance
 
