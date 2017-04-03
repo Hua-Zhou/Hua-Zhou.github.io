@@ -20,7 +20,7 @@ Readings:
 
 | Week | Monday | Wednesday | Homework |
 |:-----------|:-----------|:------------|:------------|
-| 1 | [4/3](http://hua-zhou.github.io/teaching/biostatm280-2017spring/biostatm280spring2017/2017/04/03/first-day.html) introduction and course logistics. [\[Slides\]](./slides/01-intro/intro.html) | **4/5** computer languages, Julia programming |
+| 1 | [4/3](http://hua-zhou.github.io/teaching/biostatm280-2017spring/biostatm280spring2017/2017/04/03/first-day.html) introduction and course logistics. [\[Slides\]](./slides/01-intro/intro.html) | **4/5** computer languages, Julia intro. [\[Slides\]](./slides/02-juliaintro/juliaintro.html) |
 | 2 | **4/10** tools for reproducible research | **4/12** computer storage and arithmetic |
 | 3 | **4/17** numerical linear algebra intro. | **4/19** BLAS, Gaussian elimination |
 | 4 | **4/24** LU, Cholesky | **4/26** QR (GS, Householder, Givens), Sweep operator |

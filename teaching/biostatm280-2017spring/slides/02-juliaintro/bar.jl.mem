@@ -1,0 +1,21 @@
+        - function tally(x)
+        -     s = 0
+        0     for v in x
+    48000         s += v
+        -     end
+        0     s
+        - end
+        - 
+        - # call workload from wrapper to avoid misattribution bug
+        - function wrapper()
+        -     y = rand(1000)
+        -     # force compilation
+        0     println(tally(y))
+        -     # clear allocation counters
+        0     Profile.clear_malloc_data()
+        -     # run compiled workload
+       96     println(tally(y))
+        - end
+        - 
+        - wrapper()
+        - 
