@@ -7,9 +7,6 @@ title: BIOSTAT M280
 
 BIOSTAT M280 tentative schedule and handouts (expect frequent updates)
 
-[Lecture notes](https://github.com/Hua-Zhou/statistical-computing-with-julia) (last updated ???, 2017)  
-
-
 Readings:  
 
 * [_The future of data analysis_](./readings/Tukey61FutureDataAnalysis.pdf) by John Tukey (1961) 
