@@ -21,9 +21,9 @@ Readings:
 [_An invitation to reproducible computational research_](http://biostatistics.oxfordjournals.org/content/11/3/385.full) by Donoho (2010)  
 
 
-| Week | Monday | Wednesday |
-|:-----------|:-----------|:------------|
-| 1 | **4/3** introduction, course logistics [\[survey\]](https://www.surveymonkey.com/r/ZLY9R6Y) | **4/5** computer languages, Julia programming |
+| Week | Monday | Wednesday | Homework |
+|:-----------|:-----------|:------------|:------------|
+| 1 | [**4/3**](http://hua-zhou.github.io/teaching/biostatm280-2017spring/biostatm280spring2017/2017/04/03/first-day.html) introduction, course logistics. Slides: [ipynb](./slides/01-intro/intro.ipynb), [html](./slides/01-intro/intro.html) | **4/5** computer languages, Julia programming |
 | 2 | **4/10** tools for reproducible research | **4/12** computer storage and arithmetic |
 | 3 | **4/17** numerical linear algebra intro. | **4/19** BLAS, Gaussian elimination |
 | 4 | **4/24** LU, Cholesky | **4/26** QR (GS, Householder, Givens), Sweep operator |
