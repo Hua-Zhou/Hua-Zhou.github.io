@@ -11850,13 +11850,13 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Tools-for-reproducible-research">Tools for reproducible research<a class="anchor-link" href="#Tools-for-reproducible-research">&#182;</a></h2><ul>
-<li>Version control: git.  </li>
+<li>Version control: Git.  </li>
 <li>Distributing research, e.g., Julia or R packages: github, bitbucket. </li>
 <li>Dynamic document: IJulia for Julia or RMarkdown for R.  </li>
 <li>Docker container for reproducing a computing environment.  </li>
 <li>Cloud computing tools.</li>
 </ul>
-<p>We are going to practice reproducible research <strong>now</strong>. That is to make your homework reproducible using these tools.</p>
+<p>We are going to practice reproducible research <strong>now</strong>. That is to make your homework reproducible using Git, github.com, and IJulia.</p>
 
 </div>
 </div>
@@ -11866,7 +11866,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Version-control-using-git">Version control using git<a class="anchor-link" href="#Version-control-using-git">&#182;</a></h2><blockquote><p>If it's not in source control, it doesn't exist.</p>
+<h2 id="Version-control-using-Git">Version control using Git<a class="anchor-link" href="#Version-control-using-Git">&#182;</a></h2><blockquote><p>If it's not in source control, it doesn't exist.</p>
 </blockquote>
 <p><img src="./screenshot_versioncontrolcartoon.png" width="700" align="center"/></p>
 
@@ -11900,7 +11900,7 @@ div#notebook {
 <li>Time machine. Keep track of all the changes and revert back easily (reproducible).  </li>
 <li>Storage efficiency.  </li>
 <li>Synchronize files across multiple computers and platforms.  </li>
-<li><a href="github.com">github.com</a> is becoming a <em>de facto</em> central repository for open source development.<br>
+<li><a href="https://github.com">github.com</a> is becoming a <em>de facto</em> central repository for open source development.<br>
 E.g., all packages in Julia are distributed through github.com.  </li>
 <li>Advertise yourself thru github.com.</li>
 </ul>
@@ -11964,12 +11964,13 @@ Git: <strong>distributed</strong> version control system.
 </li>
 <li><p><strong>Git client</strong> on your own machine.</p>
 <ul>
-<li>Linux: shipped with many Linux distributions, e.g., Ubuntu. If not, install using a package manager, e.g., <code>yum install git</code> on CentOS.  </li>
-<li>Mac: install by <code>port install git</code> or other package managers.  </li>
-<li>Windows: GitHub for Windows (GUI), TortoiseGIT (is this good?).  </li>
+<li>Linux: shipped with many Linux distributions, e.g., Ubuntu. If not, install using a package manager, e.g., <code>yum install git</code> on CentOS  </li>
+<li>Mac: install by <code>port install git</code> or other package managers  </li>
+<li>Windows: GitHub for Windows (GUI), TortoiseGIT (is this good?)  </li>
 </ul>
 </li>
 </ul>
+<p>Don't rely on GUI. Learn to use Git on command line.</p>
 
 </div>
 </div>
@@ -12138,7 +12139,7 @@ git push --tags
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Dynamic-document-using-IJulia-and-Jupyter">Dynamic document using IJulia and Jupyter<a class="anchor-link" href="#Dynamic-document-using-IJulia-and-Jupyter">&#182;</a></h2><ul>
+<h2 id="Dynamic-document-using-IJulia-notebook">Dynamic document using IJulia notebook<a class="anchor-link" href="#Dynamic-document-using-IJulia-notebook">&#182;</a></h2><ul>
 <li><p>IPython notebook is a powerful tool for authoring dynamic document, which combines code, formatted text, math, and multimedia in a single document.</p>
 </li>
 <li><p><a href="http://jupyter.org">Jupyter</a> is the current development that emcompasses multiple languages including <strong>Ju</strong>lia, <strong>Pyt</strong>hon, and <strong>R</strong>.</p>
@@ -12147,7 +12148,7 @@ git push --tags
 </li>
 <li><p>In this course, you are required to write your homework reports using IJulia.</p>
 </li>
-<li><p>For each homework, you need to submit your IJulia notebook (<code>hw1.ipynb</code>), html (<code>hw1.html</code>), along with all code and data that are necessary to reproduce the results.</p>
+<li><p>For each homework, you need to submit your IJulia notebook (.e.g, <code>hw1.ipynb</code>), html (e.g., <code>hw1.html</code>), along with all code and data that are necessary to reproduce the results.</p>
 </li>
 <li><p>You can start with the Jupyter notebook for the lectures.</p>
 </li>
