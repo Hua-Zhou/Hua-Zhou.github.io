@@ -1,14 +1,14 @@
         - function tally(x)
         -     s = 0
         0     for v in x
-    48000         s += v
+   480000         s += v
         -     end
         0     s
         - end
         - 
         - # call workload from wrapper to avoid misattribution bug
         - function wrapper()
-        -     y = rand(1000)
+        -     y = rand(10000)
         -     # force compilation
         0     println(tally(y))
         -     # clear allocation counters

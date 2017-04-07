@@ -8,7 +8,7 @@ end
 
 # call workload from wrapper to avoid misattribution bug
 function wrapper()
-    y = rand(1000)
+    y = rand(10000)
     # force compilation
     println(tally(y))
     # clear allocation counters
