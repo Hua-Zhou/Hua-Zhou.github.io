@@ -14,8 +14,7 @@ Y Zhang, **H Zhou**, J Zhou, and W Sun. (2017) Regression models for multivariat
 Regression model using Dirichlet-multinomial, negative multinomial, and generalized Dirichlet-multinomial distributions.  
 
 **H Zhou**, J Blangero, T Dyer, K Chan, K Lange, and E Sobel. (2017) Fast genome-wide QTL association mappingon pedigree and population data, [_Genetic Epidemiology_](http://onlinelibrary.wiley.com/doi/10.1002/gepi.21988/abstract), 41(3):174-186. \[[pdf](./media/pdf/ZhouBlangeroThomasChanLangeSobel17PedGWAS.pdf)\]  
-QTL and eQTL analyses of the GAW19 data.  
-
+Method for [Mendel software](https://www.genetics.ucla.edu/software/mendel) Option 29 (Pedigree GWAS).   
 
 **H Zhou**, J Zhou, T Hu, E Sobel, and K Lange. (2016) Genome-wide QTL and eQTL analyses using Mendel, [_BMC Proceedings_](http://rdcu.be/mHtr), 10(Suppl 7):10. \[[pdf](./media/pdf/Zhou16GAW19.pdf)\]  
 QTL and eQTL analyses of the GAW19 data.  
