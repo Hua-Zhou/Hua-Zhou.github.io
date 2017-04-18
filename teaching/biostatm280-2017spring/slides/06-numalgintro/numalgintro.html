@@ -11761,8 +11761,6 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p>The first major topic of this course is numerical linear algebra.</p>
-</li>
 <li><p>Topics in numerical algebra:</p>
 <ul>
 <li>BLAS  </li>
@@ -11774,15 +11772,21 @@ div#notebook {
 <li>iterative methods  </li>
 </ul>
 </li>
-<li><p>Except for the iterative methods, most of these numerical linear algebra tasks are implemented in the BLAS and LAPACK libraries. Our major <strong>goal</strong> is to</p>
+<li><p>Except for the iterative methods, most of these numerical linear algebra tasks are implemented in the BLAS and LAPACK libraries. They form the <strong>building blocks</strong> of most statistical computing tasks (optimization, MCMC).</p>
+</li>
+<li><p>Our major <strong>goal</strong> (or learning objectives) is to</p>
 <ol>
 <li>know the computational cost (flop count) of each task</li>
 <li>be familiar with the BLAS and LAPACK functions (what they do)  </li>
-<li>do <strong>not</strong> re-invent wheels by implementing these subroutines by yourself  </li>
+<li>do <strong>not</strong> re-invent wheels by implementing these dense linear algebra subroutines by yourself  </li>
+<li>understand the need for iterative methods  </li>
 <li>apply appropriate numerical algebra tools to various statistical problems </li>
 </ol>
 </li>
-<li><p>All high-level languages (R, Matlab, Julia) call BLAS and LAPACK for numerical linear algebra. Julia offers more flexibility by exposing interfaces to many BLAS/LAPACK subroutines directly. See <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#module-Base.LinAlg.BLAS">documentation</a>.</p>
+<li><p>All high-level languages (R, Matlab, Julia) call BLAS and LAPACK for numerical linear algebra.</p>
+<ul>
+<li>Julia offers more flexibility by exposing interfaces to many BLAS/LAPACK subroutines directly. See <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#module-Base.LinAlg.BLAS">documentation</a>.</li>
+</ul>
 </li>
 </ul>
 
@@ -11797,11 +11801,17 @@ div#notebook {
 <h2 id="BLAS">BLAS<a class="anchor-link" href="#BLAS">&#182;</a></h2><ul>
 <li><p>BLAS stands for <em>basic linear algebra subprograms</em>.</p>
 </li>
-<li><p>See <a href="http://www.netlib.org/blas/">netlib</a> for a complete listing of standardized BLAS functions.</p>
+<li><p>See <a href="http://www.netlib.org/blas/">netlib</a> for a complete list of standardized BLAS functions.</p>
 </li>
-<li><p>There are three levels of BLAS functions.</p>
+<li><p>There are many implementations of BLAS.</p>
 <ul>
-<li>Level 1: vector operation</li>
+<li>Matlab uses Intel's <a href="https://software.intel.com/en-us/node/520724">MKL</a> (mathematical kernel libaries)  </li>
+<li>Julia uses <a href="https://github.com/xianyi/OpenBLAS">OpenBLAS</a></li>
+</ul>
+</li>
+<li><p>There are 3 levels of BLAS functions.</p>
+<ul>
+<li>Level 1: vector-vector operation</li>
 <li>Level 2: matrix-vector operation</li>
 <li>Level 3: matrix-matrix operation</li>
 </ul>
@@ -11827,7 +11837,7 @@ div#notebook {
 <tr>
 <td></td>
 <td>$\mathbf{y} \gets \mathbf{y} + \alpha \mathbf{x}$</td>
-<td>saxpy</td>
+<td>axpy</td>
 <td>$\alpha \in \mathbb{R}$, $\mathbf{x}, \mathbf{y} \in \mathbb{R}^n$</td>
 <td>$2n$</td>
 </tr>
@@ -11860,8 +11870,12 @@ div#notebook {
 <li><p>Some operations appear as level-3 but indeed are level-2.</p>
 <ul>
 <li>A common operation in statistics is column scaling or row scaling
-$$ \mathbf{A} = \mathbf{A} \mathbf{D} $$
-$$ \mathbf{A} = \mathbf{D} \mathbf{A} $$
+$$
+\begin{eqnarray*}
+  \mathbf{A} &=& \mathbf{A} \mathbf{D} \quad \text{(column scaling)} \\
+  \mathbf{A} &=& \mathbf{D} \mathbf{A} \quad \text{(row scaling)}
+\end{eqnarray*}
+$$
 where $\mathbf{D}$ is diagonal.  </li>
 <li>These are essentially level-2 operation!</li>
 </ul>
@@ -11873,7 +11887,7 @@ where $\mathbf{D}$ is diagonal.  </li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
@@ -11896,7 +11910,7 @@ where $\mathbf{D}$ is diagonal.  </li>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11904,15 +11918,13 @@ where $\mathbf{D}$ is diagonal.  </li>
   memory estimate:  30.52 MiB
   allocs estimate:  2
   --------------
-  minimum time:     101.338 ms (3.51% GC)
-  median time:      102.322 ms (3.50% GC)
-  mean time:        104.217 ms (4.26% GC)
-  maximum time:     145.673 ms (30.60% GC)
+  minimum time:     101.668 ms (0.28% GC)
+  median time:      103.707 ms (3.39% GC)
+  mean time:        107.455 ms (4.06% GC)
+  maximum time:     138.360 ms (28.93% GC)
   --------------
-  samples:          48
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          47
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -11923,7 +11935,7 @@ where $\mathbf{D}$ is diagonal.  </li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># columnwise scaling</span>
@@ -11938,7 +11950,31 @@ where $\mathbf{D}$ is diagonal.  </li>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-red-intense-fg ansi-bold">WARNING: scale(A::AbstractMatrix,x::AbstractVector) is deprecated, use A * Diagonal(x) instead.</span>
+ in depwarn(::String, ::Symbol) at ./deprecated.jl:64
+ in scale(::Array{Float64,2}, ::Array{Float64,1}) at ./deprecated.jl:50
+ in ##core#278() at /Users/huazhou/.julia/v0.5/BenchmarkTools/src/execution.jl:290
+ in ##sample#279(::BenchmarkTools.Parameters) at /Users/huazhou/.julia/v0.5/BenchmarkTools/src/execution.jl:296
+ in #_run#2(::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#277&#34;)}, ::BenchmarkTools.Parameters) at /Users/huazhou/.julia/v0.5/BenchmarkTools/src/execution.jl:324
+ in (::BenchmarkTools.#kw##_run)(::Array{Any,1}, ::BenchmarkTools.#_run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#277&#34;)}, ::BenchmarkTools.Parameters) at ./&lt;missing&gt;:0
+ in anonymous at ./&lt;missing&gt;:?
+ in #run_result#16(::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#277&#34;)}, ::BenchmarkTools.Parameters) at /Users/huazhou/.julia/v0.5/BenchmarkTools/src/execution.jl:40
+ in (::BenchmarkTools.#kw##run_result)(::Array{Any,1}, ::BenchmarkTools.#run_result, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#277&#34;)}, ::BenchmarkTools.Parameters) at ./&lt;missing&gt;:0
+ in #run#17(::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#277&#34;)}, ::BenchmarkTools.Parameters) at /Users/huazhou/.julia/v0.5/BenchmarkTools/src/execution.jl:43
+ in (::Base.#kw##run)(::Array{Any,1}, ::Base.#run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#277&#34;)}, ::BenchmarkTools.Parameters) at ./&lt;missing&gt;:0
+ in warmup(::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#277&#34;)}) at /Users/huazhou/.julia/v0.5/BenchmarkTools/src/execution.jl:78
+ in include_string(::String, ::String) at ./loading.jl:441
+ in execute_request(::ZMQ.Socket, ::IJulia.Msg) at /Users/huazhou/.julia/v0.5/IJulia/src/execute_request.jl:157
+ in eventloop(::ZMQ.Socket) at /Users/huazhou/.julia/v0.5/IJulia/src/eventloop.jl:8
+ in (::IJulia.##13#19)() at ./task.jl:360
+while loading In[2], in expression starting on line 208
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11946,15 +11982,13 @@ where $\mathbf{D}$ is diagonal.  </li>
   memory estimate:  30.53 MiB
   allocs estimate:  68
   --------------
-  minimum time:     20.959 ms (16.29% GC)
-  median time:      24.166 ms (15.51% GC)
-  mean time:        24.399 ms (16.75% GC)
-  maximum time:     77.463 ms (71.77% GC)
+  minimum time:     9.583 ms (2.73% GC)
+  median time:      11.745 ms (30.23% GC)
+  mean time:        12.113 ms (30.56% GC)
+  maximum time:     58.749 ms (83.53% GC)
   --------------
-  samples:          205
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          412
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -11965,7 +11999,7 @@ where $\mathbf{D}$ is diagonal.  </li>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># another way for columnwise scaling</span>
@@ -11980,7 +12014,7 @@ where $\mathbf{D}$ is diagonal.  </li>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11988,15 +12022,13 @@ where $\mathbf{D}$ is diagonal.  </li>
   memory estimate:  30.52 MiB
   allocs estimate:  3
   --------------
-  minimum time:     19.813 ms (1.37% GC)
-  median time:      23.585 ms (16.13% GC)
-  mean time:        23.873 ms (17.02% GC)
-  maximum time:     71.266 ms (71.53% GC)
+  minimum time:     8.551 ms (2.72% GC)
+  median time:      11.124 ms (31.54% GC)
+  mean time:        11.502 ms (32.04% GC)
+  maximum time:     55.386 ms (85.03% GC)
   --------------
-  samples:          210
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          434
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12020,6 +12052,7 @@ where $\mathbf{D}$ is diagonal.  </li>
 <p><img src="http://images.bit-tech.net/content_images/2007/11/the_secrets_of_pc_memory_part_1/hei.png" width="400" align="center"></p>
 <ul>
 <li>Can we keep CPU cores busy with enough deliveries of matrix data and ship the results to memory fast enough to avoid backlog?<br>
+E.g., Xeon X5650 CPU has a theoretical throughput of 128 DP GFLOPS but a max memory bandwidth of 32GB/s.<br>
 Answer: use <strong>high-level BLAS</strong> as much as possible.</li>
 </ul>
 <table>
@@ -12056,8 +12089,6 @@ Answer: use <strong>high-level BLAS</strong> as much as possible.</li>
 </tbody>
 </table>
 <ul>
-<li><p>BLAS 1 tend to be <strong>memory bandwidth-limited</strong>. E.g., Xeon X5650 CPU has a theoretical throughput of 128 DP GFLOPS but a max memory bandwidth of 32GB/s.</p>
-</li>
 <li><p>Higher level BLAS (3 or 2) make more effective use of arithmetic logic units (ALU) by keeping them busy. <strong>Surface-to-volume</strong> effect.<br>
 See <a href="https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongarra.pdf">Dongarra slides</a>.</p>
 </li>
@@ -12074,7 +12105,7 @@ See <a href="https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongar
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Effect-of-data-layout">Effect of data layout<a class="anchor-link" href="#Effect-of-data-layout">&#182;</a></h2><ul>
-<li><p>Data layout in memory effects execution speed too. It is much faster to move chunks of data in memory than retrieving/writing scattered data.</p>
+<li><p>Data layout in memory affects execution speed too. It is much faster to move chunks of data in memory than retrieving/writing scattered data.</p>
 </li>
 <li><p>Storage mode: <strong>column-major</strong> (Fortran, Matlab, R, Julia) vs <strong>row-major</strong> (C/C++).</p>
 </li>
@@ -12149,11 +12180,10 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">},</span> <span class="n">B</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">},</span> 
-    <span class="n">C</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">},</span> <span class="n">order</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> matmul_by_loop</span><span class="o">!</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">Matrix</span><span class="p">,</span> <span class="n">B</span><span class="p">::</span><span class="n">Matrix</span><span class="p">,</span> <span class="n">C</span><span class="p">::</span><span class="n">Matrix</span><span class="p">,</span> <span class="n">order</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
     
     <span class="n">m</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -12208,20 +12238,6 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING: Method definition matmul_by_loop!(Array{Float64, 2}, Array{Float64, 2}, Array{Float64, 2}, String) in module Main at In[31]:4 overwritten at In[32]:4.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -12237,7 +12253,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">fill!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -12252,7 +12268,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12260,15 +12276,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     429.365 ms (0.00% GC)
-  median time:      464.860 ms (0.00% GC)
-  mean time:        479.010 ms (0.00% GC)
-  maximum time:     576.146 ms (0.00% GC)
+  minimum time:     434.516 ms (0.00% GC)
+  median time:      449.010 ms (0.00% GC)
+  mean time:        451.933 ms (0.00% GC)
+  maximum time:     472.066 ms (0.00% GC)
   --------------
-  samples:          11
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          12
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12279,7 +12293,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">fill!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -12294,7 +12308,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12302,15 +12316,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     492.760 ms (0.00% GC)
-  median time:      573.256 ms (0.00% GC)
-  mean time:        573.022 ms (0.00% GC)
-  maximum time:     707.823 ms (0.00% GC)
+  minimum time:     531.466 ms (0.00% GC)
+  median time:      553.201 ms (0.00% GC)
+  mean time:        553.134 ms (0.00% GC)
+  maximum time:     573.181 ms (0.00% GC)
   --------------
-  samples:          9
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          10
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12333,7 +12345,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">fill!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -12348,7 +12360,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[35]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12356,15 +12368,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     2.444 s (0.00% GC)
-  median time:      2.508 s (0.00% GC)
-  mean time:        2.508 s (0.00% GC)
-  maximum time:     2.573 s (0.00% GC)
+  minimum time:     2.275 s (0.00% GC)
+  median time:      2.275 s (0.00% GC)
+  mean time:        2.292 s (0.00% GC)
+  maximum time:     2.327 s (0.00% GC)
   --------------
-  samples:          2
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          3
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12375,7 +12385,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">fill!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -12390,7 +12400,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[36]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12398,15 +12408,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     2.615 s (0.00% GC)
-  median time:      2.657 s (0.00% GC)
-  mean time:        2.657 s (0.00% GC)
-  maximum time:     2.699 s (0.00% GC)
+  minimum time:     2.421 s (0.00% GC)
+  median time:      2.442 s (0.00% GC)
+  mean time:        2.439 s (0.00% GC)
+  maximum time:     2.454 s (0.00% GC)
   --------------
-  samples:          2
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          3
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12429,7 +12437,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">fill!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -12444,7 +12452,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[37]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12452,15 +12460,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     1.090 s (0.00% GC)
-  median time:      1.333 s (0.00% GC)
-  mean time:        1.257 s (0.00% GC)
-  maximum time:     1.397 s (0.00% GC)
+  minimum time:     1.001 s (0.00% GC)
+  median time:      1.012 s (0.00% GC)
+  mean time:        1.015 s (0.00% GC)
+  maximum time:     1.031 s (0.00% GC)
   --------------
   samples:          5
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12471,7 +12477,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[38]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">fill!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -12486,7 +12492,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[38]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12494,15 +12500,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     1.095 s (0.00% GC)
-  median time:      1.138 s (0.00% GC)
-  mean time:        1.158 s (0.00% GC)
-  maximum time:     1.277 s (0.00% GC)
+  minimum time:     1.003 s (0.00% GC)
+  median time:      1.037 s (0.00% GC)
+  mean time:        1.032 s (0.00% GC)
+  maximum time:     1.054 s (0.00% GC)
   --------------
   samples:          5
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12517,7 +12521,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Julia wrapper of BLAS function.</li>
+<li>Julia wrapper of BLAS function. We see BLAS library wins hands down (multi-threading, Strassen algorithm, higher level-3 fraction).</li>
 </ul>
 
 </div>
@@ -12525,7 +12529,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">fill!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -12540,7 +12544,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[41]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12548,15 +12552,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     4.844 ms (0.00% GC)
-  median time:      6.862 ms (0.00% GC)
-  mean time:        6.759 ms (0.00% GC)
-  maximum time:     11.662 ms (0.00% GC)
+  minimum time:     4.699 ms (0.00% GC)
+  median time:      4.873 ms (0.00% GC)
+  mean time:        5.068 ms (0.00% GC)
+  maximum time:     8.009 ms (0.00% GC)
   --------------
-  samples:          735
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          981
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12570,10 +12572,12 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Avoid-memory-transactions-as-much-as-possible">Avoid memory transactions as much as possible<a class="anchor-link" href="#Avoid-memory-transactions-as-much-as-possible">&#182;</a></h2><ul>
-<li>Transpose or not.  <ul>
+<h2 id="Avoid-memory-allocation-as-much-as-possible">Avoid memory allocation as much as possible<a class="anchor-link" href="#Avoid-memory-allocation-as-much-as-possible">&#182;</a></h2><ul>
+<li>Transposing matrix is an expensive memory operation.  <ul>
+<li>In R, the command <div class="highlight"><pre><span></span><span class="kp">t</span><span class="p">(</span>A<span class="p">)</span> <span class="o">%*%</span> x
+</pre></div>
+will first transpose <code>A</code> then perform matrix multiplication, causing unnecessary memory allocation</li>
 <li>Julia is smart to avoid transposing matrix if possible.</li>
-<li>In R, the command <code>t(A) %*% x</code> will first transpose <code>A</code> then perform matrix multiplication, causing unnecessary memory allocation</li>
 </ul>
 </li>
 </ul>
@@ -12583,7 +12587,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -12603,7 +12607,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[45]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12611,15 +12615,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     88.529 μs (0.00% GC)
-  median time:      130.786 μs (0.00% GC)
-  mean time:        141.644 μs (0.00% GC)
-  maximum time:     895.696 μs (0.00% GC)
+  minimum time:     93.383 μs (0.00% GC)
+  median time:      121.194 μs (0.00% GC)
+  mean time:        129.509 μs (0.00% GC)
+  maximum time:     953.634 μs (0.00% GC)
   --------------
   samples:          10000
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12630,7 +12632,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">At_mul_B</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
@@ -12644,7 +12646,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[44]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12652,15 +12654,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     98.216 μs (0.00% GC)
-  median time:      126.025 μs (0.00% GC)
-  mean time:        133.685 μs (0.00% GC)
-  maximum time:     685.291 μs (0.00% GC)
+  minimum time:     80.815 μs (0.00% GC)
+  median time:      104.486 μs (0.00% GC)
+  mean time:        109.433 μs (0.00% GC)
+  maximum time:     1.139 ms (0.00% GC)
   --------------
   samples:          10000
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12683,14 +12683,13 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[73]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">similar</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># allocate a matrix same size as A</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">B</span> <span class="o">.=</span> <span class="n">log</span><span class="o">.</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="p">(</span><span class="n">asin</span><span class="o">.</span><span class="p">(</span><span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="n">A</span><span class="p">))))</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="c"># two temporary arrays are created</span>
 </pre></div>
 
 </div>
@@ -12701,23 +12700,21 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[73]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  64 bytes
-  allocs estimate:  3
+  memory estimate:  22.89 MiB
+  allocs estimate:  10
   --------------
-  minimum time:     68.499 ms (0.00% GC)
-  median time:      73.783 ms (0.00% GC)
-  mean time:        73.992 ms (0.00% GC)
-  maximum time:     81.308 ms (0.00% GC)
+  minimum time:     15.040 ms (9.59% GC)
+  median time:      15.948 ms (9.82% GC)
+  mean time:        16.269 ms (9.96% GC)
+  maximum time:     20.847 ms (9.62% GC)
   --------------
-  samples:          68
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          307
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12728,10 +12725,10 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[74]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">B</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">asin</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">A</span><span class="p">))))</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="c"># no temporary arrays created</span>
 </pre></div>
 
 </div>
@@ -12742,23 +12739,61 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[74]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  30.52 MiB
-  allocs estimate:  12
+  memory estimate:  7.63 MiB
+  allocs estimate:  37
   --------------
-  minimum time:     47.172 ms (3.69% GC)
-  median time:      52.295 ms (4.82% GC)
-  mean time:        52.757 ms (4.94% GC)
-  maximum time:     62.389 ms (0.99% GC)
+  minimum time:     2.304 ms (0.00% GC)
+  median time:      2.577 ms (0.00% GC)
+  mean time:        3.302 ms (22.47% GC)
+  maximum time:     7.332 ms (45.81% GC)
   --------------
-  samples:          95
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          1509
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">Z</span> <span class="o">.=</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="c"># no memory allocation at all!</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  96 bytes
+  allocs estimate:  3
+  --------------
+  minimum time:     1.547 ms (0.00% GC)
+  median time:      1.630 ms (0.00% GC)
+  mean time:        1.681 ms (0.00% GC)
+  maximum time:     3.743 ms (0.00% GC)
+  --------------
+  samples:          2945
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12781,11 +12816,14 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[72]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># sum entries in a sub-matrix</span>
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">:</span><span class="k">end</span><span class="p">])</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c"># sum entries in a sub-matrix</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12796,23 +12834,21 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[72]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  1.91 MiB
-  allocs estimate:  6
+  memory estimate:  488.47 KiB
+  allocs estimate:  5
   --------------
-  minimum time:     301.451 μs (0.00% GC)
-  median time:      420.798 μs (0.00% GC)
-  mean time:        604.061 μs (21.44% GC)
-  maximum time:     3.389 ms (60.29% GC)
+  minimum time:     60.347 μs (0.00% GC)
+  median time:      217.668 μs (0.00% GC)
+  mean time:        212.971 μs (14.50% GC)
+  maximum time:     2.396 ms (81.25% GC)
   --------------
-  samples:          8112
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  samples:          10000
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -12823,10 +12859,10 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[71]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">sum</span><span class="p">(@</span><span class="n">view</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">:</span><span class="k">end</span><span class="p">])</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">sum</span><span class="p">(@</span><span class="n">view</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -12837,23 +12873,21 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[71]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
   memory estimate:  256 bytes
-  allocs estimate:  8
+  allocs estimate:  7
   --------------
-  minimum time:     266.879 μs (0.00% GC)
-  median time:      267.322 μs (0.00% GC)
-  mean time:        281.743 μs (0.00% GC)
-  maximum time:     886.228 μs (0.00% GC)
+  minimum time:     77.174 μs (0.00% GC)
+  median time:      81.635 μs (0.00% GC)
+  mean time:        85.438 μs (0.00% GC)
+  maximum time:     285.118 μs (0.00% GC)
   --------------
   samples:          10000
-  evals/sample:     1
-  time tolerance:   5.00%
-  memory tolerance: 1.00%</pre>
+  evals/sample:     1</pre>
 </div>
 
 </div>
