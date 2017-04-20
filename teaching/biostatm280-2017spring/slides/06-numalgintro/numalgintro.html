@@ -11751,7 +11751,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Numerical-algebra:-introduction">Numerical algebra: introduction<a class="anchor-link" href="#Numerical-algebra:-introduction">&#182;</a></h2>
+<h2 id="Numerical-linear-algebra:-introduction">Numerical linear algebra: introduction<a class="anchor-link" href="#Numerical-linear-algebra:-introduction">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -11918,12 +11918,12 @@ where $\mathbf{D}$ is diagonal.  </li>
   memory estimate:  30.52 MiB
   allocs estimate:  2
   --------------
-  minimum time:     101.668 ms (0.28% GC)
-  median time:      103.707 ms (3.39% GC)
-  mean time:        107.455 ms (4.06% GC)
-  maximum time:     138.360 ms (28.93% GC)
+  minimum time:     101.964 ms (3.48% GC)
+  median time:      103.480 ms (3.55% GC)
+  mean time:        105.687 ms (4.21% GC)
+  maximum time:     143.148 ms (28.83% GC)
   --------------
-  samples:          47
+  samples:          48
   evals/sample:     1</pre>
 </div>
 
@@ -11982,12 +11982,12 @@ while loading In[2], in expression starting on line 208
   memory estimate:  30.53 MiB
   allocs estimate:  68
   --------------
-  minimum time:     9.583 ms (2.73% GC)
-  median time:      11.745 ms (30.23% GC)
-  mean time:        12.113 ms (30.56% GC)
-  maximum time:     58.749 ms (83.53% GC)
+  minimum time:     8.908 ms (2.80% GC)
+  median time:      11.488 ms (31.38% GC)
+  mean time:        11.722 ms (31.10% GC)
+  maximum time:     57.167 ms (84.93% GC)
   --------------
-  samples:          412
+  samples:          426
   evals/sample:     1</pre>
 </div>
 
@@ -12022,12 +12022,12 @@ while loading In[2], in expression starting on line 208
   memory estimate:  30.52 MiB
   allocs estimate:  3
   --------------
-  minimum time:     8.551 ms (2.72% GC)
-  median time:      11.124 ms (31.54% GC)
-  mean time:        11.502 ms (32.04% GC)
-  maximum time:     55.386 ms (85.03% GC)
+  minimum time:     8.430 ms (2.81% GC)
+  median time:      10.937 ms (31.55% GC)
+  mean time:        11.139 ms (31.97% GC)
+  maximum time:     56.490 ms (85.42% GC)
   --------------
-  samples:          434
+  samples:          448
   evals/sample:     1</pre>
 </div>
 
@@ -12127,18 +12127,18 @@ $$
 Assume the storage is column-major, such as in Julia. There are 6 variants of the algorithms according to the order in the triple loops. We pay attention to the innermost loop, where the vector calculation occurs.</p>
 <ul>
 <li><code>jki</code> or <code>kji</code> looping:<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m</span>
-  <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-<span class="k">end</span>
+      <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+  <span class="k">end</span>
 </pre></div>
 </li>
 <li><code>ikj</code> or <code>kij</code> looping:<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
-  <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-<span class="k">end</span>
+      <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+  <span class="k">end</span>
 </pre></div>
 </li>
 <li><code>ijk</code> or <code>jik</code> looping:<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">p</span>
-  <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
-<span class="k">end</span>
+      <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+  <span class="k">end</span>
 </pre></div>
 The associated <strong>stride</strong> when accessing the three matrices in memory (assuming column-major storage) is  </li>
 </ul>
@@ -12276,10 +12276,10 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     434.516 ms (0.00% GC)
-  median time:      449.010 ms (0.00% GC)
-  mean time:        451.933 ms (0.00% GC)
-  maximum time:     472.066 ms (0.00% GC)
+  minimum time:     429.100 ms (0.00% GC)
+  median time:      442.814 ms (0.00% GC)
+  mean time:        444.246 ms (0.00% GC)
+  maximum time:     459.781 ms (0.00% GC)
   --------------
   samples:          12
   evals/sample:     1</pre>
@@ -12316,10 +12316,10 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     531.466 ms (0.00% GC)
-  median time:      553.201 ms (0.00% GC)
-  mean time:        553.134 ms (0.00% GC)
-  maximum time:     573.181 ms (0.00% GC)
+  minimum time:     522.318 ms (0.00% GC)
+  median time:      548.960 ms (0.00% GC)
+  mean time:        543.765 ms (0.00% GC)
+  maximum time:     556.943 ms (0.00% GC)
   --------------
   samples:          10
   evals/sample:     1</pre>
@@ -12368,12 +12368,12 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     2.275 s (0.00% GC)
-  median time:      2.275 s (0.00% GC)
-  mean time:        2.292 s (0.00% GC)
-  maximum time:     2.327 s (0.00% GC)
+  minimum time:     2.658 s (0.00% GC)
+  median time:      2.769 s (0.00% GC)
+  mean time:        2.769 s (0.00% GC)
+  maximum time:     2.880 s (0.00% GC)
   --------------
-  samples:          3
+  samples:          2
   evals/sample:     1</pre>
 </div>
 
@@ -12408,12 +12408,12 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     2.421 s (0.00% GC)
-  median time:      2.442 s (0.00% GC)
-  mean time:        2.439 s (0.00% GC)
-  maximum time:     2.454 s (0.00% GC)
+  minimum time:     2.431 s (0.00% GC)
+  median time:      2.744 s (0.00% GC)
+  mean time:        2.744 s (0.00% GC)
+  maximum time:     3.056 s (0.00% GC)
   --------------
-  samples:          3
+  samples:          2
   evals/sample:     1</pre>
 </div>
 
@@ -12460,9 +12460,9 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     1.001 s (0.00% GC)
-  median time:      1.012 s (0.00% GC)
-  mean time:        1.015 s (0.00% GC)
+  minimum time:     996.499 ms (0.00% GC)
+  median time:      1.006 s (0.00% GC)
+  mean time:        1.012 s (0.00% GC)
   maximum time:     1.031 s (0.00% GC)
   --------------
   samples:          5
@@ -12500,10 +12500,10 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     1.003 s (0.00% GC)
-  median time:      1.037 s (0.00% GC)
-  mean time:        1.032 s (0.00% GC)
-  maximum time:     1.054 s (0.00% GC)
+  minimum time:     1.004 s (0.00% GC)
+  median time:      1.033 s (0.00% GC)
+  mean time:        1.091 s (0.00% GC)
+  maximum time:     1.248 s (0.00% GC)
   --------------
   samples:          5
   evals/sample:     1</pre>
@@ -12552,12 +12552,12 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     4.699 ms (0.00% GC)
-  median time:      4.873 ms (0.00% GC)
-  mean time:        5.068 ms (0.00% GC)
-  maximum time:     8.009 ms (0.00% GC)
+  minimum time:     4.844 ms (0.00% GC)
+  median time:      5.224 ms (0.00% GC)
+  mean time:        5.436 ms (0.00% GC)
+  maximum time:     10.025 ms (0.00% GC)
   --------------
-  samples:          981
+  samples:          914
   evals/sample:     1</pre>
 </div>
 
@@ -12596,6 +12596,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <span class="n">A</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
+<span class="c"># dispatch to At_mul_B (and then to BLAS)</span>
 <span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">x</span>
 </pre></div>
 
@@ -12615,10 +12616,10 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     93.383 μs (0.00% GC)
-  median time:      121.194 μs (0.00% GC)
-  mean time:        129.509 μs (0.00% GC)
-  maximum time:     953.634 μs (0.00% GC)
+  minimum time:     92.976 μs (0.00% GC)
+  median time:      143.767 μs (0.00% GC)
+  mean time:        229.011 μs (0.00% GC)
+  maximum time:     1.740 ms (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12635,7 +12636,8 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">At_mul_B</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># dispatch to BLAS</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">At_mul_B</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12654,12 +12656,52 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     80.815 μs (0.00% GC)
-  median time:      104.486 μs (0.00% GC)
-  mean time:        109.433 μs (0.00% GC)
-  maximum time:     1.139 ms (0.00% GC)
+  minimum time:     94.267 μs (0.00% GC)
+  median time:      129.143 μs (0.00% GC)
+  mean time:        150.209 μs (0.00% GC)
+  maximum time:     889.597 μs (0.00% GC)
   --------------
   samples:          10000
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># let&#39;s force transpose</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  7.64 MiB
+  allocs estimate:  3
+  --------------
+  minimum time:     2.995 ms (0.00% GC)
+  median time:      3.702 ms (0.00% GC)
+  mean time:        4.038 ms (21.29% GC)
+  maximum time:     9.451 ms (39.54% GC)
+  --------------
+  samples:          1225
   evals/sample:     1</pre>
 </div>
 
@@ -12683,7 +12725,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -12700,7 +12742,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12708,51 +12750,12 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  22.89 MiB
   allocs estimate:  10
   --------------
-  minimum time:     15.040 ms (9.59% GC)
-  median time:      15.948 ms (9.82% GC)
-  mean time:        16.269 ms (9.96% GC)
-  maximum time:     20.847 ms (9.62% GC)
+  minimum time:     16.330 ms (9.89% GC)
+  median time:      19.290 ms (10.55% GC)
+  mean time:        19.408 ms (10.62% GC)
+  maximum time:     30.123 ms (12.41% GC)
   --------------
-  samples:          307
-  evals/sample:     1</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="c"># no temporary arrays created</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  7.63 MiB
-  allocs estimate:  37
-  --------------
-  minimum time:     2.304 ms (0.00% GC)
-  median time:      2.577 ms (0.00% GC)
-  mean time:        3.302 ms (22.47% GC)
-  maximum time:     7.332 ms (45.81% GC)
-  --------------
-  samples:          1509
+  samples:          258
   evals/sample:     1</pre>
 </div>
 
@@ -12767,8 +12770,8 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">Z</span> <span class="o">.=</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="c"># no memory allocation at all!</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># no temporary arrays created</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12784,15 +12787,56 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
+  memory estimate:  7.63 MiB
+  allocs estimate:  37
+  --------------
+  minimum time:     2.766 ms (0.00% GC)
+  median time:      3.613 ms (0.00% GC)
+  mean time:        4.419 ms (22.56% GC)
+  maximum time:     10.487 ms (38.26% GC)
+  --------------
+  samples:          1125
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># no memory allocation at all!</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">Z</span> <span class="o">.=</span> <span class="n">max</span><span class="o">.</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
   memory estimate:  96 bytes
   allocs estimate:  3
   --------------
-  minimum time:     1.547 ms (0.00% GC)
-  median time:      1.630 ms (0.00% GC)
-  mean time:        1.681 ms (0.00% GC)
-  maximum time:     3.743 ms (0.00% GC)
+  minimum time:     1.668 ms (0.00% GC)
+  median time:      1.879 ms (0.00% GC)
+  mean time:        1.995 ms (0.00% GC)
+  maximum time:     5.185 ms (0.00% GC)
   --------------
-  samples:          2945
+  samples:          2473
   evals/sample:     1</pre>
 </div>
 
@@ -12816,7 +12860,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -12834,7 +12878,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12842,10 +12886,10 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  488.47 KiB
   allocs estimate:  5
   --------------
-  minimum time:     60.347 μs (0.00% GC)
-  median time:      217.668 μs (0.00% GC)
-  mean time:        212.971 μs (14.50% GC)
-  maximum time:     2.396 ms (81.25% GC)
+  minimum time:     62.532 μs (0.00% GC)
+  median time:      237.506 μs (0.00% GC)
+  mean time:        255.955 μs (14.62% GC)
+  maximum time:     4.642 ms (82.11% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12859,7 +12903,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">sum</span><span class="p">(@</span><span class="n">view</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
@@ -12873,7 +12917,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12881,10 +12925,10 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  256 bytes
   allocs estimate:  7
   --------------
-  minimum time:     77.174 μs (0.00% GC)
-  median time:      81.635 μs (0.00% GC)
-  mean time:        85.438 μs (0.00% GC)
-  maximum time:     285.118 μs (0.00% GC)
+  minimum time:     77.294 μs (0.00% GC)
+  median time:      84.070 μs (0.00% GC)
+  mean time:        89.548 μs (0.00% GC)
+  maximum time:     353.716 μs (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12892,6 +12936,19 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
