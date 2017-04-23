@@ -11805,6 +11805,7 @@ div#notebook {
 </li>
 <li><p>There are many implementations of BLAS.</p>
 <ul>
+<li><a href="http://www.netlib.org/blas/">Netlib</a> provides a reference algorithm  </li>
 <li>Matlab uses Intel's <a href="https://software.intel.com/en-us/node/520724">MKL</a> (mathematical kernel libaries)  </li>
 <li>Julia uses <a href="https://github.com/xianyi/OpenBLAS">OpenBLAS</a></li>
 </ul>
@@ -12105,7 +12106,7 @@ See <a href="https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongar
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Effect-of-data-layout">Effect of data layout<a class="anchor-link" href="#Effect-of-data-layout">&#182;</a></h2><ul>
-<li><p>Data layout in memory affects execution speed too. It is much faster to move chunks of data in memory than retrieving/writing scattered data.</p>
+<li><p>Data layout in memory affects algorithmic efficiency too. It is much faster to move chunks of data in memory than retrieving/writing scattered data.</p>
 </li>
 <li><p>Storage mode: <strong>column-major</strong> (Fortran, Matlab, R, Julia) vs <strong>row-major</strong> (C/C++).</p>
 </li>
@@ -12124,7 +12125,7 @@ See <a href="https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongar
 $$ 
 \mathbf{C} \gets \mathbf{C} + \mathbf{A} \mathbf{B}, \quad \mathbf{A} \in \mathbb{R}^{m \times p}, \mathbf{B} \in \mathbb{R}^{p \times n}, \mathbf{C} \in \mathbb{R}^{m \times n}.
 $$
-Assume the storage is column-major, such as in Julia. There are 6 variants of the algorithms according to the order in the triple loops. We pay attention to the innermost loop, where the vector calculation occurs.</p>
+Assume the storage is column-major, such as in Julia. There are 6 variants of the algorithms according to the order in the triple loops.</p>
 <ul>
 <li><code>jki</code> or <code>kji</code> looping:<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">m</span>
       <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
@@ -12140,9 +12141,10 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
       <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
   <span class="k">end</span>
 </pre></div>
-The associated <strong>stride</strong> when accessing the three matrices in memory (assuming column-major storage) is  </li>
+</li>
 </ul>
 </li>
+<li>We pay attention to the innermost loop, where the vector calculation occurs. The associated <strong>stride</strong> when accessing the three matrices in memory (assuming column-major storage) is  </li>
 </ul>
 <table>
 <thead><tr>
@@ -12521,7 +12523,7 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Julia wrapper of BLAS function. We see BLAS library wins hands down (multi-threading, Strassen algorithm, higher level-3 fraction).</li>
+<li>Julia wrapper of BLAS function. We see BLAS library wins hands down (multi-threading, Strassen algorithm, higher level-3 fraction by smart blocking).</li>
 </ul>
 
 </div>
@@ -12572,7 +12574,19 @@ The associated <strong>stride</strong> when accessing the three matrices in memo
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Avoid-memory-allocation-as-much-as-possible">Avoid memory allocation as much as possible<a class="anchor-link" href="#Avoid-memory-allocation-as-much-as-possible">&#182;</a></h2><ul>
+<p>To appreciate the efforts in an optimized BLAS implementation such as OpenBLAS (evolved from GotoBLAS), see the <a href="https://www.quora.com/What-algorithm-does-BLAS-use-for-matrix-multiplication-Of-all-the-considerations-e-g-cache-popular-instruction-sets-Big-O-etc-which-one-turned-out-to-be-the-primary-bottleneck">Quora question</a>, especially the <a href="https://youtu.be/JzNpKDW07rw">video</a>. Bottomline is</p>
+<blockquote><p>Make friends with (good implementations of) BLAS/LAPACK and use them as much as possible.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Avoid-memory-allocation:-some-examples">Avoid memory allocation: some examples<a class="anchor-link" href="#Avoid-memory-allocation:-some-examples">&#182;</a></h2><ul>
 <li>Transposing matrix is an expensive memory operation.  <ul>
 <li>In R, the command <div class="highlight"><pre><span></span><span class="kp">t</span><span class="p">(</span>A<span class="p">)</span> <span class="o">%*%</span> x
 </pre></div>
@@ -12940,18 +12954,15 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Julia 0.6 adds the <a href="https://docs.julialang.org/en/latest/manual/performance-tips.html#Consider-using-views-for-slices-1"><code>@views</code></a> macro, which can be useful in <a href="https://discourse.julialang.org/t/why-is-a-manual-in-place-addition-so-much-faster-than-and-on-range-indexed-arrays/3302">some operations</a>.</p>
 
 </div>
 </div>
-</div>
-
 </div>
     </div>
   </div>
