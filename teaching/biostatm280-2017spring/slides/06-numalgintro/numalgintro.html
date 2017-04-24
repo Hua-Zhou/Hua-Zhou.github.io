@@ -11805,7 +11805,7 @@ div#notebook {
 </li>
 <li><p>There are many implementations of BLAS.</p>
 <ul>
-<li><a href="http://www.netlib.org/blas/">Netlib</a> provides a reference algorithm  </li>
+<li><a href="http://www.netlib.org/blas/">Netlib</a> provides a reference implementation  </li>
 <li>Matlab uses Intel's <a href="https://software.intel.com/en-us/node/520724">MKL</a> (mathematical kernel libaries)  </li>
 <li>Julia uses <a href="https://github.com/xianyi/OpenBLAS">OpenBLAS</a></li>
 </ul>
@@ -12052,9 +12052,11 @@ while loading In[2], in expression starting on line 208
 <p><img src="http://hothardware.com/ContentImages/NewsItem/34743/content/Intel-Skylake-Graphics-Gen-9-Block-Diag.jpg" width="400" align="center"></p>
 <p><img src="http://images.bit-tech.net/content_images/2007/11/the_secrets_of_pc_memory_part_1/hei.png" width="400" align="center"></p>
 <ul>
-<li>Can we keep CPU cores busy with enough deliveries of matrix data and ship the results to memory fast enough to avoid backlog?<br>
-E.g., Xeon X5650 CPU has a theoretical throughput of 128 DP GFLOPS but a max memory bandwidth of 32GB/s.<br>
-Answer: use <strong>high-level BLAS</strong> as much as possible.</li>
+<li><p>For example, Xeon X5650 CPU has a theoretical throughput of 128 DP GFLOPS but a max memory bandwidth of 32GB/s.</p>
+</li>
+<li><p>Can we keep CPU cores busy with enough deliveries of matrix data and ship the results to memory fast enough to avoid backlog?<br>
+Answer: use <strong>high-level BLAS</strong> as much as possible.</p>
+</li>
 </ul>
 <table>
 <thead><tr>
@@ -12523,7 +12525,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Julia wrapper of BLAS function. We see BLAS library wins hands down (multi-threading, Strassen algorithm, higher level-3 fraction by smart blocking).</li>
+<li>Julia wrapper of BLAS function. We see BLAS library wins hands down (multi-threading, Strassen algorithm, higher level-3 fraction by block outer product).</li>
 </ul>
 
 </div>

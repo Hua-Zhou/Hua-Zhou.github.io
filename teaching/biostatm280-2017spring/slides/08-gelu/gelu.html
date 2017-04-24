@@ -11761,7 +11761,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p>Solve linear equation
+<li><p>Goal: solve linear equation
 $$
 \mathbf{A} \mathbf{x} = \mathbf{b}.
 $$
@@ -11778,7 +11778,7 @@ For simplicity we consider a square matrix $\mathbf{A} \in \mathbb{R}^{n \times 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span> <span class="mf">1.0</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">;</span> <span class="o">-</span><span class="mf">3.0</span> <span class="o">-</span><span class="mf">1.0</span> <span class="mf">2.0</span><span class="p">;</span> <span class="o">-</span><span class="mf">2.0</span> <span class="mf">1.0</span> <span class="mf">2.0</span><span class="p">]</span>
@@ -11792,7 +11792,7 @@ For simplicity we consider a square matrix $\mathbf{A} \in \mathbb{R}^{n \times 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11810,7 +11810,7 @@ For simplicity we consider a square matrix $\mathbf{A} \in \mathbb{R}^{n \times 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">8.0</span><span class="p">;</span> <span class="o">-</span><span class="mf">11.0</span><span class="p">;</span> <span class="o">-</span><span class="mf">3.0</span><span class="p">]</span>
@@ -11824,7 +11824,7 @@ For simplicity we consider a square matrix $\mathbf{A} \in \mathbb{R}^{n \times 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11842,7 +11842,7 @@ For simplicity we consider a square matrix $\mathbf{A} \in \mathbb{R}^{n \times 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># solve linear equation</span>
@@ -11857,7 +11857,7 @@ For simplicity we consider a square matrix $\mathbf{A} \in \mathbb{R}^{n \times 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11907,9 +11907,9 @@ $$
   \mathbf{E}_{jk}^{-1}(c) = \mathbf{E}_{jk}(-c).
 $$</p>
 </li>
-<li><p>$\mathbf{E}_{jk}(c)$ left-multiplies a matrix $\mathbf{X}$ effectively replace its $k$-th row $\mathbf{x}_{k\cdot}$ by $c \mathbf{x}_{j \cdot} + \mathbf{x}_{k \cdot}$.
+<li><p>$\mathbf{E}_{jk}(c)$ left-multiplies an $n \times m$ matrix $\mathbf{X}$ effectively replace its $k$-th row $\mathbf{x}_{k\cdot}$ by $c \mathbf{x}_{j \cdot} + \mathbf{x}_{k \cdot}$
 $$
-  \mathbf{E}_{jk}(c) \begin{pmatrix}
+  \mathbf{E}_{jk}(c) \times \mathbf{X} = \mathbf{E}_{jk}(c) \times \begin{pmatrix}
   & & \\
   \cdots & \mathbf{x}_{j\cdot} & \cdots \\
   & & \\
@@ -11921,10 +11921,17 @@ $$
   & & \\
   \cdots & c \mathbf{x}_{j\cdot} + \mathbf{x}_{k\cdot} & \cdots \\
   & & 
-  \end{pmatrix}
-$$</p>
+  \end{pmatrix}.
+$$
+$2m$ flops.</p>
 </li>
-<li><p>Gaussian elimination applies a sequence of elementary operator matrices to the linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$.</p>
+<li><p>Gaussian elimination applies a sequence of elementary operator matrices to the linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$
+$$
+\begin{eqnarray*}
+  \mathbf{E}_{n,n-1}(c_{n,n-1}) \cdots \mathbf{E}_{21}(c_{21}) \mathbf{A} \mathbf{x} &=& \mathbf{E}_{n,n-1}(c_{n,n-1}) \cdots \mathbf{E}_{21}(c_{21}) \mathbf{b} \\
+  \mathbf{U} \mathbf{x} &=& \mathbf{b}_{\text{new}}.
+\end{eqnarray*}
+$$</p>
 <p>Column 1:</p>
 </li>
 </ul>
@@ -12248,7 +12255,7 @@ $$
   1 & \\
   & \ddots \\
   & & 1 & \\
-  & & - c_{k+1,k} & 1\\
+  & & - c_{k+1,k}\\
   & & \vdots & & \ddots \\
   & & - c_{n,k} & & & 1
   \end{pmatrix}.
@@ -12328,7 +12335,7 @@ $$</li>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="LU-decomposition">LU decomposition<a class="anchor-link" href="#LU-decomposition">&#182;</a></h2><ul>
-<li><p>By Gaussian elimination, we essentially do
+<li><p>Gaussian elimination does
 $$
 \mathbf{M}_{n-1} \cdots \mathbf{M}_1 \mathbf{A} = \mathbf{U}.
 $$
@@ -12344,14 +12351,14 @@ $$
 <li>c<em>{n1} &amp; &amp; - c</em>{nk} &amp; &amp; &amp; 1
 \end{pmatrix}..
 $$
-Then we have the **LU decomposition**
+Thus we have the **LU decomposition**
 $$
 \mathbf{A} = \mathbf{L} \mathbf{U},
 $$
 where $\mathbf{L}$ is unit lower triangular and $\mathbf{U}$ is upper triangular.</li>
 </ul>
 </li>
-<li><p>The whole LU algorithm is doen in place, i.e., $\mathbf{A}$ is overwrittedn by $\mathbf{L}$ and $\mathbf{U}$.</p>
+<li><p>The whole LU algorithm is done in place, i.e., $\mathbf{A}$ is overwritten by $\mathbf{L}$ and $\mathbf{U}$.</p>
 </li>
 <li><p>LU decomposition exists if the principal sub-matrix $\mathbf{A}[1:k, 1:k]$ is non-singular for $k=1,\ldots,n-1$.</p>
 </li>
@@ -12652,8 +12659,13 @@ where $|\ell_{ij}| \le 1$.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading">&#182;</a></h2><ul>
-<li>Sections II.5.2 and II.5.3 of <a href="http://ucla.worldcat.org/title/computational-statistics/oclc/437345409&amp;referer=brief_results">Computational Statistics</a> by James Gentle (2010).</li>
+<li><p>Sections II.5.2 and II.5.3 of <a href="http://ucla.worldcat.org/title/computational-statistics/oclc/437345409&amp;referer=brief_results">Computational Statistics</a> by James Gentle (2010).</p>
+</li>
+<li><p>A definite reference is Chapter 3 of the book <a href="http://catalog.library.ucla.edu/vwebv/holdingsInfo?bibId=7122088">Matrix Computation</a> by Gene Golub and Charles Van Loan.</p>
+</li>
 </ul>
+<p><img src="https://images-na.ssl-images-amazon.com/images/I/41Cs04RRiTL._SX309_BO1,204,203,200_.jpg" width="250" align="center"/></p>
+<p><img src="https://images-na.ssl-images-amazon.com/images/I/41f5vxegABL._SY344_BO1,204,203,200_.jpg" width="250" align="center"/></p>
 
 </div>
 </div>
