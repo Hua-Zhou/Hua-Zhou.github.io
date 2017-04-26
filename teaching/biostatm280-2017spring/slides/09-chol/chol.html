@@ -12557,10 +12557,11 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
 <li>Compute $\mathbf{X}^T \mathbf{y}$: $2np$ flops  </li>
 <li>Cholesky decomposition of $\mathbf{X}^T \mathbf{X}$: $\frac{1}{3} p^3$ flops  </li>
 <li>Solve normal equation $\mathbf{X}^T \mathbf{X} \beta = \mathbf{X}^T \mathbf{y}$: $2p^2$ flops  </li>
+<li>If need standard errors, another $(4/3)p^3$ flops</li>
 </ul>
 </li>
 </ul>
-<p>Total computational cost is $np^2 + (1/3) p^3$ flops.</p>
+<p>Total computational cost is $np^2 + (1/3) p^3$ (without s.e.) or $np^2 + (5/3) p^3$ (with s.e.) flops.</p>
 
 </div>
 </div>
