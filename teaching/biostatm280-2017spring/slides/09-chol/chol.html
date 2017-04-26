@@ -11757,7 +11757,10 @@ div#notebook {
 </ul>
 <blockquote><p>The structure should be exploited whenever solving a problem.</p>
 </blockquote>
-<p>Common structures include: symmetry, definiteness, sparsity, Kronecker product, low rank, ...</p>
+
+<pre><code>Common structures include: symmetry, definiteness, sparsity, Kronecker product, low rank, ...
+
+</code></pre>
 <ul>
 <li><p>LU decomposition (Gaussian Elimination) is <strong>not</strong> used in statistics so often because most of time statisticians deal with positive (semi)definite matrix.</p>
 </li>
@@ -11808,7 +11811,7 @@ plus $n$ square roots. Half the cost of LU decomposition by utilizing symmetry.<
 <h2 id="Pivoting">Pivoting<a class="anchor-link" href="#Pivoting">&#182;</a></h2><ul>
 <li><p>When $\mathbf{A}$ does not have full rank, e.g., $\mathbf{X}^T \mathbf{X}$ with a non-full column rank $\mathbf{X}$, we encounter $a_{kk} = 0$ during the procedure.</p>
 </li>
-<li><p><strong>Symmetric pivoting</strong>. At each stage $k$, we permute both row and column such that $\max_{k \le i \le n} a_{kk}$ becomes the pivot. If we encounter $\max_{k \le i \le n} a_{kk} = 0$, then $\mathbf{A}[k:n,k:n] = \mathbf{0}$ (why?) and the algorithm terminates.</p>
+<li><p><strong>Symmetric pivoting</strong>. At each stage $k$, we permute both row and column such that $\max_{k \le i \le n} a_{ii}$ becomes the pivot. If we encounter $\max_{k \le i \le n} a_{ii} = 0$, then $\mathbf{A}[k:n,k:n] = \mathbf{0}$ (why?) and the algorithm terminates.</p>
 </li>
 <li><p>With symmetric pivoting: 
 $$
@@ -11821,6 +11824,8 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 <li><p>LAPACK functions: <code>?potrf</code> (without pivoting), <code>?pstrf</code> (with pivoting).</p>
 </li>
 <li><p>Julia functions: <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=cholfact#Base.cholfact"><code>cholfact</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=cholfact#Base.cholfact!"><code>cholfact!</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=cholfact#Base.chol"><code>chol</code></a>, or call LAPACK wrapper functions <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.LAPACK.potrf!"><code>potrf!</code></a> and <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.LAPACK.pstrf!"><code>pstrf!</code></a></p>
+</li>
+<li><p>Example: positive definite matrix.</p>
 </li>
 </ul>
 
@@ -11960,7 +11965,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">;</span> <span class="mf">2.0</span><span class="p">;</span> <span class="mf">3.0</span><span class="p">]</span>
-<span class="n">A</span> \ <span class="n">b</span> <span class="c"># this does LU decomposition</span>
+<span class="n">A</span> \ <span class="n">b</span> <span class="c"># this does LU!</span>
 </pre></div>
 
 </div>
@@ -12024,7 +12029,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># this actually does LU</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># this actually does LU!</span>
 </pre></div>
 
 </div>
@@ -12082,7 +12087,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># does LU</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># this does LU!</span>
 </pre></div>
 
 </div>
@@ -12146,10 +12151,221 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Example: positive semi-definite matrix.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">A</span><span class="o">&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5×5 Array{Float64,2}:
+  2.06704   -3.10361    2.41766    -0.717719   0.845433 
+ -3.10361    9.76269   -7.31094     2.14335    0.283818 
+  2.41766   -7.31094    6.0473     -0.931321  -0.0610487
+ -0.717719   2.14335   -0.931321    1.28376    0.115462 
+  0.845433   0.283818  -0.0610487   0.115462   0.827396 </pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+Base.LinAlg.PosDefException(5)
+
+ in _chol!(::Array{Float64,2}, ::Type{UpperTriangular}) at ./linalg/cholesky.jl:55
+ in cholfact!(::Hermitian{Float64,Array{Float64,2}}, ::Type{Val{false}}) at ./linalg/cholesky.jl:185
+ in cholfact(::Array{Float64,2}, ::Symbol) at ./linalg/cholesky.jl:282
+ in cholfact(::Array{Float64,2}) at ./linalg/cholesky.jl:281</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">:</span><span class="n">L</span><span class="p">,</span> <span class="n">Val</span><span class="p">{</span><span class="n">true</span><span class="p">})</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Base.LinAlg.CholeskyPivoted{Float64,Array{Float64,2}}([3.12453 -3.10361 … -0.717719 0.845433; -0.993306 1.03941 … 2.14335 0.283818; … ; -2.33985 0.0899256 … 5.96046e-8 0.115462; 0.0908354 0.900181 … -1.19908e-8 0.0],&#39;L&#39;,[2,1,4,3,5],4,0.0,1)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">L</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5×5 LowerTriangular{Float64,Array{Float64,2}}:
+  3.12453      ⋅          ⋅           ⋅           ⋅ 
+ -0.993306    1.03941     ⋅           ⋅           ⋅ 
+  0.685974   -0.0349591  0.901097     ⋅           ⋅ 
+ -2.33985     0.0899256  0.751198    5.96046e-8   ⋅ 
+  0.0908354   0.900181   0.0939082  -1.19908e-8  0.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">U</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5×5 UpperTriangular{Float64,Array{Float64,2}}:
+ 3.12453  -0.993306   0.685974   -2.33985      0.0908354 
+  ⋅        1.03941   -0.0349591   0.0899256    0.900181  
+  ⋅         ⋅         0.901097    0.751198     0.0939082 
+  ⋅         ⋅          ⋅          5.96046e-8  -1.19908e-8
+  ⋅         ⋅          ⋅           ⋅           0.0       </pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">p</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5-element Array{Int64,1}:
+ 2
+ 1
+ 4
+ 3
+ 5</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><ul>
 <li><p><strong>No inversion</strong> mentality: Whenever we see matrix inverse, we should think in terms of solving linear equations. If the matrix is positive (semi)definite, use Cholesky decomposition.</p>
 </li>
-<li><p>Example: multivariate normal density $\text{MVN}(\mu, \Sigma)$,  $\Sigma$ is p.d., is
+<li><p>Example: multivariate normal density $\text{MVN}(\mu, \Sigma)$,  $\Sigma$ is p.d., is<br>
 $$</p>
 <ul>
 <li><p>\frac n2 \ln (2\pi) - \frac 12 \ln \det \Sigma - \frac 12 (\mathbf{y} - \mu)^T \Sigma^{-1} (\mathbf{y} - \mu).

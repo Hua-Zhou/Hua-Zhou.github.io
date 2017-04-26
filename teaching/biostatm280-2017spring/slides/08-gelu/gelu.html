@@ -12338,18 +12338,18 @@ $$</li>
 <li><p>Gaussian elimination does
 $$
 \mathbf{M}_{n-1} \cdots \mathbf{M}_1 \mathbf{A} = \mathbf{U}.
-$$
-Let 
+$$<br>
+Let<br>
 $$
 \mathbf{L} = \mathbf{M}<em>1^{-1} \cdots \mathbf{M}</em>{n-1}^{-1} = \begin{pmatrix}
   1 &amp; \</p>
 <ul>
 <li>c_{21} &amp; \ddots \
 &amp; &amp; 1 &amp; \</li>
-<li>c<em>{k+1,1}&amp; &amp; - c</em>{k+1,k} &amp;\
+<li>c<em>{k+1,1}&amp; &amp; - c</em>{k+1,k} &amp; \
 &amp; &amp; \vdots &amp; &amp; \ddots \</li>
 <li>c<em>{n1} &amp; &amp; - c</em>{nk} &amp; &amp; &amp; 1
-\end{pmatrix}..
+\end{pmatrix}.
 $$
 Thus we have the **LU decomposition**
 $$
@@ -12741,6 +12741,128 @@ where $|\ell_{ij}| \le 1$.</p>
   2.0
   3.0
  -1.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># this does LU!</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-0.9999999999999998</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">det</span><span class="p">(</span><span class="n">alu</span><span class="p">)</span> <span class="c"># this is cheap</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-0.9999999999999998</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># this does LU!</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3×3 Array{Float64,2}:
+  4.0   3.0  -1.0
+ -2.0  -2.0   1.0
+  5.0   4.0  -1.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">alu</span><span class="p">)</span> <span class="c"># this is cheap</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3×3 Array{Float64,2}:
+  4.0   3.0  -1.0
+ -2.0  -2.0   1.0
+  5.0   4.0  -1.0</pre>
 </div>
 
 </div>
