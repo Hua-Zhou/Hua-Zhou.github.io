@@ -11907,25 +11907,25 @@ $$
   \mathbf{E}_{jk}^{-1}(c) = \mathbf{E}_{jk}(-c).
 $$</p>
 </li>
-<li><p>$\mathbf{E}_{jk}(c)$ left-multiplies an $n \times m$ matrix $\mathbf{X}$ effectively replace its $k$-th row $\mathbf{x}_{k\cdot}$ by $c \mathbf{x}_{j \cdot} + \mathbf{x}_{k \cdot}$
+<li><p>$\mathbf{E}_{jk}(c)$ left-multiplies an $n \times m$ matrix $\mathbf{X}$ effectively replace its $j$-th row $\mathbf{x}_{j\cdot}$ by $c \mathbf{x}_{k \cdot} + \mathbf{x}_{j \cdot}$
 $$
   \mathbf{E}_{jk}(c) \times \mathbf{X} = \mathbf{E}_{jk}(c) \times \begin{pmatrix}
   & & \\
-  \cdots & \mathbf{x}_{j\cdot} & \cdots \\
-  & & \\
   \cdots & \mathbf{x}_{k\cdot} & \cdots \\
+  & & \\
+  \cdots & \mathbf{x}_{j\cdot} & \cdots \\
   & & 
   \end{pmatrix} = \begin{pmatrix}
   & & \\
-  \cdots & \mathbf{x}_{j\cdot} & \cdots \\
+  \cdots & \mathbf{x}_{k\cdot} & \cdots \\
   & & \\
-  \cdots & c \mathbf{x}_{j\cdot} + \mathbf{x}_{k\cdot} & \cdots \\
+  \cdots & c \mathbf{x}_{k\cdot} + \mathbf{x}_{j\cdot} & \cdots \\
   & & 
   \end{pmatrix}.
 $$
 $2m$ flops.</p>
 </li>
-<li><p>Gaussian elimination applies a sequence of elementary operator matrices to the linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$
+<li><p>Gaussian elimination applies a sequence of elementary operator matrices to transform the linear system $\mathbf{A} \mathbf{x} = \mathbf{b}$ to an upper triangular system
 $$
 \begin{eqnarray*}
   \mathbf{E}_{n,n-1}(c_{n,n-1}) \cdots \mathbf{E}_{21}(c_{21}) \mathbf{A} \mathbf{x} &=& \mathbf{E}_{n,n-1}(c_{n,n-1}) \cdots \mathbf{E}_{21}(c_{21}) \mathbf{b} \\
@@ -12370,8 +12370,7 @@ $$</p>
 <li><p>The LU decomposition costs
 $$
   2(n-1)^2 + 2(n-2)^2 + \cdots + 2 \cdot 1^2 \approx \frac 23 n^3 \quad \text{flops}.
-$$
-There are $n^3/3$ multiplications and $n^3/3$ additions.</p>
+$$</p>
 </li>
 </ul>
 <p><img src="http://www.netlib.org/utk/papers/factor/_25826_figure159.gif" width="500" align="center"/></p>
@@ -12384,7 +12383,7 @@ There are $n^3/3$ multiplications and $n^3/3$ additions.</p>
 $$
 \mathbf{L} \mathbf{y} = \mathbf{b}
 $$</li>
-<li>One backward substitution ($n^2$ flops) to solve
+<li>One back substitution ($n^2$ flops) to solve
 $$
 \mathbf{U} \mathbf{x} = \mathbf{y}
 $$</li>
@@ -12399,9 +12398,9 @@ $$</p>
 </li>
 </ul>
 <h2 id="Matrix-inversion">Matrix inversion<a class="anchor-link" href="#Matrix-inversion">&#182;</a></h2><ul>
-<li><p>For matrix inversion, there are $n$ right hand sides $\mathbf{e}_1, \ldots, \mathbf{e}_n$. Taking advantage of 0s reduces $2n^3$ flops to $\frac 43 n^2$ flops. So <strong>matrix inversion via LU</strong> costs
+<li><p>For matrix inversion, there are $n$ right hand sides $\mathbf{e}_1, \ldots, \mathbf{e}_n$. Taking advantage of 0s reduces $2n^3$ flops to $\frac 43 n^3$ flops. So <strong>matrix inversion via LU</strong> costs
 $$
-\frac 23 n^3 + \frac 43 n^3 = 2n^3.
+\frac 23 n^3 + \frac 43 n^3 = 2n^3 \quad \text{flops}.
 $$</p>
 </li>
 <li><p><strong>No inversion mentality</strong>:</p>
@@ -12425,9 +12424,8 @@ $$
 $$
 Is there a solution to $\mathbf{A} \mathbf{x} = \mathbf{b}$ for an arbitrary $\mathbf{b}$? Does GE/LU work for $\mathbf{A}$?</p>
 </li>
-<li><p>What if, during LU procedure, the <strong>pivot</strong> $a_{kk}$ is 0 or nearly 0 due to underflow?</p>
-</li>
-<li><p>Solution: pivoting.</p>
+<li><p>What if, during LU procedure, the <strong>pivot</strong> $a_{kk}$ is 0 or nearly 0 due to underflow?<br>
+  Solution: pivoting.</p>
 </li>
 <li><p><strong>Partial pivoting</strong>: before zeroing the $k$-th column, the row with $\max_{i=k}^n |a_{ik}|$ is moved into the $k$-th row.</p>
 </li>
@@ -12465,7 +12463,7 @@ where $|\ell_{ij}| \le 1$.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">A</span>
@@ -12479,7 +12477,7 @@ where $|\ell_{ij}| \le 1$.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12497,10 +12495,11 @@ where $|\ell_{ij}| \le 1$.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">alu</span> <span class="o">=</span> <span class="n">lufact</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Val</span><span class="p">{</span><span class="n">true</span><span class="p">})</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># second argument indicates partial pivoting (default) or not</span>
+<span class="n">alu</span> <span class="o">=</span> <span class="n">lufact</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Val</span><span class="p">{</span><span class="n">true</span><span class="p">})</span>
 <span class="nb">typeof</span><span class="p">(</span><span class="n">alu</span><span class="p">)</span>
 </pre></div>
 
@@ -12512,7 +12511,7 @@ where $|\ell_{ij}| \le 1$.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12527,7 +12526,7 @@ where $|\ell_{ij}| \le 1$.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">alu</span><span class="p">[:</span><span class="n">L</span><span class="p">]</span>
@@ -12541,7 +12540,7 @@ where $|\ell_{ij}| \le 1$.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12559,7 +12558,7 @@ where $|\ell_{ij}| \le 1$.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">alu</span><span class="p">[:</span><span class="n">U</span><span class="p">]</span>
@@ -12573,7 +12572,7 @@ where $|\ell_{ij}| \le 1$.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12591,7 +12590,7 @@ where $|\ell_{ij}| \le 1$.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">alu</span><span class="p">[:</span><span class="n">p</span><span class="p">]</span>
@@ -12605,7 +12604,7 @@ where $|\ell_{ij}| \le 1$.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12623,7 +12622,7 @@ where $|\ell_{ij}| \le 1$.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">alu</span><span class="p">[:</span><span class="n">P</span><span class="p">]</span>
@@ -12637,7 +12636,7 @@ where $|\ell_{ij}| \le 1$.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12645,6 +12644,103 @@ where $|\ell_{ij}| \le 1$.</p>
  0.0  1.0  0.0
  0.0  0.0  1.0
  1.0  0.0  0.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">alu</span><span class="p">[:</span><span class="n">L</span><span class="p">]</span> <span class="o">*</span> <span class="n">alu</span><span class="p">[:</span><span class="n">U</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3×3 Array{Float64,2}:
+ -3.0  -1.0   2.0
+ -2.0   1.0   2.0
+  2.0   1.0  -1.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="n">alu</span><span class="p">[:</span><span class="n">p</span><span class="p">],</span> <span class="p">:]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3×3 Array{Float64,2}:
+ -3.0  -1.0   2.0
+ -2.0   1.0   2.0
+  2.0   1.0  -1.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># this is doing two triangular solves</span>
+<span class="n">alu</span> \ <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3-element Array{Float64,1}:
+  2.0
+  3.0
+ -1.0</pre>
 </div>
 
 </div>
