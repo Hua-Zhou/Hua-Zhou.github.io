@@ -12084,7 +12084,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># this does LU!</span>
@@ -12098,7 +12098,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12116,7 +12116,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">Achol</span><span class="p">)</span>
@@ -12130,7 +12130,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12160,7 +12160,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
@@ -12176,7 +12176,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12196,7 +12196,7 @@ where $\mathbf{P}$ is a permutation matrix and $\mathbf{L} \in \mathbb{R}^{n \ti
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -12228,7 +12228,7 @@ Base.LinAlg.PosDefException(5)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">:</span><span class="n">L</span><span class="p">,</span> <span class="n">Val</span><span class="p">{</span><span class="n">true</span><span class="p">})</span>
@@ -12242,7 +12242,7 @@ Base.LinAlg.PosDefException(5)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12257,7 +12257,7 @@ Base.LinAlg.PosDefException(5)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">L</span><span class="p">]</span>
@@ -12271,7 +12271,7 @@ Base.LinAlg.PosDefException(5)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12291,7 +12291,7 @@ Base.LinAlg.PosDefException(5)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">U</span><span class="p">]</span>
@@ -12305,7 +12305,7 @@ Base.LinAlg.PosDefException(5)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12325,7 +12325,7 @@ Base.LinAlg.PosDefException(5)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">p</span><span class="p">]</span>
@@ -12339,7 +12339,7 @@ Base.LinAlg.PosDefException(5)
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12368,7 +12368,7 @@ Base.LinAlg.PosDefException(5)
 <li><p>Example: multivariate normal density $\text{MVN}(\mu, \Sigma)$,  $\Sigma$ is p.d., is<br>
 $$</p>
 <ul>
-<li><p>\frac n2 \ln (2\pi) - \frac 12 \ln \det \Sigma - \frac 12 (\mathbf{y} - \mu)^T \Sigma^{-1} (\mathbf{y} - \mu).
+<li><p>\frac{n}{2} \log (2\pi) - \frac{1}{2} \log \det \Sigma - \frac{1}{2} (\mathbf{y} - \mu)^T \Sigma^{-1} (\mathbf{y} - \mu).
 $$</p>
 </li>
 <li><p>Method 1: (a) compute explicit inverse $\Sigma^{-1}$ ($2n^3$ flops), (b) compute quadratic form ($2n^2 + 2n$ flops), (c) compute determinant ($2n^3/3$ flops).</p>
@@ -12378,10 +12378,6 @@ $$</p>
 </li>
 </ul>
 </li>
-<li><p>Compute Moore-Penrose inverse $\mathbf{A}^+$.</p>
-</li>
-<li><p>Cholesky decomposition is <strong>one</strong> approach to solve linear regression.</p>
-</li>
 </ul>
 
 </div>
@@ -12389,7 +12385,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> logpdf_mvn_1</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">Σ</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span>
@@ -12412,7 +12408,7 @@ $$</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12427,7 +12423,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">Distributions</span>
@@ -12459,7 +12455,7 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12474,7 +12470,7 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">logpdf_mvn_1</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
@@ -12488,7 +12484,7 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12496,12 +12492,12 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
   memory estimate:  23.41 MiB
   allocs estimate:  21
   --------------
-  minimum time:     68.442 ms (3.38% GC)
-  median time:      69.719 ms (3.23% GC)
-  mean time:        70.055 ms (3.24% GC)
-  maximum time:     74.417 ms (2.97% GC)
+  minimum time:     69.049 ms (3.29% GC)
+  median time:      82.971 ms (3.04% GC)
+  mean time:        86.550 ms (3.11% GC)
+  maximum time:     116.571 ms (3.62% GC)
   --------------
-  samples:          72
+  samples:          58
   evals/sample:     1</pre>
 </div>
 
@@ -12513,7 +12509,7 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">logpdf_mvn_2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
@@ -12527,7 +12523,7 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12535,12 +12531,12 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
   memory estimate:  15.27 MiB
   allocs estimate:  17
   --------------
-  minimum time:     12.422 ms (0.00% GC)
-  median time:      14.647 ms (14.60% GC)
-  mean time:        14.243 ms (12.28% GC)
-  maximum time:     23.251 ms (9.53% GC)
+  minimum time:     12.320 ms (0.00% GC)
+  median time:      14.644 ms (15.00% GC)
+  mean time:        15.031 ms (12.50% GC)
+  maximum time:     23.285 ms (14.75% GC)
   --------------
-  samples:          350
+  samples:          332
   evals/sample:     1</pre>
 </div>
 
@@ -12549,6 +12545,25 @@ logpdf_mvn_2(y,Σ) = -4396.173284372773
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Cholesky decomposition is <strong>one</strong> approach to solve linear regression.<ul>
+<li>Compute $\mathbf{X}^T \mathbf{X}$: $np^2$ flops  </li>
+<li>Compute $\mathbf{X}^T \mathbf{y}$: $2np$ flops  </li>
+<li>Cholesky decomposition of $\mathbf{X}^T \mathbf{X}$: $\frac{1}{3} p^3$ flops  </li>
+<li>Solve normal equation $\mathbf{X}^T \mathbf{X} \beta = \mathbf{X}^T \mathbf{y}$: $2p^2$ flops  </li>
+</ul>
+</li>
+</ul>
+<p>Total computational cost is $np^2 + (1/3) p^3$ flops.</p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
