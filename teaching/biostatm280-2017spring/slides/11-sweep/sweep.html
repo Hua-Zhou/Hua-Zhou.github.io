@@ -11758,7 +11758,7 @@ div#notebook {
 </li>
 <li><p>Assume $\mathbf{A}$ is symmetric and positive semidefinite.</p>
 </li>
-<li><p><strong>Sweep</strong> on the $k$-th diagonal entry $a_{kk} \ne 0$ yields $\hat \mathbf{A}$ with entries
+<li><p><strong>Sweep</strong> on the $k$-th diagonal entry $a_{kk} \ne 0$ yields $\hat A$ with entries
 $$
 \begin{eqnarray*}
   \hat a_{kk} &=& - \frac{1}{a_{kk}} \\
@@ -11769,7 +11769,7 @@ $$
 $$
 $n^2$ flops (taking into account of symmetry).</p>
 </li>
-<li><p><strong>Inverse sweep</strong> sends $\mathbf{A}$ to $\check \mathbf{A}$ with entries
+<li><p><strong>Inverse sweep</strong> sends $\mathbf{A}$ to $\check A$ with entries
 $$
 \begin{eqnarray*}
   \check a_{kk} &=& - \frac{1}{a_{kk}} \\
@@ -11829,7 +11829,7 @@ $$
 \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} &amp; \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
 \end{pmatrix} = \begin{pmatrix}
 - \sigma^{-2} \text{Cov}(\beta) &amp; \beta \\
-\beta^T &amp; \|\mathbf{y} - \mathbf{y}\|_2^2
+\beta^T &amp; \|\mathbf{y} - {\hat y}\|_2^2
 \end{pmatrix}.
 </code></pre>
 <p>$$
@@ -11988,7 +11988,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading">&#182;</a></h2><ul>
-<li><p>Section 7.4-7.6 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010).</p>
+<li><p>Section 7.4-7.6 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010). Probably best place to read about sweep operator.</p>
 </li>
 <li><p>The paper <a href="http://www.jstor.org/stable/2683825">A tutorial on the SWEEP operator</a> by James H. Goodnight.</p>
 </li>
