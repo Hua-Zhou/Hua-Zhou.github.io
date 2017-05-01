@@ -11865,7 +11865,7 @@ $$
 $$
 where</p>
 <ul>
-<li>$\mathbf{Q} \in \mathbb{R}^{n \times p}$, $\mathbf{Q}^T \mathbf{Q} = \mathbf{I}_n$  </li>
+<li>$\mathbf{Q} \in \mathbb{R}^{n \times p}$, $\mathbf{Q}^T \mathbf{Q} = \mathbf{I}_p$  </li>
 <li>$\mathbf{R} \in \mathbb{R}^{p \times p}$  is an upper triangular matrix with positive diagonal entries  </li>
 </ul>
 </li>
@@ -11876,7 +11876,7 @@ $$
 Therefore $\mathbf{R}$ is the same as the upper triangular Choleksy factor $\mathbf{X}^T \mathbf{X}$.</p>
 </li>
 <li><p>There are 3 algorithms to compute QR: (modified) Gram-Schmidt, Householder transform, (fast) Givens transform.</p>
-<p>In particular, the Householder transform for QR is implemented in LAPACK.</p>
+<p>In particular, the Householder transform for QR is implemented in LAPACK and thus used in R.</p>
 </li>
 </ul>
 
@@ -11922,7 +11922,7 @@ $$</li>
 </li>
 <li><p>The regular Gram-Schmidt is <em>unstable</em> (we loose orthogonality due to roundoff errors) when columns of $\mathbf{X}$ are collinear.</p>
 </li>
-<li><p><strong>Modified Gram-Schmidt</strong> (MGS): after each normalization step of $\mathbf{v}_k$, we replace $\mathbf{X}_j$, $j>k$, by its residual.</p>
+<li><p><strong>Modified Gram-Schmidt</strong> (MGS): after each normalization step of $\mathbf{v}_k$, we replace columns $\mathbf{x}_j$, $j>k$, by its residual.</p>
 </li>
 <li><p>Why MGS is better than GS? Read <a href="http://cavern.uark.edu/~arnold/4353/CGSMGS.pdf">http://cavern.uark.edu/~arnold/4353/CGSMGS.pdf</a></p>
 </li>
@@ -11940,7 +11940,7 @@ $$</li>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="QR-by-Householder-transform">QR by Householder transform<a class="anchor-link" href="#QR-by-Householder-transform">&#182;</a></h2><p><img src="http://www-history.mcs.st-andrews.ac.uk/BigPictures/Householder_2.jpeg" width="150" align="center"/></p>
 <ul>
-<li><p>This is the algorithm implemented in LAPACK for QR decomposition. In other words, this is the algorithm for solving linear regression in R and Matlab.</p>
+<li><p>This is the algorithm implemented in LAPACK for QR decomposition. In other words, this is the algorithm for solving linear regression in R.</p>
 </li>
 <li><p>Assume $\mathbf{X} = (\mathbf{x}_1, \ldots, \mathbf{x}_p) \in \mathbb{R}^{n \times p}$ has full column rank.</p>
 </li>
@@ -11948,7 +11948,7 @@ $$</li>
 $$
   \mathbf{H}_{p} \cdots \mathbf{H}_2 \mathbf{H}_1 \mathbf{X} = \begin{pmatrix} \mathbf{R}_1 \\ \mathbf{0} \end{pmatrix},
 $$
-where $\mathbf{H}_j \in \mathbf{R}^{n \times n}$ is a sequence of Householder transformation matrices.</p>
+where $\mathbf{H}_j \in \mathbf{R}^{n \times n}$ are a sequence of Householder transformation matrices.</p>
 <p>It yields the <strong>full QR</strong> where $\mathbf{Q} = \mathbf{H}_1 \cdots \mathbf{H}_p \in \mathbb{R}^{n \times n}$. Recall that GS/MGS only produces the thin QR decomposition.</p>
 </li>
 <li><p>For arbitrary $\mathbf{v}, \mathbf{w} \in \mathbb{R}^{n}$ with $\|\mathbf{v}\|_2 = \|\mathbf{w}\|_2$, we can construct a <strong>Householder matrix</strong> 
@@ -12391,7 +12391,8 @@ for any orthogonal matrix $\mathbf{Q}$.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="QR-by-Givens-rotation">QR by Givens rotation<a class="anchor-link" href="#QR-by-Givens-rotation">&#182;</a></h2><ul>
+<h2 id="QR-by-Givens-rotation">QR by Givens rotation<a class="anchor-link" href="#QR-by-Givens-rotation">&#182;</a></h2><p><img src="http://www.anl.gov/sites/anl.gov/files/styles/default_hero/public/postdoc_givens.jpg?itok=iNq19PvI" width="150" align="center"/></p>
+<ul>
 <li><p>Householder transform $\mathbf{H}_j$ introduces batch of zeros into a vector.</p>
 </li>
 <li><p>Givens transform (aka Givens rotation, Jacobi rotation, plane rotation) selectively zeros one element of a vector.</p>
@@ -12450,6 +12451,23 @@ costing $6n$ flops.</p>
 <li><p>Note each Givens transform can be summarized by a single number, which is stored in the zeroed entry of $\mathbf{X}$.</p>
 </li>
 <li><p><em>Fast Givens transform</em> avoids taking square roots.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading">&#182;</a></h2><ul>
+<li><p>Section 7.8 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> of Kenneth Lange (2010).</p>
+</li>
+<li><p>Section II.5.3 of <a href="http://ucla.worldcat.org/title/computational-statistics/oclc/437345409&amp;referer=brief_results">Computational Statistics</a> by James Gentle (2010).</p>
+</li>
+<li><p>Chapter 5 of <a href="http://catalog.library.ucla.edu/vwebv/holdingsInfo?bibId=7122088">Matrix Computation</a> by Gene Golub and Charles Van Loan (2013).</p>
 </li>
 </ul>
 
