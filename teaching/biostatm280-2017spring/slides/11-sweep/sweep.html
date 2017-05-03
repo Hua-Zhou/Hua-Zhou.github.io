@@ -11806,7 +11806,8 @@ Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_
 </li>
 </ul>
 <h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><ul>
-<li><p>Invert a matrix <em>in place</em>.</p>
+<li><p>Invert a matrix <em>in place</em>. $n^3$ flops.<br>
+Recall that inversion by Cholesky costs $(1/3)n^3 + (4/3) n^3 = (5/3) n^3$ flops and needs to allocate a matrix of same size.</p>
 </li>
 <li><p>Stepwise regression.</p>
 </li>
@@ -11819,21 +11820,27 @@ Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_
 </ul>
 <p>Sweep on the Gram matrix 
 $$
-\begin{pmatrix} \mathbf{X}^T \mathbf{X} & \mathbf{X}^T \mathbf{y} \\ \mathbf{y}^T \mathbf{X} & \mathbf{y}^T \mathbf{y} \end{pmatrix}
+\begin{pmatrix} 
+    \mathbf{X}^T \mathbf{X} & \mathbf{X}^T \mathbf{y} \\ 
+    \mathbf{y}^T \mathbf{X} & \mathbf{y}^T \mathbf{y} 
+\end{pmatrix}
+$$<br>
+yields<br>
 $$
-yields 
-$$
-    \begin{pmatrix}</p>
-
-<pre><code>- (\mathbf{X}^T \mathbf{X})^{-1} &amp; (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y} \\
+\begin{eqnarray*}
+\begin{pmatrix}</p>
+<ul>
+<li>(\mathbf{X}^T \mathbf{X})^{-1} &amp; (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y} \
 \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} &amp; \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
-\end{pmatrix} = \begin{pmatrix}
-- \sigma^{-2} \text{Cov}(\beta) &amp; \beta \\
-\beta^T &amp; \|\mathbf{y} - {\hat y}\|_2^2
+\end{pmatrix} = 
+\begin{pmatrix}</li>
+<li>\sigma^{-2} \text{Cov}(\beta) &amp; \beta \
+\beta^T &amp; |\mathbf{y} - \hat y|_2^2
 \end{pmatrix}.
-</code></pre>
-<p>$$
-In total $np^2 + p^3$ flops.</p>
+\end{eqnarray*}
+$$  
+In total $np^2 + p^3$ flops.</li>
+</ul>
 <h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
 <li><a href="https://github.com/joshday/SweepOperator.jl">SweepOperator.jl</a> package implements the sweep operator.</li>
 </ul>
@@ -11884,7 +11891,7 @@ In total $np^2 + p^3$ flops.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">sweep!</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
@@ -11898,7 +11905,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11917,7 +11924,7 @@ In total $np^2 + p^3$ flops.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares solution by QR</span>
@@ -11932,7 +11939,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11950,10 +11957,10 @@ In total $np^2 + p^3$ flops.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># inverse sweep</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># inverse sweep to restore original matrix</span>
 <span class="n">sweep!</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="n">true</span><span class="p">)</span>
 </pre></div>
 
@@ -11965,7 +11972,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11988,9 +11995,9 @@ In total $np^2 + p^3$ flops.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading">&#182;</a></h2><ul>
-<li><p>Section 7.4-7.6 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010). Probably best place to read about sweep operator.</p>
+<li><p>Section 7.4-7.6 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010). Probably the best place to read about sweep operator.</p>
 </li>
-<li><p>The paper <a href="http://www.jstor.org/stable/2683825">A tutorial on the SWEEP operator</a> by James H. Goodnight.</p>
+<li><p>The paper <a href="http://www.jstor.org/stable/2683825">A tutorial on the SWEEP operator</a> by James H. Goodnight (1979). Note this version (anti-symmetry matrix) is slightly different from ours.</p>
 </li>
 </ul>
 
