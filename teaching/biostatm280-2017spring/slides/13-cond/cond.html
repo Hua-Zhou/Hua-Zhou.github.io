@@ -11879,7 +11879,7 @@ if executed with a precision of 6 digits.</p>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  1056  100  1056    0     0  12494      0 --:--:-- --:--:-- --:--:-- 12878
+100  1056  100  1056    0     0  11164      0 --:--:-- --:--:-- --:--:-- 12000
 </pre>
 </div>
 </div>
@@ -16957,7 +16957,7 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># response: Employment</span>
@@ -16974,7 +16974,7 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17417,26 +17417,6 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># center and scale predictors to have unit std. dev.</span>
-<span class="n">Xcs</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">2</span><span class="p">:</span><span class="mi">7</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(@</span><span class="n">view</span> <span class="n">Xcs</span><span class="p">[:,</span> <span class="n">j</span><span class="p">])</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="n">stdm</span><span class="p">(</span><span class="n">Xcs</span><span class="p">[:,</span> <span class="n">j</span><span class="p">],</span> <span class="n">m</span><span class="p">)</span>
-    <span class="n">Xcs</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">m</span>
-    <span class="n">Xcs</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">/=</span> <span class="n">v</span>
-<span class="k">end</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -17463,6 +17443,99 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">StatsBase</span>
+
+<span class="c"># and standardize matrix along dimension 1</span>
+<span class="n">Xcs</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">Xcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ones</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="n">Xcs</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>16×7 Array{Float64,2}:
+ 1.0  -1.7311     -1.54343    -0.896035  -1.46093    -1.41114     -1.57532 
+ 1.0  -1.22144    -1.29053    -0.929209  -1.65348    -1.26393     -1.36527 
+ 1.0  -1.24924    -1.30434     0.52296   -1.42357    -1.0999      -1.15523 
+ 1.0  -1.12878    -1.03727     0.168746  -1.37471    -0.933713    -0.945189
+ 1.0  -0.50792    -0.590809   -1.17106    0.707427   -0.768965    -0.735147
+ 1.0  -0.331857   -0.409472   -1.34977    1.41872    -0.597174    -0.525105
+ 1.0  -0.248458   -0.224493   -1.41612    1.35118    -0.334958    -0.315063
+ 1.0  -0.155793   -0.247361    0.411666   1.0681     -0.173229    -0.105021
+ 1.0  -0.0445951   0.0983004  -0.309603   0.634143   -0.00517531   0.105021
+ 1.0   0.270466    0.316732   -0.397353   0.359686    0.188324     0.315063
+ 1.0   0.622593    0.554058   -0.275358   0.274906    0.434295     0.525105
+ 1.0   0.84499     0.571936    1.59202    0.0435575   0.650652     0.735147
+ 1.0   1.01179     0.955839    0.663147  -0.0785831   0.854214     0.945189
+ 1.0   1.16005     1.15602     0.789423  -0.133187    1.14202      1.15523 
+ 1.0   1.29905     1.31269     1.72579   -0.0498441   1.49912      1.36527 
+ 1.0   1.41025     1.68213     0.870753   0.316578    1.81955      1.57532 </pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">cond</span><span class="p">(</span><span class="n">Xcs</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>110.54415344231359</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading">&#182;</a></h2><ul>
+<li><p>Chapter 6 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> of Kenneth Lange (2010).</p>
+</li>
+<li><p>Section 2.6 of <a href="http://catalog.library.ucla.edu/vwebv/holdingsInfo?bibId=7122088">Matrix Computation</a> by Gene Golub and Charles Van Loan (2013).</p>
+</li>
+</ul>
+
+</div>
+</div>
 </div>
     </div>
   </div>
