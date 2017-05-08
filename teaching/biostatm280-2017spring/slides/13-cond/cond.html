@@ -11783,7 +11783,10 @@ $$
 \frac{ \|\Delta \mathbf{x}\|}{\|\mathbf{x}\|} \le \|\mathbf{A}\|\|\mathbf{A}^{-1}\| \frac{\|\Delta \mathbf{b}\|}{\|\mathbf{b}\|}.
 $$</p>
 </li>
-<li><p>$\kappa(\mathbf{A}) = \|\mathbf{A}\| \|\mathbf{A}^{-1}\|$ is called the <strong>condition number for inversion</strong>. It depends on the matrix norm being used. $\kappa_p$ means condition number defined from matrix-$p$ norm.</p>
+<li><p>$\kappa(\mathbf{A}) = \|\mathbf{A}\| \|\mathbf{A}^{-1}\|$ is called the <strong>condition number for inversion</strong>. It depends on the matrix norm being used.</p>
+<ul>
+<li>$\kappa_p$ means condition number defined from matrix-$p$ norm.</li>
+</ul>
 </li>
 <li><p>Large condition number means "bad".</p>
 </li>
@@ -11840,9 +11843,9 @@ if executed with a precision of 6 digits.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
-<li><p>Julia function <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=cond#Base.cond"><code>cond</code></a> computes $\kappa_p$ for $p=1$, 2 (default), or $\infty$.</p>
+<li><p>Julia function <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.cond"><code>cond</code></a> computes $\kappa_p$ for $p=1$, 2 (default), or $\infty$.</p>
 </li>
-<li><p>Julia function <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=cond#Base.condskeel"><code>condskeel</code></a> computes the Skeel condition number.</p>
+<li><p>Julia function <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.condskeel"><code>condskeel</code></a> computes the Skeel condition number.</p>
 </li>
 </ul>
 
@@ -11864,7 +11867,8 @@ if executed with a precision of 6 digits.</p>
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">longley</span> <span class="o">=</span> <span class="n">readdlm</span><span class="p">(</span><span class="n">download</span><span class="p">(</span><span class="s">&quot;http://hua-zhou.github.io/teaching/biostatm280-2017spring/hw/longley.txt&quot;</span><span class="p">))</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">longley</span> <span class="o">=</span> <span class="n">readdlm</span><span class="p">(</span><span class="n">download</span><span class="p">(</span><span class="s">&quot;http://hua-zhou.github.io/teaching&quot;</span> <span class="o">*</span> 
+        <span class="s">&quot;/biostatm280-2017spring/hw/longley.txt&quot;</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -11879,7 +11883,7 @@ if executed with a precision of 6 digits.</p>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  1056  100  1056    0     0  11164      0 --:--:-- --:--:-- --:--:-- 12000
+100  1056  100  1056    0     0    418      0  0:00:02  0:00:02 --:--:--   419
 </pre>
 </div>
 </div>
@@ -11934,6 +11938,13 @@ if executed with a precision of 6 digits.</p>
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING: Method definition describe(AbstractArray) in module StatsBase at /Users/huazhou/.julia/v0.5/StatsBase/src/scalarstats.jl:573 overwritten in module DataFrames at /Users/huazhou/.julia/v0.5/DataFrames/src/abstractdataframe/abstractdataframe.jl:407.
+</pre>
+</div>
+</div>
 
 <div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
@@ -16957,7 +16968,7 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># response: Employment</span>
@@ -16974,7 +16985,7 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17008,6 +17019,65 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># Julia function for obtaining condition number</span>
+<span class="n">cond</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4.859257015454868e9</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># what&#39;s the implementation?</span>
+<span class="p">@</span><span class="n">which</span> <span class="n">cond</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/dense.jl#L528" target="_blank">linalg/dense.jl:528</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># we see the smallest singular value (aka trouble number) is very small</span>
 <span class="n">xsvals</span> <span class="o">=</span> <span class="n">svdvals</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
@@ -17020,7 +17090,7 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17042,7 +17112,7 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># condition number of the design matrix</span>
@@ -17057,70 +17127,11 @@ kgGwsG8HNMa0/Fia/+N7t3dxZTCs9vugQTJIa7TmY1wQDZJBF2NeEA2SQVqFxZ/ngmiQTLl5BxMo
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>4.859257015454868e9</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># Julia function for obtaining condition number</span>
-<span class="n">cond</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>4.859257015454868e9</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># what&#39;s the implementation?</span>
-<span class="p">@</span><span class="n">which</span> <span class="n">cond</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
 <div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 
-<div class="output_html rendered_html output_subarea output_execute_result">
-cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/dense.jl#L528" target="_blank">linalg/dense.jl:528</a>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4.859257015454868e9</pre>
 </div>
 
 </div>
@@ -17164,9 +17175,7 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># X is full rank from QR with column pivoting</span>
-<span class="n">xqr</span> <span class="o">=</span> <span class="n">qrfact</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Val</span><span class="p">{</span><span class="n">true</span><span class="p">})</span>
-<span class="n">xrkqr</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="n">xqr</span><span class="p">[:</span><span class="n">R</span><span class="p">]))</span> <span class="o">.&gt;</span> <span class="mf">1e-8</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">rank</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -17179,9 +17188,8 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 
 <div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>7</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/generic.jl#L308" target="_blank">linalg/generic.jl:308</a>
 </div>
 
 </div>
@@ -17195,8 +17203,8 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares from qr</span>
-<span class="n">xqr</span> \ <span class="n">y</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares from QR</span>
+<span class="n">X</span> \ <span class="n">y</span>
 </pre></div>
 
 </div>
@@ -17368,7 +17376,7 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares solution from Cholesky</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares solution from Cholesky matches those from QR</span>
 <span class="n">gchol</span> \ <span class="p">(</span><span class="n">X</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 
@@ -17406,10 +17414,7 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p>Exercise: re-run above example using single precision.</p>
-</li>
-<li><p>In regression problems, standardizing the predictors could improve the condition.</p>
-</li>
+<li>Now let us re-run above example using <strong>single precision</strong>.</li>
 </ul>
 
 </div>
@@ -17417,10 +17422,51 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Xsp</span> <span class="o">=</span> <span class="nb">convert</span><span class="p">(</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float32</span><span class="p">},</span> <span class="n">X</span><span class="p">)</span>
+<span class="n">ysp</span> <span class="o">=</span> <span class="nb">convert</span><span class="p">(</span><span class="n">Vector</span><span class="p">{</span><span class="kt">Float32</span><span class="p">},</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c"># least squares by QR</span>
+<span class="n">Xsp</span> \ <span class="n">ysp</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7-element Array{Float32,1}:
+   0.0237241
+ -52.9953   
+   0.0710731
+  -0.42347  
+  -0.572563 
+  -0.414199 
+  48.4177   </pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">cond</span><span class="p">(</span><span class="n">Xcs</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares by Cholesky</span>
+<span class="p">(</span><span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Xsp</span><span class="p">)</span> \ <span class="p">(</span><span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">ysp</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -17435,7 +17481,14 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>110.54415344231354</pre>
+<pre>7-element Array{Float32,1}:
+    5.27383f5
+  -57.3662   
+    0.0856744
+   -0.200016 
+   -0.503809 
+   -0.453298 
+ -222.189    </pre>
 </div>
 
 </div>
@@ -17446,12 +17499,82 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xsp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Xsp</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Standardizing the predictors</strong> could improve the condition.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">StatsBase</span>
 
-<span class="c"># and standardize matrix along dimension 1</span>
+<span class="c"># centerand standardize matrix along dimension 1</span>
 <span class="n">Xcs</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">Xcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">ones</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">))</span> <span class="n">Xcs</span><span class="p">]</span>
 </pre></div>
@@ -17464,7 +17587,7 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17495,7 +17618,7 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">cond</span><span class="p">(</span><span class="n">Xcs</span><span class="p">)</span>
@@ -17509,11 +17632,69 @@ cond(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>110.54415344231359</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xcs</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xcs</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Xcs</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7</pre>
 </div>
 
 </div>
