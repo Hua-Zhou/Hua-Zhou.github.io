@@ -11883,7 +11883,7 @@ if executed with a precision of 6 digits.</p>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-100  1056  100  1056    0     0    418      0  0:00:02  0:00:02 --:--:--   419
+100  1056  100  1056    0     0  13523      0 --:--:-- --:--:-- --:--:-- 14270
 </pre>
 </div>
 </div>
@@ -17462,11 +17462,13 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares by Cholesky</span>
-<span class="p">(</span><span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Xsp</span><span class="p">)</span> \ <span class="p">(</span><span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">ysp</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Xsp</span>
+<span class="n">gchol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">:</span><span class="n">U</span><span class="p">,</span> <span class="n">Val</span><span class="p">{</span><span class="n">true</span><span class="p">})</span>
+<span class="n">gchol</span> \ <span class="p">(</span><span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">ysp</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -17477,20 +17479,15 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+Base.LinAlg.RankDeficientException(1)
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>7-element Array{Float32,1}:
-    5.27383f5
-  -57.3662   
-    0.0856744
-   -0.200016 
-   -0.503809 
-   -0.453298 
- -222.189    </pre>
+ in chkfullrank at ./linalg/cholesky.jl:449 [inlined]
+ in A_ldiv_B!(::Base.LinAlg.CholeskyPivoted{Float32,Array{Float32,2}}, ::Array{Float32,1}) at ./linalg/cholesky.jl:391
+ in \(::Base.LinAlg.CholeskyPivoted{Float32,Array{Float32,2}}, ::Array{Float32,1}) at ./linalg/factorization.jl:39</pre>
 </div>
-
 </div>
 
 </div>
@@ -17499,7 +17496,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xsp</span><span class="p">)</span>
@@ -17513,7 +17510,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17528,10 +17525,11 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xsp</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Xsp</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># rank of Gram matrix by Cholesky</span>
+<span class="n">rank</span><span class="p">(</span><span class="n">gchol</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -17542,7 +17540,37 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># rank of Gram matrix by SVD</span>
+<span class="n">rank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17569,7 +17597,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">StatsBase</span>
@@ -17587,7 +17615,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[31]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17618,7 +17646,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">cond</span><span class="p">(</span><span class="n">Xcs</span><span class="p">)</span>
@@ -17632,7 +17660,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[32]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17647,7 +17675,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xcs</span><span class="p">)</span>
@@ -17661,7 +17689,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -17676,7 +17704,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Xcs</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Xcs</span><span class="p">)</span>
@@ -17690,7 +17718,7 @@ rank(A::<b>AbstractArray{T<:Any,2}</b>) at <a href="https://github.com/JuliaLang
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">

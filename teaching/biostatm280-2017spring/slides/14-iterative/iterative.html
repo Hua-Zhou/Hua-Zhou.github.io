@@ -11939,7 +11939,7 @@ $$</p>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">4000</span>
 <span class="c"># a sparse pd matrix, about 0.5% non-zero entries</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">sprand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">I</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">I</span>
 <span class="p">@</span><span class="n">show</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="n">Afull</span> <span class="o">=</span> <span class="n">full</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -12002,12 +12002,12 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  31.33 KiB
   allocs estimate:  2
   --------------
-  minimum time:     4.783 ms (0.00% GC)
-  median time:      4.892 ms (0.00% GC)
-  mean time:        4.960 ms (0.03% GC)
-  maximum time:     6.373 ms (22.62% GC)
+  minimum time:     5.310 ms (0.00% GC)
+  median time:      7.455 ms (0.00% GC)
+  mean time:        7.456 ms (0.00% GC)
+  maximum time:     12.503 ms (0.00% GC)
   --------------
-  samples:          1001
+  samples:          664
   evals/sample:     1</pre>
 </div>
 
@@ -12042,10 +12042,10 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  31.33 KiB
   allocs estimate:  2
   --------------
-  minimum time:     81.554 μs (0.00% GC)
-  median time:      85.069 μs (0.00% GC)
-  mean time:        94.368 μs (2.05% GC)
-  maximum time:     2.085 ms (94.72% GC)
+  minimum time:     79.649 μs (0.00% GC)
+  median time:      85.236 μs (0.00% GC)
+  mean time:        96.287 μs (1.80% GC)
+  maximum time:     2.318 ms (94.31% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12083,10 +12083,10 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  122.10 MiB
   allocs estimate:  11
   --------------
-  minimum time:     283.110 ms (4.55% GC)
-  median time:      287.747 ms (4.50% GC)
-  mean time:        299.155 ms (5.15% GC)
-  maximum time:     359.132 ms (3.88% GC)
+  minimum time:     286.107 ms (4.42% GC)
+  median time:      293.181 ms (4.39% GC)
+  mean time:        308.517 ms (5.01% GC)
+  maximum time:     377.636 ms (3.77% GC)
   --------------
   samples:          17
   evals/sample:     1</pre>
@@ -12118,7 +12118,7 @@ typeof(Afull) = Array{Float64,2}
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>vecnorm(xjacobi - xchol) = 7.625615408010928e-9
+<pre>vecnorm(xjacobi - xchol) = 9.531929722637207e-10
 </pre>
 </div>
 </div>
@@ -12127,7 +12127,7 @@ typeof(Afull) = Array{Float64,2}
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>7.625615408010928e-9</pre>
+<pre>9.531929722637207e-10</pre>
 </div>
 
 </div>
@@ -12160,10 +12160,10 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  367.49 MiB
   allocs estimate:  32020
   --------------
-  minimum time:     1.019 s (9.34% GC)
-  median time:      1.150 s (7.34% GC)
-  mean time:        1.143 s (8.63% GC)
-  maximum time:     1.244 s (6.58% GC)
+  minimum time:     1.023 s (8.27% GC)
+  median time:      1.084 s (8.39% GC)
+  mean time:        1.100 s (9.56% GC)
+  maximum time:     1.235 s (10.20% GC)
   --------------
   samples:          5
   evals/sample:     1</pre>
@@ -12197,7 +12197,7 @@ typeof(Afull) = Array{Float64,2}
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2.1771081119669902e-9</pre>
+<pre>2.7213775308664887e-10</pre>
 </div>
 
 </div>
@@ -12230,10 +12230,10 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  122.25 MiB
   allocs estimate:  20
   --------------
-  minimum time:     822.817 ms (1.54% GC)
-  median time:      861.143 ms (1.48% GC)
-  mean time:        864.940 ms (2.31% GC)
-  maximum time:     910.012 ms (6.36% GC)
+  minimum time:     835.558 ms (1.57% GC)
+  median time:      887.137 ms (1.49% GC)
+  mean time:        900.582 ms (2.45% GC)
+  maximum time:     1.012 s (1.70% GC)
   --------------
   samples:          6
   evals/sample:     1</pre>
@@ -12267,7 +12267,7 @@ typeof(Afull) = Array{Float64,2}
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>1.4938865074291055e-8</pre>
+<pre>7.468068025961207e-9</pre>
 </div>
 
 </div>
@@ -12300,10 +12300,10 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  122.68 MiB
   allocs estimate:  49
   --------------
-  minimum time:     3.576 s (0.28% GC)
-  median time:      3.704 s (0.97% GC)
-  mean time:        3.704 s (0.97% GC)
-  maximum time:     3.832 s (1.62% GC)
+  minimum time:     3.998 s (2.44% GC)
+  median time:      4.064 s (1.34% GC)
+  mean time:        4.064 s (1.34% GC)
+  maximum time:     4.129 s (0.28% GC)
   --------------
   samples:          2
   evals/sample:     1</pre>
@@ -12337,7 +12337,7 @@ typeof(Afull) = Array{Float64,2}
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>2.5280942315563635e-15</pre>
+<pre>7.904644616768145e-17</pre>
 </div>
 
 </div>
@@ -12370,12 +12370,12 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  846.56 KiB
   allocs estimate:  65
   --------------
-  minimum time:     507.243 μs (0.00% GC)
-  median time:      616.678 μs (0.00% GC)
-  mean time:        826.718 μs (9.77% GC)
-  maximum time:     5.747 ms (60.02% GC)
+  minimum time:     506.442 μs (0.00% GC)
+  median time:      553.696 μs (0.00% GC)
+  mean time:        683.236 μs (10.74% GC)
+  maximum time:     3.829 ms (74.87% GC)
   --------------
-  samples:          5939
+  samples:          7246
   evals/sample:     1</pre>
 </div>
 

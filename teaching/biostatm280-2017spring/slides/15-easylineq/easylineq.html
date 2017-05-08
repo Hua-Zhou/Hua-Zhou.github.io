@@ -11829,12 +11829,12 @@ div#notebook {
   memory estimate:  15.97 KiB
   allocs estimate:  5
   --------------
-  minimum time:     859.328 μs (0.00% GC)
-  median time:      1.069 ms (0.00% GC)
-  mean time:        1.139 ms (0.11% GC)
-  maximum time:     4.591 ms (60.96% GC)
+  minimum time:     860.093 μs (0.00% GC)
+  median time:      948.212 μs (0.00% GC)
+  mean time:        1.185 ms (0.11% GC)
+  maximum time:     5.220 ms (0.00% GC)
   --------------
-  samples:          4334
+  samples:          4157
   evals/sample:     1</pre>
 </div>
 
@@ -11849,7 +11849,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># O(n) computation</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># O(n) computation, no extra array allocation</span>
 <span class="p">@</span><span class="n">benchmark</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> \ <span class="n">b</span>
 </pre></div>
 
@@ -11869,10 +11869,10 @@ div#notebook {
   memory estimate:  15.98 KiB
   allocs estimate:  6
   --------------
-  minimum time:     11.563 μs (0.00% GC)
-  median time:      13.614 μs (0.00% GC)
-  mean time:        16.139 μs (7.89% GC)
-  maximum time:     2.752 ms (98.39% GC)
+  minimum time:     10.859 μs (0.00% GC)
+  median time:      12.176 μs (0.00% GC)
+  mean time:        14.674 μs (8.99% GC)
+  maximum time:     2.120 ms (98.49% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -11989,12 +11989,12 @@ div#notebook {
   memory estimate:  7.65 MiB
   allocs estimate:  8
   --------------
-  minimum time:     12.675 ms (0.00% GC)
-  median time:      14.803 ms (0.00% GC)
-  mean time:        16.700 ms (5.18% GC)
-  maximum time:     30.224 ms (0.00% GC)
+  minimum time:     12.711 ms (0.00% GC)
+  median time:      13.155 ms (0.00% GC)
+  mean time:        13.388 ms (5.46% GC)
+  maximum time:     16.586 ms (14.16% GC)
   --------------
-  samples:          299
+  samples:          373
   evals/sample:     1</pre>
 </div>
 
@@ -12009,7 +12009,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># specialized algorithm for tridiagonal matrix</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># specialized algorithm for tridiagonal matrix, O(n) flops</span>
 <span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span> \ <span class="n">b</span>
 </pre></div>
 
@@ -12029,10 +12029,10 @@ div#notebook {
   memory estimate:  23.97 KiB
   allocs estimate:  9
   --------------
-  minimum time:     12.805 μs (0.00% GC)
-  median time:      15.517 μs (0.00% GC)
-  mean time:        18.816 μs (10.29% GC)
-  maximum time:     2.552 ms (98.83% GC)
+  minimum time:     12.756 μs (0.00% GC)
+  median time:      14.441 μs (0.00% GC)
+  mean time:        17.349 μs (9.04% GC)
+  maximum time:     2.222 ms (98.08% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12087,12 +12087,12 @@ div#notebook {
   memory estimate:  7.95 KiB
   allocs estimate:  2
   --------------
-  minimum time:     792.164 μs (0.00% GC)
-  median time:      817.588 μs (0.00% GC)
-  mean time:        864.531 μs (0.03% GC)
-  maximum time:     3.915 ms (0.00% GC)
+  minimum time:     790.447 μs (0.00% GC)
+  median time:      971.303 μs (0.00% GC)
+  mean time:        1.245 ms (0.00% GC)
+  maximum time:     5.209 ms (0.00% GC)
   --------------
-  samples:          5718
+  samples:          3944
   evals/sample:     1</pre>
 </div>
 
@@ -12127,12 +12127,12 @@ div#notebook {
   memory estimate:  7.97 KiB
   allocs estimate:  3
   --------------
-  minimum time:     335.609 μs (0.00% GC)
-  median time:      415.831 μs (0.00% GC)
-  mean time:        509.724 μs (0.08% GC)
-  maximum time:     3.516 ms (0.00% GC)
+  minimum time:     322.165 μs (0.00% GC)
+  median time:      358.512 μs (0.00% GC)
+  mean time:        374.502 μs (0.15% GC)
+  maximum time:     3.100 ms (84.35% GC)
   --------------
-  samples:          9544
+  samples:          10000
   evals/sample:     1</pre>
 </div>
 
@@ -12253,7 +12253,7 @@ $$</li>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="c"># a sparse pd matrix, about 0.5% non-zero entries</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">sprand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">I</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">I</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="n">Afull</span> <span class="o">=</span> <span class="n">full</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="n">countnz</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="n">length</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -12305,10 +12305,10 @@ $$</li>
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     99.436 μs (0.00% GC)
-  median time:      125.809 μs (0.00% GC)
-  mean time:        178.717 μs (0.00% GC)
-  maximum time:     1.545 ms (0.00% GC)
+  minimum time:     106.317 μs (0.00% GC)
+  median time:      131.055 μs (0.00% GC)
+  mean time:        191.222 μs (0.00% GC)
+  maximum time:     2.005 ms (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12345,13 +12345,13 @@ $$</li>
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     13.882 μs (0.00% GC)
-  median time:      14.539 μs (0.00% GC)
-  mean time:        16.012 μs (0.00% GC)
-  maximum time:     696.466 μs (0.00% GC)
+  minimum time:     7.404 μs (0.00% GC)
+  median time:      7.956 μs (0.00% GC)
+  mean time:        9.223 μs (4.93% GC)
+  maximum time:     578.281 μs (97.50% GC)
   --------------
   samples:          10000
-  evals/sample:     1</pre>
+  evals/sample:     4</pre>
 </div>
 
 </div>
@@ -12385,12 +12385,12 @@ $$</li>
   memory estimate:  7.63 MiB
   allocs estimate:  8
   --------------
-  minimum time:     9.152 ms (0.00% GC)
-  median time:      9.763 ms (0.00% GC)
-  mean time:        10.992 ms (9.69% GC)
-  maximum time:     31.831 ms (22.33% GC)
+  minimum time:     9.145 ms (0.00% GC)
+  median time:      11.396 ms (0.00% GC)
+  mean time:        12.642 ms (8.97% GC)
+  maximum time:     26.281 ms (21.96% GC)
   --------------
-  samples:          453
+  samples:          394
   evals/sample:     1</pre>
 </div>
 
@@ -12425,12 +12425,12 @@ $$</li>
   memory estimate:  1.33 MiB
   allocs estimate:  53
   --------------
-  minimum time:     3.333 ms (0.00% GC)
-  median time:      3.369 ms (0.00% GC)
-  mean time:        3.463 ms (0.71% GC)
-  maximum time:     5.354 ms (9.13% GC)
+  minimum time:     3.330 ms (0.00% GC)
+  median time:      3.370 ms (0.00% GC)
+  mean time:        3.455 ms (0.69% GC)
+  maximum time:     4.763 ms (9.14% GC)
   --------------
-  samples:          1439
+  samples:          1442
   evals/sample:     1</pre>
 </div>
 
@@ -12466,12 +12466,12 @@ $$</li>
   memory estimate:  7.64 MiB
   allocs estimate:  10
   --------------
-  minimum time:     10.030 ms (0.00% GC)
-  median time:      10.230 ms (0.00% GC)
-  mean time:        10.654 ms (7.19% GC)
-  maximum time:     14.153 ms (0.00% GC)
+  minimum time:     10.051 ms (0.00% GC)
+  median time:      10.446 ms (0.00% GC)
+  mean time:        11.194 ms (6.93% GC)
+  maximum time:     24.456 ms (16.28% GC)
   --------------
-  samples:          468
+  samples:          445
   evals/sample:     1</pre>
 </div>
 
@@ -12503,7 +12503,7 @@ $$</li>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>8.777424222872659e-18</pre>
+<pre>4.020546956752686e-18</pre>
 </div>
 
 </div>
@@ -12536,12 +12536,12 @@ $$</li>
   memory estimate:  1.36 MiB
   allocs estimate:  65
   --------------
-  minimum time:     3.832 ms (0.00% GC)
-  median time:      4.244 ms (0.00% GC)
-  mean time:        4.248 ms (0.59% GC)
-  maximum time:     5.630 ms (7.94% GC)
+  minimum time:     3.833 ms (0.00% GC)
+  median time:      3.868 ms (0.00% GC)
+  mean time:        4.039 ms (0.63% GC)
+  maximum time:     7.179 ms (9.90% GC)
   --------------
-  samples:          1171
+  samples:          1232
   evals/sample:     1</pre>
 </div>
 
@@ -12575,7 +12575,7 @@ $$</li>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>1.743452494241876e-16</pre>
+<pre>4.416452077969768e-18</pre>
 </div>
 
 </div>
@@ -12608,10 +12608,10 @@ $$</li>
   memory estimate:  262.66 KiB
   allocs estimate:  44
   --------------
-  minimum time:     121.925 μs (0.00% GC)
-  median time:      136.441 μs (0.00% GC)
-  mean time:        175.594 μs (14.13% GC)
-  maximum time:     2.878 ms (91.52% GC)
+  minimum time:     88.081 μs (0.00% GC)
+  median time:      102.677 μs (0.00% GC)
+  mean time:        141.364 μs (17.32% GC)
+  maximum time:     3.396 ms (95.28% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12634,7 +12634,7 @@ $$
   (\mathbf{A} + \mathbf{U} \mathbf{V}^T)^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_r + \mathbf{V}^T \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^T \mathbf{A}^{-1},
 $$</p>
 <ul>
-<li>Keep HW2 Q2(2) in mind.  </li>
+<li>Keep HW2 Q3 in mind.  </li>
 <li><a href="https://github.com/timholy/WoodburyMatrices.jl"><code>WoodburyMatrices.jl</code></a> package can be useful.</li>
 </ul>
 </li>
@@ -12658,7 +12658,7 @@ $$</p>
 <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 <span class="n">D</span> <span class="o">=</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="c"># W = A + B*D*B&#39;</span>
+<span class="c"># W = A + B * D * B&#39;</span>
 <span class="n">W</span> <span class="o">=</span> <span class="n">SymWoodbury</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
 <span class="n">Wfull</span> <span class="o">=</span> <span class="n">Symmetric</span><span class="p">(</span><span class="n">full</span><span class="p">(</span><span class="n">W</span><span class="p">))</span>
 </pre></div>
@@ -12735,12 +12735,12 @@ $$</p>
   memory estimate:  7.64 MiB
   allocs estimate:  9
   --------------
-  minimum time:     8.654 ms (0.00% GC)
-  median time:      8.952 ms (0.00% GC)
-  mean time:        9.344 ms (8.24% GC)
-  maximum time:     12.436 ms (19.91% GC)
+  minimum time:     8.667 ms (0.00% GC)
+  median time:      9.074 ms (0.00% GC)
+  mean time:        9.455 ms (8.10% GC)
+  maximum time:     13.966 ms (16.96% GC)
   --------------
-  samples:          533
+  samples:          527
   evals/sample:     1</pre>
 </div>
 
@@ -12755,7 +12755,7 @@ $$</p>
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># use Woodbury formula</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve using Woodbury formula</span>
 <span class="p">@</span><span class="n">benchmark</span> <span class="n">W</span> \ <span class="n">b</span>
 </pre></div>
 
@@ -12775,10 +12775,10 @@ $$</p>
   memory estimate:  76.19 KiB
   allocs estimate:  27
   --------------
-  minimum time:     19.506 μs (0.00% GC)
-  median time:      23.607 μs (0.00% GC)
-  mean time:        31.046 μs (15.39% GC)
-  maximum time:     2.800 ms (98.21% GC)
+  minimum time:     20.642 μs (0.00% GC)
+  median time:      27.410 μs (0.00% GC)
+  mean time:        41.252 μs (14.63% GC)
+  maximum time:     4.841 ms (96.63% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
