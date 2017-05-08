@@ -11751,7 +11751,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Iterative-Methods-for-Solving-Linear-Equations">Iterative Methods for Solving Linear Equations<a class="anchor-link" href="#Iterative-Methods-for-Solving-Linear-Equations">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/PageRanks-Example.svg/400px-PageRanks-Example.svg.png" width="300" align="center"/></p>
+<h1 id="Iterative-Methods-for-Solving-Linear-Equations">Iterative Methods for Solving Linear Equations<a class="anchor-link" href="#Iterative-Methods-for-Solving-Linear-Equations">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>So far we have considered direct methods for solving linear equations.</p>
 <ul>
 <li><strong>Direct methods</strong> (flops fixed <em>a priori</em>) vs <strong>iterative methods</strong>:<ul>
 <li>Direct method (GE/LU, Cholesky, QR, SVD): good for dense, small or moderate sized $\mathbf{A}$  </li>
@@ -11759,7 +11759,8 @@ div#notebook {
 </ul>
 </li>
 </ul>
-<h2 id="Example:-PageRank-algorithm-(HW3)">Example: PageRank algorithm (HW3)<a class="anchor-link" href="#Example:-PageRank-algorithm-(HW3)">&#182;</a></h2><ul>
+<h2 id="PageRank-problem-(HW3)">PageRank problem (HW3)<a class="anchor-link" href="#PageRank-problem-(HW3)">&#182;</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/PageRanks-Example.svg/400px-PageRanks-Example.svg.png" width="300" align="center"/></p>
+<ul>
 <li><p>$\mathbf{A}  \in \{0,1\}^{n \times n}$ the connectivity matrix of webpages with entries
 $$
 \begin{eqnarray*}
@@ -11773,7 +11774,7 @@ $n \approx 10^9$ in May 2017.</p>
 </li>
 <li><p>$r_i = \sum_j a_{ij}$ is the <em>out-degree</em> of page $i$.</p>
 </li>
-<li><p>Larry Page imagines a random surfer wandering on internet according to following rules:</p>
+<li><p><a href="https://en.wikipedia.org/wiki/PageRank">Larry Page</a> imagines a random surfer wandering on internet according to following rules:</p>
 <ul>
 <li>From a page $i$ with $r_i>0$<ul>
 <li>with probability $p$, (s)he randomly chooses a link on page $i$ (uniformly) and follows that link to the next page  </li>
@@ -11812,18 +11813,16 @@ $$
 x_i^{(t+1)} = \frac{b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(t)} - \sum_{j=i+1}^n a_{ij} x_j^{(t)}}{a_{ii}}.
 $$</p>
 </li>
-<li><p>One round costs $2n^2$ flops with an unstructured $\mathbf{A}$. Gain over GE/LU if converges in $o(n)$ iterations. Saving is huge for <strong>sparse</strong> or <strong>structured</strong> $\mathbf{A}$. By structured, we mean the matrix-vector multiplication $\mathbf{A} \mathbf{v}$ is fast ($O(n)$ or $O(n \log n)$).</p>
-</li>
-<li><p>Splitting: $\mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U}$.</p>
-</li>
-<li><p>Jacobi iteration is
+<li><p>With splitting: $\mathbf{A} = \mathbf{L} + \mathbf{D} + \mathbf{U}$, Jacobi iteration can be written as
 $$
   \mathbf{D} \mathbf{x}^{(t+1)} = - (\mathbf{L} + \mathbf{U}) \mathbf{x}^{(t)} + \mathbf{b},
 $$
 i.e., 
 $$
-  \mathbf{x}^{(t+1)} = - \mathbf{D}^{-1} (\mathbf{L} + \mathbf{U}) \mathbf{x}^{(t)} + \mathbf{D}^{-1} \mathbf{b}.
+  \mathbf{x}^{(t+1)} = - \mathbf{D}^{-1} (\mathbf{L} + \mathbf{U}) \mathbf{x}^{(t)} + \mathbf{D}^{-1} \mathbf{b} = - \mathbf{D}^{-1} \mathbf{A} \mathbf{x}^{(t)} + \mathbf{x}^{(t)} + \mathbf{D}^{-1} \mathbf{b}.
 $$</p>
+</li>
+<li><p>One round costs $2n^2$ flops with an <strong>unstructured</strong> $\mathbf{A}$. Gain over GE/LU if converges in $o(n)$ iterations. Saving is huge for <strong>sparse</strong> or <strong>structured</strong> $\mathbf{A}$. By structured, we mean the matrix-vector multiplication $\mathbf{A} \mathbf{v}$ is fast ($O(n)$ or $O(n \log n)$).</p>
 </li>
 </ul>
 
@@ -11838,7 +11837,7 @@ $$</p>
 <h2 id="Gauss-Seidel-method">Gauss-Seidel method<a class="anchor-link" href="#Gauss-Seidel-method">&#182;</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Carl_Friedrich_Gauss.jpg" width="150" align="center"/></p>
 <p><img src="http://www.scientificlib.com/en/Physics/Biographies/images/Thumbs/ThLudwigVonSeidel01.jpg" width="150" align="center"/></p>
 <ul>
-<li><p>Gauss-Seidel iteration:
+<li><p>Gauss-Seidel (GS) iteration:
 $$
 x_i^{(t+1)} = \frac{b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(t+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(t)}}{a_{ii}}.
 $$</p>
@@ -11851,8 +11850,6 @@ $$</p>
 <li><p>GS converges for any $\mathbf{x}^{(0)}$ for symmetric and pd $\mathbf{A}$.</p>
 </li>
 <li><p>Convergence rate of Gauss-Seidel is the spectral radius of the $(\mathbf{D} + \mathbf{L})^{-1} \mathbf{U}$.</p>
-</li>
-<li><p>Comparing Jacobi and GS, Jacobi is particularly attractive for parallel computing.</p>
 </li>
 </ul>
 
@@ -11867,7 +11864,7 @@ $$</p>
 <h2 id="Successive-over-relaxation-(SOR)">Successive over-relaxation (SOR)<a class="anchor-link" href="#Successive-over-relaxation-(SOR)">&#182;</a></h2><ul>
 <li><p>SOR: 
 $$
-x_i^{(t+1)} = \omega (b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(t+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(t)}) / a_{ii} + (1-\omega) x_i^{(t)},
+x_i^{(t+1)} = \omega \left( b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(t+1)} - \sum_{j=i+1}^n a_{ij} x_j^{(t)} \right) / a_{ii} + (1-\omega) x_i^{(t)},
 $$
 i.e., 
 $$
@@ -11919,6 +11916,474 @@ $$</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Numerical-examples">Numerical examples<a class="anchor-link" href="#Numerical-examples">&#182;</a></h2><p>The <a href="https://github.com/JuliaMath/IterativeSolvers.jl"><code>IterativeSolvers.jl</code></a> package implements many commonly used iterative solvers.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">IterativeSolvers</span>
+
+<span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4000</span>
+<span class="c"># a sparse pd matrix, about 0.5% non-zero entries</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sprand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">+</span> <span class="n">n</span> <span class="o">*</span> <span class="n">I</span>
+<span class="p">@</span><span class="n">show</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">Afull</span> <span class="o">=</span> <span class="n">full</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="p">@</span><span class="n">show</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">Afull</span><span class="p">)</span>
+<span class="c"># actual sparsity level</span>
+<span class="n">countnz</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="n">length</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>typeof(A) = SparseMatrixCSC{Float64,Int64}
+typeof(Afull) = Array{Float64,2}
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.00425125</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># dense matrix-vector multiplication</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">Afull</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  31.33 KiB
+  allocs estimate:  2
+  --------------
+  minimum time:     4.783 ms (0.00% GC)
+  median time:      4.892 ms (0.00% GC)
+  mean time:        4.960 ms (0.03% GC)
+  maximum time:     6.373 ms (22.62% GC)
+  --------------
+  samples:          1001
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># sparse matrix-vector multiplication</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  31.33 KiB
+  allocs estimate:  2
+  --------------
+  minimum time:     81.554 μs (0.00% GC)
+  median time:      85.069 μs (0.00% GC)
+  mean time:        94.368 μs (2.05% GC)
+  maximum time:     2.085 ms (94.72% GC)
+  --------------
+  samples:          10000
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># dense solve via Cholesky</span>
+<span class="n">xchol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">Afull</span><span class="p">)</span> \ <span class="n">b</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">Afull</span><span class="p">)</span> \ <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  122.10 MiB
+  allocs estimate:  11
+  --------------
+  minimum time:     283.110 ms (4.55% GC)
+  median time:      287.747 ms (4.50% GC)
+  mean time:        299.155 ms (5.15% GC)
+  maximum time:     359.132 ms (3.88% GC)
+  --------------
+  samples:          17
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># Jacobi solution is fairly close to Cholesky solution</span>
+<span class="n">xjacobi</span><span class="p">,</span> <span class="o">=</span> <span class="n">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">vecnorm</span><span class="p">(</span><span class="n">xjacobi</span> <span class="o">-</span> <span class="n">xchol</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>vecnorm(xjacobi - xchol) = 7.625615408010928e-9
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>7.625615408010928e-9</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  367.49 MiB
+  allocs estimate:  32020
+  --------------
+  minimum time:     1.019 s (9.34% GC)
+  median time:      1.150 s (7.34% GC)
+  mean time:        1.143 s (8.63% GC)
+  maximum time:     1.244 s (6.58% GC)
+  --------------
+  samples:          5
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># Gauss-Seidel solution is fairly close to Cholesky solution</span>
+<span class="n">xgs</span><span class="p">,</span> <span class="o">=</span> <span class="n">gauss_seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">vecnorm</span><span class="p">(</span><span class="n">xgs</span> <span class="o">-</span> <span class="n">xchol</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.1771081119669902e-9</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">gauss_seidel</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  122.25 MiB
+  allocs estimate:  20
+  --------------
+  minimum time:     822.817 ms (1.54% GC)
+  median time:      861.143 ms (1.48% GC)
+  mean time:        864.940 ms (2.31% GC)
+  maximum time:     910.012 ms (6.36% GC)
+  --------------
+  samples:          6
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># symmetric SOR with ω=0.75</span>
+<span class="n">xsor</span><span class="p">,</span> <span class="o">=</span> <span class="n">ssor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+<span class="n">vecnorm</span><span class="p">(</span><span class="n">xsor</span> <span class="o">-</span> <span class="n">xchol</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1.4938865074291055e-8</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">sor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  122.68 MiB
+  allocs estimate:  49
+  --------------
+  minimum time:     3.576 s (0.28% GC)
+  median time:      3.704 s (0.97% GC)
+  mean time:        3.704 s (0.97% GC)
+  maximum time:     3.832 s (1.62% GC)
+  --------------
+  samples:          2
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># conjugate gradient</span>
+<span class="n">xcg</span><span class="p">,</span> <span class="o">=</span> <span class="n">cg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">vecnorm</span><span class="p">(</span><span class="n">xcg</span> <span class="o">-</span> <span class="n">xchol</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.5280942315563635e-15</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">cg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  846.56 KiB
+  allocs estimate:  65
+  --------------
+  minimum time:     507.243 μs (0.00% GC)
+  median time:      616.678 μs (0.00% GC)
+  mean time:        826.718 μs (9.77% GC)
+  maximum time:     5.747 ms (60.02% GC)
+  --------------
+  samples:          5939
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
