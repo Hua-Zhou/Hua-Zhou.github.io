@@ -12830,14 +12830,14 @@ $$</li>
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><p>Toeplitz systems:
-\begin{eqnarray<em>}
+$$
   \mathbf{T} = \begin{pmatrix}
-  r_0 &amp; r_1 &amp; r_2 &amp; r<em>3 \
-  r</em>{-1} &amp; r_0 &amp; r_1 &amp; r<em>2 \
-  r</em>{-2} &amp; r_{-1} &amp; r_0 &amp; r<em>1 \
-  r</em>{-3} &amp; r<em>{-2} &amp; r</em>{-1} &amp; r_0
+  r_0 & r_1 & r_2 & r_3 \\
+  r_{-1} & r_0 & r_1 & r_2 \\
+  r_{-2} & r_{-1} & r_0 & r_1 \\
+  r_{-3} & r_{-2} & r_{-1} & r_0
   \end{pmatrix}.
-\end{eqnarray</em>}
+$$
 $\mathbf{T} \mathbf{x} = \mathbf{b}$, where $\mathbf{T}$ is pd and Toeplitz, can be solved in $O(n^2)$ flops. Durbin algorithm (Yule-Walker equation), Levinson algorithm (general $\mathbf{b}$), Trench algorithm (inverse). These matrices occur in auto-regressive models and econometrics.</p>
 <ul>
 <li><a href="https://github.com/JuliaMatrices/ToeplitzMatrices.jl"><code>ToeplitzMatrices.jl</code></a> package can be useful.</li>
