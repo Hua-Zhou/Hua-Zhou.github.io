@@ -11816,7 +11816,7 @@ where</p>
 $\sigma_i$ are called the <strong>singular values</strong>, $\mathbf{u}_i$ are the <strong>left singular vectors</strong>, and $\mathbf{v}_i$ are the <strong>right singular vectors</strong>.</li>
 </ul>
 </li>
-<li><p><strong>Thin SVD</strong>. Assume $m \ge n$. $\mathbf{A}$ can be factored as 
+<li><p><strong>Thin/Skinny SVD</strong>. Assume $m \ge n$. $\mathbf{A}$ can be factored as 
 $$
 \mathbf{A} = \mathbf{U}_n \Sigma_n \mathbf{V}^T = \sum_{i=1}^n \sigma_i \mathbf{u}_i \mathbf{v}_i^T,
 $$ 
@@ -11829,7 +11829,7 @@ where</p>
 </li>
 <li><p>Denote $\sigma(\mathbf{A})=(\sigma_1,\ldots,\sigma_p)^T$. Then</p>
 <ul>
-<li>$r = \text{rank}(\mathbf{A}) = \# \text{ nonzero singular values} = \|\sigma(\mathbf{A})\|_0$. This is how the <code>rank</code> function is implemented in Julia  </li>
+<li>$r = \text{rank}(\mathbf{A}) = \# \text{ nonzero singular values} = \|\sigma(\mathbf{A})\|_0$  </li>
 <li>$\mathbf{A} = \mathbf{U}_r \Sigma_r \mathbf{V}_r^T = \sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i^T$</li>
 <li>$\|\mathbf{A}\|_{\text{F}} = (\sum_{i=1}^p \sigma_i^2)^{1/2} = \|\sigma(\mathbf{A})\|_2$</li>
 <li>$\|\mathbf{A}\|_2 = \sigma_1 = \|\sigma(\mathbf{A})\|_\infty$</li>
@@ -11897,14 +11897,14 @@ is the SVD of $\mathbf{A}$.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Applications-of-eigen-decomposition-and-SVD">Applications of eigen-decomposition and SVD<a class="anchor-link" href="#Applications-of-eigen-decomposition-and-SVD">&#182;</a></h2><h3 id="Principal-components-analysis-(PCA).">Principal components analysis (PCA).<a class="anchor-link" href="#Principal-components-analysis-(PCA).">&#182;</a></h3><p>$\mathbf{X} \in \mathbb{R}^{n \times p}$ is a centered data matrix. Perform SVD $\mathbf{X} = \mathbf{U} \Sigma \mathbf{V}^T$ or equivalently $\mathbf{X}^T \mathbf{X} = \mathbf{V} \Sigma^2 \mathbf{V}^T$. The linear combinations $\tilde{\mathbf{x}}_i = \mathbf{X} \mathbf{v}_i$ are the principal components (PC) and have variance $\sigma_i^2$.</p>
 <ul>
-<li>Dimension reduction: reduce dimensionality $p$ to $q \ll p$. Use top PCs $\tilde{\mathbf{x}}_1, \ldots, \tilde{\mathbf{x}}_q$ in downstream analysis. %In many cases, the top few PCs reveal interesting relationship among the subjects. </li>
+<li>Dimension reduction: reduce dimensionality $p$ to $q \ll p$. Use top PCs $\tilde{\mathbf{x}}_1, \ldots, \tilde{\mathbf{x}}_q$ in downstream analysis.</li>
 </ul>
 <p><img src="http://www.nature.com/nature/journal/v456/n7218/images/nature07331-f1.2.jpg" width="400" align="center"/></p>
 <ul>
 <li><p>Use PCs to adjust for confounding -- a serious issue in association studies in large data sets.</p>
 <ul>
-<li>Above picture is from the article <a href="http://www.nature.com/nature/journal/v456/n7218/full/nature07331.html">Genes mirror geography within Europe</a> by Novembre et al published in <em>Nature</em>.  </li>
-<li>Use of PCA to adjust for confounding in modern genetic studies is proposed in the paper <a href="http://www.nature.com/ng/journal/v38/n8/full/ng1847.html">Principal components analysis corrects for stratification in genome-wide association studies</a> by Price et al published in <em>Nature Genetics</em>. It has been cited 5,312 times as of May 8, 2017.</li>
+<li>Above picture is from the article <a href="http://www.nature.com/nature/journal/v456/n7218/full/nature07331.html">Genes mirror geography within Europe</a> by Novembre et al (2008) published in <em>Nature</em>.  </li>
+<li>Use of PCA to adjust for confounding in modern genetic studies is proposed in the paper <a href="http://www.nature.com/ng/journal/v38/n8/full/ng1847.html">Principal components analysis corrects for stratification in genome-wide association studies</a> by Price et al (2006) published in <em>Nature Genetics</em>. It has been cited 5,312 times as of May 8, 2017.</li>
 </ul>
 </li>
 </ul>
@@ -12136,7 +12136,7 @@ $$
 \end{eqnarray*}
 $$</p>
 </li>
-<li><p>QR iteration is expensive: $O(n^3)$ per iteration and linear convergence rate.</p>
+<li><p>QR iteration is expensive in general: $O(n^3)$ per iteration and linear convergence rate.</p>
 </li>
 </ul>
 
@@ -12243,6 +12243,34 @@ $$</p>
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">eigfact</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+eigfact<i>{T1<:Real,T2}</i>(A::<b>Union{Hermitian{Complex{T1},T2},Hermitian{T1,T2},Symmetric{T1,T2}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/symmetric.jl#L198" target="_blank">linalg/symmetric.jl:198</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># eigen-values</span>
 <span class="n">Aeig</span><span class="p">[:</span><span class="n">values</span><span class="p">]</span>
 </pre></div>
@@ -12255,7 +12283,7 @@ $$</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12275,7 +12303,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># eigen-vectors</span>
@@ -12290,7 +12318,7 @@ $$</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12310,7 +12338,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># inversion by eigen-decomposition</span>
@@ -12325,7 +12353,7 @@ $$</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12345,7 +12373,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">inv</span><span class="p">(</span><span class="n">Aeig</span><span class="p">)</span>
@@ -12359,7 +12387,7 @@ $$</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 inv(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/eigen.jl#L231" target="_blank">linalg/eigen.jl:231</a>
@@ -12373,7 +12401,7 @@ inv(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># determinant by eigen-decomposition</span>
@@ -12388,7 +12416,7 @@ inv(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12403,7 +12431,7 @@ inv(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">det</span><span class="p">(</span><span class="n">Aeig</span><span class="p">)</span>
@@ -12417,10 +12445,94 @@ inv(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/eigen.jl#L232" target="_blank">linalg/eigen.jl:232</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+eigvals<i>{T1<:Real,T2}</i>(A::<b>Union{Hermitian{Complex{T1},T2},Hermitian{T1,T2},Symmetric{T1,T2}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/symmetric.jl#L210" target="_blank">linalg/symmetric.jl:210</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">eigmax</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+eigmax<i>{T<:Real,S<:Union{Base.ReshapedArray{T,2,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N}}},DenseArray{T,2},SubArray{T,2,A<:Union{Base.ReshapedArray{T,N,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N}}},DenseArray},I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex,Colon,Int64,Range{Int64}},N}},L}}}</i>(A::<b>Union{Hermitian{Complex{T},S},Hermitian{T,S},Symmetric{T,S}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/symmetric.jl#L220" target="_blank">linalg/symmetric.jl:220</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">eigmin</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+eigmin<i>{T<:Real,S<:Union{Base.ReshapedArray{T,2,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N}}},DenseArray{T,2},SubArray{T,2,A<:Union{Base.ReshapedArray{T,N,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N}}},DenseArray},I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex,Colon,Int64,Range{Int64}},N}},L}}}</i>(A::<b>Union{Hermitian{Complex{T},S},Hermitian{T,S},Symmetric{T,S}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/symmetric.jl#L221" target="_blank">linalg/symmetric.jl:221</a>
 </div>
 
 </div>
@@ -12441,7 +12553,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
@@ -12460,7 +12572,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12501,7 +12613,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -12515,7 +12627,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12523,12 +12635,12 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
   memory estimate:  7.99 MiB
   allocs estimate:  17
   --------------
-  minimum time:     135.042 ms (0.00% GC)
-  median time:      136.416 ms (0.00% GC)
-  mean time:        137.145 ms (0.49% GC)
-  maximum time:     140.979 ms (0.00% GC)
+  minimum time:     136.181 ms (0.00% GC)
+  median time:      145.207 ms (0.00% GC)
+  mean time:        148.410 ms (0.51% GC)
+  maximum time:     188.065 ms (0.00% GC)
   --------------
-  samples:          37
+  samples:          34
   evals/sample:     1</pre>
 </div>
 
@@ -12540,7 +12652,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">eigfact</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -12554,7 +12666,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12562,10 +12674,10 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
   memory estimate:  23.25 MiB
   allocs estimate:  20
   --------------
-  minimum time:     304.807 ms (0.93% GC)
-  median time:      316.660 ms (0.96% GC)
-  mean time:        323.691 ms (1.78% GC)
-  maximum time:     366.346 ms (0.84% GC)
+  minimum time:     305.765 ms (1.00% GC)
+  median time:      324.177 ms (0.96% GC)
+  mean time:        324.051 ms (1.91% GC)
+  maximum time:     375.137 ms (12.27% GC)
   --------------
   samples:          16
   evals/sample:     1</pre>
@@ -12583,7 +12695,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Algorithm-for-singular-value-decomposition-(SVD)">Algorithm for singular value decomposition (SVD)<a class="anchor-link" href="#Algorithm-for-singular-value-decomposition-(SVD)">&#182;</a></h2><p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/3/image_7.img.jpg/1490211663024.jpg" width="200" align="center"/></p>
-<p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/jcr:content/mainParsys/image_0.adapt.full.high.gif/1490211662576.gif" width="400" align="center"/></p>
+<p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/jcr:content/mainParsys/image_0.adapt.full.high.gif/1490211662576.gif" width="350" align="center"/></p>
 <p>Assume $\mathbf{A} \in \mathbb{R}^{m \times n}$ and we seek the SVD $\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^T$.</p>
 <p><img src="svd_bidiagonalization.png" width="400" align="center"/></p>
 <p><img src="SVD_bidiagonalization_2.png" width="400" align="center"/></p>
@@ -12591,7 +12703,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <li><p><strong>Golub-Kahan-Reinsch algorithm</strong>:</p>
 <ul>
 <li>Stage 1: Transform $\mathbf{A}$ to an upper bidiagonal form $\mathbf{B}$ (by Householder).  </li>
-<li>Stage 2: Apply implicit-shift QR step to the tridiagonal matrix $\mathbf{B}^T \mathbf{B}$ <em>implicitly</em>.</li>
+<li>Stage 2: Apply implicit-shift QR iteration to the tridiagonal matrix $\mathbf{B}^T \mathbf{B}$ <em>implicitly</em>.</li>
 </ul>
 </li>
 <li><p>See Section 8.6 of <a href="http://catalog.library.ucla.edu/vwebv/holdingsInfo?bibId=7122088">Matrix Computation</a> by Gene Golub and Charles Van Loan (2013) for more details.</p>
@@ -12606,7 +12718,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
@@ -12623,7 +12735,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12638,7 +12750,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Asvd</span><span class="p">[:</span><span class="n">U</span><span class="p">]</span>
@@ -12652,7 +12764,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12672,7 +12784,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># Vt is cheaper to extract than V</span>
@@ -12687,7 +12799,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12705,7 +12817,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Asvd</span><span class="p">[:</span><span class="n">V</span><span class="p">]</span>
@@ -12719,7 +12831,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12737,7 +12849,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Asvd</span><span class="p">[:</span><span class="n">S</span><span class="p">]</span>
@@ -12751,7 +12863,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12779,7 +12891,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
@@ -12798,7 +12910,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12806,10 +12918,10 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
   memory estimate:  4.11 MiB
   allocs estimate:  18
   --------------
-  minimum time:     56.916 ms (0.00% GC)
-  median time:      59.256 ms (0.00% GC)
-  mean time:        61.919 ms (0.47% GC)
-  maximum time:     106.458 ms (0.00% GC)
+  minimum time:     58.988 ms (0.00% GC)
+  median time:      60.741 ms (0.00% GC)
+  mean time:        61.570 ms (0.48% GC)
+  maximum time:     71.667 ms (0.00% GC)
   --------------
   samples:          82
   evals/sample:     1</pre>
@@ -12823,7 +12935,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">svdfact</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -12837,7 +12949,7 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12845,12 +12957,12 @@ det(A::<b>Base.LinAlg.Eigen</b>) at <a href="https://github.com/JuliaLang/julia/
   memory estimate:  17.23 MiB
   allocs estimate:  16
   --------------
-  minimum time:     112.315 ms (0.00% GC)
-  median time:      115.873 ms (1.40% GC)
-  mean time:        117.697 ms (2.18% GC)
-  maximum time:     154.419 ms (27.10% GC)
+  minimum time:     116.417 ms (0.00% GC)
+  median time:      120.142 ms (1.41% GC)
+  mean time:        122.801 ms (2.21% GC)
+  maximum time:     160.452 ms (25.73% GC)
   --------------
-  samples:          43
+  samples:          41
   evals/sample:     1</pre>
 </div>
 
