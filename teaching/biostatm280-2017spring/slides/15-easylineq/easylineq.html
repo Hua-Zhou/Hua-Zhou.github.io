@@ -11762,9 +11762,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Diagonal $\mathbf{A}$: $n$ flops. Use <code>Diagonal</code> type of Julia.</li>
-</ul>
+<h2 id="Diagonal-matrix">Diagonal matrix<a class="anchor-link" href="#Diagonal-matrix">&#182;</a></h2><p>Diagonal $\mathbf{A}$: $n$ flops. Use <code>Diagonal</code> type of Julia.</p>
 
 </div>
 </div>
@@ -11795,7 +11793,7 @@ div#notebook {
 <div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-\(A::<b>AbstractArray{T<:Any,2}</b>, B::<b>Union{AbstractArray{T<:Any,1},AbstractArray{T<:Any,2}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/generic.jl#L349" target="_blank">linalg/generic.jl:349</a>
+\(A::<b>AbstractArray{T<:Any,2}</b>, B::<b>Union{AbstractArray{T<:Any,1},AbstractArray{T<:Any,2}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/f4c6c9d4bbbd9587d84494e314f692c15ff1f9c0/base/linalg/generic.jl#L349" target="_blank">linalg/generic.jl:349</a>
 </div>
 
 </div>
@@ -11829,12 +11827,12 @@ div#notebook {
   memory estimate:  15.97 KiB
   allocs estimate:  5
   --------------
-  minimum time:     860.093 μs (0.00% GC)
-  median time:      948.212 μs (0.00% GC)
-  mean time:        1.185 ms (0.11% GC)
-  maximum time:     5.220 ms (0.00% GC)
+  minimum time:     862.959 μs (0.00% GC)
+  median time:      1.123 ms (0.00% GC)
+  mean time:        1.500 ms (0.09% GC)
+  maximum time:     8.415 ms (28.06% GC)
   --------------
-  samples:          4157
+  samples:          3278
   evals/sample:     1</pre>
 </div>
 
@@ -11869,10 +11867,10 @@ div#notebook {
   memory estimate:  15.98 KiB
   allocs estimate:  6
   --------------
-  minimum time:     10.859 μs (0.00% GC)
-  median time:      12.176 μs (0.00% GC)
-  mean time:        14.674 μs (8.99% GC)
-  maximum time:     2.120 ms (98.49% GC)
+  minimum time:     11.530 μs (0.00% GC)
+  median time:      15.592 μs (0.00% GC)
+  mean time:        18.934 μs (7.33% GC)
+  maximum time:     2.677 ms (97.20% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -11889,11 +11887,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bidiagonal,-tridiagonal,-and-banded-matrices">Bidiagonal, tridiagonal, and banded matrices<a class="anchor-link" href="#Bidiagonal,-tridiagonal,-and-banded-matrices">&#182;</a></h2><p>Bidiagonal, tridiagonal, or banded $\mathbf{A}$: Band LU, band Cholesky, ... roughly $O(n)$ flops.</p>
 <ul>
-<li>Bidiagonal, tridiagonal, or banded $\mathbf{A}$: Band LU, band Cholesky, ... roughly $O(n)$ flops.   <ul>
 <li>Use <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.Bidiagonal"><code>Bidiagonal</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.Tridiagonal"><code>Tridiagonal</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.SymTridiagonal"><code>SymTridiagonal</code></a> types of Julia.</li>
-</ul>
-</li>
 </ul>
 
 </div>
@@ -11989,12 +11985,12 @@ div#notebook {
   memory estimate:  7.65 MiB
   allocs estimate:  8
   --------------
-  minimum time:     12.711 ms (0.00% GC)
-  median time:      13.155 ms (0.00% GC)
-  mean time:        13.388 ms (5.46% GC)
-  maximum time:     16.586 ms (14.16% GC)
+  minimum time:     12.699 ms (0.00% GC)
+  median time:      12.888 ms (0.00% GC)
+  mean time:        13.249 ms (5.58% GC)
+  maximum time:     15.763 ms (22.91% GC)
   --------------
-  samples:          373
+  samples:          377
   evals/sample:     1</pre>
 </div>
 
@@ -12029,10 +12025,10 @@ div#notebook {
   memory estimate:  23.97 KiB
   allocs estimate:  9
   --------------
-  minimum time:     12.756 μs (0.00% GC)
-  median time:      14.441 μs (0.00% GC)
-  mean time:        17.349 μs (9.04% GC)
-  maximum time:     2.222 ms (98.08% GC)
+  minimum time:     15.968 μs (0.00% GC)
+  median time:      18.489 μs (0.00% GC)
+  mean time:        23.130 μs (9.54% GC)
+  maximum time:     4.355 ms (98.65% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12049,9 +12045,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Triangular $\mathbf{A}$: $n^2$ flops.</li>
-</ul>
+<h2 id="Triangular-matrix">Triangular matrix<a class="anchor-link" href="#Triangular-matrix">&#182;</a></h2><p>Triangular $\mathbf{A}$: $n^2$ flops.</p>
 
 </div>
 </div>
@@ -12087,12 +12081,12 @@ div#notebook {
   memory estimate:  7.95 KiB
   allocs estimate:  2
   --------------
-  minimum time:     790.447 μs (0.00% GC)
-  median time:      971.303 μs (0.00% GC)
-  mean time:        1.245 ms (0.00% GC)
-  maximum time:     5.209 ms (0.00% GC)
+  minimum time:     825.379 μs (0.00% GC)
+  median time:      1.068 ms (0.00% GC)
+  mean time:        1.383 ms (0.00% GC)
+  maximum time:     5.308 ms (0.00% GC)
   --------------
-  samples:          3944
+  samples:          3547
   evals/sample:     1</pre>
 </div>
 
@@ -12127,10 +12121,10 @@ div#notebook {
   memory estimate:  7.97 KiB
   allocs estimate:  3
   --------------
-  minimum time:     322.165 μs (0.00% GC)
-  median time:      358.512 μs (0.00% GC)
-  mean time:        374.502 μs (0.15% GC)
-  maximum time:     3.100 ms (84.35% GC)
+  minimum time:     330.742 μs (0.00% GC)
+  median time:      360.519 μs (0.00% GC)
+  mean time:        373.948 μs (0.12% GC)
+  maximum time:     2.113 ms (79.74% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12147,9 +12141,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Block diagonal: Suppose $n = \sum_i n_i$. $(\sum_i n_i)^3$ vs $\sum_i n_i^3$.  </li>
-</ul>
+<h2 id="Block-diagonal-matrix">Block diagonal matrix<a class="anchor-link" href="#Block-diagonal-matrix">&#182;</a></h2><p>Block diagonal: Suppose $n = \sum_i n_i$. $(\sum_i n_i)^3$ vs $\sum_i n_i^3$.</p>
 <p>Julia has a <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blkdiag#Base.blkdiag"><code>blkdiag</code></a> function that generates a <strong>full</strong> matrix. Anyone interested writing a <code>BlockDiagonal.jl</code> package?</p>
 
 </div>
@@ -12215,16 +12207,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Kronecker product. 
-$$
+<h2 id="Kronecker-product">Kronecker product<a class="anchor-link" href="#Kronecker-product">&#182;</a></h2>$$
 \begin{eqnarray*}
-  (\mathbf{A} \otimes \mathbf{B})^{-1} &=& \mathbf{A}^{-1} \otimes \mathbf{B}^{-1} \\
-  (\mathbf{C}^T \otimes \mathbf{A}) \text{vec}(\mathbf{B}) &=& \text{vec}(\mathbf{A} \mathbf{B} \mathbf{C}).
+    (\mathbf{A} \otimes \mathbf{B})^{-1} &=& \mathbf{A}^{-1} \otimes \mathbf{B}^{-1} \\
+    (\mathbf{C}^T \otimes \mathbf{A}) \text{vec}(\mathbf{B}) &=& \text{vec}(\mathbf{A} \mathbf{B} \mathbf{C}).
 \end{eqnarray*}    
-$$</li>
-</ul>
-
+$$
 </div>
 </div>
 </div>
@@ -12233,11 +12221,9 @@ $$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sparse-matrix">Sparse matrix<a class="anchor-link" href="#Sparse-matrix">&#182;</a></h2><p>Sparsity: sparse matrix decomposition or iterative method.</p>
 <ul>
-<li>Sparsity: sparse matrix decomposition, or iterative method.  <ul>
 <li>The easiest recognizable structure. Familiarize yourself with the sparse matrix computation tools in Julia, Matlab, R (<code>Matrix</code> package), MKL (sparse BLAS), ... as much as possible.</li>
-</ul>
-</li>
 </ul>
 
 </div>
@@ -12305,10 +12291,10 @@ $$</li>
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     106.317 μs (0.00% GC)
-  median time:      131.055 μs (0.00% GC)
-  mean time:        191.222 μs (0.00% GC)
-  maximum time:     2.005 ms (0.00% GC)
+  minimum time:     104.680 μs (0.00% GC)
+  median time:      113.368 μs (0.00% GC)
+  mean time:        121.991 μs (0.00% GC)
+  maximum time:     883.279 μs (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12345,10 +12331,10 @@ $$</li>
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     7.404 μs (0.00% GC)
-  median time:      7.956 μs (0.00% GC)
-  mean time:        9.223 μs (4.93% GC)
-  maximum time:     578.281 μs (97.50% GC)
+  minimum time:     7.386 μs (0.00% GC)
+  median time:      8.020 μs (0.00% GC)
+  mean time:        9.298 μs (5.49% GC)
+  maximum time:     704.186 μs (97.68% GC)
   --------------
   samples:          10000
   evals/sample:     4</pre>
@@ -12385,12 +12371,12 @@ $$</li>
   memory estimate:  7.63 MiB
   allocs estimate:  8
   --------------
-  minimum time:     9.145 ms (0.00% GC)
-  median time:      11.396 ms (0.00% GC)
-  mean time:        12.642 ms (8.97% GC)
-  maximum time:     26.281 ms (21.96% GC)
+  minimum time:     9.102 ms (0.00% GC)
+  median time:      9.297 ms (0.00% GC)
+  mean time:        9.668 ms (7.72% GC)
+  maximum time:     15.955 ms (0.00% GC)
   --------------
-  samples:          394
+  samples:          515
   evals/sample:     1</pre>
 </div>
 
@@ -12425,12 +12411,12 @@ $$</li>
   memory estimate:  1.33 MiB
   allocs estimate:  53
   --------------
-  minimum time:     3.330 ms (0.00% GC)
-  median time:      3.370 ms (0.00% GC)
-  mean time:        3.455 ms (0.69% GC)
-  maximum time:     4.763 ms (9.14% GC)
+  minimum time:     3.328 ms (0.00% GC)
+  median time:      3.348 ms (0.00% GC)
+  mean time:        3.435 ms (0.68% GC)
+  maximum time:     5.019 ms (8.21% GC)
   --------------
-  samples:          1442
+  samples:          1450
   evals/sample:     1</pre>
 </div>
 
@@ -12466,12 +12452,12 @@ $$</li>
   memory estimate:  7.64 MiB
   allocs estimate:  10
   --------------
-  minimum time:     10.051 ms (0.00% GC)
-  median time:      10.446 ms (0.00% GC)
-  mean time:        11.194 ms (6.93% GC)
-  maximum time:     24.456 ms (16.28% GC)
+  minimum time:     9.729 ms (0.00% GC)
+  median time:      11.628 ms (0.00% GC)
+  mean time:        12.500 ms (6.75% GC)
+  maximum time:     28.351 ms (15.33% GC)
   --------------
-  samples:          445
+  samples:          399
   evals/sample:     1</pre>
 </div>
 
@@ -12536,12 +12522,12 @@ $$</li>
   memory estimate:  1.36 MiB
   allocs estimate:  65
   --------------
-  minimum time:     3.833 ms (0.00% GC)
-  median time:      3.868 ms (0.00% GC)
-  mean time:        4.039 ms (0.63% GC)
-  maximum time:     7.179 ms (9.90% GC)
+  minimum time:     3.818 ms (0.00% GC)
+  median time:      4.016 ms (0.00% GC)
+  mean time:        4.354 ms (0.65% GC)
+  maximum time:     7.580 ms (14.44% GC)
   --------------
-  samples:          1232
+  samples:          1140
   evals/sample:     1</pre>
 </div>
 
@@ -12608,10 +12594,10 @@ $$</li>
   memory estimate:  262.66 KiB
   allocs estimate:  44
   --------------
-  minimum time:     88.081 μs (0.00% GC)
-  median time:      102.677 μs (0.00% GC)
-  mean time:        141.364 μs (17.32% GC)
-  maximum time:     3.396 ms (95.28% GC)
+  minimum time:     88.647 μs (0.00% GC)
+  median time:      108.999 μs (0.00% GC)
+  mean time:        153.431 μs (17.26% GC)
+  maximum time:     4.921 ms (82.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12628,16 +12614,13 @@ $$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>Easy plus low rank: $\mathbf{U} \in \mathbb{R}^{n \times r}$, $\mathbf{V} \in \mathbb{R}^{r \times n}$, $r \ll n$. Woodbury formula
+<h2 id="Easy-plus-low-rank">Easy plus low rank<a class="anchor-link" href="#Easy-plus-low-rank">&#182;</a></h2><p>Easy plus low rank: $\mathbf{U} \in \mathbb{R}^{n \times r}$, $\mathbf{V} \in \mathbb{R}^{r \times n}$, $r \ll n$. Woodbury formula
 $$
-  (\mathbf{A} + \mathbf{U} \mathbf{V}^T)^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_r + \mathbf{V}^T \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^T \mathbf{A}^{-1},
+    (\mathbf{A} + \mathbf{U} \mathbf{V}^T)^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_r + \mathbf{V}^T \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^T \mathbf{A}^{-1},
 $$</p>
 <ul>
 <li>Keep HW2 Q3 in mind.  </li>
 <li><a href="https://github.com/timholy/WoodburyMatrices.jl"><code>WoodburyMatrices.jl</code></a> package can be useful.</li>
-</ul>
-</li>
 </ul>
 
 </div>
@@ -12735,12 +12718,12 @@ $$</p>
   memory estimate:  7.64 MiB
   allocs estimate:  9
   --------------
-  minimum time:     8.667 ms (0.00% GC)
-  median time:      9.074 ms (0.00% GC)
-  mean time:        9.455 ms (8.10% GC)
-  maximum time:     13.966 ms (16.96% GC)
+  minimum time:     8.638 ms (0.00% GC)
+  median time:      9.277 ms (0.00% GC)
+  mean time:        10.303 ms (7.86% GC)
+  maximum time:     24.259 ms (17.84% GC)
   --------------
-  samples:          527
+  samples:          484
   evals/sample:     1</pre>
 </div>
 
@@ -12775,10 +12758,10 @@ $$</p>
   memory estimate:  76.19 KiB
   allocs estimate:  27
   --------------
-  minimum time:     20.642 μs (0.00% GC)
-  median time:      27.410 μs (0.00% GC)
-  mean time:        41.252 μs (14.63% GC)
-  maximum time:     4.841 ms (96.63% GC)
+  minimum time:     21.532 μs (0.00% GC)
+  median time:      27.018 μs (0.00% GC)
+  mean time:        37.297 μs (16.91% GC)
+  maximum time:     3.759 ms (98.48% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12790,23 +12773,101 @@ $$</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># multiplication without using Woodbury structure</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">Wfull</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  7.94 KiB
+  allocs estimate:  1
+  --------------
+  minimum time:     178.935 μs (0.00% GC)
+  median time:      197.530 μs (0.00% GC)
+  mean time:        206.288 μs (0.00% GC)
+  maximum time:     442.637 μs (0.00% GC)
+  --------------
+  samples:          10000
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># multiplication using Woodbury structure</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">W</span> <span class="o">*</span> <span class="n">b</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  24.13 KiB
+  allocs estimate:  7
+  --------------
+  minimum time:     4.865 μs (0.00% GC)
+  median time:      6.401 μs (0.00% GC)
+  mean time:        9.800 μs (21.91% GC)
+  maximum time:     556.756 μs (97.87% GC)
+  --------------
+  samples:          10000
+  evals/sample:     6</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Easy plus border: For $\mathbf{A}$ pd and $\mathbf{V}$ full row rank,
+<h2 id="Easy-plus-border">Easy plus border<a class="anchor-link" href="#Easy-plus-border">&#182;</a></h2><p>Easy plus border: For $\mathbf{A}$ pd and $\mathbf{V}$ full row rank,
 $$
-  \begin{pmatrix}
-  \mathbf{A} & \mathbf{V}^T \\
-  \mathbf{V} & \mathbf{0}
-  \end{pmatrix}^{-1} = \begin{pmatrix}
-  \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{V}^T (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1} \mathbf{V} \mathbf{A}^{-1} & \mathbf{A}^{-1} \mathbf{V}^T (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1} \\
-  (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1} \mathbf{V} \mathbf{A}^{-1} & - (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1}
-  \end{pmatrix}.
-$$</li>
-</ul>
+    \begin{pmatrix}
+    \mathbf{A} & \mathbf{V}^T \\
+    \mathbf{V} & \mathbf{0}
+    \end{pmatrix}^{-1} = \begin{pmatrix}
+    \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{V}^T (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1} \mathbf{V} \mathbf{A}^{-1} & \mathbf{A}^{-1} \mathbf{V}^T (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1} \\
+    (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1} \mathbf{V} \mathbf{A}^{-1} & - (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1}
+    \end{pmatrix}.
+$$</p>
 
 </div>
 </div>
@@ -12816,9 +12877,7 @@ $$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Orthogonal $\mathbf{A}$: $n^2$ flops <strong>at most</strong>. Permutation matrix, Householder matrix, Jacobi matrix, ... take less.</li>
-</ul>
+<h2 id="Orthogonal-matrix">Orthogonal matrix<a class="anchor-link" href="#Orthogonal-matrix">&#182;</a></h2><p>Orthogonal $\mathbf{A}$: $n^2$ flops <strong>at most</strong>. Permutation matrix, Householder matrix, Jacobi matrix, ... take less.</p>
 
 </div>
 </div>
@@ -12828,22 +12887,19 @@ $$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li><p>Toeplitz systems:
+<h2 id="Toeplitz-matrix">Toeplitz matrix<a class="anchor-link" href="#Toeplitz-matrix">&#182;</a></h2><p>Toeplitz systems:
 $$
-  \mathbf{T} = \begin{pmatrix}
-  r_0 & r_1 & r_2 & r_3 \\
-  r_{-1} & r_0 & r_1 & r_2 \\
-  r_{-2} & r_{-1} & r_0 & r_1 \\
-  r_{-3} & r_{-2} & r_{-1} & r_0
-  \end{pmatrix}.
+    \mathbf{T} = \begin{pmatrix}
+    r_0 & r_1 & r_2 & r_3 \\
+    r_{-1} & r_0 & r_1 & r_2 \\
+    r_{-2} & r_{-1} & r_0 & r_1 \\
+    r_{-3} & r_{-2} & r_{-1} & r_0
+    \end{pmatrix}.
 $$
 $\mathbf{T} \mathbf{x} = \mathbf{b}$, where $\mathbf{T}$ is pd and Toeplitz, can be solved in $O(n^2)$ flops. Durbin algorithm (Yule-Walker equation), Levinson algorithm (general $\mathbf{b}$), Trench algorithm (inverse). These matrices occur in auto-regressive models and econometrics.</p>
 <ul>
 <li><a href="https://github.com/JuliaMatrices/ToeplitzMatrices.jl"><code>ToeplitzMatrices.jl</code></a> package can be useful.</li>
 </ul>
-</li>
-</ul>
 
 </div>
 </div>
@@ -12853,19 +12909,17 @@ $\mathbf{T} \mathbf{x} = \mathbf{b}$, where $\mathbf{T}$ is pd and Toeplitz, can
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Circulant systems: Toeplitz matrix with wraparound
+<h2 id="Circulant-matrix">Circulant matrix<a class="anchor-link" href="#Circulant-matrix">&#182;</a></h2><p>Circulant systems: Toeplitz matrix with wraparound
 $$
-  C(\mathbf{z}) = \begin{pmatrix}
-  z_0 & z_4 & z_3 & z_2 & z_1 \\
-  z_1 & z_0 & z_4 & z_3 & z_2 \\
-  z_2 & z_1 & z_0 & z_4 & z_3 \\
-  z_3 & z_2 & z_1 & z_0 & z_4 \\
-  z_4 & z_3 & z_2 & z_1 & z_0
-  \end{pmatrix},
+    C(\mathbf{z}) = \begin{pmatrix}
+    z_0 & z_4 & z_3 & z_2 & z_1 \\
+    z_1 & z_0 & z_4 & z_3 & z_2 \\
+    z_2 & z_1 & z_0 & z_4 & z_3 \\
+    z_3 & z_2 & z_1 & z_0 & z_4 \\
+    z_4 & z_3 & z_2 & z_1 & z_0
+    \end{pmatrix},
 $$
-FFT type algorithms: DCT (discrete cosine transform) and DST (discrete sine transform).</li>
-</ul>
+FFT type algorithms: DCT (discrete cosine transform) and DST (discrete sine transform).</p>
 
 </div>
 </div>
@@ -12875,18 +12929,16 @@ FFT type algorithms: DCT (discrete cosine transform) and DST (discrete sine tran
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Vandermonde matrix: such as in interpolation and approximation problems
+<h2 id="Vandermonde-matrix">Vandermonde matrix<a class="anchor-link" href="#Vandermonde-matrix">&#182;</a></h2><p>Vandermonde matrix: such as in interpolation and approximation problems
 $$
-  \mathbf{V}(x_0,\ldots,x_n) = \begin{pmatrix}
-  1 & 1 & \cdots & 1 \\
-  x_0 & x_1 & \cdots & x_n \\
-  \vdots & \vdots & & \vdots \\
-  x_0^n & x_1^n & \cdots & x_n^n
-  \end{pmatrix}.
+    \mathbf{V}(x_0,\ldots,x_n) = \begin{pmatrix}
+    1 & 1 & \cdots & 1 \\
+    x_0 & x_1 & \cdots & x_n \\
+    \vdots & \vdots & & \vdots \\
+    x_0^n & x_1^n & \cdots & x_n^n
+    \end{pmatrix}.
 $$
-$\mathbf{V} \mathbf{x} = \mathbf{b}$ or $\mathbf{V}^T \mathbf{x} = \mathbf{b}$ can be solved in $O(n^2)$ flops.</li>
-</ul>
+$\mathbf{V} \mathbf{x} = \mathbf{b}$ or $\mathbf{V}^T \mathbf{x} = \mathbf{b}$ can be solved in $O(n^2)$ flops.</p>
 
 </div>
 </div>
@@ -12896,13 +12948,11 @@ $\mathbf{V} \mathbf{x} = \mathbf{b}$ or $\mathbf{V}^T \mathbf{x} = \mathbf{b}$ c
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Cauchy-like matrices:
+<h2 id="Cauchy-like-matrix">Cauchy-like matrix<a class="anchor-link" href="#Cauchy-like-matrix">&#182;</a></h2><p>Cauchy-like matrices:
 $$
-  \Omega \mathbf{A} - \mathbf{A} \Lambda = \mathbf{R} \mathbf{S}^T,
+    \Omega \mathbf{A} - \mathbf{A} \Lambda = \mathbf{R} \mathbf{S}^T,
 $$
-where $\Omega = \text{diag}(\omega_1,\ldots,\omega_n)$ and $\Lambda = (\lambda_1,\ldots, \lambda_n)$. $O(n)$ flops for LU and QR.</li>
-</ul>
+where $\Omega = \text{diag}(\omega_1,\ldots,\omega_n)$ and $\Lambda = \text{diag}(\lambda_1,\ldots, \lambda_n)$. $O(n)$ flops for LU and QR.</p>
 
 </div>
 </div>
@@ -12912,9 +12962,7 @@ where $\Omega = \text{diag}(\omega_1,\ldots,\omega_n)$ and $\Lambda = (\lambda_1
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Structured-rank problems: semiseparable matrices (LU and QR takes $O(n)$ flops), quasiseparable matrices, ...</li>
-</ul>
+<h2 id="Structured-rank-matrix">Structured-rank matrix<a class="anchor-link" href="#Structured-rank-matrix">&#182;</a></h2><p>Structured-rank problems: semiseparable matrices (LU and QR takes $O(n)$ flops), quasiseparable matrices, ...</p>
 
 </div>
 </div>
