@@ -12537,20 +12537,18 @@ Base.LinAlg.PosDefException(5)
 <h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><ul>
 <li><p><strong>No inversion</strong> mentality: Whenever we see matrix inverse, we should think in terms of solving linear equations. If the matrix is positive (semi)definite, use Cholesky decomposition.</p>
 </li>
-<li><p>Example: multivariate normal density $\text{MVN}(\mu, \Sigma)$,  $\Sigma$ is p.d., is
-  $$</p>
-<ul>
-<li><p>\frac{n}{2} \log (2\pi) - \frac{1}{2} \log \det \Sigma - \frac{1}{2} (\mathbf{y} - \mu)^T \Sigma^{-1} (\mathbf{y} - \mu).
-$$</p>
+<li><p>Example: multivariate normal density $\text{MVN}(\mu, \Sigma)$,  $\Sigma$ is p.d., is</p>
 </li>
+</ul>
+$$
+- \frac{n}{2} \log (2\pi) - \frac{1}{2} \log \det \Sigma - \frac{1}{2} (\mathbf{y} - \mu)^T \Sigma^{-1} (\mathbf{y} - \mu).
+$$<ul>
 <li><p>Method 1: (a) compute explicit inverse $\Sigma^{-1}$ ($2n^3$ flops), (b) compute quadratic form ($2n^2 + 2n$ flops), (c) compute determinant ($2n^3/3$ flops).</p>
 </li>
 <li><p>Method 2: (a) Cholesky decomposition $\Sigma = \mathbf{L} \mathbf{L}^T$ ($n^3/3$ flops), (b) Solve $\mathbf{L} \mathbf{x} = \mathbf{y} - \mu$ by forward substitutions ($n^2$ flops), (c) compute quadratic form $\mathbf{x}^T \mathbf{x}$ ($2n$ flops), and (d) compute determinant from Cholesky factor ($n$ flops).</p>
-<p>Which method is better?</p>
 </li>
 </ul>
-</li>
-</ul>
+<p><strong>Which method is better?</strong></p>
 
 </div>
 </div>

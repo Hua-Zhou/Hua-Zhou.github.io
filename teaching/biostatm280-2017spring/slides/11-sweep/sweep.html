@@ -11758,13 +11758,13 @@ div#notebook {
 </li>
 <li><p>Assume $\mathbf{A}$ is symmetric and positive semidefinite.</p>
 </li>
-<li><p><strong>Sweep</strong> on the $k$-th diagonal entry $a_{kk} \ne 0$ yields $\hat A$ with entries
+<li><p><strong>Sweep</strong> on the $k$-th diagonal entry $a_{kk} \ne 0$ yields $\widehat A$ with entries
 $$
 \begin{eqnarray*}
-  \hat a_{kk} &=& - \frac{1}{a_{kk}} \\
-  \hat a_{ik} &=& \frac{a_{ik}}{a_{kk}} \\
-  \hat a_{kj} &=& \frac{a_{kj}}{a_{kk}} \\
-  \hat a_{ij} &=& a_{ij} - \frac{a_{ik} a_{kj}}{a_{kk}}, \quad i \ne k, j \ne k.
+  \widehat a_{kk} &=& - \frac{1}{a_{kk}} \\
+  \widehat a_{ik} &=& \frac{a_{ik}}{a_{kk}} \\
+  \widehat a_{kj} &=& \frac{a_{kj}}{a_{kk}} \\
+  \widehat a_{ij} &=& a_{ij} - \frac{a_{ik} a_{kj}}{a_{kk}}, \quad i \ne k, j \ne k.
 \end{eqnarray*}
 $$
 $n^2$ flops (taking into account of symmetry).</p>
@@ -11794,16 +11794,17 @@ on paper using sweep operator.</p>
 $$
   \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix}.
 $$
-If possible, sweep on the diagonal entries of $\mathbf{A}_{11}$ yields
-$$
-  \begin{pmatrix} - \mathbf{A}_{11}^{-1} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
-  \mathbf{A}_{21} \mathbf{A}_{11}^{-1} & \mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}
-  \end{pmatrix}.
-$$
-Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ is recognized as the <strong>Schur complement</strong> of $\mathbf{A}_{11}$.</p>
+If possible, sweep on the diagonal entries of $\mathbf{A}_{11}$ yields</p>
 </li>
-<li><p>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$.</p>
-</li>
+</ul>
+$$
+    \begin{pmatrix} 
+    - \mathbf{A}_{11}^{-1} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
+    \mathbf{A}_{21} \mathbf{A}_{11}^{-1} & \mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}
+    \end{pmatrix}.
+$$<p>Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ is recognized as the <strong>Schur complement</strong> of $\mathbf{A}_{11}$.</p>
+<ul>
+<li>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$. </li>
 </ul>
 <h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><ul>
 <li><p>Invert a matrix <em>in place</em>. $n^3$ flops.<br>
@@ -11825,22 +11826,20 @@ $$
     \mathbf{y}^T \mathbf{X} & \mathbf{y}^T \mathbf{y} 
 \end{pmatrix}
 $$<br>
-yields<br>
+yields</p>
 $$
 \begin{eqnarray*}
-\begin{pmatrix}</p>
-<ul>
-<li>(\mathbf{X}^T \mathbf{X})^{-1} &amp; (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y} \
-\mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} &amp; \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
+\begin{pmatrix}
+- (\mathbf{X}^T \mathbf{X})^{-1} & (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y} \\
+\mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} & \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
 \end{pmatrix} = 
-\begin{pmatrix}</li>
-<li>\sigma^{-2} \text{Cov}(\beta) &amp; \beta \
-\beta^T &amp; |\mathbf{y} - \hat y|_2^2
+\begin{pmatrix}
+- \sigma^{-2} \text{Cov}(\beta) & \beta \\
+\beta^T & \|\mathbf{y} - \hat y\|_2^2
 \end{pmatrix}.
 \end{eqnarray*}
-$$  
-In total $np^2 + p^3$ flops.</li>
-</ul>
+$$<p><br>
+In total $np^2 + p^3$ flops.</p>
 <h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
 <li><a href="https://github.com/joshday/SweepOperator.jl">SweepOperator.jl</a> package implements the sweep operator.</li>
 </ul>
