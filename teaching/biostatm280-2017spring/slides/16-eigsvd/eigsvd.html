@@ -11900,10 +11900,9 @@ is the SVD of $\mathbf{A}$.</p>
 <li>Dimension reduction: reduce dimensionality $p$ to $q \ll p$. Use top PCs $\tilde{\mathbf{x}}_1, \ldots, \tilde{\mathbf{x}}_q$ in visualization and downstream analysis.</li>
 </ul>
 <p><img src="http://www.nature.com/nature/journal/v456/n7218/images/nature07331-f1.2.jpg" width="400" align="center"/></p>
+<p>Above picture is from the article <a href="http://www.nature.com/nature/journal/v456/n7218/full/nature07331.html">Genes mirror geography within Europe</a> by Novembre et al (2008) published in <em>Nature</em>.</p>
 <ul>
-<li><p>Use PCs to adjust for confounding -- a serious issue in association studies in large data sets.</p>
-<ul>
-<li>Above picture is from the article <a href="http://www.nature.com/nature/journal/v456/n7218/full/nature07331.html">Genes mirror geography within Europe</a> by Novembre et al (2008) published in <em>Nature</em>.  </li>
+<li>Use PCs to adjust for confounding - a serious issue in association studies in large data sets.<ul>
 <li>Use of PCA to adjust for confounding in modern genetic studies is proposed in the paper <a href="http://www.nature.com/ng/journal/v38/n8/full/ng1847.html">Principal components analysis corrects for stratification in genome-wide association studies</a> by Price et al (2006) published in <em>Nature Genetics</em>. It has been cited 5,312 times as of May 8, 2017.</li>
 </ul>
 </li>
@@ -11920,9 +11919,9 @@ is achieved by $\mathbf{Y} = \sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i^T$ 
 <li>Rank 50 approximation requires $50 \times (2691+598) \times 6 = 1,315,600$ bytes. </li>
 <li>Rank 12 approximation requires $12 \times (2691+598) \times 6 = 315,744$ bytes.</li>
 </ul>
-<p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/1/image_5.img.jpg/1490211662955.jpg" width="150" align="center"/></p>
-<p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/2/image_6.img.jpg/1490211662986.jpg" width="150" align="center"/></p>
 <p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/3/image_7.img.jpg/1490211663024.jpg" width="150" align="center"/></p>
+<p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/2/image_6.img.jpg/1490211662986.jpg" width="150" align="center"/></p>
+<p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/1/image_5.img.jpg/1490211662955.jpg" width="150" align="center"/></p>
 <h3 id="Moore-Penrose-(MP)-inverse">Moore-Penrose (MP) inverse<a class="anchor-link" href="#Moore-Penrose-(MP)-inverse">&#182;</a></h3><p>Using thin SVD, 
 $$
 \mathbf{A}^+ = \mathbf{V} \Sigma^+ \mathbf{U}^T,
@@ -11938,7 +11937,7 @@ where $\Sigma^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="p">@</span><span class="n">which</span> <span class="n">pinv</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">pinv</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11951,8 +11950,40 @@ where $\Sigma^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0
 
 <div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
 
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3×5 Array{Float64,2}:
+ -0.454413  -0.234345   0.199274  -0.251387    0.368433
+  0.291954   0.216606   0.134749  -0.0936017  -0.109302
+  0.758739   0.515376  -0.556453   0.0377799   0.212518</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">pinv</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+
 <div class="output_html rendered_html output_subarea output_execute_result">
-pinv<i>{T}</i>(A::<b>Union{Base.ReshapedArray{T,2,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N<:Any}}},DenseArray{T,2},SubArray{T,2,A<:Union{Base.ReshapedArray{T<:Any,N<:Any,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N<:Any}}},DenseArray},I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex,Colon,Int64,Range{Int64}},N<:Any}},L<:Any}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/6445c82d0060dbe82b88436f0f4371a4ee64d918/base/linalg/dense.jl#L508" target="_blank">linalg/dense.jl:508</a>
+pinv<i>{T}</i>(A::<b>Union{Base.ReshapedArray{T,2,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N<:Any}}},DenseArray{T,2},SubArray{T,2,A<:Union{Base.ReshapedArray{T<:Any,N<:Any,A<:DenseArray,MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N<:Any}}},DenseArray},I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex,Colon,Int64,Range{Int64}},N<:Any}},L<:Any}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/f4c6c9d4bbbd9587d84494e314f692c15ff1f9c0/base/linalg/dense.jl#L508" target="_blank">linalg/dense.jl:508</a>
 </div>
 
 </div>
@@ -12045,7 +12076,7 @@ and $\|\widehat \beta (\lambda)\|_2$ is monotone decreasing as $\lambda$ increas
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Other-applications">Other applications<a class="anchor-link" href="#Other-applications">&#182;</a></h3><p>See Chapters 8-9 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010) for more applications of SVD.</p>
+<h3 id="Other-applications">Other applications<a class="anchor-link" href="#Other-applications">&#182;</a></h3><p>See Chapters 8-9 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010) for more applications of eigen-decomposition and SVD.</p>
 
 </div>
 </div>
@@ -12059,8 +12090,7 @@ and $\|\widehat \beta (\lambda)\|_2$ is monotone decreasing as $\lambda$ increas
 <li><p><strong>Power method</strong> iterates according to
 $$
 \begin{eqnarray*}
-  \mathbf{x}^{(t)} &\gets& \frac{1}{\|\mathbf{A} \mathbf{x}^{(t-1)}\|_2} \mathbf{A} \mathbf{x}^{(t-1)} \\
-  \lambda_1^{(t)} &\gets& \mathbf{x}^{(t)T} \mathbf{A} \mathbf{x}^{(t)}
+  \mathbf{x}^{(t)} &\gets& \frac{1}{\|\mathbf{A} \mathbf{x}^{(t-1)}\|_2} \mathbf{A} \mathbf{x}^{(t-1)}
 \end{eqnarray*}
 $$
 from an initial guess $\mathbf{x}^{(0)}$ of unit norm.</p>
@@ -12075,7 +12105,7 @@ $$
 $$
 Thus $\mathbf{x}^{(t)} - \frac{c_1 \mathbf{u}_1}{\|c_1 \mathbf{u}_1\|_2} \left( \frac{\lambda_1}{|\lambda_1|} \right)^t \to 0$ as $t \to \infty$. The convergence rate is $|\lambda_2|/|\lambda_1|$.</p>
 </li>
-<li><p>$\mathbf{x}^{(t)T} \mathbf{A} \mathbf{x}^{(t)}$ converges to $\lambda_1$.</p>
+<li><p>$\lambda_1^{(t)} = \mathbf{x}^{(t)T} \mathbf{A} \mathbf{x}^{(t)}$ converges to $\lambda_1$.</p>
 </li>
 <li><p><strong>Inverse power method</strong> for finding the eigenvalue of smallest absolute value: Substitute $\mathbf{A}$ by $\mathbf{A}^{-1}$ in the power method. (E.g., pre-compute LU or Cholesky of $\mathbf{A}$).</p>
 </li>
@@ -12083,7 +12113,7 @@ Thus $\mathbf{x}^{(t)} - \frac{c_1 \mathbf{u}_1}{\|c_1 \mathbf{u}_1\|_2} \left( 
 </li>
 <li><p><strong>Rayleigh quotient iteration</strong>: Substitute $(\mathbf{A} - \mu^{(t-1)} \mathbf{I})^{-1}$, where $\mu^{(t-1)} = \mathbf{x}^{(t-1)T} \mathbf{A} \mathbf{x}^{(t-1)}$ in the shifted inverse method. Faster convergence.</p>
 </li>
-<li><p>Example: PageRank problem seeks top left eigenvecotr of transition matrix $\mathbf{P}$ and costs $O(n)$ per iteration.</p>
+<li><p>Example: PageRank problem seeks top left eigenvector of transition matrix $\mathbf{P}$ and costs $O(n)$ per iteration.</p>
 </li>
 </ul>
 
