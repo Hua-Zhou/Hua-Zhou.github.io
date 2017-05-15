@@ -11830,7 +11830,7 @@ $$</p>
     <span class="n">rs</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="c"># row sums</span>
     <span class="n">c</span>  <span class="o">=</span> <span class="mf">0.0</span>
     <span class="p">@</span><span class="n">inbounds</span> <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">m</span>
-        <span class="n">pj</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c"># column average</span>
+        <span class="n">pj</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c"># column sum</span>
         <span class="p">@</span><span class="n">simd</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
             <span class="n">pj</span>    <span class="o">+=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
             <span class="n">rs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
@@ -12072,12 +12072,12 @@ Body:
   memory estimate:  7.64 MiB
   allocs estimate:  4
   --------------
-  minimum time:     82.623 ms (0.00% GC)
-  median time:      85.165 ms (0.00% GC)
-  mean time:        90.607 ms (0.87% GC)
-  maximum time:     190.512 ms (1.97% GC)
+  minimum time:     82.700 ms (0.00% GC)
+  median time:      88.807 ms (0.00% GC)
+  mean time:        104.855 ms (0.88% GC)
+  maximum time:     202.382 ms (2.51% GC)
   --------------
-  samples:          56
+  samples:          48
   evals/sample:     1</pre>
 </div>
 
@@ -12108,38 +12108,48 @@ Body:
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre> Count File                        Line Function                               
-     8 ./&lt;missing&gt;                   -1 anonymous                              
-     3 ./In[2]                        4 kinship(::Array{Float64,2})            
-     4 ./In[2]                       10 kinship(::Array{Float64,2})            
+    22 ./&lt;missing&gt;                   -1 anonymous                              
+    16 ./In[2]                        4 kinship(::Array{Float64,2})            
+     5 ./In[2]                       10 kinship(::Array{Float64,2})            
      1 ./In[2]                       19 kinship(::Array{Float64,2})            
-     1 ./In[2]                       11 macro expansion                        
-     3 ./In[2]                       12 macro expansion                        
-     4 ./abstractarray.jl           485 copy!(::Array{Any,1}, ::Core.Infere... 
+     4 ./In[2]                       11 macro expansion                        
+     1 ./In[2]                       12 macro expansion                        
+     2 ./abstractarray.jl           485 copy!(::Array{Any,1}, ::Core.Infere... 
      2 ./inference.jl              1101 abstract_call(::Any, ::Array{Any,1}... 
      2 ./inference.jl               893 abstract_call_gf_by_type(::Any, ::A... 
-     7 ./inference.jl              1152 abstract_eval(::Any, ::Array{Any,1}... 
-     5 ./inference.jl              1105 abstract_eval_call(::Expr, ::Array{... 
+     4 ./inference.jl              1152 abstract_eval(::Any, ::Array{Any,1}... 
+     2 ./inference.jl              1105 abstract_eval_call(::Expr, ::Array{... 
      2 ./inference.jl              1131 abstract_eval_call(::Expr, ::Array{... 
+     1 ./inference.jl              1210 abstract_eval_constant(::Any)          
+     1 ./inference.jl              2225 exprtype(::Any, ::LambdaInfo)          
+     1 ./inference.jl              1939 finish(::Core.Inference.InferenceState)
+     1 ./inference.jl              2872 inlining_pass!(::LambdaInfo, ::Core... 
+     1 ./inference.jl              2930 inlining_pass(::Expr, ::Core.Infere... 
+     1 ./inference.jl              3021 inlining_pass(::Expr, ::Core.Infere... 
      3 ./inference.jl              1597 typeinf_edge(::Method, ::Any, ::Sim... 
      2 ./inference.jl              1603 typeinf_edge(::Method, ::Any, ::Sim... 
      1 ./inference.jl              1621 typeinf_ext(::LambdaInfo)              
-     3 ./inference.jl              1786 typeinf_frame(::Core.Inference.Infe... 
+     2 ./inference.jl              1786 typeinf_frame(::Core.Inference.Infe... 
+     1 ./inference.jl              1854 typeinf_frame(::Core.Inference.Infe... 
      2 ./inference.jl              1660 typeinf_loop(::Core.Inference.Infer... 
      1 ./inference.jl              1677 typeinf_loop(::Core.Inference.Infer... 
-     3 ./linalg/blas.jl            1151 syrk!(::Char, ::Char, ::Float64, ::... 
-     3 ./linalg/blas.jl            1165 syrk(::Char, ::Char, ::Float64, ::A... 
-     9 ./loading.jl                 441 include_string(::String, ::String)     
-     8 ./profile.jl                  16 macro expansion;                       
-     4 ./simdloop.jl                 73 macro expansion                        
-     9 ./task.jl                    360 (::IJulia.##13#19)()                   
+     9 ./linalg/blas.jl            1151 syrk!(::Char, ::Char, ::Float64, ::... 
+    16 ./linalg/blas.jl            1165 syrk(::Char, ::Char, ::Float64, ::A... 
+    23 ./loading.jl                 441 include_string(::String, ::String)     
+    22 ./profile.jl                  16 macro expansion;                       
+     5 ./simdloop.jl                 73 macro expansion                        
+    23 ./task.jl                    360 (::IJulia.##13#19)()                   
      2 ...lia/lib/julia/sys.dylib    -1 abstract_call(::Any, ::Array{Any,1}... 
      2 ...lia/lib/julia/sys.dylib    -1 abstract_call_gf_by_type(::Any, ::A... 
-     7 ...lia/lib/julia/sys.dylib    -1 abstract_eval(::Any, ::Array{Any,1}... 
+     4 ...lia/lib/julia/sys.dylib    -1 abstract_eval(::Any, ::Array{Any,1}... 
+     1 ...lia/lib/julia/sys.dylib    -1 abstract_eval_constant(::Any)          
+     1 ...lia/lib/julia/sys.dylib    -1 exprtype(::Any, ::LambdaInfo)          
+     1 ...lia/lib/julia/sys.dylib    -1 inlining_pass(::Expr, ::Core.Infere... 
      2 ...lia/lib/julia/sys.dylib    -1 typeinf_edge(::Method, ::Any, ::Sim... 
      2 ...lia/lib/julia/sys.dylib    -1 typeinf_edge(::Method, ::Any, ::Sim... 
      1 ...lia/lib/julia/sys.dylib    -1 typeinf_loop(::Core.Inference.Infer... 
-     9 ...IJulia/src/eventloop.jl     8 eventloop(::ZMQ.Socket)                
-     9 .../src/execute_request.jl   156 execute_request(::ZMQ.Socket, ::IJu... 
+    23 ...IJulia/src/eventloop.jl     8 eventloop(::ZMQ.Socket)                
+    23 .../src/execute_request.jl   156 execute_request(::ZMQ.Socket, ::IJu... 
 </pre>
 </div>
 </div>
@@ -12193,13 +12203,13 @@ Body:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Q3">Q3<a class="anchor-link" href="#Q3">&#182;</a></h2><p>We identify $A = \sigma_0^2 I$ and $U = V = \sigma_1 Z$ and utilize the Woodbury formula in Q3(b) and determinantal formula in Q3(d). By Woodbury, the inverse of covariance matrix is<br>
+<h2 id="Q3">Q3<a class="anchor-link" href="#Q3">&#182;</a></h2><p>We identify $\mathbf{A} = \sigma_0^2 \mathbf{I}_n$ and $\mathbf{U} = \mathbf{V} = \sigma_1 \mathbf{Z}$ and utilize the Woodbury formula in Q2(2) and determinantal formula in Q2(4). By Woodbury, the inverse of covariance matrix is<br>
 $$
- (\sigma_0^2 I + \sigma_1^2 \mathbf{Z} \mathbf{Z}^T)^{-1} = \sigma_0^{-2} \mathbf{I}_n - \sigma_0^{-4} \sigma_1^2 \mathbf{Z} (\mathbf{I}_q + \sigma_0^{-2} \sigma_1^2 \mathbf{Z}^T \mathbf{Z})^{-1} \mathbf{Z}^T.
+ (\sigma_0^2 \mathbf{I}_n + \sigma_1^2 \mathbf{Z} \mathbf{Z}^T)^{-1} = \sigma_0^{-2} \mathbf{I}_n - \sigma_0^{-4} \sigma_1^2 \mathbf{Z} (\mathbf{I}_q + \sigma_0^{-2} \sigma_1^2 \mathbf{Z}^T \mathbf{Z})^{-1} \mathbf{Z}^T.
 $$
 By Q2(d), the determinant of the covariance matrix is<br>
 $$
-\text{det}(\sigma_0^2 I + \sigma_1^2 \mathbf{Z} \mathbf{Z}^T) = \sigma_0^{2n} \text{det} (\mathbf{I}_q + \sigma_0^{-2} \sigma_1^2 \mathbf{Z}^T \mathbf{Z}).
+\text{det}(\sigma_0^2 \mathbf{I}_n + \sigma_1^2 \mathbf{Z} \mathbf{Z}^T) = \sigma_0^{2n} \text{det} (\mathbf{I}_q + \sigma_0^{-2} \sigma_1^2 \mathbf{Z}^T \mathbf{Z}).
 $$</p>
 
 </div>
@@ -12416,10 +12426,10 @@ $$</p>
   memory estimate:  3.09 KiB
   allocs estimate:  12
   --------------
-  minimum time:     42.726 μs (0.00% GC)
-  median time:      44.906 μs (0.00% GC)
-  mean time:        51.181 μs (0.47% GC)
-  maximum time:     2.678 ms (90.36% GC)
+  minimum time:     43.312 μs (0.00% GC)
+  median time:      43.823 μs (0.00% GC)
+  mean time:        45.031 μs (0.34% GC)
+  maximum time:     1.593 ms (95.78% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12455,12 +12465,12 @@ $$</p>
   memory estimate:  15.78 KiB
   allocs estimate:  3
   --------------
-  minimum time:     4.102 ms (0.00% GC)
-  median time:      4.646 ms (0.00% GC)
-  mean time:        5.810 ms (0.00% GC)
-  maximum time:     16.067 ms (0.00% GC)
+  minimum time:     4.076 ms (0.00% GC)
+  median time:      4.178 ms (0.00% GC)
+  mean time:        4.247 ms (0.00% GC)
+  maximum time:     5.419 ms (0.00% GC)
   --------------
-  samples:          854
+  samples:          1168
   evals/sample:     1</pre>
 </div>
 
