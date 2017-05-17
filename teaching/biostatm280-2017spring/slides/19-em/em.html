@@ -11831,7 +11831,7 @@ div#notebook {
 </li>
 <li><p>Idea: choose $\mathbf{Z}$ such that MLE for the complete data is easy.</p>
 </li>
-<li><p>Let $f(\mathbf{x}|\theta) = f(\mathbf{y},\mathbf{x} | \theta)$ be the density of complete data.</p>
+<li><p>Let $f(\mathbf{x}|\theta) = f(\mathbf{y},\mathbf{z} | \theta)$ be the density of complete data.</p>
 </li>
 <li><p>Iterative two-step procedure</p>
 <ul>
@@ -11845,7 +11845,7 @@ $$
 $$</li>
 </ul>
 </li>
-<li><p>(Ascent property of EM algorithm) By the information inequality,
+<li><p>(<strong>Ascent property</strong> of EM algorithm) By the information inequality,
 $$
 \begin{eqnarray*}
   & & Q(\theta \mid \theta^{(t)}) - \ln g(\mathbf{y}|\theta) \\
@@ -11855,7 +11855,7 @@ $$
   &=& Q(\theta^{(t)} \mid \theta^{(t)}) - \ln g(\mathbf{y} |\theta^{(t)}).
 \end{eqnarray*}
 $$
-Rearranging shows that (fundamental inequality of EM)
+Rearranging shows that (<strong>fundamental inequality of EM</strong>)
 $$
 \begin{eqnarray*}
   \ln g(\mathbf{y} \mid \theta) \ge Q(\theta \mid \theta^{(t)}) - Q(\theta^{(t)} \mid \theta^{(t)}) + \ln g(\mathbf{y} \mid \theta^{(t)})
@@ -11897,9 +11897,8 @@ finite mixture model, HMM (Baum-Welch algorithm), factor analysis, variance comp
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="A-canonical-EM-example:-finite-mixture-models">A canonical EM example: finite mixture models<a class="anchor-link" href="#A-canonical-EM-example:-finite-mixture-models">&#182;</a></h2><p><img src="https://images-na.ssl-images-amazon.com/images/I/41ujVg7%2BveL._SX310_BO1,204,203,200_.jpg" width="200" align="center"/></p>
-<p><img src="http://media.wiley.com/product_data/coverImage300/07/04712017/0471201707.jpg" width="200" align="center"/></p>
 <ul>
-<li><p>Consider Gaussian finite mixture modelsw with density 
+<li><p>Consider Gaussian finite mixture models with density 
 $$
 h(\mathbf{y}) = \sum_{j=1}^k \pi_j h_j(\mathbf{y} \mid \mu_j, \Omega_j), \quad \mathbf{y} \in \mathbf{R}^{d},
 $$
@@ -11913,7 +11912,9 @@ are multivariate normals $N_d(\mu_j, \Omega_j)$.</p>
 $$
 \theta = (\pi_1, \ldots, \pi_k, \mu_1, \ldots, \mu_k, \Omega_1,\ldots,\Omega_k)
 $$
-subject to constraint $\pi_j \ge 0, \sum_{j=1}^d \pi_j = 1, \Omega_j \succeq \mathbf{0}$. (Incomplete) data log-likelihood is 
+subject to constraint $\pi_j \ge 0, \sum_{j=1}^d \pi_j = 1, \Omega_j \succeq \mathbf{0}$.</p>
+</li>
+<li><p>(Incomplete) data log-likelihood is 
 $$
 \ln g(\mathbf{y}_1,\ldots,\mathbf{y}_n|\theta) = \sum_{i=1}^n \ln h(\mathbf{y}_i) = \sum_{i=1}^n \ln \sum_{j=1}^k \pi_j h_j(\mathbf{y}_i \mid \mu_j, \Omega_j).
 $$</p>

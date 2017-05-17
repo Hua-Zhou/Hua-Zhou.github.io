@@ -11800,7 +11800,7 @@ $$</li>
 <li><p>Newton's method was originally developed for finding roots of nonlinear equations
 $f(\mathbf{x}) = \mathbf{0}$ (KL 5.4).</p>
 </li>
-<li><p>Newton's method, aka Newton-Raphson method, is considered the gold standard for its fast (quadratic) convergence
+<li><p>Newton's method, aka <strong>Newton-Raphson method</strong>, is considered the gold standard for its fast (quadratic) convergence
 $$
   \frac{\|\mathbf{\theta}^{(t+1)} - \mathbf{\theta}^*\|}{\|\mathbf{\theta}^{(t)} - \mathbf{\theta}^*\|^2} \to \text{constant}.
 $$</p>
@@ -11862,7 +11862,7 @@ where $\mathbf{A}^{(t)}$ is a pd approximation of $-d^2L(\theta^{(t)})$ and $s$ 
 </li>
 <li><p>Line search strategy: step-halving ($s=1,1/2,\ldots$), golden section search, cubic interpolation, Amijo rule, ... Note the <strong>Newton direction</strong> $\Delta \theta^{(t)}$ only need to be calculated once. Cost of line search mainly lies in objective function evaluation.</p>
 </li>
-<li><p>How to approximating $-d^2L(\theta)$? More of an art than science. Often requires problem specific analysis.</p>
+<li><p>How to approximate $-d^2L(\theta)$? More of an art than science. Often requires problem specific analysis.</p>
 </li>
 <li><p>Taking $\mathbf{A} = \mathbf{I}$ leads to the method of <strong>steepest ascent</strong>, aka  <strong>gradient ascent</strong>.</p>
 </li>
@@ -12015,12 +12015,12 @@ $$
 $$
 IRWLS with weights $w_i = [\mu_i(\eta_i)]^2/\sigma_i^2$ and some working responses $z_i$.</p>
 </li>
-<li><p>For <strong>canonical link</strong>, $\theta = \eta$, the second term of Hessian vanishes and Hessian coincides with Fisher information matrix. Convex problem
+<li><p>For <strong>canonical link</strong>, $\theta = \eta$, the second term of Hessian vanishes and Hessian coincides with Fisher information matrix. Convex problem :smile:
 $$
   \text{Fisher's scoring = Newton's method}.
 $$</p>
 </li>
-<li><p>Non-canonical link, non-convex problem
+<li><p>Non-canonical link, non-convex problem :disappointed:
 $$
   \text{Fisher's scoring algorithm} \ne \text{Newton's method}.
 $$
