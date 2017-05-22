@@ -11912,8 +11912,35 @@ Is the log-likelihood a concave function?</p>
 <span class="s">* `se`: a </span><span class="si">$d</span><span class="s">$ vector of standard errors </span>
 <span class="s">* `iterations`: the number of iterations performed</span>
 <span class="s">&quot;&quot;&quot;</span>
-<span class="n">dirmult_newton</span><span class="p">(</span><span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">};</span> <span class="n">α0</span><span class="p">::</span><span class="n">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}</span><span class="o">=</span><span class="n">nothing</span><span class="p">,</span> 
+<span class="k">function</span><span class="nf"> dirmult_newton</span><span class="p">(</span><span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">};</span> <span class="n">α0</span><span class="p">::</span><span class="n">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}</span><span class="o">=</span><span class="n">nothing</span><span class="p">,</span> 
             <span class="n">maxiters</span><span class="p">::</span><span class="kt">Int</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tolfun</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+
+    <span class="c"># set default starting point from Q7</span>
+
+    <span class="c"># Newton loop</span>
+    <span class="k">for</span> <span class="n">iter</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">maxiters</span>
+        <span class="c"># evaluate gradient (score)</span>
+
+        <span class="c"># approximated observed information matrix</span>
+
+        <span class="c"># compute Newton&#39;s direction</span>
+
+        <span class="c"># line search loop</span>
+        <span class="k">for</span> <span class="n">lsiter</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span>
+            <span class="c"># step halving</span>
+        <span class="k">end</span>
+
+        <span class="c"># check convergence criterion</span>
+        <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">logl</span> <span class="o">-</span> <span class="n">loglold</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tolfun</span> <span class="o">*</span> <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">loglold</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="c"># compute logl, gradient, Hessian from final iterate</span>
+
+    <span class="c"># output</span>
+
+<span class="k">end</span>
 </pre></div>
 
 </div>
