@@ -11751,7 +11751,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="EM-Algorithm">EM Algorithm<a class="anchor-link" href="#EM-Algorithm">&#182;</a></h1><h2 id="Which-statistical-papers-are-most-cited?">Which statistical papers are most cited?<a class="anchor-link" href="#Which-statistical-papers-are-most-cited?">&#182;</a></h2><table>
+<h1 id="EM-Algorithm-(KL-Chapter-13)">EM Algorithm (KL Chapter 13)<a class="anchor-link" href="#EM-Algorithm-(KL-Chapter-13)">&#182;</a></h1><h2 id="Which-statistical-papers-are-most-cited?">Which statistical papers are most cited?<a class="anchor-link" href="#Which-statistical-papers-are-most-cited?">&#182;</a></h2><table>
 <thead><tr>
 <th>Paper</th>
 <th style="text-align:right">Citations (5/15/2017)</th>
@@ -11886,7 +11886,7 @@ for this ascent property to hold (<strong>generalized EM</strong>).</p>
 finite mixture model, HMM (Baum-Welch algorithm), factor analysis, variance components model aka linear mixed model (LMM), hyper-parameter estimation in empirical Bayes procedure $\max_{\alpha} \int f(\mathbf{y}|\theta) \pi(\theta|\alpha) \, d \theta$, missing data, group/censorized/truncated model, ...</p>
 </li>
 </ul>
-<p>See Chapters 14 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010) for more applications of EM.</p>
+<p>See Chapters 13 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010) for more applications of EM.</p>
 
 </div>
 </div>
@@ -11936,7 +11936,7 @@ $$</p>
 $$
 \begin{eqnarray*}
   & & Q(\theta|\theta^{(t)})
-  = \mathbf{E} \left\{ \sum_{i=1}^n \sum_{j=1}^k z_{ij} [\ln \pi_j + \ln h_j(\mathbf{y}_i|\mu_j,\Omega_j) \mid \mathbf{Y}=\mathbf{y}, \pi^{(t)}, \mu_1^{(t)}, \ldots, \mu_k^{(t)}, \Omega_1^{(t)}, \ldots, \Omega_k^{(t)} ] \right\}.
+  = \mathbf{E} \left\{ \sum_{i=1}^n \sum_{j=1}^k z_{ij} [\ln \pi_j + \ln h_j(\mathbf{y}_i|\mu_j,\Omega_j)] \mid \mathbf{Y}=\mathbf{y}, \pi^{(t)}, \mu_1^{(t)}, \ldots, \mu_k^{(t)}, \Omega_1^{(t)}, \ldots, \Omega_k^{(t)} ] \right\}.
 \end{eqnarray*}
 $$
 By Bayes rule, we have
