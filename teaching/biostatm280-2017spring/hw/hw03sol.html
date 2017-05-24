@@ -11859,7 +11859,7 @@ Note the column sums of the matrix $\boldsymbol{I}_n - \boldsymbol{P}^T$ are all
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># download file if it&#39;s not in current folder</span>
@@ -11887,7 +11887,7 @@ Note the column sums of the matrix $\boldsymbol{I}_n - \boldsymbol{P}^T$ are all
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12161,6 +12161,15 @@ outdeg[idxodeg] = 87.0
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-blue-intense-fg ansi-bold">INFO: Recompiling stale cache file /Users/huazhou/.julia/lib/v0.5/FixedPointNumbers.ji for module FixedPointNumbers.
+</span><span class="ansi-blue-intense-fg ansi-bold">INFO: Recompiling stale cache file /Users/huazhou/.julia/lib/v0.5/PlotUtils.ji for module PlotUtils.
+</span><span class="ansi-blue-intense-fg ansi-bold">INFO: Recompiling stale cache file /Users/huazhou/.julia/lib/v0.5/PlotThemes.ji for module PlotThemes.
+</span></pre>
+</div>
+</div>
 
 <div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
@@ -23216,7 +23225,7 @@ LhoYSNsFgcFoVPef1t0Qh6FNMJoukFSOhOcalSOhayDaunYpJZrPNehBy4dW1EeW0qFhgRSiUUe2
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_lu</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_lu</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">)</span>
     
     <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c"># r and z vectors</span>
@@ -23383,7 +23392,7 @@ LhoYSNsFgcFoVPef1t0Qh6FNMJoukFSOhOcalSOhayDaunYpJZrPNehBy4dW1EeW0qFhgRSiUUe2
 <div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_qr</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_qr</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">)</span>
     
     <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c"># r and z vectors</span>
@@ -23492,7 +23501,7 @@ LhoYSNsFgcFoVPef1t0Qh6FNMJoukFSOhOcalSOhayDaunYpJZrPNehBy4dW1EeW0qFhgRSiUUe2
 <div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">topidx</span> <span class="o">=</span> <span class="n">sortperm</span><span class="p">(</span><span class="n">uclapgrk_qr</span><span class="p">,</span> <span class="n">rev</span><span class="o">=</span><span class="n">true</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">topidx</span> <span class="o">=</span> <span class="n">sortperm</span><span class="p">(</span><span class="n">uclapgrk_qr</span><span class="p">,</span> <span class="n">rev</span> <span class="o">=</span> <span class="n">true</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
 <span class="p">[</span><span class="n">collect</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span> <span class="n">uclapgrk_qr</span><span class="p">[</span><span class="n">topidx</span><span class="p">]</span> <span class="n">U</span><span class="p">[</span><span class="n">topidx</span><span class="p">]]</span>
 </pre></div>
 
@@ -23552,7 +23561,7 @@ LhoYSNsFgcFoVPef1t0Qh6FNMJoukFSOhOcalSOhayDaunYpJZrPNehBy4dW1EeW0qFhgRSiUUe2
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_eig</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_eig</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">)</span>
     
     <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c"># r and z vectors</span>
@@ -23657,7 +23666,7 @@ LhoYSNsFgcFoVPef1t0Qh6FNMJoukFSOhOcalSOhayDaunYpJZrPNehBy4dW1EeW0qFhgRSiUUe2
 <div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">topidx</span> <span class="o">=</span> <span class="n">sortperm</span><span class="p">(</span><span class="n">uclapgrk_eig</span><span class="p">,</span> <span class="n">rev</span><span class="o">=</span><span class="n">true</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">topidx</span> <span class="o">=</span> <span class="n">sortperm</span><span class="p">(</span><span class="n">uclapgrk_eig</span><span class="p">,</span> <span class="n">rev</span> <span class="o">=</span> <span class="n">true</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
 <span class="p">[</span><span class="n">collect</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span> <span class="n">uclapgrk_eig</span><span class="p">[</span><span class="n">topidx</span><span class="p">]</span> <span class="n">U</span><span class="p">[</span><span class="n">topidx</span><span class="p">]]</span>
 </pre></div>
 
@@ -23726,8 +23735,9 @@ where $\mathbf{D}$ is diagonal of $\mathbf{I} - \mathbf{P}^T$.</p>
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">0.85</span><span class="p">;</span> 
-        <span class="n">maxiter</span><span class="p">::</span><span class="kt">Int</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">x0</span><span class="p">::</span><span class="n">Vector</span><span class="o">=</span><span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_jacobi</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">;</span> 
+        <span class="n">maxiter</span><span class="p">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> 
+        <span class="n">x0</span><span class="p">::</span><span class="n">Vector</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     
     <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c"># r and z vectors</span>
@@ -23896,7 +23906,7 @@ where $\mathbf{D}$ is diagonal of $\mathbf{I} - \mathbf{P}^T$.</p>
 <h3 id="Power-method">Power method<a class="anchor-link" href="#Power-method">&#182;</a></h3><p>We find the top left eigenvector of $\mathbf{P}$ by power iteration
 $$
 \begin{eqnarray*}
-    \mathbf{x}^{(t+1)T} &=& \mathbf{x}^{(t)T} \mathbf{P} = \mathbf{x}^{(t)T} \text{diag}(\mathbf{r}^+) \mathbf{A} + \mathbf{x}^{(t)T} \mathbf{z} \mathbf{1}^T.
+    \mathbf{x}^{(t+1)} &=& \mathbf{P}^T \mathbf{x}^{(t)}  =  \mathbf{A}^T \text{diag}(\mathbf{r}^+) \mathbf{x}^{(t)}  + \mathbf{1} \mathbf{z}^T \mathbf{x}^{(t)}.
 \end{eqnarray*}
 $$</p>
 
@@ -23905,11 +23915,12 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_power</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">0.85</span><span class="p">;</span> 
-        <span class="n">maxiter</span><span class="p">::</span><span class="kt">Int</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">x0</span><span class="p">::</span><span class="n">Vector</span><span class="o">=</span><span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">function</span><span class="nf"> pagerank_power</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">,</span> <span class="n">telep</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.85</span><span class="p">;</span> 
+        <span class="n">maxiter</span><span class="p">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">tol</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> 
+        <span class="n">x0</span><span class="p">::</span><span class="n">Vector</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
     
     <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="c"># r and z vectors</span>
@@ -23934,7 +23945,11 @@ $$</p>
             <span class="n">storage</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">outdeginv</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="k">end</span>
         <span class="n">At_mul_B!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">storage</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">+=</span> <span class="n">dot</span><span class="p">(</span><span class="n">xold</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+        <span class="c">#x .+= dot(xold, z)</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">xold</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">tmp</span>
+        <span class="k">end</span>
         <span class="k">if</span> <span class="n">vecnorm</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xold</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>
             <span class="k">break</span>
         <span class="k">end</span>
@@ -23953,7 +23968,17 @@ $$</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>WARNING: Method definition pagerank_power(AbstractArray{T&lt;:Any, 2}) in module Main at In[31]:5 overwritten at In[33]:5.
+WARNING: Method definition pagerank_power(AbstractArray{T&lt;:Any, 2}, Float64) in module Main at In[31]:5 overwritten at In[33]:5.
+WARNING: Method definition #pagerank_power(Array{Any, 1}, Main.#pagerank_power, AbstractArray{T&lt;:Any, 2}) in module Main overwritten.
+WARNING: Method definition #pagerank_power(Array{Any, 1}, Main.#pagerank_power, AbstractArray{T&lt;:Any, 2}, Float64) in module Main overwritten.
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[33]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -24026,7 +24051,7 @@ $$</p>
 <div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">topidx</span> <span class="o">=</span> <span class="n">sortperm</span><span class="p">(</span><span class="n">uclapgrk_eig</span><span class="p">,</span> <span class="n">rev</span><span class="o">=</span><span class="n">true</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">topidx</span> <span class="o">=</span> <span class="n">sortperm</span><span class="p">(</span><span class="n">uclapgrk_eig</span><span class="p">,</span> <span class="n">rev</span> <span class="o">=</span> <span class="n">true</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
 <span class="p">[</span><span class="n">collect</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">)</span> <span class="n">uclapgrk_eig</span><span class="p">[</span><span class="n">topidx</span><span class="p">]</span> <span class="n">U</span><span class="p">[</span><span class="n">topidx</span><span class="p">]]</span>
 </pre></div>
 
@@ -24105,12 +24130,12 @@ $$</p>
   memory estimate:  9.73 MiB
   allocs estimate:  51
   --------------
-  minimum time:     4.315 ms (0.00% GC)
-  median time:      6.727 ms (0.00% GC)
-  mean time:        7.082 ms (13.79% GC)
-  maximum time:     16.247 ms (31.88% GC)
+  minimum time:     4.351 ms (0.00% GC)
+  median time:      6.314 ms (0.00% GC)
+  mean time:        6.827 ms (14.96% GC)
+  maximum time:     16.398 ms (28.86% GC)
   --------------
-  samples:          701
+  samples:          728
   evals/sample:     1</pre>
 </div>
 
@@ -24144,12 +24169,12 @@ $$</p>
   memory estimate:  2.48 MiB
   allocs estimate:  93
   --------------
-  minimum time:     17.990 ms (0.00% GC)
-  median time:      18.252 ms (0.00% GC)
-  mean time:        18.632 ms (0.93% GC)
-  maximum time:     23.519 ms (0.00% GC)
+  minimum time:     18.311 ms (0.00% GC)
+  median time:      18.661 ms (0.00% GC)
+  mean time:        19.383 ms (1.00% GC)
+  maximum time:     28.646 ms (0.00% GC)
   --------------
-  samples:          268
+  samples:          258
   evals/sample:     1</pre>
 </div>
 
@@ -24183,12 +24208,12 @@ $$</p>
   memory estimate:  9.90 MiB
   allocs estimate:  279
   --------------
-  minimum time:     294.702 ms (0.00% GC)
-  median time:      297.137 ms (0.00% GC)
-  mean time:        297.070 ms (0.30% GC)
-  maximum time:     301.641 ms (0.00% GC)
+  minimum time:     297.651 ms (0.00% GC)
+  median time:      316.525 ms (0.00% GC)
+  mean time:        325.454 ms (0.30% GC)
+  maximum time:     449.822 ms (0.00% GC)
   --------------
-  samples:          17
+  samples:          16
   evals/sample:     1</pre>
 </div>
 
@@ -24222,12 +24247,12 @@ $$</p>
   memory estimate:  620.91 KiB
   allocs estimate:  261
   --------------
-  minimum time:     379.764 μs (0.00% GC)
-  median time:      432.670 μs (0.00% GC)
-  mean time:        526.060 μs (13.83% GC)
-  maximum time:     4.648 ms (87.33% GC)
+  minimum time:     390.697 μs (0.00% GC)
+  median time:      429.428 μs (0.00% GC)
+  mean time:        541.839 μs (14.65% GC)
+  maximum time:     5.471 ms (73.53% GC)
   --------------
-  samples:          9374
+  samples:          9098
   evals/sample:     1</pre>
 </div>
 
@@ -24239,7 +24264,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">pagerank_power</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -24253,18 +24278,18 @@ $$</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[34]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  223.83 KiB
-  allocs estimate:  67
+  memory estimate:  130.39 KiB
+  allocs estimate:  44
   --------------
-  minimum time:     324.217 μs (0.00% GC)
-  median time:      363.712 μs (0.00% GC)
-  mean time:        412.427 μs (8.14% GC)
-  maximum time:     5.089 ms (87.79% GC)
+  minimum time:     316.609 μs (0.00% GC)
+  median time:      337.555 μs (0.00% GC)
+  mean time:        369.291 μs (4.72% GC)
+  maximum time:     5.501 ms (93.30% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
