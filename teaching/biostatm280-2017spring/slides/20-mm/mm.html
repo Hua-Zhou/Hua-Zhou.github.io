@@ -11902,6 +11902,8 @@ $$
 $$
 where $\odot$ denotes elementwise multiplication and $\oslash$ denotes elementwise division. If we start with $v_{ik}, w_{kj} > 0$, parameter iterates stay positive.</p>
 </li>
+<li><p>Monotoniciy of the algorithm is free (from MM principle).</p>
+</li>
 <li><p>Database #1 from the MIT Center for Biological and Computational Learning (CBCL, <a href="http://cbcl.mit.edu">http://cbcl.mit.edu</a>) reduces to a matrix X containing $m = 2,429$ gray-scale face images with $n = 19 \times 19 = 361$ pixels per face. Each image (row) is scaled to have mean and standard deviation 0.25.</p>
 </li>
 <li><p>My implementation in around <strong>2010</strong>:</p>
@@ -11922,8 +11924,12 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 <h2 id="GPU">GPU<a class="anchor-link" href="#GPU">&#182;</a></h2><ul>
 <li><p>GPUs are ubiquitous: servers, desktops, and laptops.</p>
 </li>
-<li><p>GPUs are ubiquitous in modern computers. Following are typical computer systems in <strong>2015</strong>.</p>
+<li><p>Many EM/MM algorithms are particularly suitable for general purpose GPU (GPGPU) computing.</p>
 </li>
+</ul>
+<p>H Zhou, K Lange, and M Suchard. (2010) <a href="https://projecteuclid.org/euclid.ss/1294167962">Graphics processing units and high-dimensional optimization</a>, Statistical Science, 25:311-324.</p>
+<ul>
+<li>Following are typical computer systems in <strong>2015</strong>.</li>
 </ul>
 <table>
 <thead><tr>
@@ -12005,7 +12011,7 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 <ul>
 <li>GPU architecture vs CPU architecture.  <ul>
 <li>GPUs contain 100s of processing cores on a single card; several cards can fit in a desktop PC  </li>
-<li>Each core carries out the same operations in parallel on different input data -- single program, multiple data (SPMD) paradigm  </li>
+<li>Each core carries out the same operations in parallel on different input data - single program, multiple data (SPMD) paradigm  </li>
 <li>Extremely high arithmetic intensity <strong>if</strong> one can transfer the data onto and results off of the processors quickly</li>
 </ul>
 </li>
@@ -12027,6 +12033,7 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 <li>From my own experience<ul>
 <li>Nvidia cards and its libraries (cuBLAS, cuRAND, cuSparse, ...) are much easier to use than AMD GPUs (OpenCL standard) for scientific computing.  </li>
 <li>Use libraries as much as possible.  </li>
+<li>Julia makes life easier: <a href="https://github.com/JuliaGPU/CUBLAS.jl">CUBLAS.jl</a>, <a href="https://github.com/JuliaGPU/CUSOLVER.jl">CUSOLVER.jl</a>, <a href="https://github.com/JuliaGPU/CUSPARSE.jl">CUSPARSE.jl</a>, <a href="https://github.com/JuliaGPU/ArrayFire.jl">ArrayFire.jl</a>, ...</li>
 </ul>
 </li>
 </ul>
