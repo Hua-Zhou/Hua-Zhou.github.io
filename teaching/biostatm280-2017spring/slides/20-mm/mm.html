@@ -11759,7 +11759,7 @@ div#notebook {
 <p><img src="../19-em/mm_illustration.pdf" width="300" align="center"/></p>
 <p><img src="../19-em/mm_2Dgraph.pdf" width="300" align="center"/></p>
 <ul>
-<li><p>EM as a <strong>minorization-maximization (MM)</strong> algorithm</p>
+<li><p>EM as a minorization-maximization (MM) algorithm</p>
 <ul>
 <li>The $Q$ function constitutes a <strong>minorizing</strong> function of the objective function up to an additive constant
 $$
@@ -11772,18 +11772,18 @@ $$</li>
 </ul>
 </li>
 <li><p>Questions:</p>
-<ul>
+<ol>
 <li>Is EM principle only limited to maximizing likelihood model?</li>
 <li>Can we flip the picture and apply same principle to <strong>minimization</strong> problem?</li>
 <li>Is there any other way to produce such surrogate function?  </li>
-</ul>
+</ol>
 </li>
-<li><p>These thoughts lead to a powerful tool -- MM algorithm.<br>
+<li><p>These thoughts lead to a powerful tool - MM algorithm.<br>
 <strong>Lange, K.</strong>, Hunter, D. R., and Yang, I. (2000). Optimization transfer using surrogate objective functions. <em>J. Comput. Graph. Statist.</em>, 9(1):1-59. With discussion, and a rejoinder by Hunter and Lange.</p>
 </li>
-<li><p>For maximization of $f(\theta)$ -- minorization-maximization (MM) algorithm</p>
+<li><p>For maximization of $f(\theta)$ - <strong>minorization-maximization (MM)</strong> algorithm</p>
 <ul>
-<li><strong>M</strong>inorization step: Construct a surrogate function $g(\theta|\theta^{(t)})$ such that
+<li><strong>M</strong>inorization step: Construct a surrogate function $g(\theta|\theta^{(t)})$ that satisfies
 $$
 \begin{eqnarray*}
 f(\theta) &\ge& g(\theta|\theta^{(t)}) \quad \text{(dominance condition)} \\
@@ -11803,9 +11803,9 @@ $$</p>
 </li>
 <li><p>EM is a special case of minorization-maximization (MM) algorithm.</p>
 </li>
-<li><p>For minimization of $f(\theta)$ -- majorization-minimization (MM) algorithm</p>
+<li><p>For minimization of $f(\theta)$ - <strong>majorization-minimization (MM)</strong> algorithm</p>
 <ul>
-<li><strong>M</strong>ajorization step: Construct a surrogate function $g(\theta|\theta^{(t)})$ such that
+<li><strong>M</strong>ajorization step: Construct a surrogate function $g(\theta|\theta^{(t)})$ that satisfies
 $$    
 \begin{eqnarray*}
 f(\theta) &\le& g(\theta|\theta^{(t)}) \quad \text{(dominance condition)} \\
@@ -11835,9 +11835,9 @@ $$</li>
 <li>Separate the parameters of a problem (perfect for massive, <em>fine-scale</em> parallelization).</li>
 </ul>
 </li>
-<li><p>Generic methods for majorization and minorization -- <em>inequalities</em></p>
+<li><p>Generic methods for majorization and minorization - <strong>inequalities</strong></p>
 <ul>
-<li>Jensen's (information) inequality -- EM algorithms</li>
+<li>Jensen's (information) inequality - EM algorithms</li>
 <li>Supporting hyperplane property of a convex function</li>
 <li>The Cauchy-Schwartz inequality - multidimensional scaling</li>
 <li>Arithmetic-geometric mean inequality</li>
@@ -11859,15 +11859,15 @@ $$</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="MM-example:-non-negative-matrix-factorization">MM example: non-negative matrix factorization<a class="anchor-link" href="#MM-example:-non-negative-matrix-factorization">&#182;</a></h2><p><img src="./nnmf.png" width="400" align="center"/></p>
+<h2 id="MM-example:-non-negative-matrix-factorization-(NNMF)">MM example: non-negative matrix factorization (NNMF)<a class="anchor-link" href="#MM-example:-non-negative-matrix-factorization-(NNMF)">&#182;</a></h2><p><img src="./nnmf.png" width="500" align="center"/></p>
 <ul>
-<li><p>Nonnegative matrix factorization (NNMF) was introduced by \citet{LeeSeung99NNMF,LeeSeung01NNMFAlgo} as an analog of principal components and vector quantization with applications in data compression and clustering.</p>
+<li><p>Nonnegative matrix factorization (NNMF) was introduced by Lee and Seung (<a href="http://www.nature.com/nature/journal/v401/n6755/abs/401788a0.html">1999</a>, <a href="https://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf">2001</a>) as an analog of principal components and vector quantization with applications in data compression and clustering.</p>
 </li>
 <li><p>In mathematical terms, one approximates a data matrix $\mathbf{X} \in \mathbb{R}^{m \times n}$ with nonnegative entries $x_{ij}$ by a product of two low-rank matrices $\mathbf{V} \in \mathbb{R}^{m \times r}$ and $\mathbf{W} \in \mathbb{R}^{r \times n}$ with nonnegative entries $v_{ik}$ and $w_{kj}$.</p>
 </li>
 <li><p>Consider minimization of the squared Frobenius norm
 $$
-  L(\mathbf{V}, \mathbf{W}) = \|\mathbf{X} - \mathbf{V} \mathbf{W}\|_{\text{F}}^2 = \sum_i \sum_j (x_{ij} - \sum_k v_{ik} w_{kj})^2, \quad v_{ik} \ge 0, w_{kj} \ge 0,
+  L(\mathbf{V}, \mathbf{W}) = \|\mathbf{X} - \mathbf{V} \mathbf{W}\|_{\text{F}}^2 = \sum_i \sum_j \left( x_{ij} - \sum_k v_{ik} w_{kj} \right)^2, \quad v_{ik} \ge 0, w_{kj} \ge 0,
 $$
 which should lead to a good factorization.</p>
 </li>
@@ -11902,9 +11902,9 @@ $$
 $$
 where $\odot$ denotes elementwise multiplication and $\oslash$ denotes elementwise division. If we start with $v_{ik}, w_{kj} > 0$, parameter iterates stay positive.</p>
 </li>
-<li><p>Database #1 from the MIT Center for Biological and Computational Learning (CBCL) (<a href="http://cbcl.mit.edu">http://cbcl.mit.edu</a>) reduces to a matrix X containing $m = 2,429$ gray-scale face images with $n = 19 \times 19 = 361$ pixels per face. Each image (row) is scaled to have mean and standard deviation 0.25.</p>
+<li><p>Database #1 from the MIT Center for Biological and Computational Learning (CBCL, <a href="http://cbcl.mit.edu">http://cbcl.mit.edu</a>) reduces to a matrix X containing $m = 2,429$ gray-scale face images with $n = 19 \times 19 = 361$ pixels per face. Each image (row) is scaled to have mean and standard deviation 0.25.</p>
 </li>
-<li><p>My implementation in around 2010:</p>
+<li><p>My implementation in around <strong>2010</strong>:</p>
 </li>
 </ul>
 <p>CPU: Intel Core 2 @ 3.2GHZ (4 cores), implemented using BLAS in the GNU Scientific Library (GSL)<br>
@@ -11919,8 +11919,12 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="GPU">GPU<a class="anchor-link" href="#GPU">&#182;</a></h2><p>GPUs are ubiquitous: servers, desktops, and laptops.</p>
-<p>GPUs are ubiquitous in modern computers. Following are typical computer systems in <strong>2015</strong>.</p>
+<h2 id="GPU">GPU<a class="anchor-link" href="#GPU">&#182;</a></h2><ul>
+<li><p>GPUs are ubiquitous: servers, desktops, and laptops.</p>
+</li>
+<li><p>GPUs are ubiquitous in modern computers. Following are typical computer systems in <strong>2015</strong>.</p>
+</li>
+</ul>
 <table>
 <thead><tr>
 <th>NVIDIA GPUs</th>
@@ -11998,11 +12002,13 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 </tr>
 </tbody>
 </table>
-<p>GPU architecture vs CPU architecture.</p>
 <ul>
+<li>GPU architecture vs CPU architecture.  <ul>
 <li>GPUs contain 100s of processing cores on a single card; several cards can fit in a desktop PC  </li>
 <li>Each core carries out the same operations in parallel on different input data -- single program, multiple data (SPMD) paradigm  </li>
 <li>Extremely high arithmetic intensity <strong>if</strong> one can transfer the data onto and results off of the processors quickly</li>
+</ul>
+</li>
 </ul>
 <table>
 <thead><tr>
@@ -12017,6 +12023,13 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 </tr>
 </tbody>
 </table>
+<ul>
+<li>From my own experience<ul>
+<li>Nvidia cards and its libraries (cuBLAS, cuRAND, cuSparse, ...) are much easier to use than AMD GPUs (OpenCL standard) for scientific computing.  </li>
+<li>Use libraries as much as possible.  </li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div>
@@ -12036,22 +12049,21 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 </ul>
 <p><img src="./netflix_prize.png" width="500" align="center"/></p>
 <ul>
-<li><p><strong>Matrix completion problem</strong>. Observe a very sparse matrix $\Ybf = (y_{ij})$. Want to impute all the missing entries. It is possible only when the matrix is structured, e.g., of <em>low rank</em>.</p>
-<ul>
-<li>Let $\Omega = \{(i,j): \text{observed entries}\}$ index the observed entries and $P_\Omega(\mathbf{M})$ denote the projection of matrix $\mathbf{M}$ to $\Omega$. The problem
-$$
-\min_{\text{rank}(\mathbf{X}) \le r} \frac 12 \| P_\Omega(\mathbf{Y}) - P_\Omega(\mathbf{X})\|_{\text{F}}^2 = \frac 12 \sum_{(i,j) \in \Omega} (y_{ij} - x_{ij})^2
-$$
-unfortunately is non-convex and difficult.</li>
-</ul>
+<li><p><strong>Matrix completion problem</strong>. Observe a very sparse matrix $\mathbf{Y} = (y_{ij})$. Want to impute all the missing entries. It is possible only when the matrix is structured, e.g., of <em>low rank</em>.</p>
 </li>
-<li><p><em>Convex relaxation</em> \citep{Mazumder09SVDReg}
+<li><p>Let $\Omega = \{(i,j): \text{observed entries}\}$ index the set of observed entries and $P_\Omega(\mathbf{M})$ denote the projection of matrix $\mathbf{M}$ to $\Omega$. The problem
+$$
+  \min_{\text{rank}(\mathbf{X}) \le r} \frac 12 \| P_\Omega(\mathbf{Y}) - P_\Omega(\mathbf{X})\|_{\text{F}}^2 = \frac 12 \sum_{(i,j) \in \Omega} (y_{ij} - x_{ij})^2
+$$
+unfortunately is non-convex and difficult.</p>
+</li>
+<li><p><em>Convex relaxation</em>: <a href="https://web.stanford.edu/~hastie/Papers/mazumder10a.pdf">Mazumder, Hastie, Tibshirani (2010)</a>
 $$
   \min_{\mathbf{X}} f(\mathbf{X}) = \frac 12 \| P_\Omega(\mathbf{Y}) - P_\Omega(\mathbf{X})\|_{\text{F}}^2 + \lambda \|\mathbf{X}\|_*,
 $$
 where $\|\mathbf{X}\|_* = \|\sigma(\mathbf{X})\|_1 = \sum_i \sigma_i(\mathbf{X})$ is the nuclear norm.</p>
 </li>
-<li><p>Majorization step:
+<li><p><strong>Majorization step</strong>:
 $$
 \begin{eqnarray*}
   f(\mathbf{X}) &=& \frac 12 \sum_{(i,j) \in \Omega} (y_{ij} - x_{ij})^2 +  \frac 12 \sum_{(i,j) \notin \Omega} 0 + \lambda \|\mathbf{X}\|_* \\
@@ -12060,9 +12072,9 @@ $$
   &=& g(\mathbf{X}|\mathbf{X}^{(t)}),
 \end{eqnarray*}
 $$
-where $\mathbf{Z}^{(t)} = P_\Omega(\mathbf{Y}) + P_{\Omega^\perp}(\mathbf{X}^{(t)})$. "fill in missing entries by current imputation"</p>
+where $\mathbf{Z}^{(t)} = P_\Omega(\mathbf{Y}) + P_{\Omega^\perp}(\mathbf{X}^{(t)})$. "fill in missing entries by the current imputation"</p>
 </li>
-<li><p>Minimization step:</p>
+<li><p><strong>Minimization step</strong>:</p>
 </li>
 </ul>
 <p>Rewrite the surrogate function
@@ -12078,20 +12090,23 @@ $$
     \|\mathbf{Z}^{(t)}\|_{\text{F}}^2 &=& \|\sigma(\mathbf{Z}^{(t)})\|_2^2 = \sum_{i} \omega_i^2
 \end{eqnarray*}
 $$
-and by the Fan-von Neuman's inequality
+and by the <a href="https://en.wikipedia.org/wiki/Trace_inequalities#Von_Neumann.27s_trace_inequality">Fan-von Neuman's inequality</a>
 $$
 \begin{eqnarray*}
     \text{tr}(\mathbf{X}^T \mathbf{Z}^{(t)}) \le \sum_i \sigma_i \omega_i
 \end{eqnarray*}
 $$
-with equality achieved if and only if the left and right singular vectors of the two matrices coincide. Thus we can choose $\mathbf{X}$ to have same singular vectors as $\mathbf{Z}^{(t)}$ and
+with equality achieved if and only if the left and right singular vectors of the two matrices coincide. Thus we should choose $\mathbf{X}$ to have same singular vectors as $\mathbf{Z}^{(t)}$ and
 $$
 \begin{eqnarray*}
     g(\mathbf{X}|\mathbf{X}^{(t)}) &=& \frac 12 \sum_i \sigma_i^2 - \sum_i \sigma_i \omega_i + \frac 12 \omega_i^2 + \lambda \sum_i \sigma_i \\
     &=& \frac 12 \sum_i (\sigma_i - \omega_i)^2 + \lambda \sum_i \sigma_i,
 \end{eqnarray*}
 $$
-with minimizer given by $\sigma_i^{(t+1)} = (\omega_i - \lambda)_+$. "Singular value thresholding".</p>
+with minimizer given by <strong>singular value thresholding</strong>
+$$
+    \sigma_i^{(t+1)} = (\omega_i - \lambda)_+.
+$$</p>
 <ul>
 <li><p>Algorithm for matrix completion:</p>
 <ul>
@@ -12105,10 +12120,11 @@ with minimizer given by $\sigma_i^{(t+1)} = (\omega_i - \lambda)_+$. "Singular v
 <li>objective value converges</li>
 </ul>
 </li>
-<li><p>"Golub-Kahan-Reinsch" algorithm takes $4m^2n + 8mn^2 + 9n^3$ flops for a $m \ge n$ matrix and is <strong>not</strong> going to work for 480K-by-18K Netflix matrix.</p>
+<li><p>"Golub-Kahan-Reinsch" algorithm takes $4m^2n + 8mn^2 + 9n^3$ flops for an $m \ge n$ matrix and is <strong>not</strong> going to work for 480K-by-18K Netflix matrix.</p>
+</li>
+<li><p>Notice only top singular values are needed since low rank solutions are achieved by large $\lambda$. Lanczos/Arnoldi algorithm is the way to go. Matrix-vector multiplication $\mathbf{Z}^{(t)} \mathbf{v}$ is fast (why?)</p>
 </li>
 </ul>
-<p>Notice only top singular values are needed since low rank solutions are achieved by large $\lambda$. Lanczos/Arnoldi algorithm is the way to go. Matrix-vector multiplication $\mathbf{Z}^{(t)} \mathbf{v}$ is fast (why?)</p>
 
 </div>
 </div>
