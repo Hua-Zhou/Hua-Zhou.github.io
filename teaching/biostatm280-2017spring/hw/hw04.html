@@ -11810,10 +11810,19 @@ Is the log-likelihood a concave function?</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Q3">Q3<a class="anchor-link" href="#Q3">&#182;</a></h2><p>Write Julia function</p>
-<div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">    dirmult_logpdf(x::Vector, α::Vector)</span>
+<h2 id="Q3">Q3<a class="anchor-link" href="#Q3">&#182;</a></h2><p>Write Julia function to compute the log-density of the Dirichlet-multinomial distribution.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    dirmult_logpdf(x::Vector, α::Vector)</span>
+<span class="s">    </span>
 <span class="s">Compute the log-pdf of Dirichlet-multinomial distribution with parameter `α` </span>
 <span class="s">at data point `x`.</span>
 <span class="s">&quot;&quot;&quot;</span>
@@ -11829,8 +11838,8 @@ Is the log-likelihood a concave function?</p>
 <span class="k">end</span>
 
 <span class="s">&quot;&quot;&quot;</span>
-<span class="s">    dirmult_logpdf!(r, X, α)</span>
-
+<span class="s">    dirmult_logpdf(X, α)</span>
+<span class="s">    </span>
 <span class="s">Compute the log-pdf of Dirichlet-multinomial distribution with parameter `α` </span>
 <span class="s">at each data point in `X`. Each column of `X` is one data point.</span>
 <span class="s">&quot;&quot;&quot;</span>
@@ -11839,10 +11848,27 @@ Is the log-likelihood a concave function?</p>
     <span class="n">dirmult_logpdf!</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">α</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
-<p>to compute the log-density of the Dirichlet-multinomial distribution.</p>
 
 </div>
 </div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dirmult_logpdf</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -11891,60 +11917,87 @@ Is the log-likelihood a concave function?</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Q8">Q8<a class="anchor-link" href="#Q8">&#182;</a></h2><p>Write a function for finding MLE of Dirichlet-multinomial distribution given iid observations $\mathbf{x}_1,\ldots,\mathbf{x}_n$, using the Newton's method.</p>
-<div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">    dirmult_newton(X)</span>
 
 <span class="s">Find the MLE of Dirichlet-multinomial distribution using Newton&#39;s method.</span>
 
 <span class="s"># Argument</span>
-<span class="s">* `X`: an </span><span class="si">$n</span><span class="s">$-by-</span><span class="si">$d</span><span class="s">$ matrix of counts; each column is one data point.</span>
+<span class="s">* `X`: an `n`-by-`d` matrix of counts; each column is one data point.</span>
 
 <span class="s"># Optional argument  </span>
-<span class="s">* `alpha0`: a </span><span class="si">$d</span><span class="s">$ vector of starting point (optional), </span>
-<span class="s">* `maxiters`: the maximum allowable Newton iterations (default 100), </span>
+<span class="s">* `alpha0`: a `d` vector of starting point (optional). </span>
+<span class="s">* `maxiters`: the maximum allowable Newton iterations (default 100). </span>
 <span class="s">* `tolfun`: the tolerance for  relative change in objective values (default 1e-6). </span>
 
 <span class="s"># Output</span>
-<span class="s">* `maximum`: the log-likelihood at MLE   </span>
-<span class="s">* `estimate`: the MLE </span>
-<span class="s">* `gradient`: the gradient at MLE </span>
-<span class="s">* `hessian`: the Hessian at MLE </span>
-<span class="s">* `se`: a </span><span class="si">$d</span><span class="s">$ vector of standard errors </span>
-<span class="s">* `iterations`: the number of iterations performed</span>
+<span class="s">* `maximum`: the log-likelihood at MLE.   </span>
+<span class="s">* `estimate`: the MLE. </span>
+<span class="s">* `gradient`: the gradient at MLE. </span>
+<span class="s">* `hessian`: the Hessian at MLE. </span>
+<span class="s">* `se`: a `d` vector of standard errors. </span>
+<span class="s">* `iterations`: the number of iterations performed.</span>
 <span class="s">&quot;&quot;&quot;</span>
-<span class="k">function</span><span class="nf"> dirmult_newton</span><span class="p">(</span><span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">};</span> <span class="n">α0</span><span class="p">::</span><span class="n">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}</span><span class="o">=</span><span class="n">nothing</span><span class="p">,</span> 
-            <span class="n">maxiters</span><span class="p">::</span><span class="kt">Int</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">tolfun</span><span class="p">::</span><span class="kt">Float64</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
-
+<span class="k">function</span><span class="nf"> dirmult_newton</span><span class="p">(</span><span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">;</span> <span class="n">α0</span><span class="p">::</span><span class="n">Vector</span> <span class="o">=</span> <span class="n">nothing</span><span class="p">,</span> 
+            <span class="n">maxiters</span><span class="p">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">tolfun</span><span class="p">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span>
+    
     <span class="c"># set default starting point from Q7</span>
-
+    
     <span class="c"># Newton loop</span>
     <span class="k">for</span> <span class="n">iter</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="n">maxiters</span>
         <span class="c"># evaluate gradient (score)</span>
-
+        
         <span class="c"># approximated observed information matrix</span>
-
+        
         <span class="c"># compute Newton&#39;s direction</span>
-
+        
         <span class="c"># line search loop</span>
         <span class="k">for</span> <span class="n">lsiter</span> <span class="k">in</span> <span class="mi">1</span><span class="p">:</span><span class="mi">10</span>
             <span class="c"># step halving</span>
         <span class="k">end</span>
-
+        
         <span class="c"># check convergence criterion</span>
-        <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">logl</span> <span class="o">-</span> <span class="n">loglold</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tolfun</span> <span class="o">*</span> <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">loglold</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">logl</span> <span class="o">-</span> <span class="n">loglold</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tolfun</span> <span class="o">*</span> <span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">loglold</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
             <span class="k">break</span><span class="p">;</span>
         <span class="k">end</span>
     <span class="k">end</span>
-
+    
     <span class="c"># compute logl, gradient, Hessian from final iterate</span>
-
+    
     <span class="c"># output</span>
-
+    
 <span class="k">end</span>
 </pre></div>
 
 </div>
 </div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dirmult_newton</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
