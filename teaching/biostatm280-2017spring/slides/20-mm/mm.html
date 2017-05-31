@@ -11886,18 +11886,18 @@ $$</p>
 $$
 \begin{eqnarray*}
   v_{ik}^{(t+1)} &=& v_{ik}^{(t)} \frac{\sum_j x_{ij} w_{kj}^{(t)}}{\sum_j b_{ij}^{(t)} w_{kj}^{(t)}} \\
-  b_{ij}^{(t+.5)} &=& \sum_k v_{ik}^{(t+1)} w_{kj}^{(t)} \\
-  w_{kj}^{(t+1)} &=& w_{kj}^{(t)} \frac{\sum_i x_{ij} v_{ik}^{(t+1)}}{\sum_i b_{ij}^{(t+.5)} v_{ik}^{(t+1)}}.
+  b_{ij}^{(t+1/2)} &=& \sum_k v_{ik}^{(t+1)} w_{kj}^{(t)} \\
+  w_{kj}^{(t+1)} &=& w_{kj}^{(t)} \frac{\sum_i x_{ij} v_{ik}^{(t+1)}}{\sum_i b_{ij}^{(t+1/2)} v_{ik}^{(t+1)}}.
 \end{eqnarray*}
 $$</p>
 </li>
-<li><p>In Matlab or Julia notation, the update is extremely simple
+<li><p>The update is extremely simple
 $$
 \begin{eqnarray*}
   \mathbf{B}^{(t)} &=& \mathbf{V}^{(t)} \mathbf{W}^{(t)} \\
   \mathbf{V}^{(t+1)} &=&  \mathbf{V}^{(t)} \odot (\mathbf{X} \mathbf{W}^{(t)T}) \oslash (\mathbf{B}^{(t)} \mathbf{W}^{(t)T}) \\
-  \mathbf{B}^{(t+.5)} &=& \mathbf{V}^{(t+1)} \mathbf{W}^{(t)} \\
-  \mathbf{W}^{(t+1)} &=& \mathbf{W}^{(t)} \odot (\mathbf{X}^T \mathbf{V}^{(t+1)}) \oslash (\mathbf{B}^{(t+.5)T} \mathbf{V}^{(t)}),
+  \mathbf{B}^{(t+1/2)} &=& \mathbf{V}^{(t+1)} \mathbf{W}^{(t)} \\
+  \mathbf{W}^{(t+1)} &=& \mathbf{W}^{(t)} \odot (\mathbf{X}^T \mathbf{V}^{(t+1)}) \oslash (\mathbf{B}^{(t+1/2)T} \mathbf{V}^{(t)}),
 \end{eqnarray*}
 $$
 where $\odot$ denotes elementwise multiplication and $\oslash$ denotes elementwise division. If we start with $v_{ik}, w_{kj} > 0$, parameter iterates stay positive.</p>
@@ -11929,7 +11929,10 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 </ul>
 <p>H Zhou, K Lange, and M Suchard. (2010) <a href="https://projecteuclid.org/euclid.ss/1294167962">Graphics processing units and high-dimensional optimization</a>, Statistical Science, 25:311-324.</p>
 <ul>
-<li>Following are typical computer systems in <strong>2015</strong>.</li>
+<li><p>GPGPU propels recent surgence of deep learning.</p>
+</li>
+<li><p>Following are typical computer systems in <strong>2015</strong>.</p>
+</li>
 </ul>
 <table>
 <thead><tr>
@@ -12031,7 +12034,7 @@ GPU: NVIDIA GeForce GTX 280 (240 cores), implemented using cuBLAS.</p>
 </table>
 <ul>
 <li>From my own experience<ul>
-<li>Nvidia cards and its libraries (cuBLAS, cuRAND, cuSparse, ...) are much easier to use than AMD GPUs (OpenCL standard) for scientific computing.  </li>
+<li>Nvidia cards and its libraries (cuBLAS, cuRAND, cuSparse, ...) are much easier to use than AMD GPUs (OpenCL) for scientific computing.  </li>
 <li>Use libraries as much as possible.  </li>
 <li>Julia makes life easier: <a href="https://github.com/JuliaGPU/CUBLAS.jl">CUBLAS.jl</a>, <a href="https://github.com/JuliaGPU/CUSOLVER.jl">CUSOLVER.jl</a>, <a href="https://github.com/JuliaGPU/CUSPARSE.jl">CUSPARSE.jl</a>, <a href="https://github.com/JuliaGPU/ArrayFire.jl">ArrayFire.jl</a>, ...</li>
 </ul>
@@ -12090,7 +12093,7 @@ $$
     g(\mathbf{X}|\mathbf{X}^{(t)}) = \frac 12 \|\mathbf{X}\|_{\text{F}}^2  - \text{tr}(\mathbf{X}^T \mathbf{Z}^{(t)}) + \frac 12 \|\mathbf{Z}^{(t)}\|_{\text{F}}^2 + \lambda \|\mathbf{X}\|_*.
 \end{eqnarray*}
 $$
-Let $\sigma_i$ be the singular values of $\mathbf{X}$ and $\omega_i$ be the singular values of $\mathbf{Z}^{(t)}$. Observe
+Let $\sigma_i$ be the (ordered) singular values of $\mathbf{X}$ and $\omega_i$ be the (ordered) singular values of $\mathbf{Z}^{(t)}$. Observe
 $$
 \begin{eqnarray*}
     \|\mathbf{X}\|_{\text{F}}^2 &=& \|\sigma(\mathbf{X})\|_2^2 = \sum_{i} \sigma_i^2 \\
@@ -12119,8 +12122,8 @@ $$</p>
 <ul>
 <li>Initialize $\mathbf{X}^{(0)} \in \mathbb{R}^{m \times n}$</li>
 <li>Repeat<ul>
-<li>$\mathbf{Z}^{(t+1)} \gets P_\Omega(\mathbf{Y}) + P_{\Omega^\perp}(\mathbf{X}^{(t)})$  </li>
-<li>Compute SVD: $\mathbf{U} \text{diag}(\mathbf{w}) \mathbf{V}^T \gets \mathbf{Z}^{(t+1)}$  </li>
+<li>$\mathbf{Z}^{(t)} \gets P_\Omega(\mathbf{Y}) + P_{\Omega^\perp}(\mathbf{X}^{(t)})$  </li>
+<li>Compute SVD: $\mathbf{U} \text{diag}(\mathbf{w}) \mathbf{V}^T \gets \mathbf{Z}^{(t)}$  </li>
 <li>$\mathbf{X}^{(t+1)} \gets \mathbf{U} \text{diag}[(\mathbf{w}-\lambda)_+] \mathbf{V}^T$</li>
 </ul>
 </li>
