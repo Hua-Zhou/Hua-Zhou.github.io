@@ -11752,7 +11752,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Conjugate-Gradient-and-Krylov-Subspace-Methods">Conjugate Gradient and Krylov Subspace Methods<a class="anchor-link" href="#Conjugate-Gradient-and-Krylov-Subspace-Methods">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><ul>
-<li><p>(Linear) Conjugate gradient is the top-notch iterative method for solving large, <strong>structured</strong> linear systems $\mathbf{A} \mathbf{x} = \mathbf{b}$. Earlier we talked about Jacobi, Gauss-Seidel, and successive over-relaxation (SOR) as the classical iterative solvers.</p>
+<li><p>(Linear) Conjugate gradient is the top-notch iterative method for solving large, <strong>structured</strong> linear systems $\mathbf{A} \mathbf{x} = \mathbf{b}$, where $\mathbf{A}$ is pd.<br>
+Earlier we talked about Jacobi, Gauss-Seidel, and successive over-relaxation (SOR) as the classical iterative solvers. They are rarely used in practice due to slow convergence.</p>
 <p><a href="http://www.sciencedirect.com/science/article/pii/0021999178900980?via%3Dihub">Kershaw's results</a> for a fusion problem.</p>
 </li>
 </ul>
@@ -11778,17 +11779,17 @@ div#notebook {
 </tbody>
 </table>
 <ul>
-<li><p><em>Linear</em> conjugate gradient method: for solving large linear systems of equations.</p>
-</li>
-<li><p>History: Hestenes (UCLA prof.) and Stiefel in 50s.</p>
-</li>
+<li>History: Hestenes (UCLA professor) and Stiefel proposed conjugate gradient method in 1950s.</li>
+</ul>
+<p>Hestenes and Stiefel (1952), <a href="http://nvlpubs.nist.gov/nistpubs/jres/049/jresv49n6p409_A1b.pdf">Methods of conjugate gradients for solving linear systems</a>, <em>Jounral of Research of the National Bureau of Standards</em>.</p>
+<ul>
 <li><p>Solve linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$, where $\mathbf{A} \in \mathbb{R}^{n \times n}$ is <strong>pd</strong>, is equivalent to 
 $$
 \begin{eqnarray*}
   \text{minimize} \,\, f(\mathbf{x}) = \frac 12 \mathbf{x}^T \mathbf{A} \mathbf{x} - \mathbf{b}^T \mathbf{x}.
 \end{eqnarray*}
 $$
-Note $\nabla f(\mathbf{x}) = \mathbf{A} \mathbf{x} - \mathbf{b} =: r(\mathbf{x})$.</p>
+Denote $\nabla f(\mathbf{x}) = \mathbf{A} \mathbf{x} - \mathbf{b} =: r(\mathbf{x})$.</p>
 </li>
 <li><p>Consider a simple idea: coordinate descent, that is to update $x_j$ alternatingly. Same as the Gauss-Seidel iteration.</p>
 </li>
@@ -11811,9 +11812,10 @@ $$
 where
 $$
 \begin{eqnarray*}
-  \alpha^{(t)} = - \frac{\mathbf{r}^{(t)T} \mathbf{p}^{(t)}}{\mathbf{p}^{(t)T} \mathbf{A} \mathbf{p}^{(t)}}.
+  \alpha^{(t)} = - \frac{\mathbf{r}^{(t)T} \mathbf{p}^{(t)}}{\mathbf{p}^{(t)T} \mathbf{A} \mathbf{p}^{(t)}}
 \end{eqnarray*}
-$$</p>
+$$
+is the optimal step length.</p>
 </li>
 <li><p>Theorem: In conjugate direction method, $\mathbf{x}^{(t)}$ converges to the solution in at most $n$ steps.</p>
 <p>Intuition: Look at graph.</p>
@@ -11834,7 +11836,7 @@ $$
 \end{eqnarray*}
 $$</p>
 </li>
-<li><p>CG algorithm (preliminary version):</p>
+<li><p><strong>CG algorithm (preliminary version)</strong>:</p>
 <ol>
 <li>Given $\mathbf{x}^{(0)}$</li>
 <li>Initialize: $\mathbf{r}^{(0)} \gets \mathbf{A} \mathbf{x}^{(0)} - \mathbf{b}$, $\mathbf{p}^{(0)} \gets - \mathbf{r}^{(0)}$, $t=0$</li>
@@ -11863,7 +11865,7 @@ $$</li>
 The iterates $\mathbf{x}^{(t)}$ converge to the solution in at most $n$ steps.</li>
 </ol>
 </li>
-<li><p>CG algorithm (economical version): saves one matrix-vector multiplication.</p>
+<li><p><strong>CG algorithm (economical version)</strong>: saves one matrix-vector multiplication.</p>
 <ol>
 <li>Given $\mathbf{x}^{(0)}$</li>
 <li>Initialize: $\mathbf{r}^{(0)} \gets \mathbf{A} \mathbf{x}^{(0)} - \mathbf{b}$, $\mathbf{p}^{(0)} \gets - \mathbf{r}^{(0)}$, $t=0$</li>
@@ -11871,15 +11873,15 @@ The iterates $\mathbf{x}^{(t)}$ converge to the solution in at most $n$ steps.</
 <li>$\alpha^{(t)} \gets \frac{\mathbf{r}^{(t)T} \mathbf{r}^{(t)}}{\mathbf{p}^{(t)T} \mathbf{A} \mathbf{p}^{(t)}}$</li>
 <li>$\mathbf{x}^{(t+1)} \gets \mathbf{x}^{(t)} + \alpha^{(t)} \mathbf{p}^{(t)}$</li>
 <li>$\mathbf{r}^{(t+1)} \gets \mathbf{r}^{(t)} + \alpha^{(t)} \mathbf{A} \mathbf{p}^{(t)}$</li>
-<li>$\beta^{(t+1)} \gets \frac{\mathbf{r}^{(t+1)} \mathbf{r}^{(t+1)}}{\mathbf{r}^{(t)} \mathbf{r}^{(t)}}$</li>
+<li>$\beta^{(t+1)} \gets \frac{\mathbf{r}^{(t+1)T} \mathbf{r}^{(t+1)}}{\mathbf{r}^{(t)T} \mathbf{r}^{(t)}}$</li>
 <li>$\mathbf{p}^{(t+1)} \gets - \mathbf{r}^{(t+1)} + \beta^{(t+1)} \mathbf{p}^{(t)}$</li>
 <li>$t \gets t+1$</li>
 </ol>
 </li>
 </ol>
 </li>
-<li><p>Computation cost per iteration is one matrix vector multiplication: $\mathbf{A} \mathbf{p}^{(t)}$.</p>
-<p>Consider PageRank problem, $\mathbf{A}$ has dimension $n \approx 10^{10}$ but is highly structured (sparse + low rank). Each matrix vector multiplication takes $O(n)$.</p>
+<li><p>Computation cost per iteration is one matrix vector multiplication: $\mathbf{A} \mathbf{p}^{(t)}$.<br>
+Consider PageRank problem, $\mathbf{A}$ has dimension $n \approx 10^{10}$ but is highly structured (sparse + low rank). Each matrix vector multiplication takes $O(n)$.</p>
 </li>
 <li><p>Theorem: If $\mathbf{A}$ has $r$ distinct eigenvalues, $\mathbf{x}^{(t)}$ converges to solution $\mathbf{x}^*$ in at most $r$ steps.</p>
 </li>
@@ -11922,9 +11924,9 @@ The iterates $\mathbf{x}^{(t)}$ converge to the solution in at most $n$ steps.</
 <li>$\mathbf{A}$ with a small condition number ($\lambda_1 \approx \lambda_n$) converges fast.</li>
 </ul>
 </li>
-<li><p><strong>Pre-conditioning</strong>: Change of variables $\widehat \mathbf{x} = \mathbf{C} \mathbf{x}$ via a nonsingular $\mathbf{C}$ and solve
+<li><p><strong>Pre-conditioning</strong>: Change of variables $\widehat{\mathbf{x}} = \mathbf{C} \mathbf{x}$ via a nonsingular $\mathbf{C}$ and solve
 $$
-  (\mathbf{C}^{-T} \mathbf{A} \mathbf{C}^{-1}) \widehat \mathbf{x} = \mathbf{C}^{-T} \mathbf{b}.
+  (\mathbf{C}^{-T} \mathbf{A} \mathbf{C}^{-1}) \widehat{\mathbf{x}} = \mathbf{C}^{-T} \mathbf{b}.
 $$
 Choose $\mathbf{C}$ such that</p>
 <ul>
@@ -11959,7 +11961,7 @@ Choose $\mathbf{C}$ such that</p>
 </li>
 <li><p>Pre-conditioning is more like an art than science. Some choices include</p>
 <ul>
-<li>Incomplete Cholesky. $\mathbf{A} \approx \tilde \mathbf{L} \tilde \mathbf{L}^T$, where $\tilde \mathbf{L}$ is a sparse approximate Cholesky factor. Then $\tilde \mathbf{L}^{-1} \mathbf{A} \tilde \mathbf{L}^{-T} \approx \mathbf{I}$ (perfectly conditioned) and $\mathbf{M} \mathbf{y} = \tilde \mathbf{L} \tilde \mathbf{L}^T \mathbf{y} = \mathbf{r}$ is easy to solve.  </li>
+<li>Incomplete Cholesky. $\mathbf{A} \approx \tilde{\mathbf{L}} \tilde{\mathbf{L}}^T$, where $\tilde{\mathbf{L}}$ is a sparse approximate Cholesky factor. Then $\tilde{\mathbf{L}}^{-1} \mathbf{A} \tilde{\mathbf{L}}^{-T} \approx \mathbf{I}$ (perfectly conditioned) and $\mathbf{M} \mathbf{y} = \tilde{\mathbf{L}} \tilde {\mathbf{L}}^T \mathbf{y} = \mathbf{r}$ is easy to solve.  </li>
 <li>Banded pre-conditioners.  </li>
 <li>Choose $\mathbf{M}$ as a coarsened version of $\mathbf{A}$.</li>
 <li>Subject knowledge. Knowledge about the structure and origin of a problem is often the key to devising efficient pre-conditioner. For example, see recent work of Stein, Chen, Anitescu (2012) for pre-conditioning large covariance matrices. <a href="http://epubs.siam.org/doi/abs/10.1137/110834469">http://epubs.siam.org/doi/abs/10.1137/110834469</a></li>
@@ -12009,16 +12011,23 @@ Choose $\mathbf{C}$ such that</p>
   <code>pcg</code>, <code>bicg</code>, <code>bicgstab</code>, <code>gmres</code>, ...</li>
 <li>Iterative methods for top eigen-pairs and singular pairs:<br>
   <code>eigs</code>, <code>svds</code>, ...</li>
-<li>Pre-conditioner:<br>
-  <code>cholinc</code>, <code>luinc</code>, ...</li>
-</ul>
-<p>Get familiar with the <strong>reverse communication interface (RCI)</strong> for utilizing iterative solvers:</p>
+<li><p>Pre-conditioner:<br>
+  <code>cholinc</code>, <code>luinc</code>, ...</p>
+</li>
+<li><p>Get familiar with the <strong>reverse communication interface (RCI)</strong> for utilizing iterative solvers:</p>
 <div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="n">gmres</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">x</span> <span class="p">=</span> <span class="n">gmres</span><span class="p">(@</span><span class="n">Afun</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">eigs</span><span class="p">(</span><span class="n">A</span><span class="p">)}</span>
 <span class="n">eigs</span><span class="p">(@</span><span class="n">Afun</span><span class="p">)</span>
 </pre></div>
-<h3 id="Julia">Julia<a class="anchor-link" href="#Julia">&#182;</a></h3><p><code>IterativeSolvers.jl</code> package. <a href="https://github.com/JuliaLang/IterativeSolvers.jl/issues/1">https://github.com/JuliaLang/IterativeSolvers.jl/issues/1</a></p>
+</li>
+</ul>
+<h3 id="Julia">Julia<a class="anchor-link" href="#Julia">&#182;</a></h3><ul>
+<li><p><a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.eigs"><code>eigs</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.svds"><code>svds</code></a>. <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/slides/16-eigsvd/eigsvd.html#Lanczos/Arnoldi-iterative-method-for-top-eigen-pairs">Numerical examples</a></p>
+</li>
+<li><p><a href="https://github.com/JuliaLang/IterativeSolvers.jl/issues/1"><code>IterativeSolvers.jl</code></a> package. <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/slides/14-iterative/iterative.html#Numerical-examples">Numerical examples</a></p>
+</li>
+</ul>
 
 </div>
 </div>
