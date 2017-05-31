@@ -11783,16 +11783,16 @@ Earlier we talked about Jacobi, Gauss-Seidel, and successive over-relaxation (SO
 </ul>
 <p>Hestenes and Stiefel (1952), <a href="http://nvlpubs.nist.gov/nistpubs/jres/049/jresv49n6p409_A1b.pdf">Methods of conjugate gradients for solving linear systems</a>, <em>Jounral of Research of the National Bureau of Standards</em>.</p>
 <ul>
-<li><p>Solve linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$, where $\mathbf{A} \in \mathbb{R}^{n \times n}$ is <strong>pd</strong>, is equivalent to 
+<li>Solve linear equation $\mathbf{A} \mathbf{x} = \mathbf{b}$, where $\mathbf{A} \in \mathbb{R}^{n \times n}$ is <strong>pd</strong>, is equivalent to 
 $$
 \begin{eqnarray*}
   \text{minimize} \,\, f(\mathbf{x}) = \frac 12 \mathbf{x}^T \mathbf{A} \mathbf{x} - \mathbf{b}^T \mathbf{x}.
 \end{eqnarray*}
 $$
-Denote $\nabla f(\mathbf{x}) = \mathbf{A} \mathbf{x} - \mathbf{b} =: r(\mathbf{x})$.</p>
-</li>
-<li><p>Consider a simple idea: coordinate descent, that is to update $x_j$ alternatingly. Same as the Gauss-Seidel iteration.</p>
-</li>
+Denote $\nabla f(\mathbf{x}) = \mathbf{A} \mathbf{x} - \mathbf{b} =: r(\mathbf{x})$.</li>
+</ul>
+<h2 id="Conjugate-gradient-(CG)-method">Conjugate gradient (CG) method<a class="anchor-link" href="#Conjugate-gradient-(CG)-method">&#182;</a></h2><ul>
+<li>Consider a simple idea: coordinate descent, that is to update $x_j$ alternatingly. Same as the Gauss-Seidel iteration.</li>
 </ul>
 <p><img src="coordinate_descent.png" width="400" align="center"/></p>
 <ul>
