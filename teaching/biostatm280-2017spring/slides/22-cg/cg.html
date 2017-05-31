@@ -11903,16 +11903,14 @@ Consider PageRank problem, $\mathbf{A}$ has dimension $n \approx 10^{10}$ but is
 </ul>
 </li>
 <li><p>Two important bounds for conjugate gradient algorithm:</p>
-<p>Let $\lambda_1 \le \cdots \le \lambda_n$ be the ordered eigenvalues of a pd $\mathbf{A}$.
-  $$
-  \begin{eqnarray*}</p>
-
-<pre><code>  \|\mathbf{x}^{(t+1)} - \mathbf{x}^*\|_{\mathbf{A}}^2 &amp;\le&amp; \left( \frac{\lambda_{n-t} - \lambda_1}{\lambda_{n-t} + \lambda_1} \right)^2 \|\mathbf{x}^{(0)} - \mathbf{x}^*\|_{\mathbf{A}}^2 \\
-  \|\mathbf{x}^{(t+1)} - \mathbf{x}^*\|_{\mathbf{A}}^2 &amp;\le&amp; 2 \left( \frac{\sqrt{\kappa(\mathbf{A})}-1}{\sqrt{\kappa(\mathbf{A})}+1} \right)^{t} \|\mathbf{x}^{(0)} - \mathbf{x}^*\|_{\mathbf{A}}^2,
-</code></pre>
-<p>\end{eqnarray*}
-  $$
-  where $\kappa(\mathbf{A}) = \lambda_n/\lambda_1$ is the condition number of $\mathbf{A}$.</p>
+<p>Let $\lambda_1 \le \cdots \le \lambda_n$ be the ordered eigenvalues of a pd $\mathbf{A}$.<br>
+$$
+\begin{eqnarray*}
+  \|\mathbf{x}^{(t+1)} - \mathbf{x}^*\|_{\mathbf{A}}^2 &\le& \left( \frac{\lambda_{n-t} - \lambda_1}{\lambda_{n-t} + \lambda_1} \right)^2 \|\mathbf{x}^{(0)} - \mathbf{x}^*\|_{\mathbf{A}}^2 \\
+  \|\mathbf{x}^{(t+1)} - \mathbf{x}^*\|_{\mathbf{A}}^2 &\le& 2 \left( \frac{\sqrt{\kappa(\mathbf{A})}-1}{\sqrt{\kappa(\mathbf{A})}+1} \right)^{t} \|\mathbf{x}^{(0)} - \mathbf{x}^*\|_{\mathbf{A}}^2,
+\end{eqnarray*}
+$$
+where $\kappa(\mathbf{A}) = \lambda_n/\lambda_1$ is the condition number of $\mathbf{A}$.</p>
 </li>
 </ul>
 <p><img src="cg_twocluster_spectrum.png" width="300" align="center"/></p>
