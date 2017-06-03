@@ -11758,18 +11758,18 @@ div#notebook {
 </li>
 <li><p>Assume $\mathbf{A}$ is symmetric and positive semidefinite.</p>
 </li>
-<li><p><strong>Sweep</strong> on the $k$-th diagonal entry $a_{kk} \ne 0$ yields $\hat \mathbf{A}$ with entries
+<li><p><strong>Sweep</strong> on the $k$-th diagonal entry $a_{kk} \ne 0$ yields $\widehat A$ with entries
 $$
 \begin{eqnarray*}
-  \hat a_{kk} &=& - \frac{1}{a_{kk}} \\
-  \hat a_{ik} &=& \frac{a_{ik}}{a_{kk}} \\
-  \hat a_{kj} &=& \frac{a_{kj}}{a_{kk}} \\
-  \hat a_{ij} &=& a_{ij} - \frac{a_{ik} a_{kj}}{a_{kk}}, \quad i \ne k, j \ne k.
+  \widehat a_{kk} &=& - \frac{1}{a_{kk}} \\
+  \widehat a_{ik} &=& \frac{a_{ik}}{a_{kk}} \\
+  \widehat a_{kj} &=& \frac{a_{kj}}{a_{kk}} \\
+  \widehat a_{ij} &=& a_{ij} - \frac{a_{ik} a_{kj}}{a_{kk}}, \quad i \ne k, j \ne k.
 \end{eqnarray*}
 $$
 $n^2$ flops (taking into account of symmetry).</p>
 </li>
-<li><p><strong>Inverse sweep</strong> sends $\mathbf{A}$ to $\check \mathbf{A}$ with entries
+<li><p><strong>Inverse sweep</strong> sends $\mathbf{A}$ to $\check A$ with entries
 $$
 \begin{eqnarray*}
   \check a_{kk} &=& - \frac{1}{a_{kk}} \\
@@ -11794,19 +11794,21 @@ on paper using sweep operator.</p>
 $$
   \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix}.
 $$
-If possible, sweep on the diagonal entries of $\mathbf{A}_{11}$ yields
-$$
-  \begin{pmatrix} - \mathbf{A}_{11}^{-1} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
-  \mathbf{A}_{21} \mathbf{A}_{11}^{-1} & \mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}
-  \end{pmatrix}.
-$$
-Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ is recognized as the <strong>Schur complement</strong> of $\mathbf{A}_{11}$.</p>
-</li>
-<li><p>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$.</p>
+If possible, sweep on the diagonal entries of $\mathbf{A}_{11}$ yields</p>
 </li>
 </ul>
+$$
+    \begin{pmatrix} 
+    - \mathbf{A}_{11}^{-1} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
+    \mathbf{A}_{21} \mathbf{A}_{11}^{-1} & \mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}
+    \end{pmatrix}.
+$$<p>Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ is recognized as the <strong>Schur complement</strong> of $\mathbf{A}_{11}$.</p>
+<ul>
+<li>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$. </li>
+</ul>
 <h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><ul>
-<li><p>Invert a matrix in place.</p>
+<li><p>Invert a matrix <em>in place</em>. $n^3$ flops.<br>
+Recall that inversion by Cholesky costs $(1/3)n^3 + (4/3) n^3 = (5/3) n^3$ flops and needs to allocate a matrix of same size.</p>
 </li>
 <li><p>Stepwise regression.</p>
 </li>
@@ -11819,20 +11821,24 @@ Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_
 </ul>
 <p>Sweep on the Gram matrix 
 $$
-\begin{pmatrix} \mathbf{X}^T \mathbf{X} & \mathbf{X}^T \mathbf{y} \\ \mathbf{y}^T \mathbf{X} & \mathbf{y}^T \mathbf{y} \end{pmatrix}
+\begin{pmatrix} 
+    \mathbf{X}^T \mathbf{X} & \mathbf{X}^T \mathbf{y} \\ 
+    \mathbf{y}^T \mathbf{X} & \mathbf{y}^T \mathbf{y} 
+\end{pmatrix}
+$$<br>
+yields</p>
 $$
-yields 
-$$
-    \begin{pmatrix}</p>
-
-<pre><code>- (\mathbf{X}^T \mathbf{X})^{-1} &amp; (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y} \\
-\mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} &amp; \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
-\end{pmatrix} = \begin{pmatrix}
-- \sigma^{-2} \text{Cov}(\beta) &amp; \beta \\
-\beta^T &amp; \|\mathbf{y} - \mathbf{y}\|_2^2
+\begin{eqnarray*}
+\begin{pmatrix}
+- (\mathbf{X}^T \mathbf{X})^{-1} & (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y} \\
+\mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} & \mathbf{y}^T \mathbf{y} - \mathbf{y}^T \mathbf{X} (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}
+\end{pmatrix} = 
+\begin{pmatrix}
+- \sigma^{-2} \text{Cov}(\beta) & \beta \\
+\beta^T & \|\mathbf{y} - \hat y\|_2^2
 \end{pmatrix}.
-</code></pre>
-<p>$$
+\end{eqnarray*}
+$$<p><br>
 In total $np^2 + p^3$ flops.</p>
 <h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
 <li><a href="https://github.com/joshday/SweepOperator.jl">SweepOperator.jl</a> package implements the sweep operator.</li>
@@ -11854,7 +11860,7 @@ In total $np^2 + p^3$ flops.</p>
 <span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>    <span class="c"># response vector</span>
 
 <span class="c"># form the augmented Gram matrix</span>
-<span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span><span class="o">.&#39;</span> <span class="o">*</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span>
+<span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span><span class="o">&#39;</span> <span class="o">*</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span>
 </pre></div>
 
 </div>
@@ -11884,7 +11890,7 @@ In total $np^2 + p^3$ flops.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">sweep!</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
@@ -11898,7 +11904,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11917,7 +11923,7 @@ In total $np^2 + p^3$ flops.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares solution by QR</span>
@@ -11932,7 +11938,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11950,10 +11956,10 @@ In total $np^2 + p^3$ flops.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># inverse sweep</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># inverse sweep to restore original matrix</span>
 <span class="n">sweep!</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="n">true</span><span class="p">)</span>
 </pre></div>
 
@@ -11965,7 +11971,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -11988,9 +11994,9 @@ In total $np^2 + p^3$ flops.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading">&#182;</a></h2><ul>
-<li><p>Section 7.4-7.6 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010).</p>
+<li><p>Section 7.4-7.6 of <a href="http://ucla.worldcat.org/title/numerical-analysis-for-statisticians/oclc/793808354&amp;referer=brief_results">Numerical Analysis for Statisticians</a> by Kenneth Lange (2010). Probably the best place to read about sweep operator.</p>
 </li>
-<li><p>The paper <a href="http://www.jstor.org/stable/2683825">A tutorial on the SWEEP operator</a> by James H. Goodnight.</p>
+<li><p>The paper <a href="http://www.jstor.org/stable/2683825">A tutorial on the SWEEP operator</a> by James H. Goodnight (1979). Note this version (anti-symmetry matrix) is slightly different from ours.</p>
 </li>
 </ul>
 

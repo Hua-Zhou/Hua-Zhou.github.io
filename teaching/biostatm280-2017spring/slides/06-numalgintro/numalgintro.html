@@ -12092,11 +12092,12 @@ Answer: use <strong>high-level BLAS</strong> as much as possible.</p>
 </tbody>
 </table>
 <ul>
-<li><p>Higher level BLAS (3 or 2) make more effective use of arithmetic logic units (ALU) by keeping them busy. <strong>Surface-to-volume</strong> effect.<br>
-See <a href="https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongarra.pdf">Dongarra slides</a>.</p>
-</li>
-<li><p>A distinction between LAPACK and LINPACK (older version of R uses LINPACK) is that LAPACK makes use of higher level BLAS as much as possible (usually by smart partitioning) to increase the so-called <strong>level-3 fraction</strong>.</p>
-</li>
+<li>Higher level BLAS (3 or 2) make more effective use of arithmetic logic units (ALU) by keeping them busy. <strong>Surface-to-volume</strong> effect.<br>
+See <a href="https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongarra.pdf">Dongarra slides</a>.</li>
+</ul>
+<p><img src="./blas_throughput.png" width="500" align="center"/></p>
+<ul>
+<li>A distinction between LAPACK and LINPACK (older version of R uses LINPACK) is that LAPACK makes use of higher level BLAS as much as possible (usually by smart partitioning) to increase the so-called <strong>level-3 fraction</strong>.</li>
 </ul>
 
 </div>
@@ -12613,6 +12614,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <span class="n">x</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
 <span class="c"># dispatch to At_mul_B (and then to BLAS)</span>
+<span class="c"># does *not* actually transpose the matrix</span>
 <span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">x</span>
 </pre></div>
 
@@ -12747,7 +12749,8 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="c"># two temporary arrays are created</span>
+<span class="c"># two temporary arrays are created</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">max</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">abs</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12922,7 +12925,8 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">sum</span><span class="p">(@</span><span class="n">view</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># view avoids creating a separate sub-matrix</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">sum</span><span class="p">(@</span><span class="n">view</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
 </pre></div>
 
 </div>

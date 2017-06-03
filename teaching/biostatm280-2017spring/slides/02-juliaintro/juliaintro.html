@@ -12146,12 +12146,16 @@ Success stories: <code>glmnet</code> packages in R is coded in Fortran.</p>
 <li><p>An example from Dr. Doug Bates's slides <a href="http://www.stat.wisc.edu/~bates/JuliaForRProgrammers.pdf">Julia for R Programmers</a>.</p>
 </li>
 <li><p>The task is to create a Gibbs sampler for the density<br>
-$$f(x, y) = k x^2 exp(- x y^2 - y^2 + 2y - 4x), x > 0$$
+$$
+f(x, y) = k x^2 exp(- x y^2 - y^2 + 2y - 4x), x > 0
+$$
 using the conditional distributions
-$$\begin{eqnarray*}
+$$
+\begin{eqnarray*}
 X | Y &\sim& \Gamma \left( 3, \frac{1}{y^2 + 4} \right) \\
 Y | X &\sim& N \left(\frac{1}{1+x}, \frac{1}{2(1+x)} \right).
-\end{eqnarray*}$$</p>
+\end{eqnarray*}
+$$</p>
 </li>
 <li><p>This is a Julia function for the simple Gibbs sampler:</p>
 </li>
