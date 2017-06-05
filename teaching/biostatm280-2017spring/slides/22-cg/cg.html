@@ -11752,7 +11752,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Conjugate-Gradient-and-Krylov-Subspace-Methods">Conjugate Gradient and Krylov Subspace Methods<a class="anchor-link" href="#Conjugate-Gradient-and-Krylov-Subspace-Methods">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><ul>
-<li><p>(Linear) Conjugate gradient is the top-notch iterative method for solving large, <strong>structured</strong> linear systems $\mathbf{A} \mathbf{x} = \mathbf{b}$, where $\mathbf{A}$ is pd.<br>
+<li><p>Conjugate gradient is the top-notch iterative method for solving large, <strong>structured</strong> linear systems $\mathbf{A} \mathbf{x} = \mathbf{b}$, where $\mathbf{A}$ is pd.<br>
 Earlier we talked about Jacobi, Gauss-Seidel, and successive over-relaxation (SOR) as the classical iterative solvers. They are rarely used in practice due to slow convergence.</p>
 <p><a href="http://www.sciencedirect.com/science/article/pii/0021999178900980?via%3Dihub">Kershaw's results</a> for a fusion problem.</p>
 </li>
@@ -11817,7 +11817,7 @@ $$
 $$
 is the optimal step length.</p>
 </li>
-<li><p>Theorem: In conjugate direction method, $\mathbf{x}^{(t)}$ converges to the solution in at most $n$ steps.</p>
+<li><p>Theorem: In conjugate direction method, $\mathbf{x}^{(t)}$ converges to the solution in <strong>at most</strong> $n$ steps.</p>
 <p>Intuition: Look at graph.</p>
 </li>
 </ul>
@@ -11992,7 +11992,7 @@ Choose $\mathbf{C}$ such that</p>
 </li>
 <li><p><strong>Lanczos bidiagonalization</strong> algorithm: top singular triplets of large matrix.</p>
 </li>
-<li><p>LMSQ</p>
+<li><p><strong>LSQR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$.</p>
 </li>
 </ul>
 
