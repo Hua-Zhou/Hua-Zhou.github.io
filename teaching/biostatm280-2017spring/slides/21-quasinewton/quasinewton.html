@@ -11758,7 +11758,7 @@ div#notebook {
 <li><code>optim</code> in R.</li>
 </ul>
 </li>
-<li><p>Consider the general Newton scheme for minimizing $f(\mathbf{x})$, $\mathbf{x} \in {\cal \mathbf{X}} \subset \mathbb{R}^p$:
+<li><p>Consider the general Newton scheme for minimizing $f(\mathbf{x})$, $\mathbf{x} \in {\cal \mathbf{X}} \subset \mathbb{R}^p$:<br>
 $$
   \mathbf{x}^{(t+1)} = \mathbf{x}^{(t)} - s [\mathbf{A}^{(t)}]^{-1} \nabla f(\mathbf{x}^{(t)}),
 $$
@@ -11793,12 +11793,6 @@ Instead of computing $\mathbf{A}$ from scratch at each iteration, we update an a
 </li>
 <li><p>Super-linear convergence, compared to the quadratic convergence of Newton's method. But each iteration only takes $O(p^2)$!</p>
 </li>
-<li><p>History: <strong>Davidon</strong> was a physicist at Argonne National Lab in 1950s and proposed the very first idea of quasi-Newton method in 1959. Later studied, implemented, and popularized by Fletcher and Powell. Davidon's original paper was not accepted for publication 😞; 30 years later it appeared as the first article in the inaugural issue of <a href="http://epubs.siam.org/doi/abs/10.1137/0801001?journalCode=sjope8">SIAM Journal of Optimization</a>.</p>
-</li>
-</ul>
-<p><img src="./davidon-wiki.png" width="400" align="center"/></p>
-<p><img src="https://images-na.ssl-images-amazon.com/images/I/51J0nOUwqiL._SX334_BO1,204,203,200_.jpg" width="200" align="center"/></p>
-<ul>
 <li><p><strong>Davidon-Fletcher-Powell (DFP)</strong> rank-2 update. Solve 
 $$
 \begin{eqnarray*}
@@ -11823,7 +11817,11 @@ Again $\mathbf{H}^{(t+1)}$ is a rank two update of $\mathbf{H}^{(t)}$. $O(p^2)$ 
 </li>
 <li><p>How to set the initial approximation $\mathbf{A}^{(0)}$? Identity or Hessian (if pd) or Fisher information matrix at starting point.</p>
 </li>
+<li><p>History: <strong>Davidon</strong> was a physicist at Argonne National Lab in 1950s and proposed the very first idea of quasi-Newton method in 1959. Later studied, implemented, and popularized by Fletcher and Powell. Davidon's original paper was not accepted for publication 😞; 30 years later it appeared as the first article in the inaugural issue of <a href="http://epubs.siam.org/doi/abs/10.1137/0801001?journalCode=sjope8">SIAM Journal of Optimization</a>.</p>
+</li>
 </ul>
+<p><img src="./davidon-wiki.png" width="400" align="center"/></p>
+<p><img src="https://images-na.ssl-images-amazon.com/images/I/51J0nOUwqiL._SX334_BO1,204,203,200_.jpg" width="200" align="center"/></p>
 
 </div>
 </div>
