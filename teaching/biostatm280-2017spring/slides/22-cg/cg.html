@@ -11861,7 +11861,7 @@ $$
 \end{eqnarray*}
 $$</li>
 <li>$\{\mathbf{p}^{(0)},\ldots,\mathbf{p}^{(t)}\}$ is contained in ${\cal K}(\mathbf{r}^{(0)}; t)$. </li>
-<li>$\mathbf{p}^{(0)}, \ldots, \mathbf{p}^{(t)}$ are conjugate wrt $\mathbf{A}$.<br>
+<li>$\mathbf{p}^{(0)}, \ldots, \mathbf{p}^{(t)}$ are conjugate with respect to $\mathbf{A}$.<br>
 The iterates $\mathbf{x}^{(t)}$ converge to the solution in at most $n$ steps.</li>
 </ol>
 </li>
@@ -11992,7 +11992,9 @@ Choose $\mathbf{C}$ such that</p>
 </li>
 <li><p><strong>Lanczos bidiagonalization</strong> algorithm: top singular triplets of large matrix.</p>
 </li>
-<li><p><strong>LSQR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$.</p>
+<li><p><strong>LSQR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$. Algebraically equivalent to applying CG to the normal equation $(\mathbf{X}^T \mathbf{X} + \lambda^2 I)\mathbf{x} = \mathbf{X}^T \mathbf{y}$.</p>
+</li>
+<li><p><strong>LSMR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$. Algebraically equivalent to applying MINRES to the normal equation $(\mathbf{X}^T \mathbf{X} + \lambda^2 I)\mathbf{x} = \mathbf{X}^T \mathbf{y}$.</p>
 </li>
 </ul>
 
@@ -12023,12 +12025,158 @@ Choose $\mathbf{C}$ such that</p>
 <h3 id="Julia">Julia<a class="anchor-link" href="#Julia">&#182;</a></h3><ul>
 <li><p><a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.eigs"><code>eigs</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.svds"><code>svds</code></a>. <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/slides/16-eigsvd/eigsvd.html#Lanczos/Arnoldi-iterative-method-for-top-eigen-pairs">Numerical examples</a></p>
 </li>
-<li><p><a href="https://github.com/JuliaLang/IterativeSolvers.jl/issues/1"><code>IterativeSolvers.jl</code></a> package. <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/slides/14-iterative/iterative.html#Numerical-examples">Numerical examples</a></p>
+<li><p><a href="https://github.com/JuliaLang/IterativeSolvers.jl/issues/1"><code>IterativeSolvers.jl</code></a> package. <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/slides/14-iterative/iterative.html#Numerical-examples">CG numerical examples</a></p>
+</li>
+<li><p>Least squares examples:</p>
 </li>
 </ul>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">IterativeSolvers</span>
+
+<span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span> <span class="c"># seed</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">500</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sprandn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">β</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">β</span> <span class="o">+</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">β̂_qr</span> <span class="o">=</span> <span class="n">X</span> \ <span class="n">y</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">X</span> \ <span class="n">y</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[1]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  5.17 MiB
+  allocs estimate:  99
+  --------------
+  minimum time:     34.501 ms (0.00% GC)
+  median time:      35.069 ms (0.00% GC)
+  mean time:        35.273 ms (0.19% GC)
+  maximum time:     41.274 ms (0.00% GC)
+  --------------
+  samples:          142
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">β̂_lsqr</span> <span class="o">=</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">vecnorm</span><span class="p">(</span><span class="n">β̂_qr</span> <span class="o">-</span> <span class="n">β̂_lsqr</span><span class="p">)</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>vecnorm(β̂_qr - β̂_lsqr) = 1.0991691311686633e-5
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[2]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  59.03 KiB
+  allocs estimate:  463
+  --------------
+  minimum time:     1.635 ms (0.00% GC)
+  median time:      1.663 ms (0.00% GC)
+  mean time:        1.773 ms (0.36% GC)
+  maximum time:     6.264 ms (71.36% GC)
+  --------------
+  samples:          2809
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">β̂_lsmr</span> <span class="o">=</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">vecnorm</span><span class="p">(</span><span class="n">β̂_qr</span> <span class="o">-</span> <span class="n">β̂_lsmr</span><span class="p">)</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">lsmr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>vecnorm(β̂_qr - β̂_lsmr) = 1.0991691311686633e-5
+</pre>
+</div>
+</div>
+
+<div class="output_area"><div class="prompt output_prompt">Out[3]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  34.33 KiB
+  allocs estimate:  272
+  --------------
+  minimum time:     1.030 ms (0.00% GC)
+  median time:      1.044 ms (0.00% GC)
+  mean time:        1.113 ms (0.39% GC)
+  maximum time:     5.332 ms (73.24% GC)
+  --------------
+  samples:          4469
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
