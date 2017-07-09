@@ -16,6 +16,8 @@ Regression model using Dirichlet-multinomial, negative multinomial, and generali
 **H Zhou**, J Blangero, T Dyer, K Chan, K Lange, and E Sobel. (2017) Fast genome-wide QTL association mappingon pedigree and population data, [_Genetic Epidemiology_](http://onlinelibrary.wiley.com/doi/10.1002/gepi.21988/abstract), 41(3):174-186. \[[pdf](./media/pdf/ZhouBlangeroThomasChanLangeSobel17PedGWAS.pdf)\]  
 Method for [Mendel software](https://www.genetics.ucla.edu/software/mendel) Option 29 (Pedigree GWAS).   
 
+B Zhang, **H Zhou**, L Wang, and C Sung. (2017) Classification based on neuroimaging data by tensor boosting, [*International Joint Conference on Neural Networks (IJCNN)*](http://ieeexplore.ieee.org/abstract/document/7965985/), 1174-1179.  \[[pdf](./media/pdf/Zhang17TensorBoosting.pdf)\]  
+
 **H Zhou**, J Zhou, T Hu, E Sobel, and K Lange. (2016) Genome-wide QTL and eQTL analyses using Mendel, [_BMC Proceedings_](http://rdcu.be/mHtr), 10(Suppl 7):10. \[[pdf](./media/pdf/Zhou16GAW19.pdf)\]  
 QTL and eQTL analyses of the GAW19 data.  
 
