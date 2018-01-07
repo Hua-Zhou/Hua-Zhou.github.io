@@ -11,7 +11,7 @@ This course is used as a placeholder for the new course _Biostat 203B: Introduct
 
 ### Course Description
 
-Computing skills for handling potentially big public health data.   
+Computing skills and software tools for handling potentially big public health data.   
 
 ### Lecture Time and Location
 
