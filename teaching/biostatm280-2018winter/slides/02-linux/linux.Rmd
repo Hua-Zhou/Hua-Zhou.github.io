@@ -1,0 +1,76 @@
+---
+title: "Linux Basics"
+author: "Dr. Hua Zhou"
+date: "Jan 11, 2018"
+output:
+  ioslides_presentation: default
+subtitle: Biostat M280
+bibliography: ../bib-HZ.bib
+---
+
+## Why Linux ##
+
+Linux is _the_ most common platform for scientific computing.
+
+- For example, UCLA Hoffmann2 cluster runs on Linux. It is a lot computing power sitting there.
+
+- Open source and community support.
+
+- Thinks break; when they break using Linux, it's easy to fix them!
+
+- Scalability: portable devices (Android, iOS), laptops, servers, and super computers.
+
+- Cost: it's free!
+
+## [Distributions of Linux](http://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg) ##
+
+- Debian/Ubuntu is a popular choice for personal computers.
+
+- RHEL/CentOS is popular on servers.
+
+- The teaching server for this class runs CentOS 7.
+
+- Mac OS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to Mac OS terminal as well. Windows/DOS, unfortunately, is a totally different breed.
+
+## ##
+
+- On Linux:
+```{bash, eval=FALSE}
+cat /etc/*-release
+```
+
+- On Mac:
+```{bash, eval=FALSE}
+sw_vers -productVersion
+```
+or
+```{bash, eval=FALSE}
+system_profiler SPSoftwareDataType
+```
+
+## Linux directory structure ##
+
+<p align="center">
+  <img src="./linux_directory_structure.png" height="300" width="450">
+</p>
+- Upon log in, user is at his/her home directory.
+
+## Move around the file system ##
+
+- `pwd` shows the current working directory
+```{bash, eval=FALSE}
+pwd
+```
+
+- `ls` lists contents of a directory.  
+`ls -l` lists detailed contents of a directory.  
+`ls -al` lists all contents of a directory, including those start with `.` (hidden folders).
+```{bash, eval=FALSE}
+ls
+ls -l
+ls -al
+```
+
+
+# References #
+
