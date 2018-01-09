@@ -48,6 +48,8 @@ or
 system_profiler SPSoftwareDataType
 ```
 
+# Linux shells
+
 ## Linux shells
 
 - A shell translates commands to OS instructions.
@@ -100,6 +102,8 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - It can also be customized to auto-complete other stuff such as options and command's arguments. Google `bash completion` for more information.
 
+# Navigate file system
+
 ## Linux directory structure
 
 <p align="center">
@@ -109,26 +113,26 @@ Bash provides the following standard completion for the Linux users by default. 
 
 ## Move around the file system {.smaller}
 
-- `pwd` prints absolute path to the current working directory
+- `pwd` prints absolute path to the current working directory:
 ```{bash}
 pwd
 ```
 
-- `ls` lists contents of a directory.  
+- `ls` lists contents of a directory:  
 ```{bash}
 ls
 ```
 
 ## {.smaller}
 
-- `ls -l` lists detailed contents of a directory.  
+- `ls -l` lists detailed contents of a directory:  
 ```{bash}
 ls -l
 ```
 
 ## {.smaller}
 
-- `ls -al` lists all contents of a directory, including those start with `.` (hidden folders).
+- `ls -al` lists all contents of a directory, including those start with `.` (hidden folders):
 ```{bash, small=TRUE}
 ls -al
 ```
@@ -141,7 +145,7 @@ ls -al
 
 - `~` denotes user's home directory.
 
-- `\` denotes the root directory.
+- `/` denotes the root directory.
 
 - `cd ..` changes to parent directory.
 
@@ -171,7 +175,7 @@ ls -al
 
 - `chmod 751 file` sets permission rwxr-x--x to a file.
 
-- `groups userid` shows which group(s) a user belongs to.
+- `groups userid` shows which group(s) a user belongs to:
 ```{bash}
 groups huazhou
 ```
@@ -194,12 +198,12 @@ groups huazhou
 
 ## Find files {.smaller}
 
-- `locate` locates a file by name.
+- `locate` locates a file by name:
 ```{bash}
 locate linux.Rmd
 ```
 
-- `which` locates a program.
+- `which` locates a program:
 ```{bash}
 which R
 ```
@@ -242,23 +246,25 @@ ls -l *.png
 
 - Google `regular expressions` to learn.
 
+# Work with text files
+
 ## View/peek text files {.smaller}
 
-- `cat` prints the contents of a file.
+- `cat` prints the contents of a file:
 ```{bash}
 cat linux.Rmd
 ```
 
 ----
 
-- `head -l` prints the first $l$ lines of a file.
+- `head -l` prints the first $l$ lines of a file:
 ```{bash}
 head linux.Rmd
 ```
 
 ----
 
-- `tail -l` prints the last $l$ lines of a file.
+- `tail -l` prints the last $l$ lines of a file:
 ```{bash}
 tail linux.Rmd
 ```
@@ -275,38 +281,38 @@ tail linux.Rmd
 
 ----
 
-- `grep` prints lines that match an expression.
+- `grep` prints lines that match an expression:
 ```{bash}
 grep CentOS linux.Rmd
 ```
 
-- Find entries with an underscore
+- Find entries with an underscore:
 ```{bash}
 grep *_* linux.Rmd
 ```
 
 ----
 
-- Find all files in current directory with `.Rmd` extension
+- Find all files in current directory with `.Rmd` extension:
 ```{bash}
 ls | grep *.Rmd
 ```
 
-- Find all directories in the current directory
+- Find all directories in the current directory:
 ```{bash}
 ls -al | grep ^d
 ```
 
 ----
 
-- `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file.
+- `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file:
 ```{bash}
 sed 's/CentOS/RHEL/' linux.Rmd | grep RHEL
 ```
 
 ----
 
-- `awk` is a filter and report writer.
+- `awk` is a filter and report writer:
 ```{bash}
 # print sorted list of login names
 awk -F: '{ print $1 }' /etc/passwd | sort | head -5
@@ -337,7 +343,7 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 ## Emacs
 
-- Emacs is a powerful text editor with extensive support for many languages including `R`, $\LaTeX$, `python`, and `C/C++`; however it's _not_ installed by default on many Linux distributions. 
+- `Emacs` is a powerful text editor with extensive support for many languages including `R`, $\LaTeX$, `python`, and `C/C++`; however it's _not_ installed by default on many Linux distributions. 
 
 - Basic survival commands:
     - `emacs filename` to open a file with emacs.  
@@ -348,7 +354,7 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 ----
 
-- Google `emacs cheatsheet` to find something like
+- Google `emacs cheatsheet`
 
 <p align="center">
   <img src="./Emacs_Reference_Card.pdf" height="400">
@@ -365,21 +371,21 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
     - `vi filename` to start editing a file.
     - `vi` is a _modal_ editor: _insert_ mode and _normal_ mode. Pressing `i` switches from the normal mode to insert mode. Pressing `ESC` switches from the insert mode to normal mode.  
     - `:x<Return>` quits `vi` and saves changes.  
-    - `wq<Return>` quits `vi` and saves changes.  
     - `:q!<Return>` quits vi without saving latest changes.  
     - `:w<Return>` saves changes.
+    - `:wq<Return>` quits `vi` and saves changes.      
 
 ----
 
-- Google `vi cheatsheet` to find something like
+- Google `vi cheatsheet`
 
 <p align="center">
   <img src="./Vi_Cheat_Sheet.pdf" height="500">
 </p>
 
-## IDE
+## IDE (Integrated Development Environment)
 
-- Statisticians write a lot of code. Critical to adopt a good IDE (integrated development environment) that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.
+- Statisticians write a lot of code. Critical to adopt a good IDE that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.
 
 - R Studio, Eclipse, Emacs, Matlab, Visual Studio, etc.
 

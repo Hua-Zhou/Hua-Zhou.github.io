@@ -104,7 +104,7 @@
 
 <ul>
 <li><p>Open source and community support.</p></li>
-<li><p>Things break; when they break using Linux, it&#39;s easy to fix!</p></li>
+<li><p>Things break; when they break using Linux, it&#39;s easy to fix.</p></li>
 <li>Scalability: portable devices (Android, iOS), laptops, servers, clusters, and super computers.
 
 <ul>
@@ -162,7 +162,9 @@
 
 <pre class = 'prettyprint lang-bash'>system_profiler SPSoftwareDataType</pre>
 
-</article></slide><slide class=""><hgroup><h2>Linux shells</h2></hgroup><article  id="linux-shells">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Linux shells</h2></hgroup><article  id="linux-shells">
+
+</article></slide><slide class=""><hgroup><h2>Linux shells</h2></hgroup><article  id="linux-shells-1">
 
 <ul>
 <li><p>A shell translates commands to OS instructions.</p></li>
@@ -225,6 +227,8 @@
 <li><p>It can also be customized to auto-complete other stuff such as options and command&#39;s arguments. Google <code>bash completion</code> for more information.</p></li>
 </ul>
 
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Navigate file system</h2></hgroup><article  id="navigate-file-system">
+
 </article></slide><slide class=""><hgroup><h2>Linux directory structure</h2></hgroup><article  id="linux-directory-structure">
 
 <p align="center">
@@ -240,7 +244,7 @@
 </article></slide><slide class=""><hgroup><h2>Move around the file system</h2></hgroup><article  id="move-around-the-file-system" class="smaller">
 
 <ul>
-<li><code>pwd</code> prints absolute path to the current working directory</li>
+<li><code>pwd</code> prints absolute path to the current working directory:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>pwd</pre>
@@ -248,7 +252,7 @@
 <pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux</pre>
 
 <ul>
-<li><code>ls</code> lists contents of a directory.</li>
+<li><code>ls</code> lists contents of a directory:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>ls</pre>
@@ -267,7 +271,7 @@
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-1" class="smaller">
 
 <ul>
-<li><code>ls -l</code> lists detailed contents of a directory.</li>
+<li><code>ls -l</code> lists detailed contents of a directory:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>ls -l</pre>
@@ -278,8 +282,8 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2032913 Jan  9 17:24 linux.html
-## -rw-rw-r--. 1 huazhou huazhou   13021 Jan  9 17:29 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2033613 Jan  9 19:37 linux.html
+## -rw-rw-r--. 1 huazhou huazhou   13050 Jan  9 19:39 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
 ## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre>
@@ -287,21 +291,21 @@
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-2" class="smaller">
 
 <ul>
-<li><code>ls -al</code> lists all contents of a directory, including those start with <code>.</code> (hidden folders).</li>
+<li><code>ls -al</code> lists all contents of a directory, including those start with <code>.</code> (hidden folders):</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>ls -al</pre>
 
 <pre >## total 3164
-## drwxrwxr-x. 2 huazhou huazhou    4096 Jan  9 17:24 .
+## drwxrwxr-x. 2 huazhou huazhou    4096 Jan  9 19:37 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..
 ## -rw-r--r--. 1 huazhou huazhou  110345 Jan  9 04:48 Emacs_Reference_Card.pdf
 ## -rw-r--r--. 1 huazhou huazhou   96119 Jan  9 15:39 key_authentication.png
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2032913 Jan  9 17:24 linux.html
-## -rw-rw-r--. 1 huazhou huazhou   13021 Jan  9 17:29 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2033613 Jan  9 19:37 linux.html
+## -rw-rw-r--. 1 huazhou huazhou   13050 Jan  9 19:39 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
 ## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre>
@@ -312,7 +316,7 @@
 <li><p><code>..</code> denotes the parent of current working directory.</p></li>
 <li><p><code>.</code> denotes the current working directory.</p></li>
 <li><p><code>~</code> denotes user&#39;s home directory.</p></li>
-<li><p><code>\</code> denotes the root directory.</p></li>
+<li><p><code>/</code> denotes the root directory.</p></li>
 <li><p><code>cd ..</code> changes to parent directory.</p></li>
 <li><p><code>cd</code> or <code>cd ~</code> changes to home directory.</p></li>
 <li><p><code>cd /</code> changes to root directory.</p></li>
@@ -343,7 +347,7 @@
 <ul>
 <li><p><code>chmod g+x file</code> makes a file executable to group members.</p></li>
 <li><p><code>chmod 751 file</code> sets permission rwxr-x&#8211;x to a file.</p></li>
-<li><p><code>groups userid</code> shows which group(s) a user belongs to.</p></li>
+<li><p><code>groups userid</code> shows which group(s) a user belongs to:</p></li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>groups huazhou</pre>
@@ -365,7 +369,7 @@
 </article></slide><slide class=""><hgroup><h2>Find files</h2></hgroup><article  id="find-files" class="smaller">
 
 <ul>
-<li><code>locate</code> locates a file by name.</li>
+<li><code>locate</code> locates a file by name:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>locate linux.Rmd</pre>
@@ -373,7 +377,7 @@
 <pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd</pre>
 
 <ul>
-<li><code>which</code> locates a program.</li>
+<li><code>which</code> locates a program:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>which R</pre>
@@ -455,10 +459,12 @@ ls -l *.png</pre>
 <li><p>Google <code>regular expressions</code> to learn.</p></li>
 </ul>
 
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Work with text files</h2></hgroup><article  id="work-with-text-files">
+
 </article></slide><slide class=""><hgroup><h2>View/peek text files</h2></hgroup><article  id="viewpeek-text-files" class="smaller">
 
 <ul>
-<li><code>cat</code> prints the contents of a file.</li>
+<li><code>cat</code> prints the contents of a file:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>cat linux.Rmd</pre>
@@ -478,7 +484,7 @@ ls -l *.png</pre>
 ## 
 ## - Open source and community support.
 ## 
-## - Things break; when they break using Linux, it&#39;s easy to fix!
+## - Things break; when they break using Linux, it&#39;s easy to fix.
 ## 
 ## - Scalability: portable devices (Android, iOS), laptops, servers, clusters, and super computers.
 ##     - E.g. UCLA Hoffmann2 cluster runs on Linux.
@@ -512,6 +518,8 @@ ls -l *.png</pre>
 ## ```{bash, eval=FALSE}
 ## system_profiler SPSoftwareDataType
 ## ```
+## 
+## # Linux shells
 ## 
 ## ## Linux shells
 ## 
@@ -565,6 +573,8 @@ ls -l *.png</pre>
 ## 
 ## - It can also be customized to auto-complete other stuff such as options and command&#39;s arguments. Google `bash completion` for more information.
 ## 
+## # Navigate file system
+## 
 ## ## Linux directory structure
 ## 
 ## &lt;p align=&quot;center&quot;&gt;
@@ -574,26 +584,26 @@ ls -l *.png</pre>
 ## 
 ## ## Move around the file system {.smaller}
 ## 
-## - `pwd` prints absolute path to the current working directory
+## - `pwd` prints absolute path to the current working directory:
 ## ```{bash}
 ## pwd
 ## ```
 ## 
-## - `ls` lists contents of a directory.  
+## - `ls` lists contents of a directory:  
 ## ```{bash}
 ## ls
 ## ```
 ## 
 ## ## {.smaller}
 ## 
-## - `ls -l` lists detailed contents of a directory.  
+## - `ls -l` lists detailed contents of a directory:  
 ## ```{bash}
 ## ls -l
 ## ```
 ## 
 ## ## {.smaller}
 ## 
-## - `ls -al` lists all contents of a directory, including those start with `.` (hidden folders).
+## - `ls -al` lists all contents of a directory, including those start with `.` (hidden folders):
 ## ```{bash, small=TRUE}
 ## ls -al
 ## ```
@@ -606,7 +616,7 @@ ls -l *.png</pre>
 ## 
 ## - `~` denotes user&#39;s home directory.
 ## 
-## - `\` denotes the root directory.
+## - `/` denotes the root directory.
 ## 
 ## - `cd ..` changes to parent directory.
 ## 
@@ -636,7 +646,7 @@ ls -l *.png</pre>
 ## 
 ## - `chmod 751 file` sets permission rwxr-x--x to a file.
 ## 
-## - `groups userid` shows which group(s) a user belongs to.
+## - `groups userid` shows which group(s) a user belongs to:
 ## ```{bash}
 ## groups huazhou
 ## ```
@@ -659,12 +669,12 @@ ls -l *.png</pre>
 ## 
 ## ## Find files {.smaller}
 ## 
-## - `locate` locates a file by name.
+## - `locate` locates a file by name:
 ## ```{bash}
 ## locate linux.Rmd
 ## ```
 ## 
-## - `which` locates a program.
+## - `which` locates a program:
 ## ```{bash}
 ## which R
 ## ```
@@ -707,23 +717,25 @@ ls -l *.png</pre>
 ## 
 ## - Google `regular expressions` to learn.
 ## 
+## # Work with text files
+## 
 ## ## View/peek text files {.smaller}
 ## 
-## - `cat` prints the contents of a file.
+## - `cat` prints the contents of a file:
 ## ```{bash}
 ## cat linux.Rmd
 ## ```
 ## 
 ## ----
 ## 
-## - `head -l` prints the first $l$ lines of a file.
+## - `head -l` prints the first $l$ lines of a file:
 ## ```{bash}
 ## head linux.Rmd
 ## ```
 ## 
 ## ----
 ## 
-## - `tail -l` prints the last $l$ lines of a file.
+## - `tail -l` prints the last $l$ lines of a file:
 ## ```{bash}
 ## tail linux.Rmd
 ## ```
@@ -740,38 +752,38 @@ ls -l *.png</pre>
 ## 
 ## ----
 ## 
-## - `grep` prints lines that match an expression.
+## - `grep` prints lines that match an expression:
 ## ```{bash}
 ## grep CentOS linux.Rmd
 ## ```
 ## 
-## - Find entries with an underscore
+## - Find entries with an underscore:
 ## ```{bash}
 ## grep *_* linux.Rmd
 ## ```
 ## 
 ## ----
 ## 
-## - Find all files in current directory with `.Rmd` extension
+## - Find all files in current directory with `.Rmd` extension:
 ## ```{bash}
 ## ls | grep *.Rmd
 ## ```
 ## 
-## - Find all directories in the current directory
+## - Find all directories in the current directory:
 ## ```{bash}
 ## ls -al | grep ^d
 ## ```
 ## 
 ## ----
 ## 
-## - `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file.
+## - `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file:
 ## ```{bash}
 ## sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL
 ## ```
 ## 
 ## ----
 ## 
-## - `awk` is a filter and report writer.
+## - `awk` is a filter and report writer:
 ## ```{bash}
 ## # print sorted list of login names
 ## awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5
@@ -802,7 +814,7 @@ ls -l *.png</pre>
 ## 
 ## ## Emacs
 ## 
-## - Emacs is a powerful text editor with extensive support for many languages including `R`, $\LaTeX$, `python`, and `C/C++`; however it&#39;s _not_ installed by default on many Linux distributions. 
+## - `Emacs` is a powerful text editor with extensive support for many languages including `R`, $\LaTeX$, `python`, and `C/C++`; however it&#39;s _not_ installed by default on many Linux distributions. 
 ## 
 ## - Basic survival commands:
 ##     - `emacs filename` to open a file with emacs.  
@@ -813,7 +825,7 @@ ls -l *.png</pre>
 ## 
 ## ----
 ## 
-## - Google `emacs cheatsheet` to find something like
+## - Google `emacs cheatsheet`
 ## 
 ## &lt;p align=&quot;center&quot;&gt;
 ##   &lt;img src=&quot;./Emacs_Reference_Card.pdf&quot; height=&quot;400&quot;&gt;
@@ -830,21 +842,21 @@ ls -l *.png</pre>
 ##     - `vi filename` to start editing a file.
 ##     - `vi` is a _modal_ editor: _insert_ mode and _normal_ mode. Pressing `i` switches from the normal mode to insert mode. Pressing `ESC` switches from the insert mode to normal mode.  
 ##     - `:x&lt;Return&gt;` quits `vi` and saves changes.  
-##     - `wq&lt;Return&gt;` quits `vi` and saves changes.  
 ##     - `:q!&lt;Return&gt;` quits vi without saving latest changes.  
 ##     - `:w&lt;Return&gt;` saves changes.
+##     - `:wq&lt;Return&gt;` quits `vi` and saves changes.      
 ## 
 ## ----
 ## 
-## - Google `vi cheatsheet` to find something like
+## - Google `vi cheatsheet`
 ## 
 ## &lt;p align=&quot;center&quot;&gt;
 ##   &lt;img src=&quot;./Vi_Cheat_Sheet.pdf&quot; height=&quot;500&quot;&gt;
 ## &lt;/p&gt;
 ## 
-## ## IDE
+## ## IDE (Integrated Development Environment)
 ## 
-## - Statisticians write a lot of code. Critical to adopt a good IDE (integrated development environment) that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.
+## - Statisticians write a lot of code. Critical to adopt a good IDE that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.
 ## 
 ## - R Studio, Eclipse, Emacs, Matlab, Visual Studio, etc.
 ## 
@@ -989,7 +1001,7 @@ ls -l *.png</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>head -l</code> prints the first \(l\) lines of a file.</li>
+<li><code>head -l</code> prints the first \(l\) lines of a file:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>head linux.Rmd</pre>
@@ -1008,7 +1020,7 @@ ls -l *.png</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>tail -l</code> prints the last \(l\) lines of a file.</li>
+<li><code>tail -l</code> prints the last \(l\) lines of a file:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>tail linux.Rmd</pre>
@@ -1039,7 +1051,7 @@ ls -l *.png</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>grep</code> prints lines that match an expression.</li>
+<li><code>grep</code> prints lines that match an expression:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>grep CentOS linux.Rmd</pre>
@@ -1047,11 +1059,11 @@ ls -l *.png</pre>
 <pre >## - RHEL/CentOS is popular on servers.
 ## - The teaching server for this class runs CentOS 7.
 ## grep CentOS linux.Rmd
-## - `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file.
+## - `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file:
 ## sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre>
 
 <ul>
-<li>Find entries with an underscore</li>
+<li>Find entries with an underscore:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>grep *_* linux.Rmd</pre>
@@ -1061,7 +1073,7 @@ ls -l *.png</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Find all files in current directory with <code>.Rmd</code> extension</li>
+<li>Find all files in current directory with <code>.Rmd</code> extension:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>ls | grep *.Rmd</pre>
@@ -1069,18 +1081,18 @@ ls -l *.png</pre>
 <pre >## linux.Rmd</pre>
 
 <ul>
-<li>Find all directories in the current directory</li>
+<li>Find all directories in the current directory:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>ls -al | grep ^d</pre>
 
-<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan  9 17:24 .
+<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan  9 19:37 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>sed</code> is a stream editor. E.g., replace <code>CentOS</code> by <code>RHEL</code> in a text file.</li>
+<li><code>sed</code> is a stream editor. E.g., replace <code>CentOS</code> by <code>RHEL</code> in a text file:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'>sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre>
@@ -1088,13 +1100,13 @@ ls -l *.png</pre>
 <pre >## - RHEL/RHEL is popular on servers.
 ## - The teaching server for this class runs RHEL 7.
 ## grep RHEL linux.Rmd
-## - `sed` is a stream editor. E.g., replace `RHEL` by `RHEL` in a text file.
+## - `sed` is a stream editor. E.g., replace `RHEL` by `RHEL` in a text file:
 ## sed &#39;s/RHEL/RHEL/&#39; linux.Rmd | grep RHEL</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>awk</code> is a filter and report writer.</li>
+<li><code>awk</code> is a filter and report writer:</li>
 </ul>
 
 <pre class = 'prettyprint lang-bash'># print sorted list of login names
@@ -1134,7 +1146,7 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 </article></slide><slide class=""><hgroup><h2>Emacs</h2></hgroup><article  id="emacs">
 
 <ul>
-<li><p>Emacs is a powerful text editor with extensive support for many languages including <code>R</code>, \(\LaTeX\), <code>python</code>, and <code>C/C++</code>; however it&#39;s <em>not</em> installed by default on many Linux distributions.</p></li>
+<li><p><code>Emacs</code> is a powerful text editor with extensive support for many languages including <code>R</code>, \(\LaTeX\), <code>python</code>, and <code>C/C++</code>; however it&#39;s <em>not</em> installed by default on many Linux distributions.</p></li>
 <li>Basic survival commands:
 
 <ul>
@@ -1149,7 +1161,7 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Google <code>emacs cheatsheet</code> to find something like</li>
+<li>Google <code>emacs cheatsheet</code></li>
 </ul>
 
 <p align="center">
@@ -1170,16 +1182,16 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <li><code>vi filename</code> to start editing a file.</li>
 <li><code>vi</code> is a <em>modal</em> editor: <em>insert</em> mode and <em>normal</em> mode. Pressing <code>i</code> switches from the normal mode to insert mode. Pressing <code>ESC</code> switches from the insert mode to normal mode.<br/></li>
 <li><code>:x&lt;Return&gt;</code> quits <code>vi</code> and saves changes.<br/></li>
-<li><code>wq&lt;Return&gt;</code> quits <code>vi</code> and saves changes.<br/></li>
 <li><code>:q!&lt;Return&gt;</code> quits vi without saving latest changes.<br/></li>
 <li><code>:w&lt;Return&gt;</code> saves changes.</li>
+<li><code>:wq&lt;Return&gt;</code> quits <code>vi</code> and saves changes.</li>
 </ul></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Google <code>vi cheatsheet</code> to find something like</li>
+<li>Google <code>vi cheatsheet</code></li>
 </ul>
 
 <p align="center">
@@ -1188,10 +1200,10 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 
 </p>
 
-</article></slide><slide class=""><hgroup><h2>IDE</h2></hgroup><article  id="ide">
+</article></slide><slide class=""><hgroup><h2>IDE (Integrated Development Environment)</h2></hgroup><article  id="ide-integrated-development-environment">
 
 <ul>
-<li><p>Statisticians write a lot of code. Critical to adopt a good IDE (integrated development environment) that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.</p></li>
+<li><p>Statisticians write a lot of code. Critical to adopt a good IDE that goes beyond code editing: syntax highlighting, executing code within editor, debugging, profiling, version control, etc.</p></li>
 <li><p>R Studio, Eclipse, Emacs, Matlab, Visual Studio, etc.</p></li>
 </ul>
 
@@ -1205,11 +1217,11 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre class = 'prettyprint lang-bash'>ps</pre>
 
 <pre >##   PID TTY          TIME CMD
-##  6006 ?        00:00:28 rsession
-##  8235 ?        00:00:00 sshd
-## 10860 ?        00:00:01 R
-## 10930 ?        00:00:00 sh
-## 10931 ?        00:00:00 ps</pre>
+##  6006 ?        00:00:48 rsession
+## 12772 ?        00:00:00 sshd
+## 13875 ?        00:00:01 R
+## 13945 ?        00:00:00 sh
+## 13946 ?        00:00:00 ps</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -1271,7 +1283,7 @@ ps -eaf</pre>
 ## root       191     2  0 Jan08 ?        00:00:00 [xfs-reclaim/sda]
 ## root       192     2  0 Jan08 ?        00:00:00 [xfs-log/sda1]
 ## root       193     2  0 Jan08 ?        00:00:00 [xfs-eofblocks/s]
-## root       194     2  0 Jan08 ?        00:00:21 [xfsaild/sda1]
+## root       194     2  0 Jan08 ?        00:00:24 [xfsaild/sda1]
 ## root       232     2  0 Jan08 ?        00:00:00 [kworker/1:1H]
 ## root       247     1  0 Jan08 ?        00:00:04 /usr/lib/systemd/systemd-journald
 ## root       272     1  0 Jan08 ?        00:00:00 /usr/lib/systemd/systemd-udevd
@@ -1291,30 +1303,33 @@ ps -eaf</pre>
 ## root       466     2  0 Jan08 ?        00:00:00 [kworker/3:1H]
 ## root       468     1  0 Jan08 ?        00:00:01 /usr/sbin/NetworkManager --no-daemon
 ## root       589   468  0 Jan08 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-eth0.pid -lf /var/lib/NetworkManager/dhclient-f233d74e-1487-4c65-9470-2ae07fbc1e62-eth0.lease -cf /var/lib/NetworkManager/dhclient-eth0.conf eth0
-## root       824     1  0 Jan08 ?        00:00:08 /usr/bin/python -Es /usr/sbin/tuned -l -P
+## root       824     1  0 Jan08 ?        00:00:09 /usr/bin/python -Es /usr/sbin/tuned -l -P
 ## root       926     1  0 Jan08 ?        00:00:01 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:02 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_accounts_daemon
+## root       927     1  0 Jan08 ?        00:00:03 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       928     1  0 Jan08 ?        00:00:06 /usr/bin/python /usr/bin/google_accounts_daemon
 ## root       988     1  0 Jan08 ?        00:00:00 /usr/libexec/postfix/master -w
 ## postfix    994   988  0 Jan08 ?        00:00:00 qmgr -l -t unix -u
 ## root      1002     2  0 Jan08 ?        00:00:00 [kworker/2:1H]
 ## root      2405     1  0 Jan08 ?        00:00:00 /usr/sbin/sshd -D
-## huazhou   6006  6693  0 15:18 ?        00:00:28 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
-## rstudio+  6693     1  0 Jan08 ?        00:00:27 /usr/lib/rstudio-server/bin/rserver
-## root      6907     2  0 15:54 ?        00:00:00 [kworker/3:2]
+## huazhou   6006  6693  0 15:18 ?        00:00:48 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## rstudio+  6693     1  0 Jan08 ?        00:00:30 /usr/lib/rstudio-server/bin/rserver
 ## root      8117     2  0 16:13 ?        00:00:00 [kworker/1:1]
-## root      8226  2405  0 16:16 ?        00:00:00 sshd: huazhou [priv]
-## huazhou   8235  8226  0 16:16 ?        00:00:00 sshd: huazhou@pts/0
-## huazhou   8236  8235  0 16:16 pts/0    00:00:00 bash -l
-## postfix   8859   988  0 16:51 ?        00:00:00 pickup -l -t unix -u
-## root      9650     2  0 17:05 ?        00:00:00 [kworker/2:0]
-## root     10026     2  0 17:15 ?        00:00:00 [kworker/2:2]
-## root     10268     2  0 17:21 ?        00:00:00 [kworker/2:1]
-## huazhou  10860  6006 46 17:29 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  10932 10860  0 17:29 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all current running processes ps -eaf&#39; 2&gt;&amp;1
-## huazhou  10933 10932  0 17:29 ?        00:00:00 ps -eaf
+## postfix  11755   988  0 18:31 ?        00:00:00 pickup -l -t unix -u
+## root     12237  2405  0 18:57 ?        00:00:00 sshd: juhkim111 [priv]
+## juhkim1+ 12245 12237  0 18:57 ?        00:00:00 sshd: juhkim111@pts/0
+## juhkim1+ 12246 12245  0 18:57 pts/0    00:00:00 -bash
+## root     12424     2  0 19:02 ?        00:00:00 [kworker/0:1]
+## root     12754     2  0 19:09 ?        00:00:00 [kworker/3:0]
+## root     12763  2405  0 19:09 ?        00:00:00 sshd: huazhou [priv]
+## huazhou  12772 12763  0 19:09 ?        00:00:00 sshd: huazhou@pts/1
+## huazhou  12773 12772  0 19:09 pts/1    00:00:00 -bash
+## root     13206     2  0 19:21 ?        00:00:00 [kworker/2:0]
+## root     13522     2  0 19:32 ?        00:00:00 [kworker/2:1]
+## root     13759     2  0 19:37 ?        00:00:00 [kworker/2:2]
+## huazhou  13875  6006 43 19:39 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  13947 13875  0 19:39 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all current running processes ps -eaf&#39; 2&gt;&amp;1
+## huazhou  13948 13947  0 19:39 ?        00:00:00 ps -eaf
 ## root     26238     2  0 04:42 ?        00:00:00 [kworker/0:7]
-## root     31333     2  0 09:03 ?        00:00:00 [kworker/0:0]
 ## root     31942     2  0 10:15 ?        00:00:00 [kworker/1:0]</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1323,13 +1338,13 @@ ps -eaf</pre>
 ps -eaf | grep python</pre>
 
 <pre >## root       465     1  0 Jan08 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
-## root       824     1  0 Jan08 ?        00:00:08 /usr/bin/python -Es /usr/sbin/tuned -l -P
+## root       824     1  0 Jan08 ?        00:00:09 /usr/bin/python -Es /usr/sbin/tuned -l -P
 ## root       926     1  0 Jan08 ?        00:00:01 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:02 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_accounts_daemon
-## huazhou  10934 10860  0 17:29 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all python processes ps -eaf | grep python&#39; 2&gt;&amp;1
-## huazhou  10935 10934  0 17:29 ?        00:00:00 bash -c # all python processes ps -eaf | grep python
-## huazhou  10937 10935  0 17:29 ?        00:00:00 grep python</pre>
+## root       927     1  0 Jan08 ?        00:00:03 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       928     1  0 Jan08 ?        00:00:06 /usr/bin/python /usr/bin/google_accounts_daemon
+## huazhou  13949 13875  0 19:39 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all python processes ps -eaf | grep python&#39; 2&gt;&amp;1
+## huazhou  13950 13949  0 19:39 ?        00:00:00 bash -c # all python processes ps -eaf | grep python
+## huazhou  13952 13950  0 19:39 ?        00:00:00 grep python</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -1345,12 +1360,12 @@ ps -fp 1</pre>
 ps -fu huazhou</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## huazhou   6006  6693  0 15:18 ?        00:00:28 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
-## huazhou   8235  8226  0 16:16 ?        00:00:00 sshd: huazhou@pts/0
-## huazhou   8236  8235  0 16:16 pts/0    00:00:00 bash -l
-## huazhou  10860  6006 47 17:29 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  10940 10860  0 17:29 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all processes owned by a user ps -fu huazhou&#39; 2&gt;&amp;1
-## huazhou  10941 10940  0 17:29 ?        00:00:00 ps -fu huazhou</pre>
+## huazhou   6006  6693  0 15:18 ?        00:00:48 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou  12772 12763  0 19:09 ?        00:00:00 sshd: huazhou@pts/1
+## huazhou  12773 12772  0 19:09 pts/1    00:00:00 -bash
+## huazhou  13875  6006 43 19:39 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  13955 13875  0 19:39 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all processes owned by a user ps -fu huazhou&#39; 2&gt;&amp;1
+## huazhou  13956 13955  0 19:39 ?        00:00:00 ps -fu huazhou</pre>
 
 </article></slide><slide class=""><hgroup><h2><code>kill</code> processes</h2></hgroup><article  id="kill-processes">
 
