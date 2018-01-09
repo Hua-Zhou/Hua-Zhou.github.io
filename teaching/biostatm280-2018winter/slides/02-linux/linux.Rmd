@@ -13,7 +13,7 @@ Linux is _the_ most common platform for scientific computing.
 
 - Open source and community support.
 
-- Thinks break; when they break using Linux, it's easy to fix them!
+- Things break; when they break using Linux, it's easy to fix.
 
 - Scalability: portable devices (Android, iOS), laptops, servers, clusters, and super computers.
     - E.g. UCLA Hoffmann2 cluster runs on Linux.
