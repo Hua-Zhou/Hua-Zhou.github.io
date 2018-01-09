@@ -12,15 +12,17 @@ bibliography: ../bib-HZ.bib
   please let me know. -->
 $\DeclareMathOperator*{\argmin}{arg\,min}$
 
-# What is this course about? #
+# What is this course about?
 
-## Statistics and data science ##
+## Statistics and data science
+
+- This course (Biostat M280) is used as a placeholder for _Biostat 203B: Introduction to Data Science_, which is pending approval.
 
 - Statistics, the science of _data analysis_, is the applied mathematics in the 21st century.
 
 - Data is increasing in [volume, velocity, and variety](http://www.forbes.com/sites/oreillymedia/2012/01/19/volume-velocity-variety-what-you-need-to-know-about-big-data/).
 
-## Classification of data sets by @Huber94HugeData; -@Huber96MassiveData ##
+## Classification of data sets by @Huber94HugeData; -@Huber96MassiveData {.smaller}
 
 | Data Size | Bytes          | Storage Mode               |
 |-----------|----------------|----------------------------|
@@ -41,7 +43,7 @@ Source: [IBM](http://www.ibmbigdatahub.com/infographic/four-vs-big-data).
 
 ## Course desciption ##
 
-- This course introduces some computing skills and software tools for handling potentially big publich health data.
+- This course introduces some computing skills and software tools for handling potentially big public health data.
 
 - Read [syllabus](http://hua-zhou.github.io/teaching/biostatm280-2018winter/syllabus.html) for a tentative list of topics and course logistics.
 
