@@ -26,14 +26,14 @@ Office hours: Thu 9a-10a, 12p-1p @ CHS A1-241 (Computer Lab)
 
 This is a tentative list of topics:  
 * Linux basics  
-* Git/GitHub   
-* RMarkdown   
+* Collaborative research using Git/GitHub   
+* Reproducible research using RMarkdown   
 * R programming  
-* TidyVerse  
-* Shiny  
 * Cluster computing @ UCLA  
 * Cloud computing  
-* Docker  
+* Docker 
+* TidyVerse  
+* Shiny  
 * Selected tools for data science: pandas, spark, scikit-learn, TensorFlow  
 
 ### Prerequisite
