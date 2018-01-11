@@ -33,20 +33,20 @@ Linux is _the_ most common platform for scientific computing.
 ## {.smaller}
 
 - Show distribution/version on Linux:
-```{bash}
-cat /etc/*-release
-```
+    ```{bash}
+    cat /etc/*-release
+    ```
 
 ----
 
 - Show distribution/version on Mac:
-```{bash, eval=FALSE}
-sw_vers -productVersion
-```
+    ```{bash, eval=FALSE}
+    sw_vers -productVersion
+    ```
 or
-```{bash, eval=FALSE}
-system_profiler SPSoftwareDataType
-```
+    ```{bash, eval=FALSE}
+    system_profiler SPSoftwareDataType
+    ```
 
 # Linux shells
 
@@ -63,27 +63,27 @@ system_profiler SPSoftwareDataType
 ----
 
 - Determine the current shell:
-```{bash}
-echo $SHELL
-```
+    ```{bash}
+    echo $SHELL
+    ```
 
 - List available shells:
-```{bash}
-cat /etc/shells
-```
+    ```{bash}
+    cat /etc/shells
+    ```
 
 ----
 
 - Change to another shell:
-```{bash, eval=FALSE}
-exec bash -l
-```
+    ```{bash, eval=FALSE}
+    exec bash -l
+    ```
 The `-l` option indicates it should be a login shell.
 
 - Change your login shell permanently:
-```{bash, eval=FALSE}
-chsh -s /bin/bash userid
-```
+    ```{bash, eval=FALSE}
+    chsh -s /bin/bash userid
+    ```
 Then log out and log in.
 
 ## Bash completion
@@ -114,28 +114,28 @@ Bash provides the following standard completion for the Linux users by default. 
 ## Move around the file system {.smaller}
 
 - `pwd` prints absolute path to the current working directory:
-```{bash}
-pwd
-```
+    ```{bash}
+    pwd
+    ```
 
 - `ls` lists contents of a directory:  
-```{bash}
-ls
-```
+    ```{bash}
+    ls
+    ```
 
 ## {.smaller}
 
 - `ls -l` lists detailed contents of a directory:  
-```{bash}
-ls -l
-```
+    ```{bash}
+    ls -l
+    ```
 
 ## {.smaller}
 
 - `ls -al` lists all contents of a directory, including those start with `.` (hidden folders):
-```{bash, small=TRUE}
-ls -al
-```
+    ```{bash, small=TRUE}
+    ls -al
+    ```
 
 ----
 
@@ -173,12 +173,12 @@ ls -al
 
 - `chmod g+x file` makes a file executable to group members.
 
-- `chmod 751 file` sets permission rwxr-x--x to a file.
+- `chmod 751 file` sets permission `rwxr-x--x` to a file.
 
 - `groups userid` shows which group(s) a user belongs to:
-```{bash}
-groups huazhou
-```
+    ```{bash}
+    groups huazhou
+    ```
 
 ## Manipulate files and directories
 
@@ -199,24 +199,24 @@ groups huazhou
 ## Find files {.smaller}
 
 - `locate` locates a file by name:
-```{bash}
-locate linux.Rmd
-```
+    ```{bash}
+    locate linux.Rmd
+    ```
 
 - `which` locates a program:
-```{bash}
-which R
-```
+    ```{bash}
+    which R
+    ```
 
 ----
 
 - `find` is similar to `locate` but has more functionalities, e.g., select files by age, size, permissions, .... , and is ubiquitous.
-```{bash}
-find linux.Rmd
-```
-```{bash}
-find /home/huazhou -name linux.Rmd
-```
+    ```{bash}
+    find linux.Rmd
+    ```
+    ```{bash}
+    find /home/huazhou -name linux.Rmd
+    ```
 
 ## Wildcard characters {.smaller}
 
@@ -226,6 +226,7 @@ find /home/huazhou -name linux.Rmd
 | `*`        | any character 0 or more times       |
 | `+`        | one or more preceding pattern       |
 | `^`        | beginning of the line               |
+| `$`        | end of the line                     |
 | `[set]`    | any character in set                |
 | `[!set]`   | any character not in set            |
 | `[a-z]`    | any lowercase letter                |
@@ -233,43 +234,43 @@ find /home/huazhou -name linux.Rmd
 
 ## {.smaller}
 
-```{bash}
-# all png files in current folder
-ls -l *.png
-```
+    ```{bash}
+    # all png files in current folder
+    ls -l *.png
+    ```
 
 ## Regular expression
 
-- Wildcards are examples of regular expressions. 
+- Wildcards are examples of _regular expressions_. 
 
-- _Regular expressions_ are a powerful tool to efficiently sift through large amounts of text: record linking, data cleaning, scraping data from website or other data-feed. 
+- Regular expressions are a powerful tool to efficiently sift through large amounts of text: record linking, data cleaning, scraping data from website or other data-feed. 
 
 - Google `regular expressions` to learn.
 
 # Work with text files
 
-## View/peek text files {.smaller}
+## View/peek text files
 
 - `cat` prints the contents of a file:
-```{bash}
-cat linux.Rmd
-```
+    ```{bash, size='smallsize'}
+    cat linux.Rmd
+    ```
 
 ----
 
 - `head -l` prints the first $l$ lines of a file:
-```{bash}
-head linux.Rmd
-```
+    ```{bash}
+    head linux.Rmd
+    ```
 
 ----
 
 - `tail -l` prints the last $l$ lines of a file:
-```{bash}
-tail linux.Rmd
-```
+    ```{bash}
+    tail linux.Rmd
+    ```
 
-----
+## `less` is more; `more` is less
 
 - `more` browses a text file screen by screen (only downwards). Scroll down one page (paging) by pressing the spacebar; exit by pressing the `q` key.
 
@@ -277,50 +278,62 @@ tail linux.Rmd
 
 - `less` doesn't need to read the whole file, i.e., it loads files faster than `more`.
 
-> `less` is more, and `more` is less. 
+## `grep` {.smaller}
+
+`grep` prints lines that match an expression pattern:
+
+- Show lines that contain string `CentOS`:
+    ```{bash}
+    # quotes not necessary if not a regular expression
+    grep 'CentOS' linux.Rmd
+    ```
 
 ----
 
-- `grep` prints lines that match an expression:
-```{bash}
-grep CentOS linux.Rmd
-```
-
-- Find entries with an underscore:
-```{bash}
-grep *_* linux.Rmd
-```
+- Search multiple text files:
+    ```{bash}
+    grep 'CentOS' *.Rmd
+    ```
 
 ----
 
-- Find all files in current directory with `.Rmd` extension:
-```{bash}
-ls | grep *.Rmd
-```
+- Show matching line numbers:
+    ```{bash}
+    grep -n 'CentOS' linux.Rmd
+    ```
+
+----
+
+- Find all files in current directory with `.png` extension:
+    ```{bash}
+    ls | grep '\.png$'
+    ```
 
 - Find all directories in the current directory:
-```{bash}
-ls -al | grep ^d
-```
+    ```{bash}
+    ls -al | grep '^d'
+    ```
 
-----
+## `sed`
 
-- `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file:
-```{bash}
-sed 's/CentOS/RHEL/' linux.Rmd | grep RHEL
-```
+- `sed` is a stream editor.
 
-----
+- Replace `CentOS` by `RHEL` in a text file:
+    ```{bash}
+    sed 's/CentOS/RHEL/' linux.Rmd | grep RHEL
+    ```
+
+## `awk`
 
 - `awk` is a filter and report writer:
-```{bash}
-# print sorted list of login names
-awk -F: '{ print $1 }' /etc/passwd | sort | head -5
-```
-```{bash}
-# print number of lines in a file, as NR stands for Number of Rows
-awk 'END { print NR }' /etc/passwd
-```
+    ```{bash}
+    # print sorted list of login names
+    awk -F: '{ print $1 }' /etc/passwd | sort | head -5
+    ```
+    ```{bash}
+    # print number of lines in a file, as NR stands for Number of Rows
+    awk 'END { print NR }' /etc/passwd
+    ```
 
 ## Piping and redirection
 
@@ -332,7 +345,9 @@ awk 'END { print NR }' /etc/passwd
 
 - `<` reads input from a file.
 
-- Combinations of shell commands (`grep`, `sed`, `awk`, ...), piping and redirection, and regular expressions allow us pre-process and reformat huge text files efficiently. See HW1.
+- Combinations of shell commands (`grep`, `sed`, `awk`, ...), piping and redirection, and regular expressions allow us pre-process and reformat huge text files efficiently. 
+
+- See HW1.
 
 ## Text editors
 
@@ -389,56 +404,64 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 - R Studio, Eclipse, Emacs, Matlab, Visual Studio, etc.
 
+# Processes
+
 ## Processes
 
 - OS runs processes on behalf of user.
 
 - Each process has Process ID (PID), Username (UID), Parent process ID (PPID), Time and data process started (STIME), time running (TIME), etc.
 
-```{bash}
-ps
-```
+    ```{bash}
+    ps
+    ```
 
 ----
 
-```{bash}
-# all current running processes
-ps -eaf
-```
+- All current running processes:
+    ```{bash}
+    ps -eaf
+    ```
 
 ----
 
-```{bash}
-# all python processes
-ps -eaf | grep python
-```
+- All Python processes:
+    ```{bash}
+    ps -eaf | grep python
+    ```
 
 ----
 
-```{bash}
-# process with PID=1
-ps -fp 1
-```
+- Process with PID=1:
+    ```{bash}
+    ps -fp 1
+    ```
 
 ----
 
-```{bash}
-# all processes owned by a user
-ps -fu huazhou
-```
+- All processes owned by a user:
+    ```{bash}
+    ps -fu huazhou
+    ```
 
-## `kill` processes
+## Kill processes
 
-- `kill 1001` kills process with PID=1001.
+- kill process with PID=1001:
+    ```{bash, eval=FALSE}
+    kill 1001
+    ```
 
-- `killall -r R` kills all R processes.
+- Kill all R processes.
+    ```{bash, eval=FALSE}
+    killall -r R
+    ```
 
 ## `top`
 
 `top` prints realtime process information (very useful).
-```{bash, eval=FALSE}
-top
-```
+    ```{bash, eval=FALSE}
+    top
+    ```
 <p align="center">
   <img src="./screenshot_top.png" height="400">
 </p>
@@ -450,15 +473,15 @@ top
 SSH (secure shell) is the dominant cryptographic network protocol for secure network connection via an insecure network.
 
 - On Linux or Mac, access the teaching server by
-```{bash, eval=FALSE}
-ssh username@35.227.165.60
-```
+    ```{bash, eval=FALSE}
+    ssh username@35.227.165.60
+    ```
 
 - Windows machines need the [PuTTY](http://www.putty.org) program (free).
 
 ## Use keys over password
 
-- Key authentification is much more secure than password. Most passwords are weak.
+- Key authentification is more secure than password. Most passwords are weak.
 
 - Script or a program may need to systematically SSH into other machines.
 
@@ -490,30 +513,32 @@ ssh username@35.227.165.60
 
 ## Steps for generate keys
 
-- On Linux or Mac, `ssh-keygen` generates key pairs
-```{bash, eval=FALSE}
-ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
-```
-  `[KEY_FILENAME]` is the name that you want to use for your SSH key files. For example, a filename of `my-ssh-key` generates a private key file named `my-ssh-key` and a public key file named `my-ssh-key.pub`.  
-  `[USERNAME]` is the user for whom you will apply this SSH key.   
-  Use a (optional) paraphrase different form password.  
+- On Linux or Mac, to generate a key pair:
+    ```{bash, eval=FALSE}
+    ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
+    ```   
+    - `[KEY_FILENAME]` is the name that you want to use for your SSH key files. For example, a filename of `my-ssh-key` generates a private key file named `my-ssh-key` and a public key file named `my-ssh-key.pub`.  
+    
+    - `[USERNAME]` is the user for whom you will apply this SSH key.   
+    
+    - Use a (optional) paraphrase different form password.  
     
 - Set right permissions on the `.ssh` folder and key files
-```{bash, eval=FALSE}
-chmod 400 ~/.ssh/[KEY_FILENAME]
-```
+    ```{bash, eval=FALSE}
+    chmod 400 ~/.ssh/[KEY_FILENAME]
+    ```
 
 ----
 
 - Append the public key to the `~/.ssh/authorized_keys` file of any Linux machine we want to SSH to, e.g.,
-```{bash, eval=FALSE}
-ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
-```
+    ```{bash, eval=FALSE}
+    ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
+    ```
 
 - Test your new key.
-```{bash, eval=FALSE}
-ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
-```
+    ```{bash, eval=FALSE}
+    ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
+    ```
 
 - Now you don't need password each time you connect from your machine to the teaching server.
 
@@ -523,19 +548,19 @@ ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
 
 - Same key pair can be used between any two machines. We don't need to regenerate keys for each new connection.
 
-- For Windows users, the private key generated by `ssh-keygen` cannot be directly used by PuTTY; use PuTTYgen for conversion. Then let PuTTYgen use the converted private key. Read Sections A and B of the [tutorial](http://tipsandtricks.nogoodatcoding.com/2010/02/svnssh-with-tortoisesvn.html).
+- For Windows users, the private key generated by `ssh-keygen` cannot be directly used by PuTTY; use PuTTYgen for conversion. Then let PuTTYgen use the converted private key. Read [tutorial](https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-putty-to-connect-to-a-vps).
 
 ## Transfer files between machines
 
 - `scp` securely transfers files between machines using SSH.
-```{bash, eval=FALSE}
-## copy file from local to remote
-scp localfile username@35.227.165.60:/pathtofolder
-```
-```{bash, eval=FALSE}
-## copy file from remote to local
-scp username@35.227.165.60:/pathtofile pathtolocalfolder
-```
+    ```{bash, eval=FALSE}
+    ## copy file from local to remote
+    scp localfile username@35.227.165.60:/pathtofolder
+    ```
+    ```{bash, eval=FALSE}
+    ## copy file from remote to local
+    scp username@35.227.165.60:/pathtofile pathtolocalfolder
+    ```
 
 - `sftp` is FTP via SSH.
 
@@ -563,40 +588,40 @@ scp username@35.227.165.60:/pathtofile pathtolocalfolder
 
 ## Batch mode {.smaller}
 
-- Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements a terrible estimator of mean
-```{bash}
-cat meanEst.R
-```
+- Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
+    ```{bash}
+    cat meanEst.R
+    ```
 
 ----
 
-To run your R code non-interactively aka in batch mode, we have at least two options.
+- To run your R code non-interactively aka in batch mode, we have at least two options.
 
-- `R CMD BATCH`:
-```{bash, eval=FALSE}
-# default output to meanEst.Rout
-R CMD BATCH meanEst.R
-```
+    - `R CMD BATCH`:
+    ```{bash, eval=FALSE}
+    # default output to meanEst.Rout
+    R CMD BATCH meanEst.R
+    ```
 
-- `Rscript`:
-```{bash, eval=FALSE}
-# output to stdout
-Rscript meanEst.R
-```
+    - `Rscript`:
+    ```{bash, eval=FALSE}
+    # output to stdout
+    Rscript meanEst.R
+    ```
 
-- Typically automate `BATCH` calls using a scripting language, e.g., python, perl, and shell script.
+- Typically automate batch calls using a scripting language, e.g., python, perl, and shell script.
 
 ## Pass arguments to R scripts
 
-- Specify arguments via `R CMD BATCH`:
-```{bash, eval=FALSE}
-R CMD BATCH '--args mu=1 sig=2 kap=3' script.R
-```
+- Specify arguments in `R CMD BATCH`:
+    ```{bash, eval=FALSE}
+    R CMD BATCH '--args mu=1 sig=2 kap=3' script.R
+    ```
 
-- Specify arguments via `Rscript`:
-```{bash, eval=FALSE}
-Rscript script.R mu=1 sig=2 kap=3
-```
+- Specify arguments in `Rscript`:
+    ```{bash, eval=FALSE}
+    Rscript script.R mu=1 sig=2 kap=3
+    ```
 
 - Parse command line arguments using magic formula
 ```{r, eval=FALSE}
@@ -604,42 +629,42 @@ for (arg in commandArgs(T)) {
   eval(parse(text=arg))
 }
 ```
-After calling the above code, all command line arguments will be available in the global namespace.
+in R script. After calling the above code, all command line arguments will be available in the global namespace.
 
 ----
 
 - Understand the magic formula `parse` and `eval`:
-```{r, error=TRUE}
-print(x)
-parse(text="x=3")
-eval(parse(text="x=3"))
-print(x)
-```
+    ```{r, error=TRUE}
+    rm(list=ls())
+    print(x)
+    parse(text="x=3")
+    eval(parse(text="x=3"))
+    print(x)
+    ```
 
 ----
 
-- Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: method implementation, argument parser, data generator with unspecified parameter `n`, and estimation based on generated data.
+- Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) command argument parser, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
 
 - Call [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) with sample size `n=100`:
-```{bash}
-R CMD BATCH '--args n=100' runSim.R
-```
-
-```{bash}
-Rscript runSim.R n=100
-```
+    ```{bash}
+    R CMD BATCH '--args n=100' runSim.R
+    ```
+or
+    ```{bash}
+    Rscript runSim.R n=100
+    ```
 
 ## Run long jobs
 
-- Many statistical computing tasks takes long: simulation, MCMC, etc.
+- Many statistical computing tasks take long: simulation, MCMC, etc.
 
-- `nohup` command in Linux runs program(s) immute to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process.
+- `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process. You can log back in to check status and results.
 
 - `nohup` is POSIX standard thus available on both Linux and MacOS.
-
-```{bash}
-nohup Rscript runSim.R n=100 &
-```
+    ```{bash}
+    nohup Rscript runSim.R n=100 &
+    ```
 runs `runSim.R` in background and writes output to `nohup.out`.
 
 ## screen
@@ -648,17 +673,17 @@ runs `runSim.R` in background and writes output to `nohup.out`.
 
 - Typical workflow using `screen`.
 
-0. Access remote server using `ssh`.
+    0. Access remote server using `ssh`.
 
-0. Start jobs in batch mode.
+    0. Start jobs in batch mode.
 
-0. Detach jobs.
+    0. Detach jobs.
 
-0. Exit from server, wait for jobs to finish.
+    0. Exit from server, wait for jobs to finish.
 
-0. Access remote server using `ssh`.
+    0. Access remote server using `ssh`.
 
-0. Re-attach jobs, check on progress, get results, etc.
+    0. Re-attach jobs, check on progress, get results, etc.
 
 ## Use R to call R
 
@@ -668,7 +693,7 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 
 - We consider a simulation study in R but the same approach could be used with code written in Julia, Matlab, Python, etc.
 
-- Python in many ways makes a better _glue_ we may discuss this later in the course.
+- Python in many ways makes a better _glue_; we may discuss this later in the course.
 
 ----
 
@@ -683,12 +708,16 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 
 ----
 
-```{bash}
-cat autoSim.R
-```
+    ```{bash}
+    cat autoSim.R
+    ```
 
 ----
 
-```{bash}
-Rscript autoSim.R
-```
+    ```{bash}
+    Rscript autoSim.R
+    ```
+
+    ```{bash, echo=FALSE, eval=TRUE}
+    rm n*.txt *.Rout
+    ```

@@ -125,8 +125,7 @@
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section" class="smaller">
 
 <ul>
-<li>Show distribution/version on Linux:</li>
-</ul>
+<li><p>Show distribution/version on Linux:</p>
 
 <pre class = 'prettyprint lang-bash'>cat /etc/*-release</pre>
 
@@ -148,19 +147,20 @@
 ## REDHAT_SUPPORT_PRODUCT_VERSION=&quot;7&quot;
 ## 
 ## CentOS Linux release 7.4.1708 (Core) 
-## CentOS Linux release 7.4.1708 (Core)</pre>
+## CentOS Linux release 7.4.1708 (Core)</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Show distribution/version on Mac:</li>
-</ul>
+<li><p>Show distribution/version on Mac:</p>
 
 <pre class = 'prettyprint lang-bash'>sw_vers -productVersion</pre>
 
 <p>or</p>
 
-<pre class = 'prettyprint lang-bash'>system_profiler SPSoftwareDataType</pre>
+<pre class = 'prettyprint lang-bash'>system_profiler SPSoftwareDataType</pre></li>
+</ul>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Linux shells</h2></hgroup><article  id="linux-shells">
 
@@ -176,16 +176,12 @@
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Determine the current shell:</li>
-</ul>
+<li><p>Determine the current shell:</p>
 
 <pre class = 'prettyprint lang-bash'>echo $SHELL</pre>
 
-<pre >## /bin/bash</pre>
-
-<ul>
-<li>List available shells:</li>
-</ul>
+<pre >## /bin/bash</pre></li>
+<li><p>List available shells:</p>
 
 <pre class = 'prettyprint lang-bash'>cat /etc/shells</pre>
 
@@ -194,25 +190,23 @@
 ## /sbin/nologin
 ## /usr/bin/sh
 ## /usr/bin/bash
-## /usr/sbin/nologin</pre>
+## /usr/sbin/nologin</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Change to another shell:</li>
-</ul>
+<li><p>Change to another shell:</p>
 
 <pre class = 'prettyprint lang-bash'>exec bash -l</pre>
 
-<p>The <code>-l</code> option indicates it should be a login shell.</p>
-
-<ul>
-<li>Change your login shell permanently:</li>
-</ul>
+<p>The <code>-l</code> option indicates it should be a login shell.</p></li>
+<li><p>Change your login shell permanently:</p>
 
 <pre class = 'prettyprint lang-bash'>chsh -s /bin/bash userid</pre>
 
-<p>Then log out and log in.</p>
+<p>Then log out and log in.</p></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Bash completion</h2></hgroup><article  id="bash-completion">
 
@@ -244,16 +238,12 @@
 </article></slide><slide class=""><hgroup><h2>Move around the file system</h2></hgroup><article  id="move-around-the-file-system" class="smaller">
 
 <ul>
-<li><code>pwd</code> prints absolute path to the current working directory:</li>
-</ul>
+<li><p><code>pwd</code> prints absolute path to the current working directory:</p>
 
 <pre class = 'prettyprint lang-bash'>pwd</pre>
 
-<pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux</pre>
-
-<ul>
-<li><code>ls</code> lists contents of a directory:</li>
-</ul>
+<pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux</pre></li>
+<li><p><code>ls</code> lists contents of a directory:</p>
 
 <pre class = 'prettyprint lang-bash'>ls</pre>
 
@@ -270,58 +260,59 @@
 ## Richard_Stallman_2013.png
 ## runSim.R
 ## screenshot_top.png
-## Vi_Cheat_Sheet.pdf</pre>
+## Vi_Cheat_Sheet.pdf</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-1" class="smaller">
 
 <ul>
-<li><code>ls -l</code> lists detailed contents of a directory:</li>
-</ul>
+<li><p><code>ls -l</code> lists detailed contents of a directory:</p>
 
 <pre class = 'prettyprint lang-bash'>ls -l</pre>
 
 <pre >## total 3928
-## -rw-r--r--. 1 huazhou huazhou     261 Jan 11 06:05 autoSim.R
+## -rw-r--r--. 1 huazhou huazhou     263 Jan 11 15:21 autoSim.R
 ## -rw-r--r--. 1 huazhou huazhou  110345 Jan  9 04:48 Emacs_Reference_Card.pdf
 ## -rw-r--r--. 1 huazhou huazhou  321281 Jan 10 23:29 key_authentication_1.png
 ## -rw-r--r--. 1 huazhou huazhou   96119 Jan 10 23:29 key_authentication_2.png
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2478447 Jan 11 06:24 linux.html
-## -rw-r--r--. 1 huazhou huazhou   17747 Jan 11 06:24 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2479437 Jan 11 18:28 linux.html
+## -rw-r--r--. 1 huazhou huazhou   18982 Jan 11 18:33 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
-## -rw-r--r--. 1 huazhou huazhou     490 Jan 11 06:05 runSim.R
+## -rw-r--r--. 1 huazhou huazhou     490 Jan 11 16:33 runSim.R
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
-## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre>
+## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-2" class="smaller">
 
 <ul>
-<li><code>ls -al</code> lists all contents of a directory, including those start with <code>.</code> (hidden folders):</li>
-</ul>
+<li><p><code>ls -al</code> lists all contents of a directory, including those start with <code>.</code> (hidden folders):</p>
 
 <pre class = 'prettyprint lang-bash'>ls -al</pre>
 
 <pre >## total 3936
-## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 06:25 .
+## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 18:28 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..
-## -rw-r--r--. 1 huazhou huazhou     261 Jan 11 06:05 autoSim.R
+## -rw-r--r--. 1 huazhou huazhou     263 Jan 11 15:21 autoSim.R
 ## -rw-r--r--. 1 huazhou huazhou  110345 Jan  9 04:48 Emacs_Reference_Card.pdf
 ## -rw-r--r--. 1 huazhou huazhou  321281 Jan 10 23:29 key_authentication_1.png
 ## -rw-r--r--. 1 huazhou huazhou   96119 Jan 10 23:29 key_authentication_2.png
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2478447 Jan 11 06:24 linux.html
-## -rw-r--r--. 1 huazhou huazhou   17747 Jan 11 06:24 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2479437 Jan 11 18:28 linux.html
+## -rw-r--r--. 1 huazhou huazhou   18982 Jan 11 18:33 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
-## -rw-r--r--. 1 huazhou huazhou    4079 Jan 11 06:24 .RData
+## -rw-r--r--. 1 huazhou huazhou    4076 Jan 11 18:28 .RData
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
-## -rw-r--r--. 1 huazhou huazhou     490 Jan 11 06:05 runSim.R
+## -rw-r--r--. 1 huazhou huazhou     490 Jan 11 16:33 runSim.R
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
-## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre>
+## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -359,13 +350,13 @@
 
 <ul>
 <li><p><code>chmod g+x file</code> makes a file executable to group members.</p></li>
-<li><p><code>chmod 751 file</code> sets permission rwxr-x&#8211;x to a file.</p></li>
-<li><p><code>groups userid</code> shows which group(s) a user belongs to:</p></li>
-</ul>
+<li><p><code>chmod 751 file</code> sets permission <code>rwxr-x--x</code> to a file.</p></li>
+<li><p><code>groups userid</code> shows which group(s) a user belongs to:</p>
 
 <pre class = 'prettyprint lang-bash'>groups huazhou</pre>
 
-<pre >## huazhou : huazhou wheel</pre>
+<pre >## huazhou : huazhou wheel</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Manipulate files and directories</h2></hgroup><article  id="manipulate-files-and-directories">
 
@@ -382,26 +373,22 @@
 </article></slide><slide class=""><hgroup><h2>Find files</h2></hgroup><article  id="find-files" class="smaller">
 
 <ul>
-<li><code>locate</code> locates a file by name:</li>
-</ul>
+<li><p><code>locate</code> locates a file by name:</p>
 
 <pre class = 'prettyprint lang-bash'>locate linux.Rmd</pre>
 
-<pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd</pre>
-
-<ul>
-<li><code>which</code> locates a program:</li>
-</ul>
+<pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd</pre></li>
+<li><p><code>which</code> locates a program:</p>
 
 <pre class = 'prettyprint lang-bash'>which R</pre>
 
-<pre >## /usr/bin/R</pre>
+<pre >## /usr/bin/R</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>find</code> is similar to <code>locate</code> but has more functionalities, e.g., select files by age, size, permissions, &#8230;. , and is ubiquitous.</li>
-</ul>
+<li><p><code>find</code> is similar to <code>locate</code> but has more functionalities, e.g., select files by age, size, permissions, &#8230;. , and is ubiquitous.</p>
 
 <pre class = 'prettyprint lang-bash'>find linux.Rmd</pre>
 
@@ -409,7 +396,8 @@
 
 <pre class = 'prettyprint lang-bash'>find /home/huazhou -name linux.Rmd</pre>
 
-<pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd</pre>
+<pre >## /home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Wildcard characters</h2></hgroup><article  id="wildcard-characters" class="smaller">
 
@@ -435,18 +423,22 @@
 <td align="left">beginning of the line</td>
 </tr>
 <tr class="odd">
+<td align="left"><code>$</code></td>
+<td align="left">end of the line</td>
+</tr>
+<tr class="even">
 <td align="left"><code>[set]</code></td>
 <td align="left">any character in set</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>[!set]</code></td>
 <td align="left">any character not in set</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><code>[a-z]</code></td>
 <td align="left">any lowercase letter</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><code>[0-9]</code></td>
 <td align="left">any number (same as <code>[0123456789]</code>)</td>
 </tr>
@@ -454,32 +446,35 @@
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-3" class="smaller">
 
-<pre class = 'prettyprint lang-bash'># all png files in current folder
-ls -l *.png</pre>
+<pre >```bash
+# all png files in current folder
+ls -l *.png
+```
 
-<pre >## -rw-r--r--. 1 huazhou huazhou 321281 Jan 10 23:29 key_authentication_1.png
+```
+## -rw-r--r--. 1 huazhou huazhou 321281 Jan 10 23:29 key_authentication_1.png
 ## -rw-r--r--. 1 huazhou huazhou  96119 Jan 10 23:29 key_authentication_2.png
 ## -rw-rw-r--. 1 huazhou huazhou  11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou  42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou 102188 Jan  9 00:29 linux_filepermission.png
 ## -rw-r--r--. 1 huazhou huazhou 141962 Jan  9 04:37 Richard_Stallman_2013.png
-## -rw-r--r--. 1 huazhou huazhou 469335 Jan  9 06:11 screenshot_top.png</pre>
+## -rw-r--r--. 1 huazhou huazhou 469335 Jan  9 06:11 screenshot_top.png
+```</pre>
 
 </article></slide><slide class=""><hgroup><h2>Regular expression</h2></hgroup><article  id="regular-expression">
 
 <ul>
-<li><p>Wildcards are examples of regular expressions.</p></li>
-<li><p><em>Regular expressions</em> are a powerful tool to efficiently sift through large amounts of text: record linking, data cleaning, scraping data from website or other data-feed.</p></li>
+<li><p>Wildcards are examples of <em>regular expressions</em>.</p></li>
+<li><p>Regular expressions are a powerful tool to efficiently sift through large amounts of text: record linking, data cleaning, scraping data from website or other data-feed.</p></li>
 <li><p>Google <code>regular expressions</code> to learn.</p></li>
 </ul>
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Work with text files</h2></hgroup><article  id="work-with-text-files">
 
-</article></slide><slide class=""><hgroup><h2>View/peek text files</h2></hgroup><article  id="viewpeek-text-files" class="smaller">
+</article></slide><slide class=""><hgroup><h2>View/peek text files</h2></hgroup><article  id="viewpeek-text-files">
 
 <ul>
-<li><code>cat</code> prints the contents of a file:</li>
-</ul>
+<li><p><code>cat</code> prints the contents of a file:</p>
 
 <pre class = 'prettyprint lang-bash'>cat linux.Rmd</pre>
 
@@ -518,20 +513,20 @@ ls -l *.png</pre>
 ## ## {.smaller}
 ## 
 ## - Show distribution/version on Linux:
-## ```{bash}
-## cat /etc/*-release
-## ```
+##     ```{bash}
+##     cat /etc/*-release
+##     ```
 ## 
 ## ----
 ## 
 ## - Show distribution/version on Mac:
-## ```{bash, eval=FALSE}
-## sw_vers -productVersion
-## ```
+##     ```{bash, eval=FALSE}
+##     sw_vers -productVersion
+##     ```
 ## or
-## ```{bash, eval=FALSE}
-## system_profiler SPSoftwareDataType
-## ```
+##     ```{bash, eval=FALSE}
+##     system_profiler SPSoftwareDataType
+##     ```
 ## 
 ## # Linux shells
 ## 
@@ -548,27 +543,27 @@ ls -l *.png</pre>
 ## ----
 ## 
 ## - Determine the current shell:
-## ```{bash}
-## echo $SHELL
-## ```
+##     ```{bash}
+##     echo $SHELL
+##     ```
 ## 
 ## - List available shells:
-## ```{bash}
-## cat /etc/shells
-## ```
+##     ```{bash}
+##     cat /etc/shells
+##     ```
 ## 
 ## ----
 ## 
 ## - Change to another shell:
-## ```{bash, eval=FALSE}
-## exec bash -l
-## ```
+##     ```{bash, eval=FALSE}
+##     exec bash -l
+##     ```
 ## The `-l` option indicates it should be a login shell.
 ## 
 ## - Change your login shell permanently:
-## ```{bash, eval=FALSE}
-## chsh -s /bin/bash userid
-## ```
+##     ```{bash, eval=FALSE}
+##     chsh -s /bin/bash userid
+##     ```
 ## Then log out and log in.
 ## 
 ## ## Bash completion
@@ -599,28 +594,28 @@ ls -l *.png</pre>
 ## ## Move around the file system {.smaller}
 ## 
 ## - `pwd` prints absolute path to the current working directory:
-## ```{bash}
-## pwd
-## ```
+##     ```{bash}
+##     pwd
+##     ```
 ## 
 ## - `ls` lists contents of a directory:  
-## ```{bash}
-## ls
-## ```
+##     ```{bash}
+##     ls
+##     ```
 ## 
 ## ## {.smaller}
 ## 
 ## - `ls -l` lists detailed contents of a directory:  
-## ```{bash}
-## ls -l
-## ```
+##     ```{bash}
+##     ls -l
+##     ```
 ## 
 ## ## {.smaller}
 ## 
 ## - `ls -al` lists all contents of a directory, including those start with `.` (hidden folders):
-## ```{bash, small=TRUE}
-## ls -al
-## ```
+##     ```{bash, small=TRUE}
+##     ls -al
+##     ```
 ## 
 ## ----
 ## 
@@ -658,12 +653,12 @@ ls -l *.png</pre>
 ## 
 ## - `chmod g+x file` makes a file executable to group members.
 ## 
-## - `chmod 751 file` sets permission rwxr-x--x to a file.
+## - `chmod 751 file` sets permission `rwxr-x--x` to a file.
 ## 
 ## - `groups userid` shows which group(s) a user belongs to:
-## ```{bash}
-## groups huazhou
-## ```
+##     ```{bash}
+##     groups huazhou
+##     ```
 ## 
 ## ## Manipulate files and directories
 ## 
@@ -684,24 +679,24 @@ ls -l *.png</pre>
 ## ## Find files {.smaller}
 ## 
 ## - `locate` locates a file by name:
-## ```{bash}
-## locate linux.Rmd
-## ```
+##     ```{bash}
+##     locate linux.Rmd
+##     ```
 ## 
 ## - `which` locates a program:
-## ```{bash}
-## which R
-## ```
+##     ```{bash}
+##     which R
+##     ```
 ## 
 ## ----
 ## 
 ## - `find` is similar to `locate` but has more functionalities, e.g., select files by age, size, permissions, .... , and is ubiquitous.
-## ```{bash}
-## find linux.Rmd
-## ```
-## ```{bash}
-## find /home/huazhou -name linux.Rmd
-## ```
+##     ```{bash}
+##     find linux.Rmd
+##     ```
+##     ```{bash}
+##     find /home/huazhou -name linux.Rmd
+##     ```
 ## 
 ## ## Wildcard characters {.smaller}
 ## 
@@ -711,6 +706,7 @@ ls -l *.png</pre>
 ## | `*`        | any character 0 or more times       |
 ## | `+`        | one or more preceding pattern       |
 ## | `^`        | beginning of the line               |
+## | `$`        | end of the line                     |
 ## | `[set]`    | any character in set                |
 ## | `[!set]`   | any character not in set            |
 ## | `[a-z]`    | any lowercase letter                |
@@ -718,43 +714,43 @@ ls -l *.png</pre>
 ## 
 ## ## {.smaller}
 ## 
-## ```{bash}
-## # all png files in current folder
-## ls -l *.png
-## ```
+##     ```{bash}
+##     # all png files in current folder
+##     ls -l *.png
+##     ```
 ## 
 ## ## Regular expression
 ## 
-## - Wildcards are examples of regular expressions. 
+## - Wildcards are examples of _regular expressions_. 
 ## 
-## - _Regular expressions_ are a powerful tool to efficiently sift through large amounts of text: record linking, data cleaning, scraping data from website or other data-feed. 
+## - Regular expressions are a powerful tool to efficiently sift through large amounts of text: record linking, data cleaning, scraping data from website or other data-feed. 
 ## 
 ## - Google `regular expressions` to learn.
 ## 
 ## # Work with text files
 ## 
-## ## View/peek text files {.smaller}
+## ## View/peek text files
 ## 
 ## - `cat` prints the contents of a file:
-## ```{bash}
-## cat linux.Rmd
-## ```
+##     ```{bash, size=&#39;smallsize&#39;}
+##     cat linux.Rmd
+##     ```
 ## 
 ## ----
 ## 
 ## - `head -l` prints the first $l$ lines of a file:
-## ```{bash}
-## head linux.Rmd
-## ```
+##     ```{bash}
+##     head linux.Rmd
+##     ```
 ## 
 ## ----
 ## 
 ## - `tail -l` prints the last $l$ lines of a file:
-## ```{bash}
-## tail linux.Rmd
-## ```
+##     ```{bash}
+##     tail linux.Rmd
+##     ```
 ## 
-## ----
+## ## `less` is more; `more` is less
 ## 
 ## - `more` browses a text file screen by screen (only downwards). Scroll down one page (paging) by pressing the spacebar; exit by pressing the `q` key.
 ## 
@@ -762,50 +758,62 @@ ls -l *.png</pre>
 ## 
 ## - `less` doesn&#39;t need to read the whole file, i.e., it loads files faster than `more`.
 ## 
-## &gt; `less` is more, and `more` is less. 
+## ## `grep` {.smaller}
+## 
+## `grep` prints lines that match an expression pattern:
+## 
+## - Show lines that contain string `CentOS`:
+##     ```{bash}
+##     # quotes not necessary if not a regular expression
+##     grep &#39;CentOS&#39; linux.Rmd
+##     ```
 ## 
 ## ----
 ## 
-## - `grep` prints lines that match an expression:
-## ```{bash}
-## grep CentOS linux.Rmd
-## ```
-## 
-## - Find entries with an underscore:
-## ```{bash}
-## grep *_* linux.Rmd
-## ```
+## - Search multiple text files:
+##     ```{bash}
+##     grep &#39;CentOS&#39; *.Rmd
+##     ```
 ## 
 ## ----
 ## 
-## - Find all files in current directory with `.Rmd` extension:
-## ```{bash}
-## ls | grep *.Rmd
-## ```
+## - Show matching line numbers:
+##     ```{bash}
+##     grep -n &#39;CentOS&#39; linux.Rmd
+##     ```
+## 
+## ----
+## 
+## - Find all files in current directory with `.png` extension:
+##     ```{bash}
+##     ls | grep &#39;\.png$&#39;
+##     ```
 ## 
 ## - Find all directories in the current directory:
-## ```{bash}
-## ls -al | grep ^d
-## ```
+##     ```{bash}
+##     ls -al | grep &#39;^d&#39;
+##     ```
 ## 
-## ----
+## ## `sed`
 ## 
-## - `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file:
-## ```{bash}
-## sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL
-## ```
+## - `sed` is a stream editor.
 ## 
-## ----
+## - Replace `CentOS` by `RHEL` in a text file:
+##     ```{bash}
+##     sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL
+##     ```
+## 
+## ## `awk`
 ## 
 ## - `awk` is a filter and report writer:
-## ```{bash}
-## # print sorted list of login names
-## awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5
-## ```
-## ```{bash}
-## # print number of lines in a file, as NR stands for Number of Rows
-## awk &#39;END { print NR }&#39; /etc/passwd
-## ```
+##     ```{bash}
+##     # print sorted list of login names
+##     awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5
+##     ```
+##     ```{bash}
+##     # print number of lines in a file, as NR stands for Number of Rows
+##     awk &#39;END { print NR }&#39; /etc/passwd
+##     ```
 ## 
 ## ## Piping and redirection
 ## 
@@ -817,7 +825,9 @@ ls -l *.png</pre>
 ## 
 ## - `&lt;` reads input from a file.
 ## 
-## - Combinations of shell commands (`grep`, `sed`, `awk`, ...), piping and redirection, and regular expressions allow us pre-process and reformat huge text files efficiently. See HW1.
+## - Combinations of shell commands (`grep`, `sed`, `awk`, ...), piping and redirection, and regular expressions allow us pre-process and reformat huge text files efficiently. 
+## 
+## - See HW1.
 ## 
 ## ## Text editors
 ## 
@@ -874,56 +884,64 @@ ls -l *.png</pre>
 ## 
 ## - R Studio, Eclipse, Emacs, Matlab, Visual Studio, etc.
 ## 
+## # Processes
+## 
 ## ## Processes
 ## 
 ## - OS runs processes on behalf of user.
 ## 
 ## - Each process has Process ID (PID), Username (UID), Parent process ID (PPID), Time and data process started (STIME), time running (TIME), etc.
 ## 
-## ```{bash}
-## ps
-## ```
+##     ```{bash}
+##     ps
+##     ```
 ## 
 ## ----
 ## 
-## ```{bash}
-## # all current running processes
-## ps -eaf
-## ```
+## - All current running processes:
+##     ```{bash}
+##     ps -eaf
+##     ```
 ## 
 ## ----
 ## 
-## ```{bash}
-## # all python processes
-## ps -eaf | grep python
-## ```
+## - All Python processes:
+##     ```{bash}
+##     ps -eaf | grep python
+##     ```
 ## 
 ## ----
 ## 
-## ```{bash}
-## # process with PID=1
-## ps -fp 1
-## ```
+## - Process with PID=1:
+##     ```{bash}
+##     ps -fp 1
+##     ```
 ## 
 ## ----
 ## 
-## ```{bash}
-## # all processes owned by a user
-## ps -fu huazhou
-## ```
+## - All processes owned by a user:
+##     ```{bash}
+##     ps -fu huazhou
+##     ```
 ## 
-## ## `kill` processes
+## ## Kill processes
 ## 
-## - `kill 1001` kills process with PID=1001.
+## - kill process with PID=1001:
+##     ```{bash, eval=FALSE}
+##     kill 1001
+##     ```
 ## 
-## - `killall -r R` kills all R processes.
+## - Kill all R processes.
+##     ```{bash, eval=FALSE}
+##     killall -r R
+##     ```
 ## 
 ## ## `top`
 ## 
 ## `top` prints realtime process information (very useful).
-## ```{bash, eval=FALSE}
-## top
-## ```
+##     ```{bash, eval=FALSE}
+##     top
+##     ```
 ## &lt;p align=&quot;center&quot;&gt;
 ##   &lt;img src=&quot;./screenshot_top.png&quot; height=&quot;400&quot;&gt;
 ## &lt;/p&gt;
@@ -935,15 +953,15 @@ ls -l *.png</pre>
 ## SSH (secure shell) is the dominant cryptographic network protocol for secure network connection via an insecure network.
 ## 
 ## - On Linux or Mac, access the teaching server by
-## ```{bash, eval=FALSE}
-## ssh username@35.227.165.60
-## ```
+##     ```{bash, eval=FALSE}
+##     ssh username@35.227.165.60
+##     ```
 ## 
 ## - Windows machines need the [PuTTY](http://www.putty.org) program (free).
 ## 
 ## ## Use keys over password
 ## 
-## - Key authentification is much more secure than password. Most passwords are weak.
+## - Key authentification is more secure than password. Most passwords are weak.
 ## 
 ## - Script or a program may need to systematically SSH into other machines.
 ## 
@@ -975,30 +993,32 @@ ls -l *.png</pre>
 ## 
 ## ## Steps for generate keys
 ## 
-## - On Linux or Mac, `ssh-keygen` generates key pairs
-## ```{bash, eval=FALSE}
-## ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
-## ```
-##   `[KEY_FILENAME]` is the name that you want to use for your SSH key files. For example, a filename of `my-ssh-key` generates a private key file named `my-ssh-key` and a public key file named `my-ssh-key.pub`.  
-##   `[USERNAME]` is the user for whom you will apply this SSH key.   
-##   Use a (optional) paraphrase different form password.  
+## - On Linux or Mac, to generate a key pair:
+##     ```{bash, eval=FALSE}
+##     ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
+##     ```   
+##     - `[KEY_FILENAME]` is the name that you want to use for your SSH key files. For example, a filename of `my-ssh-key` generates a private key file named `my-ssh-key` and a public key file named `my-ssh-key.pub`.  
+##     
+##     - `[USERNAME]` is the user for whom you will apply this SSH key.   
+##     
+##     - Use a (optional) paraphrase different form password.  
 ##     
 ## - Set right permissions on the `.ssh` folder and key files
-## ```{bash, eval=FALSE}
-## chmod 400 ~/.ssh/[KEY_FILENAME]
-## ```
+##     ```{bash, eval=FALSE}
+##     chmod 400 ~/.ssh/[KEY_FILENAME]
+##     ```
 ## 
 ## ----
 ## 
 ## - Append the public key to the `~/.ssh/authorized_keys` file of any Linux machine we want to SSH to, e.g.,
-## ```{bash, eval=FALSE}
-## ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
-## ```
+##     ```{bash, eval=FALSE}
+##     ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
+##     ```
 ## 
 ## - Test your new key.
-## ```{bash, eval=FALSE}
-## ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
-## ```
+##     ```{bash, eval=FALSE}
+##     ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
+##     ```
 ## 
 ## - Now you don&#39;t need password each time you connect from your machine to the teaching server.
 ## 
@@ -1008,19 +1028,19 @@ ls -l *.png</pre>
 ## 
 ## - Same key pair can be used between any two machines. We don&#39;t need to regenerate keys for each new connection.
 ## 
-## - For Windows users, the private key generated by `ssh-keygen` cannot be directly used by PuTTY; use PuTTYgen for conversion. Then let PuTTYgen use the converted private key. Read Sections A and B of the [tutorial](http://tipsandtricks.nogoodatcoding.com/2010/02/svnssh-with-tortoisesvn.html).
+## - For Windows users, the private key generated by `ssh-keygen` cannot be directly used by PuTTY; use PuTTYgen for conversion. Then let PuTTYgen use the converted private key. Read [tutorial](https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-putty-to-connect-to-a-vps).
 ## 
 ## ## Transfer files between machines
 ## 
 ## - `scp` securely transfers files between machines using SSH.
-## ```{bash, eval=FALSE}
-## ## copy file from local to remote
-## scp localfile username@35.227.165.60:/pathtofolder
-## ```
-## ```{bash, eval=FALSE}
-## ## copy file from remote to local
-## scp username@35.227.165.60:/pathtofile pathtolocalfolder
-## ```
+##     ```{bash, eval=FALSE}
+##     ## copy file from local to remote
+##     scp localfile username@35.227.165.60:/pathtofolder
+##     ```
+##     ```{bash, eval=FALSE}
+##     ## copy file from remote to local
+##     scp username@35.227.165.60:/pathtofile pathtolocalfolder
+##     ```
 ## 
 ## - `sftp` is FTP via SSH.
 ## 
@@ -1048,40 +1068,40 @@ ls -l *.png</pre>
 ## 
 ## ## Batch mode {.smaller}
 ## 
-## - Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements a terrible estimator of mean
-## ```{bash}
-## cat meanEst.R
-## ```
+## - Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
+##     ```{bash}
+##     cat meanEst.R
+##     ```
 ## 
 ## ----
 ## 
-## To run your R code non-interactively aka in batch mode, we have at least two options.
+## - To run your R code non-interactively aka in batch mode, we have at least two options.
 ## 
-## - `R CMD BATCH`:
-## ```{bash, eval=FALSE}
-## # default output to meanEst.Rout
-## R CMD BATCH meanEst.R
-## ```
+##     - `R CMD BATCH`:
+##     ```{bash, eval=FALSE}
+##     # default output to meanEst.Rout
+##     R CMD BATCH meanEst.R
+##     ```
 ## 
-## - `Rscript`:
-## ```{bash, eval=FALSE}
-## # output to stdout
-## Rscript meanEst.R
-## ```
+##     - `Rscript`:
+##     ```{bash, eval=FALSE}
+##     # output to stdout
+##     Rscript meanEst.R
+##     ```
 ## 
-## - Typically automate `BATCH` calls using a scripting language, e.g., python, perl, and shell script.
+## - Typically automate batch calls using a scripting language, e.g., python, perl, and shell script.
 ## 
 ## ## Pass arguments to R scripts
 ## 
-## - Specify arguments via `R CMD BATCH`:
-## ```{bash, eval=FALSE}
-## R CMD BATCH &#39;--args mu=1 sig=2 kap=3&#39; script.R
-## ```
+## - Specify arguments in `R CMD BATCH`:
+##     ```{bash, eval=FALSE}
+##     R CMD BATCH &#39;--args mu=1 sig=2 kap=3&#39; script.R
+##     ```
 ## 
-## - Specify arguments via `Rscript`:
-## ```{bash, eval=FALSE}
-## Rscript script.R mu=1 sig=2 kap=3
-## ```
+## - Specify arguments in `Rscript`:
+##     ```{bash, eval=FALSE}
+##     Rscript script.R mu=1 sig=2 kap=3
+##     ```
 ## 
 ## - Parse command line arguments using magic formula
 ## ```{r, eval=FALSE}
@@ -1089,42 +1109,42 @@ ls -l *.png</pre>
 ##   eval(parse(text=arg))
 ## }
 ## ```
-## After calling the above code, all command line arguments will be available in the global namespace.
+## in R script. After calling the above code, all command line arguments will be available in the global namespace.
 ## 
 ## ----
 ## 
 ## - Understand the magic formula `parse` and `eval`:
-## ```{r, error=TRUE}
-## print(x)
-## parse(text=&quot;x=3&quot;)
-## eval(parse(text=&quot;x=3&quot;))
-## print(x)
-## ```
+##     ```{r, error=TRUE}
+##     rm(list=ls())
+##     print(x)
+##     parse(text=&quot;x=3&quot;)
+##     eval(parse(text=&quot;x=3&quot;))
+##     print(x)
+##     ```
 ## 
 ## ----
 ## 
-## - Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: method implementation, argument parser, data generator with unspecified parameter `n`, and estimation based on generated data.
+## - Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) command argument parser, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
 ## 
 ## - Call [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) with sample size `n=100`:
-## ```{bash}
-## R CMD BATCH &#39;--args n=100&#39; runSim.R
-## ```
-## 
-## ```{bash}
-## Rscript runSim.R n=100
-## ```
+##     ```{bash}
+##     R CMD BATCH &#39;--args n=100&#39; runSim.R
+##     ```
+## or
+##     ```{bash}
+##     Rscript runSim.R n=100
+##     ```
 ## 
 ## ## Run long jobs
 ## 
-## - Many statistical computing tasks takes long: simulation, MCMC, etc.
+## - Many statistical computing tasks take long: simulation, MCMC, etc.
 ## 
-## - `nohup` command in Linux runs program(s) immute to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process.
+## - `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process. You can log back in to check status and results.
 ## 
 ## - `nohup` is POSIX standard thus available on both Linux and MacOS.
-## 
-## ```{bash}
-## nohup Rscript runSim.R n=100 &amp;
-## ```
+##     ```{bash}
+##     nohup Rscript runSim.R n=100 &amp;
+##     ```
 ## runs `runSim.R` in background and writes output to `nohup.out`.
 ## 
 ## ## screen
@@ -1133,17 +1153,17 @@ ls -l *.png</pre>
 ## 
 ## - Typical workflow using `screen`.
 ## 
-## 0. Access remote server using `ssh`.
+##     0. Access remote server using `ssh`.
 ## 
-## 0. Start jobs in batch mode.
+##     0. Start jobs in batch mode.
 ## 
-## 0. Detach jobs.
+##     0. Detach jobs.
 ## 
-## 0. Exit from server, wait for jobs to finish.
+##     0. Exit from server, wait for jobs to finish.
 ## 
-## 0. Access remote server using `ssh`.
+##     0. Access remote server using `ssh`.
 ## 
-## 0. Re-attach jobs, check on progress, get results, etc.
+##     0. Re-attach jobs, check on progress, get results, etc.
 ## 
 ## ## Use R to call R
 ## 
@@ -1153,7 +1173,7 @@ ls -l *.png</pre>
 ## 
 ## - We consider a simulation study in R but the same approach could be used with code written in Julia, Matlab, Python, etc.
 ## 
-## - Python in many ways makes a better _glue_ we may discuss this later in the course.
+## - Python in many ways makes a better _glue_; we may discuss this later in the course.
 ## 
 ## ----
 ## 
@@ -1168,21 +1188,25 @@ ls -l *.png</pre>
 ## 
 ## ----
 ## 
-## ```{bash}
-## cat autoSim.R
-## ```
+##     ```{bash}
+##     cat autoSim.R
+##     ```
 ## 
 ## ----
 ## 
-## ```{bash}
-## Rscript autoSim.R
-## ```</pre>
+##     ```{bash}
+##     Rscript autoSim.R
+##     ```
+## 
+##     ```{bash, echo=FALSE, eval=TRUE}
+##     rm n*.txt *.Rout
+##     ```</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>head -l</code> prints the first \(l\) lines of a file:</li>
-</ul>
+<li><p><code>head -l</code> prints the first \(l\) lines of a file:</p>
 
 <pre class = 'prettyprint lang-bash'>head linux.Rmd</pre>
 
@@ -1195,28 +1219,29 @@ ls -l *.png</pre>
 ## bibliography: ../bib-HZ.bib
 ## ---
 ## 
-## ## Why Linux</pre>
+## ## Why Linux</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>tail -l</code> prints the last \(l\) lines of a file:</li>
-</ul>
+<li><p><code>tail -l</code> prints the last \(l\) lines of a file:</p>
 
 <pre class = 'prettyprint lang-bash'>tail linux.Rmd</pre>
 
 <pre >## 
-## ```{bash}
-## cat autoSim.R
-## ```
-## 
 ## ----
 ## 
-## ```{bash}
-## Rscript autoSim.R
-## ```</pre>
+##     ```{bash}
+##     Rscript autoSim.R
+##     ```
+## 
+##     ```{bash, echo=FALSE, eval=TRUE}
+##     rm n*.txt *.Rout
+##     ```</pre></li>
+</ul>
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+</article></slide><slide class=""><hgroup><h2><code>less</code> is more; <code>more</code> is less</h2></hgroup><article  id="less-is-more-more-is-less">
 
 <ul>
 <li><p><code>more</code> browses a text file screen by screen (only downwards). Scroll down one page (paging) by pressing the spacebar; exit by pressing the <code>q</code> key.</p></li>
@@ -1224,70 +1249,104 @@ ls -l *.png</pre>
 <li><p><code>less</code> doesn&#39;t need to read the whole file, i.e., it loads files faster than <code>more</code>.</p></li>
 </ul>
 
-<blockquote>
-<p><code>less</code> is more, and <code>more</code> is less.</p>
-</blockquote>
+</article></slide><slide class=""><hgroup><h2><code>grep</code></h2></hgroup><article  id="grep" class="smaller">
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+<p><code>grep</code> prints lines that match an expression pattern:</p>
 
 <ul>
-<li><code>grep</code> prints lines that match an expression:</li>
-</ul>
+<li><p>Show lines that contain string <code>CentOS</code>:</p>
 
-<pre class = 'prettyprint lang-bash'>grep CentOS linux.Rmd</pre>
+<pre class = 'prettyprint lang-bash'># quotes not necessary if not a regular expression
+grep &#39;CentOS&#39; linux.Rmd</pre>
 
 <pre >## - RHEL/CentOS is popular on servers.
 ## - The teaching server for this class runs CentOS 7.
-## grep CentOS linux.Rmd
-## - `sed` is a stream editor. E.g., replace `CentOS` by `RHEL` in a text file:
-## sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre>
-
-<ul>
-<li>Find entries with an underscore:</li>
+## - Show lines that contain string `CentOS`:
+##     grep &#39;CentOS&#39; linux.Rmd
+##     grep &#39;CentOS&#39; *.Rmd
+##     grep -n &#39;CentOS&#39; linux.Rmd
+## - Replace `CentOS` by `RHEL` in a text file:
+##     sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre></li>
 </ul>
-
-<pre class = 'prettyprint lang-bash'>grep *_* linux.Rmd</pre>
-
-<pre >## linux.Rmd:  &lt;img src=&quot;./Emacs_Reference_Card.pdf&quot; height=&quot;400&quot;&gt;</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Find all files in current directory with <code>.Rmd</code> extension:</li>
+<li><p>Search multiple text files:</p>
+
+<pre class = 'prettyprint lang-bash'>grep &#39;CentOS&#39; *.Rmd</pre>
+
+<pre >## - RHEL/CentOS is popular on servers.
+## - The teaching server for this class runs CentOS 7.
+## - Show lines that contain string `CentOS`:
+##     grep &#39;CentOS&#39; linux.Rmd
+##     grep &#39;CentOS&#39; *.Rmd
+##     grep -n &#39;CentOS&#39; linux.Rmd
+## - Replace `CentOS` by `RHEL` in a text file:
+##     sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre></li>
 </ul>
-
-<pre class = 'prettyprint lang-bash'>ls | grep *.Rmd</pre>
-
-<pre >## linux.Rmd</pre>
-
-<ul>
-<li>Find all directories in the current directory:</li>
-</ul>
-
-<pre class = 'prettyprint lang-bash'>ls -al | grep ^d</pre>
-
-<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 06:25 .
-## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><code>sed</code> is a stream editor. E.g., replace <code>CentOS</code> by <code>RHEL</code> in a text file:</li>
+<li><p>Show matching line numbers:</p>
+
+<pre class = 'prettyprint lang-bash'>grep -n &#39;CentOS&#39; linux.Rmd</pre>
+
+<pre >## 27:- RHEL/CentOS is popular on servers.
+## 29:- The teaching server for this class runs CentOS 7.
+## 285:- Show lines that contain string `CentOS`:
+## 288:    grep &#39;CentOS&#39; linux.Rmd
+## 295:    grep &#39;CentOS&#39; *.Rmd
+## 302:    grep -n &#39;CentOS&#39; linux.Rmd
+## 321:- Replace `CentOS` by `RHEL` in a text file:
+## 323:    sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre></li>
 </ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><p>Find all files in current directory with <code>.png</code> extension:</p>
+
+<pre class = 'prettyprint lang-bash'>ls | grep &#39;\.png$&#39;</pre>
+
+<pre >## key_authentication_1.png
+## key_authentication_2.png
+## linux_directory_structure.png
+## linux_filepermission_oct.png
+## linux_filepermission.png
+## Richard_Stallman_2013.png
+## screenshot_top.png</pre></li>
+<li><p>Find all directories in the current directory:</p>
+
+<pre class = 'prettyprint lang-bash'>ls -al | grep &#39;^d&#39;</pre>
+
+<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 18:28 .
+## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..</pre></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2><code>sed</code></h2></hgroup><article  id="sed">
+
+<ul>
+<li><p><code>sed</code> is a stream editor.</p></li>
+<li><p>Replace <code>CentOS</code> by <code>RHEL</code> in a text file:</p>
 
 <pre class = 'prettyprint lang-bash'>sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre>
 
 <pre >## - RHEL/RHEL is popular on servers.
 ## - The teaching server for this class runs RHEL 7.
-## grep RHEL linux.Rmd
-## - `sed` is a stream editor. E.g., replace `RHEL` by `RHEL` in a text file:
-## sed &#39;s/RHEL/RHEL/&#39; linux.Rmd | grep RHEL</pre>
+## - Show lines that contain string `RHEL`:
+##     grep &#39;RHEL&#39; linux.Rmd
+##     grep &#39;RHEL&#39; *.Rmd
+##     grep -n &#39;RHEL&#39; linux.Rmd
+## - Replace `RHEL` by `RHEL` in a text file:
+##     sed &#39;s/RHEL/RHEL/&#39; linux.Rmd | grep RHEL</pre></li>
+</ul>
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+</article></slide><slide class=""><hgroup><h2><code>awk</code></h2></hgroup><article  id="awk">
 
 <ul>
-<li><code>awk</code> is a filter and report writer:</li>
-</ul>
+<li><p><code>awk</code> is a filter and report writer:</p>
 
 <pre class = 'prettyprint lang-bash'># print sorted list of login names
 awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5</pre>
@@ -1301,7 +1360,8 @@ awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5</pre>
 <pre class = 'prettyprint lang-bash'># print number of lines in a file, as NR stands for Number of Rows
 awk &#39;END { print NR }&#39; /etc/passwd</pre>
 
-<pre >## 57</pre>
+<pre >## 58</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Piping and redirection</h2></hgroup><article  id="piping-and-redirection">
 
@@ -1310,7 +1370,8 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <li><p><code>&gt;</code> directs output from one command to a file.</p></li>
 <li><p><code>&gt;&gt;</code> appends output from one command to a file.</p></li>
 <li><p><code>&lt;</code> reads input from a file.</p></li>
-<li><p>Combinations of shell commands (<code>grep</code>, <code>sed</code>, <code>awk</code>, &#8230;), piping and redirection, and regular expressions allow us pre-process and reformat huge text files efficiently. See HW1.</p></li>
+<li><p>Combinations of shell commands (<code>grep</code>, <code>sed</code>, <code>awk</code>, &#8230;), piping and redirection, and regular expressions allow us pre-process and reformat huge text files efficiently.</p></li>
+<li><p>See HW1.</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Text editors</h2></hgroup><article  id="text-editors">
@@ -1387,26 +1448,31 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <li><p>R Studio, Eclipse, Emacs, Matlab, Visual Studio, etc.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Processes</h2></hgroup><article  id="processes">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Processes</h2></hgroup><article  id="processes">
+
+</article></slide><slide class=""><hgroup><h2>Processes</h2></hgroup><article  id="processes-1">
 
 <ul>
 <li><p>OS runs processes on behalf of user.</p></li>
-<li><p>Each process has Process ID (PID), Username (UID), Parent process ID (PPID), Time and data process started (STIME), time running (TIME), etc.</p></li>
-</ul>
+<li><p>Each process has Process ID (PID), Username (UID), Parent process ID (PPID), Time and data process started (STIME), time running (TIME), etc.</p>
 
 <pre class = 'prettyprint lang-bash'>ps</pre>
 
 <pre >##   PID TTY          TIME CMD
-##   937 ?        00:00:01 R
-##  1010 ?        00:00:00 sh
-##  1011 ?        00:00:00 ps
-## 31567 ?        00:00:05 rsession
-## 31881 ?        00:00:00 sshd</pre>
+##  6503 ?        00:01:32 rsession
+## 12076 ?        00:00:00 sshd
+## 18567 ?        00:00:00 sshd
+## 19885 ?        00:00:01 R
+## 19957 ?        00:00:00 sh
+## 19958 ?        00:00:00 ps</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<pre class = 'prettyprint lang-bash'># all current running processes
-ps -eaf</pre>
+<ul>
+<li><p>All current running processes:</p>
+
+<pre class = 'prettyprint lang-bash'>ps -eaf</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
 ## root         1     0  0 Jan08 ?        00:00:07 /usr/lib/systemd/systemd --switched-root --system --deserialize 21
@@ -1415,7 +1481,7 @@ ps -eaf</pre>
 ## root         5     2  0 Jan08 ?        00:00:00 [kworker/0:0H]
 ## root         7     2  0 Jan08 ?        00:00:00 [migration/0]
 ## root         8     2  0 Jan08 ?        00:00:00 [rcu_bh]
-## root         9     2  0 Jan08 ?        00:00:13 [rcu_sched]
+## root         9     2  0 Jan08 ?        00:00:16 [rcu_sched]
 ## root        10     2  0 Jan08 ?        00:00:00 [watchdog/0]
 ## root        11     2  0 Jan08 ?        00:00:00 [watchdog/1]
 ## root        12     2  0 Jan08 ?        00:00:00 [migration/1]
@@ -1462,9 +1528,9 @@ ps -eaf</pre>
 ## root       191     2  0 Jan08 ?        00:00:00 [xfs-reclaim/sda]
 ## root       192     2  0 Jan08 ?        00:00:00 [xfs-log/sda1]
 ## root       193     2  0 Jan08 ?        00:00:00 [xfs-eofblocks/s]
-## root       194     2  0 Jan08 ?        00:00:51 [xfsaild/sda1]
+## root       194     2  0 Jan08 ?        00:01:00 [xfsaild/sda1]
 ## root       232     2  0 Jan08 ?        00:00:00 [kworker/1:1H]
-## root       247     1  0 Jan08 ?        00:00:12 /usr/lib/systemd/systemd-journald
+## root       247     1  0 Jan08 ?        00:00:13 /usr/lib/systemd/systemd-journald
 ## root       272     1  0 Jan08 ?        00:00:00 /usr/lib/systemd/systemd-udevd
 ## root       301     1  0 Jan08 ?        00:00:02 /sbin/auditd
 ## root       356     2  0 Jan08 ?        00:00:00 [edac-poller]
@@ -1473,89 +1539,115 @@ ps -eaf</pre>
 ## root       381     1  0 Jan08 ?        00:00:01 /usr/lib/systemd/systemd-logind
 ## polkitd    382     1  0 Jan08 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
 ## root       384     1  0 Jan08 ?        00:00:00 /usr/sbin/acpid
-## root       385     1  0 Jan08 ?        00:00:14 /usr/sbin/rsyslogd -n
+## root       385     1  0 Jan08 ?        00:00:16 /usr/sbin/rsyslogd -n
 ## root       388     1  0 Jan08 ?        00:00:01 /usr/sbin/crond -n
 ## chrony     396     1  0 Jan08 ?        00:00:00 /usr/sbin/chronyd
 ## root       399     1  0 Jan08 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
 ## root       400     1  0 Jan08 ttyS0    00:00:00 /sbin/agetty --keep-baud 115200 38400 9600 ttyS0 vt220
 ## root       465     1  0 Jan08 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
 ## root       466     2  0 Jan08 ?        00:00:00 [kworker/3:1H]
-## root       468     1  0 Jan08 ?        00:00:03 /usr/sbin/NetworkManager --no-daemon
+## root       468     1  0 Jan08 ?        00:00:04 /usr/sbin/NetworkManager --no-daemon
 ## root       589   468  0 Jan08 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-eth0.pid -lf /var/lib/NetworkManager/dhclient-f233d74e-1487-4c65-9470-2ae07fbc1e62-eth0.lease -cf /var/lib/NetworkManager/dhclient-eth0.conf eth0
-## root       824     1  0 Jan08 ?        00:00:21 /usr/bin/python -Es /usr/sbin/tuned -l -P
-## root       926     1  0 Jan08 ?        00:00:04 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:07 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:14 /usr/bin/python /usr/bin/google_accounts_daemon
-## huazhou    937 31567 41 06:25 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
+## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
+## root       927     1  0 Jan08 ?        00:00:08 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       928     1  0 Jan08 ?        00:00:17 /usr/bin/python /usr/bin/google_accounts_daemon
 ## root       988     1  0 Jan08 ?        00:00:01 /usr/libexec/postfix/master -w
 ## postfix    994   988  0 Jan08 ?        00:00:00 qmgr -l -t unix -u
 ## root      1002     2  0 Jan08 ?        00:00:00 [kworker/2:1H]
-## huazhou   1012   937  0 06:25 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all current running processes ps -eaf&#39; 2&gt;&amp;1
-## huazhou   1013  1012  0 06:25 ?        00:00:00 ps -eaf
 ## root      2405     1  0 Jan08 ?        00:00:01 /usr/sbin/sshd -D
-## rstudio+  6693     1  0 Jan08 ?        00:01:11 /usr/lib/rstudio-server/bin/rserver
-## root     10355     2  0 Jan10 ?        00:00:00 [kworker/0:1]
+## huazhou   6503  6693  0 14:27 ?        00:01:32 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
+## rstudio+  6693     1  0 Jan08 ?        00:01:26 /usr/lib/rstudio-server/bin/rserver
+## root     12056     2  0 16:31 ?        00:00:00 [kworker/0:1]
+## root     12067  2405  0 16:32 ?        00:00:00 sshd: huazhou [priv]
+## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
+## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
+## root     13971     2  0 16:55 ?        00:00:00 [kworker/3:1]
+## postfix  14354   988  0 17:12 ?        00:00:00 pickup -l -t unix -u
 ## root     14679     2  0 00:37 ?        00:00:00 [kworker/1:0]
-## root     19221     2  0 03:10 ?        00:00:00 [kworker/1:2]
-## shendar+ 20449  6693  0 05:23 ?        00:00:08 /usr/lib/rstudio-server/bin/rsession -u shendarrick821 --launcher-token A858A787
-## postfix  20537   988  0 05:32 ?        00:00:00 pickup -l -t unix -u
+## root     17188  2405  0 17:54 ?        00:00:00 sshd: c.shaw [priv]
+## c.shaw   17198 17188  0 17:54 ?        00:00:00 sshd: c.shaw@pts/1
+## c.shaw   17200 17198  0 17:54 pts/1    00:00:00 -bash
+## root     17834     2  0 18:04 ?        00:00:00 [kworker/1:2]
+## root     18502     2  0 18:17 ?        00:00:00 [kworker/2:1]
+## root     18558  2405  0 18:21 ?        00:00:00 sshd: huazhou [priv]
+## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
+## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
+## root     19601     2  0 18:27 ?        00:00:00 [kworker/2:2]
+## root     19874     2  0 18:33 ?        00:00:00 [kworker/2:0]
+## huazhou  19885  6503 66 18:33 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  19959 19885  0 18:33 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
+## huazhou  19960 19959  0 18:33 ?        00:00:00 ps -eaf
 ## root     22507     2  0 Jan10 ?        00:00:00 [kworker/3:0]
-## root     31539     2  0 06:03 ?        00:00:00 [kworker/0:3]
-## huazhou  31567  6693  0 06:05 ?        00:00:05 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
-## root     31872  2405  0 06:08 ?        00:00:00 sshd: huazhou [priv]
-## huazhou  31881 31872  0 06:08 ?        00:00:00 sshd: huazhou@pts/0
-## huazhou  31882 31881  0 06:08 pts/0    00:00:00 -bash
-## root     31928     2  0 06:09 ?        00:00:00 [kworker/2:0]
-## root     31975     2  0 06:09 ?        00:00:00 [kworker/3:2]
-## root     32309     2  0 06:15 ?        00:00:00 [kworker/2:1]</pre>
+## root     31539     2  0 06:03 ?        00:00:00 [kworker/0:3]</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<pre class = 'prettyprint lang-bash'># all python processes
-ps -eaf | grep python</pre>
-
-<pre >## root       465     1  0 Jan08 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
-## root       824     1  0 Jan08 ?        00:00:21 /usr/bin/python -Es /usr/sbin/tuned -l -P
-## root       926     1  0 Jan08 ?        00:00:04 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:07 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:14 /usr/bin/python /usr/bin/google_accounts_daemon
-## huazhou   1014   937  0 06:25 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all python processes ps -eaf | grep python&#39; 2&gt;&amp;1
-## huazhou   1015  1014  0 06:25 ?        00:00:00 bash -c # all python processes ps -eaf | grep python
-## huazhou   1017  1015  0 06:25 ?        00:00:00 grep python</pre>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<pre class = 'prettyprint lang-bash'># process with PID=1
-ps -fp 1</pre>
-
-<pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## root         1     0  0 Jan08 ?        00:00:07 /usr/lib/systemd/systemd --switched-root --system --deserialize 21</pre>
-
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
-
-<pre class = 'prettyprint lang-bash'># all processes owned by a user
-ps -fu huazhou</pre>
-
-<pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## huazhou    937 31567 42 06:25 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou   1020   937  0 06:25 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;# all processes owned by a user ps -fu huazhou&#39; 2&gt;&amp;1
-## huazhou   1021  1020  0 06:25 ?        00:00:00 ps -fu huazhou
-## huazhou  31567  6693  0 06:05 ?        00:00:05 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
-## huazhou  31881 31872  0 06:08 ?        00:00:00 sshd: huazhou@pts/0
-## huazhou  31882 31881  0 06:08 pts/0    00:00:00 -bash</pre>
-
-</article></slide><slide class=""><hgroup><h2><code>kill</code> processes</h2></hgroup><article  id="kill-processes">
 
 <ul>
-<li><p><code>kill 1001</code> kills process with PID=1001.</p></li>
-<li><p><code>killall -r R</code> kills all R processes.</p></li>
+<li><p>All Python processes:</p>
+
+<pre class = 'prettyprint lang-bash'>ps -eaf | grep python</pre>
+
+<pre >## root       465     1  0 Jan08 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
+## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
+## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
+## root       927     1  0 Jan08 ?        00:00:08 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       928     1  0 Jan08 ?        00:00:17 /usr/bin/python /usr/bin/google_accounts_daemon
+## huazhou  19961 19885  0 18:33 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
+## huazhou  19962 19961  0 18:33 ?        00:00:00 bash -c ps -eaf | grep python
+## huazhou  19964 19962  0 18:33 ?        00:00:00 grep python</pre></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><p>Process with PID=1:</p>
+
+<pre class = 'prettyprint lang-bash'>ps -fp 1</pre>
+
+<pre >## UID        PID  PPID  C STIME TTY          TIME CMD
+## root         1     0  0 Jan08 ?        00:00:07 /usr/lib/systemd/systemd --switched-root --system --deserialize 21</pre></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><p>All processes owned by a user:</p>
+
+<pre class = 'prettyprint lang-bash'>ps -fu huazhou</pre>
+
+<pre >## UID        PID  PPID  C STIME TTY          TIME CMD
+## huazhou   6503  6693  0 14:27 ?        00:01:32 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
+## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
+## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
+## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
+## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
+## huazhou  19885  6503 67 18:33 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  19967 19885  0 18:33 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
+## huazhou  19968 19967  0 18:33 ?        00:00:00 ps -fu huazhou</pre></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2>Kill processes</h2></hgroup><article  id="kill-processes">
+
+<ul>
+<li><p>kill process with PID=1001:</p>
+
+<pre class = 'prettyprint lang-bash'>kill 1001</pre></li>
+<li><p>Kill all R processes.</p>
+
+<pre class = 'prettyprint lang-bash'>killall -r R</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2><code>top</code></h2></hgroup><article  id="top">
 
 <p><code>top</code> prints realtime process information (very useful).</p>
 
-<pre class = 'prettyprint lang-bash'>top</pre>
+<pre >```bash
+top
+```</pre>
 
 <p align="center">
 
@@ -1570,19 +1662,16 @@ ps -fu huazhou</pre>
 <p>SSH (secure shell) is the dominant cryptographic network protocol for secure network connection via an insecure network.</p>
 
 <ul>
-<li>On Linux or Mac, access the teaching server by</li>
-</ul>
+<li><p>On Linux or Mac, access the teaching server by</p>
 
-<pre class = 'prettyprint lang-bash'>ssh username@35.227.165.60</pre>
-
-<ul>
-<li>Windows machines need the <a href='http://www.putty.org' title=''>PuTTY</a> program (free).</li>
+<pre class = 'prettyprint lang-bash'>ssh username@35.227.165.60</pre></li>
+<li><p>Windows machines need the <a href='http://www.putty.org' title=''>PuTTY</a> program (free).</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Use keys over password</h2></hgroup><article  id="use-keys-over-password">
 
 <ul>
-<li><p>Key authentification is much more secure than password. Most passwords are weak.</p></li>
+<li><p>Key authentification is more secure than password. Most passwords are weak.</p></li>
 <li><p>Script or a program may need to systematically SSH into other machines.</p></li>
 <li><p>Log into multiple machines using the same key.</p></li>
 <li><p>Seamless use of many services: git, svn, Amazon EC2 cloud service, parallel computing on multiple hosts, etc.</p></li>
@@ -1615,35 +1704,30 @@ ps -fu huazhou</pre>
 </article></slide><slide class=""><hgroup><h2>Steps for generate keys</h2></hgroup><article  id="steps-for-generate-keys">
 
 <ul>
-<li>On Linux or Mac, <code>ssh-keygen</code> generates key pairs</li>
-</ul>
+<li><p>On Linux or Mac, to generate a key pair:</p>
 
 <pre class = 'prettyprint lang-bash'>ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]</pre>
 
-<p><code>[KEY_FILENAME]</code> is the name that you want to use for your SSH key files. For example, a filename of <code>my-ssh-key</code> generates a private key file named <code>my-ssh-key</code> and a public key file named <code>my-ssh-key.pub</code>.<br/><code>[USERNAME]</code> is the user for whom you will apply this SSH key.<br/>Use a (optional) paraphrase different form password.</p>
-
 <ul>
-<li>Set right permissions on the <code>.ssh</code> folder and key files</li>
-</ul>
+<li><p><code>[KEY_FILENAME]</code> is the name that you want to use for your SSH key files. For example, a filename of <code>my-ssh-key</code> generates a private key file named <code>my-ssh-key</code> and a public key file named <code>my-ssh-key.pub</code>.</p></li>
+<li><p><code>[USERNAME]</code> is the user for whom you will apply this SSH key.</p></li>
+<li><p>Use a (optional) paraphrase different form password.</p></li>
+</ul></li>
+<li><p>Set right permissions on the <code>.ssh</code> folder and key files</p>
 
-<pre class = 'prettyprint lang-bash'>chmod 400 ~/.ssh/[KEY_FILENAME]</pre>
+<pre class = 'prettyprint lang-bash'>chmod 400 ~/.ssh/[KEY_FILENAME]</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Append the public key to the <code>~/.ssh/authorized_keys</code> file of any Linux machine we want to SSH to, e.g.,</li>
-</ul>
+<li><p>Append the public key to the <code>~/.ssh/authorized_keys</code> file of any Linux machine we want to SSH to, e.g.,</p>
 
-<pre class = 'prettyprint lang-bash'>ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60</pre>
+<pre class = 'prettyprint lang-bash'>ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60</pre></li>
+<li><p>Test your new key.</p>
 
-<ul>
-<li>Test your new key.</li>
-</ul>
-
-<pre class = 'prettyprint lang-bash'>ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60</pre>
-
-<ul>
-<li>Now you don&#39;t need password each time you connect from your machine to the teaching server.</li>
+<pre class = 'prettyprint lang-bash'>ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60</pre></li>
+<li><p>Now you don&#39;t need password each time you connect from your machine to the teaching server.</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1651,22 +1735,19 @@ ps -fu huazhou</pre>
 <ul>
 <li><p>If you set paraphrase when generating keys, you&#39;ll be prompted for the paraphrase each time the private key is used. Avoid repeatedly entering the paraphrase by using <code>ssh-agent</code> on Linux/Mac or Pagent on Windows.</p></li>
 <li><p>Same key pair can be used between any two machines. We don&#39;t need to regenerate keys for each new connection.</p></li>
-<li><p>For Windows users, the private key generated by <code>ssh-keygen</code> cannot be directly used by PuTTY; use PuTTYgen for conversion. Then let PuTTYgen use the converted private key. Read Sections A and B of the <a href='http://tipsandtricks.nogoodatcoding.com/2010/02/svnssh-with-tortoisesvn.html' title=''>tutorial</a>.</p></li>
+<li><p>For Windows users, the private key generated by <code>ssh-keygen</code> cannot be directly used by PuTTY; use PuTTYgen for conversion. Then let PuTTYgen use the converted private key. Read <a href='https://www.digitalocean.com/community/tutorials/how-to-create-ssh-keys-with-putty-to-connect-to-a-vps' title=''>tutorial</a>.</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Transfer files between machines</h2></hgroup><article  id="transfer-files-between-machines">
 
 <ul>
-<li><code>scp</code> securely transfers files between machines using SSH.</li>
-</ul>
+<li><p><code>scp</code> securely transfers files between machines using SSH.</p>
 
 <pre class = 'prettyprint lang-bash'>## copy file from local to remote
 scp localfile username@35.227.165.60:/pathtofolder</pre>
 
 <pre class = 'prettyprint lang-bash'>## copy file from remote to local
-scp username@35.227.165.60:/pathtofile pathtolocalfolder</pre>
-
-<ul>
+scp username@35.227.165.60:/pathtofile pathtolocalfolder</pre></li>
 <li><p><code>sftp</code> is FTP via SSH.</p></li>
 <li><p>GUIs for Windows (WinSCP) or Mac (Cyberduck).</p></li>
 <li><p>(My preferred way) Use a <strong>version control system</strong> to sync project files between different machines and systems.</p></li>
@@ -1693,8 +1774,7 @@ scp username@35.227.165.60:/pathtofile pathtolocalfolder</pre>
 </article></slide><slide class=""><hgroup><h2>Batch mode</h2></hgroup><article  id="batch-mode" class="smaller">
 
 <ul>
-<li>Demo script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R' title=''><code>meanEst.R</code></a> implements a terrible estimator of mean</li>
-</ul>
+<li><p>Demo script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R' title=''><code>meanEst.R</code></a> implements an (terrible) estimator of mean</p>
 
 <pre class = 'prettyprint lang-bash'>cat meanEst.R</pre>
 
@@ -1716,11 +1796,13 @@ scp username@35.227.165.60:/pathtofile pathtolocalfolder</pre>
 ##   return (mean(x[ind]))
 ## }
 ## 
-## print(estMeanPrimes(rnorm(100000)))</pre>
+## print(estMeanPrimes(rnorm(100000)))</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p>To run your R code non-interactively aka in batch mode, we have at least two options.</p>
+<ul>
+<li><p>To run your R code non-interactively aka in batch mode, we have at least two options.</p>
 
 <ul>
 <li><code>R CMD BATCH</code>:</li>
@@ -1734,43 +1816,35 @@ R CMD BATCH meanEst.R</pre>
 </ul>
 
 <pre class = 'prettyprint lang-bash'># output to stdout
-Rscript meanEst.R</pre>
-
-<ul>
-<li>Typically automate <code>BATCH</code> calls using a scripting language, e.g., python, perl, and shell script.</li>
+Rscript meanEst.R</pre></li>
+<li><p>Typically automate batch calls using a scripting language, e.g., python, perl, and shell script.</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Pass arguments to R scripts</h2></hgroup><article  id="pass-arguments-to-r-scripts">
 
 <ul>
-<li>Specify arguments via <code>R CMD BATCH</code>:</li>
-</ul>
+<li><p>Specify arguments in <code>R CMD BATCH</code>:</p>
 
-<pre class = 'prettyprint lang-bash'>R CMD BATCH &#39;--args mu=1 sig=2 kap=3&#39; script.R</pre>
+<pre class = 'prettyprint lang-bash'>R CMD BATCH &#39;--args mu=1 sig=2 kap=3&#39; script.R</pre></li>
+<li><p>Specify arguments in <code>Rscript</code>:</p>
 
-<ul>
-<li>Specify arguments via <code>Rscript</code>:</li>
-</ul>
-
-<pre class = 'prettyprint lang-bash'>Rscript script.R mu=1 sig=2 kap=3</pre>
-
-<ul>
-<li>Parse command line arguments using magic formula</li>
+<pre class = 'prettyprint lang-bash'>Rscript script.R mu=1 sig=2 kap=3</pre></li>
+<li><p>Parse command line arguments using magic formula</p></li>
 </ul>
 
 <pre class = 'prettyprint lang-r'>for (arg in commandArgs(T)) {
   eval(parse(text=arg))
 }</pre>
 
-<p>After calling the above code, all command line arguments will be available in the global namespace.</p>
+<p>in R script. After calling the above code, all command line arguments will be available in the global namespace.</p>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li>Understand the magic formula <code>parse</code> and <code>eval</code>:</li>
-</ul>
+<li><p>Understand the magic formula <code>parse</code> and <code>eval</code>:</p>
 
-<pre class = 'prettyprint lang-r'>print(x)</pre>
+<pre class = 'prettyprint lang-r'>rm(list=ls())
+print(x)</pre>
 
 <pre >## Error in print(x): object &#39;x&#39; not found</pre>
 
@@ -1781,41 +1855,43 @@ Rscript meanEst.R</pre>
 <pre class = 'prettyprint lang-r'>eval(parse(text=&quot;x=3&quot;))
 print(x)</pre>
 
-<pre >## [1] 3</pre>
+<pre >## [1] 3</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><p>Script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> has components: method implementation, argument parser, data generator with unspecified parameter <code>n</code>, and estimation based on generated data.</p></li>
-<li><p>Call <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> with sample size <code>n=100</code>:</p></li>
-</ul>
+<li><p>Script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> has components: (1) method implementation, (2) command argument parser, (3) data generator with unspecified parameter <code>n</code>, and (4) estimation based on generated data.</p></li>
+<li><p>Call <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> with sample size <code>n=100</code>:</p>
 
 <pre class = 'prettyprint lang-bash'>R CMD BATCH &#39;--args n=100&#39; runSim.R</pre>
 
+<p>or</p>
+
 <pre class = 'prettyprint lang-bash'>Rscript runSim.R n=100</pre>
 
-<pre >## [1] -0.004659988</pre>
+<pre >## [1] -0.164408</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Run long jobs</h2></hgroup><article  id="run-long-jobs">
 
 <ul>
-<li><p>Many statistical computing tasks takes long: simulation, MCMC, etc.</p></li>
-<li><p><code>nohup</code> command in Linux runs program(s) immute to hangups and writes output to <code>nohup.out</code> by default. Logging out will <em>not</em> kill the process.</p></li>
-<li><p><code>nohup</code> is POSIX standard thus available on both Linux and MacOS.</p></li>
-</ul>
+<li><p>Many statistical computing tasks take long: simulation, MCMC, etc.</p></li>
+<li><p><code>nohup</code> command in Linux runs program(s) immune to hangups and writes output to <code>nohup.out</code> by default. Logging out will <em>not</em> kill the process. You can log back in to check status and results.</p></li>
+<li><p><code>nohup</code> is POSIX standard thus available on both Linux and MacOS.</p>
 
 <pre class = 'prettyprint lang-bash'>nohup Rscript runSim.R n=100 &amp;</pre>
 
-<pre >## [1] 0.06242246</pre>
+<pre >## [1] 0.1063113</pre>
 
-<p>runs <code>runSim.R</code> in background and writes output to <code>nohup.out</code>.</p>
+<p>runs <code>runSim.R</code> in background and writes output to <code>nohup.out</code>.</p></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>screen</h2></hgroup><article  id="screen">
 
 <ul>
 <li><p><code>screen</code> is another popular utility, but not installed by default.</p></li>
-<li><p>Typical workflow using <code>screen</code>.</p></li>
-</ul>
+<li><p>Typical workflow using <code>screen</code>.</p>
 
 <ol>
 <li><p>Access remote server using <code>ssh</code>.</p></li>
@@ -1824,7 +1900,8 @@ print(x)</pre>
 <li><p>Exit from server, wait for jobs to finish.</p></li>
 <li><p>Access remote server using <code>ssh</code>.</p></li>
 <li><p>Re-attach jobs, check on progress, get results, etc.</p></li>
-</ol>
+</ol></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Use R to call R</h2></hgroup><article  id="use-r-to-call-r">
 
@@ -1833,7 +1910,7 @@ print(x)</pre>
 <ul>
 <li><p>It can be more elegant, transparent, and robust to parallelize jobs corresponding to different scenarios (e.g., different generative models) outside of the code used to do statistical computation.</p></li>
 <li><p>We consider a simulation study in R but the same approach could be used with code written in Julia, Matlab, Python, etc.</p></li>
-<li><p>Python in many ways makes a better <em>glue</em> we may discuss this later in the course.</p></li>
+<li><p>Python in many ways makes a better <em>glue</em>; we may discuss this later in the course.</p></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1852,33 +1929,36 @@ print(x)</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<pre class = 'prettyprint lang-bash'>cat autoSim.R</pre>
+<pre >```bash
+cat autoSim.R
+```
 
-<pre >## # autoSim.R
+```
+## # autoSim.R
 ## 
-## nVals = seq(50, 500, by=50)
+## nVals = seq(100, 500, by=100)
 ## for (n in nVals) {
 ##   oFile = paste(&quot;n&quot;, n, &quot;.txt&quot;, sep=&quot;&quot;)
 ##   arg = paste(&quot;n=&quot;, n, sep=&quot;&quot;)
 ##   sysCall = paste(&quot;nohup Rscript runSim.R &quot;, arg, &quot; &gt; &quot;, oFile)
 ##   system(sysCall)
 ##   print(paste(&quot;sysCall=&quot;, sysCall, sep=&quot;&quot;))
-## }</pre>
+## }
+```</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<pre class = 'prettyprint lang-bash'>Rscript autoSim.R</pre>
+<pre >```bash
+Rscript autoSim.R
+```
 
-<pre >## [1] &quot;sysCall=nohup Rscript runSim.R  n=50  &gt;  n50.txt&quot;
+```
 ## [1] &quot;sysCall=nohup Rscript runSim.R  n=100  &gt;  n100.txt&quot;
-## [1] &quot;sysCall=nohup Rscript runSim.R  n=150  &gt;  n150.txt&quot;
 ## [1] &quot;sysCall=nohup Rscript runSim.R  n=200  &gt;  n200.txt&quot;
-## [1] &quot;sysCall=nohup Rscript runSim.R  n=250  &gt;  n250.txt&quot;
 ## [1] &quot;sysCall=nohup Rscript runSim.R  n=300  &gt;  n300.txt&quot;
-## [1] &quot;sysCall=nohup Rscript runSim.R  n=350  &gt;  n350.txt&quot;
 ## [1] &quot;sysCall=nohup Rscript runSim.R  n=400  &gt;  n400.txt&quot;
-## [1] &quot;sysCall=nohup Rscript runSim.R  n=450  &gt;  n450.txt&quot;
-## [1] &quot;sysCall=nohup Rscript runSim.R  n=500  &gt;  n500.txt&quot;</pre></article></slide>
+## [1] &quot;sysCall=nohup Rscript runSim.R  n=500  &gt;  n500.txt&quot;
+```</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
