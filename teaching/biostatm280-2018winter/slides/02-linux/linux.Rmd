@@ -234,6 +234,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 ## {.smaller}
 
+-
     ```{bash}
     # all png files in current folder
     ls -l *.png
@@ -278,9 +279,9 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - `less` doesn't need to read the whole file, i.e., it loads files faster than `more`.
 
-## `grep` {.smaller}
+## `grep`
 
-`grep` prints lines that match an expression pattern:
+`grep` prints lines that match an expression:
 
 - Show lines that contain string `CentOS`:
     ```{bash}
@@ -325,14 +326,47 @@ Bash provides the following standard completion for the Linux users by default. 
 
 ## `awk`
 
-- `awk` is a filter and report writer:
+- `awk` is a filter and report writer.
+
+- Print sorted list of login names:
     ```{bash}
-    # print sorted list of login names
     awk -F: '{ print $1 }' /etc/passwd | sort | head -5
     ```
+
+----
+    
+- Print number of lines in a file, as `NR` stands for Number of Rows:
     ```{bash}
-    # print number of lines in a file, as NR stands for Number of Rows
     awk 'END { print NR }' /etc/passwd
+    ```
+or
+    ```{bash}
+    wc -l /etc/passwd
+    ```
+or
+    ```{bash}
+    wc -l < /etc/passwd
+    ```
+
+----
+
+- Print login names with UID in range `1000-1035`:
+    ```{bash}
+    awk -F: '{if ($3 >= 1000 && $3 <= 1035) print}' /etc/passwd
+    ```
+    
+- Print login names and log-in shells in comma-seperated format:
+    ```{bash}
+    awk -F: '{OFS = ","} {print $1, $7}' /etc/passwd
+    ```
+
+----
+
+- Print login names and indicate those with UID>1000 as `vip`:
+    ```{bash}
+    awk -F: -v status="" '{OFS = ","} 
+    {if ($3 >= 1000) status="vip"; else status="regular"} 
+    {print $1, status}' /etc/passwd
     ```
 
 ## Piping and redirection

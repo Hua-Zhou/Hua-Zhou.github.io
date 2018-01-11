@@ -270,7 +270,7 @@
 
 <pre class = 'prettyprint lang-bash'>ls -l</pre>
 
-<pre >## total 3928
+<pre >## total 3932
 ## -rw-r--r--. 1 huazhou huazhou     263 Jan 11 15:21 autoSim.R
 ## -rw-r--r--. 1 huazhou huazhou  110345 Jan  9 04:48 Emacs_Reference_Card.pdf
 ## -rw-r--r--. 1 huazhou huazhou  321281 Jan 10 23:29 key_authentication_1.png
@@ -278,8 +278,8 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2480586 Jan 11 19:12 linux.html
-## -rw-r--r--. 1 huazhou huazhou   19259 Jan 11 19:16 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2485936 Jan 11 20:31 linux.html
+## -rw-r--r--. 1 huazhou huazhou   19861 Jan 11 20:31 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
 ## -rw-r--r--. 1 huazhou huazhou     498 Jan 11 18:56 runSim.R
@@ -294,8 +294,8 @@
 
 <pre class = 'prettyprint lang-bash'>ls -al</pre>
 
-<pre >## total 3936
-## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 19:12 .
+<pre >## total 3940
+## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 20:31 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..
 ## -rw-r--r--. 1 huazhou huazhou     263 Jan 11 15:21 autoSim.R
 ## -rw-r--r--. 1 huazhou huazhou  110345 Jan  9 04:48 Emacs_Reference_Card.pdf
@@ -304,10 +304,10 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2480586 Jan 11 19:12 linux.html
-## -rw-r--r--. 1 huazhou huazhou   19259 Jan 11 19:16 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2485936 Jan 11 20:31 linux.html
+## -rw-r--r--. 1 huazhou huazhou   19861 Jan 11 20:31 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
-## -rw-r--r--. 1 huazhou huazhou    4075 Jan 11 19:12 .RData
+## -rw-r--r--. 1 huazhou huazhou    4076 Jan 11 20:31 .RData
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
 ## -rw-r--r--. 1 huazhou huazhou     498 Jan 11 18:56 runSim.R
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
@@ -446,20 +446,18 @@
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-3" class="smaller">
 
-<pre >```bash
-# all png files in current folder
-ls -l *.png
-```
+<ul>
+<li><pre class = 'prettyprint lang-bash'># all png files in current folder
+ls -l *.png</pre>
 
-```
-## -rw-r--r--. 1 huazhou huazhou 321281 Jan 10 23:29 key_authentication_1.png
+<pre >## -rw-r--r--. 1 huazhou huazhou 321281 Jan 10 23:29 key_authentication_1.png
 ## -rw-r--r--. 1 huazhou huazhou  96119 Jan 10 23:29 key_authentication_2.png
 ## -rw-rw-r--. 1 huazhou huazhou  11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou  42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou 102188 Jan  9 00:29 linux_filepermission.png
 ## -rw-r--r--. 1 huazhou huazhou 141962 Jan  9 04:37 Richard_Stallman_2013.png
-## -rw-r--r--. 1 huazhou huazhou 469335 Jan  9 06:11 screenshot_top.png
-```</pre>
+## -rw-r--r--. 1 huazhou huazhou 469335 Jan  9 06:11 screenshot_top.png</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Regular expression</h2></hgroup><article  id="regular-expression">
 
@@ -714,6 +712,7 @@ ls -l *.png
 ## 
 ## ## {.smaller}
 ## 
+## -
 ##     ```{bash}
 ##     # all png files in current folder
 ##     ls -l *.png
@@ -758,9 +757,9 @@ ls -l *.png
 ## 
 ## - `less` doesn&#39;t need to read the whole file, i.e., it loads files faster than `more`.
 ## 
-## ## `grep` {.smaller}
+## ## `grep`
 ## 
-## `grep` prints lines that match an expression pattern:
+## `grep` prints lines that match an expression:
 ## 
 ## - Show lines that contain string `CentOS`:
 ##     ```{bash}
@@ -805,14 +804,47 @@ ls -l *.png
 ## 
 ## ## `awk`
 ## 
-## - `awk` is a filter and report writer:
+## - `awk` is a filter and report writer.
+## 
+## - Print sorted list of login names:
 ##     ```{bash}
-##     # print sorted list of login names
 ##     awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5
 ##     ```
+## 
+## ----
+##     
+## - Print number of lines in a file, as `NR` stands for Number of Rows:
 ##     ```{bash}
-##     # print number of lines in a file, as NR stands for Number of Rows
 ##     awk &#39;END { print NR }&#39; /etc/passwd
+##     ```
+## or
+##     ```{bash}
+##     wc -l /etc/passwd
+##     ```
+## or
+##     ```{bash}
+##     wc -l &lt; /etc/passwd
+##     ```
+## 
+## ----
+## 
+## - Print login names with UID in range `1000-1035`:
+##     ```{bash}
+##     awk -F: &#39;{if ($3 &gt;= 1000 &amp;&amp; $3 &lt;= 1035) print}&#39; /etc/passwd
+##     ```
+##     
+## - Print login names and log-in shells in comma-seperated format:
+##     ```{bash}
+##     awk -F: &#39;{OFS = &quot;,&quot;} {print $1, $7}&#39; /etc/passwd
+##     ```
+## 
+## ----
+## 
+## - Print login names and indicate those with UID&gt;1000 as `vip`:
+##     ```{bash}
+##     awk -F: -v status=&quot;&quot; &#39;{OFS = &quot;,&quot;} 
+##     {if ($3 &gt;= 1000) status=&quot;vip&quot;; else status=&quot;regular&quot;} 
+##     {print $1, status}&#39; /etc/passwd
 ##     ```
 ## 
 ## ## Piping and redirection
@@ -1269,9 +1301,9 @@ ls -l *.png
 <li><p><code>less</code> doesn&#39;t need to read the whole file, i.e., it loads files faster than <code>more</code>.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2><code>grep</code></h2></hgroup><article  id="grep" class="smaller">
+</article></slide><slide class=""><hgroup><h2><code>grep</code></h2></hgroup><article  id="grep">
 
-<p><code>grep</code> prints lines that match an expression pattern:</p>
+<p><code>grep</code> prints lines that match an expression:</p>
 
 <ul>
 <li><p>Show lines that contain string <code>CentOS</code>:</p>
@@ -1315,12 +1347,12 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 
 <pre >## 27:- RHEL/CentOS is popular on servers.
 ## 29:- The teaching server for this class runs CentOS 7.
-## 285:- Show lines that contain string `CentOS`:
-## 288:    grep &#39;CentOS&#39; linux.Rmd
-## 295:    grep &#39;CentOS&#39; *.Rmd
-## 302:    grep -n &#39;CentOS&#39; linux.Rmd
-## 321:- Replace `CentOS` by `RHEL` in a text file:
-## 323:    sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre></li>
+## 286:- Show lines that contain string `CentOS`:
+## 289:    grep &#39;CentOS&#39; linux.Rmd
+## 296:    grep &#39;CentOS&#39; *.Rmd
+## 303:    grep -n &#39;CentOS&#39; linux.Rmd
+## 322:- Replace `CentOS` by `RHEL` in a text file:
+## 324:    sed &#39;s/CentOS/RHEL/&#39; linux.Rmd | grep RHEL</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1341,7 +1373,7 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 
 <pre class = 'prettyprint lang-bash'>ls -al | grep &#39;^d&#39;</pre>
 
-<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 19:12 .
+<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 20:31 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..</pre></li>
 </ul>
 
@@ -1366,21 +1398,183 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 </article></slide><slide class=""><hgroup><h2><code>awk</code></h2></hgroup><article  id="awk">
 
 <ul>
-<li><p><code>awk</code> is a filter and report writer:</p>
+<li><p><code>awk</code> is a filter and report writer.</p></li>
+<li><p>Print sorted list of login names:</p>
 
-<pre class = 'prettyprint lang-bash'># print sorted list of login names
-awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5</pre>
+<pre class = 'prettyprint lang-bash'>awk -F: &#39;{ print $1 }&#39; /etc/passwd | sort | head -5</pre>
 
 <pre >## adm
 ## andrewngu
 ## anorthrup
 ## bin
-## bryanlin24</pre>
+## bryanlin24</pre></li>
+</ul>
 
-<pre class = 'prettyprint lang-bash'># print number of lines in a file, as NR stands for Number of Rows
-awk &#39;END { print NR }&#39; /etc/passwd</pre>
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><p>Print number of lines in a file, as <code>NR</code> stands for Number of Rows:</p>
+
+<pre class = 'prettyprint lang-bash'>awk &#39;END { print NR }&#39; /etc/passwd</pre>
+
+<pre >## 58</pre>
+
+<p>or</p>
+
+<pre class = 'prettyprint lang-bash'>wc -l /etc/passwd</pre>
+
+<pre >## 58 /etc/passwd</pre>
+
+<p>or</p>
+
+<pre class = 'prettyprint lang-bash'>wc -l &lt; /etc/passwd</pre>
 
 <pre >## 58</pre></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><p>Print login names with UID in range <code>1000-1035</code>:</p>
+
+<pre class = 'prettyprint lang-bash'>awk -F: &#39;{if ($3 &gt;= 1000 &amp;&amp; $3 &lt;= 1035) print}&#39; /etc/passwd</pre>
+
+<pre >## huazhou:x:1000:1001::/home/huazhou:/bin/bash
+## juhkim111:x:1001:1002::/home/juhkim111:/bin/bash
+## jboland521:x:1033:1034::/home/jboland521:/bin/bash
+## tdbufford:x:1034:1035::/home/tdbufford:/bin/bash
+## emjcampos:x:1035:1036::/home/emjcampos:/bin/bash</pre></li>
+<li><p>Print login names and log-in shells in comma-seperated format:</p>
+
+<pre class = 'prettyprint lang-bash'>awk -F: &#39;{OFS = &quot;,&quot;} {print $1, $7}&#39; /etc/passwd</pre>
+
+<pre >## root,/bin/bash
+## bin,/sbin/nologin
+## daemon,/sbin/nologin
+## adm,/sbin/nologin
+## lp,/sbin/nologin
+## sync,/bin/sync
+## shutdown,/sbin/shutdown
+## halt,/sbin/halt
+## mail,/sbin/nologin
+## operator,/sbin/nologin
+## games,/sbin/nologin
+## ftp,/sbin/nologin
+## nobody,/sbin/nologin
+## systemd-network,/sbin/nologin
+## dbus,/sbin/nologin
+## polkitd,/sbin/nologin
+## ntp,/sbin/nologin
+## postfix,/sbin/nologin
+## sshd,/sbin/nologin
+## chrony,/sbin/nologin
+## huazhou,/bin/bash
+## juhkim111,/bin/bash
+## rstudio-server,/bin/bash
+## jboland521,/bin/bash
+## tdbufford,/bin/bash
+## emjcampos,/bin/bash
+## nanchen322,/bin/bash
+## gaoshuang,/bin/bash
+## sgoitom,/bin/bash
+## tahlia.hodes,/bin/bash
+## huiyuhu,/bin/bash
+## luminghuang,/bin/bash
+## sarahh.jii,/bin/bash
+## makadlac,/bin/bash
+## david.levy,/bin/bash
+## zexuan55,/bin/bash
+## lishanpeng0913,/bin/bash
+## bryanlin24,/bin/bash
+## xliu352,/bin/bash
+## l4luo,/bin/bash
+## mondals,/bin/bash
+## andrewngu,/bin/bash
+## anorthrup,/bin/bash
+## chad.e.pickering,/bin/bash
+## mdponzini,/bin/bash
+## c.shaw,/bin/bash
+## shendarrick821,/bin/bash
+## ziyansong08,/bin/bash
+## ericasu,/bin/bash
+## nabbongoug,/bin/bash
+## wangdy0536,/bin/bash
+## katywang,/bin/bash
+## zy.zhang,/bin/bash
+## zhaokezk,/bin/bash
+## tss,/sbin/nologin
+## stjia,/bin/bash
+## jayxu33,/bin/bash
+## keydemo,/bin/bash</pre></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><p>Print login names and indicate those with UID&gt;1000 as <code>vip</code>:</p>
+
+<pre class = 'prettyprint lang-bash'>awk -F: -v status=&quot;&quot; &#39;{OFS = &quot;,&quot;} 
+{if ($3 &gt;= 1000) status=&quot;vip&quot;; else status=&quot;regular&quot;} 
+{print $1, status}&#39; /etc/passwd</pre>
+
+<pre >## root,regular
+## bin,regular
+## daemon,regular
+## adm,regular
+## lp,regular
+## sync,regular
+## shutdown,regular
+## halt,regular
+## mail,regular
+## operator,regular
+## games,regular
+## ftp,regular
+## nobody,regular
+## systemd-network,regular
+## dbus,regular
+## polkitd,regular
+## ntp,regular
+## postfix,regular
+## sshd,regular
+## chrony,regular
+## huazhou,vip
+## juhkim111,vip
+## rstudio-server,regular
+## jboland521,vip
+## tdbufford,vip
+## emjcampos,vip
+## nanchen322,vip
+## gaoshuang,vip
+## sgoitom,vip
+## tahlia.hodes,vip
+## huiyuhu,vip
+## luminghuang,vip
+## sarahh.jii,vip
+## makadlac,vip
+## david.levy,vip
+## zexuan55,vip
+## lishanpeng0913,vip
+## bryanlin24,vip
+## xliu352,vip
+## l4luo,vip
+## mondals,vip
+## andrewngu,vip
+## anorthrup,vip
+## chad.e.pickering,vip
+## mdponzini,vip
+## c.shaw,vip
+## shendarrick821,vip
+## ziyansong08,vip
+## ericasu,vip
+## nabbongoug,vip
+## wangdy0536,vip
+## katywang,vip
+## zy.zhang,vip
+## zhaokezk,vip
+## tss,regular
+## stjia,vip
+## jayxu33,vip
+## keydemo,vip</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Piping and redirection</h2></hgroup><article  id="piping-and-redirection">
@@ -1479,12 +1673,12 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre class = 'prettyprint lang-bash'>ps</pre>
 
 <pre >##   PID TTY          TIME CMD
-##  6503 ?        00:01:54 rsession
+##  6503 ?        00:02:25 rsession
 ## 12076 ?        00:00:00 sshd
 ## 18567 ?        00:00:00 sshd
-## 24530 ?        00:00:01 R
-## 24602 ?        00:00:00 sh
-## 24603 ?        00:00:00 ps</pre></li>
+## 30454 ?        00:00:01 R
+## 30537 ?        00:00:00 sh
+## 30538 ?        00:00:00 ps</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1495,7 +1689,7 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre class = 'prettyprint lang-bash'>ps -eaf</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## root         1     0  0 Jan08 ?        00:00:07 /usr/lib/systemd/systemd --switched-root --system --deserialize 21
+## root         1     0  0 Jan08 ?        00:00:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 21
 ## root         2     0  0 Jan08 ?        00:00:00 [kthreadd]
 ## root         3     2  0 Jan08 ?        00:00:00 [ksoftirqd/0]
 ## root         5     2  0 Jan08 ?        00:00:00 [kworker/0:0H]
@@ -1548,14 +1742,14 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 ## root       191     2  0 Jan08 ?        00:00:00 [xfs-reclaim/sda]
 ## root       192     2  0 Jan08 ?        00:00:00 [xfs-log/sda1]
 ## root       193     2  0 Jan08 ?        00:00:00 [xfs-eofblocks/s]
-## root       194     2  0 Jan08 ?        00:01:01 [xfsaild/sda1]
+## root       194     2  0 Jan08 ?        00:01:03 [xfsaild/sda1]
 ## root       232     2  0 Jan08 ?        00:00:00 [kworker/1:1H]
 ## root       247     1  0 Jan08 ?        00:00:14 /usr/lib/systemd/systemd-journald
 ## root       272     1  0 Jan08 ?        00:00:00 /usr/lib/systemd/systemd-udevd
 ## root       301     1  0 Jan08 ?        00:00:02 /sbin/auditd
 ## root       356     2  0 Jan08 ?        00:00:00 [edac-poller]
 ## dbus       368     1  0 Jan08 ?        00:00:01 /bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
-## root       377     2  0 Jan08 ?        00:00:00 [kworker/0:1H]
+## root       377     2  0 Jan08 ?        00:00:01 [kworker/0:1H]
 ## root       381     1  0 Jan08 ?        00:00:01 /usr/lib/systemd/systemd-logind
 ## polkitd    382     1  0 Jan08 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
 ## root       384     1  0 Jan08 ?        00:00:00 /usr/sbin/acpid
@@ -1571,32 +1765,32 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 ## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
 ## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
 ## root       927     1  0 Jan08 ?        00:00:09 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:17 /usr/bin/python /usr/bin/google_accounts_daemon
+## root       928     1  0 Jan08 ?        00:00:18 /usr/bin/python /usr/bin/google_accounts_daemon
 ## root       988     1  0 Jan08 ?        00:00:01 /usr/libexec/postfix/master -w
 ## postfix    994   988  0 Jan08 ?        00:00:00 qmgr -l -t unix -u
 ## root      1002     2  0 Jan08 ?        00:00:00 [kworker/2:1H]
 ## root      2405     1  0 Jan08 ?        00:00:01 /usr/sbin/sshd -D
-## huazhou   6503  6693  0 14:27 ?        00:01:54 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6503  6693  0 14:27 ?        00:02:25 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
 ## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
-## rstudio+  6693     1  0 Jan08 ?        00:01:28 /usr/lib/rstudio-server/bin/rserver
+## rstudio+  6693     1  0 Jan08 ?        00:01:31 /usr/lib/rstudio-server/bin/rserver
 ## root     12056     2  0 16:31 ?        00:00:00 [kworker/0:1]
 ## root     12067  2405  0 16:32 ?        00:00:00 sshd: huazhou [priv]
 ## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
 ## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
 ## root     13971     2  0 16:55 ?        00:00:00 [kworker/3:1]
-## root     17834     2  0 18:04 ?        00:00:00 [kworker/1:2]
 ## root     18558  2405  0 18:21 ?        00:00:00 sshd: huazhou [priv]
 ## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
 ## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
-## postfix  21894   988  0 18:51 ?        00:00:00 pickup -l -t unix -u
-## root     22401     2  0 18:59 ?        00:00:00 [kworker/2:0]
-## root     22495     2  0 19:02 ?        00:00:00 [kworker/1:0]
 ## root     22507     2  0 Jan10 ?        00:00:00 [kworker/3:0]
-## root     22901     2  0 19:05 ?        00:00:00 [kworker/2:1]
-## root     24516     2  0 19:15 ?        00:00:00 [kworker/2:2]
-## huazhou  24530  6503 66 19:16 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  24604 24530  0 19:16 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
-## huazhou  24605 24604  0 19:16 ?        00:00:00 ps -eaf
+## root     25998     2  0 20:01 ?        00:00:00 [kworker/1:1]
+## root     27248     2  0 20:09 ?        00:00:00 [kworker/2:0]
+## root     28155     2  0 20:15 ?        00:00:00 [kworker/1:0]
+## root     28390     2  0 20:19 ?        00:00:00 [kworker/2:1]
+## root     29802     2  0 20:25 ?        00:00:00 [kworker/2:2]
+## postfix  30444   988  0 20:31 ?        00:00:00 pickup -l -t unix -u
+## huazhou  30454  6503 67 20:31 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  30539 30454  0 20:31 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
+## huazhou  30540 30539  0 20:31 ?        00:00:00 ps -eaf
 ## root     31539     2  0 06:03 ?        00:00:00 [kworker/0:3]</pre></li>
 </ul>
 
@@ -1611,10 +1805,10 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 ## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
 ## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
 ## root       927     1  0 Jan08 ?        00:00:09 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:17 /usr/bin/python /usr/bin/google_accounts_daemon
-## huazhou  24606 24530  0 19:16 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
-## huazhou  24607 24606  0 19:16 ?        00:00:00 bash -c ps -eaf | grep python
-## huazhou  24609 24607  0 19:16 ?        00:00:00 grep python</pre></li>
+## root       928     1  0 Jan08 ?        00:00:18 /usr/bin/python /usr/bin/google_accounts_daemon
+## huazhou  30541 30454  0 20:31 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
+## huazhou  30542 30541  0 20:31 ?        00:00:00 bash -c ps -eaf | grep python
+## huazhou  30544 30542  0 20:31 ?        00:00:00 grep python</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1625,7 +1819,7 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre class = 'prettyprint lang-bash'>ps -fp 1</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## root         1     0  0 Jan08 ?        00:00:07 /usr/lib/systemd/systemd --switched-root --system --deserialize 21</pre></li>
+## root         1     0  0 Jan08 ?        00:00:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 21</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1636,15 +1830,15 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre class = 'prettyprint lang-bash'>ps -fu huazhou</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## huazhou   6503  6693  0 14:27 ?        00:01:54 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6503  6693  0 14:27 ?        00:02:25 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
 ## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
 ## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
 ## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
 ## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
 ## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
-## huazhou  24530  6503 67 19:16 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  24612 24530  0 19:16 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
-## huazhou  24613 24612  0 19:16 ?        00:00:00 ps -fu huazhou</pre></li>
+## huazhou  30454  6503 68 20:31 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  30547 30454  0 20:31 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
+## huazhou  30548 30547  0 20:31 ?        00:00:00 ps -fu huazhou</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Kill processes</h2></hgroup><article  id="kill-processes">
@@ -1932,7 +2126,7 @@ print(x)</pre>
 
 <pre class = 'prettyprint lang-bash'>Rscript runSim.R n=100</pre>
 
-<pre >## [1] 0.1543184</pre></li>
+<pre >## [1] 0.1183087</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Run long jobs</h2></hgroup><article  id="run-long-jobs">
@@ -1945,7 +2139,7 @@ print(x)</pre>
 
 <pre class = 'prettyprint lang-bash'>nohup Rscript runSim.R n=100 &amp;</pre>
 
-<pre >## [1] -0.1501122</pre></li>
+<pre >## [1] -0.3683952</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>screen</h2></hgroup><article  id="screen">
