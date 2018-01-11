@@ -563,7 +563,7 @@ scp username@35.227.165.60:/pathtofile pathtolocalfolder
 
 ## Batch mode {.smaller}
 
-- Demo script [`meanEst.R`](./slides/02-linux/meanEst.R) implements a terrible estimator of mean
+- Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements a terrible estimator of mean
 ```{bash}
 cat meanEst.R
 ```
@@ -586,7 +586,7 @@ Rscript meanEst.R
 
 - Typically automate `BATCH` calls using a scripting language, e.g., python, perl, and shell script.
 
-## Pass arguments to R
+## Pass arguments to R scripts
 
 - Specify arguments via `R CMD BATCH`:
 ```{bash, eval=FALSE}
@@ -618,31 +618,31 @@ print(x)
 
 ----
 
-- Script [`runSim.R`](./slides/02-linux/runSim.R) has components: method implementation, argument parser, data generator with unspecified parameter `n`, and estimation based on generated data.
+- Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: method implementation, argument parser, data generator with unspecified parameter `n`, and estimation based on generated data.
 
-- Call `runSim.R` with sample size `n=100`:
+- Call [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) with sample size `n=100`:
 ```{bash}
-R CMD BATCH '--arg n=10` runSim.R
+R CMD BATCH '--args n=100' runSim.R
 ```
 
 ```{bash}
-Rscript runSim.R n=10
+Rscript runSim.R n=100
 ```
 
-## Run time consuming jobs
+## Run long jobs
 
 - Many statistical computing tasks takes long: simulation, MCMC, etc.
 
 - `nohup` command in Linux runs program(s) immute to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process.
 
-- `nohup` is in the POSIX standard thus is available on both Linux and MacOS.
+- `nohup` is POSIX standard thus available on both Linux and MacOS.
 
 ```{bash}
 nohup Rscript runSim.R n=100 &
 ```
-`&` runs the job in background.
+runs `runSim.R` in background and writes output to `nohup.out`.
 
-## `screen`
+## screen
 
 - `screen` is another popular utility, but not installed by default. 
 
@@ -664,16 +664,16 @@ nohup Rscript runSim.R n=100 &
 
 R in conjuction with `nohup` or `screen` can be used to orchestrate a large simulation study.
 
-- it can be more elegant, transparent, and robust to parallelize jobs corresponding to different scenarios (e.g., different generative models) outside of the code used to do statistical computation.
+- It can be more elegant, transparent, and robust to parallelize jobs corresponding to different scenarios (e.g., different generative models) outside of the code used to do statistical computation.
 
-- We'll consider a simulation study in R but the same approach could be used with code written in Julia, Matlab, Python, etc.
+- We consider a simulation study in R but the same approach could be used with code written in Julia, Matlab, Python, etc.
 
 - Python in many ways makes a better _glue_ we may discuss this later in the course.
 
 ----
 
 - Suppose we have 
-    - R script `runSim.R` which run a simulation based on command line arguments `n`.  
+    - R script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
     - A large collection of `n` values that we want to use in our simulation study.  
     - Access to a server with 128 cores.  
     
@@ -681,3 +681,14 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 
 - Option 2: automate calls using R and `nohup`.
 
+----
+
+```{bash}
+cat autoSim.R
+```
+
+----
+
+```{bash}
+Rscript autoSim.R
+```
