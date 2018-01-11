@@ -1,3 +1,8 @@
+## parsing command arguments
+for (arg in commandArgs(TRUE)) {
+  eval(parse(text=arg))
+}
+
 ## check if a given integer is prime
 isPrime = function(n) {
   if (n <= 3) {
@@ -14,11 +19,6 @@ estMeanPrimes = function (x) {
   n = length(x)
   ind = sapply(1:n, isPrime)
   return (mean(x[ind]))
-}
-
-## parsing arguments
-for (arg in commandArgs(TRUE)) {
-  eval(parse(text=arg))
 }
 
 # simulate data

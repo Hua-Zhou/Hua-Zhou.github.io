@@ -234,6 +234,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 ## {.smaller}
 
+-
     ```{bash}
     # all png files in current folder
     ls -l *.png
@@ -278,9 +279,9 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - `less` doesn't need to read the whole file, i.e., it loads files faster than `more`.
 
-## `grep` {.smaller}
+## `grep`
 
-`grep` prints lines that match an expression pattern:
+`grep` prints lines that match an expression:
 
 - Show lines that contain string `CentOS`:
     ```{bash}
@@ -325,14 +326,47 @@ Bash provides the following standard completion for the Linux users by default. 
 
 ## `awk`
 
-- `awk` is a filter and report writer:
+- `awk` is a filter and report writer.
+
+- Print sorted list of login names:
     ```{bash}
-    # print sorted list of login names
     awk -F: '{ print $1 }' /etc/passwd | sort | head -5
     ```
+
+----
+    
+- Print number of lines in a file, as `NR` stands for Number of Rows:
     ```{bash}
-    # print number of lines in a file, as NR stands for Number of Rows
     awk 'END { print NR }' /etc/passwd
+    ```
+or
+    ```{bash}
+    wc -l /etc/passwd
+    ```
+or
+    ```{bash}
+    wc -l < /etc/passwd
+    ```
+
+----
+
+- Print login names with UID in range `1000-1035`:
+    ```{bash}
+    awk -F: '{if ($3 >= 1000 && $3 <= 1035) print}' /etc/passwd
+    ```
+    
+- Print login names and log-in shells in comma-seperated format:
+    ```{bash}
+    awk -F: '{OFS = ","} {print $1, $7}' /etc/passwd
+    ```
+
+----
+
+- Print login names and indicate those with UID>1000 as `vip`:
+    ```{bash}
+    awk -F: -v status="" '{OFS = ","} 
+    {if ($3 >= 1000) status="vip"; else status="regular"} 
+    {print $1, status}' /etc/passwd
     ```
 
 ## Piping and redirection
@@ -589,21 +623,21 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 ## Batch mode {.smaller}
 
 - Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
+$$
+  {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{x_i \text{ is prime}}}{\sum_{i=1}^n 1_{x_i \text{ is prime}}}.
+$$
     ```{bash}
     cat meanEst.R
     ```
 
 ----
 
-- To run your R code non-interactively aka in batch mode, we have at least two options.
-
-    - `R CMD BATCH`:
+- To run your R code non-interactively aka in batch mode, we have at least two options:
     ```{bash, eval=FALSE}
     # default output to meanEst.Rout
     R CMD BATCH meanEst.R
     ```
-
-    - `Rscript`:
+or
     ```{bash, eval=FALSE}
     # output to stdout
     Rscript meanEst.R
@@ -624,12 +658,24 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
     ```
 
 - Parse command line arguments using magic formula
-```{r, eval=FALSE}
-for (arg in commandArgs(T)) {
-  eval(parse(text=arg))
-}
-```
+    ```{r, eval=FALSE}
+    for (arg in commandArgs(T)) {
+      eval(parse(text=arg))
+    }
+    ```
 in R script. After calling the above code, all command line arguments will be available in the global namespace.
+
+---- 
+
+- To understand the magic formula `commandArgs`, run R by:
+    ```{bash, eval=FALSE}
+    R '--args mu=1 sig=2 kap=3'
+    ```
+and then issue commands in R
+    ```{r, eval=FALSE}
+    commandArgs()
+    commandArgs(TRUE)
+    ```
 
 ----
 
@@ -642,11 +688,16 @@ in R script. After calling the above code, all command line arguments will be av
     print(x)
     ```
 
+## {.smaller}
+
+- [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) data generator with unspecified parameter `n`, (3) estimation based on generated data, and (4) **command argument parser**.
+```{bash}
+cat runSim.R
+```
+
 ----
 
-- Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) command argument parser, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
-
-- Call [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) with sample size `n=100`:
+- Call `runSim.R` with sample size `n=100`:
     ```{bash}
     R CMD BATCH '--args n=100' runSim.R
     ```
@@ -659,13 +710,14 @@ or
 
 - Many statistical computing tasks take long: simulation, MCMC, etc.
 
-- `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process. You can log back in to check status and results.
+- `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process; we can log in later to check status and results.
 
-- `nohup` is POSIX standard thus available on both Linux and MacOS.
+- `nohup` is POSIX standard thus available on Linux and MacOS.
+
+- Run `runSim.R` in background and writes output to `nohup.out`:
     ```{bash}
     nohup Rscript runSim.R n=100 &
     ```
-runs `runSim.R` in background and writes output to `nohup.out`.
 
 ## screen
 
@@ -698,7 +750,7 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 ----
 
 - Suppose we have 
-    - R script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
+    - [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
     - A large collection of `n` values that we want to use in our simulation study.  
     - Access to a server with 128 cores.  
     
@@ -708,12 +760,14 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 
 ----
 
+-
     ```{bash}
     cat autoSim.R
     ```
 
 ----
 
+-
     ```{bash}
     Rscript autoSim.R
     ```
