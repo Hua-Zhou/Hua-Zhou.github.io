@@ -278,7 +278,7 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2485936 Jan 11 20:31 linux.html
+## -rw-rw-r--. 1 huazhou huazhou 2486049 Jan 11 20:31 linux.html
 ## -rw-r--r--. 1 huazhou huazhou   19861 Jan 11 20:31 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
@@ -304,10 +304,10 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2485936 Jan 11 20:31 linux.html
+## -rw-rw-r--. 1 huazhou huazhou 2486049 Jan 11 20:31 linux.html
 ## -rw-r--r--. 1 huazhou huazhou   19861 Jan 11 20:31 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
-## -rw-r--r--. 1 huazhou huazhou    4076 Jan 11 20:31 .RData
+## -rw-r--r--. 1 huazhou huazhou    4078 Jan 11 20:31 .RData
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
 ## -rw-r--r--. 1 huazhou huazhou     498 Jan 11 18:56 runSim.R
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
@@ -1673,12 +1673,12 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 <pre class = 'prettyprint lang-bash'>ps</pre>
 
 <pre >##   PID TTY          TIME CMD
-##  6503 ?        00:02:25 rsession
+##  6503 ?        00:02:27 rsession
 ## 12076 ?        00:00:00 sshd
 ## 18567 ?        00:00:00 sshd
-## 30454 ?        00:00:01 R
-## 30537 ?        00:00:00 sh
-## 30538 ?        00:00:00 ps</pre></li>
+## 30867 ?        00:00:01 R
+## 30950 ?        00:00:00 sh
+## 30951 ?        00:00:00 ps</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1770,9 +1770,9 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 ## postfix    994   988  0 Jan08 ?        00:00:00 qmgr -l -t unix -u
 ## root      1002     2  0 Jan08 ?        00:00:00 [kworker/2:1H]
 ## root      2405     1  0 Jan08 ?        00:00:01 /usr/sbin/sshd -D
-## huazhou   6503  6693  0 14:27 ?        00:02:25 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6503  6693  0 14:27 ?        00:02:27 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
 ## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
-## rstudio+  6693     1  0 Jan08 ?        00:01:31 /usr/lib/rstudio-server/bin/rserver
+## rstudio+  6693     1  0 Jan08 ?        00:01:32 /usr/lib/rstudio-server/bin/rserver
 ## root     12056     2  0 16:31 ?        00:00:00 [kworker/0:1]
 ## root     12067  2405  0 16:32 ?        00:00:00 sshd: huazhou [priv]
 ## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
@@ -1783,14 +1783,14 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 ## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
 ## root     22507     2  0 Jan10 ?        00:00:00 [kworker/3:0]
 ## root     25998     2  0 20:01 ?        00:00:00 [kworker/1:1]
-## root     27248     2  0 20:09 ?        00:00:00 [kworker/2:0]
 ## root     28155     2  0 20:15 ?        00:00:00 [kworker/1:0]
 ## root     28390     2  0 20:19 ?        00:00:00 [kworker/2:1]
 ## root     29802     2  0 20:25 ?        00:00:00 [kworker/2:2]
 ## postfix  30444   988  0 20:31 ?        00:00:00 pickup -l -t unix -u
-## huazhou  30454  6503 67 20:31 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  30539 30454  0 20:31 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
-## huazhou  30540 30539  0 20:31 ?        00:00:00 ps -eaf
+## root     30720     2  0 20:36 ?        00:00:00 [kworker/2:0]
+## huazhou  30867  6503 63 20:38 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  30952 30867  0 20:38 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
+## huazhou  30953 30952  0 20:38 ?        00:00:00 ps -eaf
 ## root     31539     2  0 06:03 ?        00:00:00 [kworker/0:3]</pre></li>
 </ul>
 
@@ -1806,9 +1806,9 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 ## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
 ## root       927     1  0 Jan08 ?        00:00:09 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
 ## root       928     1  0 Jan08 ?        00:00:18 /usr/bin/python /usr/bin/google_accounts_daemon
-## huazhou  30541 30454  0 20:31 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
-## huazhou  30542 30541  0 20:31 ?        00:00:00 bash -c ps -eaf | grep python
-## huazhou  30544 30542  0 20:31 ?        00:00:00 grep python</pre></li>
+## huazhou  30954 30867  0 20:38 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
+## huazhou  30955 30954  0 20:38 ?        00:00:00 bash -c ps -eaf | grep python
+## huazhou  30957 30955  0 20:38 ?        00:00:00 grep python</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1830,15 +1830,15 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 <pre class = 'prettyprint lang-bash'>ps -fu huazhou</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## huazhou   6503  6693  0 14:27 ?        00:02:25 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6503  6693  0 14:27 ?        00:02:27 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
 ## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
 ## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
 ## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
 ## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
 ## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
-## huazhou  30454  6503 68 20:31 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  30547 30454  0 20:31 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
-## huazhou  30548 30547  0 20:31 ?        00:00:00 ps -fu huazhou</pre></li>
+## huazhou  30867  6503 64 20:38 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  30960 30867  0 20:38 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
+## huazhou  30961 30960  0 20:38 ?        00:00:00 ps -fu huazhou</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Kill processes</h2></hgroup><article  id="kill-processes">
@@ -2126,7 +2126,7 @@ print(x)</pre>
 
 <pre class = 'prettyprint lang-bash'>Rscript runSim.R n=100</pre>
 
-<pre >## [1] 0.1183087</pre></li>
+<pre >## [1] -0.1246461</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Run long jobs</h2></hgroup><article  id="run-long-jobs">
@@ -2139,7 +2139,7 @@ print(x)</pre>
 
 <pre class = 'prettyprint lang-bash'>nohup Rscript runSim.R n=100 &amp;</pre>
 
-<pre >## [1] -0.3683952</pre></li>
+<pre >## [1] -0.2150207</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>screen</h2></hgroup><article  id="screen">
