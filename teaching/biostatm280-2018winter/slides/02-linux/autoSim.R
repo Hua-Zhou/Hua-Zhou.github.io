@@ -1,6 +1,6 @@
 # autoSim.R
 
-nVals = seq(50, 500, by=50)
+nVals = seq(100, 500, by=100)
 for (n in nVals) {
   oFile = paste("n", n, ".txt", sep="")
   arg = paste("n=", n, sep="")

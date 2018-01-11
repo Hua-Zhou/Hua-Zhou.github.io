@@ -278,11 +278,11 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2479437 Jan 11 18:28 linux.html
-## -rw-r--r--. 1 huazhou huazhou   18982 Jan 11 18:33 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2480586 Jan 11 19:12 linux.html
+## -rw-r--r--. 1 huazhou huazhou   19259 Jan 11 19:16 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
-## -rw-r--r--. 1 huazhou huazhou     490 Jan 11 16:33 runSim.R
+## -rw-r--r--. 1 huazhou huazhou     498 Jan 11 18:56 runSim.R
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
 ## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre></li>
 </ul>
@@ -295,7 +295,7 @@
 <pre class = 'prettyprint lang-bash'>ls -al</pre>
 
 <pre >## total 3936
-## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 18:28 .
+## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 19:12 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..
 ## -rw-r--r--. 1 huazhou huazhou     263 Jan 11 15:21 autoSim.R
 ## -rw-r--r--. 1 huazhou huazhou  110345 Jan  9 04:48 Emacs_Reference_Card.pdf
@@ -304,12 +304,12 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2479437 Jan 11 18:28 linux.html
-## -rw-r--r--. 1 huazhou huazhou   18982 Jan 11 18:33 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2480586 Jan 11 19:12 linux.html
+## -rw-r--r--. 1 huazhou huazhou   19259 Jan 11 19:16 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
-## -rw-r--r--. 1 huazhou huazhou    4076 Jan 11 18:28 .RData
+## -rw-r--r--. 1 huazhou huazhou    4075 Jan 11 19:12 .RData
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
-## -rw-r--r--. 1 huazhou huazhou     490 Jan 11 16:33 runSim.R
+## -rw-r--r--. 1 huazhou huazhou     498 Jan 11 18:56 runSim.R
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
 ## -rw-r--r--. 1 huazhou huazhou  199492 Jan  9 04:56 Vi_Cheat_Sheet.pdf</pre></li>
 </ul>
@@ -1069,21 +1069,21 @@ ls -l *.png
 ## ## Batch mode {.smaller}
 ## 
 ## - Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
+## $$
+##   {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{x_i \text{ is prime}}}{\sum_{i=1}^n 1_{x_i \text{ is prime}}}.
+## $$
 ##     ```{bash}
 ##     cat meanEst.R
 ##     ```
 ## 
 ## ----
 ## 
-## - To run your R code non-interactively aka in batch mode, we have at least two options.
-## 
-##     - `R CMD BATCH`:
+## - To run your R code non-interactively aka in batch mode, we have at least two options:
 ##     ```{bash, eval=FALSE}
 ##     # default output to meanEst.Rout
 ##     R CMD BATCH meanEst.R
 ##     ```
-## 
-##     - `Rscript`:
+## or
 ##     ```{bash, eval=FALSE}
 ##     # output to stdout
 ##     Rscript meanEst.R
@@ -1104,12 +1104,24 @@ ls -l *.png
 ##     ```
 ## 
 ## - Parse command line arguments using magic formula
-## ```{r, eval=FALSE}
-## for (arg in commandArgs(T)) {
-##   eval(parse(text=arg))
-## }
-## ```
+##     ```{r, eval=FALSE}
+##     for (arg in commandArgs(T)) {
+##       eval(parse(text=arg))
+##     }
+##     ```
 ## in R script. After calling the above code, all command line arguments will be available in the global namespace.
+## 
+## ---- 
+## 
+## - To understand the magic formula `commandArgs`, run R by:
+##     ```{bash, eval=FALSE}
+##     R &#39;--args mu=1 sig=2 kap=3&#39;
+##     ```
+## and then issue commands in R
+##     ```{r, eval=FALSE}
+##     commandArgs()
+##     commandArgs(TRUE)
+##     ```
 ## 
 ## ----
 ## 
@@ -1122,11 +1134,16 @@ ls -l *.png
 ##     print(x)
 ##     ```
 ## 
+## ## {.smaller}
+## 
+## - [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) data generator with unspecified parameter `n`, (3) estimation based on generated data, and (4) **command argument parser**.
+## ```{bash}
+## cat runSim.R
+## ```
+## 
 ## ----
 ## 
-## - Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) command argument parser, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
-## 
-## - Call [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) with sample size `n=100`:
+## - Call `runSim.R` with sample size `n=100`:
 ##     ```{bash}
 ##     R CMD BATCH &#39;--args n=100&#39; runSim.R
 ##     ```
@@ -1139,13 +1156,14 @@ ls -l *.png
 ## 
 ## - Many statistical computing tasks take long: simulation, MCMC, etc.
 ## 
-## - `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process. You can log back in to check status and results.
+## - `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process; we can log in later to check status and results.
 ## 
-## - `nohup` is POSIX standard thus available on both Linux and MacOS.
+## - `nohup` is POSIX standard thus available on Linux and MacOS.
+## 
+## - Run `runSim.R` in background and writes output to `nohup.out`:
 ##     ```{bash}
 ##     nohup Rscript runSim.R n=100 &amp;
 ##     ```
-## runs `runSim.R` in background and writes output to `nohup.out`.
 ## 
 ## ## screen
 ## 
@@ -1178,7 +1196,7 @@ ls -l *.png
 ## ----
 ## 
 ## - Suppose we have 
-##     - R script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
+##     - [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
 ##     - A large collection of `n` values that we want to use in our simulation study.  
 ##     - Access to a server with 128 cores.  
 ##     
@@ -1188,12 +1206,14 @@ ls -l *.png
 ## 
 ## ----
 ## 
+## -
 ##     ```{bash}
 ##     cat autoSim.R
 ##     ```
 ## 
 ## ----
 ## 
+## -
 ##     ```{bash}
 ##     Rscript autoSim.R
 ##     ```
@@ -1229,9 +1249,9 @@ ls -l *.png
 
 <pre class = 'prettyprint lang-bash'>tail linux.Rmd</pre>
 
-<pre >## 
-## ----
+<pre >## ----
 ## 
+## -
 ##     ```{bash}
 ##     Rscript autoSim.R
 ##     ```
@@ -1321,7 +1341,7 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 
 <pre class = 'prettyprint lang-bash'>ls -al | grep &#39;^d&#39;</pre>
 
-<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 18:28 .
+<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 19:12 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..</pre></li>
 </ul>
 
@@ -1459,12 +1479,12 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre class = 'prettyprint lang-bash'>ps</pre>
 
 <pre >##   PID TTY          TIME CMD
-##  6503 ?        00:01:32 rsession
+##  6503 ?        00:01:54 rsession
 ## 12076 ?        00:00:00 sshd
 ## 18567 ?        00:00:00 sshd
-## 19885 ?        00:00:01 R
-## 19957 ?        00:00:00 sh
-## 19958 ?        00:00:00 ps</pre></li>
+## 24530 ?        00:00:01 R
+## 24602 ?        00:00:00 sh
+## 24603 ?        00:00:00 ps</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1481,8 +1501,8 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 ## root         5     2  0 Jan08 ?        00:00:00 [kworker/0:0H]
 ## root         7     2  0 Jan08 ?        00:00:00 [migration/0]
 ## root         8     2  0 Jan08 ?        00:00:00 [rcu_bh]
-## root         9     2  0 Jan08 ?        00:00:16 [rcu_sched]
-## root        10     2  0 Jan08 ?        00:00:00 [watchdog/0]
+## root         9     2  0 Jan08 ?        00:00:17 [rcu_sched]
+## root        10     2  0 Jan08 ?        00:00:01 [watchdog/0]
 ## root        11     2  0 Jan08 ?        00:00:00 [watchdog/1]
 ## root        12     2  0 Jan08 ?        00:00:00 [migration/1]
 ## root        13     2  0 Jan08 ?        00:00:00 [ksoftirqd/1]
@@ -1528,9 +1548,9 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 ## root       191     2  0 Jan08 ?        00:00:00 [xfs-reclaim/sda]
 ## root       192     2  0 Jan08 ?        00:00:00 [xfs-log/sda1]
 ## root       193     2  0 Jan08 ?        00:00:00 [xfs-eofblocks/s]
-## root       194     2  0 Jan08 ?        00:01:00 [xfsaild/sda1]
+## root       194     2  0 Jan08 ?        00:01:01 [xfsaild/sda1]
 ## root       232     2  0 Jan08 ?        00:00:00 [kworker/1:1H]
-## root       247     1  0 Jan08 ?        00:00:13 /usr/lib/systemd/systemd-journald
+## root       247     1  0 Jan08 ?        00:00:14 /usr/lib/systemd/systemd-journald
 ## root       272     1  0 Jan08 ?        00:00:00 /usr/lib/systemd/systemd-udevd
 ## root       301     1  0 Jan08 ?        00:00:02 /sbin/auditd
 ## root       356     2  0 Jan08 ?        00:00:00 [edac-poller]
@@ -1550,36 +1570,33 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 ## root       589   468  0 Jan08 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-eth0.pid -lf /var/lib/NetworkManager/dhclient-f233d74e-1487-4c65-9470-2ae07fbc1e62-eth0.lease -cf /var/lib/NetworkManager/dhclient-eth0.conf eth0
 ## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
 ## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:08 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       927     1  0 Jan08 ?        00:00:09 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
 ## root       928     1  0 Jan08 ?        00:00:17 /usr/bin/python /usr/bin/google_accounts_daemon
 ## root       988     1  0 Jan08 ?        00:00:01 /usr/libexec/postfix/master -w
 ## postfix    994   988  0 Jan08 ?        00:00:00 qmgr -l -t unix -u
 ## root      1002     2  0 Jan08 ?        00:00:00 [kworker/2:1H]
 ## root      2405     1  0 Jan08 ?        00:00:01 /usr/sbin/sshd -D
-## huazhou   6503  6693  0 14:27 ?        00:01:32 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6503  6693  0 14:27 ?        00:01:54 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
 ## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
-## rstudio+  6693     1  0 Jan08 ?        00:01:26 /usr/lib/rstudio-server/bin/rserver
+## rstudio+  6693     1  0 Jan08 ?        00:01:28 /usr/lib/rstudio-server/bin/rserver
 ## root     12056     2  0 16:31 ?        00:00:00 [kworker/0:1]
 ## root     12067  2405  0 16:32 ?        00:00:00 sshd: huazhou [priv]
 ## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
 ## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
 ## root     13971     2  0 16:55 ?        00:00:00 [kworker/3:1]
-## postfix  14354   988  0 17:12 ?        00:00:00 pickup -l -t unix -u
-## root     14679     2  0 00:37 ?        00:00:00 [kworker/1:0]
-## root     17188  2405  0 17:54 ?        00:00:00 sshd: c.shaw [priv]
-## c.shaw   17198 17188  0 17:54 ?        00:00:00 sshd: c.shaw@pts/1
-## c.shaw   17200 17198  0 17:54 pts/1    00:00:00 -bash
 ## root     17834     2  0 18:04 ?        00:00:00 [kworker/1:2]
-## root     18502     2  0 18:17 ?        00:00:00 [kworker/2:1]
 ## root     18558  2405  0 18:21 ?        00:00:00 sshd: huazhou [priv]
 ## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
 ## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
-## root     19601     2  0 18:27 ?        00:00:00 [kworker/2:2]
-## root     19874     2  0 18:33 ?        00:00:00 [kworker/2:0]
-## huazhou  19885  6503 66 18:33 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  19959 19885  0 18:33 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
-## huazhou  19960 19959  0 18:33 ?        00:00:00 ps -eaf
+## postfix  21894   988  0 18:51 ?        00:00:00 pickup -l -t unix -u
+## root     22401     2  0 18:59 ?        00:00:00 [kworker/2:0]
+## root     22495     2  0 19:02 ?        00:00:00 [kworker/1:0]
 ## root     22507     2  0 Jan10 ?        00:00:00 [kworker/3:0]
+## root     22901     2  0 19:05 ?        00:00:00 [kworker/2:1]
+## root     24516     2  0 19:15 ?        00:00:00 [kworker/2:2]
+## huazhou  24530  6503 66 19:16 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  24604 24530  0 19:16 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
+## huazhou  24605 24604  0 19:16 ?        00:00:00 ps -eaf
 ## root     31539     2  0 06:03 ?        00:00:00 [kworker/0:3]</pre></li>
 </ul>
 
@@ -1593,11 +1610,11 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre >## root       465     1  0 Jan08 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
 ## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
 ## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:08 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       927     1  0 Jan08 ?        00:00:09 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
 ## root       928     1  0 Jan08 ?        00:00:17 /usr/bin/python /usr/bin/google_accounts_daemon
-## huazhou  19961 19885  0 18:33 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
-## huazhou  19962 19961  0 18:33 ?        00:00:00 bash -c ps -eaf | grep python
-## huazhou  19964 19962  0 18:33 ?        00:00:00 grep python</pre></li>
+## huazhou  24606 24530  0 19:16 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
+## huazhou  24607 24606  0 19:16 ?        00:00:00 bash -c ps -eaf | grep python
+## huazhou  24609 24607  0 19:16 ?        00:00:00 grep python</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1619,15 +1636,15 @@ awk &#39;END { print NR }&#39; /etc/passwd</pre>
 <pre class = 'prettyprint lang-bash'>ps -fu huazhou</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## huazhou   6503  6693  0 14:27 ?        00:01:32 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou   6503  6693  0 14:27 ?        00:01:54 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
 ## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
 ## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
 ## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
 ## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
 ## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
-## huazhou  19885  6503 67 18:33 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  19967 19885  0 18:33 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
-## huazhou  19968 19967  0 18:33 ?        00:00:00 ps -fu huazhou</pre></li>
+## huazhou  24530  6503 67 19:16 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  24612 24530  0 19:16 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
+## huazhou  24613 24612  0 19:16 ?        00:00:00 ps -fu huazhou</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Kill processes</h2></hgroup><article  id="kill-processes">
@@ -1774,7 +1791,9 @@ scp username@35.227.165.60:/pathtofile pathtolocalfolder</pre></li>
 </article></slide><slide class=""><hgroup><h2>Batch mode</h2></hgroup><article  id="batch-mode" class="smaller">
 
 <ul>
-<li><p>Demo script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R' title=''><code>meanEst.R</code></a> implements an (terrible) estimator of mean</p>
+<li><p>Demo script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R' title=''><code>meanEst.R</code></a> implements an (terrible) estimator of mean \[
+  {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{x_i \text{ is prime}}}{\sum_{i=1}^n 1_{x_i \text{ is prime}}}.
+\]</p>
 
 <pre class = 'prettyprint lang-bash'>cat meanEst.R</pre>
 
@@ -1802,18 +1821,12 @@ scp username@35.227.165.60:/pathtofile pathtolocalfolder</pre></li>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><p>To run your R code non-interactively aka in batch mode, we have at least two options.</p>
-
-<ul>
-<li><code>R CMD BATCH</code>:</li>
-</ul>
+<li><p>To run your R code non-interactively aka in batch mode, we have at least two options:</p>
 
 <pre class = 'prettyprint lang-bash'># default output to meanEst.Rout
 R CMD BATCH meanEst.R</pre>
 
-<ul>
-<li><code>Rscript</code>:</li>
-</ul>
+<p>or</p>
 
 <pre class = 'prettyprint lang-bash'># output to stdout
 Rscript meanEst.R</pre></li>
@@ -1829,14 +1842,27 @@ Rscript meanEst.R</pre></li>
 <li><p>Specify arguments in <code>Rscript</code>:</p>
 
 <pre class = 'prettyprint lang-bash'>Rscript script.R mu=1 sig=2 kap=3</pre></li>
-<li><p>Parse command line arguments using magic formula</p></li>
-</ul>
+<li><p>Parse command line arguments using magic formula</p>
 
 <pre class = 'prettyprint lang-r'>for (arg in commandArgs(T)) {
   eval(parse(text=arg))
 }</pre>
 
-<p>in R script. After calling the above code, all command line arguments will be available in the global namespace.</p>
+<p>in R script. After calling the above code, all command line arguments will be available in the global namespace.</p></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<ul>
+<li><p>To understand the magic formula <code>commandArgs</code>, run R by:</p>
+
+<pre class = 'prettyprint lang-bash'>R &#39;--args mu=1 sig=2 kap=3&#39;</pre>
+
+<p>and then issue commands in R</p>
+
+<pre class = 'prettyprint lang-r'>commandArgs()
+commandArgs(TRUE)</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -1858,11 +1884,47 @@ print(x)</pre>
 <pre >## [1] 3</pre></li>
 </ul>
 
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-4" class="smaller">
+
+<ul>
+<li><a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> has components: (1) method implementation, (2) data generator with unspecified parameter <code>n</code>, (3) estimation based on generated data, and (4) <strong>command argument parser</strong>.</li>
+</ul>
+
+<pre class = 'prettyprint lang-bash'>cat runSim.R</pre>
+
+<pre >## ## parsing command arguments
+## for (arg in commandArgs(TRUE)) {
+##   eval(parse(text=arg))
+## }
+## 
+## ## check if a given integer is prime
+## isPrime = function(n) {
+##   if (n &lt;= 3) {
+##     return (TRUE)
+##   }
+##   if (any((n %% 2:floor(sqrt(n))) == 0)) {
+##     return (FALSE)
+##   }
+##   return (TRUE)
+## }
+## 
+## ## estimate mean only using observation with prime indices
+## estMeanPrimes = function (x) {
+##   n = length(x)
+##   ind = sapply(1:n, isPrime)
+##   return (mean(x[ind]))
+## }
+## 
+## # simulate data
+## x = rnorm(n)
+## 
+## # estimate mean
+## estMeanPrimes(x)</pre>
+
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
 <ul>
-<li><p>Script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> has components: (1) method implementation, (2) command argument parser, (3) data generator with unspecified parameter <code>n</code>, and (4) estimation based on generated data.</p></li>
-<li><p>Call <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> with sample size <code>n=100</code>:</p>
+<li><p>Call <code>runSim.R</code> with sample size <code>n=100</code>:</p>
 
 <pre class = 'prettyprint lang-bash'>R CMD BATCH &#39;--args n=100&#39; runSim.R</pre>
 
@@ -1870,21 +1932,20 @@ print(x)</pre>
 
 <pre class = 'prettyprint lang-bash'>Rscript runSim.R n=100</pre>
 
-<pre >## [1] -0.164408</pre></li>
+<pre >## [1] 0.1543184</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Run long jobs</h2></hgroup><article  id="run-long-jobs">
 
 <ul>
 <li><p>Many statistical computing tasks take long: simulation, MCMC, etc.</p></li>
-<li><p><code>nohup</code> command in Linux runs program(s) immune to hangups and writes output to <code>nohup.out</code> by default. Logging out will <em>not</em> kill the process. You can log back in to check status and results.</p></li>
-<li><p><code>nohup</code> is POSIX standard thus available on both Linux and MacOS.</p>
+<li><p><code>nohup</code> command in Linux runs program(s) immune to hangups and writes output to <code>nohup.out</code> by default. Logging out will <em>not</em> kill the process; we can log in later to check status and results.</p></li>
+<li><p><code>nohup</code> is POSIX standard thus available on Linux and MacOS.</p></li>
+<li><p>Run <code>runSim.R</code> in background and writes output to <code>nohup.out</code>:</p>
 
 <pre class = 'prettyprint lang-bash'>nohup Rscript runSim.R n=100 &amp;</pre>
 
-<pre >## [1] 0.1063113</pre>
-
-<p>runs <code>runSim.R</code> in background and writes output to <code>nohup.out</code>.</p></li>
+<pre >## [1] -0.1501122</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>screen</h2></hgroup><article  id="screen">
@@ -1919,7 +1980,7 @@ print(x)</pre>
 <li>Suppose we have
 
 <ul>
-<li>R script <a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> which runs a simulation based on command line argument <code>n</code>.<br/></li>
+<li><a href='http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R' title=''><code>runSim.R</code></a> which runs a simulation based on command line argument <code>n</code>.<br/></li>
 <li>A large collection of <code>n</code> values that we want to use in our simulation study.<br/></li>
 <li>Access to a server with 128 cores.</li>
 </ul></li>
@@ -1929,12 +1990,10 @@ print(x)</pre>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<pre >```bash
-cat autoSim.R
-```
+<ul>
+<li><pre class = 'prettyprint lang-bash'>cat autoSim.R</pre>
 
-```
-## # autoSim.R
+<pre >## # autoSim.R
 ## 
 ## nVals = seq(100, 500, by=100)
 ## for (n in nVals) {
@@ -1943,22 +2002,20 @@ cat autoSim.R
 ##   sysCall = paste(&quot;nohup Rscript runSim.R &quot;, arg, &quot; &gt; &quot;, oFile)
 ##   system(sysCall)
 ##   print(paste(&quot;sysCall=&quot;, sysCall, sep=&quot;&quot;))
-## }
-```</pre>
+## }</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<pre >```bash
-Rscript autoSim.R
-```
+<ul>
+<li><pre class = 'prettyprint lang-bash'>Rscript autoSim.R</pre>
 
-```
-## [1] &quot;sysCall=nohup Rscript runSim.R  n=100  &gt;  n100.txt&quot;
+<pre >## [1] &quot;sysCall=nohup Rscript runSim.R  n=100  &gt;  n100.txt&quot;
 ## [1] &quot;sysCall=nohup Rscript runSim.R  n=200  &gt;  n200.txt&quot;
 ## [1] &quot;sysCall=nohup Rscript runSim.R  n=300  &gt;  n300.txt&quot;
 ## [1] &quot;sysCall=nohup Rscript runSim.R  n=400  &gt;  n400.txt&quot;
-## [1] &quot;sysCall=nohup Rscript runSim.R  n=500  &gt;  n500.txt&quot;
-```</pre></article></slide>
+## [1] &quot;sysCall=nohup Rscript runSim.R  n=500  &gt;  n500.txt&quot;</pre></li>
+</ul></article></slide>
 
 
   <slide class="backdrop"></slide>

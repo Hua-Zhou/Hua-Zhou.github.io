@@ -589,21 +589,21 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 ## Batch mode {.smaller}
 
 - Demo script [`meanEst.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/meanEst.R) implements an (terrible) estimator of mean
+$$
+  {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{x_i \text{ is prime}}}{\sum_{i=1}^n 1_{x_i \text{ is prime}}}.
+$$
     ```{bash}
     cat meanEst.R
     ```
 
 ----
 
-- To run your R code non-interactively aka in batch mode, we have at least two options.
-
-    - `R CMD BATCH`:
+- To run your R code non-interactively aka in batch mode, we have at least two options:
     ```{bash, eval=FALSE}
     # default output to meanEst.Rout
     R CMD BATCH meanEst.R
     ```
-
-    - `Rscript`:
+or
     ```{bash, eval=FALSE}
     # output to stdout
     Rscript meanEst.R
@@ -624,12 +624,24 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
     ```
 
 - Parse command line arguments using magic formula
-```{r, eval=FALSE}
-for (arg in commandArgs(T)) {
-  eval(parse(text=arg))
-}
-```
+    ```{r, eval=FALSE}
+    for (arg in commandArgs(T)) {
+      eval(parse(text=arg))
+    }
+    ```
 in R script. After calling the above code, all command line arguments will be available in the global namespace.
+
+---- 
+
+- To understand the magic formula `commandArgs`, run R by:
+    ```{bash, eval=FALSE}
+    R '--args mu=1 sig=2 kap=3'
+    ```
+and then issue commands in R
+    ```{r, eval=FALSE}
+    commandArgs()
+    commandArgs(TRUE)
+    ```
 
 ----
 
@@ -642,11 +654,16 @@ in R script. After calling the above code, all command line arguments will be av
     print(x)
     ```
 
+## {.smaller}
+
+- [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) data generator with unspecified parameter `n`, (3) estimation based on generated data, and (4) **command argument parser**.
+```{bash}
+cat runSim.R
+```
+
 ----
 
-- Script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) command argument parser, (3) data generator with unspecified parameter `n`, and (4) estimation based on generated data.
-
-- Call [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) with sample size `n=100`:
+- Call `runSim.R` with sample size `n=100`:
     ```{bash}
     R CMD BATCH '--args n=100' runSim.R
     ```
@@ -659,13 +676,14 @@ or
 
 - Many statistical computing tasks take long: simulation, MCMC, etc.
 
-- `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process. You can log back in to check status and results.
+- `nohup` command in Linux runs program(s) immune to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process; we can log in later to check status and results.
 
-- `nohup` is POSIX standard thus available on both Linux and MacOS.
+- `nohup` is POSIX standard thus available on Linux and MacOS.
+
+- Run `runSim.R` in background and writes output to `nohup.out`:
     ```{bash}
     nohup Rscript runSim.R n=100 &
     ```
-runs `runSim.R` in background and writes output to `nohup.out`.
 
 ## screen
 
@@ -698,7 +716,7 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 ----
 
 - Suppose we have 
-    - R script [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
+    - [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) which runs a simulation based on command line argument `n`.  
     - A large collection of `n` values that we want to use in our simulation study.  
     - Access to a server with 128 cores.  
     
@@ -708,12 +726,14 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 
 ----
 
+-
     ```{bash}
     cat autoSim.R
     ```
 
 ----
 
+-
     ```{bash}
     Rscript autoSim.R
     ```
