@@ -563,34 +563,39 @@ scp username@35.227.165.60:/pathtofile pathtolocalfolder
 
 ## Batch mode {.smaller}
 
-- `meanEst.R` implements a terrible estimator of mean
+- Demo script [`meanEst.R`](./slides/02-linux/meanEst.R) implements a terrible estimator of mean
 ```{bash}
 cat meanEst.R
 ```
 
 ----
 
-- To run your R code non-interactively aka in batch mode:
-```{bash}
+To run your R code non-interactively aka in batch mode, we have at least two options.
+
+- `R CMD BATCH`:
+```{bash, eval=FALSE}
 # default output to meanEst.Rout
 R CMD BATCH meanEst.R
-cat meanEst.Rout
 ```
-----
 
-- Specify output file:
+- `Rscript`:
 ```{bash, eval=FALSE}
-# output to compResults.txt
-R CMD BATCH minEffEst.R compResults.txt
+# output to stdout
+Rscript meanEst.R
 ```
 
 - Typically automate `BATCH` calls using a scripting language, e.g., python, perl, and shell script.
 
 ## Pass arguments to R
 
-- Specify arguments:
+- Specify arguments via `R CMD BATCH`:
 ```{bash, eval=FALSE}
 R CMD BATCH '--args mu=1 sig=2 kap=3' script.R
+```
+
+- Specify arguments via `Rscript`:
+```{bash, eval=FALSE}
+Rscript script.R mu=1 sig=2 kap=3
 ```
 
 - Parse command line arguments using magic formula
@@ -599,8 +604,7 @@ for (arg in commandArgs(T)) {
   eval(parse(text=arg))
 }
 ```
-
-- After calling the above code, all command line arguments will be available in the global namespace.
+After calling the above code, all command line arguments will be available in the global namespace.
 
 ----
 
@@ -614,18 +618,66 @@ print(x)
 
 ----
 
-- Call `R` by
-```{bash, eval=FALSE}
-R '--arg mu=1 sig=2 kap=3`
+- Script [`runSim.R`](./slides/02-linux/runSim.R) has components: method implementation, argument parser, data generator with unspecified parameter `n`, and estimation based on generated data.
+
+- Call `runSim.R` with sample size `n=100`:
+```{bash}
+R CMD BATCH '--arg n=10` runSim.R
 ```
-and execute
-```{r, eval=FALSE}
-for (arg in commandArgs(TRUE)) {
-  print(paste("arg is: ", arg))
-  eval(parse(text=arg))
-}
-print(mu)
-print(sig)
-print(kap)
+
+```{bash}
+Rscript runSim.R n=10
 ```
-in `R`.
+
+## Run time consuming jobs
+
+- Many statistical computing tasks takes long: simulation, MCMC, etc.
+
+- `nohup` command in Linux runs program(s) immute to hangups and writes output to `nohup.out` by default. Logging out will _not_ kill the process.
+
+- `nohup` is in the POSIX standard thus is available on both Linux and MacOS.
+
+```{bash}
+nohup Rscript runSim.R n=100 &
+```
+`&` runs the job in background.
+
+## `screen`
+
+- `screen` is another popular utility, but not installed by default. 
+
+- Typical workflow using `screen`.
+
+0. Access remote server using `ssh`.
+
+0. Start jobs in batch mode.
+
+0. Detach jobs.
+
+0. Exit from server, wait for jobs to finish.
+
+0. Access remote server using `ssh`.
+
+0. Re-attach jobs, check on progress, get results, etc.
+
+## Use R to call R
+
+R in conjuction with `nohup` or `screen` can be used to orchestrate a large simulation study.
+
+- it can be more elegant, transparent, and robust to parallelize jobs corresponding to different scenarios (e.g., different generative models) outside of the code used to do statistical computation.
+
+- We'll consider a simulation study in R but the same approach could be used with code written in Julia, Matlab, Python, etc.
+
+- Python in many ways makes a better _glue_ we may discuss this later in the course.
+
+----
+
+- Suppose we have 
+    - R script `runSim.R` which run a simulation based on command line arguments `n`.  
+    - A large collection of `n` values that we want to use in our simulation study.  
+    - Access to a server with 128 cores.  
+    
+- Option 1: manually call `runSim.R` for each setting.
+
+- Option 2: automate calls using R and `nohup`.
+
