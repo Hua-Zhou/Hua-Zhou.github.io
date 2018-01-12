@@ -278,8 +278,8 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2486049 Jan 11 20:31 linux.html
-## -rw-r--r--. 1 huazhou huazhou   19861 Jan 11 20:31 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2486078 Jan 12 06:07 linux.html
+## -rw-r--r--. 1 huazhou huazhou   19866 Jan 12 06:09 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
 ## -rw-r--r--. 1 huazhou huazhou     498 Jan 11 18:56 runSim.R
@@ -295,7 +295,7 @@
 <pre class = 'prettyprint lang-bash'>ls -al</pre>
 
 <pre >## total 3940
-## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 20:31 .
+## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 12 06:07 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..
 ## -rw-r--r--. 1 huazhou huazhou     263 Jan 11 15:21 autoSim.R
 ## -rw-r--r--. 1 huazhou huazhou  110345 Jan  9 04:48 Emacs_Reference_Card.pdf
@@ -304,10 +304,10 @@
 ## -rw-rw-r--. 1 huazhou huazhou   11662 Jan  8 23:36 linux_directory_structure.png
 ## -rw-r--r--. 1 huazhou huazhou   42472 Jan  9 00:26 linux_filepermission_oct.png
 ## -rw-r--r--. 1 huazhou huazhou  102188 Jan  9 00:29 linux_filepermission.png
-## -rw-rw-r--. 1 huazhou huazhou 2486049 Jan 11 20:31 linux.html
-## -rw-r--r--. 1 huazhou huazhou   19861 Jan 11 20:31 linux.Rmd
+## -rw-rw-r--. 1 huazhou huazhou 2486078 Jan 12 06:07 linux.html
+## -rw-r--r--. 1 huazhou huazhou   19866 Jan 12 06:09 linux.Rmd
 ## -rw-r--r--. 1 huazhou huazhou     381 Jan 11 01:02 meanEst.R
-## -rw-r--r--. 1 huazhou huazhou    4078 Jan 11 20:31 .RData
+## -rw-r--r--. 1 huazhou huazhou    4075 Jan 12 06:07 .RData
 ## -rw-r--r--. 1 huazhou huazhou  141962 Jan  9 04:37 Richard_Stallman_2013.png
 ## -rw-r--r--. 1 huazhou huazhou     498 Jan 11 18:56 runSim.R
 ## -rw-r--r--. 1 huazhou huazhou  469335 Jan  9 06:11 screenshot_top.png
@@ -958,7 +958,7 @@ ls -l *.png</pre>
 ## 
 ## ## Kill processes
 ## 
-## - kill process with PID=1001:
+## - Kill process with PID=1001:
 ##     ```{bash, eval=FALSE}
 ##     kill 1001
 ##     ```
@@ -970,10 +970,11 @@ ls -l *.png</pre>
 ## 
 ## ## `top`
 ## 
-## `top` prints realtime process information (very useful).
+## - `top` prints realtime process information (very useful).
 ##     ```{bash, eval=FALSE}
 ##     top
 ##     ```
+##     
 ## &lt;p align=&quot;center&quot;&gt;
 ##   &lt;img src=&quot;./screenshot_top.png&quot; height=&quot;400&quot;&gt;
 ## &lt;/p&gt;
@@ -1003,7 +1004,7 @@ ls -l *.png</pre>
 ## 
 ## - Many servers only allow key authentication and do not accept password authentication.
 ## 
-## ## Key authentification
+## ## Key authentication
 ## 
 ## &lt;p align=&quot;center&quot;&gt;
 ##   &lt;img src=&quot;./key_authentication_1.png&quot; height=&quot;200&quot;&gt;
@@ -1373,7 +1374,7 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 
 <pre class = 'prettyprint lang-bash'>ls -al | grep &#39;^d&#39;</pre>
 
-<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 11 20:31 .
+<pre >## drwxrwxr-x. 2 huazhou huazhou    4096 Jan 12 06:07 .
 ## drwxrwxr-x. 4 huazhou huazhou      56 Jan  8 23:36 ..</pre></li>
 </ul>
 
@@ -1417,19 +1418,19 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 
 <pre class = 'prettyprint lang-bash'>awk &#39;END { print NR }&#39; /etc/passwd</pre>
 
-<pre >## 58</pre>
+<pre >## 59</pre>
 
 <p>or</p>
 
 <pre class = 'prettyprint lang-bash'>wc -l /etc/passwd</pre>
 
-<pre >## 58 /etc/passwd</pre>
+<pre >## 59 /etc/passwd</pre>
 
 <p>or</p>
 
 <pre class = 'prettyprint lang-bash'>wc -l &lt; /etc/passwd</pre>
 
-<pre >## 58</pre></li>
+<pre >## 59</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1505,7 +1506,8 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 ## tss,/sbin/nologin
 ## stjia,/bin/bash
 ## jayxu33,/bin/bash
-## keydemo,/bin/bash</pre></li>
+## keydemo,/bin/bash
+## jiayunli,/bin/bash</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1574,7 +1576,8 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 ## tss,regular
 ## stjia,vip
 ## jayxu33,vip
-## keydemo,vip</pre></li>
+## keydemo,vip
+## jiayunli,vip</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Piping and redirection</h2></hgroup><article  id="piping-and-redirection">
@@ -1673,12 +1676,10 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 <pre class = 'prettyprint lang-bash'>ps</pre>
 
 <pre >##   PID TTY          TIME CMD
-##  6503 ?        00:02:27 rsession
-## 12076 ?        00:00:00 sshd
-## 18567 ?        00:00:00 sshd
-## 30867 ?        00:00:01 R
-## 30950 ?        00:00:00 sh
-## 30951 ?        00:00:00 ps</pre></li>
+## 13582 ?        00:00:02 rsession
+## 14354 ?        00:00:01 R
+## 14438 ?        00:00:00 sh
+## 14439 ?        00:00:00 ps</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1689,13 +1690,13 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 <pre class = 'prettyprint lang-bash'>ps -eaf</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## root         1     0  0 Jan08 ?        00:00:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 21
+## root         1     0  0 Jan08 ?        00:00:09 /usr/lib/systemd/systemd --switched-root --system --deserialize 21
 ## root         2     0  0 Jan08 ?        00:00:00 [kthreadd]
 ## root         3     2  0 Jan08 ?        00:00:00 [ksoftirqd/0]
 ## root         5     2  0 Jan08 ?        00:00:00 [kworker/0:0H]
 ## root         7     2  0 Jan08 ?        00:00:00 [migration/0]
 ## root         8     2  0 Jan08 ?        00:00:00 [rcu_bh]
-## root         9     2  0 Jan08 ?        00:00:17 [rcu_sched]
+## root         9     2  0 Jan08 ?        00:00:20 [rcu_sched]
 ## root        10     2  0 Jan08 ?        00:00:01 [watchdog/0]
 ## root        11     2  0 Jan08 ?        00:00:00 [watchdog/1]
 ## root        12     2  0 Jan08 ?        00:00:00 [migration/1]
@@ -1742,18 +1743,18 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 ## root       191     2  0 Jan08 ?        00:00:00 [xfs-reclaim/sda]
 ## root       192     2  0 Jan08 ?        00:00:00 [xfs-log/sda1]
 ## root       193     2  0 Jan08 ?        00:00:00 [xfs-eofblocks/s]
-## root       194     2  0 Jan08 ?        00:01:03 [xfsaild/sda1]
+## root       194     2  0 Jan08 ?        00:01:13 [xfsaild/sda1]
 ## root       232     2  0 Jan08 ?        00:00:00 [kworker/1:1H]
-## root       247     1  0 Jan08 ?        00:00:14 /usr/lib/systemd/systemd-journald
+## root       247     1  0 Jan08 ?        00:00:15 /usr/lib/systemd/systemd-journald
 ## root       272     1  0 Jan08 ?        00:00:00 /usr/lib/systemd/systemd-udevd
-## root       301     1  0 Jan08 ?        00:00:02 /sbin/auditd
+## root       301     1  0 Jan08 ?        00:00:03 /sbin/auditd
 ## root       356     2  0 Jan08 ?        00:00:00 [edac-poller]
-## dbus       368     1  0 Jan08 ?        00:00:01 /bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+## dbus       368     1  0 Jan08 ?        00:00:02 /bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
 ## root       377     2  0 Jan08 ?        00:00:01 [kworker/0:1H]
-## root       381     1  0 Jan08 ?        00:00:01 /usr/lib/systemd/systemd-logind
+## root       381     1  0 Jan08 ?        00:00:02 /usr/lib/systemd/systemd-logind
 ## polkitd    382     1  0 Jan08 ?        00:00:00 /usr/lib/polkit-1/polkitd --no-debug
 ## root       384     1  0 Jan08 ?        00:00:00 /usr/sbin/acpid
-## root       385     1  0 Jan08 ?        00:00:16 /usr/sbin/rsyslogd -n
+## root       385     1  0 Jan08 ?        00:00:18 /usr/sbin/rsyslogd -n
 ## root       388     1  0 Jan08 ?        00:00:01 /usr/sbin/crond -n
 ## chrony     396     1  0 Jan08 ?        00:00:00 /usr/sbin/chronyd
 ## root       399     1  0 Jan08 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
@@ -1762,36 +1763,36 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 ## root       466     2  0 Jan08 ?        00:00:00 [kworker/3:1H]
 ## root       468     1  0 Jan08 ?        00:00:04 /usr/sbin/NetworkManager --no-daemon
 ## root       589   468  0 Jan08 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-eth0.pid -lf /var/lib/NetworkManager/dhclient-f233d74e-1487-4c65-9470-2ae07fbc1e62-eth0.lease -cf /var/lib/NetworkManager/dhclient-eth0.conf eth0
-## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
-## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:09 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:18 /usr/bin/python /usr/bin/google_accounts_daemon
+## root       824     1  0 Jan08 ?        00:00:30 /usr/bin/python -Es /usr/sbin/tuned -l -P
+## root       926     1  0 Jan08 ?        00:00:06 /usr/bin/python /usr/bin/google_clock_skew_daemon
+## root       927     1  0 Jan08 ?        00:00:10 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       928     1  0 Jan08 ?        00:00:20 /usr/bin/python /usr/bin/google_accounts_daemon
 ## root       988     1  0 Jan08 ?        00:00:01 /usr/libexec/postfix/master -w
 ## postfix    994   988  0 Jan08 ?        00:00:00 qmgr -l -t unix -u
 ## root      1002     2  0 Jan08 ?        00:00:00 [kworker/2:1H]
-## root      2405     1  0 Jan08 ?        00:00:01 /usr/sbin/sshd -D
-## huazhou   6503  6693  0 14:27 ?        00:02:27 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
-## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
-## rstudio+  6693     1  0 Jan08 ?        00:01:32 /usr/lib/rstudio-server/bin/rserver
-## root     12056     2  0 16:31 ?        00:00:00 [kworker/0:1]
-## root     12067  2405  0 16:32 ?        00:00:00 sshd: huazhou [priv]
-## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
-## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
-## root     13971     2  0 16:55 ?        00:00:00 [kworker/3:1]
-## root     18558  2405  0 18:21 ?        00:00:00 sshd: huazhou [priv]
-## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
-## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
+## root      2405     1  0 Jan08 ?        00:00:02 /usr/sbin/sshd -D
+## rstudio+  6693     1  0 Jan08 ?        00:01:42 /usr/lib/rstudio-server/bin/rserver
+## root      8531     2  0 Jan11 ?        00:00:00 [kworker/3:1]
+## root      9440     2  0 00:31 ?        00:00:00 [kworker/1:0]
+## root      9905     2  0 01:12 ?        00:00:00 [kworker/0:0]
+## root     10911     1  0 03:01 ?        00:00:00 /usr/sbin/anacron -s
+## root     11346 10911  0 03:40 ?        00:00:00 /bin/bash /bin/run-parts /etc/cron.daily
+## root     11350 11346  0 03:40 ?        00:00:00 /usr/bin/python -tt /usr/sbin/yum-cron
+## root     11351 11346  0 03:40 ?        00:00:00 awk -v progname=/etc/cron.daily/0yum-daily.cron progname { ????   print progname &quot;:\n&quot; ????   progname=&quot;&quot;; ???       } ???       { print; }
+## root     11759  6693  0 04:23 ?        00:00:00 /usr/lib/rstudio-server/bin/rserver
+## postfix  11973   988  0 04:51 ?        00:00:00 pickup -l -t unix -u
+## root     12965     2  0 05:46 ?        00:00:00 [kworker/2:1]
+## root     13284     2  0 05:57 ?        00:00:00 [kworker/2:2]
+## root     13506     2  0 06:03 ?        00:00:00 [kworker/2:0]
+## huazhou  13582  6693  1 06:05 ?        00:00:02 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## root     14349  2405  0 06:09 ?        00:00:00 sshd: root [priv]
+## sshd     14350 14349  0 06:09 ?        00:00:00 sshd: root [net]
+## huazhou  14354 13582 66 06:09 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  14440 14354  0 06:09 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
+## huazhou  14441 14440  0 06:09 ?        00:00:00 ps -eaf
 ## root     22507     2  0 Jan10 ?        00:00:00 [kworker/3:0]
-## root     25998     2  0 20:01 ?        00:00:00 [kworker/1:1]
-## root     28155     2  0 20:15 ?        00:00:00 [kworker/1:0]
-## root     28390     2  0 20:19 ?        00:00:00 [kworker/2:1]
-## root     29802     2  0 20:25 ?        00:00:00 [kworker/2:2]
-## postfix  30444   988  0 20:31 ?        00:00:00 pickup -l -t unix -u
-## root     30720     2  0 20:36 ?        00:00:00 [kworker/2:0]
-## huazhou  30867  6503 63 20:38 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  30952 30867  0 20:38 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf&#39; 2&gt;&amp;1
-## huazhou  30953 30952  0 20:38 ?        00:00:00 ps -eaf
-## root     31539     2  0 06:03 ?        00:00:00 [kworker/0:3]</pre></li>
+## root     25998     2  0 Jan11 ?        00:00:00 [kworker/1:1]
+## root     31539     2  0 Jan11 ?        00:00:01 [kworker/0:3]</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1802,13 +1803,14 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 <pre class = 'prettyprint lang-bash'>ps -eaf | grep python</pre>
 
 <pre >## root       465     1  0 Jan08 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
-## root       824     1  0 Jan08 ?        00:00:26 /usr/bin/python -Es /usr/sbin/tuned -l -P
-## root       926     1  0 Jan08 ?        00:00:05 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root       927     1  0 Jan08 ?        00:00:09 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
-## root       928     1  0 Jan08 ?        00:00:18 /usr/bin/python /usr/bin/google_accounts_daemon
-## huazhou  30954 30867  0 20:38 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
-## huazhou  30955 30954  0 20:38 ?        00:00:00 bash -c ps -eaf | grep python
-## huazhou  30957 30955  0 20:38 ?        00:00:00 grep python</pre></li>
+## root       824     1  0 Jan08 ?        00:00:30 /usr/bin/python -Es /usr/sbin/tuned -l -P
+## root       926     1  0 Jan08 ?        00:00:06 /usr/bin/python /usr/bin/google_clock_skew_daemon
+## root       927     1  0 Jan08 ?        00:00:10 /usr/bin/python /usr/bin/google_ip_forwarding_daemon
+## root       928     1  0 Jan08 ?        00:00:20 /usr/bin/python /usr/bin/google_accounts_daemon
+## root     11350 11346  0 03:40 ?        00:00:00 /usr/bin/python -tt /usr/sbin/yum-cron
+## huazhou  14442 14354  0 06:09 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -eaf | grep python&#39; 2&gt;&amp;1
+## huazhou  14443 14442  0 06:09 ?        00:00:00 bash -c ps -eaf | grep python
+## huazhou  14445 14443  0 06:09 ?        00:00:00 grep python</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1819,7 +1821,7 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 <pre class = 'prettyprint lang-bash'>ps -fp 1</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## root         1     0  0 Jan08 ?        00:00:08 /usr/lib/systemd/systemd --switched-root --system --deserialize 21</pre></li>
+## root         1     0  0 Jan08 ?        00:00:09 /usr/lib/systemd/systemd --switched-root --system --deserialize 21</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
@@ -1830,21 +1832,16 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 <pre class = 'prettyprint lang-bash'>ps -fu huazhou</pre>
 
 <pre >## UID        PID  PPID  C STIME TTY          TIME CMD
-## huazhou   6503  6693  0 14:27 ?        00:02:27 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
-## huazhou   6538  6503  0 14:27 pts/0    00:00:00 bash -l
-## huazhou  12076 12067  0 16:32 ?        00:00:00 sshd: huazhou@pts/2
-## huazhou  12077 12076  0 16:32 pts/2    00:00:00 -bash
-## huazhou  18567 18558  0 18:21 ?        00:00:00 sshd: huazhou@pts/3
-## huazhou  18568 18567  0 18:21 pts/3    00:00:00 -bash
-## huazhou  30867  6503 64 20:38 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
-## huazhou  30960 30867  0 20:38 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
-## huazhou  30961 30960  0 20:38 ?        00:00:00 ps -fu huazhou</pre></li>
+## huazhou  13582  6693  1 06:05 ?        00:00:02 /usr/lib/rstudio-server/bin/rsession -u huazhou --launcher-token A858A787
+## huazhou  14354 13582 68 06:09 ?        00:00:01 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render(&#39;/home/huazhou/github.com/Hua-Zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/linux.Rmd&#39;,~+~~+~encoding~+~=~+~&#39;UTF-8&#39;);
+## huazhou  14448 14354  0 06:09 ?        00:00:00 sh -c &#39;bash&#39;  -c &#39;ps -fu huazhou&#39; 2&gt;&amp;1
+## huazhou  14449 14448  0 06:09 ?        00:00:00 ps -fu huazhou</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Kill processes</h2></hgroup><article  id="kill-processes">
 
 <ul>
-<li><p>kill process with PID=1001:</p>
+<li><p>Kill process with PID=1001:</p>
 
 <pre class = 'prettyprint lang-bash'>kill 1001</pre></li>
 <li><p>Kill all R processes.</p>
@@ -1854,11 +1851,11 @@ grep &#39;CentOS&#39; linux.Rmd</pre>
 
 </article></slide><slide class=""><hgroup><h2><code>top</code></h2></hgroup><article  id="top">
 
-<p><code>top</code> prints realtime process information (very useful).</p>
+<ul>
+<li><p><code>top</code> prints realtime process information (very useful).</p>
 
-<pre >```bash
-top
-```</pre>
+<pre class = 'prettyprint lang-bash'>top</pre></li>
+</ul>
 
 <p align="center">
 
@@ -1889,7 +1886,7 @@ top
 <li><p>Many servers only allow key authentication and do not accept password authentication.</p></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Key authentification</h2></hgroup><article  id="key-authentification">
+</article></slide><slide class=""><hgroup><h2>Key authentication</h2></hgroup><article  id="key-authentication">
 
 <p align="center">
 
@@ -2126,7 +2123,7 @@ print(x)</pre>
 
 <pre class = 'prettyprint lang-bash'>Rscript runSim.R n=100</pre>
 
-<pre >## [1] -0.1246461</pre></li>
+<pre >## [1] 0.2008915</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Run long jobs</h2></hgroup><article  id="run-long-jobs">
@@ -2139,7 +2136,7 @@ print(x)</pre>
 
 <pre class = 'prettyprint lang-bash'>nohup Rscript runSim.R n=100 &amp;</pre>
 
-<pre >## [1] -0.2150207</pre></li>
+<pre >## [1] 0.01068229</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>screen</h2></hgroup><article  id="screen">

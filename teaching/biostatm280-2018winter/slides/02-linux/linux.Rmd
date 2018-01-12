@@ -480,7 +480,7 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 ## Kill processes
 
-- kill process with PID=1001:
+- Kill process with PID=1001:
     ```{bash, eval=FALSE}
     kill 1001
     ```
@@ -492,10 +492,11 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 ## `top`
 
-`top` prints realtime process information (very useful).
+- `top` prints realtime process information (very useful).
     ```{bash, eval=FALSE}
     top
     ```
+    
 <p align="center">
   <img src="./screenshot_top.png" height="400">
 </p>
@@ -525,7 +526,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - Many servers only allow key authentication and do not accept password authentication.
 
-## Key authentification
+## Key authentication
 
 <p align="center">
   <img src="./key_authentication_1.png" height="200">
