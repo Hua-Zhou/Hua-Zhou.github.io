@@ -34,18 +34,18 @@ $\DeclareMathOperator*{\argmin}{arg\,min}$
 | massive   | $10^{12}$ (TB) | hard disk(s); RAID storage |
 
 
-## Four V's of big data ##
+## Four V's of big data
 
 <p align="center">
   <img src="./4-Vs-of-big-data.jpg" height="450" width="700">
 </p>
 Source: [IBM](http://www.ibmbigdatahub.com/infographic/four-vs-big-data).
 
-## Course desciption ##
+## Course desciption
 
 - This course introduces some computing skills and software tools for handling potentially big public health data.
 
 - Read [syllabus](http://hua-zhou.github.io/teaching/biostatm280-2018winter/syllabus.html) for a tentative list of topics and course logistics.
 
-# References #
+## References
 
