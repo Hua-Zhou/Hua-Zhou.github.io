@@ -516,13 +516,13 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 ## Use keys over password
 
-- Key authentification is more secure than password. Most passwords are weak.
+- Key authentication is more secure than password. Most passwords are weak.
 
 - Script or a program may need to systematically SSH into other machines.
 
 - Log into multiple machines using the same key.
 
-- Seamless use of many services: git, svn, Amazon EC2 cloud service, parallel computing on multiple hosts, etc.
+- Seamless use of many services: Git, svn, Amazon EC2 cloud service, parallel computing on multiple hosts, etc.
 
 - Many servers only allow key authentication and do not accept password authentication.
 
@@ -558,7 +558,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
     
     - Use a (optional) paraphrase different form password.  
     
-- Set right permissions on the `.ssh` folder and key files
+- Set correct permissions on the `.ssh` folder and key files
     ```{bash, eval=FALSE}
     chmod 400 ~/.ssh/[KEY_FILENAME]
     ```
@@ -609,7 +609,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - Linux/Unix uses an `LF` character only. 
 
-- Mac X also uses a single `LF` character. But old Mac OS used a single `CR` character for line breaks. 
+- MacOS X also uses a single `LF` character. But old Mac OS used a single `CR` character for line breaks. 
 
 - If transferred in binary mode (bit by bit) between OSs, a text file could look a mess. 
 
@@ -620,6 +620,11 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 ## Interactive mode
 
 - Start R in the interactive mode by typing `R` in shell.
+
+- Then run R script by
+    ```{r, eval=FALSE}
+    source("script.R")
+    ```
 
 ## Batch mode {.smaller}
 
@@ -644,7 +649,7 @@ or
     Rscript meanEst.R
     ```
 
-- Typically automate batch calls using a scripting language, e.g., python, perl, and shell script.
+- Typically automate batch calls using a scripting language, e.g., Python, perl, and shell script.
 
 ## Pass arguments to R scripts
 
@@ -757,7 +762,7 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
     
 - Option 1: manually call `runSim.R` for each setting.
 
-- Option 2: automate calls using R and `nohup`.
+- Option 2: automate calls using R and `nohup`. [autoSim.R](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R)
 
 ----
 
@@ -776,3 +781,5 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
     ```{bash, echo=FALSE, eval=TRUE}
     rm n*.txt *.Rout
     ```
+    
+- Now we just need write a script to collect results from the output files.
