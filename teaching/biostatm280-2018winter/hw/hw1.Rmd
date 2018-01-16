@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Q1 Git/GitHub
+## Q1. Git/GitHub
 
 **No handwritten homework reports are accepted for this course.** We work with Git and GitHub. Efficient and abundant use of Git, e.g., frequent and well-documented commits, is an important criterion for grading your homework.
 
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 4. After each homework due date, teaching assistant and instructor will check out your master branch for grading. Tag each of your homework submissions with tag names `hw1`, `hw2`, ... Tagging time will be used as your submission time. That means if you tag your `hw1` submission after deadline, penalty points will be deducted for late submission.
 
-## Q2 Linux Shell Commands
+## Q2. Linux Shell Commands
 
 The `35.227.165.60:/home/m280-data/hw1` folder contains a typical genetic data set in plink format. If interested, you can read plink documentation at <http://zzz.bwh.harvard.edu/plink/>. But it's definitely not necessary for this homework.
 
@@ -65,7 +65,7 @@ Use Linux shell commands to answer following questions.
     head -20 mendel_ped.txt
     ```
 
-## Q3 R Batch Run
+## Q3. R Batch Run
 
 In class we discussed using R to organize simulation studies. 
 
@@ -75,7 +75,7 @@ $$
 $$
 for both methods.
 
-2. Modify the [autoSim.R](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R) script to run simulations with combinations of sample sizes `nVals = seq(100, 500, by=100)` and distributions `distTypes = c("gaussian", "t1", "t5")` and write output to appropriately named files. Use `rep = 50`, and `seed = 280`. 
+2. Modify the [`autoSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R) script to run simulations with combinations of sample sizes `nVals = seq(100, 500, by=100)` and distributions `distTypes = c("gaussian", "t1", "t5")` and write output to appropriately named files. Use `rep = 50`, and `seed = 280`. 
 
 3. Write an R script to collect simulation results from output files and print average MSEs in a table of format
 

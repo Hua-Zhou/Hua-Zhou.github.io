@@ -123,8 +123,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="q1-gitgithub" class="section level2">
-<h2>Q1 Git/GitHub</h2>
+<div id="q1.-gitgithub" class="section level2">
+<h2>Q1. Git/GitHub</h2>
 <p><strong>No handwritten homework reports are accepted for this course.</strong> We work with Git and GitHub. Efficient and abundant use of Git, e.g., frequent and well-documented commits, is an important criterion for grading your homework.</p>
 <ol style="list-style-type: decimal">
 <li><p>Apply for the <a href="https://education.github.com/pack">Student Developer Pack</a> at GitHub using your UCLA email.</p></li>
@@ -133,8 +133,8 @@ $(document).ready(function () {
 <li><p>After each homework due date, teaching assistant and instructor will check out your master branch for grading. Tag each of your homework submissions with tag names <code>hw1</code>, <code>hw2</code>, … Tagging time will be used as your submission time. That means if you tag your <code>hw1</code> submission after deadline, penalty points will be deducted for late submission.</p></li>
 </ol>
 </div>
-<div id="q2-linux-shell-commands" class="section level2">
-<h2>Q2 Linux Shell Commands</h2>
+<div id="q2.-linux-shell-commands" class="section level2">
+<h2>Q2. Linux Shell Commands</h2>
 <p>The <code>35.227.165.60:/home/m280-data/hw1</code> folder contains a typical genetic data set in plink format. If interested, you can read plink documentation at <a href="http://zzz.bwh.harvard.edu/plink/" class="uri">http://zzz.bwh.harvard.edu/plink/</a>. But it’s definitely not necessary for this homework.</p>
 <ul>
 <li><p><code>merge-geno.bim</code> contains information of each genetic marker (SNP). Each line is a SNP and has 6 fields:<br />
@@ -225,14 +225,14 @@ with each field separated by a comma. Write a Linux shell command to convert <co
 ## 2,0200035,0200001,0200015,F,</code></pre></li>
 </ol>
 </div>
-<div id="q3-r-batch-run" class="section level2">
-<h2>Q3 R Batch Run</h2>
+<div id="q3.-r-batch-run" class="section level2">
+<h2>Q3. R Batch Run</h2>
 <p>In class we discussed using R to organize simulation studies.</p>
 <ol style="list-style-type: decimal">
 <li><p>Expand the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R"><code>runSim.R</code></a> script to include arguments <code>seed</code> (random seed), <code>n</code> (sample size), <code>dist</code> (distribution) and <code>rep</code> (number of simulation replicates). When <code>dist=&quot;gaussian&quot;</code>, generate data from standard normal; when <code>dist=&quot;t1&quot;</code>, generate data from t-distribution with degree of freedom 1 (same as Cauchy distribution); when <code>dist=&quot;t5&quot;</code>, generate data from t-distribution with degree of freedom 5. Calling <code>runSim.R</code> will (1) set random seed according to argument <code>seed</code>, (2) generate data according to argument <code>dist</code>, (3) compute the primed-indexed average estimator in class and the classical sample average estimator for each simulation replicate, (4) report the average mean squared error (MSE) <span class="math display">\[
   \frac{\sum_{r=1}^{\text{rep}} (\widehat \mu_r - \mu_{\text{true}})^2}{\text{rep}}
 \]</span> for both methods.</p></li>
-<li><p>Modify the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R">autoSim.R</a> script to run simulations with combinations of sample sizes <code>nVals = seq(100, 500, by=100)</code> and distributions <code>distTypes = c(&quot;gaussian&quot;, &quot;t1&quot;, &quot;t5&quot;)</code> and write output to appropriately named files. Use <code>rep = 50</code>, and <code>seed = 280</code>.</p></li>
+<li><p>Modify the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R"><code>autoSim.R</code></a> script to run simulations with combinations of sample sizes <code>nVals = seq(100, 500, by=100)</code> and distributions <code>distTypes = c(&quot;gaussian&quot;, &quot;t1&quot;, &quot;t5&quot;)</code> and write output to appropriately named files. Use <code>rep = 50</code>, and <code>seed = 280</code>.</p></li>
 <li><p>Write an R script to collect simulation results from output files and print average MSEs in a table of format</p></li>
 </ol>
 <table>
