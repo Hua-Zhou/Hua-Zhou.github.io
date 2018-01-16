@@ -135,7 +135,7 @@ $(document).ready(function () {
 </div>
 <div id="q2-linux-shell-commands" class="section level2">
 <h2>Q2 Linux Shell Commands</h2>
-<p>The <code>35.227.165.60:/home/m280-data/hw1</code> folder contains a typical genetic data set in plink format. If interested, you can read plink documentation at <a href="http://pngu.mgh.harvard.edu/~purcell/plink/" class="uri">http://pngu.mgh.harvard.edu/~purcell/plink/</a>. But it’s definitely not necessary for this homework.</p>
+<p>The <code>35.227.165.60:/home/m280-data/hw1</code> folder contains a typical genetic data set in plink format. If interested, you can read plink documentation at <a href="http://zzz.bwh.harvard.edu/plink/" class="uri">http://zzz.bwh.harvard.edu/plink/</a>. But it’s definitely not necessary for this homework.</p>
 <ul>
 <li><p><code>merge-geno.bim</code> contains information of each genetic marker (SNP). Each line is a SNP and has 6 fields:<br />
 <code>Chromosome</code>, <code>SNP ID</code>, <code>Genetic Distance (morgan)</code>, <code>Base Pair Position (bp)</code>, <code>Allele 1</code>, <code>Allele 2</code>.</p>
@@ -201,7 +201,7 @@ with each field separated by a comma. Write a Linux shell command to convert <co
 <ul>
 <li>Mendel’s pedigree file is similar to the plink <code>fam</code> file but has format<br />
 <code>Family ID</code>, <code>Person ID</code>, <code>Father ID</code>, <code>Mother ID</code>, <code>Sex</code> coded as M or F, <code>Twin Status</code><br />
-with each field separated by a comma. Write a Linux shell command to convert <code>merge-geno.fam</code> to Mendel pedigree file. Since twin status is not available in plink format, we put nothing for that field. Also Mendel limits Person ID to have length less or equal to 8 characters, so we have to strip the string <code>T2DG</code> from the IDs. First few lines of the Mendel pedigree should look like</li>
+with each field separated by a comma. Write a Linux shell command to convert <code>merge-geno.fam</code> to Mendel pedigree file. Since twin status is not available in plink format, we put nothing for that field. Also Mendel limits Person ID to have length less than or equal to 8 characters, so we have to strip the string <code>T2DG</code> from the IDs. First few lines of the Mendel pedigree should look like</li>
 </ul>
 <pre><code>## 2,0200001,,,M,
 ## 2,0200002,,,F,
@@ -229,10 +229,10 @@ with each field separated by a comma. Write a Linux shell command to convert <co
 <h2>Q3 R Batch Run</h2>
 <p>In class we discussed using R to organize simulation studies.</p>
 <ol style="list-style-type: decimal">
-<li><p>Expand the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R"><code>runSim.R</code></a> script to include arguments <code>seed</code> (random seed), <code>n</code> (sample size), <code>dist</code> (distribution) and <code>rep</code> (number of simulation replicates). When <code>dist=&quot;gaussian&quot;</code>, generate data from standard normal; when <code>dist=&quot;t1&quot;</code>, generate data from t-distribution with degree of freedom 1 (same as Cauchy distribution); when <code>dist=&quot;t5&quot;</code>, generate data from t-distribution with degree of freedom 5. Calling <code>runSim.R</code> will (1) set random seed according to argument <code>seed</code>, (2) generate data according to argument <code>dist</code>, (3) compute the primed-indexed avarage estimator in class and the classical sample average estimator for each simulation replicate, (4) report the average mean squared error (MSE) <span class="math display">\[
+<li><p>Expand the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R"><code>runSim.R</code></a> script to include arguments <code>seed</code> (random seed), <code>n</code> (sample size), <code>dist</code> (distribution) and <code>rep</code> (number of simulation replicates). When <code>dist=&quot;gaussian&quot;</code>, generate data from standard normal; when <code>dist=&quot;t1&quot;</code>, generate data from t-distribution with degree of freedom 1 (same as Cauchy distribution); when <code>dist=&quot;t5&quot;</code>, generate data from t-distribution with degree of freedom 5. Calling <code>runSim.R</code> will (1) set random seed according to argument <code>seed</code>, (2) generate data according to argument <code>dist</code>, (3) compute the primed-indexed average estimator in class and the classical sample average estimator for each simulation replicate, (4) report the average mean squared error (MSE) <span class="math display">\[
   \frac{\sum_{r=1}^{\text{rep}} (\widehat \mu_r - \mu_{\text{true}})^2}{\text{rep}}
-\]</span> for both method.</p></li>
-<li><p>Modify the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R">autoSim.R</a> script to run simulations with cominations of sample sizes <code>nVals = seq(100, 500, by=100)</code> and distributions <code>distTypes = c(&quot;gaussian&quot;, &quot;t1&quot;, &quot;t5&quot;)</code> and write output to appropriate named files. Use <code>rep = 50</code>, and <code>seed = 280</code>.</p></li>
+\]</span> for both methods.</p></li>
+<li><p>Modify the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R">autoSim.R</a> script to run simulations with combinations of sample sizes <code>nVals = seq(100, 500, by=100)</code> and distributions <code>distTypes = c(&quot;gaussian&quot;, &quot;t1&quot;, &quot;t5&quot;)</code> and write output to appropriately named files. Use <code>rep = 50</code>, and <code>seed = 280</code>.</p></li>
 <li><p>Write an R script to collect simulation results from output files and print average MSEs in a table of format</p></li>
 </ol>
 <table>
