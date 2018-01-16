@@ -8,9 +8,9 @@ title: BIOSTAT M280
 BIOSTAT M280 tentative schedule and handouts (expect frequent updates)
 
 
-| Tuesday | Thursday |
-|:-----------|:------------|
-| [1/09](http://hua-zhou.github.io/teaching/biostatm280-2018winter/biostatm280winter2018/2018/01/09/first-day.html) introduction, course logistics \[slides: [Rmd](./slides/01-intro/intro.Rmd), [html](./slides/01-intro/intro.html)\] | [1/11](http://hua-zhou.github.io/teaching/biostatm280-2018winter/biostatm280winter2018/2018/01/11/week1-day2.html) Linux basics \[slides: [Rmd](./slides/02-linux/linux.Rmd), [html](./slides/02-linux/linux.html)\] |
+| Tuesday | Thursday | Homework |
+|:-----------|:------------|:------------|
+| [1/09](http://hua-zhou.github.io/teaching/biostatm280-2018winter/biostatm280winter2018/2018/01/09/first-day.html) introduction, course logistics \[slides: [Rmd](./slides/01-intro/intro.Rmd), [html](./slides/01-intro/intro.html)\] | [1/11](http://hua-zhou.github.io/teaching/biostatm280-2018winter/biostatm280winter2018/2018/01/11/week1-day2.html) Linux basics \[slides: [Rmd](./slides/02-linux/linux.Rmd), [html](./slides/02-linux/linux.html)\] | HW1: [Rmd](./hw/hw1.Rmd), [html](./hw/hw1.html) |  
 | [1/16](http://hua-zhou.github.io/teaching/biostatm280-2018winter/biostatm280winter2018/2018/01/16/week2-day1.html) reproducible research \[slides: [Rmd](./slides/03-repres/repres.Rmd), [html](./slides/03-repres/repres.html)\], Git/GitHub \[slides: [Rmd](./slides/04-git/git.Rmd), [html](./slides/04-git/git.html)\] | **1/18** RMarkdown |
 | **1/23** R basics (review of 203A) | **1/25** cluster computing at UCLA (Dr. Raffaella D'Auria from IDRE) |
 | **1/30** advanced R | **2/01** authoring and publishing R package |
