@@ -49,7 +49,7 @@ Nature Genetics (2015 Impact Factor: 31.616). 20 articles about microarray profi
 
 ## Why reproducible research
 
-- Replicability has been a foundation of science. It helps accumulate scientific knowledge.
+- Reproducibility has been a foundation of science. It helps accumulate scientific knowledge.
 
 - Greater research impact.
 
@@ -63,7 +63,7 @@ Nature Genetics (2015 Impact Factor: 31.616). 20 articles about microarray profi
       Prof: "ok. how about trying this instead."
     end
     ```
-Unless you reproduce the computing environment (algorithms, dataset, tuning parameters), there's no way professor can help you.
+Unless you reproduce the computing environment (algorithms, dataset, tuning parameters), there's no way others can help you.
 
 ## How to be reproducible in statistics?
 
@@ -75,9 +75,9 @@ A good example: <http://stanford.edu/~boyd/papers/admm_distr_stats.html>
 
 ## Tools for reproducible research
 
-- Version control: Git, svn, etc.
+- Version control: Git, Apache subverson (svn), cvs, etc.
 
-- Distribute method implementation, e.g., R or Julia packages on GitHub or bitbucket.
+- Distribute method implementation, e.g., R packages, on GitHub or bitbucket.
 
 - Dynamic document: RMarkdown for R or [Jupyter](http://jupyter.org) for Julia/Python/R.
 
