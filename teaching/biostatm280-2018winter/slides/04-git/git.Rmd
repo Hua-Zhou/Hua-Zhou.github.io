@@ -8,7 +8,8 @@ subtitle: Biostat M280
 bibliography: ../bib-HZ.bib
 ---
 
-## If it's not in source control, it doesn't exist
+## {.flexbox .vcenter}
+> If it's not in source control, it doesn't exist.
 
 <p align="center">
   <img src="./screenshot_versioncontrolcartoon.png" height="375">
@@ -28,6 +29,12 @@ Statisticians, as opposed to closet mathematicians, rarely do things in vacuum.
 
 - We distribute software so potential users have access to your methods.
 
+## {.flexbox .vcenter}
+
+> In every project you have at least one other collaborator, future-you. You don’t want future-you to curse past-you.
+>
+> Hadley Wickham
+
 ## Why version control?
 
 - A centralized repository helps coordinate multi-person projects.
@@ -38,17 +45,17 @@ Statisticians, as opposed to closet mathematicians, rarely do things in vacuum.
 
 - Synchronize files across multiple computers and platforms.
 
-- <github.com> is becoming a de facto central repository for open source development. E.g., all packages in Julia are distributed through github.com.
+- [GitHub](github.com) is becoming a de facto central repository for open source development. E.g., all packages in Julia are distributed through GitHub; [Hadley Wickham](http://r-pkgs.had.co.nz) also recommends Git/GitHub as the best practices for R package development.
 
-- Advertise yourself thru <github.com>.
+- Advertise yourself through GitHub.
 
 ## Available version control tools
 
-- Open source: Git, subversion (aka svn), cvs, mercurial, ...
+- Open source: Git, Apache subversion (aka svn), cvs, mercurial.
 
-- Proprietary: Visual SourceSafe (VSS), ...
+- Proprietary: Visual SourceSafe (VSS), etc.
 
-- Dropbox? Mostly for file backup and sharing, limited version control (1 month?), ...
+- Dropbox? Mostly for file backup and sharing, limited version control (1 month?).
 
 We use Git in this course.
 
@@ -58,9 +65,13 @@ We use Git in this course.
 
 - Initially designed and developed by [Linus Torvalds](http://en.wikipedia.org/wiki/Linus_Torvalds) in 2005 for Linux kernel development. Git is the British English slang for unpleasant person.
 
+<div class="centered">
+
 > I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'.
 > 
 > Linus Torvalds
+
+</div>
 
 ## Centralized version control
 
@@ -82,9 +93,9 @@ Git is a **distributed** version control system:
 
 - A **Git server** enabling multi-person collaboration through a centralized repository.
 
-    - [github.com](github.com): unlimited public repositories, private repositories costs $, unlimited private repositories for free from [Student Developer Pack](https://education.github.com/pack).
+    - [github.com](github.com): unlimited public repositories, private repositories costs $, but unlimited private repositories for free from [Student Developer Pack](https://education.github.com/pack).
 
-    - [bitbucket.org](bitbucket.org): unlimited public repositories, unlimited private repositories for academic account (register for free using your UCLA email).
+    - [bitbucket.org](bitbucket.org): unlimited public repositories, unlimited private repositories for academic account (register for free using your edu email).
     
     - We use github.com in this course for developing and submitting homework.
 
@@ -112,7 +123,7 @@ Git is a **distributed** version control system:
     ```{bash, eval=FALSE}
     git pull
     ```
-same as `git fetch` and then `git merge`.
+same as `git fetch` plus `git merge`.
 
 - Modify files in local working directory.
 
@@ -188,9 +199,9 @@ Name and email appear in each commit you make.
 
     - `develop` for your own development.
     
-    - `master` for releases (homework submission). 
+    - `master` for releases, i.e., homework submission. 
     
-    - Note `master` is the default branch when you initialize the project; create and switch to develop branch immediately after project initialization.
+    - Note `master` is the default branch when you initialize the project; create and switch to `develop` branch immediately after project initialization.
     
 <p align="center">
   <img src="./git_branching_simplified.png" height="250">
@@ -280,7 +291,4 @@ On your local machine:
     
 - Adding an informative message when you commit is not optional. Spending one minute on commit message saves hours later for your collaborators and yourself. Read the following sentence to yourself 3 times:
     
-> Write every commit message like the next person who reads it is an axe-wielding maniac who knows where you live.
-
-## References {.smaller}
-
+**Write every commit message like the next person who reads it is an axe-wielding maniac who knows where you live.**

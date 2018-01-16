@@ -8,7 +8,7 @@ subtitle: Biostat M280
 bibliography: ../bib-HZ.bib
 ---
 
-## 
+## {.flexbox .vcenter}
 
 > An article about computational science in a scientific publication is **not** the scholarship itself, it is merely **advertising** of the scholarship. The actual scholarship is the complete software development environment and the complete set of instructions which generated the figures.
 >
@@ -22,12 +22,13 @@ bibliography: ../bib-HZ.bib
 
 ----
 
-- [@Potti06GenomeSignature](https://www.nature.com/articles/nm1491)
+- @Potti06GenomeSignature: <https://www.nature.com/articles/nm1491>
 
-- [@BaggerlyCoombes09](https://projecteuclid.org/euclid.aoas/1267453942)
+- @BaggerlyCoombes09: <https://projecteuclid.org/euclid.aoas/1267453942>
 
 - [Simply Statistics Blog: The Duke Saga Starter Set](https://simplystatistics.org/2012/02/27/the-duke-saga-starter-set/)
-    
+
+   
 ## Non-reproducible research | Microarray studies
 
 <p align="center">
