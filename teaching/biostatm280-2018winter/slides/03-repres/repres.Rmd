@@ -48,7 +48,7 @@ Nature Genetics (2015 Impact Factor: 31.616). 20 articles about microarray profi
 
 - @McKayBarNatanBarHillelKalai99BibleCode
 
-## Why reproducible research
+## Why reproducible research {.smaller}
 
 - Reproducibility has been a foundation of science. It helps accumulate scientific knowledge.
 
@@ -72,11 +72,17 @@ Unless you reproduce the computing environment (algorithms, dataset, tuning para
 >
 > @BuckheitDonoho95ReproRes
 
-A good example: <http://stanford.edu/~boyd/papers/admm_distr_stats.html>
+- A good example: <http://stanford.edu/~boyd/papers/admm_distr_stats.html>
+
+- I highly recommend the book _Reproducible Research with R and RStudio_ by Christopher Gandrud. 
+
+    - [Amazon](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1466572841)
+    
+    - [GitHub repo](https://github.com/christophergandrud/Rep-Res-Book)
 
 ## Tools for reproducible research
 
-- Version control: Git, Apache subverson (svn), cvs, etc.
+- Version control: Git+GitHub.
 
 - Distribute method implementation, e.g., R packages, on GitHub or bitbucket.
 
