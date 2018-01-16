@@ -31,7 +31,7 @@ Statisticians, as opposed to closet mathematicians, rarely do things in vacuum.
 
 ## {.flexbox .vcenter}
 
-> In every project you have at least one other collaborator, future-you. You don’t want future-you to curse past-you.
+> In every project you have at least one other collaborator, **future-you**. You don’t want future-you to curse past-you.
 >
 > Hadley Wickham
 
