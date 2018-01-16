@@ -1,7 +1,5 @@
 ---
-title: "Biostat M280 Homework "
-author: "Hua Zhou"
-date: "1/16/2018"
+title: "Biostat M280 Homework 1"
 subtitle: Due Jan 26 @ 11:59PM
 output: html_document
 ---
@@ -10,9 +8,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Q1
+## Q1 Git/GitHub
 
-**No handwritten homework reports are accepted for this course.** We work with git and github. Efficient and abundant use of Git, e.g., frequent and well-documented commits, is an important criterion for grading your homework.
+**No handwritten homework reports are accepted for this course.** We work with Git and GitHub. Efficient and abundant use of Git, e.g., frequent and well-documented commits, is an important criterion for grading your homework.
 
 1. Apply for the [Student Developer Pack](https://education.github.com/pack) at GitHub using your UCLA email.
 
@@ -22,25 +20,28 @@ knitr::opts_chunk$set(echo = TRUE)
 
 4. After each homework due date, teaching assistant and instructor will check out your master branch for grading. Tag each of your homework submissions with tag names `hw1`, `hw2`, ... Tagging time will be used as your submission time. That means if you tag your `hw1` submission after deadline, penalty points will be deducted for late submission.
 
-## Q2
+## Q2 Linux Shell Commands
 
 The `35.227.165.60:/home/m280-data/hw1` folder contains a typical genetic data set in plink format. If interested, you can read plink documentation at <http://pngu.mgh.harvard.edu/~purcell/plink/>. But it's definitely not necessary for this homework.
 
-- `merge-geno.bed` contains genotypes of each individual in binary format.
-
-- `merge-geno.bim` contains information of each genetic marker (SNP). Each line is a SNP and has fields: Chromosome, SNP ID, Genetic Distance (morgan), Base Pair Position (bp), Allele 1, Allele 2.
+- `merge-geno.bim` contains information of each genetic marker (SNP). Each line is a SNP and has 6 fields:  
+`Chromosome`, `SNP ID`, `Genetic Distance (morgan)`, `Base Pair Position (bp)`, `Allele 1`, `Allele 2`.
     ```{bash}
     head /home/m280-data/hw1/merge-geno.bim
     ```
 
-- `merge-geno.fam` contains individual information. Each line is one individual and has fields: Family ID, Person ID, Father ID, Mother ID, Sex coded as 1 (male) or 2 (female), Affection Status. Father ID = 0 means that person's father is not in this data set. Similarly Mother ID = 0 means that person's mother is not in this data set.
+- `merge-geno.fam` contains individual information. Each line is one individual and has 6 fields:  
+`Family ID`, `Person ID`, `Father ID`, `Mother ID`, `Sex` coded as 1 (male) or 2 (female), `Affection Status`  
+`Father ID = 0` means that person's father is not in this data set. Similarly `Mother ID` = 0 means that person's mother is not in this data set.
     ```{bash}
-    head /home/m280-data/hw1/merge-geno.fam
+    head -20 /home/m280-data/hw1/merge-geno.fam
     ```
 
-Please, do **not** put these data files into Git. They are huge. You even don't need to copy them into your directory. Just read from the data folder `/home/m280-data/hw1` directly.
+- `merge-geno.bed` contains genotypes of each individual in binary format. We don't need this file for this homework.
 
-Use Linux shell commands or scripts to answer following questions. 
+Please, do **not** put these data files into Git; they are huge. You even don't need to copy them into your directory. Just read from the data folder `/home/m280-data/hw1` directly.
+
+Use Linux shell commands to answer following questions. 
 
 1. How many persons are in the data set (statisticians call this `n`)? How many SNPs are in the data set (statisticians call this `p`)?
 
@@ -51,15 +52,43 @@ Use Linux shell commands or scripts to answer following questions.
 4. Statistical geneticists often have to reformat a data set to feed into various analysis programs. For example, to use the Mendel software <http://www.genetics.ucla.edu/software/mendel>, we have to reformat the data set to be read by Mendel.
 
       - Mendel's SNP definition file is similar to the plink `bim` file but has format  
-      `SNP ID`, `Chromosome`, `Base Pair Position` 
+      `SNP ID`, `Chromosome`, `Base Pair Position`  
       with each field separated by a comma. Write a Linux shell command to convert `merge-geno.bim` to Mendel SNP definition file. The first few lines of the Mendel SNP definition file should look like
-    ```{r, echo = FALSE, eval = TRUE}
-    
+    ```{bash, echo=FALSE, eval=TRUE}
+    head mendel_snpdef.txt
     ```
     
     - Mendel's pedigree file is similar to the plink `fam` file but has format  
-    `Family ID`, `Person ID`, `Father ID`, `Mother ID`, Sex coded as M or F, Twin Status  
+    `Family ID`, `Person ID`, `Father ID`, `Mother ID`, `Sex` coded as M or F, `Twin Status`  
     with each field separated by a comma. Write a Linux shell command to convert `merge-geno.fam` to Mendel pedigree file. Since twin status is not available in plink format, we put nothing for that field. Also Mendel limits Person ID to have length less or equal to 8 characters, so we have to strip the string `T2DG` from the IDs. First few lines of the Mendel pedigree should look like
-    ```{r, echo = FALSE, eval = TRUE}
-    
+    ```{bash, echo=FALSE, eval=TRUE}
+    head -20 mendel_ped.txt
     ```
+
+## Q3 R Batch Run
+
+In class we discussed using R to organize simulation studies. 
+
+1. Expand the [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) script to include arguments `seed` (random seed), `n` (sample size), `dist` (distribution) and `rep` (number of simulation replicates). When `dist="gaussian"`, generate data from standard normal; when `dist="t1"`, generate data from t-distribution with degree of freedom 1 (same as Cauchy distribution); when `dist="t5"`, generate data from t-distribution with degree of freedom 5. Calling `runSim.R` will (1) set random seed according to argument `seed`, (2) generate data according to argument `dist`, (3) compute the primed-indexed avarage estimator in class and the classical sample average estimator for each simulation replicate, (4) report the average mean squared error (MSE)
+$$
+  \frac{\sum_{r=1}^{\text{rep}} (\widehat \mu_r - \mu_{\text{true}})^2}{\text{rep}}
+$$
+for both method.
+
+2. Modify the [autoSim.R](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/autoSim.R) script to run simulations with cominations of sample sizes `nVals = seq(100, 500, by=100)` and distributions `distTypes = c("gaussian", "t1", "t5")` and write output to appropriate named files. Use `rep = 50`, and `seed = 280`. 
+
+3. Write an R script to collect simulation results from output files and print average MSEs in a table of format
+
+| $n$ | Method   | $t_1$ | $t_5$ | Gaussian |
+|-----|----------|-------|-------|----------|
+| 100 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 200 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 300 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 400 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 500 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+
