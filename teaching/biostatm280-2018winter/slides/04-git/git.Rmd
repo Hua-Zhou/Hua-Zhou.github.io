@@ -107,7 +107,7 @@ Git is a **distributed** version control system:
 
     - Mac: install by `port install git` or other package managers.
 
-    - Windows: GitHub for Windows (GUI), TortoiseGIT (is this good?).
+    - Windows: [GitHub Desktop](https://desktop.github.com) (GUI), [TortoiseGIT](https://tortoisegit.org) (is this good?).
     
 - Don't totally rely on GUI or IDE. Learn to use Git on command line, which is needed for cluster and cloud computing.
 
