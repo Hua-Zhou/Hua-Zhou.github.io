@@ -74,7 +74,7 @@ Unless you reproduce the computing environment (algorithms, dataset, tuning para
 
 - A good example: <http://stanford.edu/~boyd/papers/admm_distr_stats.html>
 
-- I highly recommend the book _Reproducible Research with R and RStudio_ by Christopher Gandrud. 
+- I **highly** recommend the book _Reproducible Research with R and RStudio_ by Christopher Gandrud. 
 
     - [Amazon](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1466572841)
     
