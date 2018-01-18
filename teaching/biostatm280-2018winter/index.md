@@ -28,4 +28,4 @@ Office hours: Tue/Thu 12p-1p
 ### Teaching Assistant
 
 Juhyun Kim <juhkim111@ucla.edu>  
-Office hours: Wed 11a-12p, Thu 12p-1p @ CHS A1-241 (Computer Lab)   
+Office hours: Wed 12p-1p, Thu 12p-1p @ CHS A1-241 (Computer Lab)   
