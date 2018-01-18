@@ -533,7 +533,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 </p>
 
 <p align="center">
-  <img src="./key_authentication_2.png" height="300">
+  <img src="./key_authentication_2.png" height="250">
 </p>
 
 ----
@@ -546,7 +546,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - Messages from your computer to server is signed with your private key (digital signatures) and can be verified by anyone who has your public key (authentication).
 
-## Steps for generate keys
+## Steps for generate keys {.smaller}
 
 - On Linux or Mac, to generate a key pair:
     ```{bash, eval=FALSE}
@@ -632,7 +632,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 $$
   {\widehat \mu}_n = \frac{\sum_{i=1}^n x_i 1_{x_i \text{ is prime}}}{\sum_{i=1}^n 1_{x_i \text{ is prime}}}.
 $$
-    ```{bash}
+    ```{bash, echo=FALSE}
     cat meanEst.R
     ```
 
@@ -697,7 +697,7 @@ and then issue commands in R
 ## {.smaller}
 
 - [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) data generator with unspecified parameter `n`, (3) estimation based on generated data, and (4) **command argument parser**.
-```{bash}
+```{bash, echo=FALSE}
 cat runSim.R
 ```
 
