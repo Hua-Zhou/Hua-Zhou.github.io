@@ -5,6 +5,10 @@ title: BIOSTAT M280
 
 ## Syllabus
 
+### Warning
+
+This course is used as a placeholder for the new course _Biostat 203B: Introduction to Data Science_. Please check syllabus carefully to be sure it is the course you want to take.
+
 ### Lectures  
 
 Tue/Thu 1p-2:30p @ CHS 61-269   
@@ -31,7 +35,7 @@ This is a tentative list of topics:
 * R programming  
 * Cluster computing @ UCLA  
 * Cloud computing  
-* Docker 
+* Docker
 * TidyVerse  
 * Shiny  
 * Selected tools for data science: pandas, spark, scikit-learn, TensorFlow  
