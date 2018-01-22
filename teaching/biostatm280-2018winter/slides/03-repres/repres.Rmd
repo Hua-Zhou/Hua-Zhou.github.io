@@ -6,6 +6,7 @@ output:
   ioslides_presentation: default
 subtitle: Biostat M280
 bibliography: ../bib-HZ.bib
+csl: ../apa.csl
 ---
 
 ## {.flexbox .vcenter}
