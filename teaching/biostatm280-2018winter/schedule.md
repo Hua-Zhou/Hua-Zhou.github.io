@@ -7,6 +7,13 @@ title: BIOSTAT M280
 
 BIOSTAT M280 tentative schedule and handouts (expect frequent updates)
 
+Readings:  
+
+* _Reproducible Research with R and RStudio_ by Christopher Gandrud: [Amazon](https://www.amazon.com/Reproducible-Research-Studio-Chapman-Hall/dp/1466572841), [GitHub repo](https://github.com/christophergandrud/Rep-Res-Book).
+
+* [_R for Data Science_](http://r4ds.had.co.nz) by Garrett Grolemund and Hadley Wickham. 
+
+
 
 | Tuesday | Thursday | Homework |
 |:-----------|:------------|:------------|
