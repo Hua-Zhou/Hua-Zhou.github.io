@@ -39,7 +39,7 @@ A typical data science project:
 <img src="./data-science.png" height="275">
 </p>
 
-## Tidyverse {.smaller}
+## Tidyverse
 
 - `tidyverse` is a collection of R packages that make data wrangling easy.
 
