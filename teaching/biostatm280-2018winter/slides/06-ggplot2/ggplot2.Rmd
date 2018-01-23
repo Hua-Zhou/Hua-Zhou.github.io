@@ -1,0 +1,317 @@
+---
+title: "Data Visualization With ggplot2"
+author: "Dr. Hua Zhou"
+date: "Jan 23, 2018"
+output:
+  ioslides_presentation: default
+subtitle: Biostat M280
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 6, fig.height = 4, fig.align = 'center')
+```
+
+## Outline
+
+We will spend next couple lectures studying R. I'll closely follow a few great books by Hadley Wickham.
+
+* Data wrangling (import, visualization, transformation, tidy).  
+  [R for Data Science](http://r4ds.had.co.nz) by Garrett Grolemund and Hadley Wickham.
+
+* R programming, Rcpp.  
+  [Advanced R](http://adv-r.had.co.nz) by Hadley Wickham.
+
+* R package development.  
+  [R Packages](http://r-pkgs.had.co.nz) by Hadley Wickham.
+
+* Web applications.
+
+* Interface with SQL and Apache Spark.
+
+
+## Data wrangling
+
+A typical data science project:
+
+<p align="center">
+<img src="./data-science.png" height="200">
+</p>
+
+## Tidyverse {.smaller}
+
+- `tidyverse` is a collection of R packages that make data wrangling easy.
+
+- Install `tidyverse` from RStudio menu `Tools -> Install Packages...` or in R by
+    ```{r, eval = FALSE}
+    install.packages("tidyverse")
+    ```
+
+- After installation, load `tidyverse` by
+    ```{r}
+    library("tidyverse")
+    ```
+
+## `mpg` data {.smaller}
+
+- `mpg` data is available from the `ggplot2` package:
+    ```{r}
+    mpg
+    ```
+    
+- `displ`: engine size, in litres.  
+    `hwy`: highway fuel efficiency, in mile per gallen (mpg).
+
+# Aesthetic mappings
+    
+## Scatter plot {.smaller}
+
+- `hwy` vs `displ` 
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy))
+    ```
+
+##
+
+- Check available aesthetics for a geometric object by help:
+```{r, eval = FALSE}
+?geom_point
+```
+
+## Color of points {.smaller}
+
+- Color points according to `class`
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy, color = class))
+    ```
+
+## Size of points {.smaller}
+- Assign different sizes to points according to `class`
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy, size = class))
+    ```
+
+## Transparency of points {.smaller}
+- Assign different transparency levels to points according to `class`
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+    ```
+
+## Shape of points {.smaller}
+- Assign different shapes to points according to `class`
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+    ```
+
+## Manual setting of an aesthetic {.smaller}
+- Set the color of all points to be blue
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+    ```
+
+# Facets
+
+## Plotting by groups {.smaller}
+
+- A subplot for each car type:
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy)) + 
+      facet_wrap(~ class, nrow = 2)
+    ```
+    
+## 
+
+- A subplot for each car type and drive:
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy)) + 
+      facet_grid(drv ~ class)
+    ```
+    
+# Geometric objects
+
+## Smooth line
+
+- `hwy` vs `displ` line:
+    ```{r, fig.width = 4.5, fig.height = 3}
+    ggplot(data = mpg) + 
+      geom_smooth(mapping = aes(x = displ, y = hwy))
+    ```
+    
+## Different line types
+
+- Different line types according to `drv`
+    ```{r, fig.width = 4.5, fig.height = 3}
+    ggplot(data = mpg) + 
+      geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
+    ```
+
+## Different line colors
+
+- Different line types according to `drv`
+    ```{r, fig.width = 4.5, fig.height = 3}
+    ggplot(data = mpg) + 
+      geom_smooth(mapping = aes(x = displ, y = hwy, color = drv))
+    ```
+
+## Points and lines
+
+- Lines overlaid over scatter plot:
+    ```{r, fig.width = 4.5, fig.height = 3}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy)) + 
+      geom_smooth(mapping = aes(x = displ, y = hwy))
+    ```
+
+##
+
+- Same as
+    ```{r, fig.width = 4.5, fig.height = 3}
+    ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+      geom_point() + geom_smooth()
+    ```
+
+## Aesthetics for each geometric object
+
+- Different aesthetics in different layers:
+    ```{r, fig.width = 4.5, fig.height = 3}
+    ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+      geom_point(mapping = aes(color = class)) + 
+      geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
+    ```
+    
+# Bar charts
+
+## `diamonds` data {.smaller}
+
+- `diamonds` data:
+    ```{r}
+    diamonds
+    ```
+    
+## Bar chart
+
+- `geom_bar()` creates bar chart:
+    ```{r}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut))
+    ```
+
+##
+
+- Bar charts, like histograms, frequency polygons, smoothers, and boxplots, plot some computed variables instead of raw data.
+
+- Check available computed variables for a geometric object via help:
+    ```{r, eval = FALSE}
+    ?geom_bar
+    ```
+
+##
+
+- Use `stat_count()` directly:
+    ```{r}
+    ggplot(data = diamonds) + 
+      stat_count(mapping = aes(x = cut))
+    ```
+- `stat_count()` has a default geom `geom_bar()`.
+
+## 
+
+- Display frequency instead of counts:
+    ```{r}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))    
+    ```
+    
+##
+
+- Color bar:
+    ```{r, results = 'hold'}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, colour = cut))
+    ```
+
+##
+
+- Fill color: 
+    ```{r, results = 'hold'}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, fill = cut))
+    ```
+
+##
+
+- Fill color according to another variable:
+    ```{r}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, fill = clarity))
+    ```
+
+# Positional arguments
+
+##  
+
+- `position_gitter()`:  
+    ```{r}
+    ggplot(data = mpg) + 
+      geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
+    ```
+
+##  
+    
+- `position_fill()`:  
+    ```{r}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
+    ```
+
+## 
+
+- `position_dodge()`:  
+    ```{r}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
+    ```
+
+# Coordinate systems
+
+## `coord_flip()`
+
+- A boxplot:
+    ```{r}
+    ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+      geom_boxplot()
+    ```
+    
+##
+
+- Flip x- and y- axis:
+- A boxplot:
+    ```{r}
+    ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+      geom_boxplot() + coord_flip()
+    ```
+
+## `coord_quickmap()`
+
+```{r}
+library("maps")
+nz <- map_data("nz")
+
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "black")
+```
+
+## 
+
+```{r}
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "white", colour = "black") +
+  coord_quickmap()
+```
