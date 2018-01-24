@@ -7,7 +7,7 @@ title: Biostat M280
 
 ### Warning
 
-This course is used as a placeholder for the new course _Biostat 203B: Introduction to Data Science_. Please check [syllabus](./syllabus.html) carefully to be sure it is the course you want to take.  
+This course is used as a placeholder for the new course **Biostat 203B: Introduction to Data Science**. Please check [syllabus](./syllabus.html) carefully to be sure it is the course you want to take.  
 
 ### Course Description
 
