@@ -31,7 +31,7 @@ We will spend next couple lectures studying R. I'll closely follow a few great b
 * Interface with SQL and Apache Spark.
 
 
-## Data wrangling
+##
 
 A typical data science project:
 
@@ -100,11 +100,14 @@ A typical data science project:
     ```
 
 ## Shape of points {.smaller}
+
 - Assign different shapes to points according to `class`:
     ```{r, warning = FALSE}
     ggplot(data = mpg) + 
       geom_point(mapping = aes(x = displ, y = hwy, shape = class))
     ```
+
+- Maximum of 6 shapes at a time. By default, additional groups will go unplotted.
 
 ## Manual setting of an aesthetic {.smaller}
 
@@ -257,7 +260,7 @@ A typical data science project:
 
 # Positional arguments | r4ds chapter 3.8
 
----
+----
 
 - `position_gitter()` add random noise to X and Y position of each
 element to avoid overplotting:  
@@ -266,7 +269,7 @@ element to avoid overplotting:
       geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
     ```
 
----
+----
 
 - `geom_jitter()` is similar:  
     ```{r}
@@ -274,7 +277,7 @@ element to avoid overplotting:
       geom_jitter(mapping = aes(x = displ, y = hwy))
     ```
 
----
+----
     
 - `position_fill()` stack elements on top of one another,
 normalize height:  
@@ -283,7 +286,7 @@ normalize height:
       geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
     ```
 
----
+----
 
 - `position_dodge()` arrange elements side by side:  
     ```{r}
@@ -291,9 +294,18 @@ normalize height:
       geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
     ```
 
+----
+
+- `position_stack()` stack elements on top of each other:  
+    ```{r}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, fill = clarity), position = "stack")
+    ```
+
+
 # Coordinate systems | r4ds chapter 3.9
 
----
+----
 
 - A boxplot:
     ```{r}
@@ -301,16 +313,34 @@ normalize height:
       geom_boxplot()
     ```
 
----
+----
 
-- `coord_flip()` flip x- and y- axis:
+- `coord_cartesian()` is the default cartesian coordinate system:
+    ```{r}
+    ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+      geom_boxplot() + 
+      coord_cartesian(xlim = c(0, 5))
+    ```
+
+----
+
+- `coord_fixed()` specifies aspect ratio:
+    ```{r}
+    ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
+      geom_boxplot() + 
+      coord_fixed(ratio = 1/2)
+    ```
+
+----
+
+- `coord_flip()` flips x- and y- axis:
     ```{r}
     ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
       geom_boxplot() + 
       coord_flip()
     ```
 
----
+----
 
 - A map:
     ```{r}
@@ -321,7 +351,7 @@ normalize height:
       geom_polygon(fill = "white", colour = "black")
     ```
 
---- 
+----
 
 - `coord_quickmap()` puts maps in scale:
     ```{r}
@@ -336,7 +366,7 @@ normalize height:
 
 - Figure title should be descriptive:
     ```{r, fig.width = 4.5, fig.height = 3, message = FALSE}
-    ggplot(mpg, aes(displ, hwy)) +
+    ggplot(mpg, aes(x = displ, y = hwy)) +
       geom_point(aes(color = class)) +
       geom_smooth(se = FALSE) +
       labs(title = "Fuel efficiency generally decreases with engine size")
@@ -429,7 +459,7 @@ automatically adds scales
       scale_colour_discrete()
     ```
 
----
+----
 
 - `breaks`
     ```{r}
@@ -438,7 +468,7 @@ automatically adds scales
       scale_y_continuous(breaks = seq(15, 40, by = 5))
     ```
 
----
+----
 
 - `labels`
     ```{r}
@@ -447,14 +477,33 @@ automatically adds scales
       scale_x_continuous(labels = NULL) +
       scale_y_continuous(labels = NULL)
     ```
+
+----
+
+- Plot y-axis at log scale:
+    ```{r}
+    ggplot(mpg, aes(x = displ, y = hwy)) +
+      geom_point() +
+      scale_y_log10()
+    ```
+
+----
+
+- Plot x-axis in reverse order:
+    ```{r}
+    ggplot(mpg, aes(x = displ, y = hwy)) +
+      geom_point() +
+      scale_x_reverse()
+    ```
+
     
 ## Legend layout
 
 - 
     ```{r, collapse = TRUE}
-    base <- ggplot(mpg, aes(displ, hwy)) +
-      geom_point(aes(colour = class))
-    base + theme(legend.position = "left")
+    ggplot(mpg, aes(displ, hwy)) +
+      geom_point(aes(colour = class)) + 
+      theme(legend.position = "left")
     ```
 
 ## Zooming
