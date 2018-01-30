@@ -1,0 +1,393 @@
+---
+title: "Data Transformation With dplyr"
+author: "Dr. Hua Zhou"
+date: "Jan 30, 2018"
+subtitle: Biostat M280
+output:
+  ioslides_presentation:
+    smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
+  cache = TRUE)
+```
+
+##
+
+A typical data science project:
+
+<p align="center">
+<img src="./data-science.png" height="275">
+</p>
+
+## nycflights13 data
+
+- Available from the nycflights13 package. 
+
+- 336,776 flights that departed from New York City in 2013:
+```{r}
+library("tidyverse")
+```
+```{r}
+library("nycflights13")
+flights
+```
+
+## dplyr basics
+
+* Pick observations by their values: `filter()`.
+
+* Reorder the rows: `arrange()`.
+
+* Pick variables by their names: `select()`.
+
+* Create new variables with functions of existing variables: `mutate()`.
+
+* Collapse many values down to a single summary: `summarise()`.
+
+## Filter rows with `filter()`
+
+- Flights on Jan 1st:
+    ```{r}
+    # same as filter(flights, month == 1 & day == 1)
+    filter(flights, month == 1, day == 1)
+    ```
+
+----
+
+- Flights in Nov or Dec:
+    ```{r}
+    filter(flights, month == 11 | month == 12)
+    ```
+
+## Remove rows with duplicate values
+
+- One row from each month:
+    ```{r}
+    distinct(flights, month, .keep_all = TRUE)
+    ```
+
+## Sample rows
+
+- Randomly select `n` rows:
+    ```{r}
+    sample_n(flights, 10, replace = TRUE)
+    ```
+
+----
+
+- Randomly select fraction of rows:
+    ```{r}
+    sample_frac(flights, 0.1, replace = TRUE)
+    ```
+
+## Select rows by position
+
+- Select rows by position:
+    ```{r}
+    slice(flights, 1:5)
+    ```
+
+----
+
+- Top `n` rows:
+    ```{r}
+    top_n(flights, 5)
+    ```
+
+## Arrange rows with `arrange()`
+
+- Sort in ascending order:
+    ```{r}
+    arrange(flights, year, month, day)
+    ```
+
+----
+
+- Sort in descending order:
+    ```{r}
+    arrange(flights, arrange(flights, desc(arr_delay)))
+    ```
+
+## Select columns with `select()`
+
+- Select columns by variable name:
+    ```{r}
+    select(flights, year, month, day)
+    ```
+
+----
+
+- Select columns between two variables:
+    ```{r}
+    select(flights, year:day)
+    ```
+
+----
+
+- Select columns _except_ those between two variables:
+    ```{r, }
+    select(flights, -(year:day))
+    ```
+
+----
+
+- Select columns by positions:
+    ```{r}
+    select(flights, seq(1, 10, by = 2))
+    ```
+
+----
+
+- Move variables to the start of data frame:
+    ```{r, }
+    select(flights, time_hour, air_time, everything())
+    ```
+
+----
+ 
+- Helper functions.
+
+    * `starts_with("abc")`: matches names that begin with “abc”.
+
+    * `ends_with("xyz")`: matches names that end with “xyz”.
+
+    * `contains("ijk")`: matches names that contain “ijk”.
+
+    * `matches("(.)\\1")`: selects variables that match a regular expression.
+
+    * `num_range("x", 1:3)`: matches x1, x2 and x3.
+    
+    * `one_of()`
+
+## Add new variables with `mutate()`
+
+- Add variables `gain` and `speed`:
+    ```{r}
+    flights_sml <- 
+      select(flights, year:day, ends_with("delay"), distance, air_time)
+    mutate(flights_sml,
+      gain = arr_delay - dep_delay,
+      speed = distance / air_time * 60
+    )
+    ```
+
+----
+
+- Refer to columns that you’ve just created:
+    ```{r}
+    mutate(flights_sml,
+      gain = arr_delay - dep_delay,
+      hours = air_time / 60,
+      gain_per_hour = gain / hours
+    )
+    ```
+
+----
+
+- Only keep the new variables by `transmute()`:
+    ```{r}
+    transmute(flights,
+      gain = arr_delay - dep_delay,
+      hours = air_time / 60,
+      gain_per_hour = gain / hours
+    )
+    ```
+
+----
+
+- `mutate_all()`: apply funs to all columns.
+    ```{r, eval = FALSE}
+    mutate_all(faithful, funs(log(.), log2(.)))
+    ```
+
+- `mutate_at()`: apply funs to specifc columns.
+    ```{r, eval = FALSE}
+    mutate_at(iris, vars(-Species), funs(log(.)))
+    ```
+    
+- `mutate_if()`: apply funs of one type
+    ```{r, eval = FALSE}
+    mutate_if(iris, is.numeric, funs(log(.)))
+    ```
+
+
+## Summaries with `summarise()`
+
+- Mean of a variable:
+    ```{r}
+    summarise(flights, delay = mean(dep_delay, na.rm = TRUE))
+    ```
+
+----
+ 
+- Convert a tibble into a grouped tibble:
+    ```{r}
+    (by_day <- group_by(flights, year, month, day))
+    ```
+    
+----
+
+- Grouped summaries:
+    ```{r}
+    summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
+    ```
+
+## Pipe
+
+- Consider following analysis:
+    ```{r, message = FALSE}
+    by_dest <- group_by(flights, dest)
+    delay <- summarise(by_dest, count = n(),
+      dist = mean(distance, na.rm = TRUE),
+      delay = mean(arr_delay, na.rm = TRUE)
+    )
+    (delay <- filter(delay, count > 20, dest != "HNL"))
+    ```
+    
+----
+
+- Cleaner code using pipe `%>%`:
+    ```{r}
+    (delays <- flights %>% 
+      group_by(dest) %>% 
+      summarise(
+        count = n(),
+        dist = mean(distance, na.rm = TRUE),
+        delay = mean(arr_delay, na.rm = TRUE)
+      ) %>% 
+      filter(count > 20, dest != "HNL"))
+    ```
+    
+----
+
+- ggplot2 does **not** use pipe.
+    ```{r}
+    ggplot(data = delays, mapping = aes(x = dist, y = delay)) +
+      geom_point(aes(size = count), alpha = 1/3) + geom_smooth(se = FALSE)
+    ```
+
+## Other summary functions
+
+- Location: `mean(x)`, `median(x)`.
+    ```{r}
+    not_cancelled <- flights %>% filter(!is.na(dep_delay), !is.na(arr_delay))
+    not_cancelled %>% 
+      group_by(year, month, day) %>% 
+      summarise(
+        avg_delay1 = mean(arr_delay),
+        avg_delay2 = mean(arr_delay[arr_delay > 0]) # the average positive delay
+      )
+    ```
+    
+----
+
+- Spread: `sd(x)`, `IQR(x)`, `mad(x)`.
+    ```{r}
+    not_cancelled %>% 
+      group_by(dest) %>% 
+      summarise(distance_sd = sd(distance)) %>% 
+      arrange(desc(distance_sd))
+    ```
+
+----
+    
+- Rank: `min(x)`, `quantile(x, 0.25)`, `max(x)`.
+    ```{r}
+    # When do the first and last flights leave each day?
+    not_cancelled %>% 
+      group_by(year, month, day) %>% 
+      summarise(
+        first = min(dep_time),
+        last = max(dep_time)
+      )
+    ```
+
+----
+
+- Position: `first(x)`, `nth(x, 2)`, `last(x)`.
+    ```{r}
+    not_cancelled %>% 
+      group_by(year, month, day) %>% 
+      summarise(
+        first_dep = first(dep_time), 
+        last_dep = last(dep_time)
+      )
+    ```
+
+----
+
+- Count: `n(x)`, `sum(!is.na(x))`, `n_distinct(x)`.
+    ```{r}
+    # Which destinations have the most carriers?
+    not_cancelled %>% 
+      group_by(dest) %>% 
+      summarise(carriers = n_distinct(carrier)) %>% 
+      arrange(desc(carriers))
+    ```
+
+----
+
+- 
+    ```{r}
+    not_cancelled %>% 
+      count(dest)
+    ```
+
+---- 
+
+- 
+    ```{r}
+    not_cancelled %>% 
+      count(tailnum, wt = distance)
+    ```
+
+----
+
+-
+    ```{r}
+    # How many flights left before 5am? (these usually indicate delayed
+    # flights from the previous day)
+    not_cancelled %>% 
+      group_by(year, month, day) %>% 
+      summarise(n_early = sum(dep_time < 500))
+    ```
+
+----
+
+-
+    ```{r}
+    # What proportion of flights are delayed by more than an hour?
+    not_cancelled %>% 
+      group_by(year, month, day) %>% 
+      summarise(hour_perc = mean(arr_delay > 60))
+    ```
+
+## Grouped mutates (and filters)
+
+- Find the worst members of each group:
+    ```{r}
+    flights_sml %>% 
+      group_by(year, month, day) %>%
+      filter(rank(desc(arr_delay)) < 10)
+    ```
+    
+----
+
+- Find all groups bigger than a threshold:
+    ```{r}
+    (popular_dests <- flights %>% 
+      group_by(dest) %>% 
+      filter(n() > 365))
+    ```
+    
+----
+
+- Standardise to compute per group metrics:
+    ```{r}
+    popular_dests %>% 
+      filter(arr_delay > 0) %>% 
+      mutate(prop_delay = arr_delay / sum(arr_delay)) %>% 
+      select(year:day, dest, arr_delay, prop_delay)
+    ```
