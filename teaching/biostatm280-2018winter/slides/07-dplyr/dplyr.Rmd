@@ -405,40 +405,40 @@ flights
 
 ## 
 
-nycflights13 has 5 tables:
+nycflights13 has >1 tables:
 
 - We already know a lot about flights:
-```{r}
-flights
-```
+    ```{r}
+    flights
+    ```
 
 ----
 
 - airlines:
-```{r}
-airlines
-```
+    ```{r}
+    airlines
+    ```
 
 ----
 
 - airports:
-```{r}
-airports
-```
+    ```{r}
+    airports
+    ```
 
 ----
 
 - planes:
-```{r}
-planes
-```
+    ```{r}
+    planes
+    ```
 
 ----
 
 - Weather:
-```{r}
-weather
-```
+    ```{r}
+    weather
+    ```
 
 ## Relational data
 
