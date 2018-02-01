@@ -1,0 +1,346 @@
+---
+title: "Data Wrangling With tidyverse"
+author: "Dr. Hua Zhou"
+date: "Jan 30, 2018"
+subtitle: Biostat M280
+output:
+  ioslides_presentation:
+    smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
+  cache = TRUE)
+```
+
+## Workflow
+
+A typical data science project:
+
+<p align="center">
+<img src="./data-science-wrangle.png" height="275">
+</p>
+
+# Tibble | r4ds chapter 10
+
+## Tibbles
+
+- Tibbles extend data frames in R and form the core of tidyverse.
+    ```{r}
+    library("tidyverse")
+    ```
+
+## Create tibbles
+
+- Convert a regular data frame to tibble:
+    ```{r}
+    # a regular data frame
+    iris
+    ```
+    
+----
+
+- 
+    ```{r}
+    as_tibble(iris)
+    ```
+
+- Convert a tibble to data frame:
+    ```{r, eval = FALSE}
+    as.data.frame(tb)
+    ```
+
+----
+
+- Create tibble from individual vectors:
+    ```{r}
+    tibble(
+      x = 1:5, 
+      y = 1, 
+      z = x ^ 2 + y
+    )
+    ```
+
+----
+
+- Transposed tibbles:
+    ```{r}
+    tribble(
+      ~x, ~y, ~z,
+      #--|--|----
+      "a", 2, 3.6,
+      "b", 1, 8.5
+    )
+    ```
+  
+## Printing of a tibble
+
+- By default, tibble prints the first 10 rows and all columns that fit on screen.
+    ```{r}
+    tibble(
+      a = lubridate::now() + runif(1e3) * 86400,
+      b = lubridate::today() + runif(1e3) * 30,
+      c = 1:1e3,
+      d = runif(1e3),
+      e = sample(letters, 1e3, replace = TRUE)
+    )
+    ```
+
+----
+
+- To change number of rows and columns to display:
+    ```{r}
+    nycflights13::flights %>% 
+      print(n = 10, width = Inf)
+    ```
+    
+----
+
+- To change the default print setting:
+    - `options(tibble.print_max = n, tibble.print_min = m)`: if more than `m` rows, print only `n` rows.
+    - `options(dplyr.print_min = Inf)`: print all row.
+    - `options(tibble.width = Inf)`: print all columns.
+
+## Subsetting
+
+- 
+    ```{r}
+    df <- tibble(
+      x = runif(5),
+      y = rnorm(5)
+    )
+    ```
+
+- Extract by name:
+    ```{r}
+    df$x
+    df[["x"]]
+    ```
+
+----
+
+- Extract by position：
+    ```{r}
+    df[[1]]
+    ```
+
+- Pipe:
+    ```{r}
+    df %>% .$x
+    df %>% .[["x"]]
+    ```
+
+# Data import | r4ds chapter 11
+
+## 
+
+- readr package implements functions that turn flat files into tibbles.
+
+    - `read_csv()`, `read_csv2()` (semicolon seperated files), `read_tsv()`,     `read_delim()`.
+
+    - `read_fwf()` (fixed width files), `read_table()`.
+
+    - `read_log()` (Apache style log files). 
+
+- An example file:
+    ```{bash}
+    head heights.csv
+    ```
+
+----
+
+- Read from a local file:
+    ```{r}
+    (heights <- read_csv("heights.csv"))
+    ```
+    
+----
+
+- Read from inline csv file:
+    ```{r}
+    read_csv("a,b,c
+    1,2,3
+    4,5,6")
+    ```
+
+- Skip first `n` lines:
+    ```{r}
+    read_csv("The first line of metadata
+      The second line of metadata
+      x,y,z
+      1,2,3", skip = 2)
+    ```
+    
+----
+
+- Skip comment lines:
+    ```{r}
+    read_csv("# A comment I want to skip
+      x,y,z
+      1,2,3", comment = "#")
+    ```
+    
+- No header line:
+    ```{r}
+    read_csv("1,2,3\n4,5,6", col_names = FALSE)
+    ```
+
+----
+
+- No header line and specify colnames:
+    ```{r}
+    read_csv("1,2,3\n4,5,6", col_names = c("x", "y", "z"))
+    ```
+    
+- Specify the symbol representing missing values:
+    ```{r}
+    read_csv("a,b,c\n1,2,.", na = ".")
+    ```
+    
+## Writing to a file
+
+- Write to csv:
+    ```{r, eval = FALSE}
+    write_csv(challenge, "challenge.csv")
+    ```
+    
+- Write (and read) RDS files:
+    ```{r, eval = FALSE}
+    write_rds(challenge, "challenge.rds")
+    read_rds("challenge.rds")
+    ```
+
+## Other types of data
+
+- **haven** reads SPSS, Stata, and SAS files.
+
+- **readxl** reads excel files (both .xls and .xlsx).
+
+- **DBI**, along with a database specific backend (e.g. **RMySQL**, **RSQLite**, **RPostgreSQL** etc) allows you to run SQL queries against a database and return a data frame.
+
+- **jsonlite** reads json files.
+
+- **xml2** reads XML files.
+
+# Tidy data | r4ds chapter 12
+
+## Tidy data
+
+There are three interrelated rules which make a dataset tidy:
+
+- Each variable must have its own column.
+
+- Each observation must have its own row.
+
+- Each value must have its own cell.
+
+<p align="center">
+<img src="./tidy-1.png" height="200">
+</p>
+
+----
+
+- Example table1:
+    ```{r}
+    table1
+    ```
+
+----
+
+- Example table2:
+    ```{r}
+    table2
+    ```
+
+----
+
+- Example table3:
+    ```{r}
+    table3
+    ```
+    
+----
+
+- Example table4a:
+    ```{r}
+    table4a
+    ```
+
+- Example table4b:
+    ```{r}
+    table4b
+    ```
+
+## Gathering
+
+<p align="center">
+<img src="./tidy-9.png" height="200">
+</p>
+
+- `gather` columns into a new pair of variables.
+    ```{r}
+    table4a %>%
+      gather(`1999`, `2000`, key = "year", value = "cases")
+    ```
+
+----
+
+- We can gather table4b too and then join them
+    ```{r}
+    tidy4a <- table4a %>% 
+      gather(`1999`, `2000`, key = "year", value = "cases")
+    tidy4b <- table4b %>% 
+      gather(`1999`, `2000`, key = "year", value = "population")
+    left_join(tidy4a, tidy4b)
+    ```
+
+## Spreading
+
+<p align="center">
+<img src="./tidy-8.png" height="200">
+</p>
+
+- Spreading is the opposite of gathering.
+    ```{r}
+    spread(table2, key = type, value = count)
+    ```
+
+## Separating
+
+<p align="center">
+<img src="./tidy-17.png" height="200">
+</p>
+
+- 
+    ```{r}
+    table3 %>% 
+      separate(rate, into = c("cases", "population"))
+    ```
+
+----
+
+- Seperate into numeric values:
+    ```{r}
+    table3 %>% 
+      separate(rate, into = c("cases", "population"), convert = TRUE)
+    ```
+
+----
+
+- Separate at a fixed position:
+    ```{r}
+    table3 %>% 
+      separate(year, into = c("century", "year"), sep = 2)
+    ```
+
+## Unite
+
+<p align="center">
+<img src="./tidy-18.png" height="200">
+</p>
+
+- `unite()` is the inverse of `separate()`. 
+    ```{r}
+    table5 %>% 
+      unite(new, century, year, sep = "")
+    ```
