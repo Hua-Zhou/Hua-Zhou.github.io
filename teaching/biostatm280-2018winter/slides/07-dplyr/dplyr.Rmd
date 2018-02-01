@@ -46,6 +46,8 @@ flights
 
 * Collapse many values down to a single summary: `summarise()`.
 
+# Manipulate rows (cases)
+
 ## Filter rows with `filter()`
 
 - Flights on Jan 1st:
@@ -107,8 +109,10 @@ flights
 
 - Sort in descending order:
     ```{r}
-    arrange(flights, arrange(flights, desc(arr_delay)))
+    arrange(flights, desc(arr_delay))
     ```
+
+# Manipulate columns (variables)
 
 ## Select columns with `select()`
 
@@ -164,9 +168,11 @@ flights
 ## Add new variables with `mutate()`
 
 - Add variables `gain` and `speed`:
-    ```{r}
+    ```{r, results = 'hide'}
     flights_sml <- 
       select(flights, year:day, ends_with("delay"), distance, air_time)
+    ```
+    ```{r}
     mutate(flights_sml,
       gain = arr_delay - dep_delay,
       speed = distance / air_time * 60
@@ -199,19 +205,20 @@ flights
 
 - `mutate_all()`: apply funs to all columns.
     ```{r, eval = FALSE}
-    mutate_all(faithful, funs(log(.), log2(.)))
+    mutate_all(data, funs(log(.), log2(.)))
     ```
 
 - `mutate_at()`: apply funs to specifc columns.
     ```{r, eval = FALSE}
-    mutate_at(iris, vars(-Species), funs(log(.)))
+    mutate_at(data, vars(-Species), funs(log(.)))
     ```
     
 - `mutate_if()`: apply funs of one type
     ```{r, eval = FALSE}
-    mutate_if(iris, is.numeric, funs(log(.)))
+    mutate_if(data, is.numeric, funs(log(.)))
     ```
 
+# Summaries
 
 ## Summaries with `summarise()`
 
@@ -262,7 +269,7 @@ flights
     
 ----
 
-- ggplot2 does **not** use pipe.
+- Unfortunately ggplot2 does **not** use pipe.
     ```{r}
     ggplot(data = delays, mapping = aes(x = dist, y = delay)) +
       geom_point(aes(size = count), alpha = 1/3) + geom_smooth(se = FALSE)
@@ -271,8 +278,10 @@ flights
 ## Other summary functions
 
 - Location: `mean(x)`, `median(x)`.
-    ```{r}
+    ```{r, result = 'hold'}
     not_cancelled <- flights %>% filter(!is.na(dep_delay), !is.na(arr_delay))
+    ```
+    ```{r}
     not_cancelled %>% 
       group_by(year, month, day) %>% 
       summarise(
@@ -390,4 +399,282 @@ flights
       filter(arr_delay > 0) %>% 
       mutate(prop_delay = arr_delay / sum(arr_delay)) %>% 
       select(year:day, dest, arr_delay, prop_delay)
+    ```
+
+# Combine tables | combine variables (columns)
+
+## 
+
+nycflights13 has 5 tables:
+
+- We already know a lot about flights:
+```{r}
+flights
+```
+
+----
+
+- airlines:
+```{r}
+airlines
+```
+
+----
+
+- airports:
+```{r}
+airports
+```
+
+----
+
+- planes:
+```{r}
+planes
+```
+
+----
+
+- Weather:
+```{r}
+weather
+```
+
+## Relational data
+
+<p align="center">
+<img src="./relational-nycflights.png" height="375">
+</p>
+
+## Keys
+
+- A **primary key** uniquely identifies an observation in its own table.
+
+- A **foreign key** uniquely identifies an observation in another table.
+
+## Demo tables
+
+-
+    ```{r}
+    x <- tribble(
+      ~key, ~val_x,
+         1, "x1",
+         2, "x2",
+         3, "x3"
+    )
+    y <- tribble(
+      ~key, ~val_y,
+         1, "y1",
+         2, "y2",
+         4, "y3"
+    )
+    ```
+
+## Inner join
+
+- An **inner join** matches pairs of observations whenever their keys are equal:
+
+<p align="center">
+<img src="./join-inner.png" height="150">
+</p>
+
+    ```{r}
+    inner_join(x, y, by = "key")
+    ```
+Same as
+    ```{r, eval = FALSE}
+    x %>% inner_join(y, by = "key")
+    ```
+
+## Outer join
+
+- An **outer join** keeps observations that appear in at least one of the tables. 
+
+- Three types of outer joins:
+
+    - A **left join** keeps all observations in `x`.
+
+    - A **right join** keeps all observations in `y`.
+    
+    - A **full join** keeps all observations in `x` and `y`.
+    
+    <p align="center">
+    <img src="./join-outer.png" height="275">
+    </p>
+    
+## Duplicate keys
+
+- One table has duplicate keys.
+
+    <p align="center">
+    <img src="./join-one-to-many.png" height="200">
+    </p>
+    
+----    
+
+- 
+    ```{r}
+    x <- tribble(
+      ~key, ~val_x,
+         1, "x1",
+         2, "x2",
+         2, "x3",
+         1, "x4"
+    )
+    y <- tribble(
+      ~key, ~val_y,
+         1, "y1",
+         2, "y2"
+    )
+    left_join(x, y, by = "key")
+    ```
+
+----
+
+- Both tables have duplicate keys. You get all possible combinations, the Cartesian product
+
+    <p align="center">
+    <img src="./join-many-to-many.png" height="250">
+    </p>
+
+----
+
+- 
+    ```{r}
+    x <- tribble(
+      ~key, ~val_x,
+         1, "x1",
+         2, "x2",
+         2, "x3",
+         3, "x4"
+    )
+    y <- tribble(
+      ~key, ~val_y,
+         1, "y1",
+         2, "y2",
+         2, "y3",
+         3, "y4"
+    )
+    left_join(x, y, by = "key")
+    ```
+
+----
+
+- Let's create a narrower table:
+    ```{r}
+    flights2 <- flights %>% 
+      select(year:day, hour, origin, dest, tailnum, carrier)
+    flights2
+    ```
+
+## Defining the key columns
+
+- `by = NULL` (default): use all variables that appear in both tables:
+    ```{r}
+    # same as: flights2 %>% left_join(weather)
+    left_join(flights2, weather)
+    ```
+
+----
+
+- `by = "x"`: use the common variable `x`:
+    ```{r}
+    # same as: flights2 %>% left_join(weather)
+    left_join(flights2, planes, by = "tailnum")
+    ```
+
+----
+
+- `by = c("a" = "b")`: match variable `a` in table `x` to the variable `b` in table `y`.
+    ```{r}
+    # same as: flights2 %>% left_join(weather)
+    left_join(flights2, airports, by = c("dest" = "faa"))
+    ```
+
+# Combine tables | combine cases (rows)
+
+----
+
+- Top 10 most popular destinations:
+    ```{r}
+    top_dest <- flights %>%
+      count(dest, sort = TRUE) %>%
+      head(10)
+    top_dest
+    ```
+    
+- How to filter the cases that fly to these destinations?     
+    
+## Semi-join
+
+- `semi_join(x, y)` keesp the rows in `x` that have a match in `y`.
+
+    <p align="center">
+    <img src="./join-semi.png" height="200">
+    </p>
+
+- Useful to see what will be joined.
+
+----
+
+-
+    ```{r}
+    semi_join(flights, top_dest)
+    ```
+
+## Anti-join
+
+- `anti_join(x, y)` keeps the rows that don’t have a match.
+
+    <p align="center">
+    <img src="./join-anti.png" height="200">
+    </p>
+
+- Useful to see what will not be joined.
+
+----
+
+-
+    ```{r}
+    flights %>% 
+      anti_join(planes, by = "tailnum") %>%
+      count(tailnum, sort = TRUE)
+    ```
+
+## Set operations
+
+- Generate two tables:
+    ```{r}
+    df1 <- tribble(
+      ~x, ~y,
+       1,  1,
+       2,  1
+    )
+    df2 <- tribble(
+      ~x, ~y,
+       1,  1,
+       1,  2
+    )
+    ```
+
+----
+
+- `bind_rows()` stacks tables one on top of the other as a single table. 
+    ```{r}
+    bind_rows(df1, df2)
+    ```
+
+- `intersect(x, y)` returns rows that appear in both `x` and `y`.
+    ```{r}
+    intersect(df1, df2)
+    ```
+    
+----
+
+- `setdiff(x, y)` returns rows that appear in `x` but not in `y`.
+    ```{r}
+    setdiff(df1, df2)
+    ```
+    ```{r}
+    setdiff(df2, df1)
     ```
