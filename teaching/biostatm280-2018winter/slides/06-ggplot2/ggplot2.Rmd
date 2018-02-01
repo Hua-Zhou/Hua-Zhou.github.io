@@ -497,18 +497,25 @@ automatically adds scales
     ```
 
     
-## Legend layout
+## Legends
 
-- 
+- Set legend position: `"left"`, `"right"`, `"top"`, `"bottom"`, `none`:
     ```{r, collapse = TRUE}
     ggplot(mpg, aes(displ, hwy)) +
       geom_point(aes(colour = class)) + 
       theme(legend.position = "left")
     ```
 
+----
+
+- See following link for more details on how to change title, labels, ... of a legend.
+
+    <http://www.sthda.com/english/wiki/ggplot2-legend-easy-steps-to-change-the-position-and-the-appearance-of-a-graph-legend-in-r-software> 
+
+
 ## Zooming
 
-- 
+- Without clipping (removes unseen data points)
     ```{r, message = FALSE}
     ggplot(mpg, mapping = aes(displ, hwy)) +
       geom_point(aes(color = class)) +
@@ -516,7 +523,28 @@ automatically adds scales
       coord_cartesian(xlim = c(5, 7), ylim = c(10, 30))
     ```
 
----
+----
+
+- With clipping (removes unseen data points)
+    ```{r, message = FALSE, warning = FALSE}
+    ggplot(mpg, mapping = aes(displ, hwy)) +
+      geom_point(aes(color = class)) +
+      geom_smooth() +
+      xlim(5, 7) + ylim(10, 30)
+    ```
+
+----
+
+-
+    ```{r, message = FALSE, warning = FALSE}
+    ggplot(mpg, mapping = aes(displ, hwy)) +
+      geom_point(aes(color = class)) +
+      geom_smooth() +
+      scale_x_continuous(limits = c(5, 7)) +
+      scale_y_continuous(limits = c(10, 30))
+    ```
+
+----
 
 - 
     ```{r, message = FALSE}
