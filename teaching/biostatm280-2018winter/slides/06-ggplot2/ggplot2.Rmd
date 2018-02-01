@@ -130,7 +130,7 @@ A typical data science project:
       facet_wrap(~ class, nrow = 2)
     ```
     
----
+----
 
 - A subplot for each car type and drive:
     ```{r}
@@ -174,7 +174,7 @@ A typical data science project:
       geom_smooth(mapping = aes(x = displ, y = hwy))
     ```
 
----
+----
 
 - Same as
     ```{r, fig.width = 4.5, fig.height = 3, message = FALSE}
@@ -208,7 +208,7 @@ A typical data science project:
       geom_bar(mapping = aes(x = cut))
     ```
 
----
+----
 
 - Bar charts, like histograms, frequency polygons, smoothers, and boxplots, plot some computed variables instead of raw data.
 
@@ -217,7 +217,7 @@ A typical data science project:
     ?geom_bar
     ```
 
----
+----
 
 - Use `stat_count()` directly:
     ```{r}
@@ -226,7 +226,7 @@ A typical data science project:
     ```
 - `stat_count()` has a default geom `geom_bar()`.
 
----
+----
 
 - Display frequency instead of counts:
     ```{r}
@@ -234,7 +234,7 @@ A typical data science project:
       geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))    
     ```
     
----
+----
 
 - Color bar:
     ```{r, results = 'hold'}
@@ -242,7 +242,7 @@ A typical data science project:
       geom_bar(mapping = aes(x = cut, colour = cut))
     ```
 
----
+----
 
 - Fill color: 
     ```{r, results = 'hold'}
@@ -250,7 +250,7 @@ A typical data science project:
       geom_bar(mapping = aes(x = cut, fill = cut))
     ```
 
----
+----
 
 - Fill color according to another variable:
     ```{r}
@@ -432,7 +432,7 @@ normalize height:
       geom_text(aes(label = model), data = best_in_class)
     ```
     
----
+----
 
 - `ggrepel` package automatically adjust labels so that they don’t overlap:
     ```{r, fig.width = 4.5, fig.height = 3}
@@ -565,7 +565,7 @@ automatically adds scales
       theme_bw()
     ```
 
----
+----
 
 <p align="center">
 <img src="./visualization-themes.png" height="550">
