@@ -18,11 +18,6 @@ Read [Chapter 23](http://r4ds.had.co.nz/model-basics.html) (Model Basics) and [C
 
 ## Q3
 
-```{r}
-library("tidyverse")
-```
+Redo HW1 Q2 using functions in tidyverse.
 
-How many SNPs in each chromosome?
-```{r}
-bim <- read_tsv("/home/m280-data/hw1/merge-geno.bim")
-```
+
