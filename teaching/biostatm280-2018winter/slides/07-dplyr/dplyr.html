@@ -1242,23 +1242,19 @@ y &lt;- tribble(
 
 </p>
 
-<pre >```r
-inner_join(x, y, by = &quot;key&quot;)
-```
+<ul>
+<li><pre class = 'prettyprint lang-r'>inner_join(x, y, by = &quot;key&quot;)</pre>
 
-```
-## # A tibble: 2 x 3
+<pre >## # A tibble: 2 x 3
 ##     key val_x val_y
 ##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
 ## 1  1.00 x1    y1   
-## 2  2.00 x2    y2
-```</pre>
+## 2  2.00 x2    y2</pre>
 
 <p>Same as</p>
 
-<pre >```r
-x %&gt;% inner_join(y, by = &quot;key&quot;)
-```</pre>
+<pre class = 'prettyprint lang-r'>x %&gt;% inner_join(y, by = &quot;key&quot;)</pre></li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>Outer join</h2></hgroup><article  id="outer-join" class="smaller ">
 
@@ -1269,7 +1265,7 @@ x %&gt;% inner_join(y, by = &quot;key&quot;)
 <ul>
 <li><p>A <strong>left join</strong> keeps all observations in <code>x</code>.</p></li>
 <li><p>A <strong>right join</strong> keeps all observations in <code>y</code>.</p></li>
-<li><p>A <strong>full join</strong> keeps all observations in <code>x</code> and <code>y</code>.</p></li>
+<li><p>A <strong>full join</strong> keeps all observations in <code>x</code> or <code>y</code>.</p></li>
 </ul>
 
 <p align="center">

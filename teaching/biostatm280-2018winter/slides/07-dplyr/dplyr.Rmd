@@ -478,6 +478,7 @@ nycflights13 has >1 tables:
 <img src="./join-inner.png" height="150">
 </p>
 
+- 
     ```{r}
     inner_join(x, y, by = "key")
     ```
@@ -496,7 +497,7 @@ Same as
 
     - A **right join** keeps all observations in `y`.
     
-    - A **full join** keeps all observations in `x` and `y`.
+    - A **full join** keeps all observations in `x` or `y`.
     
     <p align="center">
     <img src="./join-outer.png" height="275">
