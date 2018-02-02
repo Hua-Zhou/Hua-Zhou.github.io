@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Read [Chapter 7](http://r4ds.had.co.nz/exploratory-data-analysis.html) (Exploratory Data Analysis) of _R for Data Science_ and do exercises 7.3.4, 7.4.1, 7.5.1.1, 7.5.2.1, and 7.5.3.1.
 
-## Q2
+## Q2 (optional)
 
 Read [Chapter 23](http://r4ds.had.co.nz/model-basics.html) (Model Basics) and [Chapter 24](http://r4ds.had.co.nz/model-building.html) (Model Building) of _R for Data Science_ and do exercises 24.2.3 and 24.3.5.
 
