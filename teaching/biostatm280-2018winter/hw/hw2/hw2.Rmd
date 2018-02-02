@@ -20,4 +20,6 @@ Read [Chapter 23](http://r4ds.had.co.nz/model-basics.html) (Model Basics) and [C
 
 Redo HW1 Q2 using functions in tidyverse.
 
+## Q4 (optional)
 
+Redo HW1 Q3 on Hoffman2, except now we want to submit each `runSum.R` job to a different node in the cluster.
