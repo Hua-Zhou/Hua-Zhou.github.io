@@ -1,0 +1,457 @@
+---
+title: "String Manipulation With stringr"
+author: "Dr. Hua Zhou"
+date: "Feb 6, 2018"
+subtitle: Biostat M280
+output:
+  ioslides_presentation:
+    smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
+  cache = FALSE)
+library("tidyverse")
+```
+
+# String | r4ds chapter 14
+
+## stringr
+
+- stringr pacakge, by Hadley Wickham, provides utilities for handling strings.
+
+- Included in tidyverse.
+
+## Basics
+
+- Double quotes and single quotes:
+    ```{r}
+    string1 <- "This is a string"
+    string2 <- 'If I want to include a "quote" inside a string, I use single quotes'
+    ```
+
+- Literal single or double quote:
+    ```{r}
+    double_quote <- "\"" # or '"'
+    single_quote <- '\'' # or "'"
+    ```
+
+----
+
+- Printed representation:
+    ```{r}
+    x <- c("\"", "\\")
+    x
+    ```
+vs `writelines()`:
+    ```{r}
+    writeLines(x)
+    ```
+    
+----    
+
+- Other special characters: `"\n"` (new line), `"\t"` (tab), ...
+
+- Unicode
+    ```{r}
+    x <- "\u00b5"
+    x
+    ```
+
+- Character vector (vector of strings):
+    ```{r}
+    c("one", "two", "three")
+    ```
+
+## String length
+
+- Length of a single string:
+    ```{r}
+    str_length("R for data science")
+    ```
+
+- Lengths of a character vector:
+    ```{r}
+    str_length(c("a", "R for data science", NA))
+    ```
+
+## Combining string
+
+- Combine two or more strings
+    ```{r}
+    str_c("x", "y")
+    str_c("x", "y", "z")
+    ```
+
+- Separator:
+    ```{r}
+    str_c("x", "y", sep = ", ")
+    ```
+
+----
+
+- `str_c()` is vectorised:
+    ```{r}
+    str_c("prefix-", c("a", "b", "c"), "-suffix")
+    ```
+
+- Objects of length 0 are silently dropped:
+    ```{r}
+    name <- "Hadley"
+    time_of_day <- "morning"
+    birthday <- FALSE
+    
+    str_c(
+      "Good ", time_of_day, " ", name,
+      if (birthday) " and HAPPY BIRTHDAY",
+      "."
+    )
+    ```
+
+----
+
+- Combine a vector of strings:
+    ```{r}
+    str_c(c("x", "y", "z"))
+    str_c(c("x", "y", "z"), collapse = ", ")
+    ```
+    
+## Subsetting strings
+
+- By position:
+    ```{r}
+    x <- c("Apple", "Banana", "Pear")
+    str_sub(x, 1, 3)
+    str_sub(x, -3, -1)
+    ```
+
+- Negative numbers count backwards from end:
+    ```{r}
+    str_sub(x, -3, -1)
+    ```
+
+----
+
+- Out of range:
+    ```{r}
+    str_sub("a", 1, 5)
+    str_sub("a", 2, 5)
+    ```
+
+- Assignment to a substring:
+    ```{r}
+    str_sub(x, 1, 1) <- str_to_lower(str_sub(x, 1, 1))
+    ```
+
+## Matching patterns with regular expressions
+
+- `str_view()` shows the first match; `str_view_all()` shows all matches.
+
+- Match exact strings:
+    ```{r}
+    x <- c("apple", "banana", "pear")
+    str_view(x, "an")
+    str_view_all(x, "an")
+    ```
+
+----
+
+- `.` matches any character apart from a newline:
+    ```{r}
+    str_view(x, ".a.")
+    ```
+
+- To match a literal `.`:
+    ```{r}
+    str_view(c("abc", "a.c", "bef"), "a\\.c")
+    ```
+
+- To match a literal `\`:
+    ```{r}
+    str_view("a\\b", "\\\\")
+    ```
+
+## Anchors
+
+- `^` matches the start of the string:
+    ```{r}
+    x <- c("apple", "banana", "pear")
+    str_view(x, "^a")
+    ```
+
+- `$` matches the end of the string:
+    ```{r}
+    str_view(x, "a$")
+    ```
+
+----
+
+- To force a regular expression to only match a complete string:
+    ```{r}
+    x <- c("apple pie", "apple", "apple cake")
+    str_view(x, "^apple$")
+    ```
+
+----
+
+- Other special characters:
+
+    - `\d`: matches any digit.
+    
+    - `\s`: matches any whitespace (e.g. space, tab, newline).
+    
+    - `[abc]`: matches a, b, or c.
+    
+    - `[^abc]`: matches anything except a, b, or c.
+    
+    - alternation
+    ```{r}
+    str_view(c("grey", "gray"), "gr(e|a)y")
+    ```
+    
+## Repetition
+
+- 
+`?`: 0 or 1  
+`+`: 1 or more  
+`*`: 0 or more
+
+- 
+    ```{r}
+    x <- "1888 is the longest year in Roman numerals: MDCCCLXXXVIII"
+    str_view(x, "CC?")
+    str_view(x, "CC+")
+    str_view(x, 'C[LX]+')
+    ```
+    
+----
+
+- 
+`{n}`: exactly n   
+`{n,}`: n or more  
+`{,m}`: at most m  
+`{n,m}`: between n and m
+
+-
+    ```{r}
+    str_view(x, "C{2}")
+    str_view(x, "C{2,}")
+    str_view(x, "C{2,3}")
+    ```
+
+----
+
+- Greedy (default) vs lazy (put `?`):
+    ```{r}
+    str_view(x, 'C{2,3}?')
+    str_view(x, 'C[LX]+?')
+    ```
+
+## Grouping and backreference
+
+- Parentheses define groups, which can be back-referenced as `\1`, `\2`, ...
+    ```{r}
+    str_view(fruit, "(..)\\1", match = TRUE)
+    ```
+    
+## Detect matches
+
+- 
+    ```{r}
+    x <- c("apple", "banana", "pear")
+    str_detect(x, "e")
+    ```
+
+- 
+    ```{r}
+    # How many common words start with t?
+    sum(str_detect(words, "^t"))
+    # What proportion of common words end with a vowel?
+    mean(str_detect(words, "[aeiou]$"))
+    ```
+
+----
+
+- `words` contains 1000 commonly used words:
+    ```{r}
+    length(words)
+    head(words)
+    ```
+
+----
+
+- Find workds that end with `x`:
+    ```{r}
+    words[str_detect(words, "x$")]
+    ```
+same as
+    ```{r}
+    str_subset(words, "x$")
+    ```
+    
+----
+
+- Filter a data frame:
+    ```{r}
+    df <- tibble(
+      word = words, 
+      i = seq_along(word)
+    )
+    df %>% 
+      filter(str_detect(words, "x$"))
+    ```
+
+----
+
+- `str_count()` tells how many matches are found:
+    ```{r}
+    x <- c("apple", "banana", "pear")
+    str_count(x, "a")
+    ```
+    ```{r}
+    # On average, how many vowels per word?
+    mean(str_count(words, "[aeiou]"))
+    ```
+
+- Matches never overlap:
+    ```{r}
+    str_count("abababa", "aba")
+    str_view_all("abababa", "aba")
+    ```
+
+----
+
+- Mutate a data frame:
+    ```{r}
+    df %>% 
+      mutate(
+        vowels = str_count(word, "[aeiou]"),
+        consonants = str_count(word, "[^aeiou]")
+      )
+    ```
+
+## Extract matches
+
+- `sentences` is a collection of 720 phrases:
+    ```{r}
+    length(sentences)
+    head(sentences)
+    ```
+    
+- Suppose we want to find all sentences that contain a colour.
+
+----
+
+- Create a collection of colours:
+    ```{r}
+    colours <- c("red", "orange", "yellow", "green", "blue", "purple")
+    colour_match <- str_c(colours, collapse = "|")
+    colour_match
+    ```
+
+- Select the sentences that contain a colour, and then extract the colour to figure out which one it is:    
+    ```{r}
+    has_colour <- str_subset(sentences, colour_match)
+    matches <- str_extract(has_colour, colour_match)
+    head(matches)
+    ```
+
+----
+
+- `str_extract()` only extracts the first match.
+
+-
+    ```{r}
+    more <- sentences[str_count(sentences, colour_match) > 1]
+    str_view_all(more, colour_match)
+    ```
+
+- To extract all matches:
+    ```{r}
+    str_extract_all(more, colour_match)
+    ```
+
+----
+
+- Setting `simplify = TRUE` in `str_extract_all()` will return a matrix with short matches expanded to the same length as the longest:
+    ```{r}
+    str_extract_all(more, colour_match, simplify = TRUE)
+    ```
+    ```{r}
+    x <- c("a", "a b", "a b c")
+    str_extract_all(x, "[a-z]", simplify = TRUE)
+    ```
+
+## Grouped matches
+
+- `str_extract()` gives us the complete match;
+    ```{r}
+    noun <- "(a|the) ([^ ]+)"
+    
+    has_noun <- sentences %>%
+      str_subset(noun) %>%
+      head(10)
+    has_noun %>% 
+      str_extract(noun)
+    ```
+
+----
+    
+- `str_match()` gives each individual component:
+    ```{r}
+    has_noun %>% 
+      str_match(noun)
+    ```
+
+----
+
+- `tidyr::extract()` works with tibble:
+    ```{r}
+    tibble(sentence = sentences) %>% 
+      tidyr::extract(
+        sentence, c("article", "noun"), "(a|the) ([^ ]+)", 
+        remove = FALSE
+      )
+    ```
+    
+## Replacing matches
+
+- Replace the first match:
+    ```{r}
+    x <- c("apple", "pear", "banana")
+    str_replace(x, "[aeiou]", "-")
+    str_replace_all(x, "[aeiou]", "-")
+    ```
+
+- Replace all matches:
+    ```{r}
+    x <- c("1 house", "2 cars", "3 people")
+    str_replace_all(x, c("1" = "one", "2" = "two", "3" = "three"))
+    ```
+
+----
+
+- Back-reference:
+    ```{r}
+    sentences %>% 
+      str_replace("([^ ]+) ([^ ]+) ([^ ]+)", "\\1 \\3 \\2") %>% 
+      head(5)
+    ```
+
+## Splitting
+
+- Split a string up into pieces:
+    ```{r}
+    sentences %>%
+      head(5) %>% 
+      str_split(" ")
+    ```
+    
+- Use `simplify = TRUE` to return a matrix:    
+    ```{r}
+    sentences %>%
+      head(5) %>% 
+      str_split(" ", simplify = TRUE)
+    ```
+    
+    
