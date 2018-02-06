@@ -11,7 +11,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
   cache = FALSE)
-library("tidyverse")
 ```
 
 # String | r4ds chapter 14
@@ -21,10 +20,13 @@ library("tidyverse")
 - stringr pacakge, by Hadley Wickham, provides utilities for handling strings.
 
 - Included in tidyverse.
+    ```{r}
+    library("tidyverse")
+    ```
 
 ## Basics
 
-- Double quotes and single quotes:
+- Strings are enclosed by double quotes orx single quotes:
     ```{r}
     string1 <- "This is a string"
     string2 <- 'If I want to include a "quote" inside a string, I use single quotes'
@@ -43,14 +45,18 @@ library("tidyverse")
     x <- c("\"", "\\")
     x
     ```
-vs `writelines()`:
+vs `writeLines()`:
     ```{r}
     writeLines(x)
     ```
     
 ----    
 
-- Other special characters: `"\n"` (new line), `"\t"` (tab), ...
+- Other special characters: `"\n"` (new line), `"\t"` (tab), ... Check
+    ```{r, eval = FALSE}
+    ?"'"
+    ```
+for a complete list.
 
 - Unicode
     ```{r}
@@ -75,7 +81,7 @@ vs `writelines()`:
     str_length(c("a", "R for data science", NA))
     ```
 
-## Combining string
+## Combining strings
 
 - Combine two or more strings
     ```{r}
@@ -122,7 +128,6 @@ vs `writelines()`:
     ```{r}
     x <- c("Apple", "Banana", "Pear")
     str_sub(x, 1, 3)
-    str_sub(x, -3, -1)
     ```
 
 - Negative numbers count backwards from end:
@@ -141,11 +146,13 @@ vs `writelines()`:
 - Assignment to a substring:
     ```{r}
     str_sub(x, 1, 1) <- str_to_lower(str_sub(x, 1, 1))
+    x
     ```
 
 ## Matching patterns with regular expressions
 
-- `str_view()` shows the first match; `str_view_all()` shows all matches.
+- `str_view()` shows the first match;  
+`str_view_all()` shows all matches.
 
 - Match exact strings:
     ```{r}
@@ -194,7 +201,7 @@ vs `writelines()`:
 
 ----
 
-- Other special characters:
+- Other special matches:
 
     - `\d`: matches any digit.
     
@@ -208,6 +215,9 @@ vs `writelines()`:
     ```{r}
     str_view(c("grey", "gray"), "gr(e|a)y")
     ```
+    ```{r}
+    str_view(c("grey", "gray"), "gr[ea]y")
+    ```
     
 ## Repetition
 
@@ -220,13 +230,15 @@ vs `writelines()`:
     ```{r}
     x <- "1888 is the longest year in Roman numerals: MDCCCLXXXVIII"
     str_view(x, "CC?")
+    # greedy matches
     str_view(x, "CC+")
+    # greedy matches
     str_view(x, 'C[LX]+')
     ```
     
 ----
 
-- 
+- Specify number of matches:  
 `{n}`: exactly n   
 `{n,}`: n or more  
 `{,m}`: at most m  
@@ -235,15 +247,19 @@ vs `writelines()`:
 -
     ```{r}
     str_view(x, "C{2}")
+    # greedy matches
     str_view(x, "C{2,}")
+    # greedy matches
     str_view(x, "C{2,3}")
     ```
 
 ----
 
-- Greedy (default) vs lazy (put `?`):
+- Greedy (default) vs lazy (put `?` after repetition):
     ```{r}
+    # lazy matches
     str_view(x, 'C{2,3}?')
+    # lazy matches
     str_view(x, 'C[LX]+?')
     ```
 
@@ -262,6 +278,14 @@ vs `writelines()`:
     str_detect(x, "e")
     ```
 
+- Vector `words` contains 1000 commonly used words:
+    ```{r}
+    length(words)
+    head(words)
+    ```
+
+----
+
 - 
     ```{r}
     # How many common words start with t?
@@ -269,15 +293,7 @@ vs `writelines()`:
     # What proportion of common words end with a vowel?
     mean(str_detect(words, "[aeiou]$"))
     ```
-
-----
-
-- `words` contains 1000 commonly used words:
-    ```{r}
-    length(words)
-    head(words)
-    ```
-
+    
 ----
 
 - Find workds that end with `x`:
@@ -382,37 +398,37 @@ same as
     str_extract_all(x, "[a-z]", simplify = TRUE)
     ```
 
-## Grouped matches
+<!-- ## Grouped matches -->
 
-- `str_extract()` gives us the complete match;
-    ```{r}
-    noun <- "(a|the) ([^ ]+)"
-    
-    has_noun <- sentences %>%
-      str_subset(noun) %>%
-      head(10)
-    has_noun %>% 
-      str_extract(noun)
-    ```
+<!-- - `str_extract()` gives us the complete match; -->
+<!--     ```{r} -->
+<!--     noun <- "(a|the) ([^ ]+)" -->
 
-----
-    
-- `str_match()` gives each individual component:
-    ```{r}
-    has_noun %>% 
-      str_match(noun)
-    ```
+<!--     has_noun <- sentences %>% -->
+<!--       str_subset(noun) %>% -->
+<!--       head(10) -->
+<!--     has_noun %>%  -->
+<!--       str_extract(noun) -->
+<!--     ``` -->
 
-----
+<!-- ---- -->
 
-- `tidyr::extract()` works with tibble:
-    ```{r}
-    tibble(sentence = sentences) %>% 
-      tidyr::extract(
-        sentence, c("article", "noun"), "(a|the) ([^ ]+)", 
-        remove = FALSE
-      )
-    ```
+<!-- - `str_match()` gives each individual component: -->
+<!--     ```{r} -->
+<!--     has_noun %>%  -->
+<!--       str_match(noun) -->
+<!--     ``` -->
+
+<!-- ---- -->
+
+<!-- - `tidyr::extract()` works with tibble: -->
+<!--     ```{r} -->
+<!--     tibble(sentence = sentences) %>%  -->
+<!--       tidyr::extract( -->
+<!--         sentence, c("article", "noun"), "(a|the) ([^ ]+)",  -->
+<!--         remove = FALSE -->
+<!--       ) -->
+<!--     ``` -->
     
 ## Replacing matches
 
@@ -420,10 +436,14 @@ same as
     ```{r}
     x <- c("apple", "pear", "banana")
     str_replace(x, "[aeiou]", "-")
-    str_replace_all(x, "[aeiou]", "-")
     ```
 
 - Replace all matches:
+    ```{r}
+    str_replace_all(x, "[aeiou]", "-")
+    ```
+
+- Multiple replacement:
     ```{r}
     x <- c("1 house", "2 cars", "3 people")
     str_replace_all(x, c("1" = "one", "2" = "two", "3" = "three"))
@@ -433,6 +453,7 @@ same as
 
 - Back-reference:
     ```{r}
+    # flip the order of the second and third words
     sentences %>% 
       str_replace("([^ ]+) ([^ ]+) ([^ ]+)", "\\1 \\3 \\2") %>% 
       head(5)
@@ -446,6 +467,8 @@ same as
       head(5) %>% 
       str_split(" ")
     ```
+
+----
     
 - Use `simplify = TRUE` to return a matrix:    
     ```{r}
