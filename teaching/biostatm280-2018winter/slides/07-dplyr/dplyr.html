@@ -1070,7 +1070,7 @@ not_cancelled %&gt;%
 ## # ... with 131,096 more rows</pre></li>
 </ul>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Combine tables </h2><h3> combine variables (columns)</h3></hgroup><article  id="combine-tables-combine-variables-columns" class="smaller ">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Combine tables</h2></hgroup><article  id="combine-tables" class="smaller ">
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section-1" class="smaller ">
 
@@ -1213,6 +1213,8 @@ not_cancelled %&gt;%
 <li><p>A <strong>foreign key</strong> uniquely identifies an observation in another table.</p></li>
 </ul>
 
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Combine variables (columns)</h2></hgroup><article  id="combine-variables-columns" class="smaller ">
+
 </article></slide><slide class=""><hgroup><h2>Demo tables</h2></hgroup><article  id="demo-tables" class="smaller ">
 
 <ul>
@@ -1316,7 +1318,7 @@ left_join(x, y, by = &quot;key&quot;)</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
 
 <ul>
-<li><p>Both tables have duplicate keys. You get all possible combinations, the Cartesian product</p>
+<li><p>Both tables have duplicate keys. You get all possible combinations, the Cartesian product:</p>
 
 <p align="center">
 
@@ -1358,7 +1360,7 @@ left_join(x, y, by = &quot;key&quot;)</pre>
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
 
 <ul>
-<li><p>Let&#39;s create a narrower table:</p>
+<li><p>Let&#39;s create a narrower table from the flights data:</p>
 
 <pre class = 'prettyprint lang-r'>flights2 &lt;- flights %&gt;% 
   select(year:day, hour, origin, dest, tailnum, carrier)
@@ -1458,7 +1460,7 @@ left_join(flights2, airports, by = c(&quot;dest&quot; = &quot;faa&quot;))</pre>
 ## #   dst &lt;chr&gt;, tzone &lt;chr&gt;</pre></li>
 </ul>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Combine tables </h2><h3> combine cases (rows)</h3></hgroup><article  id="combine-tables-combine-cases-rows" class="smaller ">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Combine cases (rows)</h2></hgroup><article  id="combine-cases-rows" class="smaller ">
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
 
@@ -1581,7 +1583,7 @@ df2 &lt;- tribble(
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
 
 <ul>
-<li><p><code>bind_rows()</code> stacks tables one on top of the other as a single table.</p>
+<li><p><code>bind_rows(x, y)</code> stacks table <code>x</code> one on top of <code>y</code>.</p>
 
 <pre class = 'prettyprint lang-r'>bind_rows(df1, df2)</pre>
 
@@ -1600,6 +1602,21 @@ df2 &lt;- tribble(
 ##       x     y
 ##   &lt;dbl&gt; &lt;dbl&gt;
 ## 1  1.00  1.00</pre></li>
+</ul>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
+
+<ul>
+<li><p><code>union(x, y)</code> returns unique observations in <code>x</code> and <code>y</code>.</p>
+
+<pre class = 'prettyprint lang-r'>union(df1, df2)</pre>
+
+<pre >## # A tibble: 3 x 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1  1.00  2.00
+## 2  2.00  1.00
+## 3  1.00  1.00</pre></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">

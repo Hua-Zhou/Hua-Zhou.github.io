@@ -401,7 +401,7 @@ flights
       select(year:day, dest, arr_delay, prop_delay)
     ```
 
-# Combine tables | combine variables (columns)
+# Combine tables
 
 ## 
 
@@ -451,6 +451,8 @@ nycflights13 has >1 tables:
 - A **primary key** uniquely identifies an observation in its own table.
 
 - A **foreign key** uniquely identifies an observation in another table.
+
+# Combine variables (columns)
 
 ## Demo tables
 
@@ -532,7 +534,7 @@ Same as
 
 ----
 
-- Both tables have duplicate keys. You get all possible combinations, the Cartesian product
+- Both tables have duplicate keys. You get all possible combinations, the Cartesian product:
 
     <p align="center">
     <img src="./join-many-to-many.png" height="250">
@@ -561,7 +563,7 @@ Same as
 
 ----
 
-- Let's create a narrower table:
+- Let's create a narrower table from the flights data:
     ```{r}
     flights2 <- flights %>% 
       select(year:day, hour, origin, dest, tailnum, carrier)
@@ -592,7 +594,7 @@ Same as
     left_join(flights2, airports, by = c("dest" = "faa"))
     ```
 
-# Combine tables | combine cases (rows)
+# Combine cases (rows)
 
 ----
 
@@ -660,7 +662,7 @@ Same as
 
 ----
 
-- `bind_rows()` stacks tables one on top of the other as a single table. 
+- `bind_rows(x, y)` stacks table `x` one on top of `y`. 
     ```{r}
     bind_rows(df1, df2)
     ```
@@ -669,7 +671,14 @@ Same as
     ```{r}
     intersect(df1, df2)
     ```
-    
+
+----
+
+- `union(x, y)` returns unique observations in `x` and `y`.
+    ```{r}
+    union(df1, df2)
+    ```
+
 ----
 
 - `setdiff(x, y)` returns rows that appear in `x` but not in `y`.
