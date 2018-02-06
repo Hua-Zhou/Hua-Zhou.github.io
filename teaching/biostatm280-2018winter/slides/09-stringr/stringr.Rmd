@@ -477,4 +477,3 @@ same as
       str_split(" ", simplify = TRUE)
     ```
     
-    
