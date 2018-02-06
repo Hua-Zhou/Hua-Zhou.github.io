@@ -35,7 +35,7 @@ A typical data science project:
 - Convert a regular data frame to tibble:
     ```{r}
     # a regular data frame
-    iris
+    head(iris)
     ```
     
 ----
@@ -142,14 +142,14 @@ A typical data science project:
 
     - `read_log()` (Apache style log files). 
 
-- An example file:
+- An example file [heights.csv](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/08-tidy/heights.csv):
     ```{bash}
     head heights.csv
     ```
 
 ----
 
-- Read from a local file:
+- Read from a local file [heights.csv](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/08-tidy/heights.csv):
     ```{r}
     (heights <- read_csv("heights.csv"))
     ```
@@ -240,36 +240,42 @@ There are three interrelated rules which make a dataset tidy:
 
 ----
 
-- Example table1:
+- Example table1
     ```{r}
     table1
     ```
+is tidy.
 
 ----
 
-- Example table2:
+- Example table2
     ```{r}
     table2
     ```
+is not tidy.    
 
 ----
 
-- Example table3:
+- Example table3
     ```{r}
     table3
     ```
+is not tidy.
     
 ----
 
-- Example table4a:
+- Example table4a
     ```{r}
     table4a
     ```
+is not tidy.    
 
-- Example table4b:
+- Example table4b
     ```{r}
     table4b
     ```
+is not tidy.
+
 
 ## Gathering
 
@@ -338,6 +344,13 @@ There are three interrelated rules which make a dataset tidy:
 <p align="center">
 <img src="./tidy-18.png" height="200">
 </p>
+
+- 
+    ```{r}
+    table5
+    ```
+
+----
 
 - `unite()` is the inverse of `separate()`. 
     ```{r}
