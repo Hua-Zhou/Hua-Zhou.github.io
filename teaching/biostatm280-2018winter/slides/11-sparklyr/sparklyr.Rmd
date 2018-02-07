@@ -1,0 +1,23 @@
+---
+title: "Distributed Data Analysis using sparklyr"
+author: "Dr. Hua Zhou"
+date: "Feb 8, 2018"
+subtitle: Biostat M280
+output:
+  ioslides_presentation:
+    smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
+  cache = FALSE)
+```
+
+#
+
+```{r}
+library("sparklyr")
+sc <- spark_connect(master = "spark://m280-teaching-server.c.biostat-m280-2018-winter.internal:7077", 
+                    version = "2.2.1", 
+                    spark_home = "/usr/lib/spark/spark-2.2.1-bin-hadoop2.7/")
+```
