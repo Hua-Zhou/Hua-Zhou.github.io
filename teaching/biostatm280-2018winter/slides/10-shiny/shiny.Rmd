@@ -1,0 +1,91 @@
+---
+title: "Interactive Documents With shiny"
+author: "Dr. Hua Zhou"
+date: "Feb 8, 2018"
+subtitle: Biostat M280
+output:
+  ioslides_presentation:
+    #smaller: true
+runtime: shiny  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE)
+library("tidyverse")
+```
+
+## Why Shiny?
+
+- Better presentations of data!
+
+- Josh Katz's maps.
+
+- [A nice example](https://research.hackerrank.com/developer-skills/2018/).
+
+## Inputs and outputs 
+
+```{r, echo = FALSE}
+numericInput("rows", "How many diamonds?", 5)
+
+renderTable({
+  head(diamonds, input$rows)
+})
+```
+
+----
+
+```{r, echo = FALSE}
+sliderInput("bins", "Number of bins:", min = 1, max = 300, value = 30)
+
+renderPlot({
+  ggplot(data = diamonds) +
+    geom_histogram(mapping = aes(x = carat), bins = input$bins)
+})
+```
+
+----
+
+- Check the Shiny cheat sheets for a list of inputs and outputs.
+
+## Embedded shiny app
+
+```{r, echo = FALSE, message = FALSE}
+library(rmdexamples)
+kmeans_cluster(iris)
+```
+
+## Building a Shiny app
+
+- Basic parts of a shiny app: <http://shiny.rstudio.com/articles/basics.html>
+
+- How to build a shiny app: <http://shiny.rstudio.com/articles/build.html>
+
+- How to launch a shiny app: <http://shiny.rstudio.com/articles/running.html>
+
+----
+
+- Skeleton of a Shiny app:
+    ```{r, echo = TRUE, eval = FALSE}
+    library(shiny)
+    ui <- fluidPage()
+    server <- function(input, output) {}
+    shinyApp(ui = ui, server = server)
+    ```
+
+- A Shiny app has 3 components:
+
+    1. `ui`: assemble the HTML user interface for your app.
+
+    2. `server`: a function with instructions on how to build and rebuild the R objects displayed in the UI.
+
+    3. `shinyApp`: combines `ui` and `server` into an app.
+
+## Try yourself
+
+1. In RStudio, `File` -> `New File` -> `Shiny Web App...` creates a demo Shiny app using the `faithful` data set in base R.
+
+2. Deploy your Shiny app to <shinyapps.io>.
+
+## Get ideas for your presentation
+
+- Browse the [Gallery](http://shiny.rstudio.com/gallery/).
