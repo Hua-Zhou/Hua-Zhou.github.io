@@ -4,7 +4,8 @@ author: "Dr. Hua Zhou"
 date: "Feb 8, 2018"
 subtitle: Biostat M280
 output:
-  ioslides_presentation:
+  html_document
+  #ioslides_presentation:
 runtime: shiny  
 ---
 
