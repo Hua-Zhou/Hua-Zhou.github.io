@@ -4,9 +4,9 @@ author: "Dr. Hua Zhou"
 date: "Feb 8, 2018"
 subtitle: Biostat M280
 output:
-  html_document
-  #ioslides_presentation:
-runtime: shiny  
+  #html_document
+  ioslides_presentation
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -16,11 +16,16 @@ library("tidyverse")
 
 ## Why Shiny?
 
-- Better presentations of data!
+<p align="center">
+<img src="./data-science.png" height="275">
+</p>
 
-- Josh Katz's maps.
+- Better presentations of data and ideas!
+    - One of the most critical skills for data scientists.
 
-- [A nice example](https://research.hackerrank.com/developer-skills/2018/).
+- Josh Katz's [dialect quiz on NYT](https://www.nytimes.com/interactive/2014/upshot/dialect-quiz-map.html).
+
+- [Another good representation of data](https://research.hackerrank.com/developer-skills/2018/).
 
 ## Inputs and outputs 
 
@@ -85,6 +90,30 @@ kmeans_cluster(iris)
 1. In RStudio, `File` -> `New File` -> `Shiny Web App...` creates a demo Shiny app using the `faithful` data set in base R.
 
 2. Deploy your Shiny app to <shinyapps.io>.
+
+## A slightly more complicated example
+
+<http://shiny.rstudio.com/tutorial/written-tutorial/lesson5/>
+
+- `counties.rds` contains demographic data for each county in the United States from 2010 census:
+    ```{r}
+    counties <- readRDS("census-app/data/counties.rds")
+    head(counties)
+    ```
+
+----
+
+- Use `maps`, `mapproj` and `helpers.R` file plot maps:
+    ```{r, message = FALSE}
+    library(maps)
+    library(mapproj)
+    source("census-app/helpers.R")
+    percent_map(counties$white, "darkgreen", "% White")
+    ```
+
+----
+
+- Shiny app.
 
 ## Get ideas for your presentation
 
