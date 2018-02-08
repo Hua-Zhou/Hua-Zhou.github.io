@@ -5,7 +5,6 @@ date: "Feb 8, 2018"
 subtitle: Biostat M280
 output:
   ioslides_presentation:
-    #smaller: true
 runtime: shiny  
 ---
 
