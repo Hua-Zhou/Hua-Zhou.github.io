@@ -2,9 +2,11 @@
 layout: default
 ---
 
-### Materials for Guest Lecture at UCLA Epi 243 Molecular Epidemiology of Cancer
+### Materials for Guest Lecture at UCLA _Epi 243 Molecular Epidemiology of Cancer_, 2018 Winter Quarter
 
 * [Slides](./Epi243_2018winter_Zhou.pdf)
+
+* [Mendel software](https://www.genetics.ucla.edu/software/mendel)
 
 * Example data sets: 
 	* [Example 24a](./example24a.zip)
