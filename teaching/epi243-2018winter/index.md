@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: course
+title: Epi 243
 ---
 
 ### Materials for Guest Lecture at UCLA _Epi 243 Molecular Epidemiology of Cancer_, 2018 Winter Quarter
