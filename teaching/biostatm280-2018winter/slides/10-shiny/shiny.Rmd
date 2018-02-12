@@ -172,7 +172,7 @@ Each time `renderPlot` re-runs:
     })
     ```
 
----
+----
 
 - A reactive expression saves its result the first time you run it.
 
