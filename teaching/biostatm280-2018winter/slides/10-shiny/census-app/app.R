@@ -3,11 +3,11 @@ library(shiny)
 library(maps)
 library(mapproj)
 
-# Load data ----
-counties <- readRDS("data/counties.rds")
-
 # Source helper functions -----
 source("helpers.R")
+
+# Load data ----
+counties <- readRDS("data/counties.rds")
 
 # User interface ----
 ui <- fluidPage(
@@ -27,14 +27,16 @@ ui <- fluidPage(
       sliderInput("range", 
                   label = "Range of interest:",
                   min = 0, max = 100, value = c(0, 100))
-      ),
+    ),
     
     mainPanel(plotOutput("map"))
   )
-  )
+)
 
 # Server logic ----
+# server function is run once each time a user visits the app
 server <- function(input, output) {
+  # renderPlot is run once each time a user changes a widget that output$map depends on
   output$map <- renderPlot({
     data <- switch(input$var, 
                    "Percent White" = counties$white,

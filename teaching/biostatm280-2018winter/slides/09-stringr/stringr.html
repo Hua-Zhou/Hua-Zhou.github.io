@@ -295,13 +295,13 @@ x</pre>
 <pre class = 'prettyprint lang-r'>x &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;)
 str_view(x, &quot;an&quot;)</pre>
 
-<div id="htmlwidget-0f555d0ee02b020fdda6" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-0f555d0ee02b020fdda6">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8ee664b422242ef11c73" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-8ee664b422242ef11c73">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span>ana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 <pre class = 'prettyprint lang-r'>str_view_all(x, &quot;an&quot;)</pre>
 
-<div id="htmlwidget-4159ea6d95a94b674126" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-4159ea6d95a94b674126">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span><span class='match'>an<\/span>a<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-00f121f556e117f54dbc" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-00f121f556e117f54dbc">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>b<span class='match'>an<\/span><span class='match'>an<\/span>a<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
@@ -311,20 +311,20 @@ str_view(x, &quot;an&quot;)</pre>
 
 <pre class = 'prettyprint lang-r'>str_view(x, &quot;.a.&quot;)</pre>
 
-<div id="htmlwidget-267706aa8d310d8ee633" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-267706aa8d310d8ee633">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>p<span class='match'>ear<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-a774adc0aad4fe7bd024" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-a774adc0aad4fe7bd024">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li><span class='match'>ban<\/span>ana<\/li>\n  <li>p<span class='match'>ear<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 <li><p>To match a literal <code>.</code>:</p>
 
 <pre class = 'prettyprint lang-r'>str_view(c(&quot;abc&quot;, &quot;a.c&quot;, &quot;bef&quot;), &quot;a\\.c&quot;)</pre>
 
-<div id="htmlwidget-29780b9d222faa2af4c2" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-29780b9d222faa2af4c2">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-000af43b572aa466de87" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-000af43b572aa466de87">{"x":{"html":"<ul>\n  <li>abc<\/li>\n  <li><span class='match'>a.c<\/span><\/li>\n  <li>bef<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 <li><p>To match a literal <code>\</code>:</p>
 
 <pre class = 'prettyprint lang-r'>str_view(&quot;a\\b&quot;, &quot;\\\\&quot;)</pre>
 
-<div id="htmlwidget-3805c96cc72a15899063" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-3805c96cc72a15899063">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-a5e5cd2706878a3c8ccf" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-a5e5cd2706878a3c8ccf">{"x":{"html":"<ul>\n  <li>a<span class='match'>\\<\/span>b<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Anchors</h2></hgroup><article  id="anchors" class="smaller ">
@@ -335,14 +335,14 @@ str_view(x, &quot;an&quot;)</pre>
 <pre class = 'prettyprint lang-r'>x &lt;- c(&quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot;)
 str_view(x, &quot;^a&quot;)</pre>
 
-<div id="htmlwidget-ea3e4cc907c1bbbf11c1" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-ea3e4cc907c1bbbf11c1">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>pple<\/li>\n  <li>banana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-e50a3239e4468332eee5" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-e50a3239e4468332eee5">{"x":{"html":"<ul>\n  <li><span class='match'>a<\/span>pple<\/li>\n  <li>banana<\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 <li><p><code>$</code> matches the end of the string:</p>
 
 <pre class = 'prettyprint lang-r'>str_view(x, &quot;a$&quot;)</pre>
 
-<div id="htmlwidget-95dd4e67ce735c206e8f" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-95dd4e67ce735c206e8f">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-436c002d21dfeb0c7541" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-436c002d21dfeb0c7541">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
@@ -353,8 +353,8 @@ str_view(x, &quot;^a&quot;)</pre>
 <pre class = 'prettyprint lang-r'>x &lt;- c(&quot;apple pie&quot;, &quot;apple&quot;, &quot;apple cake&quot;)
 str_view(x, &quot;^apple$&quot;)</pre>
 
-<div id="htmlwidget-34652e056992b93d62cf" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-34652e056992b93d62cf">{"x":{"html":"<ul>\n  <li>apple pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li>apple cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-3a1ee74438c83d299861" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-3a1ee74438c83d299861">{"x":{"html":"<ul>\n  <li>apple pie<\/li>\n  <li><span class='match'>apple<\/span><\/li>\n  <li>apple cake<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
@@ -372,13 +372,13 @@ str_view(x, &quot;^apple$&quot;)</pre>
 
 <pre class = 'prettyprint lang-r'>str_view(c(&quot;grey&quot;, &quot;gray&quot;), &quot;gr(e|a)y&quot;)</pre>
 
-<div id="htmlwidget-9dedb257ef22ebb259a2" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-9dedb257ef22ebb259a2">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1b3ddbf413614d4acfba" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-1b3ddbf413614d4acfba">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 <pre class = 'prettyprint lang-r'>str_view(c(&quot;grey&quot;, &quot;gray&quot;), &quot;gr[ea]y&quot;)</pre>
 
-<div id="htmlwidget-4d1c325467350809f325" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-4d1c325467350809f325">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-c5afe22dc32a096a8cca" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-c5afe22dc32a096a8cca">{"x":{"html":"<ul>\n  <li><span class='match'>grey<\/span><\/li>\n  <li><span class='match'>gray<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Repetition</h2></hgroup><article  id="repetition" class="smaller ">
@@ -388,20 +388,20 @@ str_view(x, &quot;^apple$&quot;)</pre>
 <li><pre class = 'prettyprint lang-r'>x &lt;- &quot;1888 is the longest year in Roman numerals: MDCCCLXXXVIII&quot;
 str_view(x, &quot;CC?&quot;)</pre>
 
-<div id="htmlwidget-aae5db14f3b026360e1e" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-aae5db14f3b026360e1e">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d4afcd841c5b3da7dae1" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-d4afcd841c5b3da7dae1">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 <pre class = 'prettyprint lang-r'># greedy matches
 str_view(x, &quot;CC+&quot;)</pre>
 
-<div id="htmlwidget-346e8a14c33338541b1f" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-346e8a14c33338541b1f">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4bae00605517e0f67614" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-4bae00605517e0f67614">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 <pre class = 'prettyprint lang-r'># greedy matches
 str_view(x, &#39;C[LX]+&#39;)</pre>
 
-<div id="htmlwidget-8fb895d099f8f3532229" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-8fb895d099f8f3532229">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CLXXX<\/span>VIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-c89266a86d533d6100c0" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-c89266a86d533d6100c0">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CLXXX<\/span>VIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
@@ -410,20 +410,20 @@ str_view(x, &#39;C[LX]+&#39;)</pre>
 <li><p>Specify number of matches:<br/><code>{n}</code>: exactly n<br/><code>{n,}</code>: n or more<br/><code>{,m}</code>: at most m<br/><code>{n,m}</code>: between n and m</p></li>
 <li><pre class = 'prettyprint lang-r'>str_view(x, &quot;C{2}&quot;)</pre>
 
-<div id="htmlwidget-4223e69d564bc96eb0fa" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-4223e69d564bc96eb0fa">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cb5915d897e096aae308" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-cb5915d897e096aae308">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 <pre class = 'prettyprint lang-r'># greedy matches
 str_view(x, &quot;C{2,}&quot;)</pre>
 
-<div id="htmlwidget-6e4ce1a1bec1ca744234" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-6e4ce1a1bec1ca744234">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-469151015638ebf046fa" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-469151015638ebf046fa">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 <pre class = 'prettyprint lang-r'># greedy matches
 str_view(x, &quot;C{2,3}&quot;)</pre>
 
-<div id="htmlwidget-56aab65a5fb7cf5e179b" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-56aab65a5fb7cf5e179b">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-7b70a613b1c621b478f6" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-7b70a613b1c621b478f6">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CCC<\/span>LXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
@@ -434,14 +434,14 @@ str_view(x, &quot;C{2,3}&quot;)</pre>
 <pre class = 'prettyprint lang-r'># lazy matches
 str_view(x, &#39;C{2,3}?&#39;)</pre>
 
-<div id="htmlwidget-76acfc084d6afe9ee7f7" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-76acfc084d6afe9ee7f7">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b698c7ffa056813521db" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-b698c7ffa056813521db">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MD<span class='match'>CC<\/span>CLXXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 <pre class = 'prettyprint lang-r'># lazy matches
 str_view(x, &#39;C[LX]+?&#39;)</pre>
 
-<div id="htmlwidget-377831dab7bf41b345ae" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-377831dab7bf41b345ae">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CL<\/span>XXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-3db3fb51cacd30a834b2" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-3db3fb51cacd30a834b2">{"x":{"html":"<ul>\n  <li>1888 is the longest year in Roman numerals: MDCC<span class='match'>CL<\/span>XXXVIII<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Grouping and backreference</h2></hgroup><article  id="grouping-and-backreference" class="smaller ">
@@ -451,8 +451,8 @@ str_view(x, &#39;C[LX]+?&#39;)</pre>
 
 <pre class = 'prettyprint lang-r'>str_view(fruit, &quot;(..)\\1&quot;, match = TRUE)</pre>
 
-<div id="htmlwidget-f5de1a6f369ea82f5b19" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-f5de1a6f369ea82f5b19">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>coco<\/span>nut<\/li>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>juju<\/span>be<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li>s<span class='match'>alal<\/span> berry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-39232155668254b92c4d" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-39232155668254b92c4d">{"x":{"html":"<ul>\n  <li>b<span class='match'>anan<\/span>a<\/li>\n  <li><span class='match'>coco<\/span>nut<\/li>\n  <li><span class='match'>cucu<\/span>mber<\/li>\n  <li><span class='match'>juju<\/span>be<\/li>\n  <li><span class='match'>papa<\/span>ya<\/li>\n  <li>s<span class='match'>alal<\/span> berry<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Detect matches</h2></hgroup><article  id="detect-matches" class="smaller ">
@@ -546,8 +546,8 @@ mean(str_count(words, &quot;[aeiou]&quot;))</pre>
 
 <pre class = 'prettyprint lang-r'>str_view_all(&quot;abababa&quot;, &quot;aba&quot;)</pre>
 
-<div id="htmlwidget-8bb4c7c30fd0df7bdebf" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-8bb4c7c30fd0df7bdebf">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-70cb0590f02862107ff3" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-70cb0590f02862107ff3">{"x":{"html":"<ul>\n  <li><span class='match'>aba<\/span>b<span class='match'>aba<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="smaller">
@@ -623,8 +623,8 @@ head(matches)</pre>
 <li><pre class = 'prettyprint lang-r'>more &lt;- sentences[str_count(sentences, colour_match) &gt; 1]
 str_view_all(more, colour_match)</pre>
 
-<div id="htmlwidget-f3b7a6f0e44e825efd02" style="width:960px;height:auto;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-f3b7a6f0e44e825efd02">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flicke<span class='match'>red<\/span>.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
+<div id="htmlwidget-091bd55d50819d4e3879" style="width:960px;height:auto;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-091bd55d50819d4e3879">{"x":{"html":"<ul>\n  <li>It is hard to erase <span class='match'>blue<\/span> or <span class='match'>red<\/span> ink.<\/li>\n  <li>The <span class='match'>green<\/span> light in the brown box flicke<span class='match'>red<\/span>.<\/li>\n  <li>The sky in the west is tinged with <span class='match'>orange<\/span> <span class='match'>red<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script></li>
 <li><p><code>str_extract_all()</code> extracts all matches:</p>
 
 <pre class = 'prettyprint lang-r'>str_extract_all(more, colour_match)</pre>
