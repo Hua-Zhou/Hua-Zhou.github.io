@@ -1,0 +1,196 @@
+---
+title: "Biostat M280 Homework 1"
+subtitle: Due ~~Jan 26~~ Feb 2 @ 11:59PM
+author: Solution sketch by Dr. Hua Zhou
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if (Sys.info()[["sysname"]] == "Linux") {
+  knitr::opts_chunk$set(eval = TRUE)
+} else {
+  knitr::opts_chunk$set(eval = FALSE)
+}
+```
+
+Show system information for reproducibility:
+```{r}
+sessionInfo()
+```
+
+## Q1 Git/GitHub
+
+**No handwritten homework reports are accepted for this course.** We work with Git and GitHub. Efficient and abundant use of Git, e.g., frequent and well-documented commits, is an important criterion for grading your homework.
+
+1. Apply for the [Student Developer Pack](https://education.github.com/pack) at GitHub using your UCLA email.
+
+2. Create a **private** repository `biostat-m280-2018-winter` and add `Hua-Zhou` and `juhkim111` as your collaborators with write permission.
+
+3. Top directories of the repository should be `hw1`, `hw2`, ... Maintain two branches `master` and `develop`. The `develop` branch will be your main playground, the place where you develop solution (code) to homework problems and write up report. The `master` branch will be your presentation area. Submit your homework files (R markdown file `Rmd`, `html` file converted from R markdown, all code and data sets to reproduce results) in `master` branch.
+
+4. After each homework due date, teaching assistant and instructor will check out your master branch for grading. Tag each of your homework submissions with tag names `hw1`, `hw2`, ... Tagging time will be used as your submission time. That means if you tag your `hw1` submission after deadline, penalty points will be deducted for late submission.
+
+## Q2 Linux Shell Commands
+
+The `35.227.165.60:/home/m280-data/hw1` folder contains a typical genetic data set in plink format. If interested, you can read plink documentation at <http://pngu.mgh.harvard.edu/~purcell/plink/>. But it's definitely not necessary for this homework.
+
+- `merge-geno.bim` contains information of each genetic marker (SNP). Each line is a SNP and has 6 fields:  
+`Chromosome`, `SNP ID`, `Genetic Distance (morgan)`, `Base Pair Position (bp)`, `Allele 1`, `Allele 2`.
+    ```{bash}
+    head /home/m280-data/hw1/merge-geno.bim
+    ```
+
+- `merge-geno.fam` contains individual information. Each line is one individual and has 6 fields:  
+`Family ID`, `Person ID`, `Father ID`, `Mother ID`, `Sex` coded as 1 (male) or 2 (female), `Affection Status`  
+`Father ID = 0` means that person's father is not in this data set. Similarly `Mother ID` = 0 means that person's mother is not in this data set.
+    ```{bash}
+    head -20 /home/m280-data/hw1/merge-geno.fam
+    ```
+
+- `merge-geno.bed` contains genotypes of each individual in binary format. We don't need this file for this homework.
+
+Please, do **not** put these data files into Git; they are huge. You even don't need to copy them into your directory. Just read from the data folder `/home/m280-data/hw1` directly.
+
+Use Linux shell commands to answer following questions. 
+
+1. How many persons are in the data set (statisticians call this `n`)? How many SNPs are in the data set (statisticians call this `p`)?
+
+    The number of persons is
+    ```{bash}
+    wc -l < /home/m280-data/hw1/merge-geno.fam
+    ```
+    The number of SNPs is
+    ```{bash}
+    wc -l < /home/m280-data/hw1/merge-geno.bim
+    ```
+
+2. Which chromosomes does this data set contain? How many SNPs are in each chromosome?
+
+    We use `awk` to count the number of SNPs in each chromosome.
+    ```{bash}
+    ## this is slow b/c it traverses bim file 23 times
+    #for i in `seq 1 23`;
+    #do
+    #    echo "Chromosome $i"
+    #    awk -v chrno="$i" '$1 == chrno' merge-geno.bim | wc -l
+    #done
+    
+    # this is fast b/c it traverses bim file only once
+    time awk '
+    {chrno[$1]++;} 
+    END{ for (c in chrno) print "chr.", c, "has", chrno[c], "SNPs"}'                                   /home/m280-data/hw1/merge-geno.bim
+    ```
+    The `uniq` command in Linux is also useful for counting but takes longer.
+    ```{bash}
+    time awk '{print $1;}' /home/m280-data/hw1/merge-geno.bim | uniq -c
+    ```
+
+3. MAP4 (microtubule-associated protein 4) is a gene on chromosome 3 spanning positions 47,892,180 bp -- 48,130,769 bp. How many SNPs are located within MAP4 gene?
+
+    Number of SNPs in MAP4 gene (chr. 3, 47,892,180bp to 48,130,769bp) is
+    ```{bash}
+    awk '
+    {if ($1 == 3 && $4 >= 47892180 && $4 <= 48130769) print}
+    ' /home/m280-data/hw1/merge-geno.bim | 
+    wc -l
+    ```
+
+4. Statistical geneticists often have to reformat a data set to feed into various analysis programs. For example, to use the Mendel software <http://www.genetics.ucla.edu/software/mendel>, we have to reformat the data set to be read by Mendel.
+
+      - Mendel's SNP definition file is similar to the plink `bim` file but has format  
+      `SNP ID`, `Chromosome`, `Base Pair Position`  
+      with each field separated by a comma. Write a Linux shell command to convert `merge-geno.bim` to Mendel SNP definition file. The first few lines of the Mendel SNP definition file should look like
+    ```{bash, echo=FALSE, eval=TRUE}
+    head mendel_snpdef.txt
+    ```
+    
+    To convert plink bim file to Mendel SNP definition file, which is comma separated.
+    ```{bash}
+    nsnps=$(wc -l < /home/m280-data/hw1/merge-geno.bim)
+    echo "    2.40 = FILE FORMAT VERSION NUMBER." > mendel_snpdef.txt
+    echo " $nsnps = NUMBER OF SNPS LISTED HERE." >> mendel_snpdef.txt
+    time awk '
+    {OFS = ","} 
+    {print $2, $1, $4}
+    ' /home/m280-data/hw1/merge-geno.bim >> mendel_snpdef.txt
+    ```
+    ```{bash}
+    head mendel_snpdef.txt
+    ```
+    
+    - Mendel's pedigree file is similar to the plink `fam` file but has format  
+    `Family ID`, `Person ID`, `Father ID`, `Mother ID`, `Sex` coded as M or F, `Twin Status`  
+    with each field separated by a comma. Write a Linux shell command to convert `merge-geno.fam` to Mendel pedigree file. Since twin status is not available in plink format, we put nothing for that field. Also Mendel limits Person ID to have length less or equal to 8 characters, so we have to strip the string `T2DG` from the IDs. First few lines of the Mendel pedigree should look like
+    ```{bash, echo=FALSE, eval=TRUE}
+    head -20 mendel_ped.txt
+    ```
+    
+    To convert plink fam file to Mendel pedigree file:
+    ```{bash}
+    time awk -v sex="" -v paid="" -v maid="" '
+    {OFS = ","} 
+    {if ($5==1) sex="M"; else sex="F"} 
+    {if ($3==0) paid=""; else paid=substr($3, 5, 11)} 
+    {if ($4==0) maid=""; else maid=substr($4, 5, 11)} 
+    {print $1, substr($2, 5, 11), paid, maid, sex, ""}
+    ' /home/m280-data/hw1/merge-geno.fam > mendel_ped.txt
+    ```
+    ```{bash}
+    head -20 mendel_ped.txt
+    ```
+
+## Q3 R Batch Run
+
+In class we discussed using R to organize simulation studies. 
+
+1. Expand the `runSim.R` script to include arguments `seed`, `n` (sample size), `dist` (distribution) and `rep` (number of simulation replicates). When `dist="gaussian"`, generate data from standard normal; when `dist="t1"`, generate data from t-distribution with degree of freedom 1 (same as Cauchy distribution); when `dist="t5"`, generate data from t-distribution with degree of freedom 5. Calling `runSim.R` will (1) set random seed according to argument `seed`, (2) generate data according to argument `dist`, (3) compute the primed-indexed avarage estimator in class and the classical sample average estimator for each simulation replicate, (4) report the average mean squared error (MSE)
+$$
+  \frac{\sum_{r=1}^{\text{rep}} (\widehat \mu_r - \mu_{\text{true}})^2}{\text{rep}}.
+$$
+
+    Here is my code [`runSim.R`](./runSim.R):
+    ```{bash}
+    cat runSim.R
+    ```
+    A trial run:
+    ```{bash}
+    Rscript runSim.R n=100 dist=\"gaussian\" seed=280 reps=50
+    ```
+
+2. Modify the [`autoSim.R`](./autoSim.R) script to run simulations with cominations of sample sizes `nVals = seq(100, 500, by=100)` and distributions `distTypes = c("gaussian", "t1", "t5")` and write output to appropriate named files. Use `rep = 50`, and `seed = 280`. 
+
+    Here is my code `autoSim.R`:
+    ```{bash}
+    cat autoSim.R
+    ```
+    Note the `shQuote(shQuote(dist))` trick to properly pass string to `system` call. Now let's run simulations:
+    ```{bash}
+    Rscript autoSim.R
+    ```
+
+3. Write an R script to collect simulation results from output files and print average MSEs in a table of format
+
+| $n$ | Method   | $t_1$ | $t_5$ | Gaussian |
+|-----|----------|-------|-------|----------|
+| 100 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 200 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 300 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 400 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |
+| 500 | PrimeAvg |       |       |          |
+|     | SampAvg  |       |       |          |  
+
+
+I wrote a script [`resSim.R`](./resSim.R) to collect results from simulation output files.
+```{bash}
+cat resSim.R
+```
+
+```{r}
+source("resSim.R")
+knitr::kable(res, digits = 3)
+```
