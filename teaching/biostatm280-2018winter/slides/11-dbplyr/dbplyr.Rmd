@@ -14,11 +14,6 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
   cache = TRUE, cache.lazy = FALSE)
-if (Sys.info()[["sysname"]] == "Darwin") {
-  csvfile = "./NYParkingViolations.csv"
-} else if ((Sys.info()[["sysname"]] == "Linux")) {
-  csvfile = "/home/m280-data/nyc_parking/NYParkingViolations.csv"
-}
 ```
 
 ## Introduction
@@ -41,35 +36,35 @@ sessionInfo()
 
 ## CSV file
 
-- The `/home/m280-data/nyc_parking/NYParkingViolations.csv` file on teaching server contains information about parking tickets in NYC. You can make a symbolic link to the data file by Bash command
+The `/home/m280-data/nyc_parking/NYParkingViolations.csv` file on teaching server contains information about parking tickets in NYC. You can create a symbolic link to the data file by Bash command
 ```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
-ln -s /home/m280-data/nyc_parking/NYParkingViolations.csv NYParkingViolations.csv
+ln -sf /home/m280-data/nyc_parking/NYParkingViolations.csv NYParkingViolations.csv
 ```
 
-- The CSV file is about 1.7GB
-    ```{bash}
-    ls -l NYParkingViolations.csv
-    ```
+The CSV file is about 1.7GB
+```{bash}
+ls -l NYParkingViolations.csv
+```
 
-- How many rows?
-    ```{bash}
-    wc -l < NYParkingViolations.csv
-    ```
-    
-- First few lines:
-    ```{bash}
-    head -5 NYParkingViolations.csv
-    ```
+How many rows?
+```{bash}
+wc -l < NYParkingViolations.csv
+```
+
+First few lines:
+```{bash}
+head -5 NYParkingViolations.csv
+```
 
 ## Read csv file
 
 - `read.csv()` function in base R takes nearly 6 minutes to read in the 1.7GB csv file:
-    ```{r, eval = FALSE}
+    ```{r}
     system.time(read.csv("NYParkingViolations.csv"))
     ```
 
 - data.table is an R package for reading large data sets:
-    ```{r, eval = FALSE}
+    ```{r}
     library(data.table)
     system.time({nyc = fread("NYParkingViolations.csv")})
     class(nyc)
@@ -111,7 +106,6 @@ Make variable `Issue_Date` of date-time type:
 ```{r}
 library(lubridate)
 class(nyc$Issue_Date)
-#nyc %<>% mutate(Issue_Date = mdy(Issue_Date, tz = "America/New_York"))
 nyc %<>% mutate(Issue_Date = mdy(Issue_Date))
 class(nyc$Issue_Date)
 nyc
@@ -156,9 +150,16 @@ nyc %>%
 
 ## Database drivers
 
-- 
+<p align="center">
+<img src="./open-source-db.png" height="100">
+</p>
 
-- Install database drivers: <https://db.rstudio.com/best-practices/drivers/>.
+- dplyr supports a variety of databases. 
+    - Open source databases: SQLite, MySQL, PostgreSQL, BigQuery.
+    - Commercial databases: Oracle, Microsoft SQL Server.
+    - See [link](https://db.rstudio.com/databases) for a complete list.
+
+- To install database drivers, follow instructions at <https://db.rstudio.com/best-practices/drivers/>.
 
 
 ## Create an SQLite database
@@ -167,11 +168,18 @@ Import the `nyc` data set into the SQLite database:
 ```{r}
 library("DBI")
 library("RSQLite")
-db <- dbConnect(RSQLite::SQLite(), dbname = "./NYParkingViolations.sqlite")
+library("tidy")
+db <- dbConnect(RSQLite::SQLite(), 
+                dbname = "/home/m280-data/nyc_parking/NYParkingViolations.sqlite")
 dbWriteTable(db, "nyc", nyc)
 dbListTables(db)
 dbDisconnect(db)
 ```
+You can create a symbolic link to the data file by Bash command
+```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
+ln -sf /home/m280-data/nyc_parking/NYParkingViolations.sqlite NYParkingViolations.sqlite
+```
+
 Size of the database file
 ```{bash}
 ls -l NYParkingViolations.sqlite
@@ -183,8 +191,9 @@ Connect to table in database:
 ```{r}
 db <- dbConnect(RSQLite::SQLite(), dbname = "./NYParkingViolations.sqlite")
 dbListTables(db)
+nyc_sql <- dplyr::tbl(db, "nyc")
 str(nyc_sql)
-nyc_sql <- tbl(db, "nyc")
+nyc_sql
 ```
 
 ## Use dplyr with SQLite
@@ -203,12 +212,13 @@ class(addr)
 show_query(addr)
 ```
 
-## Limitations
+## Mutate and summarise
 
 ```{r}
 addr %>% mutate(address = paste(Number, Street))
+```
+```{r}
 addr %>% summarize(mean = mean(Violation_Precinct, na.rm = TRUE))
-addr %>% summarize(mean = mean(Violation_Precinct))
 ```
 
 ## SQL grouping
@@ -230,7 +240,7 @@ addr %>%
 
 ## SQL translation
 
-dbplyr has a function, `translate_sql`, that lets you experiment with how R functions are translated to SQL:
+dbplyr package (a dplyr backend for databases) has a function, `translate_sql`, that lets you experiment with how R functions are translated to SQL:
 ```{r}
 library("dbplyr")
 translate_sql(x == 1 & (y < 2 | z > 3))
@@ -264,7 +274,7 @@ system.time(
 )
 ```
 
-`nyc_sql` was 30x times faster than `nyc`, but the former is disk based while the latter is in memory.
+`nyc_sql` was 30x times faster than `nyc`, but the former is disk based while the latter is in memory. Why is the discrepancy?
 
 ## Laziness
 
@@ -292,10 +302,12 @@ nyc_sql %>%
 
 To force a full query and return a complete it is necessart to use the `collect` function.
 ```{r}
-nyc_sql %>%
-  select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
-  filter(Violation_Precinct >=1, Violation_Precinct <= 34) %>%
-  group_by(Issuing_Agency, Violation_Precinct) %>%
-  summarize(n = n()) %>%
-  collect()
+system.time(
+  nyc_sql %>%
+    select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
+    filter(Violation_Precinct >=1, Violation_Precinct <= 34) %>%
+    group_by(Issuing_Agency, Violation_Precinct) %>%
+    summarize(n = n()) %>%
+    collect()
+)
 ```
