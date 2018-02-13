@@ -1,0 +1,301 @@
+---
+title: "Working with Databases"
+author: "Dr. Hua Zhou"
+date: "Feb 13, 2018"
+subtitle: Biostat M280
+output:
+  html_document:
+    toc: true
+    #toc_depth: 2
+  #ioslides_presentation:
+  #  smaller: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
+  cache = TRUE, cache.lazy = FALSE)
+if (Sys.info()[["sysname"]] == "Darwin") {
+  csvfile = "./NYParkingViolations.csv"
+} else if ((Sys.info()[["sysname"]] == "Linux")) {
+  csvfile = "/home/m280-data/nyc_parking/NYParkingViolations.csv"
+}
+```
+
+## Introduction
+
+In this lecture we follow a [tutorial](http://www2.stat.duke.edu/~cr173/Sta523_Fa17/bigish_data.html) by Dr. Colin Rundel to handle a bigish data set. We will learn:
+
+- Import data from a bigish csv file.
+
+- Tidy data. 
+
+- Deposit data into an SQLite database.
+
+- Query SQLite database. 
+
+## Machine information
+
+```{r}
+sessionInfo()
+```
+
+## CSV file
+
+- The `/home/m280-data/nyc_parking/NYParkingViolations.csv` file on teaching server contains information about parking tickets in NYC. You can make a symbolic link to the data file by Bash command
+```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
+ln -s /home/m280-data/nyc_parking/NYParkingViolations.csv NYParkingViolations.csv
+```
+
+- The CSV file is about 1.7GB
+    ```{bash}
+    ls -l NYParkingViolations.csv
+    ```
+
+- How many rows?
+    ```{bash}
+    wc -l < NYParkingViolations.csv
+    ```
+    
+- First few lines:
+    ```{bash}
+    head -5 NYParkingViolations.csv
+    ```
+
+## Read csv file
+
+- `read.csv()` function in base R takes nearly 6 minutes to read in the 1.7GB csv file:
+    ```{r, eval = FALSE}
+    system.time(read.csv("NYParkingViolations.csv"))
+    ```
+
+- data.table is an R package for reading large data sets:
+    ```{r, eval = FALSE}
+    library(data.table)
+    system.time({nyc = fread("NYParkingViolations.csv")})
+    class(nyc)
+    nyc = as.data.frame(nyc)
+    class(nyc)    
+    ```
+
+- `read_csv()` function in tidyverse is 3-4 times faster than base R:
+    ```{r}
+    library("tidyverse")
+    system.time({nyc = read_csv("NYParkingViolations.csv")})
+    nyc
+    ```
+
+## Fix column names
+
+```{r}
+names(nyc) = str_replace_all(names(nyc), " ", "_")
+nyc
+```
+
+## Simplifying
+
+We make a smaller data set with selected variables:
+```{r}
+# magrittr for %<>%
+library("magrittr")
+(nyc %<>% 
+  select(Registration_State:Issuing_Agency, 
+         Violation_Location, Violation_Precinct, Violation_Time,
+         Number:Intersecting_Street, Vehicle_Color))
+```
+
+## Fix dates
+
+Hadley Wickham's lubridate package facilitates handling date and time. Read [Chapter 16](http://r4ds.had.co.nz/dates-and-times.html) of _R for Data Science_ for more information.
+
+Make variable `Issue_Date` of date-time type:
+```{r}
+library(lubridate)
+class(nyc$Issue_Date)
+#nyc %<>% mutate(Issue_Date = mdy(Issue_Date, tz = "America/New_York"))
+nyc %<>% mutate(Issue_Date = mdy(Issue_Date))
+class(nyc$Issue_Date)
+nyc
+```
+
+Only keep data in years 2013-4.
+```{r}
+range(nyc$Issue_Date)
+nyc$Issue_Date %>% year() %>% table()
+filter(nyc, Issue_Date >= mdy("1/1/2013"), Issue_Date <= mdy("12/31/2014"))
+```
+
+## Putting it all together
+
+```{r}
+system.time({
+  nyc = read_csv("NYParkingViolations.csv") %>%
+    setNames(str_replace_all(names(.)," ", "_")) %>%
+    select(Registration_State:Issuing_Agency, 
+         Violation_Location, Violation_Precinct, Violation_Time,
+         Number:Intersecting_Street, Vehicle_Color) %>%
+    mutate(Issue_Date = mdy(Issue_Date)) %>% 
+    mutate(Issue_Day = day(Issue_Date),
+           Issue_Month = month(Issue_Date),
+           Issue_Year = year(Issue_Date),
+           Issue_WDay = wday(Issue_Date, label=TRUE)) %>%
+    filter(Issue_Year %in% 2013:2014)  
+})
+nyc
+```
+
+## Ticket frequency
+
+```{r}
+nyc %>% 
+  group_by(Issue_Date) %>% 
+  summarize(n = n()) %>%
+  ggplot(aes(x = Issue_Date, y = n)) + 
+    geom_line() + 
+    xlim(mdy("7/1/2013"), mdy("6/30/2014"))
+```
+
+## Database drivers
+
+- 
+
+- Install database drivers: <https://db.rstudio.com/best-practices/drivers/>.
+
+
+## Create an SQLite database
+
+Import the `nyc` data set into the SQLite database:
+```{r}
+library("DBI")
+library("RSQLite")
+db <- dbConnect(RSQLite::SQLite(), dbname = "./NYParkingViolations.sqlite")
+dbWriteTable(db, "nyc", nyc)
+dbListTables(db)
+dbDisconnect(db)
+```
+Size of the database file
+```{bash}
+ls -l NYParkingViolations.sqlite
+```
+
+## Read data from database
+
+Connect to table in database:
+```{r}
+db <- dbConnect(RSQLite::SQLite(), dbname = "./NYParkingViolations.sqlite")
+dbListTables(db)
+str(nyc_sql)
+nyc_sql <- tbl(db, "nyc")
+```
+
+## Use dplyr with SQLite
+
+```{r}
+addr <- nyc_sql %>%
+  select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
+  filter(Violation_Precinct >= 1, Violation_Precinct <= 34)
+addr
+```
+
+## SQL query
+
+```{r}
+class(addr)
+show_query(addr)
+```
+
+## Limitations
+
+```{r}
+addr %>% mutate(address = paste(Number, Street))
+addr %>% summarize(mean = mean(Violation_Precinct, na.rm = TRUE))
+addr %>% summarize(mean = mean(Violation_Precinct))
+```
+
+## SQL grouping
+
+```{r}
+addr %>% 
+  group_by(Issuing_Agency, Violation_Precinct) %>% 
+  summarize(n = n())
+```
+
+## SQL query
+
+```{r}
+addr %>% 
+  group_by(Issuing_Agency, Violation_Precinct) %>% 
+  summarize(n = n()) %>% 
+  show_query()
+```
+
+## SQL translation
+
+dbplyr has a function, `translate_sql`, that lets you experiment with how R functions are translated to SQL:
+```{r}
+library("dbplyr")
+translate_sql(x == 1 & (y < 2 | z > 3))
+translate_sql(x ^ 2 < 10)
+translate_sql(x %% 2 == 10)
+translate_sql(paste(x, y))
+translate_sql(mean(x))
+translate_sql(mean(x, na.rm = TRUE))
+```
+
+## Timings
+
+dplyr using tibble:
+```{r}
+system.time(
+  nyc %>%
+    select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
+    filter(Violation_Precinct >=1, Violation_Precinct <= 34) %>%
+    group_by(Issuing_Agency, Violation_Precinct) %>%
+    summarize(n = n())
+)
+```
+dplyr using SQLite:
+```{r}
+system.time(
+  nyc_sql %>%
+    select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
+    filter(Violation_Precinct >=1, Violation_Precinct <= 34) %>%
+    group_by(Issuing_Agency, Violation_Precinct) %>%
+    summarize(n = n())
+)
+```
+
+`nyc_sql` was 30x times faster than `nyc`, but the former is disk based while the latter is in memory.
+
+## Laziness
+
+dplyr/dbplyr uses lazy evaluation as much as possible, particularly when working with non-local backends.
+
+- When building a query, we don’t want the entire table, often we want just enough to check if our query is working.
+
+- Since we would prefer to run one complex query over many simple queries, laziness allows for verbs to be strung together.
+
+- Therefore, by default dplyr
+
+    - won’t connect and query the database until absolutely necessary (e.g. show output),
+
+    - and unless explicitly told to, will only query a handful of rows to give a sense of what the result will look like
+    
+```{r}
+nyc_sql %>%
+  select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
+  filter(Violation_Precinct >=1, Violation_Precinct <= 34) %>%
+  group_by(Issuing_Agency, Violation_Precinct) %>%
+  summarize(n = n())
+```
+
+## Full query
+
+To force a full query and return a complete it is necessart to use the `collect` function.
+```{r}
+nyc_sql %>%
+  select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
+  filter(Violation_Precinct >=1, Violation_Precinct <= 34) %>%
+  group_by(Issuing_Agency, Violation_Precinct) %>%
+  summarize(n = n()) %>%
+  collect()
+```
