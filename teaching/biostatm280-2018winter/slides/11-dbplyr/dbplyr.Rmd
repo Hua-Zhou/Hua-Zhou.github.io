@@ -148,10 +148,10 @@ nyc %>%
     xlim(mdy("7/1/2013"), mdy("6/30/2014"))
 ```
 
-## Database drivers
+## Access database from R
 
 <p align="center">
-<img src="./open-source-db.png" height="100">
+<img src="./open-source-db.png" height="50">
 </p>
 
 - dplyr supports a variety of databases. 
@@ -159,8 +159,11 @@ nyc %>%
     - Commercial databases: Oracle, Microsoft SQL Server.
     - See [link](https://db.rstudio.com/databases) for a complete list.
 
-- To install database drivers, follow instructions at <https://db.rstudio.com/best-practices/drivers/>.
+- DBI package provides a common interface for connecting to databases.
 
+- dbplyr package is the backend that translates dplyr verbs to database SQL queries.
+
+- To install database drivers, follow instructions at <https://db.rstudio.com/best-practices/drivers/>.
 
 ## Create an SQLite database
 
@@ -168,14 +171,19 @@ Import the `nyc` data set into the SQLite database:
 ```{r}
 library("DBI")
 library("RSQLite")
-library("tidy")
-db <- dbConnect(RSQLite::SQLite(), 
-                dbname = "/home/m280-data/nyc_parking/NYParkingViolations.sqlite")
-dbWriteTable(db, "nyc", nyc)
+library("tidyverse")
+if (Sys.info()[["sysname"]] == "Linux") {
+  db <- dbConnect(RSQLite::SQLite(), 
+                  dbname = "/home/m280-data/nyc_parking/NYParkingViolations.sqlite")
+} else if (Sys.info()[["sysname"]] == "Darwin") {
+  db <- dbConnect(RSQLite::SQLite(), 
+                  dbname = "./NYParkingViolations.sqlite")
+}
+dbWriteTable(db, "nyc", nyc, overwrite = TRUE)
 dbListTables(db)
 dbDisconnect(db)
 ```
-You can create a symbolic link to the data file by Bash command
+You can create a symbolic link to the database file by Bash command
 ```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
 ln -sf /home/m280-data/nyc_parking/NYParkingViolations.sqlite NYParkingViolations.sqlite
 ```
@@ -310,4 +318,10 @@ system.time(
     summarize(n = n()) %>%
     collect()
 )
+```
+
+## Close connection to database
+
+```{r}
+dbDisconnect(db)
 ```
