@@ -122,20 +122,21 @@ kmeans_cluster(iris)
     runApp("census-app")
     ```
 
+- [Code](https://github.com/Hua-Zhou/Hua-Zhou.github.io/tree/master/teaching/biostatm280-2018winter/slides/10-shiny/census-app) for the Shiny app `census-app`.
+
 ----
 
-- Stucture of `app.R`:
-    - The `shinyApp` function is run once, when you launch your app.  
-    - The `server` function is run once each time a user visits your app.  
-    - The R expressions inside `render*` functions are run many times. Shiny runs them once each time a user change the value of a widget. 
-    - Source scripts, load libraries, and read data sets at the beginning of `app.R` outside of the `server` function. Shiny will only run this code once, which is all you need to set your server up to run the R expressions contained in server.  
-    - Define user specific objects inside `server` function, but outside of any `render*` calls. These would be objects that you think each user will need their own personal copy of. For example, an object that records the user’s session information. This code will be run once per user.
+- The `shinyApp` function is run once, when you launch your app.  
+- The `server` function is run once each time a user visits your app.  
+- The R expressions inside `render*` functions are run many times. Shiny runs them once each time a user change the value of a widget. 
+- Source scripts, load libraries, and read data sets at the beginning of `app.R` outside of the `server` function. Shiny will only run this code once, which is all you need to set your server up to run the R expressions contained in server.  
+- Define user specific objects inside `server` function, but outside of any `render*` calls. These would be objects that you think each user will need their own personal copy of. For example, an object that records the user’s session information. This code will be run once per user.
 
 ## An example using reactive expressions
 
 - <http://shiny.rstudio.com/tutorial/written-tutorial/lesson6/>
 
-- [Code]() for the Shiny app `stockVis`.
+- [Code](https://github.com/Hua-Zhou/Hua-Zhou.github.io/tree/master/teaching/biostatm280-2018winter/slides/10-shiny/stockVis) for the Shiny app `stockVis`.
 
 ---
 
