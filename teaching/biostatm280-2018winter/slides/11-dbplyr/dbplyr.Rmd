@@ -63,14 +63,14 @@ head -5 NYParkingViolations.csv
 - data.table is an R package for reading large data sets:
     ```{r}
     library(data.table)
-    system.time({nyc = fread("NYParkingViolations.csv")})
+    system.time({nyc <- fread("NYParkingViolations.csv")})
     class(nyc)
     ```
 
 - `read_csv()` function in tidyverse is 3-4 times faster than base R:
     ```{r}
     library("tidyverse")
-    system.time({nyc = read_csv("NYParkingViolations.csv")})
+    system.time({nyc <- read_csv("NYParkingViolations.csv")})
     nyc
     ```
 
@@ -135,14 +135,12 @@ nyc
 ## Plot ticket frequency
 
 ```{r}
-system.time({
-  nyc %>% 
-    group_by(Issue_Date) %>% 
-    summarize(n = n()) %>%
-    ggplot(aes(x = Issue_Date, y = n)) + 
-      geom_line() + 
-      xlim(mdy("7/1/2013"), mdy("6/30/2014"))
-})
+nyc %>% 
+  group_by(Issue_Date) %>% 
+  summarize(n = n()) %>%
+  ggplot(aes(x = Issue_Date, y = n)) + 
+  geom_line() + 
+  xlim(mdy("7/1/2013"), mdy("6/30/2014"))
 ```
 
 ## Create an SQLite database
@@ -186,6 +184,7 @@ nyc_sql <- dplyr::tbl(db, "nyc")
 str(nyc_sql)
 nyc_sql
 ```
+
 
 ## Use dplyr with SQLite
 
