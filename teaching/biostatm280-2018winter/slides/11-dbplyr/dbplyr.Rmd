@@ -1,14 +1,11 @@
 ---
-title: "Working with Databases"
+title: "Working with Databases - Part 2"
 author: "Dr. Hua Zhou"
 date: "Feb 13, 2018"
 subtitle: Biostat M280
 output:
   html_document:
     toc: true
-    #toc_depth: 2
-  #ioslides_presentation:
-  #  smaller: true
 ---
 
 ```{r setup, include=FALSE}
@@ -18,7 +15,7 @@ knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
 
 ## Introduction
 
-In this lecture we follow a [tutorial](http://www2.stat.duke.edu/~cr173/Sta523_Fa17/bigish_data.html) by Dr. Colin Rundel to handle a bigish data set. We will learn:
+In this lecture we follow a [tutorial](http://www2.stat.duke.edu/~cr173/Sta523_Fa17/bigish_data.html) to handle a bigish data set. We will learn:
 
 - Import data from a bigish csv file.
 
@@ -68,8 +65,6 @@ head -5 NYParkingViolations.csv
     library(data.table)
     system.time({nyc = fread("NYParkingViolations.csv")})
     class(nyc)
-    nyc = as.data.frame(nyc)
-    class(nyc)    
     ```
 
 - `read_csv()` function in tidyverse is 3-4 times faster than base R:
@@ -88,7 +83,7 @@ nyc
 
 ## Simplifying
 
-We make a smaller data set with selected variables:
+We make a smaller data set with only 14 variables:
 ```{r}
 # magrittr for %<>%
 library("magrittr")
@@ -100,7 +95,7 @@ library("magrittr")
 
 ## Fix dates
 
-Hadley Wickham's lubridate package facilitates handling date and time. Read [Chapter 16](http://r4ds.had.co.nz/dates-and-times.html) of _R for Data Science_ for more information.
+The lubridate package facilitates handling date and time. Read [Chapter 16](http://r4ds.had.co.nz/dates-and-times.html) of _R for Data Science_ for more information.
 
 Make variable `Issue_Date` of date-time type:
 ```{r}
@@ -123,7 +118,7 @@ filter(nyc, Issue_Date >= mdy("1/1/2013"), Issue_Date <= mdy("12/31/2014"))
 ```{r}
 system.time({
   nyc = read_csv("NYParkingViolations.csv") %>%
-    setNames(str_replace_all(names(.)," ", "_")) %>%
+    setNames(str_replace_all(names(.), " ", "_")) %>%
     select(Registration_State:Issuing_Agency, 
          Violation_Location, Violation_Precinct, Violation_Time,
          Number:Intersecting_Street, Vehicle_Color) %>%
@@ -137,41 +132,25 @@ system.time({
 nyc
 ```
 
-## Ticket frequency
+## Plot ticket frequency
 
 ```{r}
-nyc %>% 
-  group_by(Issue_Date) %>% 
-  summarize(n = n()) %>%
-  ggplot(aes(x = Issue_Date, y = n)) + 
-    geom_line() + 
-    xlim(mdy("7/1/2013"), mdy("6/30/2014"))
+system.time({
+  nyc %>% 
+    group_by(Issue_Date) %>% 
+    summarize(n = n()) %>%
+    ggplot(aes(x = Issue_Date, y = n)) + 
+      geom_line() + 
+      xlim(mdy("7/1/2013"), mdy("6/30/2014"))
+})
 ```
-
-## Access database from R
-
-<p align="center">
-<img src="./open-source-db.png" height="50">
-</p>
-
-- dplyr supports a variety of databases. 
-    - Open source databases: SQLite, MySQL, PostgreSQL, BigQuery.
-    - Commercial databases: Oracle, Microsoft SQL Server.
-    - See [link](https://db.rstudio.com/databases) for a complete list.
-
-- DBI package provides a common interface for connecting to databases.
-
-- dbplyr package is the backend that translates dplyr verbs to database SQL queries.
-
-- To install database drivers, follow instructions at <https://db.rstudio.com/best-practices/drivers/>.
 
 ## Create an SQLite database
 
-Import the `nyc` data set into the SQLite database:
+Import the `nyc` data set into a SQLite database:
 ```{r}
 library("DBI")
 library("RSQLite")
-library("tidyverse")
 if (Sys.info()[["sysname"]] == "Linux") {
   db <- dbConnect(RSQLite::SQLite(), 
                   dbname = "/home/m280-data/nyc_parking/NYParkingViolations.sqlite")
@@ -193,10 +172,14 @@ Size of the database file
 ls -l NYParkingViolations.sqlite
 ```
 
+From now on, we assume the SQLite database `NYParkingViolations.sqlite` can be accessed from current folder . It can be either the actural database file or a symbolic link to it. 
+
 ## Read data from database
 
 Connect to table in database:
 ```{r}
+library("DBI")
+library("tidyverse")
 db <- dbConnect(RSQLite::SQLite(), dbname = "./NYParkingViolations.sqlite")
 dbListTables(db)
 nyc_sql <- dplyr::tbl(db, "nyc")
@@ -297,18 +280,11 @@ dplyr/dbplyr uses lazy evaluation as much as possible, particularly when working
     - won’t connect and query the database until absolutely necessary (e.g. show output),
 
     - and unless explicitly told to, will only query a handful of rows to give a sense of what the result will look like
-    
-```{r}
-nyc_sql %>%
-  select(Issue_Date, Issuing_Agency, Violation_Precinct, Number, Street) %>%
-  filter(Violation_Precinct >=1, Violation_Precinct <= 34) %>%
-  group_by(Issuing_Agency, Violation_Precinct) %>%
-  summarize(n = n())
-```
+
 
 ## Full query
 
-To force a full query and return a complete it is necessart to use the `collect` function.
+To force a full query and return a complete list it is necessary to use the `collect` function.
 ```{r}
 system.time(
   nyc_sql %>%

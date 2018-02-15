@@ -1,5 +1,5 @@
 ---
-title: "Working with Databases"
+title: "Working with Databases - Part I"
 author: "Hua Zhou"
 date: "2/13/2018"
 output: 
@@ -11,13 +11,15 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Acknowledgement
+
+Most material in this lecture is adpated from <http://www2.stat.duke.edu/~cr173/Sta523_Fa17/sql.html> and <http://www2.stat.duke.edu/~cr173/Sta523_Fa17/bigish_data.html>.
+
 # The why of databases
 
 ## Size of data
 
-My heuristics:
-
-- Small data: those can fit into computer memory. (up to a couple GB)
+- Small data: those can fit into computer memory.
 
 - Bigish data: those can fit into disk(s) of a single machine.
 
@@ -32,7 +34,7 @@ My heuristics:
 </p>
 
 <p align="center">
-<img src="./intel-skylake.jpg" height="125">
+<img src="./cpu_i7_die.png" height="125">
 </p>
 
 <p align="center">
@@ -45,21 +47,30 @@ My heuristics:
 | Operation                           | Time           |
 |-------------------------------------|----------------|
 | L1 cache reference                  | 0.5 ns         |
-| Branch mispredict                   | 5 ns           |
 | L2 cache reference                  | 7 ns           |
-| Mutex lock/unlock                   | 100 ns         |
 | Main memory reference               | 100 ns         |
-| Compress 1K bytes with Zippy        | 10,000 ns      |
-| Send 2K bytes over 1 Gbps network   | 20,000 ns      |
 | Read 1 MB sequentially from memory  | 250,000 ns     |
-| Round trip within same datacenter   | 500,000 ns     |
-| Disk seek                           | 10,000,000 ns  |
 | Read 1 MB sequentially from network | 10,000,000 ns  |
 | Read 1 MB sequentially from disk    | 30,000,000 ns  |
-| Send packet CA->Netherlands->CA     | 150,000,000 ns |
+
+
+<!-- | Operation                           | Time           | -->
+<!-- |-------------------------------------|----------------| -->
+<!-- | L1 cache reference                  | 0.5 ns         | -->
+<!-- | Branch mispredict                   | 5 ns           | -->
+<!-- | L2 cache reference                  | 7 ns           | -->
+<!-- | Mutex lock/unlock                   | 100 ns         | -->
+<!-- | Main memory reference               | 100 ns         | -->
+<!-- | Compress 1K bytes with Zippy        | 10,000 ns      | -->
+<!-- | Send 2K bytes over 1 Gbps network   | 20,000 ns      | -->
+<!-- | Read 1 MB sequentially from memory  | 250,000 ns     | -->
+<!-- | Round trip within same datacenter   | 500,000 ns     | -->
+<!-- | Disk seek                           | 10,000,000 ns  | -->
+<!-- | Read 1 MB sequentially from network | 10,000,000 ns  | -->
+<!-- | Read 1 MB sequentially from disk    | 30,000,000 ns  | -->
+<!-- | Send packet CA->Netherlands->CA     | 150,000,000 ns | -->
 
 Source: <https://surana.wordpress.com/2009/01/01/numbers-everyone-should-know/>  
-<http://www2.stat.duke.edu/~cr173/Sta523_Fa17/sql.html>
 
 ## Implications for bigish data
 
@@ -135,36 +146,48 @@ Create a SQLite database _in memory_ for learning purpose.
 library("DBI")
 library("RSQLite")
 
-#con = dbConnect(RSQLite::SQLite(), "employee.sqlite")
-con = dbConnect(RSQLite::SQLite(), ":memory:")
+con = dbConnect(RSQLite::SQLite(), "employee.sqlite")
+#con = dbConnect(RSQLite::SQLite(), ":memory:")
 str(con)
 ```
 
 ## Add a table into database
 
-Example table:
+First table:
 ```{r}
-employees = data.frame(name   = c("Alice","Bob","Carol","Dave","Eve","Frank"),
-                       email  = c("alice@company.com", "bob@company.com",
-                                  "carol@company.com", "dave@company.com",
-                                  "eve@company.com",   "frank@comany.com"),
-                       salary = c(52000, 40000, 30000, 33000, 44000, 37000),
-                       dept   = c("Accounting", "Accounting","Sales",
-                                  "Accounting","Sales","Sales"),
-                       stringsAsFactors = FALSE)
+(employees <- data.frame(name   = c("Alice","Bob","Carol","Dave","Eve","Frank"),
+                         email  = c("alice@company.com", "bob@company.com",
+                                    "carol@company.com", "dave@company.com",
+                                    "eve@company.com",   "frank@comany.com"),
+                         salary = c(52000, 40000, 30000, 33000, 44000, 37000),
+                         dept   = c("Accounting", "Accounting","Sales",
+                                    "Accounting","Sales","Sales"),
+                         stringsAsFactors = FALSE))
+```
+Second table:
+```{r}
+(phone <- data.frame(name  = c("Bob", "Carol", "Eve", "Frank"),
+                     phone = c("919 555-1111", "919 555-2222", "919 555-3333", "919 555-4444")))
 ```
 
 Write table in to the database:
 ```{r}
-dbWriteTable(con, "employees", employees)
+dbWriteTable(con, "employees", employees, overwrite = TRUE)
+dbWriteTable(con, "phone", phone, overwrite = TRUE)
 dbListTables(con)
 ```
 
-## Remove a table from database
+## Add another table
 
 ```{r}
 dbWriteTable(con, "employs", employees)
 dbListTables(con)
+```
+
+
+## Remove a table from database
+
+```{r}
 dbRemoveTable(con,"employs")
 dbListTables(con)
 ```
@@ -172,7 +195,7 @@ dbListTables(con)
 ## Querying tables
 
 ```{r}
-res = dbSendQuery(con, "SELECT * FROM employees")
+res <- dbSendQuery(con, "SELECT * FROM employees")
 dbFetch(res)
 dbClearResult(res)
 ```
@@ -187,14 +210,111 @@ dbDisconnect(con)
 
 ## Connecting
 
-```{r, echo = FALSE, eval = FALSE}
+```{r}
 con <- dbConnect(RSQLite::SQLite(), dbname = "employee.sqlite")
+dbListTables(con)
+knitr::opts_chunk$set(connection = "con")
 ```
 
-```{sql, connection = con, eval = FALSE}
-.tables
+## SELECT statements
+
+```{sql}
+SELECT * FROM employees;
 ```
 
-```{r, echo = FALSE, eval = FALSE}
+```{sql}
+SELECT * FROM phone;
+```
+
+
+## Select using SELECT
+
+```{sql}
+SELECT name AS first_name, salary FROM employees;
+```
+
+## Arrange using ORDER BY
+
+```{sql}
+SELECT name AS first_name, salary FROM employees ORDER BY salary;
+```
+
+Descending order:
+```{sql}
+SELECT name AS first_name, salary FROM employees ORDER BY salary DESC;
+```
+
+## Filter via WHERE
+
+```{sql}
+SELECT * FROM employees WHERE salary < 40000
+```
+
+## Group_by via GROUP BY
+
+```{sql}
+SELECT * FROM employees GROUP BY dept;
+```
+
+## Head via LIMIT
+
+```{sql}
+SELECT * FROM employees LIMIT 3;
+SELECT * FROM employees ORDER BY name DESC LIMIT 3;
+```
+
+## Join two tables (default)
+
+By default SQLite uses a `CROSS JOIN` which is not terribly useful
+```{sql}
+SELECT * FROM employees JOIN phone;
+```
+
+## Inner join by NATURAL
+
+```{sql}
+SELECT * FROM employees NATURAL JOIN phone;
+```
+
+## Inner join - explicit
+
+```{sql}
+SELECT * FROM employees JOIN phone ON employees.name = phone.name;
+```
+
+## Left join - natural
+
+```{sql}
+SELECT * FROM employees NATURAL LEFT JOIN phone;
+```
+
+## Left join - explicit
+
+```{sql}
+SELECT * FROM employees LEFT JOIN phone ON employees.name = phone.name;
+```
+
+## Other joins
+
+SQLite does not support directly an `OUTER JOIN` or a `RIGHT JOIN`.
+
+## Creating indices
+
+```{sql}
+CREATE INDEX index_name ON employees (name);
+```
+
+```{sql}
+CREATE INDEX index_name_email ON employees (name, email);
+```
+
+```{bash}
+sqlite3 employee.sqlite .indices
+```
+
+## Close connection
+
+```{r}
 dbDisconnect(con)
 ```
+
