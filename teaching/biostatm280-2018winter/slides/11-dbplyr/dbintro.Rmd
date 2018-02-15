@@ -115,11 +115,11 @@ We can do much better if we are careful about how we structure our data, specifi
 
 ## SQL
 
-**S**tructures **Q**uery **L**anguage is a special purpose language for interacting with (querying and modifying) these indexed tabular data structures.
+**S**tructured **Q**uery **L**anguage is a special purpose language for interacting with (querying and modifying) these indexed tabular data structures.
 
 * ANSI Standard but with some dialect divergence.
 
-* This functionality maps very closely (but not exactly) with the data manipulation verbs present in dplyr.
+* SQL functionalities map very closely (but not exactly) with the data manipulation verbs present in dplyr.
 
 * We will see this mapping in more detail in a bit.
 
@@ -148,7 +148,6 @@ Create a SQLite database _in memory_ for learning purpose.
 ```{r}
 library("DBI")
 library("RSQLite")
-
 con = dbConnect(RSQLite::SQLite(), "employee.sqlite")
 #con = dbConnect(RSQLite::SQLite(), ":memory:")
 str(con)
@@ -158,22 +157,22 @@ str(con)
 
 First table:
 ```{r}
-(employees <- data.frame(name   = c("Alice","Bob","Carol","Dave","Eve","Frank"),
-                         email  = c("alice@company.com", "bob@company.com",
-                                    "carol@company.com", "dave@company.com",
-                                    "eve@company.com",   "frank@comany.com"),
-                         salary = c(52000, 40000, 30000, 33000, 44000, 37000),
-                         dept   = c("Accounting", "Accounting","Sales",
-                                    "Accounting","Sales","Sales"),
-                         stringsAsFactors = FALSE))
+library("tidyverse")
+(employees <- tibble(name   = c("Alice","Bob","Carol","Dave","Eve","Frank"),
+                     email  = c("alice@company.com", "bob@company.com",
+                                "carol@company.com", "dave@company.com",
+                                "eve@company.com",   "frank@comany.com"),
+                     salary = c(52000, 40000, 30000, 33000, 44000, 37000),
+                     dept   = c("Accounting", "Accounting","Sales",
+                                "Accounting","Sales","Sales")))
 ```
 Second table:
 ```{r}
-(phone <- data.frame(name  = c("Bob", "Carol", "Eve", "Frank"),
-                     phone = c("919 555-1111", "919 555-2222", "919 555-3333", "919 555-4444")))
+(phone <- tibble(name  = c("Bob", "Carol", "Eve", "Frank"),
+                 phone = c("919 555-1111", "919 555-2222", "919 555-3333", "919 555-4444")))
 ```
 
-Write table in to the database:
+Write tables to the database:
 ```{r}
 dbWriteTable(con, "employees", employees, overwrite = TRUE)
 dbWriteTable(con, "phone", phone, overwrite = TRUE)
@@ -187,11 +186,10 @@ dbWriteTable(con, "employs", employees)
 dbListTables(con)
 ```
 
-
 ## Remove a table from database
 
 ```{r}
-dbRemoveTable(con,"employs")
+dbRemoveTable(con, "employs")
 dbListTables(con)
 ```
 
@@ -211,6 +209,8 @@ dbDisconnect(con)
 
 # SQL Queries
 
+Following we demonstrate some common SQL commands, although all task can be achieved by uisng dlyr as well.
+
 ## Connecting
 
 ```{r}
@@ -228,7 +228,6 @@ SELECT * FROM employees;
 ```{sql}
 SELECT * FROM phone;
 ```
-
 
 ## Select using SELECT
 

@@ -283,10 +283,10 @@ $(document).ready(function () {
 <h1>Databases</h1>
 <div id="sql" class="section level2">
 <h2>SQL</h2>
-<p><strong>S</strong>tructures <strong>Q</strong>uery <strong>L</strong>anguage is a special purpose language for interacting with (querying and modifying) these indexed tabular data structures.</p>
+<p><strong>S</strong>tructured <strong>Q</strong>uery <strong>L</strong>anguage is a special purpose language for interacting with (querying and modifying) these indexed tabular data structures.</p>
 <ul>
 <li><p>ANSI Standard but with some dialect divergence.</p></li>
-<li><p>This functionality maps very closely (but not exactly) with the data manipulation verbs present in dplyr.</p></li>
+<li><p>SQL functionalities map very closely (but not exactly) with the data manipulation verbs present in dplyr.</p></li>
 <li><p>We will see this mapping in more detail in a bit.</p></li>
 </ul>
 </div>
@@ -315,7 +315,6 @@ $(document).ready(function () {
 <p>Create a SQLite database <em>in memory</em> for learning purpose.</p>
 <pre class="r"><code>library(&quot;DBI&quot;)
 library(&quot;RSQLite&quot;)
-
 con = dbConnect(RSQLite::SQLite(), &quot;employee.sqlite&quot;)
 #con = dbConnect(RSQLite::SQLite(), &quot;:memory:&quot;)
 str(con)</code></pre>
@@ -325,35 +324,47 @@ str(con)</code></pre>
 ##   ..@ loadable.extensions: logi TRUE
 ##   ..@ flags              : int 70
 ##   ..@ vfs                : chr &quot;&quot;
-##   ..@ ref                :&lt;environment: 0x7fa199087460&gt;</code></pre>
+##   ..@ ref                :&lt;environment: 0x7ff5c5b507c8&gt;</code></pre>
 </div>
 <div id="add-a-table-into-database" class="section level2">
 <h2>Add a table into database</h2>
 <p>First table:</p>
-<pre class="r"><code>(employees &lt;- data.frame(name   = c(&quot;Alice&quot;,&quot;Bob&quot;,&quot;Carol&quot;,&quot;Dave&quot;,&quot;Eve&quot;,&quot;Frank&quot;),
-                         email  = c(&quot;alice@company.com&quot;, &quot;bob@company.com&quot;,
-                                    &quot;carol@company.com&quot;, &quot;dave@company.com&quot;,
-                                    &quot;eve@company.com&quot;,   &quot;frank@comany.com&quot;),
-                         salary = c(52000, 40000, 30000, 33000, 44000, 37000),
-                         dept   = c(&quot;Accounting&quot;, &quot;Accounting&quot;,&quot;Sales&quot;,
-                                    &quot;Accounting&quot;,&quot;Sales&quot;,&quot;Sales&quot;),
-                         stringsAsFactors = FALSE))</code></pre>
-<pre><code>##    name             email salary       dept
+<pre class="r"><code>library(&quot;tidyverse&quot;)</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.4
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.4
+## ✔ tidyr   0.8.0     ✔ stringr 1.2.0
+## ✔ readr   1.1.1     ✔ forcats 0.2.0</code></pre>
+<pre><code>## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>(employees &lt;- tibble(name   = c(&quot;Alice&quot;,&quot;Bob&quot;,&quot;Carol&quot;,&quot;Dave&quot;,&quot;Eve&quot;,&quot;Frank&quot;),
+                     email  = c(&quot;alice@company.com&quot;, &quot;bob@company.com&quot;,
+                                &quot;carol@company.com&quot;, &quot;dave@company.com&quot;,
+                                &quot;eve@company.com&quot;,   &quot;frank@comany.com&quot;),
+                     salary = c(52000, 40000, 30000, 33000, 44000, 37000),
+                     dept   = c(&quot;Accounting&quot;, &quot;Accounting&quot;,&quot;Sales&quot;,
+                                &quot;Accounting&quot;,&quot;Sales&quot;,&quot;Sales&quot;)))</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   name  email             salary dept      
+##   &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;     
 ## 1 Alice alice@company.com  52000 Accounting
-## 2   Bob   bob@company.com  40000 Accounting
-## 3 Carol carol@company.com  30000      Sales
-## 4  Dave  dave@company.com  33000 Accounting
-## 5   Eve   eve@company.com  44000      Sales
-## 6 Frank  frank@comany.com  37000      Sales</code></pre>
+## 2 Bob   bob@company.com    40000 Accounting
+## 3 Carol carol@company.com  30000 Sales     
+## 4 Dave  dave@company.com   33000 Accounting
+## 5 Eve   eve@company.com    44000 Sales     
+## 6 Frank frank@comany.com   37000 Sales</code></pre>
 <p>Second table:</p>
-<pre class="r"><code>(phone &lt;- data.frame(name  = c(&quot;Bob&quot;, &quot;Carol&quot;, &quot;Eve&quot;, &quot;Frank&quot;),
-                     phone = c(&quot;919 555-1111&quot;, &quot;919 555-2222&quot;, &quot;919 555-3333&quot;, &quot;919 555-4444&quot;)))</code></pre>
-<pre><code>##    name        phone
-## 1   Bob 919 555-1111
+<pre class="r"><code>(phone &lt;- tibble(name  = c(&quot;Bob&quot;, &quot;Carol&quot;, &quot;Eve&quot;, &quot;Frank&quot;),
+                 phone = c(&quot;919 555-1111&quot;, &quot;919 555-2222&quot;, &quot;919 555-3333&quot;, &quot;919 555-4444&quot;)))</code></pre>
+<pre><code>## # A tibble: 4 x 2
+##   name  phone       
+##   &lt;chr&gt; &lt;chr&gt;       
+## 1 Bob   919 555-1111
 ## 2 Carol 919 555-2222
-## 3   Eve 919 555-3333
+## 3 Eve   919 555-3333
 ## 4 Frank 919 555-4444</code></pre>
-<p>Write table in to the database:</p>
+<p>Write tables to the database:</p>
 <pre class="r"><code>dbWriteTable(con, &quot;employees&quot;, employees, overwrite = TRUE)
 dbWriteTable(con, &quot;phone&quot;, phone, overwrite = TRUE)
 dbListTables(con)</code></pre>
@@ -367,7 +378,7 @@ dbListTables(con)</code></pre>
 </div>
 <div id="remove-a-table-from-database" class="section level2">
 <h2>Remove a table from database</h2>
-<pre class="r"><code>dbRemoveTable(con,&quot;employs&quot;)
+<pre class="r"><code>dbRemoveTable(con, &quot;employs&quot;)
 dbListTables(con)</code></pre>
 <pre><code>## [1] &quot;employees&quot; &quot;phone&quot;</code></pre>
 </div>
@@ -391,6 +402,7 @@ dbFetch(res)</code></pre>
 </div>
 <div id="sql-queries" class="section level1">
 <h1>SQL Queries</h1>
+<p>Following we demonstrate some common SQL commands, although all task can be achieved by uisng dlyr as well.</p>
 <div id="connecting" class="section level2">
 <h2>Connecting</h2>
 <pre class="r"><code>con &lt;- dbConnect(RSQLite::SQLite(), dbname = &quot;employee.sqlite&quot;)
