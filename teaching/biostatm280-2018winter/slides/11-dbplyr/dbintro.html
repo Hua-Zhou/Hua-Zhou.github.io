@@ -223,12 +223,12 @@ $(document).ready(function () {
 <td>250,000 ns</td>
 </tr>
 <tr class="odd">
-<td>Read 1 MB sequentially from network</td>
-<td>10,000,000 ns</td>
+<td>Read 1 MB sequentially from SSD</td>
+<td>1,000,000 ns</td>
 </tr>
 <tr class="even">
 <td>Read 1 MB sequentially from disk</td>
-<td>30,000,000 ns</td>
+<td>20,000,000 ns</td>
 </tr>
 </tbody>
 </table>
@@ -247,15 +247,17 @@ $(document).ready(function () {
 <!-- | Read 1 MB sequentially from network | 10,000,000 ns  | -->
 <!-- | Read 1 MB sequentially from disk    | 30,000,000 ns  | -->
 <!-- | Send packet CA->Netherlands->CA     | 150,000,000 ns | -->
-<p>Source: <a href="https://surana.wordpress.com/2009/01/01/numbers-everyone-should-know/" class="uri">https://surana.wordpress.com/2009/01/01/numbers-everyone-should-know/</a></p>
+<p>Source: <a href="https://gist.github.com/jboner/2841832" class="uri">https://gist.github.com/jboner/2841832</a></p>
 </div>
 <div id="implications-for-bigish-data" class="section level2">
 <h2>Implications for bigish data</h2>
 <p>Suppose we have a 10 GB flat data file and that we want to select certain rows based on a given criteria. This requires a sequential read across the entire data set.</p>
 <p>If we can store the file in memory:<br />
-10 GB×(250 μs/1 MB)=0.25 seconds</p>
+10 GB × (250 μs/1 MB) = 2.5 seconds</p>
+<p>If we have to access the file from SSD (~1GB/sec):<br />
+10 GB × (1 ms/1 MB) = 10 seconds</p>
 <p>If we have to access the file from disk:<br />
-10 GB×(30 ms/1 MB)=30 seconds</p>
+10 GB × (20 ms/1 MB) = 200 seconds</p>
 <p>This is just for reading data, if we make any modifications (writing) things are much worse.</p>
 </div>
 <div id="blocks" class="section level2">
@@ -323,7 +325,7 @@ str(con)</code></pre>
 ##   ..@ loadable.extensions: logi TRUE
 ##   ..@ flags              : int 70
 ##   ..@ vfs                : chr &quot;&quot;
-##   ..@ ref                :&lt;environment: 0x7faff55062a0&gt;</code></pre>
+##   ..@ ref                :&lt;environment: 0x7fa199087460&gt;</code></pre>
 </div>
 <div id="add-a-table-into-database" class="section level2">
 <h2>Add a table into database</h2>
