@@ -13,7 +13,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.width = 5, fig.height = 3.5, fig.align = 'center',
-  cache = TRUE, cache.lazy = FALSE)
+  cache = FALSE, cache.lazy = FALSE)
 ```
 
 ## Introduction
@@ -147,23 +147,6 @@ nyc %>%
     geom_line() + 
     xlim(mdy("7/1/2013"), mdy("6/30/2014"))
 ```
-
-## Access database from R
-
-<p align="center">
-<img src="./open-source-db.png" height="50">
-</p>
-
-- dplyr supports a variety of databases. 
-    - Open source databases: SQLite, MySQL, PostgreSQL, BigQuery.
-    - Commercial databases: Oracle, Microsoft SQL Server.
-    - See [link](https://db.rstudio.com/databases) for a complete list.
-
-- DBI package provides a common interface for connecting to databases.
-
-- dbplyr package is the backend that translates dplyr verbs to database SQL queries.
-
-- To install database drivers, follow instructions at <https://db.rstudio.com/best-practices/drivers/>.
 
 ## Create an SQLite database
 
