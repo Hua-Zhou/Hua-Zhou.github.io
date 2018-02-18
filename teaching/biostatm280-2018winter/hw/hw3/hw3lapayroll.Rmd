@@ -13,7 +13,7 @@ library("lubridate")
 
 # LA City Employee Payroll
 
-The `/home/m280-data/la_payroll/LA_City_Employee_Payroll.csv` file contains payroll information LA City employees in 2013-7. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np).
+The `/home/m280-data/la_payroll/LA_City_Employee_Payroll.csv` file on teaching server contains payroll information of LA City employees in years 2013-7. It is downloaded from [LA City Controller's Office](https://controllerdata.lacity.org/Payroll/City-Employee-Payroll/pazn-qyym).
 ```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
 ln -sf /home/m280-data/la_payroll/LA_City_Employee_Payroll.csv LA_City_Employee_Payroll.csv
 ```
@@ -43,7 +43,8 @@ system.time({lapay <- read_csv("LA_City_Employee_Payroll.csv")})
 ## Fix column names
 
 ```{r}
-names(lapay) <- str_replace_all(names(lapay), " ", "_")
+names(lapay) <- str_replace_all(names(lapay), " ", "_") %>% 
+  str_replace_all("[()]", "")
 lapay %>% print(width = Inf)
 ```
 
@@ -51,7 +52,11 @@ lapay %>% print(width = Inf)
 
 ```{r}
 lapay <- lapay %>% 
-  mutate(Projected_Annual_Salary = as.numeric(str_sub(Projected_Annual_Salary, 2, -1)))
+  mutate(Base_Pay = as.numeric(str_sub(Base_Pay, 2, -1)),
+         Overtime_Pay = as.numeric(str_sub(Overtime_Pay, 2, -1)),
+         Other_Pay = as.numeric(str_sub(Other_Pay_Payroll_Explorer, 2, -1)),
+         Benefit_Cost = as.numeric(str_sub(Average_Benefit_Cost, 2, -1)),
+         Total_Payments = as.numeric(str_sub(Total_Payments, 2, -1)))
 lapay %>% print(width = Inf)
 ```
 
@@ -59,14 +64,22 @@ lapay %>% print(width = Inf)
 
 ```{r}
 lapay <- lapay %>%
-  select(Row_ID, Year, Department_Title, Job_Class_Title, Projected_Annual_Salary)
+  select(Row_ID, Year, Department_Title, Job_Class_Title, Total_Payments, 
+         Base_Pay, Overtime_Pay, Other_Pay, Benefit_Cost)
 lapay %>% print(width = Inf)
 ```
 
 ## Save as RDS
 
 ```{r}
-lapay %>% write_rds("lapay.rds")
+lapay %>% write_rds("lapay.rds", compress = "gz")
+```
+
+## Read from RDS
+
+```{r}
+lapay <- read_rds("lapay.rds")
+lapay %>% print(width = Inf)
 ```
 
 ## Who earned most?
@@ -79,14 +92,15 @@ lapay$Year %>% table()
 
 ```{r, echo = FALSE}
 selectInput("year", "Which year?", choices = 2013:2017, selected = 2017)
-numericInput("n", "How many?", 5)
+numericInput("n", "How many?", 10)
 
 renderTable({
   lapay %>%
     filter(Year == input$year) %>%
-    arrange(desc(Projected_Annual_Salary)) %>%
+    arrange(desc(Total_Payments)) %>%
     head(input$n) %>%
-    select(Department_Title, Job_Class_Title, Projected_Annual_Salary)
+    select(Department_Title, Job_Class_Title, Total_Payments, 
+           Base_Pay, Overtime_Pay, Other_Pay, Benefit_Cost)
 })
 ```
 
@@ -101,7 +115,7 @@ renderPlot({
   data <- lapay %>%
     filter(Year == input$year_dep) %>%
     group_by(Department_Title) %>%
-    summarise(avg = mean(Projected_Annual_Salary), med = median(Projected_Annual_Salary))
+    summarise(avg = mean(Total_Payments), med = median(Total_Payments))
   if (input$method == "mean") {
     data %>%
       arrange(desc(avg)) %>%
