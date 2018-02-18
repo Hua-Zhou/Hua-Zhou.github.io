@@ -10,21 +10,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Q1 LA City Employee Payroll
 
-Make a Shiny app to facilitate exploration of this data set. For efficiency, you should first preprocess, shrink, and tidy the data to be used in the app.
+Make a Shiny app to facilitate exploration of this data set. For efficiency, you should first preprocess, pare down, and tidy the data to be used in the app.
 
 1. **Who earned most?** Show information (Projected Annual Salary, Department, Job Title) of the top $n$ highest paid LA City employees in a specific year. User specifies $n$ (default 5) and year (default 2017).
 
+0. **Who earned least?**
+
 0. **Which deparments earn most?** Display the mean or median salary of top 5 earning deparments. User specifies year (default 2017) and method (default mean).
 
-0. 
+0. **Which deparments earn least?**
 
 Publish your Shiny app to <https://www.shinyapps.io>. 
 
 ## Q2 LA City Parking War
 
-The SQLite database `/home/m280-data/la_parking/LA_Parking_Citations.sqlite` on teaching server contains information about parking tickets in LA City. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np). Connect to the database and answer following questions using plots and summary statistics. In this exercise, you are **not** allowed to load whole data into memory. Calculation has to be done in database.
+The SQLite database `/home/m280-data/la_parking/LA_Parking_Citations.sqlite` on teaching server contains information about parking tickets in LA City. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np). Connect to the database and answer following questions using plots and summary statistics. In this exercise, you are **not** allowed to load whole data into memory. Use the _transform in database, plot in R_ strategy.
 
-1. How many tickets are in this data set?
+1. How many tickets are in this data set? Which time period do these tickets span? Which years have most data?
 
 0. When (which hour, weekday, month day, and month) are you most likely to get a ticket and when are you least likely to get a ticket?
 
