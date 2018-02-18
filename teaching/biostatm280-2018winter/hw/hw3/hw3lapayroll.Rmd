@@ -1,0 +1,133 @@
+---
+title: "Biostat M280 Homework 3"
+subtitle: Due Mar 3 @ 11:59PM
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse")
+library("lubridate")
+```
+
+# LA City Employee Payroll
+
+The `/home/m280-data/la_payroll/LA_City_Employee_Payroll.csv` file on teaching server contains payroll information of LA City employees in years 2013-7. It is downloaded from [LA City Controller's Office](https://controllerdata.lacity.org/Payroll/City-Employee-Payroll/pazn-qyym).
+```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
+ln -sf /home/m280-data/la_payroll/LA_City_Employee_Payroll.csv LA_City_Employee_Payroll.csv
+```
+
+The CSV file is about 95MB.
+```{bash}
+ls -l LA_City_Employee_Payroll.csv
+```
+
+How many rows?
+```{bash}
+wc -l < LA_City_Employee_Payroll.csv
+```
+
+First few lines:
+```{bash}
+head -5 LA_City_Employee_Payroll.csv
+```
+
+## Import data
+
+We import the data as tibble using tidyverse:
+```{r}
+system.time({lapay <- read_csv("LA_City_Employee_Payroll.csv")})
+```
+
+## Fix column names
+
+```{r}
+names(lapay) <- str_replace_all(names(lapay), " ", "_") %>% 
+  str_replace_all("[()]", "")
+lapay %>% print(width = Inf)
+```
+
+## Fix currency
+
+```{r}
+lapay <- lapay %>% 
+  mutate(Base_Pay = as.numeric(str_sub(Base_Pay, 2, -1)),
+         Overtime_Pay = as.numeric(str_sub(Overtime_Pay, 2, -1)),
+         Other_Pay = as.numeric(str_sub(Other_Pay_Payroll_Explorer, 2, -1)),
+         Benefit_Cost = as.numeric(str_sub(Average_Benefit_Cost, 2, -1)),
+         Total_Payments = as.numeric(str_sub(Total_Payments, 2, -1)))
+lapay %>% print(width = Inf)
+```
+
+## Keep relevant columns
+
+```{r}
+lapay <- lapay %>%
+  select(Row_ID, Year, Department_Title, Job_Class_Title, Total_Payments, 
+         Base_Pay, Overtime_Pay, Other_Pay, Benefit_Cost)
+lapay %>% print(width = Inf)
+```
+
+## Save as RDS
+
+```{r}
+lapay %>% write_rds("lapay.rds", compress = "gz")
+```
+
+## Read from RDS
+
+```{r}
+lapay <- read_rds("lapay.rds")
+lapay %>% print(width = Inf)
+```
+
+## Who earned most?
+
+Range of years:
+```{r}
+range(lapay$Year)
+lapay$Year %>% table()
+```
+
+```{r, echo = FALSE}
+selectInput("year", "Which year?", choices = 2013:2017, selected = 2017)
+numericInput("n", "How many?", 10)
+
+renderTable({
+  lapay %>%
+    filter(Year == input$year) %>%
+    arrange(desc(Total_Payments)) %>%
+    head(input$n) %>%
+    select(Department_Title, Job_Class_Title, Total_Payments, 
+           Base_Pay, Overtime_Pay, Other_Pay, Benefit_Cost)
+})
+```
+
+## Which deparments earn most? 
+
+```{r, echo = FALSE}
+selectInput("year_dep", "Which year?", choices = 2013:2017, selected = 2017)
+numericInput("n_dep", "How many departments?", 5)
+radioButtons("method", "Mean or median?", choices = c("mean", "median"), selected = "median")
+
+renderPlot({
+  data <- lapay %>%
+    filter(Year == input$year_dep) %>%
+    group_by(Department_Title) %>%
+    summarise(avg = mean(Total_Payments), med = median(Total_Payments))
+  if (input$method == "mean") {
+    data %>%
+      arrange(desc(avg)) %>%
+      head(input$n_dep) %>%
+      ggplot() + 
+        geom_col(aes(x = Department_Title, y = avg))
+  } else if (input$method == "median") {
+    data %>%
+      arrange(desc(med)) %>%
+      head(input$n_dep) %>%
+      ggplot() + 
+        geom_col(aes(x = Department_Title, y = med))
+  }
+})
+```
