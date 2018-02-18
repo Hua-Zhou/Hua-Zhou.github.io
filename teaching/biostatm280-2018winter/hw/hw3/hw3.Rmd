@@ -1,6 +1,6 @@
 ---
 title: "Biostat M280 Homework 3"
-subtitle: Due ??? @ 11:59PM
+subtitle: Due Mar 3 @ 11:59PM
 output: html_document
 ---
 
@@ -8,25 +8,30 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Q1
+## Q1 LA City Employee Payroll
 
-Move your resume or curriculum vitae to to R Markdown. You may start from the [template](http://svmiller.com/blog/2016/03/svm-r-markdown-cv/) provided by Steven Miller.
+Make a Shiny app to facilitate exploration of this data set. For efficiency, you should first preprocess, shrink, and tidy the data to be used in the app.
 
+1. **Who earned most?** Show information (Projected Annual Salary, Department, Job Title) of the top $n$ highest paid LA City employees in a specific year. User specifies $n$ (default 5) and year (default 2017).
 
-## Q2
+0. **Which deparments earn most?** Display the mean or median salary of top 5 earning deparments. User specifies year (default 2017) and method (default mean).
 
-LA parking exercises:
+0. 
 
-Some more dplyr practice:
+Publish your Shiny app to <https://www.shinyapps.io>. 
 
-- How many tickets are in this data set?
+## Q2 LA City Parking War
 
-- Create a plot of the weekly pattern (tickets issued per day of the week) 
+The SQLite database `/home/m280-data/la_parking/LA_Parking_Citations.sqlite` on teaching server contains information about parking tickets in LA City. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np). Connect to the database and answer following questions using plots and summary statistics. In this exercise, you are **not** allowed to load whole data into memory. Calculation has to be done in database.
 
-- When are you most likely to get a ticket and when are you least likely to get a ticket?
+1. How many tickets are in this data set?
 
-- Which precinct issued the most tickets to Toyotas?
+0. When (which hour, weekday, month day, and month) are you most likely to get a ticket and when are you least likely to get a ticket?
 
-- How many different colors of cars were ticketed?
+0. Which car makes recieved most citations?
 
-- Which color attracts most tickets?
+0. How many different colors of cars were ticketed? Which color attracts most tickets?
+
+0. What are the most common ticket types?
+
+0. How much money was collected on parking tickets in 2015 and 2016?

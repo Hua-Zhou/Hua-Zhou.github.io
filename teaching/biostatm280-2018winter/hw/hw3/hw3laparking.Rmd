@@ -5,7 +5,9 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+knitr::opts_chunk$set(cache = FALSE)
+library("tidyverse")
+library("lubridate")
 ```
 
 ```{r}
@@ -40,7 +42,6 @@ head -5 LA_Parking_Citations.csv
 
 We import the data as tibble using tidyverse:
 ```{r}
-library("tidyverse")
 system.time({lapktk <- read_csv("LA_Parking_Citations.csv")})
 lapktk
 ```
@@ -73,6 +74,14 @@ lapktk$Issue_DateTime %>% year() %>% table()
 ```
 
 ## Ticket frequency by time
+
+```{r}
+lapktk %>% 
+  filter(year(Issue_DateTime) == 2015) %>%
+  group_by(month(Issue_DateTime)) %>%
+  count()
+```
+
 
 ```{r}
 lapktk %>% 
@@ -176,7 +185,6 @@ Import the `ladb` table into the SQLite database:
 ```{r}
 library("DBI")
 library("RSQLite")
-library("tidyverse")
 if (Sys.info()[["sysname"]] == "Linux") {
   db <- dbConnect(RSQLite::SQLite(), 
                   dbname = "/home/m280-data/la_parking/LA_Parking_Citations.sqlite")
@@ -238,17 +246,31 @@ dbListTables(db)
 la_sql <- dplyr::tbl(db, "latix")
 str(la_sql)
 la_sql
+nrow(la_sql)
 ```
 
 ## Ticket frequency by time
 
 ```{r}
-# la_sql %>% 
-#   filter(year(Issue_DateTime) == 2015) %>%
-#   ggplot(aes(x = Issue_DateTime)) + 
-#     geom_freqpoly(binwidth = 365) + 
-#     labs(title = "2015 parking tickets by day")
+la_sql %>% 
+  filter(Issue_Year == 2015) %>%
+  group_by(Issue_Month) %>%
+  count()
 ```
+
+```{r}
+la_sql %>% 
+  filter(Issue_Year == 2015) %>%
+  group_by(Issue_Month) %>%
+  count() %>%
+  collect() %>%
+  ggplot(aes(x = Issue_Month, y = n)) + 
+    geom_col() %>%
+  labs(title = "2015 Parking tickets by month")
+```
+
+
+
 
 ## Close connection to database
 
