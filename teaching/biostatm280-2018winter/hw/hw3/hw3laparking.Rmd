@@ -5,7 +5,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
 ```
 
 ```{r}
@@ -16,7 +16,7 @@ sessionInfo()
 
 ## CSV file
 
-The `LA_Parking_Citations.csv` file contains information about parking tickets in LA City. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np). 
+The `/home/m280-data/la_parking/LA_Parking_Citations.csv` file contains information about parking tickets in LA City. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np). 
 ```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
 ln -sf /home/m280-data/la_parking/LA_Parking_Citations.csv LA_Parking_Citations.csv
 ```
@@ -158,7 +158,21 @@ filter(Color %in% topcc$Color) %>%
 
 ## Create an SQLite database
 
-Import the `lapktk` data set into the SQLite database:
+Create the tibble for writing into database:
+```{r}
+ladb <- lapktk %>% 
+  mutate(Issue_Year = as.integer(year(Issue_DateTime)), 
+         Issue_Month = as.integer(month(Issue_DateTime)),  
+         Issue_Day = mday(Issue_DateTime), 
+         Issue_Hour = hour(Issue_DateTime), 
+         Issue_Minute = minute(Issue_DateTime)) %>%
+  select(Ticket_number,
+         Issue_Year:Issue_Minute,
+         Meter_Id:Longitude)
+ladb %>% print(width = Inf)
+```
+
+Import the `ladb` table into the SQLite database:
 ```{r}
 library("DBI")
 library("RSQLite")
@@ -168,9 +182,9 @@ if (Sys.info()[["sysname"]] == "Linux") {
                   dbname = "/home/m280-data/la_parking/LA_Parking_Citations.sqlite")
 } else if (Sys.info()[["sysname"]] == "Darwin") {
   db <- dbConnect(RSQLite::SQLite(), 
-                  dbname = "./LA_Parking_Citations.sqlite")
+                  dbname = "LA_Parking_Citations.sqlite")
 }
-dbWriteTable(db, "latix", lapktk, overwrite = TRUE)
+dbWriteTable(db, "latix", ladb, overwrite = TRUE)
 dbListTables(db)
 dbDisconnect(db)
 ```
@@ -214,7 +228,7 @@ ls -l LA_Parking_Citations.sqlite
 
 Connect to table in database:
 ```{r}
-db <- dbConnect(RSQLite::SQLite(), dbname = "./LA_Parking_Citations.sqlite")
+db <- dbConnect(RSQLite::SQLite(), dbname = "LA_Parking_Citations.sqlite")
 # db <- dbConnect(odbc::odbc(), 
 #                 driver = "PostgreSQL Driver",
 #                 database = "./LA_Parking_Citations",

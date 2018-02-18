@@ -104,7 +104,7 @@ Hadley Wickham's lubridate package facilitates handling date and time. Read [Cha
 
 Make variable `Issue_Date` of date-time type:
 ```{r}
-library(lubridate)
+library("lubridate")
 class(nyc$Issue_Date)
 nyc %<>% mutate(Issue_Date = mdy(Issue_Date))
 class(nyc$Issue_Date)
