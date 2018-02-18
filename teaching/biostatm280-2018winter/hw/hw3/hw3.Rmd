@@ -1,0 +1,32 @@
+---
+title: "Biostat M280 Homework 3"
+subtitle: Due ??? @ 11:59PM
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q1
+
+Move your resume or curriculum vitae to to R Markdown. You may start from the [template](http://svmiller.com/blog/2016/03/svm-r-markdown-cv/) provided by Steven Miller.
+
+
+## Q2
+
+LA parking exercises:
+
+Some more dplyr practice:
+
+- How many tickets are in this data set?
+
+- Create a plot of the weekly pattern (tickets issued per day of the week) 
+
+- When are you most likely to get a ticket and when are you least likely to get a ticket?
+
+- Which precinct issued the most tickets to Toyotas?
+
+- How many different colors of cars were ticketed?
+
+- Which color attracts most tickets?
