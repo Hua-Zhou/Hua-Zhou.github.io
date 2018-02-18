@@ -8,14 +8,20 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 ```
 
-# How much do you earn? 
-
+```{r}
+sessionInfo()
+```
 
 # LA Parking Ticket
 
 ## CSV file
 
-The `LA_Parking_Citations.csv` file contains information about parking tickets in LA City. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np). The CSV file is about 500MB.
+The `LA_Parking_Citations.csv` file contains information about parking tickets in LA City. It is downloaded from [LA Open Data Portal](https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np). 
+```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
+ln -sf /home/m280-data/la_parking/LA_Parking_Citations.csv LA_Parking_Citations.csv
+```
+
+The CSV file is about 500MB.
 ```{bash}
 ls -l LA_Parking_Citations.csv
 ```
@@ -152,14 +158,14 @@ filter(Color %in% topcc$Color) %>%
 
 ## Create an SQLite database
 
-Import the `nyc` data set into the SQLite database:
+Import the `lapktk` data set into the SQLite database:
 ```{r}
 library("DBI")
 library("RSQLite")
 library("tidyverse")
 if (Sys.info()[["sysname"]] == "Linux") {
   db <- dbConnect(RSQLite::SQLite(), 
-                  dbname = "/home/m280-data/nyc_parking/LA_Parking_Citations.sqlite")
+                  dbname = "/home/m280-data/la_parking/LA_Parking_Citations.sqlite")
 } else if (Sys.info()[["sysname"]] == "Darwin") {
   db <- dbConnect(RSQLite::SQLite(), 
                   dbname = "./LA_Parking_Citations.sqlite")
@@ -169,10 +175,40 @@ dbListTables(db)
 dbDisconnect(db)
 ```
 
+```{bash, eval = (Sys.info()[["sysname"]] == "Linux")}
+ln -sf /home/m280-data/la_parking/LA_Parking_Citations.sqlite LA_Parking_Citations.sqlite
+```
+
 Size of the database file
 ```{bash}
 ls -l LA_Parking_Citations.sqlite
 ```
+
+<!-- ## Create an PostgreSQL database -->
+
+<!-- Import the `lapktk` data set into the PostgreSQL database: -->
+<!-- ```{r} -->
+<!-- library("DBI") -->
+<!-- library("RPostgreSQL") -->
+<!-- library("tidyverse") -->
+<!-- if (Sys.info()[["sysname"]] == "Linux") { -->
+<!--   db <- dbConnect(RPostgreSQL::PostgreSQL(),  -->
+<!--                   dbname = "laparking", -->
+<!--                   host = "localhost", -->
+<!--                   user = "postgres", -->
+<!--                   password = "m280") -->
+<!-- } else if (Sys.info()[["sysname"]] == "Darwin") { -->
+<!--   db <- dbConnect(RPostgreSQL::PostgreSQL(),  -->
+<!--                   dbname = "laparking", -->
+<!--                   host = "localhost", -->
+<!--                   user = "postgres", -->
+<!--                   password = "m280") -->
+<!-- } -->
+<!-- dbWriteTable(db, "latix", lapktk, overwrite = TRUE) -->
+<!-- dbListTables(db) -->
+<!-- dbDisconnect(db) -->
+<!-- ``` -->
+
 
 ## Read data from database
 
@@ -199,8 +235,6 @@ la_sql
 #     geom_freqpoly(binwidth = 365) + 
 #     labs(title = "2015 parking tickets by day")
 ```
-
-
 
 ## Close connection to database
 
