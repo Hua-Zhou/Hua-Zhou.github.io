@@ -125,25 +125,25 @@ $(document).ready(function () {
 
 <div id="q1-la-city-employee-payroll" class="section level2">
 <h2>Q1 LA City Employee Payroll</h2>
-<p>The <code>/home/m280-data/la_payroll/LA_City_Employee_Payroll.csv</code> file on teaching server contains payroll information of LA City employees in years 2013-7. It is downloaded from <a href="https://controllerdata.lacity.org/Payroll/City-Employee-Payroll/pazn-qyym">LA City Controller’s Office</a>. Make a Shiny app to facilitate exploratory data analysis.</p>
+<p>The <code>/home/m280-data/la_payroll/LA_City_Employee_Payroll.csv</code> file on teaching server contains payroll information of LA City employees in years 2013-2017. It was downloaded from <a href="https://controllerdata.lacity.org/Payroll/City-Employee-Payroll/pazn-qyym">LA City Controller’s Office</a>. Make a Shiny app to facilitate exploratory data analysis.</p>
 <ol style="list-style-type: decimal">
 <li><p>For efficiency of the Shiny app, you should first pre-process, pare down, tidy, and save the data, e.g., as a compressed RDS file, to be used in the app.</p></li>
 <li><p><strong>Total payroll by LA City</strong>. Visualize the total LA City payroll of each year, with breakdown into base pay, overtime pay, and other pay.</p></li>
-<li><p><strong>Who earned most?</strong> Visualizae the payroll information (total payment with breakdown into base pay, overtime pay, and other pay, Department, Job Title) of the top <span class="math inline">\(n\)</span> highest paid LA City employees in a specific year. User specifies <span class="math inline">\(n\)</span> (default 10) and year (default 2017).</p></li>
-<li><p><strong>Which deparments earn most?</strong> Visualize the mean or median payroll, with breakdown into base pay, overtime pay, and other pay, of top <span class="math inline">\(n\)</span> earning deparments. User specifies <span class="math inline">\(n\)</span> (default 5), year (default 2017) and method (mean or median, default median).</p></li>
-<li><p><strong>Which deparments cost most?</strong> Visualize the total payroll, with breakdown into base pay, overtime pay, and other pay, of top <span class="math inline">\(n\)</span> expensive deparments. User specifies <span class="math inline">\(n\)</span> (default 5), year (default 2017) and method (default mean).</p></li>
+<li><p><strong>Who earned most?</strong> Visualize the payroll information (total payment with breakdown into base pay, overtime pay, and other pay, Department, Job Title) of the top <span class="math inline">\(n\)</span> highest paid LA City employees in a specific year. User specifies <span class="math inline">\(n\)</span> (default 10) and year (default 2017).</p></li>
+<li><p><strong>Which departments earn most?</strong> Visualize the mean or median payroll, with breakdown into base pay, overtime pay, and other pay, of top <span class="math inline">\(n\)</span> earning departments. User specifies <span class="math inline">\(n\)</span> (default 5), year (default 2017), and method (mean or median, default median).</p></li>
+<li><p><strong>Which departments cost most?</strong> Visualize the total payroll, with breakdown into base pay, overtime pay, and other pay, of top <span class="math inline">\(n\)</span> expensive departments. User specifies <span class="math inline">\(n\)</span> (default 5) and year (default 2017).</p></li>
 <li><p>Visualize any other information you are interested in.</p></li>
 <li><p>Publish your Shiny app to <a href="https://www.shinyapps.io" class="uri">https://www.shinyapps.io</a> and share the link.</p></li>
 </ol>
 </div>
 <div id="q2-la-city-parking-war" class="section level2">
 <h2>Q2 LA City Parking War</h2>
-<p>The SQLite database <code>/home/m280-data/la_parking/LA_Parking_Citations.sqlite</code> on teaching server contains information about parking tickets in LA City. It is downloaded from <a href="https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np">LA Open Data Portal</a>. Connect to the database and answer following questions using plots and summary statistics. In this exercise, you are <strong>not</strong> allowed to load whole data into memory. Use the <em>transform in database, plot in R</em> strategy.</p>
+<p>The SQLite database <code>/home/m280-data/la_parking/LA_Parking_Citations.sqlite</code> on teaching server contains information about parking tickets in LA City. It was downloaded from <a href="https://data.lacity.org/A-Well-Run-City/Parking-Citations/wjz9-h9np">LA Open Data Portal</a>. Connect to the database and answer following questions using plots and summary statistics. In this exercise, you are <strong>not</strong> allowed to load whole data into memory. Use the <em>transform in database, plot in R</em> strategy.</p>
 <ol style="list-style-type: decimal">
 <li><p>How many tickets are in this data set? Which time period do these tickets span? Which years have most data?</p></li>
 <li><p>When (which hour, weekday, month day, and month) are you most likely to get a ticket and when are you least likely to get a ticket?</p></li>
-<li><p>Which car makes recieved most citations?</p></li>
-<li><p>How many different colors of cars were ticketed? Which color attracts most tickets?</p></li>
+<li><p>Which car makes received most citations?</p></li>
+<li><p>How many different colors of cars were ticketed? Which color attracted most tickets?</p></li>
 <li><p>What are the most common ticket types?</p></li>
 <li><p>How much money was collected on parking tickets in 2015 and 2016?</p></li>
 <li><p>Visualize any other information you are interested in.</p></li>
