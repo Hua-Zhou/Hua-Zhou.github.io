@@ -53,7 +53,7 @@ for around $0.27 an hour.
 <img src="./cloud-market-share.jpg" height="225">
 </p>
 
-There are a lot vendors out there. Good for customers. They all work similarly.  
+There are a lot vendors out there. Good for customers (us). They all work similarly.  
 
 - Amazon web services (AWS).  
 
@@ -63,7 +63,7 @@ There are a lot vendors out there. Good for customers. They all work similarly.
 
 - IBM cloud.
 
-We will use GCP in this course.
+We will demonstrate how to start using GCP.
 
 ## Using GCP Compute Engine: basic workflow
 
@@ -87,12 +87,11 @@ We will use GCP in this course.
 <img src="./gcp_signup.png" height="225">
 </p>
 
-
 - Go to <https://cloud.google.com>.
 
-- Make use you sign in using your UCLA gmail.
+- Make use you sign in using your UCLA gmail. It's safer to sign out Google accounts before next steps.
 
-- If you click `Try it free`at <https://cloud.google.com> and fill out requisite information, you will get $300 credit which expires in 1 year. You do **not** need to use it for this course.
+- If you click `Try it free` at <https://cloud.google.com> and fill out requisite information, you will get $300 credit which expires in 1 year. You do **not** need to use it for this course. But it's better to claim the credit **before** redeeming the coupon below.
 
 - Click this [link](http://google.force.com/GCPEDU?cid=drXb%2Ba61n7YV3cfzfh9cI8iiL1GnwxM49GGyrxYUV5K3EPUd8sOli646zpZGs1B3/). You will be asked for a name and email address, which must be your ucla email (`@ucla.edu` or `@g.ucla.edu`). A confirmation email will be sent to you with a coupon code for $50 credit. You can redeem it until 5/9/2018. Coupon is valid through 1/9/2019.
 
@@ -122,7 +121,7 @@ We will use GCP in this course.
     
     - Boot disk: CentOS 7, standard persistent disk (or SSD) 25GB should sufficie for this course. 
     
-    - These settings can be changed later.
+    - These settings can be changed anytime. **Typical paradigm**: develop code using an inexpensive machine type and switch to a powerful one when running computation intensive tasks.
     
     - Click `Create`.
     
@@ -253,3 +252,42 @@ sudo yum install git -y
 git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git
 ```
 
+### (Optional) Install Julia
+
+```{bash, eval = FALSE}
+sudo yum install yum-utils -y
+sudo yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/nalimilan/julia/repo/epel-7/nalimilan-julia-epel-7.repo
+sudo yum install julia -y
+```
+
+## Step 4: run your jobs
+
+- Now you have R and R Studio on the VM instance. 
+
+- Set up and run your jobs as usual.
+
+- You can check CPU usage on the GCP console.
+
+- You can set notification when CPU usage falls below a threshold (so you know the job is done).
+
+## Step 5: transfer results
+
+- Transfer results as usual (scp, sftp, Git).
+
+## Step 6: terminate instance(s)
+
+- Don't forget to terminate your instance(s)!
+
+## Go forth and use the cloud
+
+- Using cloud (AWS or GCP) is easy.
+
+- Launching cluster instances is easy.
+
+- Heavily customized instances (SQL server, BigQuery, ML engine, Genomics, ...).
+
+- Massive computing at your fingertips. 
+
+    - Amazon EC2 [P2 instances](https://aws.amazon.com/ec2/instance-types/p2) offer on a single virtual machine 16 GPUs, with 40,000 parallel processing cores, and 732 GB memory, yielding 70 teraflops of single precision floating point performance or 23 teraflops of double-precision. 
+    
+    - GCP recently announced [TPU (tensor processing units)](https://cloud.google.com/tpu/) for deep learning. Each Cloud TPU offers up to 180 teraflops of computing performance as well as 64 gigabytes of ultra-high-bandwidth memory.
