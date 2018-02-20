@@ -43,7 +43,7 @@ storage/manipulation, etc.
     
 - Massive computing when you need it
     - On the cloud you can run your job on 10,000 machines for one hour for the same price as running it on one machine for 10,000 hours!
-    - Using AWS EC2 spot instances, this can be done for as little as $700 an hour, and gets you super-computer performance.
+    - Using AWS EC2 spot instances, this can be done for $700 an hour, and gets you super-computer performance.
     - It may be more compelling to know that you can get 8 cores
 for around $0.27 an hour.
 
@@ -92,11 +92,13 @@ We will use GCP in this course.
 
 - Make use you sign in using your UCLA gmail.
 
-- Click this [link](http://google.force.com/GCPEDU?cid=drXb%2Ba61n7YV3cfzfh9cI8iiL1GnwxM49GGyrxYUV5K3EPUd8sOli646zpZGs1B3/). You will be asked for a name and email address, which must be your ucla email (`@ucla.edu` or `@g.ucla.edu`). A confirmation email will be sent to you with a coupon code for $50 credit. You can redeem it until 5/9/2018. Coupon is valid through: 1/9/2019.
+- If you click `Try it free`at <https://cloud.google.com> and fill out requisite information, you will get $300 credit which expires in 1 year. You do **not** need to use it for this course.
+
+- Click this [link](http://google.force.com/GCPEDU?cid=drXb%2Ba61n7YV3cfzfh9cI8iiL1GnwxM49GGyrxYUV5K3EPUd8sOli646zpZGs1B3/). You will be asked for a name and email address, which must be your ucla email (`@ucla.edu` or `@g.ucla.edu`). A confirmation email will be sent to you with a coupon code for $50 credit. You can redeem it until 5/9/2018. Coupon is valid through 1/9/2019.
+
+- After email verification and redeeming the coupon, a project `My First Project` is created in GCP.
 
 **GCP free trial**:
-
-- If you click `Try it free`at <https://cloud.google.com> and fill out requisite information, you will get $300 credit which expires in 1 year. You do **not** need use it for this course.
 
 - Some resources are always free: 1 f1-micro VM instance, 30GB of standard persistent disk storage, etc.
 
@@ -132,11 +134,11 @@ We will use GCP in this course.
     
 ## Step 2: set up SSH keys
 
-There are several ways to connect to the VM instance you just created. Most often we want to be able to SSH into the VM instance from other machines, e.g., your own laptop. By default, VM instance only acceopt key authentication. So it's necessary to set up the SSH key first.
+There are several ways to connect to the VM instance you just created. Most often we want to be able to SSH into the VM instance from other machines, e.g., your own laptop. By default, VM instance only accept key authentication. So it's necessary to set up the SSH key first.
 
 - Click the `SSH` button on `VM Instances` page will bring out a terminal in browser as super user, e.g., `huazhou_g_ucla_edu` (your gmail account name).
 
-- In that brower, you can set up your own SSH keys:
+- In that browser, you can set up your own SSH keys:
 ```{bash, eval = FALSE}
 cd
 mkdir .ssh
@@ -224,7 +226,30 @@ su - huazhou
 
 - Pay attention to the error messages, and install those libraries using `yum`. 
 
-- E.g., to install `tidyverse`, it is necessary to install following libraries:
-```{bash, eval = FALSE}
-
+- E.g., try installing `tidyverse` may yield following errors
+```{r, eval = FALSE}
+ERROR: dependencies ‘httr’, ‘rvest’, ‘xml2’ are not available for package ‘tidyverse’
+* removing ‘/home/huazhou/R/x86_64-redhat-linux-gnu-library/3.4/tidyverse’
 ```
+
+- You can install Linux dependencies `curl`, `openssl`, and `libxml2` by:
+```{bash, eval = FALSE}
+sudo yum install curl curl-devel -y
+sudo yum install openssl openssl-devel -y
+sudo yum install libxml2 libxml2-devel -y
+```
+
+### Install Git
+
+- Install Git on VM instance:
+```{bash, eval = FALSE}
+sudo yum install git -y
+```
+
+- For smooth Gitting, you need to put the private key matching the public key in your GitHub account in the `~/.ssh` folder on the VM instance.
+
+- Now you can `git clone` any repo to the VM instance to start working on a project. E.g.,
+```{bash, eval = FALSE}
+git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git
+```
+

@@ -138,6 +138,7 @@ $(document).ready(function () {
 <li><a href="#install-rr-studio-server">Install R/R Studio Server</a></li>
 <li><a href="#set-up-a-regular-user">Set up a regular user</a></li>
 <li><a href="#install-r-packages">Install R packages</a></li>
+<li><a href="#install-git">Install Git</a></li>
 </ul></li>
 </ul>
 </div>
@@ -186,7 +187,7 @@ $(document).ready(function () {
 <li>Massive computing when you need it
 <ul>
 <li>On the cloud you can run your job on 10,000 machines for one hour for the same price as running it on one machine for 10,000 hours!</li>
-<li>Using AWS EC2 spot instances, this can be done for as little as $700 an hour, and gets you super-computer performance.</li>
+<li>Using AWS EC2 spot instances, this can be done for $700 an hour, and gets you super-computer performance.</li>
 <li>It may be more compelling to know that you can get 8 cores for around $0.27 an hour.</li>
 </ul></li>
 </ul>
@@ -225,11 +226,12 @@ $(document).ready(function () {
 <ul>
 <li><p>Go to <a href="https://cloud.google.com" class="uri">https://cloud.google.com</a>.</p></li>
 <li><p>Make use you sign in using your UCLA gmail.</p></li>
-<li><p>Click this <a href="http://google.force.com/GCPEDU?cid=drXb%2Ba61n7YV3cfzfh9cI8iiL1GnwxM49GGyrxYUV5K3EPUd8sOli646zpZGs1B3/">link</a>. You will be asked for a name and email address, which must be your ucla email (<code>@ucla.edu</code> or <code>@g.ucla.edu</code>). A confirmation email will be sent to you with a coupon code for $50 credit. You can redeem it until 5/9/2018. Coupon is valid through: 1/9/2019.</p></li>
+<li><p>If you click <code>Try it free</code>at <a href="https://cloud.google.com" class="uri">https://cloud.google.com</a> and fill out requisite information, you will get $300 credit which expires in 1 year. You do <strong>not</strong> need to use it for this course.</p></li>
+<li><p>Click this <a href="http://google.force.com/GCPEDU?cid=drXb%2Ba61n7YV3cfzfh9cI8iiL1GnwxM49GGyrxYUV5K3EPUd8sOli646zpZGs1B3/">link</a>. You will be asked for a name and email address, which must be your ucla email (<code>@ucla.edu</code> or <code>@g.ucla.edu</code>). A confirmation email will be sent to you with a coupon code for $50 credit. You can redeem it until 5/9/2018. Coupon is valid through 1/9/2019.</p></li>
+<li><p>After email verification and redeeming the coupon, a project <code>My First Project</code> is created in GCP.</p></li>
 </ul>
 <p><strong>GCP free trial</strong>:</p>
 <ul>
-<li><p>If you click <code>Try it free</code>at <a href="https://cloud.google.com" class="uri">https://cloud.google.com</a> and fill out requisite information, you will get $300 credit which expires in 1 year. You do <strong>not</strong> need use it for this course.</p></li>
 <li><p>Some resources are always free: 1 f1-micro VM instance, 30GB of standard persistent disk storage, etc.</p></li>
 <li><p>General pricing can be found on this <a href="https://cloud.google.com/compute/pricing?hl=en_US&amp;_ga=2.155132024.-1106292436.1515381586">page</a>.</p></li>
 </ul>
@@ -258,10 +260,10 @@ $(document).ready(function () {
 </div>
 <div id="step-2-set-up-ssh-keys" class="section level2">
 <h2>Step 2: set up SSH keys</h2>
-<p>There are several ways to connect to the VM instance you just created. Most often we want to be able to SSH into the VM instance from other machines, e.g., your own laptop. By default, VM instance only acceopt key authentication. So it’s necessary to set up the SSH key first.</p>
+<p>There are several ways to connect to the VM instance you just created. Most often we want to be able to SSH into the VM instance from other machines, e.g., your own laptop. By default, VM instance only accept key authentication. So it’s necessary to set up the SSH key first.</p>
 <ul>
 <li><p>Click the <code>SSH</code> button on <code>VM Instances</code> page will bring out a terminal in browser as super user, e.g., <code>huazhou_g_ucla_edu</code> (your gmail account name).</p></li>
-<li><p>In that brower, you can set up your own SSH keys:</p></li>
+<li><p>In that browser, you can set up your own SSH keys:</p></li>
 </ul>
 <pre class="bash"><code>cd
 mkdir .ssh
@@ -333,9 +335,28 @@ su - huazhou</code></pre>
 <ul>
 <li><p>When installing R packages, it often fails because certain Linux libraries are absent.</p></li>
 <li><p>Pay attention to the error messages, and install those libraries using <code>yum</code>.</p></li>
-<li><p>E.g., to install <code>tidyverse</code>, it is necessary to install following libraries:</p></li>
+<li><p>E.g., try installing <code>tidyverse</code> may yield following errors</p></li>
 </ul>
-<pre class="bash"><code></code></pre>
+<pre class="r"><code>ERROR: dependencies ‘httr’, ‘rvest’, ‘xml2’ are not available for package ‘tidyverse’
+* removing ‘/home/huazhou/R/x86_64-redhat-linux-gnu-library/3.4/tidyverse’</code></pre>
+<ul>
+<li>You can install Linux dependencies <code>curl</code>, <code>openssl</code>, and <code>libxml2</code> by:</li>
+</ul>
+<pre class="bash"><code>sudo yum install curl curl-devel -y
+sudo yum install openssl openssl-devel -y
+sudo yum install libxml2 libxml2-devel -y</code></pre>
+</div>
+<div id="install-git" class="section level3">
+<h3>Install Git</h3>
+<ul>
+<li>Install Git on VM instance:</li>
+</ul>
+<pre class="bash"><code>sudo yum install git -y</code></pre>
+<ul>
+<li><p>For smooth Gitting, you need to put the private key matching the public key in your GitHub account in the <code>~/.ssh</code> folder on the VM instance.</p></li>
+<li><p>Now you can <code>git clone</code> any repo to the VM instance to start working on a project. E.g.,</p></li>
+</ul>
+<pre class="bash"><code>git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git</code></pre>
 </div>
 </div>
 
