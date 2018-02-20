@@ -22,7 +22,7 @@ storage/manipulation, etc.
     - Scalable computing
     - Scalable storage
 
-## Cloud computing isn't in cloud
+## It's not in cloud
 
 <p align="center">
 <img src="./google-datacenter-georgia.jpg" height="225">
