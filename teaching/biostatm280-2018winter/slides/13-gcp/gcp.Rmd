@@ -21,8 +21,26 @@ storage/manipulation, etc.
 - Computing when you need it:
     - Scalable computing
     - Scalable storage
-    
-## Why cloud compuing is so popular
+
+## Cloud computing isn't in cloud
+
+<p align="center">
+<img src="./google-datacenter-georgia.jpg" height="225">
+</p>
+
+<p align="center">
+<img src="./google-datacenter-iowa.jpg" height="225">
+</p>
+
+<p align="center">
+<img src="./google-datacenter-cooling.jpg" height="225">
+</p>
+
+<p align="center">
+<img src="./google-dalles-datacenter.jpg" height="225">
+</p>
+
+## Why cloud computing is so popular
 
 - Scalability!
     - Adapt to fluctuating demand
