@@ -1,6 +1,6 @@
 ---
 title: "Biostat M280 Homework 3"
-subtitle: Due Mar 3 @ 11:59PM
+subtitle: Due Mar 2 @ 11:59PM
 output: html_document
 ---
 
