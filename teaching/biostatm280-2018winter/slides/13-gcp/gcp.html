@@ -301,7 +301,7 @@ vi authorized_keys</code></pre>
 </div>
 <div id="step-3-install-software" class="section level2">
 <h2>Step 3: install software</h2>
-<p><code>yum</code> is the default package management tool on CentOS. Most software can be installed via <code>yum</code>.</p>
+<p><code>yum</code> is the default package management tool on CentOS. Most software can be installed via <code>sudo yum</code>. <code>sudo</code> executes a command as a superuser (or root).</p>
 <div id="install-rr-studio-server" class="section level3">
 <h3>Install R/R Studio Server</h3>
 <ul>
@@ -390,6 +390,10 @@ sudo yum install julia -y</code></pre>
 <h2>Step 4: run your jobs</h2>
 <ul>
 <li><p>Now you have R and R Studio on the VM instance.</p></li>
+<li><p>Simpliest way to synchronize your project files across machines is Git, e.g.,</p></li>
+</ul>
+<pre class="bash"><code>git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git</code></pre>
+<ul>
 <li><p>Set up and run your jobs as usual.</p></li>
 <li><p>You can check CPU usage on the GCP console.</p></li>
 <li><p>You can set notification when CPU usage falls below a threshold (so you know the job is done).</p></li>
@@ -398,7 +402,7 @@ sudo yum install julia -y</code></pre>
 <div id="step-5-transfer-results" class="section level2">
 <h2>Step 5: transfer results</h2>
 <ul>
-<li>Transfer results as usual (scp, sftp, Git).</li>
+<li>Transfer results as usual: scp, sftp, Git.</li>
 </ul>
 </div>
 <div id="step-6-terminate-instances" class="section level2">

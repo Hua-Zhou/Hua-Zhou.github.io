@@ -178,7 +178,7 @@ ssh username@35.230.116.91
 
 ## Step 3: install software
 
-`yum` is the default package management tool on CentOS. Most software can be installed via `yum`.
+`yum` is the default package management tool on CentOS. Most software can be installed via `sudo yum`. `sudo` executes a command as a superuser (or root).
 
 ### Install R/R Studio Server
     
@@ -285,6 +285,11 @@ sudo yum install julia -y
 
 - Now you have R and R Studio on the VM instance. 
 
+- Simpliest way to synchronize your project files across machines is Git, e.g.,
+```{bash, eval = FALSE}
+git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git
+```
+
 - Set up and run your jobs as usual.
 
 - You can check CPU usage on the GCP console.
@@ -293,7 +298,7 @@ sudo yum install julia -y
 
 ## Step 5: transfer results
 
-- Transfer results as usual (scp, sftp, Git).
+- Transfer results as usual: scp, sftp, Git.
 
 ## Step 6: terminate instance(s)
 
