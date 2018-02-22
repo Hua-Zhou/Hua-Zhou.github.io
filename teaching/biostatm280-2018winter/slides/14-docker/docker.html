@@ -158,10 +158,10 @@ $(document).ready(function () {
 <div id="scenario-run-linux-on-your-macoswindows-laptop" class="section level2">
 <h2>Scenario: Run Linux on your MacOS/Windows laptop</h2>
 <ul>
-<li>Lunch R directly for interactive work:</li>
+<li>Launch R interactively:</li>
 </ul>
 <pre class="bash"><code>docker run -it -v ~/Desktop:/Desktop r-base</code></pre>
-<p>It runs a container from an image called <a href="https://hub.docker.com/r/_/r-base/"><code>r-base</code></a> (Debian + R).</p>
+<p>It downloads, buidls, and runs an image called <a href="https://hub.docker.com/r/_/r-base/"><code>r-base</code></a> (Debian + R).</p>
 <ul>
 <li>Run a bash session on the container:</li>
 </ul>
@@ -169,7 +169,7 @@ $(document).ready(function () {
 <ul>
 <li>Run R in batch mode:</li>
 </ul>
-<pre class="bash"><code>docker run -ti --rm -v &quot;$PWD&quot;:/home/docker -w /home/docker -u docker r-base R CMD check .</code></pre>
+<pre class="bash"><code>docker run -ti --rm -v &quot;$PWD&quot;:/home/docker -w /home/docker -u docker r-base Rscript autoSim.R</code></pre>
 </div>
 <div id="scenario-deploy-a-shiny-app" class="section level2">
 <h2>Scenario: Deploy a Shiny app</h2>

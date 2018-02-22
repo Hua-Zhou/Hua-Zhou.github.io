@@ -35,11 +35,11 @@ Scenario 4: You develop a piece of software. You want to test on different versi
 
 ## Scenario: Run Linux on your MacOS/Windows laptop
 
-- Lunch R interactively:
+- Launch R interactively:
 ```{bash, eval = FALSE}
 docker run -it -v ~/Desktop:/Desktop r-base
 ```
-It runs a container from an image called [`r-base`](https://hub.docker.com/r/_/r-base/) (Debian + R).
+It downloads, buidls, and runs an image called [`r-base`](https://hub.docker.com/r/_/r-base/) (Debian + R).
 
 - Run a bash session on the container:
 ```{bash, eval = FALSE}
