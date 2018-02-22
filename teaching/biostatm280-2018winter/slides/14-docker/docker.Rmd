@@ -1,0 +1,65 @@
+---
+title: "Docker"
+author: "Hua Zhou"
+date: "2/22/2018"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What is Docker
+
+- It took us considerable efforts to set up a GCP Compute Engine instance with a full stack of tools we need: CentOS, Linux libraries, R, R Studio, tidyverse, Shiny server, ...
+
+- This computing enrivonment can be **containerized** on your **local** machine using Docker.
+
+- **Paradigm**: develop locally, deploy (at scale) anywhere.
+
+## Why do _we_ care?
+
+Scenario 1: You made a fancy Shiny app. You want to deploy in AWS or GCP and scale that up to potentially many users.
+
+Scenario 2: You have a Windows machine, but want to run Linux on your computer.
+
+Scenario 3: Your paper gets rejected, because the reviewer wants comparison with an existing method. And software for existing method only runs on Linux. 
+
+Scenario 4: You develop a piece of software. You want to test on different versions of R, on different OS (MacOS, Linux, Windows).
+
+## Tutorial
+
+[Get started with Docker](https://docs.docker.com/get-started/).
+
+## Scenario: Run Linux on your MacOS/Windows laptop
+
+- Lunch R interactively:
+```{bash, eval = FALSE}
+docker run -it -v ~/Desktop:/Desktop r-base
+```
+It runs a container from an image called [`r-base`](https://hub.docker.com/r/_/r-base/) (Debian + R).
+
+- Run a bash session on the container:
+```{bash, eval = FALSE}
+docker run -ti --rm r-base /usr/bin/bash
+```
+
+- Run R in batch mode:
+```{bash, eval = FALSE}
+docker run -ti --rm -v "$PWD":/home/docker -w /home/docker -u docker r-base Rscript autoSim.R
+```
+
+## Scenario: Deploy a Shiny app
+
+## Scenario: CentOS + R + RStudio + tidyverse
+
+## Scenario: Hadoop/Spark cluster on your MacOS/Windows laptop
+
+```{bash, include = FALSE, eval = FALSE}
+# stop all active containers
+docker container stop $(docker ps -a)
+# remove all exited containers
+docker rm $(docker ps -a -f status=exited -q)
+```
