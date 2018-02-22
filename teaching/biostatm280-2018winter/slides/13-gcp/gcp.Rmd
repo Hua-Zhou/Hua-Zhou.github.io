@@ -46,10 +46,11 @@ storage/manipulation, etc.
     - Adapt to fluctuating demand
         - E.g. websites with fluctuating traffic
         - E.g. large corporations use much more computing during business hours than off-business hours
-    - Efficiency
-        - Pay for what you need
-        - No need for hardware maintenance
-        - Less waiting for fixed compute-time jobs
+
+- Efficiency
+    - Pay for what you need
+    - No need for hardware maintenance
+    - Less waiting for fixed compute-time jobs
         
 ## Why _we_ care about cloud computing
 
@@ -144,6 +145,8 @@ We will demonstrate how to start using GCP.
     - Click `Create`.
     
 - At the `VM Instances` page, you can see a list of all instances in your project and their IP addresses. We use the external IP address, e.g., `35.230.116.91`, for SSH connection.
+
+- Note if we stop the instance and start again. The external IP address may change. To keep a fixed external IP address, go to `VPC network` then `External IP addresses` and make the desired external IP address `static` (vs ephemeral). Note that if no instance is using a `static` IP address, you will be charged for the idle `static` IP.
     
 <p align="center">
 <img src="./gcp_vminstances.png" height="225">
@@ -198,11 +201,12 @@ sudo yum install wget -y
 ```{bash, eval = FALSE}
 wget https://download2.rstudio.org/rstudio-server-rhel-1.1.423-x86_64.rpm
 sudo yum install rstudio-server-rhel-1.1.423-x86_64.rpm -y
+rm rstudio-server-rhel-1.1.423-x86_64.rpm
 ```
 
-- The R Studio service starts immediately. Lets check if it is running  properly by triggering the following command.
+- The R Studio service starts immediately. Let's check if it is running  properly by triggering the following command.
 ```{bash, eval = FALSE}
-systemctl status rstudio-server.service
+sudo systemctl status rstudio-server.service
 ```
 
 - By default, port 8787 used by R Studio Server is blocked by VM firewall. On GCP console, go to `VPC network` and then `Firewall rules`, create a rule for R Studio Server (tcp: 8787), apply that rule to your VM instance.
@@ -248,8 +252,7 @@ su - huazhou
 ERROR: dependencies ‘httr’, ‘rvest’, ‘xml2’ are not available for package ‘tidyverse’
 * removing ‘/home/huazhou/R/x86_64-redhat-linux-gnu-library/3.4/tidyverse’
 ```
-
-- You can install Linux dependencies `curl`, `openssl`, and `libxml2` by:
+You can install these Linux dependencies `curl`, `openssl`, and `libxml2` by:
 ```{bash, eval = FALSE}
 sudo yum install curl curl-devel -y
 sudo yum install openssl openssl-devel -y
@@ -300,9 +303,7 @@ sudo yum install julia -y
 
 - Using cloud (AWS or GCP) is easy.
 
-- Launching cluster instances is easy.
-
-- Heavily customized instances (SQL server, BigQuery, ML engine, Genomics, ...).
+- Easy to launch cluster instances or other heavily customized instances (SQL server, BigQuery, ML engine, Genomics, ...).
 
 - Massive computing at your fingertips. 
 
