@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - This computing enrivonment can be **containerized** on your **local** machine using Docker.
 
-- **Paradigm**: develop locally, deploy (at scale) anywhere.
+- **Paradigm**: develop locally (using your familiar toolchain), deploy (at scale) anywhere.
 
 ## Why do _we_ care?
 
@@ -51,9 +51,9 @@ docker run -ti --rm r-base /usr/bin/bash
 docker run -ti --rm -v "$PWD":/home/docker -w /home/docker -u docker r-base Rscript autoSim.R
 ```
 
-## Scenario: Deploy a Shiny app
+## Scenario: Deploy a Shiny app to cloud
 
-## Scenario: CentOS + R + RStudio + tidyverse
+## Scenario: CentOS + R + RStudio + tidyverse toolchain
 
 ## Scenario: Hadoop/Spark cluster on your MacOS/Windows laptop
 

@@ -130,8 +130,8 @@ $(document).ready(function () {
 <li><a href="#why-do-we-care">Why do <em>we</em> care?</a></li>
 <li><a href="#tutorial">Tutorial</a></li>
 <li><a href="#scenario-run-linux-on-your-macoswindows-laptop">Scenario: Run Linux on your MacOS/Windows laptop</a></li>
-<li><a href="#scenario-deploy-a-shiny-app">Scenario: Deploy a Shiny app</a></li>
-<li><a href="#scenario-centos-r-rstudio-tidyverse">Scenario: CentOS + R + RStudio + tidyverse</a></li>
+<li><a href="#scenario-deploy-a-shiny-app-to-cloud">Scenario: Deploy a Shiny app to cloud</a></li>
+<li><a href="#scenario-centos-r-rstudio-tidyverse-toolchain">Scenario: CentOS + R + RStudio + tidyverse toolchain</a></li>
 <li><a href="#scenario-hadoopspark-cluster-on-your-macoswindows-laptop">Scenario: Hadoop/Spark cluster on your MacOS/Windows laptop</a></li>
 </ul>
 </div>
@@ -141,7 +141,7 @@ $(document).ready(function () {
 <ul>
 <li><p>It took us considerable efforts to set up a GCP Compute Engine instance with a full stack of tools we need: CentOS, Linux libraries, R, R Studio, tidyverse, Shiny server, …</p></li>
 <li><p>This computing enrivonment can be <strong>containerized</strong> on your <strong>local</strong> machine using Docker.</p></li>
-<li><p><strong>Paradigm</strong>: develop locally, deploy (at scale) anywhere.</p></li>
+<li><p><strong>Paradigm</strong>: develop locally (using your familiar toolchain), deploy (at scale) anywhere.</p></li>
 </ul>
 </div>
 <div id="why-do-we-care" class="section level2">
@@ -171,11 +171,11 @@ $(document).ready(function () {
 </ul>
 <pre class="bash"><code>docker run -ti --rm -v &quot;$PWD&quot;:/home/docker -w /home/docker -u docker r-base Rscript autoSim.R</code></pre>
 </div>
-<div id="scenario-deploy-a-shiny-app" class="section level2">
-<h2>Scenario: Deploy a Shiny app</h2>
+<div id="scenario-deploy-a-shiny-app-to-cloud" class="section level2">
+<h2>Scenario: Deploy a Shiny app to cloud</h2>
 </div>
-<div id="scenario-centos-r-rstudio-tidyverse" class="section level2">
-<h2>Scenario: CentOS + R + RStudio + tidyverse</h2>
+<div id="scenario-centos-r-rstudio-tidyverse-toolchain" class="section level2">
+<h2>Scenario: CentOS + R + RStudio + tidyverse toolchain</h2>
 </div>
 <div id="scenario-hadoopspark-cluster-on-your-macoswindows-laptop" class="section level2">
 <h2>Scenario: Hadoop/Spark cluster on your MacOS/Windows laptop</h2>
