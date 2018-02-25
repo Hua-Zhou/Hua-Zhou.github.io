@@ -1,6 +1,6 @@
 ---
 title: "Cloud Computing"
-author: "Hua Zhou"
+author: "Dr. Hua Zhou"
 date: "2/19/2018"
 output: 
   html_document:
@@ -43,13 +43,19 @@ storage/manipulation, etc.
 ## Why cloud computing is so popular
 
 - Scalability!
-    - Adapt to fluctuating demand
-        - E.g. websites with fluctuating traffic
-        - E.g. large corporations use much more computing during business hours than off-business hours
+
+- Adapt to fluctuating demand:
+
+    - Websites with fluctuating traffic
+    
+    - large corporations use much more computing during business hours than off-business hours
 
 - Efficiency
+
     - Pay for what you need
+    
     - No need for hardware maintenance
+    
     - Less waiting for fixed compute-time jobs
         
 ## Why _we_ care about cloud computing
@@ -72,7 +78,7 @@ for around $0.27 an hour.
 <img src="./cloud-market-share.jpg" height="225">
 </p>
 
-There are a lot vendors out there. Good for customers (us). They all work similarly.  
+There are many vendors out there. Good for customers (us). They all work similarly.  
 
 - Amazon web services (AWS).  
 
