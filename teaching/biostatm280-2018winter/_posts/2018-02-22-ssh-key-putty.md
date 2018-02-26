@@ -12,7 +12,7 @@ We assume that programs `PuTTY` and `PuTTYgen` are installed on the Windows mach
 ```
 ssh-keygen -t rsa -f id_rsa -C yourname
 ```
-Replace `yourname` by any comment you want. This will produce a public key file `id_rsa.pub` and a private key file `id_rsa`.
+Replace `yourname` by any comment you want. This will produce a public key file `id_rsa.pub` and a private key file `id_rsa`. The public key needs to be in the `~/.ssh/authorized_keys` file on any Linux machine you want to connect.
 
 0. Now we want to put the private key on the Windows machine so we can use it to connect to the Linux machine. You can use `WinSCP` or any other program to transfer this file to your Windows machine, or simply copy the content of `id_rsa` and paste to a text file on Windows. Let's assume the private key file on Windows machine is still named `id_rsa`. 
 
