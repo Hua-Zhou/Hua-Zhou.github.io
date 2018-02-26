@@ -25,20 +25,12 @@ storage/manipulation, etc.
 ## It's not in cloud
 
 <p align="center">
-<img src="./google-datacenter-georgia.jpg" height="225">
+![](./google-datacenter-georgia.jpg){width=400px}
+![](./google-datacenter-iowa.jpg){width=400px}
+![](./google-datacenter-cooling.jpg){width=400px}
+![](./google-dalles-datacenter.jpg){width=400px}
 </p>
 
-<p align="center">
-<img src="./google-datacenter-iowa.jpg" height="225">
-</p>
-
-<p align="center">
-<img src="./google-datacenter-cooling.jpg" height="225">
-</p>
-
-<p align="center">
-<img src="./google-dalles-datacenter.jpg" height="225">
-</p>
 
 ## Why cloud computing is so popular
 
@@ -333,6 +325,5 @@ git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git
     - To put it in scale, 180 teraflops is equivalent to the most powerful high performance cluster (HPC) in 2005, according to following [slide](https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongarra.pdf) by Jack Dongarra.
     
     <p align="center">
-    <img src="./hpc_top500.png" height="125">
+    ![](./hpc_top500.png){width=500px}
     </p>
-    

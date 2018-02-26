@@ -1,6 +1,6 @@
 ---
 title: "Working with Databases - Part I"
-author: "Hua Zhou"
+author: "Dr. Hua Zhou"
 date: "2/13/2018"
 output: 
   html_document:
