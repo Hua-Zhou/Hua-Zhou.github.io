@@ -352,6 +352,8 @@ Run [CentOS](https://hub.docker.com/_/centos/) interactively (as `root`):
 ```{bash, eval = FALSE}
 docker run -ti --rm centos:latest
 ```
+`-i` means interactive. `-t` allocates a pseudo-tty. `--rm` removes the container when it exits.
+
 Run [Ubuntu](https://hub.docker.com/_/ubuntu/) interactively (as `root`):
 ```{bash, eval = FALSE}
 docker run -ti --rm ubuntu:latest
@@ -363,7 +365,7 @@ docker run -ti --rm ubuntu:latest
 ```{bash, eval = FALSE}
 docker run -ti --rm -v ~/Desktop:/Desktop r-base
 ```
-It downloads, builds, and runs a Docker image called [`r-base`](https://hub.docker.com/r/_/r-base/) (Debian + R).
+It downloads, builds, and runs a Docker image called [`r-base`](https://hub.docker.com/r/_/r-base/) (Debian + R). `-v` maps a folder on host to a folder in the container.
 
 - Run a bash session on the container:
 ```{bash, eval = FALSE}
@@ -374,6 +376,7 @@ docker run -ti --rm r-base /usr/bin/bash
 ```{bash, eval = FALSE}
 docker run -ti --rm -v "$PWD":/home/docker -w /home/docker -u docker r-base Rscript autoSim.R
 ```
+`-w` specifies the working directory. `-u` specifies the user.
 
 ## Scenario: Deploy a Shiny app to cloud
 
