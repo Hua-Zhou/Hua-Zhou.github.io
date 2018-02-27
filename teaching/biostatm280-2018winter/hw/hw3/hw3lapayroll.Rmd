@@ -69,6 +69,19 @@ lapay <- lapay %>%
 lapay %>% print(width = Inf)
 ```
 
+## Check total pay
+
+```{r}
+lapay %>%
+  filter(Total_Payments == Base_Pay + Overtime_Pay + Other_Pay) %>%
+  group_by(Year) %>%
+  summarise(n = n(),
+            year_tot = sum(Total_Payments, na.rm = TRUE),
+            year_base = sum(Base_Pay, na.rm = TRUE),
+            year_over = sum(Overtime_Pay, na.rm = TRUE),
+            year_other = sum(Other_Pay, na.rm = TRUE))
+```
+
 ## Save as RDS
 
 ```{r}
