@@ -136,6 +136,7 @@ $(document).ready(function () {
 <li><a href="#distribute-into-hdfs">Distribute into HDFS</a></li>
 <li><a href="#create-hive-tables">Create Hive tables</a></li>
 <li><a href="#install-rrstudio-server-on-master-node">Install R/RStudio Server on master node</a></li>
+<li><a href="#yarn-management-survival-commands">YARN management survival commands</a></li>
 </ul></li>
 </ul>
 </div>
@@ -360,6 +361,16 @@ for u in &quot;${ulist[@]}&quot;
     echo -e &quot;m280\nm280&quot; | sudo passwd &quot;$u&quot; 
     sudo chsh -s /bin/bash &quot;$u&quot;
   done</code></pre>
+</div>
+<div id="yarn-management-survival-commands" class="section level2">
+<h2>YARN management survival commands</h2>
+<ul>
+<li>We can check the status of YARN cluster at port 8088: <a href="http://35.185.198.142:8088" class="uri">http://35.185.198.142:8088</a>.</li>
+</ul>
+<pre class="bash"><code># list hadoop jobs
+yarn application -list
+# kill hadoop job
+yarn application -kill APPLICATION_ID</code></pre>
 </div>
 </div>
 

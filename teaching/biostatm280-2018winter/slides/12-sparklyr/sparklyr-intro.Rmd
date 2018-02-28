@@ -276,4 +276,12 @@ for u in "${ulist[@]}"
   done
 ```
 
+## YARN management survival commands
 
+- We can check the status of YARN cluster at port 8088: <http://35.185.198.142:8088>.
+```{bash, eval = FALSE}
+# list hadoop jobs
+yarn application -list
+# kill hadoop job
+yarn application -kill APPLICATION_ID
+```
