@@ -248,9 +248,9 @@ Update R on master node:
 ```{bash, eval = FALSE}
 sudo apt-get install r-base r-base-dev
 ```
-Install commonly used R packages `tidyverse`, `DBI`, `sparklyr` globally available to all users:
+Install commonly used R packages so they're globally available to all users:
 ```{bash, eval = FALSE}
-sudo R -e "install.packages(c('tidyverse', 'DBI', 'sparklyr'), repos='https://cran.rstudio.com/')"
+sudo R -e "install.packages(c('tidyverse', 'DBI', 'sparklyr', 'caTools', 'bitops'), repos='https://cran.rstudio.com/')"
 ```
 Install RStudio Server:
 ```{bash, eval = FALSE}

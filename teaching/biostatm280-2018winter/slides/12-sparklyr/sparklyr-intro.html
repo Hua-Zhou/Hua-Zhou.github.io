@@ -342,8 +342,8 @@ sudo apt-get update
 sudo apt-get install libcurl4-openssl-dev libssl-dev libxml2-dev</code></pre>
 <p>Update R on master node:</p>
 <pre class="bash"><code>sudo apt-get install r-base r-base-dev</code></pre>
-<p>Install commonly used R packages <code>tidyverse</code>, <code>DBI</code>, <code>sparklyr</code> globally available to all users:</p>
-<pre class="bash"><code>sudo R -e &quot;install.packages(c('tidyverse', 'DBI', 'sparklyr'), repos='https://cran.rstudio.com/')&quot;</code></pre>
+<p>Install commonly used R packages so they’re globally available to all users:</p>
+<pre class="bash"><code>sudo R -e &quot;install.packages(c('tidyverse', 'DBI', 'sparklyr', 'caTools', 'bitops'), repos='https://cran.rstudio.com/')&quot;</code></pre>
 <p>Install RStudio Server:</p>
 <pre class="bash"><code>sudo apt-get install gdebi-core
 wget https://download2.rstudio.org/rstudio-server-1.1.423-amd64.deb
