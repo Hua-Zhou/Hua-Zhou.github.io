@@ -52,28 +52,28 @@ sc
 
 ## Access Hive tables
 
-Use tbl_cache to load the flights table into memory. Caching tables will make analysis much faster. Create a dplyr reference to the Spark DataFrame.
+Create dplyr reference to the Spark DataFrame.
 ```{r}
 # Cache flights Hive table into Spark
 #tbl_cache(sc, 'flights')
 system.time(
   flights_tbl <- tbl(sc, 'flights')
 )
-flights_tbl
+flights_tbl %>% print(width = Inf)
 ```
 
 ```{r}
 # Cache airlines Hive table into Spark
 #tbl_cache(sc, 'airlines')
 airlines_tbl <- tbl(sc, 'airlines')
-airlines_tbl
+airlines_tbl %>% print(width = Inf)
 ```
 
 ```{r}
 # Cache airports Hive table into Spark
 #tbl_cache(sc, 'airports')
 airports_tbl <- tbl(sc, 'airports')
-airports_tbl
+airports_tbl %>% print(width = Inf)
 ```
 
 ## How many data points
@@ -223,7 +223,7 @@ ggplot(carrier, aes(gain, prediction)) +
 
 Some carriers make up more time than others in flight, but the differences are relatively small. The average time gains between the best and worst airlines is only six minutes. The best predictor of time gained is not carrier but flight distance. The biggest gains were associated with the longest flights.
 
-## Disconnect to Spark
+## Disconnect from Spark
 
 ```{r}
 spark_disconnect_all()
