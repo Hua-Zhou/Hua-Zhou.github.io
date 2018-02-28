@@ -174,9 +174,10 @@ ladb <- lapktk %>%
          Issue_Month = as.integer(month(Issue_DateTime)),  
          Issue_Day = mday(Issue_DateTime), 
          Issue_Hour = hour(Issue_DateTime), 
-         Issue_Minute = minute(Issue_DateTime)) %>%
+         Issue_Minute = minute(Issue_DateTime),
+         Issue_Wday = wday(Issue_DateTime)) %>%
   select(Ticket_number,
-         Issue_Year:Issue_Minute,
+         Issue_Year:Issue_Wday,
          Meter_Id:Longitude)
 ladb %>% print(width = Inf)
 ```
@@ -265,12 +266,121 @@ la_sql %>%
   count() %>%
   collect() %>%
   ggplot(aes(x = Issue_Month, y = n)) + 
-    geom_col() %>%
-  labs(title = "2015 Parking tickets by month")
+    geom_col() +
+    labs(title = "2015 Parking tickets by month")
+```
+
+```{r}
+la_sql %>% 
+  filter(Issue_Year == 2015) %>%
+  group_by(Issue_Day) %>%
+  count()
+```
+
+```{r}
+la_sql %>% 
+  filter(Issue_Year == 2015) %>%
+  group_by(Issue_Day) %>%
+  count() %>%
+  collect() %>%
+  ggplot(aes(x = Issue_Day, y = n)) + 
+    geom_col() +
+    labs(title = "2015 Parking tickets by month day")
+```
+
+```{r}
+la_sql %>% 
+  filter(Issue_Year == 2015) %>%
+  group_by(Issue_Wday) %>%
+  count() %>%
+  collect() %>%
+  ggplot(aes(x = Issue_Wday, y = n)) + 
+    geom_col() +
+    labs(title = "2015 Parking tickets by weekday")
+```
+
+```{r}
+la_sql %>% 
+  filter(Issue_Year == 2015) %>%
+  group_by(Issue_Hour) %>%
+  count() %>%
+  collect() %>%
+  ggplot(aes(x = Issue_Hour, y = n)) + 
+    geom_col() +
+    labs(title = "2015 Parking tickets by hour")
+```
+
+## Ticket frequency by car make
+
+```{r}
+topcm <- la_sql %>%
+  filter(Issue_Year == 2015) %>%
+  group_by(Make) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(10) %>%
+  collect()
+topcm
 ```
 
 
 
+```{r}
+topcm %>%
+  ggplot(aes(x = Make, y = n)) + 
+    geom_col() + 
+    labs(title = "2015 Parking tickets by car make")
+```
+
+## Ticket frequency by car color
+
+```{r}
+topcc <- la_sql %>%
+  filter(Issue_Year == 2015) %>%
+  group_by(Color) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(10) %>%
+  collect()
+topcc
+```
+
+```{r}
+topcc %>%
+  ggplot(aes(x = Color, y = n)) + 
+    geom_col() + 
+    labs(title = "2015 Parking tickets by car color")
+```
+
+## Ticket frequency by ticket type
+
+```{r}
+toptt <- la_sql %>%
+  filter(Issue_Year == 2015) %>%
+  group_by(Violation_code) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(10) %>%
+  collect()
+toptt
+```
+
+```{r}
+toptt %>%
+  ggplot(aes(x = Violation_code, y = n)) + 
+    geom_col() + 
+    labs(title = "2015 Parking tickets by ticket type")
+```
+
+## Revenue from parking citations
+
+```{r}
+la_sql %>%
+  filter(Issue_Year %in% c(2015, 2016)) %>%
+  group_by(Issue_Year) %>%
+  summarise(revenue = sum(Fine_amount)) %>%
+  collect()
+```
 
 ## Close connection to database
 
