@@ -327,10 +327,9 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 ## 50e1d7e4f3c6: Pulling fs layer
 ## 861e9de5333f: Pulling fs layer
 ## 861e9de5333f: Waiting
+## cef69dd0e5b9: Verifying Checksum
 ## cef69dd0e5b9: Download complete
-## 861e9de5333f: Verifying Checksum
 ## 861e9de5333f: Download complete
-## 50e1d7e4f3c6: Verifying Checksum
 ## 50e1d7e4f3c6: Download complete
 ## d2ca7eff5948: Verifying Checksum
 ## d2ca7eff5948: Download complete
@@ -342,12 +341,12 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 ## Status: Downloaded newer image for python:2.7-slim
 ##  ---&gt; 52ad41c7aea4
 ## Step 2/7 : WORKDIR /app
-## Removing intermediate container 5fcf68b51e4b
-##  ---&gt; 5d6d356825f5
+## Removing intermediate container c9d8331e2323
+##  ---&gt; 678d057b474b
 ## Step 3/7 : ADD . /app
-##  ---&gt; 0eab668ceef2
+##  ---&gt; a3dee55ce6dc
 ## Step 4/7 : RUN pip install --trusted-host pypi.python.org -r requirements.txt
-##  ---&gt; Running in 32cd4de5dbae
+##  ---&gt; Running in e92357a70353
 ## Collecting Flask (from -r requirements.txt (line 1))
 ##   Downloading Flask-0.12.2-py2.py3-none-any.whl (83kB)
 ## Collecting Redis (from -r requirements.txt (line 2))
@@ -372,26 +371,26 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 ## Successfully built itsdangerous MarkupSafe
 ## Installing collected packages: itsdangerous, MarkupSafe, Jinja2, Werkzeug, click, Flask, Redis
 ## Successfully installed Flask-0.12.2 Jinja2-2.10 MarkupSafe-1.0 Redis-2.10.6 Werkzeug-0.14.1 click-6.7 itsdangerous-0.24
-## Removing intermediate container 32cd4de5dbae
-##  ---&gt; 97df97c5bfde
+## Removing intermediate container e92357a70353
+##  ---&gt; 9535ec797836
 ## Step 5/7 : EXPOSE 80
-##  ---&gt; Running in 01de24d786cb
-## Removing intermediate container 01de24d786cb
-##  ---&gt; f76e05ef53f5
+##  ---&gt; Running in 777d66ed04e1
+## Removing intermediate container 777d66ed04e1
+##  ---&gt; ea20fcbf006a
 ## Step 6/7 : ENV NAME World
-##  ---&gt; Running in 009a30a93b30
-## Removing intermediate container 009a30a93b30
-##  ---&gt; c683438757d7
+##  ---&gt; Running in c80617440c68
+## Removing intermediate container c80617440c68
+##  ---&gt; 1c329fe7ef07
 ## Step 7/7 : CMD [&quot;python&quot;, &quot;app.py&quot;]
-##  ---&gt; Running in 639568e1eb46
-## Removing intermediate container 639568e1eb46
-##  ---&gt; 462ccf0e2333
-## Successfully built 462ccf0e2333
+##  ---&gt; Running in 61a53af24700
+## Removing intermediate container 61a53af24700
+##  ---&gt; 66129e9d381e
+## Successfully built 66129e9d381e
 ## Successfully tagged friendlyhello:latest</code></pre>
 <p>Display the image:</p>
 <pre class="bash"><code>docker image ls</code></pre>
 <pre><code>## REPOSITORY          TAG                 IMAGE ID            CREATED                  SIZE
-## friendlyhello       latest              462ccf0e2333        Less than a second ago   150MB
+## friendlyhello       latest              66129e9d381e        Less than a second ago   150MB
 ## python              2.7-slim            52ad41c7aea4        12 days ago              139MB</code></pre>
 </div>
 <div id="run-the-app" class="section level4">
@@ -400,21 +399,21 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 <pre class="bash"><code>docker run -p 4000:80 friendlyhello</code></pre>
 <p>or in detached mode</p>
 <pre class="bash"><code>docker run -d -p 4000:80 friendlyhello</code></pre>
-<pre><code>## 3cff73e39719cc47454112068140e54a7cc951ea4cf80f3b39cc21e16dca9bbd</code></pre>
+<pre><code>## f23eec9e315ef80644d8fcbe3182f7938bcae0de955b2cdcd14db265c3be76b5</code></pre>
 <p><code>-p 4000:80</code> maps port 80 of the container to port 4000 of host.</p>
-<p>Diplay the container:</p>
+<p>Display the container:</p>
 <pre class="bash"><code>docker container ls</code></pre>
 <pre><code>## CONTAINER ID        IMAGE               COMMAND             CREATED                  STATUS                  PORTS                  NAMES
-## 3cff73e39719        friendlyhello       &quot;python app.py&quot;     Less than a second ago   Up Less than a second   0.0.0.0:4000-&gt;80/tcp   suspicious_lamport</code></pre>
+## f23eec9e315e        friendlyhello       &quot;python app.py&quot;     Less than a second ago   Up Less than a second   0.0.0.0:4000-&gt;80/tcp   zen_volhard</code></pre>
 <p>We now should be able to check the webpage by pointing browser to <code>localhost:4000</code>.</p>
 <p>To stop the container, issue:</p>
 <pre class="bash"><code>docker container stop &lt;CONTAINER_ID&gt;</code></pre>
 <p>To kill all containers</p>
 <pre class="bash"><code>docker container kill $(docker container ls -a -q)</code></pre>
-<pre><code>## 3cff73e39719</code></pre>
+<pre><code>## f23eec9e315e</code></pre>
 <p>then remove them</p>
 <pre class="bash"><code>docker container rm $(docker container ls -a -q)</code></pre>
-<pre><code>## 3cff73e39719</code></pre>
+<pre><code>## f23eec9e315e</code></pre>
 </div>
 <div id="share-the-image" class="section level4">
 <h4>Share the image</h4>
@@ -431,7 +430,7 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 <p><strong>Services</strong> are really just “containers in production.” A service only runs one image, but it codifies the way that image runs—what ports it should use, how many replicas of the container should run so the service has the capacity it needs, and so on.</p>
 <p>Following <a href="https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/14-docker/docker-compose.yml"><code>docker-compose.yml</code></a> specifies:</p>
 <ul>
-<li><p>Pull the image <code>hwachou/get-started:part2</code>.</p></li>
+<li><p>Pull the image <code>huazhou/get-started:part2</code>.</p></li>
 <li><p>Run 5 instances of that image as a service called <code>web</code>, limiting each one to use, at most, 10% of the CPU (across all cores), and 50MB of RAM.</p></li>
 <li><p>Immediately restart containers if one fails.</p></li>
 <li><p>Map port 80 on the host to <code>web</code>’s port 80.</p></li>
@@ -462,11 +461,11 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 <p>Run a new load-balanced app:</p>
 <pre class="bash"><code>docker swarm init
 docker stack deploy -c docker-compose.yml getstartedlab</code></pre>
-<pre><code>## Swarm initialized: current node (xunjx24yqj5recmtgf94il65a) is now a manager.
+<pre><code>## Swarm initialized: current node (zh73w07yuakw3db92aj5cp9e7) is now a manager.
 ## 
 ## To add a worker to this swarm, run the following command:
 ## 
-##     docker swarm join --token SWMTKN-1-027onoz2qy8w9hdac7vw7dhb66tb48sn89yi9wvt2lw7um0z52-3hjyat9fk0xt5pg47zik1ofji 192.168.65.3:2377
+##     docker swarm join --token SWMTKN-1-22y1n67jkgllf5q4c884kpb509uhor5dmysfx1quvutl65rori-334rqarhnnx77qxztx75gejim 192.168.65.3:2377
 ## 
 ## To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ## 
@@ -475,15 +474,15 @@ docker stack deploy -c docker-compose.yml getstartedlab</code></pre>
 <p>List the service:</p>
 <pre class="bash"><code>docker service ls</code></pre>
 <pre><code>## ID                  NAME                MODE                REPLICAS            IMAGE                       PORTS
-## donjmmu7wwu7        getstartedlab_web   replicated          0/5                 huazhou/get-started:part2   *:80-&gt;80/tcp</code></pre>
+## unlrnk64rtaz        getstartedlab_web   replicated          0/5                 huazhou/get-started:part2   *:80-&gt;80/tcp</code></pre>
 <p>List the tasks for your service:</p>
 <pre class="bash"><code>docker service ps getstartedlab_web</code></pre>
 <pre><code>## ID                  NAME                  IMAGE                       NODE                    DESIRED STATE       CURRENT STATE                     ERROR               PORTS
-## znoguodnl4lc        getstartedlab_web.1   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
-## siiv6gze9mp2        getstartedlab_web.2   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
-## t2se8wwutbjz        getstartedlab_web.3   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
-## oz447dtcqi81        getstartedlab_web.4   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
-## qfzbxt848p4z        getstartedlab_web.5   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago</code></pre>
+## rljgnlcnsz36        getstartedlab_web.1   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
+## njs5x6y16eix        getstartedlab_web.2   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
+## k8jyys72cfq6        getstartedlab_web.3   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
+## sbq8ynvf3z2f        getstartedlab_web.4   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago                       
+## ii0jnftzjcag        getstartedlab_web.5   huazhou/get-started:part2   linuxkit-025000000001   Running             Assigned less than a second ago</code></pre>
 <p>To take down the service and swarm:</p>
 <pre class="bash"><code>docker stack rm getstartedlab
 docker swarm leave --force</code></pre>
@@ -542,11 +541,11 @@ docker swarm leave --force</code></pre>
 <p>Then deploy</p>
 <pre class="bash"><code>docker swarm init
 docker stack deploy -c docker-compose-stack.yml getstartedlab</code></pre>
-<pre><code>## Swarm initialized: current node (a8zet6rvrxwfzk4606m4q4i0a) is now a manager.
+<pre><code>## Swarm initialized: current node (lcuwtvpdn4fxkn0zuvxe87hm9) is now a manager.
 ## 
 ## To add a worker to this swarm, run the following command:
 ## 
-##     docker swarm join --token SWMTKN-1-5vepih7248knq8t6lq4d9hvt0uswq787vjnkwjewn3e8uiynuu-9btvkbftf0y490vhl044kw2ut 192.168.65.3:2377
+##     docker swarm join --token SWMTKN-1-615x3u14jb7luhjaux2um3qk2lkaa5qn0r50qsanxdgidfsk0f-5v1efxe1bn5qmupq6wvlofzx5 192.168.65.3:2377
 ## 
 ## To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 ## 
@@ -557,17 +556,17 @@ docker stack deploy -c docker-compose-stack.yml getstartedlab</code></pre>
 <p>List the service:</p>
 <pre class="bash"><code>docker service ls</code></pre>
 <pre><code>## ID                  NAME                       MODE                REPLICAS            IMAGE                             PORTS
-## qajvph74j2g9        getstartedlab_redis        replicated          0/1                 redis:latest                      *:6379-&gt;6379/tcp
-## c3g4y91bfj21        getstartedlab_visualizer   replicated          0/1                 dockersamples/visualizer:stable   *:8080-&gt;8080/tcp
-## m7umnyqshehy        getstartedlab_web          replicated          0/5                 huazhou/get-started:part2         *:80-&gt;80/tcp</code></pre>
+## ce88kz5h9uon        getstartedlab_redis        replicated          0/1                 redis:latest                      *:6379-&gt;6379/tcp
+## lphaalecveb2        getstartedlab_visualizer   replicated          0/1                 dockersamples/visualizer:stable   *:8080-&gt;8080/tcp
+## syvk5oqw7rvn        getstartedlab_web          replicated          0/5                 huazhou/get-started:part2         *:80-&gt;80/tcp</code></pre>
 <p>List the tasks for your service:</p>
 <pre class="bash"><code>docker service ps getstartedlab_web</code></pre>
 <pre><code>## ID                  NAME                  IMAGE                       NODE                    DESIRED STATE       CURRENT STATE                     ERROR               PORTS
-## 62yac59phghi        getstartedlab_web.1   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
-## tfja56il4b41        getstartedlab_web.2   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
-## m5t5wekwd0fv        getstartedlab_web.3   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
-## z1jo1qpfirix        getstartedlab_web.4   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
-## i658addyh729        getstartedlab_web.5   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago</code></pre>
+## 2ph4cmcmj5h7        getstartedlab_web.1   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
+## kqiaqlqgenuo        getstartedlab_web.2   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
+## qc07x8awitvp        getstartedlab_web.3   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
+## kbg9rf6wn02y        getstartedlab_web.4   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago                       
+## 2zigq14j37j4        getstartedlab_web.5   huazhou/get-started:part2   linuxkit-025000000001   Running             Starting less than a second ago</code></pre>
 <p>Now we can check the new webpage at <code>localhost:80</code> and the visualizer at <code>localhost:8080</code> in browser.</p>
 <p>To take down the service and swarm:</p>
 <pre class="bash"><code>docker stack rm getstartedlab

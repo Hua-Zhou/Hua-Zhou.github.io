@@ -181,7 +181,7 @@ docker run -d -p 4000:80 friendlyhello
 ```
 `-p 4000:80` maps port 80 of the container to port 4000 of host.
 
-Diplay the container:
+Display the container:
 ```{bash}
 docker container ls
 ```
@@ -222,7 +222,7 @@ docker run -d -p 4000:80 huazhou/get-started:part2
 
 Following [`docker-compose.yml`](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/14-docker/docker-compose.yml) specifies:
 
-- Pull the image `hwachou/get-started:part2`.
+- Pull the image `huazhou/get-started:part2`.
 
 - Run 5 instances of that image as a service called `web`, limiting each one to use, at most, 10% of the CPU (across all cores), and 50MB of RAM.
 
