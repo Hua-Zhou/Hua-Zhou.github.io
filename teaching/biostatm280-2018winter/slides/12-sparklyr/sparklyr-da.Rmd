@@ -15,6 +15,10 @@ knitr::opts_chunk$set()
 
 In this tutorial, we do some exploratory data analysis of the distributed data in a Hadoop YARN cluster. Again it is adapted from the [tutorial at RStudio](http://spark.rstudio.com/examples/yarn-cluster-emr/).
 
+<p align="center">
+![](./emrArchitecture.png){width=300px}
+</p>
+
 ## Log in the Hadoop YARN cluster
 
 - GCP YARN cluster master node has IP address `35.185.198.142` and has RStudio installed serving at [`http://35.185.198.142:8787`](http://35.185.198.142:8787).
@@ -25,5 +29,5 @@ In this tutorial, we do some exploratory data analysis of the distributed data i
 
 - Your username is same as on the teaching server and the default password is `m280`. Change password via `passwd` command immediately after your first login.
 
-- To work on your HW4 on the YARN master node, you may first want to `git clone` your `biostat-m280-2018-winter` repo.
+- To work on your HW4 on the YARN master node, you may first `git clone` your `biostat-m280-2018-winter` repo and create a project.
 
