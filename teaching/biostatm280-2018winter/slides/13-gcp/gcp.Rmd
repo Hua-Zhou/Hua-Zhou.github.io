@@ -304,7 +304,7 @@ git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git
 
 ## Go forth and use the cloud
 
-- Using cloud (AWS or GCP) is easy.
+- Using cloud (AWS, Azure, GCP, ...) is easy.
 
 - Easy to launch cluster instances or other heavily customized instances (SQL server, BigQuery, ML engine, Genomics, ...).
 
@@ -322,7 +322,7 @@ git clone git@github.com:Hua-Zhou/biostat-m280-2018-winter.git
     <img src="./gcp_tpu.png" height="225">
     </p>
 
-    - To put it in scale, 180 teraflops is equivalent to the most powerful high performance cluster (HPC) in 2005, according to following [slide](https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongarra.pdf) by Jack Dongarra.
+    - To put it in perspective, 180 teraflops is equivalent to the most powerful high performance cluster (HPC) in 2005, according to following [slide](https://www.samsi.info/wp-content/uploads/2017/02/SAMSI-0217_Dongarra.pdf) by Jack Dongarra.
     
     <p align="center">
     ![](./hpc_top500.png){width=500px}
