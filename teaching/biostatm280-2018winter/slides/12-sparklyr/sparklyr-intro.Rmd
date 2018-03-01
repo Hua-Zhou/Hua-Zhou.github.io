@@ -116,6 +116,8 @@ wget -O /tmp/airports.csv https://raw.githubusercontent.com/jpatokal/openflights
 Peek into the data:
 ```{bash, eval = FALSE}
 head /tmp/flights/1987.csv 
+head /tmp/airlines.csv
+head /tmp/airports.csv
 ```
 
 ## Distribute into HDFS
@@ -235,7 +237,9 @@ STORED AS TEXTFILE;
 LOAD DATA INPATH '/user/rstudio-user/airports' INTO TABLE airports;
 ```
 
-## Install R/RStudio Server on master node
+## Install R/RStudio Server on master node (Debian)
+
+`apt-get` is the package manager on Debian system.
 
 Install dependencies:
 ```{bash, eval = FALSE}
@@ -262,7 +266,9 @@ RStudio Server will be automatically started upon successful installation.
 
 By default, port 8787 used by R Studio Server is blocked by VM firewall. On GCP console, go to VPC network and then Firewall rules, create a rule for R Studio Server (tcp: 8787), apply that rule to the YARN master node.
 
-Now you should be able to access R Studio Server on YARN master node by pointing your browser to address `http://ip-address:8787`.
+Now you should be able to access R Studio Server on YARN master node by pointing your browser to address [`http://35.185.198.142:8787`](http://35.185.198.142:8787).
+
+## Establish regular accounts
 
 Run following script to set up student's accounts on YARN master node with default password `m280` (need sudo rights): 
 ```{bash, eval = FALSE}
@@ -278,7 +284,7 @@ for u in "${ulist[@]}"
 
 ## YARN management survival commands
 
-- We can check the status of YARN cluster at port 8088: <http://35.185.198.142:8088>.
+- We can check the status of YARN cluster at port 8088: [`http://35.185.198.142:8088`](http://35.185.198.142:8088).
 ```{bash, eval = FALSE}
 # list hadoop jobs
 yarn application -list
