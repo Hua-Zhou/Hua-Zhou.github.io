@@ -31,7 +31,7 @@ In this tutorial, we do some exploratory data analysis of the distributed data i
 ![](./gcp-yarn-nodes.png){width=500px}
 </p>
 
-- Your username is same as on the teaching server and the default password is `m280`. Change password via `passwd` command immediately after your first login.
+- Your username is same as on the teaching server and the default password is `m280`. Change password via `passwd` command immediately after your first login. Again setting up SSH key authentication will make our life easier.
 
 - To work on your HW4 on the YARN master node, you may first `git clone` your `biostat-m280-2018-winter` repo and create a project.
 
@@ -56,9 +56,7 @@ Create dplyr reference to the Spark DataFrame.
 ```{r}
 # Cache flights Hive table into Spark
 #tbl_cache(sc, 'flights')
-system.time(
-  flights_tbl <- tbl(sc, 'flights')
-)
+flights_tbl <- tbl(sc, 'flights')
 flights_tbl %>% print(width = Inf)
 ```
 
@@ -80,35 +78,45 @@ airports_tbl %>% print(width = Inf)
 
 Across whole data set:
 ```{r}
-flights_tbl %>%
+system.time({
+out <- flights_tbl %>%
   group_by(year) %>%
   count() %>%
   arrange(year) %>%
   collect()
+})
+out
+out %>% ggplot(aes(x = year, y = n)) + geom_col()
 ```
 
 How many flights from LAX per year:
 ```{r}
-flights_tbl %>%
+system.time({
+out <- flights_tbl %>%
   filter(origin == "LAX") %>%
   group_by(year) %>%
   count() %>%
   arrange(year) %>%
-  collect() %>%
-  ggplot(aes(x = year, y = n)) + 
+  collect()
+})
+out
+out %>% ggplot(aes(x = year, y = n)) + 
     geom_col() +
     labs(title = "Number of flights from LAX")
 ```
 
 How many flights to LAX per year:
 ```{r}
-flights_tbl %>%
+system.time({
+out <- flights_tbl %>%
   filter(dest == "LAX") %>%
   group_by(year) %>%
   count() %>%
   arrange(year) %>%
-  collect() %>%
-  ggplot(aes(x = year, y = n)) + 
+  collect()
+})
+out
+out %>% ggplot(aes(x = year, y = n)) + 
     geom_col() +
     labs(title = "Number of flights to LAX")
 ```
@@ -134,8 +142,8 @@ model_data
 # Summarize data by carrier
 model_data %>%
   group_by(uniquecarrier) %>%
-  summarize(description = min(description), gain=mean(gain), 
-            distance=mean(distance), depdelay=mean(depdelay)) %>%
+  summarize(description = min(description), gain = mean(gain), 
+            distance = mean(distance), depdelay = mean(depdelay)) %>%
   select(description, gain, distance, depdelay) %>%
   arrange(gain)
 ```
@@ -145,10 +153,8 @@ model_data %>%
 Predict time gained or lost in flight as a function of distance, departure delay, and airline carrier.
 ```{r}
 # Partition the data into training and validation sets
-system.time(
-  model_partition <- model_data %>% 
-    sdf_partition(train = 0.8, valid = 0.2, seed = 5555)
-)
+model_partition <- model_data %>% 
+  sdf_partition(train = 0.8, valid = 0.2, seed = 5555)
 
 # Fit a linear model
 system.time(
@@ -175,6 +181,7 @@ system.time(
       collect()
   })
 )
+model_deciles
 
 # Create a summary dataset for plotting
 deciles <- rbind(
@@ -182,6 +189,7 @@ deciles <- rbind(
   data.frame(data = 'valid', model_deciles$valid),
   make.row.names = FALSE
 )
+deciles
 
 # Plot average gains by predicted decile
 deciles %>%
@@ -195,7 +203,6 @@ deciles %>%
 Compare actual gains to predicted gains for an out of time sample.
 ```{r}
 # Select data from an out of time sample
-system.time(
 data_2008 <- flights_tbl %>%
   filter(!is.na(arrdelay) & !is.na(depdelay) & !is.na(distance)) %>%
   filter(depdelay > 15 & depdelay < 240) %>%
@@ -204,7 +211,7 @@ data_2008 <- flights_tbl %>%
   left_join(airlines_tbl, by = c("uniquecarrier" = "code")) %>%
   mutate(gain = depdelay - arrdelay) %>%
   select(year, month, arrdelay, depdelay, distance, uniquecarrier, description, gain, origin,dest)
-)
+data_2008
 
 # Summarize data by carrier
 carrier <- sdf_predict(ml1, data_2008) %>%
@@ -212,6 +219,7 @@ carrier <- sdf_predict(ml1, data_2008) %>%
   summarize(gain = mean(gain), prediction = mean(prediction), freq = n()) %>%
   filter(freq > 10000) %>%
   collect()
+carrier
 
 # Plot actual gains and predicted gains by airline carrier
 ggplot(carrier, aes(gain, prediction)) + 

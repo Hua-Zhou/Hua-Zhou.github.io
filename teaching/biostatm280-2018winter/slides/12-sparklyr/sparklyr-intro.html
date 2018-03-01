@@ -137,6 +137,7 @@ $(document).ready(function () {
 <li><a href="#create-hive-tables">Create Hive tables</a></li>
 <li><a href="#install-rrstudio-server-on-master-node">Install R/RStudio Server on master node</a></li>
 <li><a href="#yarn-management-survival-commands">YARN management survival commands</a></li>
+<li><a href="#spark-mllib">Spark MLlib</a></li>
 </ul></li>
 </ul>
 </div>
@@ -371,6 +372,10 @@ for u in &quot;${ulist[@]}&quot;
 yarn application -list
 # kill hadoop job
 yarn application -kill APPLICATION_ID</code></pre>
+</div>
+<div id="spark-mllib" class="section level2">
+<h2>Spark MLlib</h2>
+<p>Sparklyr provides interface for the <a href="https://spark.apache.org/docs/2.2.0/ml-guide.html">Spark MLlib library</a> for machine learning. RStudio cheat sheet provides a good start point.</p>
 </div>
 </div>
 

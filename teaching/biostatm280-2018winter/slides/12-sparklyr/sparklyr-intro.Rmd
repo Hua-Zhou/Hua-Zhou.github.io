@@ -285,3 +285,7 @@ yarn application -list
 # kill hadoop job
 yarn application -kill APPLICATION_ID
 ```
+
+## Spark MLlib
+
+Sparklyr provides interface for the [Spark MLlib library](https://spark.apache.org/docs/2.2.0/ml-guide.html) for machine learning. RStudio cheat sheet provides a good start point.
