@@ -135,7 +135,8 @@ $(document).ready(function () {
 <li><a href="#download-the-flights-data">Download the flights data</a></li>
 <li><a href="#distribute-into-hdfs">Distribute into HDFS</a></li>
 <li><a href="#create-hive-tables">Create Hive tables</a></li>
-<li><a href="#install-rrstudio-server-on-master-node">Install R/RStudio Server on master node</a></li>
+<li><a href="#install-rrstudio-server-on-master-node-debian">Install R/RStudio Server on master node (Debian)</a></li>
+<li><a href="#establish-regular-accounts">Establish regular accounts</a></li>
 <li><a href="#yarn-management-survival-commands">YARN management survival commands</a></li>
 <li><a href="#spark-mllib">Spark MLlib</a></li>
 </ul></li>
@@ -226,7 +227,9 @@ wget -O /tmp/airlines.csv http://www.transtats.bts.gov/Download_Lookup.asp?Looku
 # Download airports data
 wget -O /tmp/airports.csv https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat</code></pre>
 <p>Peek into the data:</p>
-<pre class="bash"><code>head /tmp/flights/1987.csv </code></pre>
+<pre class="bash"><code>head /tmp/flights/1987.csv 
+head /tmp/airlines.csv
+head /tmp/airports.csv</code></pre>
 </div>
 <div id="distribute-into-hdfs" class="section level2">
 <h2>Distribute into HDFS</h2>
@@ -335,8 +338,9 @@ STORED AS TEXTFILE;
 # Load data into table
 LOAD DATA INPATH '/user/rstudio-user/airports' INTO TABLE airports;</code></pre>
 </div>
-<div id="install-rrstudio-server-on-master-node" class="section level2">
-<h2>Install R/RStudio Server on master node</h2>
+<div id="install-rrstudio-server-on-master-node-debian" class="section level2">
+<h2>Install R/RStudio Server on master node (Debian)</h2>
+<p><code>apt-get</code> is the package manager on Debian system.</p>
 <p>Install dependencies:</p>
 <pre class="bash"><code># Update
 sudo apt-get update
@@ -352,7 +356,10 @@ wget https://download2.rstudio.org/rstudio-server-1.1.423-amd64.deb
 sudo gdebi rstudio-server-1.1.423-amd64.deb</code></pre>
 <p>RStudio Server will be automatically started upon successful installation.</p>
 <p>By default, port 8787 used by R Studio Server is blocked by VM firewall. On GCP console, go to VPC network and then Firewall rules, create a rule for R Studio Server (tcp: 8787), apply that rule to the YARN master node.</p>
-<p>Now you should be able to access R Studio Server on YARN master node by pointing your browser to address <code>http://ip-address:8787</code>.</p>
+<p>Now you should be able to access R Studio Server on YARN master node by pointing your browser to address <a href="http://35.185.198.142:8787"><code>http://35.185.198.142:8787</code></a>.</p>
+</div>
+<div id="establish-regular-accounts" class="section level2">
+<h2>Establish regular accounts</h2>
 <p>Run following script to set up student’s accounts on YARN master node with default password <code>m280</code> (need sudo rights):</p>
 <pre class="bash"><code>ulist=(&quot;huazhou&quot; &quot;juhkim111&quot; &quot;andrewngu&quot; &quot;anorthrup&quot; &quot;bryanlin24&quot; &quot;chad.e.pickering&quot; &quot;c.shaw&quot; &quot;david.levy&quot; &quot;emjcampos&quot; &quot;ericasu&quot; &quot;gaoshuang&quot; &quot;huiyuhu&quot; &quot;jayxu33&quot; &quot;jboland521&quot; &quot;jiayunli&quot; &quot;katywang&quot; &quot;l4luo&quot; &quot;lishanpeng0913&quot; &quot;luminghuang&quot; &quot;makadlac&quot; &quot;mdponzini&quot; &quot;mondals&quot; &quot;nabbongoug&quot; &quot;nanchen322&quot; &quot;sarahh.jii&quot; &quot;sgoitom&quot; &quot;shendarrick821&quot; &quot;stjia&quot; &quot;tahlia.hodes&quot; &quot;tdbufford&quot; &quot;wangdy0536&quot; &quot;xliu352&quot; &quot;zexuan55&quot; &quot;zhaokezk&quot; &quot;ziyansong08&quot; &quot;zy.zhang&quot;)
 for u in &quot;${ulist[@]}&quot;
@@ -366,7 +373,7 @@ for u in &quot;${ulist[@]}&quot;
 <div id="yarn-management-survival-commands" class="section level2">
 <h2>YARN management survival commands</h2>
 <ul>
-<li>We can check the status of YARN cluster at port 8088: <a href="http://35.185.198.142:8088" class="uri">http://35.185.198.142:8088</a>.</li>
+<li>We can check the status of YARN cluster at port 8088: <a href="http://35.185.198.142:8088"><code>http://35.185.198.142:8088</code></a>.</li>
 </ul>
 <pre class="bash"><code># list hadoop jobs
 yarn application -list
