@@ -33,6 +33,10 @@ Hadoop, HDFS, MapReduce, YARN, Spark, Hive, Pig, ...
 
 # Tutorial
 
+<p align="center">
+![](./yarn-architecture.png){width=500px}
+</p>
+
 In this tutorial, we learn to:
 
 - set up a YARN cluster (1 master node, 2 worker nodes) on GCP
@@ -78,6 +82,8 @@ sudo passwd rstudio-user
 hadoop fs -mkdir /user/rstudio-user
 hadoop fs -chmod 777 /user/rstudio-user
 ```
+
+See [Hadoop FS reference](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html) for a list of `hadoop fs` commands.
 
 ## Download the flights data
 
@@ -237,6 +243,8 @@ STORED AS TEXTFILE;
 LOAD DATA INPATH '/user/rstudio-user/airports' INTO TABLE airports;
 ```
 
+See [Hive language reference](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) for Hive syntax.
+
 ## Install R/RStudio Server on master node (Debian)
 
 `apt-get` is the package manager on Debian system.
@@ -256,7 +264,7 @@ Install commonly used R packages so they're globally available to all users:
 ```{bash, eval = FALSE}
 sudo R -e "install.packages(c('tidyverse', 'DBI', 'sparklyr', 'caTools', 'bitops'), repos='https://cran.rstudio.com/')"
 ```
-Install RStudio Server:
+Install [RStudio Server](https://www.rstudio.com/products/rstudio/download-server/) on Debian:
 ```{bash, eval = FALSE}
 sudo apt-get install gdebi-core
 wget https://download2.rstudio.org/rstudio-server-1.1.423-amd64.deb
@@ -294,4 +302,4 @@ yarn application -kill APPLICATION_ID
 
 ## Spark MLlib
 
-Sparklyr provides interface for the [Spark MLlib library](https://spark.apache.org/docs/2.2.0/ml-guide.html) for machine learning. RStudio cheat sheet provides a good start point.
+Sparklyr provides interface for the [Spark MLlib library](https://spark.apache.org/docs/2.2.0/ml-guide.html) for machine learning. RStudio [cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/sparklyr.pdf) provides a good start point.
