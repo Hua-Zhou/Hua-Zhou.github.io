@@ -123,6 +123,7 @@ out %>% ggplot(aes(x = year, y = n)) +
 
 ## Create a model data set
 
+Suppose we want to fit a linear regression of `gain` (`depdelay` - `arrdelay`) on distance, departure delay, and carriers using data from 2013-2017.
 ```{r}
 # Filter records and create target variable 'gain'
 system.time(
@@ -210,7 +211,7 @@ data_2008 <- flights_tbl %>%
   filter(year == 2008) %>%
   left_join(airlines_tbl, by = c("uniquecarrier" = "code")) %>%
   mutate(gain = depdelay - arrdelay) %>%
-  select(year, month, arrdelay, depdelay, distance, uniquecarrier, description, gain, origin,dest)
+  select(year, month, arrdelay, depdelay, distance, uniquecarrier, description, gain, origin, dest)
 data_2008
 
 # Summarize data by carrier

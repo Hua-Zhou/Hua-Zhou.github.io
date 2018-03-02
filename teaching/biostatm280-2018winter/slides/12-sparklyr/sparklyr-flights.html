@@ -228,7 +228,7 @@ sc</code></pre>
 ## 
 ## $backend
 ##         description               class                mode 
-## &quot;-&gt;localhost:41803&quot;          &quot;sockconn&quot;                &quot;wb&quot; 
+## &quot;-&gt;localhost:55349&quot;          &quot;sockconn&quot;                &quot;wb&quot; 
 ##                text              opened            can read 
 ##            &quot;binary&quot;            &quot;opened&quot;               &quot;yes&quot; 
 ##           can write 
@@ -236,24 +236,24 @@ sc</code></pre>
 ## 
 ## $monitor
 ##         description               class                mode 
-## &quot;-&gt;localhost:36468&quot;          &quot;sockconn&quot;                &quot;rb&quot; 
+## &quot;-&gt;localhost:59466&quot;          &quot;sockconn&quot;                &quot;rb&quot; 
 ##                text              opened            can read 
 ##            &quot;binary&quot;            &quot;opened&quot;               &quot;yes&quot; 
 ##           can write 
 ##               &quot;yes&quot; 
 ## 
 ## $output_file
-## [1] &quot;/tmp/RtmpCNJbd4/file5ec44e97ecb0_spark.log&quot;
+## [1] &quot;/tmp/RtmpxxpnLH/file482466f6e296_spark.log&quot;
 ## 
 ## $spark_context
 ## &lt;jobj[6]&gt;
 ##   org.apache.spark.SparkContext
-##   org.apache.spark.SparkContext@5c7118cc
+##   org.apache.spark.SparkContext@7e4acba9
 ## 
 ## $java_context
 ## &lt;jobj[7]&gt;
 ##   org.apache.spark.api.java.JavaSparkContext
-##   org.apache.spark.api.java.JavaSparkContext@2730307e
+##   org.apache.spark.api.java.JavaSparkContext@3255af38
 ## 
 ## attr(,&quot;class&quot;)
 ## [1] &quot;spark_connection&quot;       &quot;spark_shell_connection&quot;
@@ -403,7 +403,7 @@ out &lt;- flights_tbl %&gt;%
   collect()
 })</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.028   0.000  31.906</code></pre>
+##   0.032   0.000  40.343</code></pre>
 <pre class="r"><code>out</code></pre>
 <pre><code>## # A tibble: 23 x 2
 ## # Groups:   year [23]
@@ -433,7 +433,7 @@ out &lt;- flights_tbl %&gt;%
   collect()
 })</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.032   0.000  30.419</code></pre>
+##   0.028   0.004  32.328</code></pre>
 <pre class="r"><code>out</code></pre>
 <pre><code>## # A tibble: 22 x 2
 ## # Groups:   year [22]
@@ -464,7 +464,7 @@ out &lt;- flights_tbl %&gt;%
   collect()
 })</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.024   0.004  26.907</code></pre>
+##   0.028   0.000  29.628</code></pre>
 <pre class="r"><code>out</code></pre>
 <pre><code>## # A tibble: 22 x 2
 ## # Groups:   year [22]
@@ -488,6 +488,7 @@ out &lt;- flights_tbl %&gt;%
 </div>
 <div id="create-a-model-data-set" class="section level2">
 <h2>Create a model data set</h2>
+<p>Suppose we want to fit a linear regression of <code>gain</code> (<code>depdelay</code> - <code>arrdelay</code>) on distance, departure delay, and carriers using data from 2013-2017.</p>
 <pre class="r"><code># Filter records and create target variable 'gain'
 system.time(
   model_data &lt;- flights_tbl %&gt;%
@@ -500,7 +501,7 @@ system.time(
     select(year, month, arrdelay, depdelay, distance, uniquecarrier, description, gain)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.008   0.000   0.006</code></pre>
+##   0.008   0.000   0.005</code></pre>
 <pre class="r"><code>model_data</code></pre>
 <pre><code>## # Source:   lazy query [?? x 8]
 ## # Database: spark_connection
@@ -574,14 +575,14 @@ system.time(
     ml_linear_regression(gain ~ distance + depdelay + uniquecarrier)
 )</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.208   0.020 354.547</code></pre>
+##   0.192   0.008 362.776</code></pre>
 <pre class="r"><code># Summarize the linear model
 summary(ml1)</code></pre>
 <pre><code>## Call: ml_linear_regression.tbl_spark(., gain ~ distance + depdelay + uniquecarrier)  
 ## 
 ## Deviance Residuals (approximate):
 ##      Min       1Q   Median       3Q      Max 
-## -282.047   -5.521    2.693    9.764   85.762 
+## -282.586   -5.553    2.686    9.753  102.776 
 ## 
 ## Coefficients:
 ##      (Intercept)         distance         depdelay uniquecarrier_WN 
@@ -622,7 +623,7 @@ system.time(
 ## Warning: Missing values are always removed in SQL.
 ## Use `AVG(x, na.rm = TRUE)` to silence this warning</code></pre>
 <pre><code>##    user  system elapsed 
-##   0.168   0.000 201.963</code></pre>
+##   0.144   0.000 178.640</code></pre>
 <pre class="r"><code>model_deciles</code></pre>
 <pre><code>## $train
 ## # A tibble: 10 x 2
@@ -661,25 +662,25 @@ deciles &lt;- rbind(
 )
 deciles</code></pre>
 <pre><code>##     data decile       gain
-## 1  train      1  6.0197251
-## 2  train      2  2.4793493
-## 3  train      3  1.7139289
-## 4  train      4  1.0696746
-## 5  train      5  0.3366731
-## 6  train      6 -0.3433207
-## 7  train      7 -1.2307238
-## 8  train      8 -2.2462667
-## 9  train      9 -2.7019497
+## 1  train      1  6.0196889
+## 2  train      2  2.4792384
+## 3  train      3  1.7140761
+## 4  train      4  1.0696597
+## 5  train      5  0.3365707
+## 6  train      6 -0.3432631
+## 7  train      7 -1.2306897
+## 8  train      8 -2.2462305
+## 9  train      9 -2.7019604
 ## 10 train     10 -3.7754183
-## 11 valid      1  5.9681824
-## 12 valid      2  2.5054865
+## 11 valid      1  5.9682678
+## 12 valid      2  2.5054011
 ## 13 valid      3  1.6396994
-## 14 valid      4  1.0644977
-## 15 valid      5  0.3851501
-## 16 valid      6 -0.4977072
-## 17 valid      7 -1.1482528
-## 18 valid      8 -2.2693162
-## 19 valid      9 -2.7092584
+## 14 valid      4  1.0643183
+## 15 valid      5  0.3853294
+## 16 valid      6 -0.4975876
+## 17 valid      7 -1.1483724
+## 18 valid      8 -2.2692137
+## 19 valid      9 -2.7093609
 ## 20 valid     10 -3.8331398</code></pre>
 <pre class="r"><code># Plot average gains by predicted decile
 deciles %&gt;%
@@ -699,7 +700,7 @@ data_2008 &lt;- flights_tbl %&gt;%
   filter(year == 2008) %&gt;%
   left_join(airlines_tbl, by = c(&quot;uniquecarrier&quot; = &quot;code&quot;)) %&gt;%
   mutate(gain = depdelay - arrdelay) %&gt;%
-  select(year, month, arrdelay, depdelay, distance, uniquecarrier, description, gain, origin,dest)
+  select(year, month, arrdelay, depdelay, distance, uniquecarrier, description, gain, origin, dest)
 data_2008</code></pre>
 <pre><code>## # Source:   lazy query [?? x 10]
 ## # Database: spark_connection
