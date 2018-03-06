@@ -1,0 +1,252 @@
+---
+title: "Select Topics in R Programming - Part I"
+author: "Dr. Hua Zhou"
+date: "Mar 16, 2018"
+subtitle: Biostat M280
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(width = 120)
+```
+
+## _Advanced R_
+
+To gain a deep understanding of how R works, the book [Advanced R](http://adv-r.had.co.nz) by Hadley Wickham is a must read. Read **now** to save numerous hours you might waste in future.
+
+We cover select topics on coding style, benchmarking, profiling, debugging, parallel computing, byte code compiling, Rcpp, and package development.
+
+## Style
+
+- [Google's R style](https://google.github.io/styleguide/Rguide.xml).
+
+- [Hadley Wickham's style guide](http://adv-r.had.co.nz/Style.html).
+
+- Most important is to be consistent in your code style.
+
+## Benchmark
+
+Sources:  
+- _Advanced R_: <http://adv-r.had.co.nz/Performance.html>  
+- Blog: <http://www.alexejgossmann.com/benchmarking_r/>   
+
+In order to identify performance issue, we need to measure runtime accurately.
+
+### `system.time`
+
+```{r}
+set.seed(280)
+x <- runif(1e6)
+
+system.time({sqrt(x)})
+system.time({x ^ 0.5})
+system.time({exp(log(x) / 2)})
+```
+
+From [William Dunlap](http://r.789695.n4.nabble.com/Meaning-of-proc-time-td2303263.html#a2306691):
+
+> "User CPU time" gives the CPU time spent by the current 
+process (i.e., the current R session) and "system CPU time" 
+gives the CPU time spent by the kernel (the operating 
+system) on behalf of the current process.  The operating 
+system is used for things like opening files, doing 
+input or output, starting other processes, and looking at 
+the system clock:  operations that involve resources that many 
+processes must share.  Different operating systems will 
+have different things done by the operating system.
+
+### `rbenchmark`
+
+```{r}
+library("rbenchmark")
+
+benchmark(
+  "sqrt(x)" = {sqrt(x)},
+  "x^0.5" = {x ^ 0.5},
+  "exp(log(x)/2)" = {exp(log(x) / 2)},
+  replications = 100,
+  order = "elapsed"
+)
+```
+`relative` is the ratio with the fastest one.
+
+### `microbenchmark`
+
+```{r}
+library("microbenchmark")
+library("ggplot2")
+
+mbm <- microbenchmark(
+  sqrt(x),
+  x ^ 0.5,
+  exp(log(x) / 2)
+)
+mbm
+```
+Results from `microbenchmark` can be nicely plotted in base R or ggplot2.
+```{r}
+boxplot(mbm)
+autoplot(mbm)
+```
+
+## Profiling
+
+> Premature optimization is the root of all evil (or at least most of it) in programming.  
+> -Don Knuth
+
+Sources: 
+- <http://adv-r.had.co.nz/Profiling.html>  
+- <https://rstudio.github.io/profvis/>  
+- <https://support.rstudio.com/hc/en-us/articles/218221837-Profiling-with-RStudio>
+
+### First example
+
+```{r}
+library(profvis)
+
+profvis({
+  data(diamonds, package = "ggplot2")
+
+  plot(price ~ carat, data = diamonds)
+  m <- lm(price ~ carat, data = diamonds)
+  abline(m, col = "red")
+})
+```
+
+### Profiling time
+
+Original code for centering columns of a dataframe:
+```{r}
+times <- 4e5
+cols <- 150
+data <-
+  as.data.frame(x = matrix(rnorm(times * cols, mean = 5),
+                           ncol = cols))
+data <- cbind(id = paste0("g", seq_len(times)), data)
+
+profvis({
+  # Store in another variable for this run
+  data1 <- data
+  
+  # Get column means
+  means <- apply(data1[, names(data1) != "id"], 2, mean)
+  
+  # Subtract mean from each column
+  for (i in seq_along(means)) {
+    data1[, names(data1) != "id"][, i] <-
+      data1[, names(data1) != "id"][, i] - means[i]
+  }
+})
+```
+
+Profile `apply` vs `colMeans` vs `lapply` vs `vapply`:
+```{r}
+profvis({
+  data1 <- data
+  # Four different ways of getting column means
+  means <- apply(data1[, names(data1) != "id"], 2, mean)
+  means <- colMeans(data1[, names(data1) != "id"])
+  means <- lapply(data1[, names(data1) != "id"], mean)
+  means <- vapply(data1[, names(data1) != "id"], mean, numeric(1))
+})
+```
+
+Replace original code by `vapply`:
+```{r}
+profvis({
+  data1 <- data
+  means <- vapply(data1[, names(data1) != "id"], mean, numeric(1))
+
+  for (i in seq_along(means)) {
+    data1[, names(data1) != "id"][, i] <- data1[, names(data1) != "id"][, i] - means[i]
+  }
+})
+```
+
+Calculate mean and center in one pass:
+```{r}
+profvis({
+ data1 <- data
+ 
+ # Given a column, normalize values and return them
+ col_norm <- function(col) {
+ col - mean(col)
+ }
+ 
+ # Apply the normalizer function over all columns except id
+ data1[, names(data1) != "id"] <-
+   lapply(data1[, names(data1) != "id"], col_norm)
+})
+```
+
+### Profiling memory
+
+Original code for cumulative sums:
+```{r}
+profvis({
+  data <- data.frame(value = runif(5e4))
+
+  data$sum[1] <- data$value[1]
+  for (i in seq(2, nrow(data))) {
+    data$sum[i] <- data$sum[i-1] + data$value[i]
+  }
+})
+```
+
+Write a function to avoid expensive indexing by `$`:
+```{r}
+profvis({
+  csum <- function(x) {
+    if (length(x) < 2) return(x)
+
+    sum <- x[1]
+    for (i in seq(2, length(x))) {
+      sum[i] <- sum[i-1] + x[i]
+    }
+    sum
+  }
+  data$sum <- csum(data$value)
+})
+```
+
+Pre-allocate vector:
+```{r}
+profvis({
+  csum2 <- function(x) {
+    if (length(x) < 2) return(x)
+
+    sum <- numeric(length(x))  # Preallocate
+    sum[1] <- x[1]
+    for (i in seq(2, length(x))) {
+      sum[i] <- sum[i-1] + x[i]
+    }
+    sum
+  }
+  data$sum <- csum2(data$value)
+})
+```
+
+## Debugging
+
+Learning sources:  
+- Video: <https://vimeo.com/99375765>  
+- _Advanced R_: <http://adv-r.had.co.nz/Exceptions-Debugging.html>  
+- RStudio tutorial: <https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio>  
+
+Demo code: [parlindrome.R](), [crazy-talk.R]().
+
+- `debug()`, `debugonce()`
+
+- `browser()`
+
+- breakpoint
+
+- `traceback()`
+
+- `options(error = browser)`, `options(error = NULL)`, `Debug` -> `On Error` -> `Break in Code`
+
+- step in/through function

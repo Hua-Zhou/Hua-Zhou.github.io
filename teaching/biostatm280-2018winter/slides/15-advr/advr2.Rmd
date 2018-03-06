@@ -1,0 +1,26 @@
+---
+title: "Select Topics in R Programming - Part II"
+author: "Dr. Hua Zhou"
+date: "Mar 16, 2018"
+subtitle: Biostat M280
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(width = 120)
+```
+
+## Parallel computing
+
+<http://www2.stat.duke.edu/~cr173/Sta523_Fa17/Profiling.html>
+
+## Byte code compilation
+
+## Rcpp
+
+## Package development
+
