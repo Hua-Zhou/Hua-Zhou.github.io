@@ -5,7 +5,7 @@ palindrome <- function(num) {
     place1 <- digits - x
     place2 <- x
     digit1 <- (num %% (10 ^ (place1 + 1))) %/% (10 ^ place1)
-    digiit2 <- (num %% (10 ^ (place2 + 1))) %/% (10 ^ place2)
+    digit2 <- (num %% (10 ^ (place2 + 1))) %/% (10 ^ place2)
     if (digit1 != digit2)
       return(FALSE)
   }
