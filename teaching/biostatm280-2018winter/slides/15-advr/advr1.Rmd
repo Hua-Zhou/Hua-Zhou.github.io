@@ -237,7 +237,7 @@ Learning sources:
 - _Advanced R_: <http://adv-r.had.co.nz/Exceptions-Debugging.html>  
 - RStudio tutorial: <https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio>  
 
-Demo code: [parlindrome.R](), [crazy-talk.R]().
+Demo code: [parlindrome.R](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/15-advr/palindrome.R), [crazy-talk.R](https://github.com/Hua-Zhou/Hua-Zhou.github.io/blob/master/teaching/biostatm280-2018winter/slides/15-advr/crazy-talk.R).
 
 - `debug()`, `debugonce()`
 
