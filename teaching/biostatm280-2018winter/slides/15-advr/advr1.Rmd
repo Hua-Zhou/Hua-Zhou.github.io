@@ -14,6 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 options(width = 120)
 ```
 
+Session informnation for reproducibility:
+```{r}
+sessionInfo()
+```
+
 ## _Advanced R_
 
 To gain a deep understanding of how R works, the book [Advanced R](http://adv-r.had.co.nz) by Hadley Wickham is a must read. Read **now** to save numerous hours you might waste in future.
