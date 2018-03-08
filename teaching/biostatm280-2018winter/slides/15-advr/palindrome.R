@@ -18,9 +18,8 @@ biggest_palindrome <- function() {
   for (x in 100:999) {
     for (y in x:999) {
       candidate <- x * y
-      if (candidate > best && palindrome(candidate)) {
+      if (candidate > best && palindrome(candidate))
         best <- candidate
-      }
     }
   }
   best

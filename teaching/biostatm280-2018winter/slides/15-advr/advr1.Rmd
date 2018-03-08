@@ -122,9 +122,9 @@ profvis({
 })
 ```
 
-### Profiling time
+### Example: profiling time
 
-Original code for centering columns of a dataframe:
+First generate test data:
 ```{r}
 times <- 4e5
 cols <- 150
@@ -132,7 +132,9 @@ data <-
   as.data.frame(x = matrix(rnorm(times * cols, mean = 5),
                            ncol = cols))
 data <- cbind(id = paste0("g", seq_len(times)), data)
-
+```
+Original code for centering columns of a dataframe:
+```{r}
 profvis({
   # Store in another variable for this run
   data1 <- data
@@ -160,7 +162,7 @@ profvis({
 })
 ```
 
-Replace original code by `vapply`:
+We decide to use `vapply`:
 ```{r}
 profvis({
   data1 <- data
@@ -188,12 +190,12 @@ profvis({
 })
 ```
 
-### Profiling memory
+### Example: profiling memory
 
 Original code for cumulative sums:
 ```{r}
 profvis({
-  data <- data.frame(value = runif(5e4))
+  data <- data.frame(value = runif(1e5))
 
   data$sum[1] <- data$value[1]
   for (i in seq(2, nrow(data))) {
@@ -235,6 +237,10 @@ profvis({
 })
 ```
 
+### Advice
+
+Modularize big projects into small functions. Profile functions as early and as frequently as possible.
+
 ## Debugging
 
 Learning sources:  
@@ -244,14 +250,12 @@ Learning sources:
 
 Demo code: [parlindrome.R](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/15-advr/palindrome.R), [crazy-talk.R](https://github.com/Hua-Zhou/Hua-Zhou.github.io/blob/master/teaching/biostatm280-2018winter/slides/15-advr/crazy-talk.R).
 
-- `debug()`, `debugonce()`
+- breakpoint
+
+- step in/through function
 
 - `browser()`
-
-- breakpoint
 
 - `traceback()`
 
 - `options(error = browser)`, `options(error = NULL)`, `Debug` -> `On Error` -> `Break in Code`
-
-- step in/through function

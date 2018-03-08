@@ -17,5 +17,5 @@ test_it <- function() {
     test <- c("the quick brown fox jumps over the lazy dog",
               "lorem ipsum dolor sit amet, consectetur adipiscing elit.")
   )
-  setences$text = crazify(sentences$test)
+  sentences$text = crazify(sentences$test)
 }
