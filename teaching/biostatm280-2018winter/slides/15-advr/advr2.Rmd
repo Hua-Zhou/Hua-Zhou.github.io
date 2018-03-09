@@ -141,7 +141,7 @@ Learning sources:
 
 ### Use `cppFunction`
 
-`Rcpp` language provides a convenient way to embed C++ code in R code.
+`Rcpp` package provides a convenient way to embed C++ code in R code.
 ```{r}
 library(Rcpp)
 
