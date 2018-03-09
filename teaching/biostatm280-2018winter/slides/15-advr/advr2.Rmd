@@ -98,12 +98,12 @@ Benchmark again:
 ```{r}
 microbenchmark(sum_r(x), sum_rc(x))
 ```
-**Surprise**! **Surprise**! Compiling into bytecode does not help at all. Following code shows that the function `testfor` is already compiled into bytecode before execution.
+**Surprise**! **Surprise**! Compiling into bytecode does not help at all. Following code shows that the function `sum_r` is already compiled into bytecode before execution.
 ```{r}
 sum_r
 ```
 
-Let's turn off JIT (just-in-time compilation), re-define the `testfor` function, and benchmark again:
+Let's turn off JIT (just-in-time compilation), re-define the (same) `sum_r` function, and benchmark again:
 ```{r}
 enableJIT(0) # set JIT leval to 0
 sum_r <- function(x) {
@@ -121,7 +121,7 @@ Documentation of `enableJIT`:
 
 > enableJIT enables or disables just-in-time (JIT) compilation. JIT is disabled if the argument is 0. If level is 1 then larger closures are compiled before their first use. If level is 2, then some small closures are also compiled before their second use. If level is 3 then in addition all top level loops are compiled before they are executed. JIT level 3 requires the compiler option optimize to be 2 or 3. The JIT level can also be selected by starting R with the environment variable R_ENABLE_JIT set to one of these values. Calling enableJIT with a negative argument returns the current JIT level. The default JIT level is 3.
 
-Since R 3.4.0 (Apr 2017), the JIT (‘Just In Time’) byte-code compiler is enabled by default at its level 3. 
+Since R 3.4.0 (Apr 2017), the JIT (‘Just In Time’) bytecode compiler is enabled by default at its level 3. 
 
 If you create a package, then you automatically compile the package on installation by adding
 ```{r, eval = FALSE}
