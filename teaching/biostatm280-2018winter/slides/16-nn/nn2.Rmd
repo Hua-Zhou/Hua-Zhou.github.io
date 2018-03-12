@@ -1,0 +1,363 @@
+---
+title: "Deep Learning - Part I (Practice)"
+author: "Dr. Hua Zhou"
+date: "3/15/2018"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+options(width = 120)
+knitr::opts_chunk$set(echo = TRUE)
+sessionInfo()
+```
+
+
+## Software for machine learning
+
+Low-level: [TensorFlow](https://www.tensorflow.org), [Theano](http://deeplearning.net/software/theano/#), [CNTK](https://github.com/Microsoft/CNTK), [Caffe](http://caffe.berkeleyvision.org), [Torch](http://torch.ch), ...
+
+High-level: [scikit-learn](http://scikit-learn.org/stable/), [Keras](https://keras.io), [PyTorch](http://pytorch.org), ...
+
+## TensorFlow
+
+- Developed by Google Brain team for internal Google use. Formerly DistBelief.
+
+- Open sourced in Nov 2015.
+
+- OS: Linux, MacOS, and Windows (since Nov 2016.
+
+- GPU support: NVIDIA CUDA.
+
+- TPU (tensor processing unit), built specifically for machine learning and tailored for TensorFlow.
+
+- Mobile device deployment: TensorFlow Lite (May 2017) for Android and iOS.
+
+- Used in variety of Google apps: speech recognition (Google assistant), Gmail (Smart Reply), search, translate, self-driving car ...
+
+- [Machine Learning Crash Course (MLCC)](https://developers.google.com/machine-learning/crash-course/?utm_source=google-ai&utm_medium=card-image&utm_campaign=training-hub&utm_content=ml-crash-course). A 15 hour workshop available to public since March 1, 2018.
+
+## RStudio
+
+RStudio provides wrapper package `keras` to the Keras library. 
+
+## MNIST - MLP
+
+Source: <https://tensorflow.rstudio.com/keras/articles/examples/mnist_mlp.html>
+
+In this example, we train an MLP on the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) data set. Achieve testing accuracy 98.23% after 30 epochs.
+
+- The **MNIST** database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training and testing machine learning algorithms.
+
+- 60,000 training images, 10,000 testing images. 
+
+### Prepare data
+
+Aquire data:
+```{r}
+library(keras)
+mnist <- dataset_mnist()
+x_train <- mnist$train$x
+y_train <- mnist$train$y
+x_test <- mnist$test$x
+y_test <- mnist$test$y
+```
+Training set:
+```{r}
+dim(x_train)
+dim(y_train)
+```
+Testing set:
+```{r}
+dim(x_test)
+dim(y_test)
+```
+Flatten $28 \times 28$ images into $784$-vectors and scale entries to [0, 1]:
+```{r}
+# reshape
+x_train <- array_reshape(x_train, c(nrow(x_train), 784))
+x_test <- array_reshape(x_test, c(nrow(x_test), 784))
+# rescale
+x_train <- x_train / 255
+x_test <- x_test / 255
+dim(x_train)
+dim(x_test)
+```
+Encode $y$ as binary class matrix:
+```{r}
+y_train <- to_categorical(y_train, 10)
+y_test <- to_categorical(y_test, 10)
+dim(y_train)
+dim(y_test)
+```
+
+### Define the model
+
+Define a **sequential model** (a linear stack of layers)
+```{r}
+model <- keras_model_sequential() 
+model %>% 
+  layer_dense(units = 256, activation = 'relu', input_shape = c(784)) %>% 
+  layer_dropout(rate = 0.4) %>% 
+  layer_dense(units = 128, activation = 'relu') %>%
+  layer_dropout(rate = 0.3) %>%
+  layer_dense(units = 10, activation = 'softmax')
+summary(model)
+```
+
+Compile the model with appropriate loss function, optimizer, and metrics:
+```{r}
+model %>% compile(
+  loss = 'categorical_crossentropy',
+  optimizer = optimizer_rmsprop(),
+  metrics = c('accuracy')
+)
+```
+
+### Train and evaluation
+
+```{r}
+system.time({
+history <- model %>% fit(
+  x_train, y_train, 
+  epochs = 30, batch_size = 128, 
+  validation_split = 0.2
+)
+})
+plot(history)
+```
+
+### Testing
+
+Evaluate model performance on the test data:
+```{r}
+model %>% evaluate(x_test, y_test)
+```
+Generate predictions on new data:
+```{r}
+model %>% predict_classes(x_test) %>% head()
+```
+
+## MNIST - CNN
+
+Let's try the convolutional neural network (CNN) on the same MNIST data. Achieve testing error 99.16% after 12 epochs.
+
+### Prepare data
+
+Note instead of vectorizing the images, we keep the 2D structure.
+```{r}
+library(keras)
+
+# Data Preparation -----------------------------------------------------
+
+batch_size <- 128
+num_classes <- 10
+epochs <- 12
+
+# Input image dimensions
+img_rows <- 28
+img_cols <- 28
+
+# The data, shuffled and split between train and test sets
+mnist <- dataset_mnist()
+x_train <- mnist$train$x
+y_train <- mnist$train$y
+x_test <- mnist$test$x
+y_test <- mnist$test$y
+
+# Redefine  dimension of train/test inputs
+x_train <- array_reshape(x_train, c(nrow(x_train), img_rows, img_cols, 1))
+x_test <- array_reshape(x_test, c(nrow(x_test), img_rows, img_cols, 1))
+input_shape <- c(img_rows, img_cols, 1)
+
+# Transform RGB values into [0,1] range
+x_train <- x_train / 255
+x_test <- x_test / 255
+
+cat('x_train_shape:', dim(x_train), '\n')
+cat(nrow(x_train), 'train samples\n')
+cat(nrow(x_test), 'test samples\n')
+
+# Convert class vectors to binary class matrices
+y_train <- to_categorical(y_train, num_classes)
+y_test <- to_categorical(y_test, num_classes)
+```
+
+### Define model
+
+Define and compile model:
+```{r}
+model <- keras_model_sequential()
+model %>%
+  layer_conv_2d(filters = 32, kernel_size = c(3,3), activation = 'relu',
+                input_shape = input_shape) %>% 
+  layer_conv_2d(filters = 64, kernel_size = c(3,3), activation = 'relu') %>% 
+  layer_max_pooling_2d(pool_size = c(2, 2)) %>% 
+  layer_dropout(rate = 0.25) %>% 
+  layer_flatten() %>% 
+  layer_dense(units = 128, activation = 'relu') %>% 
+  layer_dropout(rate = 0.5) %>% 
+  layer_dense(units = num_classes, activation = 'softmax')
+
+# Compile model
+model %>% compile(
+  loss = loss_categorical_crossentropy,
+  optimizer = optimizer_adadelta(),
+  metrics = c('accuracy')
+)
+```
+
+### Train and evaluate
+
+```{r}
+system.time({
+history <- model %>% fit(
+  x_train, y_train,
+  batch_size = batch_size,
+  epochs = epochs,
+  verbose = 1,
+  validation_data = list(x_test, y_test)
+)
+})
+plot(history)
+```
+Testing:
+```
+scores <- model %>% evaluate(
+  x_test, y_test, verbose = 0
+)
+
+# Output metrics
+cat('Test loss:', scores[[1]], '\n')
+cat('Test accuracy:', scores[[2]], '\n')
+```
+
+## Generate text from Nietzsche’s writings
+
+Source: <https://tensorflow.rstudio.com/keras/articles/examples/lstm_text_generation.html>
+
+```{r}
+library(keras)
+library(readr)
+library(stringr)
+library(purrr)
+library(tokenizers)
+
+# Parameters --------------------------------------------------------------
+
+maxlen <- 40
+
+# Data Preparation --------------------------------------------------------
+
+# Retrieve text
+path <- get_file(
+  'nietzsche.txt', 
+  origin='https://s3.amazonaws.com/text-datasets/nietzsche.txt'
+  )
+
+# Load, collapse, and tokenize text
+text <- read_lines(path) %>%
+  str_to_lower() %>%
+  str_c(collapse = "\n") %>%
+  tokenize_characters(strip_non_alphanum = FALSE, simplify = TRUE)
+
+print(sprintf("corpus length: %d", length(text)))
+
+chars <- text %>%
+  unique() %>%
+  sort()
+
+print(sprintf("total chars: %d", length(chars)))  
+
+# Cut the text in semi-redundant sequences of maxlen characters
+dataset <- map(
+  seq(1, length(text) - maxlen - 1, by = 3), 
+  ~list(sentece = text[.x:(.x + maxlen - 1)], next_char = text[.x + maxlen])
+  )
+
+dataset <- transpose(dataset)
+
+# Vectorization
+X <- array(0, dim = c(length(dataset$sentece), maxlen, length(chars)))
+y <- array(0, dim = c(length(dataset$sentece), length(chars)))
+
+for(i in 1:length(dataset$sentece)){
+  
+  X[i,,] <- sapply(chars, function(x){
+    as.integer(x == dataset$sentece[[i]])
+  })
+  
+  y[i,] <- as.integer(chars == dataset$next_char[[i]])
+  
+}
+
+# Model Definition --------------------------------------------------------
+
+model <- keras_model_sequential()
+
+model %>%
+  layer_lstm(128, input_shape = c(maxlen, length(chars))) %>%
+  layer_dense(length(chars)) %>%
+  layer_activation("softmax")
+
+optimizer <- optimizer_rmsprop(lr = 0.01)
+
+model %>% compile(
+  loss = "categorical_crossentropy", 
+  optimizer = optimizer
+)
+
+# Training & Results ----------------------------------------------------
+
+sample_mod <- function(preds, temperature = 1){
+  preds <- log(preds)/temperature
+  exp_preds <- exp(preds)
+  preds <- exp_preds/sum(exp(preds))
+  
+  rmultinom(1, 1, preds) %>% 
+    as.integer() %>%
+    which.max()
+}
+
+for(iteration in 1:60){
+  
+  cat(sprintf("iteration: %02d ---------------\n\n", iteration))
+  
+  model %>% fit(
+    X, y,
+    batch_size = 128,
+    epochs = 1
+  )
+  
+  for(diversity in c(0.2, 0.5, 1, 1.2)){
+    
+    cat(sprintf("diversity: %f ---------------\n\n", diversity))
+    
+    start_index <- sample(1:(length(text) - maxlen), size = 1)
+    sentence <- text[start_index:(start_index + maxlen - 1)]
+    generated <- ""
+    
+    for(i in 1:400){
+      
+      x <- sapply(chars, function(x){
+        as.integer(x == sentence)
+      })
+      x <- array_reshape(x, c(1, dim(x)))
+      
+      preds <- predict(model, x)
+      next_index <- sample_mod(preds, diversity)
+      next_char <- chars[next_index]
+      
+      generated <- str_c(generated, next_char, collapse = "")
+      sentence <- c(sentence[-1], next_char)
+      
+    }
+    
+    cat(generated)
+    cat("\n\n")
+    
+  }
+}
+```
