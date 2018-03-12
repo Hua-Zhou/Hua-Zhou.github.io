@@ -162,7 +162,7 @@ Neural networks are **not a fully automatic tool**, as they are sometimes advert
     \frac{\lambda}{2} \left( \sum_{k, m} \beta_{km}^2 + \sum_{m, l} \alpha_{ml}^2 \right).
     $$
     $\lambda$ is the **weight decay parameter**.  
-    3. **Dropout**. At each training stage, individual nodes are either dropped out of the net with probability $1-p$ or kept with probability $p$, so that a reduced network is left; incoming and outgoing edges to a dropped-out node are also removed.
+    3. **Dropout**. At each training step, individual nodes are either dropped out of the net with probability $1-p$ or kept with probability $p$, so that a reduced network is left; incoming and outgoing edges to a dropped-out node are also removed.
 <p align="center">
 ![](./dropout.png){width=500px}
 </p>
