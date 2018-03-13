@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-options(width = 120)
+options(width = 240)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 

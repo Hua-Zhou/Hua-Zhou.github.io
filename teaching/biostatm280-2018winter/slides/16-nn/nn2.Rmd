@@ -17,7 +17,7 @@ sessionInfo()
 ## Software
 
 - High-level software focus on user-friendly interface to specify and train models.  
-[Keras](https://keras.io), [PyTorch](http://pytorch.org),[scikit-learn](http://scikit-learn.org/stable/), ...
+[Keras](https://keras.io), [PyTorch](http://pytorch.org) (only Linux and MacOS), [scikit-learn](http://scikit-learn.org/stable/), ...
 
 - Lower-level software focus on developer tools for impelementing deep learning models.   
 [TensorFlow](https://www.tensorflow.org), [Theano](http://deeplearning.net/software/theano/#), [CNTK](https://github.com/Microsoft/CNTK), [Caffe](http://caffe.berkeleyvision.org), [Torch](http://torch.ch), ...
@@ -47,12 +47,12 @@ R users can access Keras and TensorFlow via the `keras` and `tensorflow` package
 
 ## Example: MNIST - MLP
 
-[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/16-nn/mnist_mlp.Rmd), [html](./slides/16-nn/mnist_mlp.html).
+[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/16-nn/mnist_mlp.Rmd), [html](./mnist_mlp.html).
 
 ## Example: MNIST - CNN
 
-[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/16-nn/mnist_cnn.Rmd), [html](./slides/16-nn/mnist_cnn.html).
+[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/16-nn/mnist_cnn.Rmd), [html](./mnist_cnn.html).
 
 ## Example: Generate text from Nietzsche’s writings
 
-[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/16-nn/nietzsche_lstm.Rmd), [html](./slides/16-nn/nietzsche_lstm.html).
+[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/16-nn/nietzsche_lstm.Rmd), [html](./nietzsche_lstm.html).

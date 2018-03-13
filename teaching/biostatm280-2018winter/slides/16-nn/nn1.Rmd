@@ -21,11 +21,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 In the last two lecturs, we discuss a general model for learning, neural networks.
 
+## History and recent surge
+
+From [Wang and Raj (2017)](https://arxiv.org/pdf/1702.07800.pdf):
+<p align="center">
+![](./wangraj-table1.png){width=500px}
+</p>
+
 ## Learning sources
 
 - _Elements of Statistical Learning_ (ESL) Chapter 11: <https://web.stanford.edu/~hastie/ElemStatLearn/>.
 
 - UFLDL: <http://ufldl.stanford.edu/tutorial/>.
+
+- Stanford CS231n: <http://cs231n.github.io>.
+
+- _On the origin of deep learning_ by Wang and Raj (2017): <https://arxiv.org/pdf/1702.07800.pdf>
 
 ## Single layer neural network 
 
@@ -52,7 +63,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
     
     - $T=(T_1, \ldots, T_K)$ are the output features that are directly associated with the outputs $Y$ through output functions $g_k(\cdot)$.
     
-    - $g_k(T) = T$ for regression. $g_k(T) = e^{T_k} / \sum_{k=1}^K e^{T_k}$ for $K$-class classification.
+    - $g_k(T) = T$ for regression. $g_k(T) = e^{T_k} / \sum_{k=1}^K e^{T_k}$ for $K$-class classification (**softmax regression**).
     
     - Number of **weights** (parameters) is $M(p+1) + K(M+1)$.
     
@@ -99,7 +110,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
     - The derivatives:
     \begin{eqnarray*}
       \frac{\partial R_i}{\partial \beta_{km}} &=& -2 [y_{ik} - f_k(x_i)] g_k'(\beta_k^T z_i) z_{mi} \equiv \delta_{ki} z_{mi} \\
-      \frac{\partial R_i}{\alpha_{ml}} &=& - \sum_{k=1}^K 2[y_{ik} - f_k(x_i)] g_k'(\beta_k^T z_i) \beta_{km} \sigma'(\alpha_m^T x_i) x_{il} \equiv s_{mi} x_{il}.
+      \frac{\partial R_i}{\partial \alpha_{ml}} &=& - \sum_{k=1}^K 2[y_{ik} - f_k(x_i)] g_k'(\beta_k^T z_i) \beta_{km} \sigma'(\alpha_m^T x_i) x_{il} \equiv s_{mi} x_{il}.
     \end{eqnarray*}
     
     - Gradient descent update:
@@ -126,11 +137,11 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
 
 - Stochastic gradient descent (SGD). In real machine learning applications, training set can be large. Back-propagation over all training cases can be expensive. Learning can also be carried out **online** — processing each batch one at a time, updating the gradient after each training batch, and cycling through the training cases many times. A training **epoch** refers to one sweep through the entire training set.
 
-    **AdaGrad** and **RMSTrop** improve the stability of SGD by trying to incorpoate Hessian information. 
+    **AdaGrad** and **RMSProp** improve the stability of SGD by trying to incorpoate Hessian information. 
 
 - The **unversal approximation theorem** states that a feed-forward network with a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of $\mathbb{R}^n$, under mild assumptions on the activation function.
 
-- Neural network model is a **projectin pursuit** type additive model: 
+- Neural network model is a **projection pursuit** type additive model: 
 $$
 f(X) = \beta_0 + \sum_{m=1}^M \beta_m \sigma(\alpha_{m0} + \alpha_M^T X).
 $$
@@ -162,7 +173,7 @@ Neural networks are **not a fully automatic tool**, as they are sometimes advert
     \frac{\lambda}{2} \left( \sum_{k, m} \beta_{km}^2 + \sum_{m, l} \alpha_{ml}^2 \right).
     $$
     $\lambda$ is the **weight decay parameter**.  
-    3. **Dropout**. At each training step, individual nodes are either dropped out of the net with probability $1-p$ or kept with probability $p$, so that a reduced network is left; incoming and outgoing edges to a dropped-out node are also removed.
+    3. **Dropout**. At each training case, individual nodes are either dropped out of the net with probability $1-p$ or kept with probability $p$, so that a reduced network is left; incoming and outgoing edges to a dropped-out node are also removed. Forward and backpropagation for that training case are done only on this thinned network.
 <p align="center">
 ![](./dropout.png){width=500px}
 </p>
@@ -187,7 +198,7 @@ Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
 ![](./ufldl-convolution-schematic.gif){width=500px}
 </p>
 
-    Consider $96 \times 96$ images. For each hidden unit, first learn a $8 \times 8$ **feature detector** from randomly sampled $8 \times 8$ patches from the larger image. Then apply the learned detector to the all $8 \times 8$ regions of the $96 \times 96$ image to obtain $89 \times 89$ convolved features for that hidden unit.
+    Consider $96 \times 96$ images. For each feature, first learn a $8 \times 8$ **feature detector** (or **filter** or **kernel**) from randomly sampled $8 \times 8$ patches from the larger image. Then apply the learned detector to all $8 \times 8$ regions of the $96 \times 96$ image to obtain $89 \times 89$ convolved features for that feature.
 
 - **Pooling**. For a neural network with 100 hidden units, we have $89^2 \times 100 = 792,100$ convoluted features. This can be reduced by calculating the mean (or max) vale of a particular feature over a region of the image. These summary statistics are much lower in dimension (compared to using all of the extracted features) and can also improve results (less over-fitting). We call this aggregation operation **pooling**, or sometimes **mean pooling** or **max pooling** (depending on the pooling operation applied).
 <p align="center">
@@ -246,6 +257,10 @@ net-5: two hidden layers, locally connected, two levels of weight sharing (was t
 - Achieved 63% accuracy:
 <p align="center">
 ![](./colah-KSH-results.png){width=500px}
+</p>  
+96 learnt filters:  
+<p align="center">
+![](./krizhevsky-weights.jpg){width=500px}
 </p>
 
 ## Recurrent neural networks (RNN)
@@ -262,13 +277,19 @@ Souces: <https://colah.github.io/posts/2015-08-Understanding-LSTMs/>
 
 - MLP and CNN accept a fixed-sized vector as input (e.g. an image) and produce a fixed-sized vector as output (e.g. probabilities of different classes). 
 
-- Recurrent neural networks (RNN) allow us to operate over sequences of vectors: sequences in the input, the output, or in the most general case both.
+- RNNs allow us to operate over sequences of vectors: sequences in the input, the output, or in the most general case both.
 
 - Applications: 
 
-    - **NLP/Speech**: transcribe speech to text, machine translation, generate handwritten text, ...
+    - **NLP/Speech**: transcribe speech to text, machine translation, [language modeling and generating text](http://karpathy.github.io/2015/05/21/rnn-effectiveness/), ...
+    <p align="center">
+    ![](./machine-translation.png){width=500px}
+    </p>
     
     - **Computer vision**: image captioning, video captioning,  ...
+    <p align="center">
+    ![](./image-captioning.png){width=500px}
+    </p>
 
 - RNNs accept an input vector $x$ and give you an output vector $y$. However, crucially this output vector’s contents are influenced not only by the input you just fed in, but also on the entire history of inputs you’ve fed in the past.
 
@@ -287,7 +308,7 @@ Souces: <https://colah.github.io/posts/2015-08-Understanding-LSTMs/>
 ![](./colah-lstm3-simplernn.png){width=500px}
 </p>
 
-- **Long Short Term Memory networks (LSTM)** are a special kind of RNN capable of learning long-term dependencies. 
+- **Long Short-Term Memory networks (LSTM)** are a special kind of RNN capable of learning long-term dependencies. 
 <p align="center">
 ![](./colah-lstm3-chain.png){width=500px}
 ![](./colah-lstm2-notation.png){width=500px}
