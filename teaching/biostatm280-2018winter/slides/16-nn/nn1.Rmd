@@ -28,6 +28,12 @@ From [Wang and Raj (2017)](https://arxiv.org/pdf/1702.07800.pdf):
 ![](./wangraj-table1.png){width=500px}
 </p>
 
+> when you have a hammer, everything looks like a nail.  
+
+<p align="center">
+![](./hammer.jpg){width=200px}
+</p>
+
 ## Learning sources
 
 - _Elements of Statistical Learning_ (ESL) Chapter 11: <https://web.stanford.edu/~hastie/ElemStatLearn/>.
@@ -110,7 +116,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
     - The derivatives:
     \begin{eqnarray*}
       \frac{\partial R_i}{\partial \beta_{km}} &=& -2 [y_{ik} - f_k(x_i)] g_k'(\beta_k^T z_i) z_{mi} \equiv \delta_{ki} z_{mi} \\
-      \frac{\partial R_i}{\partial \alpha_{ml}} &=& - \sum_{k=1}^K 2[y_{ik} - f_k(x_i)] g_k'(\beta_k^T z_i) \beta_{km} \sigma'(\alpha_m^T x_i) x_{il} \equiv s_{mi} x_{il}.
+      \frac{\partial R_i}{\partial \alpha_{ml}} &=& - 2 \sum_{k=1}^K [y_{ik} - f_k(x_i)] g_k'(\beta_k^T z_i) \beta_{km} \sigma'(\alpha_m^T x_i) x_{il} \equiv s_{mi} x_{il}.
     \end{eqnarray*}
     
     - Gradient descent update:
@@ -120,7 +126,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
     \end{eqnarray*}
     where $\gamma_r$ is the **learning rate**.
     
-    - Back propagation equations
+    - Back-propagation equations
     $$
       s_{mi} = \sigma'(\alpha_m^T x_i) \sum_{k=1}^K \beta_{km} \delta_{ki}.
     $$
@@ -137,7 +143,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
 
 - Stochastic gradient descent (SGD). In real machine learning applications, training set can be large. Back-propagation over all training cases can be expensive. Learning can also be carried out **online** — processing each batch one at a time, updating the gradient after each training batch, and cycling through the training cases many times. A training **epoch** refers to one sweep through the entire training set.
 
-    **AdaGrad** and **RMSProp** improve the stability of SGD by trying to incorpoate Hessian information. 
+    **AdaGrad** and **RMSProp** improve the stability of SGD by trying to incorpoate Hessian information in a computationally cheap way. 
 
 - The **unversal approximation theorem** states that a feed-forward network with a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of $\mathbb{R}^n$, under mild assumptions on the activation function.
 
@@ -166,7 +172,7 @@ Neural networks are **not a fully automatic tool**, as they are sometimes advert
 
 - Starting values: usually starting values for weights are chosen to be random values near zero; hence the model starts out nearly linear (for sigmoid), and becomes nonlinear as the weights increase.
     
-- Overfitting:
+- Overfitting (too many parameters):
     1. early stopping; 
     2. weight decay by $L_2$ penalty  
     $$
@@ -198,7 +204,11 @@ Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
 ![](./ufldl-convolution-schematic.gif){width=500px}
 </p>
 
-    Consider $96 \times 96$ images. For each feature, first learn a $8 \times 8$ **feature detector** (or **filter** or **kernel**) from randomly sampled $8 \times 8$ patches from the larger image. Then apply the learned detector to all $8 \times 8$ regions of the $96 \times 96$ image to obtain $89 \times 89$ convolved features for that feature.
+    Consider $96 \times 96$ images. For each feature, first learn a $8 \times 8$ **feature detector** (or **filter** or **kernel**) from randomly sampled $8 \times 8$ patches from the larger image. Then apply the learned detector to all $8 \times 8$ regions of the $96 \times 96$ image to obtain $89 \times 89$ convolved features for that feature. 
+<p align="center">
+![](./ufldl-convolution-schematic.gif){width=500px}
+</p>
+    
 
 - **Pooling**. For a neural network with 100 hidden units, we have $89^2 \times 100 = 792,100$ convoluted features. This can be reduced by calculating the mean (or max) vale of a particular feature over a region of the image. These summary statistics are much lower in dimension (compared to using all of the extracted features) and can also improve results (less over-fitting). We call this aggregation operation **pooling**, or sometimes **mean pooling** or **max pooling** (depending on the pooling operation applied).
 <p align="center">
