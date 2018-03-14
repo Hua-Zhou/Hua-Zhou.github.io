@@ -1,5 +1,5 @@
 ---
-title: "Deep Learning - Part I (Practice)"
+title: "Neural Networks and Deep Learning - Part II (Practice)"
 author: "Dr. Hua Zhou"
 date: "3/15/2018"
 output: 
@@ -23,6 +23,8 @@ sessionInfo()
 [TensorFlow](https://www.tensorflow.org), [Theano](http://deeplearning.net/software/theano/#), [CNTK](https://github.com/Microsoft/CNTK), [Caffe](http://caffe.berkeleyvision.org), [Torch](http://torch.ch), ...
 
 
+- Most tools are developed in Python.
+
 ## TensorFlow
 
 - Developed by Google Brain team for internal Google use. Formerly DistBelief.
@@ -38,6 +40,12 @@ sessionInfo()
 - Mobile device deployment: TensorFlow Lite (May 2017) for Android and iOS.
 
 - Used in a variety of Google apps: speech recognition (Google assistant), Gmail (Smart Reply), search, translate, self-driving car ...
+
+> when you have a hammer, everything looks like a nail.  
+
+<p align="center">
+![](./hammer.jpg){width=200px}
+</p>
 
 - [Machine Learning Crash Course (MLCC)](https://developers.google.com/machine-learning/crash-course/?utm_source=google-ai&utm_medium=card-image&utm_campaign=training-hub&utm_content=ml-crash-course). A 15 hour workshop available to public since March 1, 2018.
 

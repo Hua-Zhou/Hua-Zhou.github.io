@@ -28,12 +28,6 @@ From [Wang and Raj (2017)](https://arxiv.org/pdf/1702.07800.pdf):
 ![](./wangraj-table1.png){width=500px}
 </p>
 
-> when you have a hammer, everything looks like a nail.  
-
-<p align="center">
-![](./hammer.jpg){width=200px}
-</p>
-
 ## Learning sources
 
 - _Elements of Statistical Learning_ (ESL) Chapter 11: <https://web.stanford.edu/~hastie/ElemStatLearn/>.
@@ -201,25 +195,31 @@ Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
 
 - **Convolutions**. Natural images have the property of being **stationary**, meaning that the statistics of one part of the image are the same as any other part. This suggests that the features that we learn at one part of the image can also be applied to other parts of the image, and we can use the same features at all locations by **weight sharing**.
 <p align="center">
-![](./ufldl-convolution-schematic.gif){width=500px}
+![](./ufldl-convolution-schematic.gif){width=400px}
 </p>
 
     Consider $96 \times 96$ images. For each feature, first learn a $8 \times 8$ **feature detector** (or **filter** or **kernel**) from randomly sampled $8 \times 8$ patches from the larger image. Then apply the learned detector to all $8 \times 8$ regions of the $96 \times 96$ image to obtain $89 \times 89$ convolved features for that feature. 
-<p align="center">
-![](./ufldl-convolution-schematic.gif){width=500px}
-</p>
+    
+    From [Wang and Raj (2017)](https://arxiv.org/pdf/1702.07800.pdf):  
+    <p align="center">
+    ![](./conv-bridge.png){width=700px}
+    </p>
     
 
 - **Pooling**. For a neural network with 100 hidden units, we have $89^2 \times 100 = 792,100$ convoluted features. This can be reduced by calculating the mean (or max) vale of a particular feature over a region of the image. These summary statistics are much lower in dimension (compared to using all of the extracted features) and can also improve results (less over-fitting). We call this aggregation operation **pooling**, or sometimes **mean pooling** or **max pooling** (depending on the pooling operation applied).
 <p align="center">
-![](./ufldl-pooling-schematic.gif){width=500px}
+![](./ufldl-pooling-schematic.gif){width=400px}
 </p>
 
-- **Convultional neural network (CNN)**. Convolution + pooling + multi-layer neural networks.
+- **Convolutional neural network (CNN)**. Convolution + pooling + multi-layer neural networks.
 <p align="center">
 <!-- ![](./ufldl-cnn-layer.png){width=500px} -->
 ![](./colah-conv-9-conv2max2conv2.png){width=500px}
 ![](./colah-conv2-9x5-conv2max2conv2.png){width=500px}
+</p>
+
+<p align="center">
+![](./convnet-car.png){width=700px}
 </p>
 
 ## Example: handwritten digit recognition. 
