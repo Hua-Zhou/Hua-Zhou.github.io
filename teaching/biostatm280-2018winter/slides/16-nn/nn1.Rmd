@@ -87,7 +87,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
 ![](./Rectifier_and_softplus_functions.svg){width=400px}
 </p>
     
-- Given training data $(X_1, Y_1), \ldots, (X_n, Y_n)$, the loss function $L$ can be:
+- Given training data $(X_1, Y_1), \ldots, (X_n, Y_n)$, the **loss function** $L$ can be:
 
     - Sum of squares error (SSE):
     $$
@@ -135,7 +135,7 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
     
 <!-- - Alternative fitting methods: conjugate gradients, variable metric methods. -->
 
-- Stochastic gradient descent (SGD). In real machine learning applications, training set can be large. Back-propagation over all training cases can be expensive. Learning can also be carried out **online** — processing each batch one at a time, updating the gradient after each training batch, and cycling through the training cases many times. A training **epoch** refers to one sweep through the entire training set.
+- Stochastic gradient descent (**SGD**). In real machine learning applications, training set can be large. Back-propagation over all training cases can be expensive. Learning can also be carried out **online** — processing each batch one at a time, updating the gradient after each training batch, and cycling through the training cases many times. A training **epoch** refers to one sweep through the entire training set.
 
     **AdaGrad** and **RMSProp** improve the stability of SGD by trying to incorpoate Hessian information in a computationally cheap way. 
 
@@ -170,7 +170,7 @@ Neural networks are **not a fully automatic tool**, as they are sometimes advert
     1. early stopping; 
     2. weight decay by $L_2$ penalty  
     $$
-    \frac{\lambda}{2} \left( \sum_{k, m} \beta_{km}^2 + \sum_{m, l} \alpha_{ml}^2 \right).
+    L(\alpha, \beta) + \frac{\lambda}{2} \left( \sum_{k, m} \beta_{km}^2 + \sum_{m, l} \alpha_{ml}^2 \right).
     $$
     $\lambda$ is the **weight decay parameter**.  
     3. **Dropout**. At each training case, individual nodes are either dropped out of the net with probability $1-p$ or kept with probability $p$, so that a reduced network is left; incoming and outgoing edges to a dropped-out node are also removed. Forward and backpropagation for that training case are done only on this thinned network.
@@ -243,13 +243,25 @@ net-5: two hidden layers, locally connected, two levels of weight sharing (was t
 
     - Results:  
 
-| network | links | weights | accuracy |
-|---------|-------|---------|----------|
-| net 1   | 2570  | 2570    | 80.0%    |
-| net 2   | 3124  | 3214    | 87.0%    |
-| net 3   | 1226  | 1226    | 88.5%    |
-| net 4   | 2266  | 1131    | 94.0%    |
-| net 5   | 5194  | 1060    | 98.4%    |
+    | network | links | weights | accuracy |
+    |---------|-------|---------|----------|
+    | net 1   | 2570  | 2570    | 80.0%    |
+    | net 2   | 3124  | 3214    | 87.0%    |
+    | net 3   | 1226  | 1226    | 88.5%    |
+    | net 4   | 2266  | 1131    | 94.0%    |
+    | net 5   | 5194  | 1060    | 98.4%    |
+    
+    Net-5 and similar networks were start-of-the-art in early 1990s.
+
+- On the larger handwritten digits dataset MNIST (60,000 training images, 10,000 testing images), accuracies of following methods were reported:
+
+    | Method | Error rate  |
+    |--------|----------|
+    | tangent distance with 1-nearest neighbor classifier | 1.1% |
+    | degree-9 polynomial SVM | 0.8% |
+    | LeNet-5 | 0.8% |  
+    | boosted LeNet-4 | 0.7% |
+
 
 ## Example: image classification
 
@@ -275,23 +287,28 @@ net-5: two hidden layers, locally connected, two levels of weight sharing (was t
 
 ## Recurrent neural networks (RNN)
 
-Souces: <https://colah.github.io/posts/2015-08-Understanding-LSTMs/>
-<http://karpathy.github.io/2015/05/21/rnn-effectiveness/>
+Souces: <http://web.stanford.edu/class/cs224n/>  
+<https://colah.github.io/posts/2015-08-Understanding-LSTMs/>  
+<http://karpathy.github.io/2015/05/21/rnn-effectiveness/>  
+<http://www.wildml.com/2015/09/recurrent-neural-networks-tutorial-part-1-introduction-to-rnns/>  
 
-- MLP and CNN are examples of **feedforward neural network**, where connections between the units do not form a cycle.  
-**Reccurent neural networks (RNN)** instead have loops, which can be un-rolled into a sequence of MLP.
+- MLP (multi-layer perceptron) and CNN (convolutional neural network) are examples of **feed forward neural network**, where connections between the units do not form a cycle.  
+
+- MLP and CNN accept a fixed-sized vector as input (e.g. an image) and produce a fixed-sized vector as output (e.g. probabilities of different classes). 
+
+- **Reccurent neural networks (RNN)** instead have loops, which can be un-rolled into a sequence of MLP.
 <p align="center">
 <!-- ![](./colah-rnn-rolled.png){width=100px} -->
 ![](./colah-rnn-unrolled.png){width=500px}
 </p>
 
-- MLP and CNN accept a fixed-sized vector as input (e.g. an image) and produce a fixed-sized vector as output (e.g. probabilities of different classes). 
-
 - RNNs allow us to operate over sequences of vectors: sequences in the input, the output, or in the most general case both.
 
-- Applications: 
+- Applications of RNN: 
 
-    - **NLP/Speech**: transcribe speech to text, machine translation, [language modeling and generating text](http://karpathy.github.io/2015/05/21/rnn-effectiveness/), ...
+    - [Language modeling and generating text](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). E.g., search prompt, messaging prompt, ...
+
+    - **NLP/Speech**: transcribe speech to text, machine translation, sentiment analysis, ...
     <p align="center">
     ![](./machine-translation.png){width=500px}
     </p>

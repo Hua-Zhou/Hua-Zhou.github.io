@@ -16,12 +16,11 @@ sessionInfo()
 
 Source: <https://tensorflow.rstudio.com/keras/articles/examples/mnist_cnn.html>
 
-In this example, we train a convolution neural networks (CNN) on the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) data set. Achieve testing accuracy 99.16% after 12 epochs.
+In this example, we train a convolutional neural networks (CNN) on the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) data set. Achieve testing accuracy 99.16% after 12 epochs.
 
-- The **MNIST** database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits that is commonly used for training and testing machine learning algorithms.
+- The **MNIST** database (Modified National Institute of Standards and Technology database) is a large database of handwritten digits ($28 \times 28$) that is commonly used for training and testing machine learning algorithms.
 
 - 60,000 training images, 10,000 testing images. 
-
 
 ## Prepare data
 
@@ -66,7 +65,7 @@ y_test <- to_categorical(y_test, num_classes)
 
 ## Define model
 
-Define and compile model:
+Define model:
 ```{r}
 model <- keras_model_sequential()
 model %>%
@@ -79,7 +78,10 @@ model %>%
   layer_dense(units = 128, activation = 'relu') %>% 
   layer_dropout(rate = 0.5) %>% 
   layer_dense(units = num_classes, activation = 'softmax')
-
+summary(model)
+```
+Compile model:
+```{r}
 # Compile model
 model %>% compile(
   loss = loss_categorical_crossentropy,
@@ -102,8 +104,9 @@ history <- model %>% fit(
 })
 plot(history)
 ```
+
 Testing:
-```
+```{r}
 scores <- model %>% evaluate(
   x_test, y_test, verbose = 0
 )

@@ -14,7 +14,11 @@ knitr::opts_chunk$set(echo = TRUE)
 sessionInfo()
 ```
 
-Source: <https://tensorflow.rstudio.com/keras/articles/examples/lstm_text_generation.html>
+Source: <https://tensorflow.rstudio.com/keras/articles/examples/lstm_text_generation.html>  
+<p align="center">
+![](./nietzsche.jpg){width=200px}
+</p>
+
 
 ```{r}
 library(keras)
