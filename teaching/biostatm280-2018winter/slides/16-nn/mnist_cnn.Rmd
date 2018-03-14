@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-options(width = 120)
+#options(width = 120)
 knitr::opts_chunk$set(echo = TRUE)
 sessionInfo()
 ```
@@ -25,7 +25,7 @@ In this example, we train a convolution neural networks (CNN) on the [MNIST](htt
 
 ## Prepare data
 
-Note instead of vectorizing the images, we keep the 2D structure.
+For CNN, instead of vectorizing the images, we keep the 2D structure.
 ```{r}
 library(keras)
 
