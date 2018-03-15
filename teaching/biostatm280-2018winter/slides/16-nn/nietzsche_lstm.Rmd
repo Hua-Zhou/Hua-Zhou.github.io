@@ -135,7 +135,7 @@ sample_mod <- function(preds, temperature = 1) {
 }
 
 system.time({
-for(iteration in 1:1) {
+for(iteration in 1:60) {
   
   cat(sprintf("iteration: %02d ---------------\n\n", iteration))
   
