@@ -9,17 +9,22 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-options(width = 120)
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
 sessionInfo()
 ```
 
-Source: <https://tensorflow.rstudio.com/keras/articles/examples/lstm_text_generation.html>  
 <p align="center">
 ![](./nietzsche.jpg){width=200px}
 </p>
 
+Source: <https://tensorflow.rstudio.com/keras/articles/examples/lstm_text_generation.html>.
 
+## Data preparation
+
+Download Nietzsche's writing from <https://s3.amazonaws.com/text-datasets/nietzsche.txt>:
 ```{r}
 library(keras)
 library(readr)
@@ -38,7 +43,11 @@ path <- get_file(
   'nietzsche.txt', 
   origin='https://s3.amazonaws.com/text-datasets/nietzsche.txt'
   )
+read_lines(path) %>% head()
+```
 
+Parse the text into character:
+```{r}
 # Load, collapse, and tokenize text
 text <- read_lines(path) %>%
   str_to_lower() %>%
@@ -46,13 +55,18 @@ text <- read_lines(path) %>%
   tokenize_characters(strip_non_alphanum = FALSE, simplify = TRUE)
 
 print(sprintf("corpus length: %d", length(text)))
-
+```
+Find unique characters:
+```{r}
 chars <- text %>%
   unique() %>%
   sort()
 
-print(sprintf("total chars: %d", length(chars)))  
+print(sprintf("total chars: %d", length(chars)))
+chars
+```
 
+```{r}
 # Cut the text in semi-redundant sequences of maxlen characters
 dataset <- map(
   seq(1, length(text) - maxlen - 1, by = 3), 
@@ -60,21 +74,33 @@ dataset <- map(
   )
 
 dataset <- transpose(dataset)
+dataset$sentece[[1]]
+dataset$sentece[[2]]
+dataset$next_char[[1]]
+dataset$next_char[[2]]
+```
 
+```{r}
 # Vectorization
 X <- array(0, dim = c(length(dataset$sentece), maxlen, length(chars)))
 y <- array(0, dim = c(length(dataset$sentece), length(chars)))
 
 for(i in 1:length(dataset$sentece)){
   
-  X[i,,] <- sapply(chars, function(x){
+  X[i, , ] <- sapply(chars, function(x){
     as.integer(x == dataset$sentece[[i]])
   })
   
-  y[i,] <- as.integer(chars == dataset$next_char[[i]])
+  y[i, ] <- as.integer(chars == dataset$next_char[[i]])
   
 }
+X[1, , ]
+y[1, ]
+```
 
+## Model specification
+
+```{r}
 # Model Definition --------------------------------------------------------
 
 model <- keras_model_sequential()
@@ -90,20 +116,26 @@ model %>% compile(
   loss = "categorical_crossentropy", 
   optimizer = optimizer
 )
+summary(model)
+```
 
+## Training and evaluate
+
+```{r}
 # Training & Results ----------------------------------------------------
 
-sample_mod <- function(preds, temperature = 1){
-  preds <- log(preds)/temperature
+sample_mod <- function(preds, temperature = 1) {
+  preds <- log(preds) / temperature
   exp_preds <- exp(preds)
-  preds <- exp_preds/sum(exp(preds))
+  preds <- exp_preds / sum(exp(preds))
   
   rmultinom(1, 1, preds) %>% 
     as.integer() %>%
     which.max()
 }
 
-for(iteration in 1:60){
+system.time({
+for(iteration in 1:1) {
   
   cat(sprintf("iteration: %02d ---------------\n\n", iteration))
   
@@ -142,4 +174,5 @@ for(iteration in 1:60){
     
   }
 }
+})
 ```
