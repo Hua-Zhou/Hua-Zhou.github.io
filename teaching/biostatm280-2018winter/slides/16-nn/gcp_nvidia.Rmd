@@ -1,0 +1,58 @@
+---
+title: "Install GPU on GCP"
+author: "Hua Zhou"
+date: "3/13/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We document the steps to install NVIDIA GPU driver and CUDA 9.1 on a GCP instannce running CentOS 7.
+
+## Download and install NVIDIA GPU driver
+
+```{bash, eval = FALSE}
+sudo rpm -i nvidia-diag-driver-local-repo-rhel7-390.30-1.0-1.x86_64.rpm
+sudo yum clean all
+sudo yum install cuda-drivers
+sudo reboot
+```
+
+## Download and install CUDA 9.0
+
+```{bash, eval = FALSE}
+sudo curl -O http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+rpm -i --force ./cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+sudo rpm -i --force ./cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+sudo yum clean all
+sudo yum install epel-release -y
+sudo yum update -y
+sudo yum install cuda-9-1 -y
+```
+
+Check installation succeed:
+```{bash, eval = FALSE}
+sudo nvidia-smi -pm 1
+```
+
+## Download and install CuDNN
+
+This is not included in the CUDA package.
+
+## Install Keras with GPU support
+
+Install `pip` and `virtualenv`:
+```{bash, eval = FALSE}
+sudo yum -y install python-pip
+sudo pip install virtualenv
+sudo R -e 'library(keras); install_keras(tensorflow = "gpu")'
+```
+
+In RStudio:
+```{r, eval = FALSE}
+install.packages("keras")
+library(keras)
+install_keras(tensorflow = "gpu")
+```
