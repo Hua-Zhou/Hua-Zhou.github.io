@@ -16,14 +16,13 @@ sessionInfo()
 
 ## Software
 
-- High-level software focus on user-friendly interface to specify and train models.  
+- High-level software focuses on user-friendly interface to specify and train models.  
 [Keras](https://keras.io), [PyTorch](http://pytorch.org) (only Linux and MacOS), [scikit-learn](http://scikit-learn.org/stable/), ...
 
-- Lower-level software focus on developer tools for impelementing deep learning models.   
+- Lower-level software focuses on developer tools for impelementing deep learning models.   
 [TensorFlow](https://www.tensorflow.org), [Theano](http://deeplearning.net/software/theano/#), [CNTK](https://github.com/Microsoft/CNTK), [Caffe](http://caffe.berkeleyvision.org), [Torch](http://torch.ch), ...
 
-
-- Most tools are developed in Python.
+- Most tools are developed in Python plus a low-level language.
 
 ## TensorFlow
 

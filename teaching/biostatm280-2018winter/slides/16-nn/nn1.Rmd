@@ -185,7 +185,7 @@ Figure from [Srivastava, Hinton, Krizhevsky, Sutskever, and Salakhutdinov (2014)
     
 - Multiple minima: try with different starting values.
 
-## Convoluted neural networks (CNN)
+## Convolutional neural networks (CNN)
 
 Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
 
@@ -198,7 +198,7 @@ Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
 ![](./ufldl-convolution-schematic.gif){width=400px}
 </p>
 
-    Consider $96 \times 96$ images. For each feature, first learn a $8 \times 8$ **feature detector** (or **filter** or **kernel**) from randomly sampled $8 \times 8$ patches from the larger image. Then apply the learned detector to all $8 \times 8$ regions of the $96 \times 96$ image to obtain $89 \times 89$ convolved features for that feature. 
+    Consider $96 \times 96$ images. For each feature, first learn a $8 \times 8$ **feature detector** (or **filter** or **kernel**) from (possibly randomly sampled) $8 \times 8$ patches from the larger image. Then apply the learned detector to all $8 \times 8$ regions of the $96 \times 96$ image to obtain one $89 \times 89$ convolved feature for that feature. 
     
     From [Wang and Raj (2017)](https://arxiv.org/pdf/1702.07800.pdf):  
     <p align="center">
@@ -206,7 +206,7 @@ Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
     </p>
     
 
-- **Pooling**. For a neural network with 100 hidden units, we have $89^2 \times 100 = 792,100$ convoluted features. This can be reduced by calculating the mean (or max) vale of a particular feature over a region of the image. These summary statistics are much lower in dimension (compared to using all of the extracted features) and can also improve results (less over-fitting). We call this aggregation operation **pooling**, or sometimes **mean pooling** or **max pooling** (depending on the pooling operation applied).
+- **Pooling**. For a neural network with 100 hidden units, we have $89^2 \times 100 = 792,100$ convolved features. This can be reduced by calculating the mean (or max) vale of a particular feature over a region of the image. These summary statistics are much lower in dimension (compared to using all of the extracted features) and can also improve results (less over-fitting). We call this aggregation operation **pooling**, or sometimes **mean pooling** or **max pooling** (depending on the pooling operation applied).
 <p align="center">
 ![](./ufldl-pooling-schematic.gif){width=400px}
 </p>
@@ -253,7 +253,7 @@ net-5: two hidden layers, locally connected, two levels of weight sharing (was t
     
     Net-5 and similar networks were start-of-the-art in early 1990s.
 
-- On the larger handwritten digits dataset MNIST (60,000 training images, 10,000 testing images), accuracies of following methods were reported:
+- On the larger benchmark dataset **MNIST** (60,000 training images, 10,000 testing images), accuracies of following methods were reported:
 
     | Method | Error rate  |
     |--------|----------|
@@ -307,6 +307,10 @@ Souces: <http://web.stanford.edu/class/cs224n/>
 - Applications of RNN: 
 
     - [Language modeling and generating text](http://karpathy.github.io/2015/05/21/rnn-effectiveness/). E.g., search prompt, messaging prompt, ...
+    <p align="center">
+    ![](./genearted-alggeom-latex.jpg){width=500px}
+    </p>
+    Above: generated (fake) LaTeX on algebraic geometry; see <http://karpathy.github.io/2015/05/21/rnn-effectiveness/>.
 
     - **NLP/Speech**: transcribe speech to text, machine translation, sentiment analysis, ...
     <p align="center">
