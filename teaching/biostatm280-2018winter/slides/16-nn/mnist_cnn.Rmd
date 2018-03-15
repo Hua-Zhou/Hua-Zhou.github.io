@@ -9,8 +9,10 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-#options(width = 120)
 knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
 sessionInfo()
 ```
 
@@ -78,7 +80,6 @@ model %>%
   layer_dense(units = 128, activation = 'relu') %>% 
   layer_dropout(rate = 0.5) %>% 
   layer_dense(units = num_classes, activation = 'softmax')
-summary(model)
 ```
 Compile model:
 ```{r}
@@ -88,6 +89,7 @@ model %>% compile(
   optimizer = optimizer_adadelta(),
   metrics = c('accuracy')
 )
+summary(model)
 ```
 
 ## Train and evaluate
