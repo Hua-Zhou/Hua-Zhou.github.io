@@ -64,7 +64,7 @@ There are no exams.
 
 ### Final Grade
 
-Grades will be based on the homework (75%) and the quizzes (25%).
+Grades will be based on the homework (75%) and the attendance (25%).
 
 ### Academic Integrity
 
