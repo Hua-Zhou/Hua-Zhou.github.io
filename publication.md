@@ -7,6 +7,12 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
+
+
+
+J Zhai, J Kim, K Knox, H Twigg, **H Zhou**, and J Zhou. (2018) Variance component selection with applications to microbiome taxonomic data, [_Frontiers in Microbiology_](https://doi.org/10.3389/fmicb.2018.00509), 9:509. \[[pdf](./media/pdf/Zhai18MicrobiomeVCSelection.pdf)\]  
+Variance component penalization method for microbiome taxa association study.
+
 J Zhou, T Hu, D Qiao, M Cho, and **H Zhou**. (2016) Boosting gene mapping power and efficiency with efficient exact variance component tests of SNP sets, [_Genetics_](http://www.genetics.org/content/204/3/921), 204(3):921-931. \[[pdf](./media/pdf/ZhouHuQiaoChoZhou16Boost.pdf)\]  
 Exact score and likelihood ratio tests for testing SNP sets.  
 
