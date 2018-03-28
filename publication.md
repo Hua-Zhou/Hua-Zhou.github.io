@@ -7,11 +7,19 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
+K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generating individualized treatment decision trees and random forests, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1451337), in press.
 
+L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component estimation and selection in logistic linear mixed models, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0220), in press.  
 
+X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2018) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), in press.  
+
+X Li, D Xu, **H Zhou**, and L Li. (2018) Tucker tensor regression and neuroimaging analysis, [_Statistics in Biosciences_](https://doi.org/10.1007/s12561-018-9215-6), in press.  
+Tucker version of the tensor regression.
 
 J Zhai, J Kim, K Knox, H Twigg, **H Zhou**, and J Zhou. (2018) Variance component selection with applications to microbiome taxonomic data, [_Frontiers in Microbiology_](https://doi.org/10.3389/fmicb.2018.00509), 9:509. \[[pdf](./media/pdf/Zhai18MicrobiomeVCSelection.pdf)\]  
 Variance component penalization method for microbiome taxa association study.
+
+C Li and **H Zhou**. (2017) svt: Singular value thresholding in MATLAB, [_Journal of Statistical Software_](https://www.jstatsoft.org/v081/c02), 81(2):1-13. \[[pdf](https://www.jstatsoft.org/index.php/jss/article/view/v081c02/v81c02.pdf)\]
 
 J Zhou, T Hu, D Qiao, M Cho, and **H Zhou**. (2016) Boosting gene mapping power and efficiency with efficient exact variance component tests of SNP sets, [_Genetics_](http://www.genetics.org/content/204/3/921), 204(3):921-931. \[[pdf](./media/pdf/ZhouHuQiaoChoZhou16Boost.pdf)\]  
 Exact score and likelihood ratio tests for testing SNP sets.  
