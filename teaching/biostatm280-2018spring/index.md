@@ -24,5 +24,5 @@ Office hours: Mon/Wed @ 2pm-3pm
 
 ### Teaching Assistant
 
-Lu Zhang <nymph@g.ucla.edu>  
-Office hours: ??? @ ???  
+Lu Zhang <Lu.Zhang@ucla.edu>  
+Office hours: Thu 2pm-4pm @ Life Science Building 2349
