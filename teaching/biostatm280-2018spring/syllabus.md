@@ -16,7 +16,7 @@ Wed 1pm-1:50pm @ CHS 43-105A
 Office: CHS 21-254A  
 Phone: (310)794-7835  
 Email: <huazhou@ucla.edu>  
-Office hours: Mon/Wed @ 2pm-3pm 
+Office hours: Mon/Wed @ 2pm-3pm
 
 ### Teaching Assistant
 
@@ -41,7 +41,7 @@ The prerequisite for this course is linear algebra (MATH 115A) and linear models
 
 ### Course Webpage
 
-[http://hua-zhou.github.io/teaching/biostatm280-2017spring/](http://hua-zhou.github.io/teaching/biostatm280-2018spring/)
+[http://hua-zhou.github.io/teaching/biostatm280-2018spring/](http://hua-zhou.github.io/teaching/biostatm280-2018spring/)
 
 ### Course Materials
 
