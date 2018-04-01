@@ -27,10 +27,9 @@ Office hours: Thu 2pm-4pm @ Life Science Building 2349
 
 This is a tentative list of topics:  
 
-* Computer arithmetic  
-* Computer languages  
 * Julia programming  
 * Reproducible research (Git/GitHub, Jupyter Notebook)  
+* Computer arithmetic  
 * Numerical linear algebra  
 * Numerical optimization  
 * Convex optimization  
@@ -56,7 +55,7 @@ Class attendance is mandatory.
 
 ### Homework
 
-You will be required to hand in 6-8 homework assignments throughout the quarter.  
+You will be required to hand in 5-6 homework assignments throughout the quarter.  
 
 ### Exam
 
