@@ -51,7 +51,7 @@ Some useful resources are listed below. None of them is required.
 
 ### Attendance
 
-Class attendance is mandatory.
+Class attendance is mandatory. Eating lunch in class in fine.
 
 ### Homework
 
