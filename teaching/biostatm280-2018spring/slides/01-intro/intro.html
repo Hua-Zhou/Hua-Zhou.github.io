@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>intro</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>intro</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11,8 +13,8 @@
 *
 */
 /*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1107,6 +1109,7 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2535,6 +2538,7 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3025,6 +3029,7 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
+  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -8755,9 +8760,6 @@ body > #header .header-bar {
     margin-left: 10px;
   }
 }
-[dir="rtl"] #ipython_notebook {
-  float: right !important;
-}
 #noscript {
   width: auto;
   padding-top: 16px;
@@ -8960,14 +8962,8 @@ span#login_widget > .button .badge,
  *
  * Author: Jupyter Development Team
  */
-[dir="rtl"] #tabs li {
-  float: right;
-}
 ul#tabs {
   margin-bottom: 4px;
-}
-[dir="rtl"] ul#tabs {
-  margin-right: 0px;
 }
 ul#tabs a {
   padding-top: 6px;
@@ -8990,16 +8986,6 @@ ul.breadcrumb span {
 }
 .list_toolbar .tree-buttons {
   padding-top: 1px;
-}
-[dir="rtl"] .list_toolbar .tree-buttons {
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-right {
-  padding-top: 1px;
-  float: left !important;
-}
-[dir="rtl"] .list_toolbar .pull-left {
-  float: right !important;
 }
 .dynamic-buttons {
   padding-top: 3px;
@@ -9136,9 +9122,6 @@ ul.breadcrumb span {
 #tree-selector {
   padding-right: 0px;
 }
-[dir="rtl"] #tree-selector a {
-  float: right;
-}
 #button-select-all {
   min-width: 50px;
 }
@@ -9228,9 +9211,6 @@ ul#new-menu {
   left: auto;
   right: 0;
 }
-[dir="rtl"] #new-menu {
-  text-align: right;
-}
 .kernel-menu-icon {
   padding-right: 12px;
   width: 24px;
@@ -9275,9 +9255,6 @@ ul#new-menu {
 }
 #running .panel-group .panel .panel-body .list_container .list_item:last-child {
   border-bottom: 0px;
-}
-[dir="rtl"] #running .col-sm-8 {
-  float: right !important;
 }
 .delete-button {
   display: none;
@@ -9574,7 +9551,6 @@ div.cell.selected.jupyter-soft-selected {
   }
 }
 div.inner_cell {
-  min-width: 0;
   /* Old browsers */
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -9595,6 +9571,11 @@ div.inner_cell {
   box-flex: 1;
   /* Modern browsers */
   flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
 }
 /* input_area and input_prompt must match in top border and margin for alignment */
 div.input_area {
@@ -11265,7 +11246,7 @@ div#pager .ui-resizable-handle::after {
 }
 .shortcut_key {
   display: inline-block;
-  width: 21ex;
+  width: 20ex;
   text-align: right;
   font-family: monospace;
 }
@@ -11577,7 +11558,6 @@ ul.typeahead-list > li > a {
   box-shadow: 0px 0px 12px 1px rgba(87, 87, 87, 0.2);
 }
 .terminal-app .terminal {
-  width: 100%;
   float: left;
   font-family: monospace;
   color: white;
@@ -11591,9 +11571,6 @@ ul.typeahead-list > li > a {
 .terminal-app .terminal dummy-screen {
   line-height: 1em;
   font-size: 14px;
-}
-.terminal-app .terminal .xterm-rows {
-  padding: 10px;
 }
 .terminal-app .terminal-cursor {
   color: black;
@@ -11654,10 +11631,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11668,11 +11643,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11779,10 +11752,11 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="BIOSTAT-M280:-Statistical-Computing">BIOSTAT M280: Statistical Computing<a class="anchor-link" href="#BIOSTAT-M280:-Statistical-Computing">&#182;</a></h1><ul>
-<li>Mon 12pm-1:50pm @ CHS 61-262<br>
-Wed 1pm-1:50pm @ CHS 71-257</li>
+<li>Mon 12pm-1:50pm @ CHS 43-105A<br>
+Wed 1pm-1:50pm @ CHS 43-105A  </li>
 <li>Instructor: Dr. Hua Zhou, <a href="mailto:huazhou@ucla.edu">huazhou@ucla.edu</a></li>
-<li>Multi-listed as BIOSTAT M280, BIOMATH M280, and STAT M230</li>
+<li>Multi-listed as BIOSTAT M280, BIOMATH M280, and STAT M230  </li>
+<li>For Biostatistics doctoral students, this course satisfies the requirement for BIOSTAT 257.</li>
 </ul>
 
 </div>
@@ -11798,10 +11772,9 @@ Wed 1pm-1:50pm @ CHS 71-257</li>
 </li>
 <li><p>People (scientists, goverment, health professionals, companies) collect data in order to answer certain questions. Statisticians's job is to help them extract knowledge and insights from data.</p>
 </li>
-<li><p>Two must-read for (bio)statistics students:</p>
+<li><p>Must-read for (bio)statistics students:</p>
 <ul>
-<li><a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/readings/Tukey61FutureDataAnalysis.pdf"><em>The future of data analysis</em></a> (Part I), by John Tukey.  </li>
-<li><a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/readings/Donoho15FiftyYearsDataScience.pdf"><em>50 years of data sicence</em></a>, by David Donoho.</li>
+<li><a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/readings/Donoho15FiftyYearsDataScience.pdf"><em>50 years of data sicence</em></a>, by David Donoho.</li>
 </ul>
 </li>
 <li><p>If existing software tools readily solve the problem, all the better.</p>
@@ -11822,8 +11795,8 @@ Wed 1pm-1:50pm @ CHS 71-257</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="How-Gauss-became-famous?">How Gauss became famous?<a class="anchor-link" href="#How-Gauss-became-famous?">&#182;</a></h1><p><img src="./gauss.jpg" width=500 align="center"/><br>
-<img src="./ceres.jpg" width=500 align="center"/></p>
+<h1 id="How-Gauss-became-famous?">How Gauss became famous?<a class="anchor-link" href="#How-Gauss-became-famous?">&#182;</a></h1><p><img src="./gauss.jpg" width="500" align="center"/><br>
+<img src="./ceres.jpg" width="500" align="center"/></p>
 
 </div>
 </div>
@@ -11913,7 +11886,7 @@ Wed 1pm-1:50pm @ CHS 71-257</li>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Marc-Coram-and-a-jail-message">Marc Coram and a jail message<a class="anchor-link" href="#Marc-Coram-and-a-jail-message">&#182;</a></h1><p><img src="./prison_code.jpg" width=500 align="center"/></p>
+<h1 id="Marc-Coram-and-a-jail-message">Marc Coram and a jail message<a class="anchor-link" href="#Marc-Coram-and-a-jail-message">&#182;</a></h1><p><img src="./prison_code.jpg" width="500" align="center"/></p>
 <ul>
 <li>A consulting project by Marc Coram (then a graduate student in statistics at Stanford); customer is a professor in political science, who wants to understand a cryptic message circulated in a state prison.</li>
 <li>Marc modeled the letter sequence by a Markov chain ($26 \times 26$ transition matrix) and estimated transition probabilities from <em>War and Peace</em>.</li>
@@ -11935,7 +11908,7 @@ Wed 1pm-1:50pm @ CHS 71-257</li>
 <li><p>See the article <a href="http://www.ams.org/journals/bull/2009-46-02/S0273-0979-08-01238-X/"><em>The Markov chain Monte Carlo revolution</em></a> by Persi Diaconis (2009) for more details.</p>
 </li>
 </ul>
-<p><img src="./top10algo.jpg" width=500 align="center"/></p>
+<p><img src="./top10algo.jpg" width="500" align="center"/></p>
 
 </div>
 </div>
@@ -11946,10 +11919,12 @@ Wed 1pm-1:50pm @ CHS 71-257</li>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="What-is-this-course-about?">What is this course about?<a class="anchor-link" href="#What-is-this-course-about?">&#182;</a></h1><ul>
-<li><p><strong>Not</strong> a course on packages for data analysis. It does not answer questions such as <em>How to fit a linear mixed model in R,  Julia, SAS, SPSS, or Stata?</em></p>
+<li><p><strong>Not</strong> a course on statistical packages. It does not answer questions such as <em>How to fit a linear mixed model in R,  Julia, SAS, SPSS, or Stata?</em></p>
 </li>
-<li><p><strong>Not</strong> a programming course, although programming is <em>extremely</em> important and we do homework in Julia.<br>
-The new BIOSTAT 203A (Data Management) in fall quarter and 203B (Introduction to Data Science) in spring quarter will focus more on programming.</p>
+<li><p><strong>Not</strong> a pure programming course, although programming is important and we do homework in Julia.<br>
+The new BIOSTAT 203A (Data Management) in fall quarter focuses on programming in R and SAS.</p>
+</li>
+<li><p><strong>Not</strong> a course on data science. The new <a href="http://hua-zhou.github.io/teaching/biostatm280-2018winter/schedule.html">BIOSTAT 203B (Introduction to Data Science)</a> in winter quarter focuses on software tools for data scientists.</p>
 </li>
 <li><p>This course focuses on <strong>algorithms</strong>, or, numerical methods in statistics.</p>
 </li>
@@ -11962,9 +11937,11 @@ $$
   \widehat \beta = ({\bf X}^T {\bf X})^{-1} {\bf X}^T {\bf y},
 $$
 we need to know which methods/algorithms are out there and what are their advantages and disadvantages. You will <strong>fail</strong> this course if you use</p>
-<div class="highlight"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">X</span><span class="o">&#39;</span><span class="n">y</span>
+<div class="highlight"><pre><span></span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">X</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">y</span>
 </pre></div>
 <p>Using <code>X \ y</code> (or <code>lm(y ~ X)</code> in R) is correct but not the purpose of this course. We want to understand what computer is doing when calling <code>X \ y</code>.</p>
+</li>
+<li><p>For biostat studuents, this course satisfies the requirement of BIOSTAT 257 in the new curriculum. Ask Ms Roxy Naranjo <a href="mailto:rlnaranjo@ph.ucla.edu">rlnaranjo@ph.ucla.edu</a> for the paperwork.</p>
 </li>
 </ul>
 
@@ -11977,13 +11954,11 @@ we need to know which methods/algorithms are out there and what are their advant
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Course-logistics">Course logistics<a class="anchor-link" href="#Course-logistics">&#182;</a></h1><ul>
-<li><p>Course webpage: <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/">http://hua-zhou.github.io/teaching/biostatm280-2017spring/</a></p>
+<li><p>Course webpage: <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/">http://hua-zhou.github.io/teaching/biostatm280-2018spring/</a>.</p>
 </li>
-<li><p><a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/syllabus.html">Syllabus</a></p>
+<li><p><a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/syllabus.html">Syllabus</a>.</p>
 </li>
-<li><p>Check the <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/schedule.html">Schedule</a> and <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/announcement.html">Announcements</a> pages frequently.</p>
-</li>
-<li><p>Questions following the posts will be taken.</p>
+<li><p>Check the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/schedule.html">Schedule</a> and <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/announcement.html">Announcements</a> pages frequently.</p>
 </li>
 <li><p>Slides will be posted before each lecture.</p>
 </li>
@@ -11992,24 +11967,7 @@ we need to know which methods/algorithms are out there and what are their advant
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
     </div>
   </div>
 </body>
-
- 
-
-
 </html>
