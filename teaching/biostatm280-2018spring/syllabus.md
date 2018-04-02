@@ -55,7 +55,7 @@ Class attendance is mandatory.
 
 ### Homework
 
-You will be required to hand in 5-6 homework assignments throughout the quarter.  
+You will be required to hand in 4-5 homework assignments throughout the quarter.  
 
 ### Exam
 
@@ -63,7 +63,7 @@ There are no exams.
 
 ### Final Grade
 
-Grades will be based on the homework (75%) and the attendance (25%).
+Grades will be based on homework (75%) and attendance (25%).
 
 ### Academic Integrity
 
