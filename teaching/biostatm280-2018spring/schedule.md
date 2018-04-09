@@ -19,7 +19,7 @@ Readings:
 | Week | Monday | Wednesday | Homework |
 |:-----------|:-----------|:------------|:------------|
 | 1 | [4/2](http://hua-zhou.github.io/teaching/biostatm280-2018spring/biostatm280spring2018/2018/04/02/first-day.html) introduction and course logistics \[slides: [ipynb](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018spring/slides/01-intro/intro.ipynb), [html](./slides/01-intro/intro.html)\] | [4/4](http://hua-zhou.github.io/teaching/biostatm280-2018spring/biostatm280spring2018/2018/04/04/week1-day2.html) computer languages, Julia intro. \[slides: [ipynb](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018spring/slides/02-juliaintro/juliaintro.ipynb), [html](./slides/02-juliaintro/juliaintro.html)\] | |
-| 2 | 4/9 tools for reproducible research | 4/11 computer storage and arithmetic |
+| 2 | [4/9](http://hua-zhou.github.io/teaching/biostatm280-2018spring/biostatm280spring2018/2018/04/09/week2-day1.html) tools for reproducible research | 4/11 computer storage and arithmetic |
 | 3 | 4/16 algo. intro. | 4/18 BLAS | |
 | 4 | 4/23 triangular systems, GE/LU  | 4/25 Cholesky |
 | 5 | 4/30 QR (GS, Householder, Givens), Sweep operator | 5/2 summary of linear regression | |
