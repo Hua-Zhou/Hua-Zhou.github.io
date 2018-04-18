@@ -11758,7 +11758,7 @@ div#notebook {
 </li>
 </ul>
 <h2 id="Measure-of-efficiency">Measure of efficiency<a class="anchor-link" href="#Measure-of-efficiency">&#182;</a></h2><ul>
-<li>A basic unit for measuring algorithmic efficiency is <strong>flop</strong>.  <blockquote><p>A flop (floating point operation) consists of a floating point addition, subtraction, multiplication, division, or comparison, and the usually accompanying fetch and store.</p>
+<li>A basic unit for measuring algorithmic efficiency is <strong>flop</strong>.  <blockquote><p>A flop (<strong>floating point operation</strong>) consists of a floating point addition, subtraction, multiplication, division, or comparison, and the usually accompanying fetch and store.</p>
 </blockquote>
 </li>
 </ul>
@@ -11770,7 +11770,8 @@ div#notebook {
 <li>matrix-matrix multiplication <code>A * B</code>, where <code>A</code> is $m \times n$ and <code>B</code> is $n \times p$, takes $2mnp$ or $O(mnp)$ flops</li>
 </ul>
 </li>
-<li><p>A hierarchy of computational complexity:</p>
+<li><p>A hierarchy of computational complexity:<br>
+  Let $n$ be the problem size.</p>
 <ul>
 <li>Exponential order: $O(b^n)$ (NP-hard="horrible")    </li>
 <li>Polynomial order: $O(n^q)$ (doable)  </li>
@@ -11872,12 +11873,12 @@ $O(n^2)$ algorithm takes about $10^{12}$ seconds, which is approximately 31710 y
   memory estimate:  7.64 MiB
   allocs estimate:  3
   --------------
-  minimum time:     14.341 ms (0.00% GC)
-  median time:      15.313 ms (0.00% GC)
-  mean time:        15.351 ms (3.11% GC)
-  maximum time:     18.933 ms (0.00% GC)
+  minimum time:     14.363 ms (0.00% GC)
+  median time:      15.265 ms (0.00% GC)
+  mean time:        15.372 ms (3.20% GC)
+  maximum time:     21.254 ms (0.00% GC)
   --------------
-  samples:          326
+  samples:          325
   evals/sample:     1</pre>
 </div>
 
@@ -11911,12 +11912,12 @@ $O(n^2)$ algorithm takes about $10^{12}$ seconds, which is approximately 31710 y
   memory estimate:  15.88 KiB
   allocs estimate:  2
   --------------
-  minimum time:     402.256 μs (0.00% GC)
-  median time:      419.839 μs (0.00% GC)
-  mean time:        429.949 μs (0.00% GC)
-  maximum time:     1.494 ms (0.00% GC)
+  minimum time:     449.260 μs (0.00% GC)
+  median time:      537.231 μs (0.00% GC)
+  mean time:        548.740 μs (0.00% GC)
+  maximum time:     1.505 ms (0.00% GC)
   --------------
-  samples:          10000
+  samples:          8862
   evals/sample:     1</pre>
 </div>
 
@@ -11932,7 +11933,7 @@ $O(n^2)$ algorithm takes about $10^{12}$ seconds, which is approximately 31710 y
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Performance-of-computer-systems">Performance of computer systems<a class="anchor-link" href="#Performance-of-computer-systems">&#182;</a></h2><ul>
-<li><p>FLOPS (floating point operations per second) is a measure of computer performance.</p>
+<li><p><strong>FLOPS</strong> (floating point operations per second) is a measure of computer performance.</p>
 </li>
 <li><p>For example, my laptop has the Intel i7-6920HQ (Skylake) CPU with 4 cores runing at 2.90 GHz (cycles per second).</p>
 </li>
