@@ -11751,6 +11751,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev2 toc-item"><a href="#Numerical-linear-algebra:-introduction" data-toc-modified-id="Numerical-linear-algebra:-introduction-01"><span class="toc-item-num">0.1&nbsp;&nbsp;</span>Numerical linear algebra: introduction</a></div><div class="lev2 toc-item"><a href="#BLAS" data-toc-modified-id="BLAS-02"><span class="toc-item-num">0.2&nbsp;&nbsp;</span>BLAS</a></div><div class="lev2 toc-item"><a href="#Memory-hierarchy-and-level-3-fraction" data-toc-modified-id="Memory-hierarchy-and-level-3-fraction-03"><span class="toc-item-num">0.3&nbsp;&nbsp;</span>Memory hierarchy and level-3 fraction</a></div><div class="lev2 toc-item"><a href="#Effect-of-data-layout" data-toc-modified-id="Effect-of-data-layout-04"><span class="toc-item-num">0.4&nbsp;&nbsp;</span>Effect of data layout</a></div><div class="lev2 toc-item"><a href="#Avoid-memory-allocation:-some-examples" data-toc-modified-id="Avoid-memory-allocation:-some-examples-05"><span class="toc-item-num">0.5&nbsp;&nbsp;</span>Avoid memory allocation: some examples</a></div></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Numerical-linear-algebra:-introduction">Numerical linear algebra: introduction<a class="anchor-link" href="#Numerical-linear-algebra:-introduction">&#182;</a></h2>
 </div>
 </div>
@@ -11898,10 +11908,6 @@ where $\mathbf{D}$ is diagonal.  </li>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">2000</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>  <span class="c"># d vector</span>
-<span class="n">D</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="c"># diagonal matrix with d as diagonal</span>
-
-<span class="c"># this is calling BLAS routine for matrix multiplication: O(n^3) flops</span>
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span> <span class="o">*</span> <span class="n">D</span>
 </pre></div>
 
 </div>
@@ -11916,17 +11922,33 @@ where $\mathbf{D}$ is diagonal.  </li>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  30.52 MiB
-  allocs estimate:  2
-  --------------
-  minimum time:     103.796 ms (2.35% GC)
-  median time:      132.590 ms (1.99% GC)
-  mean time:        144.627 ms (3.27% GC)
-  maximum time:     289.412 ms (24.02% GC)
-  --------------
-  samples:          35
-  evals/sample:     1</pre>
+<pre>2000-element Array{Float64,1}:
+ 0.763192
+ 0.668759
+ 0.709337
+ 0.088416
+ 0.289151
+ 0.375468
+ 0.437356
+ 0.179474
+ 0.122238
+ 0.895783
+ 0.332146
+ 0.206425
+ 0.747789
+ ⋮       
+ 0.484487
+ 0.567484
+ 0.75455 
+ 0.703483
+ 0.166205
+ 0.754612
+ 0.231834
+ 0.769243
+ 0.805681
+ 0.553389
+ 0.450904
+ 0.814614</pre>
 </div>
 
 </div>
@@ -11940,8 +11962,7 @@ where $\mathbf{D}$ is diagonal.  </li>
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># current way for columnwise scaling: O(n^2) flops</span>
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span> <span class="o">*</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="c"># diagonal matrix with d as diagonal</span>
 </pre></div>
 
 </div>
@@ -11956,17 +11977,33 @@ where $\mathbf{D}$ is diagonal.  </li>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  30.52 MiB
-  allocs estimate:  3
-  --------------
-  minimum time:     8.048 ms (23.47% GC)
-  median time:      9.620 ms (24.96% GC)
-  mean time:        10.171 ms (26.26% GC)
-  maximum time:     86.522 ms (89.78% GC)
-  --------------
-  samples:          491
-  evals/sample:     1</pre>
+<pre>2000×2000 Array{Float64,2}:
+ 0.763192  0.0       0.0       0.0       …  0.0       0.0       0.0     
+ 0.0       0.668759  0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.709337  0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.088416     0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0       …  0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0       …  0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ ⋮                                       ⋱                              
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0       …  0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0       …  0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.553389  0.0       0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.450904  0.0     
+ 0.0       0.0       0.0       0.0          0.0       0.0       0.814614</pre>
 </div>
 
 </div>
@@ -11980,8 +12017,8 @@ where $\mathbf{D}$ is diagonal.  </li>
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># in-place: avoid allocate space for result</span>
-<span class="p">@</span><span class="n">benchmark</span> <span class="n">scale!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># this is calling BLAS routine for matrix multiplication: O(n^3) flops</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span> <span class="o">*</span> <span class="n">D</span>
 </pre></div>
 
 </div>
@@ -11997,15 +12034,178 @@ where $\mathbf{D}$ is diagonal.  </li>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
+  memory estimate:  30.52 MiB
+  allocs estimate:  2
+  --------------
+  minimum time:     100.553 ms (0.35% GC)
+  median time:      109.386 ms (2.32% GC)
+  mean time:        115.684 ms (3.36% GC)
+  maximum time:     226.789 ms (1.78% GC)
+  --------------
+  samples:          44
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Diagonal</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[4]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2000×2000 Diagonal{Float64}:
+ 0.763192   ⋅         ⋅         ⋅        …   ⋅         ⋅         ⋅      
+  ⋅        0.668759   ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅        0.709337   ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅        0.088416      ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅        …   ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅        …   ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+ ⋮                                       ⋱                              
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅        …   ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅        …   ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅           0.553389   ⋅         ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅        0.450904   ⋅      
+  ⋅         ⋅         ⋅         ⋅            ⋅         ⋅        0.814614</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># current way for columnwise scaling: O(n^2) flops</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">A</span> <span class="o">*</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  30.52 MiB
+  allocs estimate:  3
+  --------------
+  minimum time:     7.149 ms (2.63% GC)
+  median time:      8.212 ms (24.38% GC)
+  mean time:        8.453 ms (25.21% GC)
+  maximum time:     65.978 ms (88.55% GC)
+  --------------
+  samples:          591
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">A</span> <span class="o">*</span> <span class="n">Diagonal</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+*(A::<b>AbstractArray{T,2} where T</b>, D::<b>Diagonal</b>) at <a href="https://github.com/JuliaLang/julia/tree/d386e40c17d43b79fc89d3e579fc04547241787c/base/linalg/diagonal.jl#L152" target="_blank">linalg/diagonal.jl:152</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># in-place: avoid allocate space for result</span>
+<span class="p">@</span><span class="n">benchmark</span> <span class="n">scale!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     4.329 ms (0.00% GC)
-  median time:      11.987 ms (0.00% GC)
-  mean time:        11.446 ms (0.00% GC)
-  maximum time:     21.382 ms (0.00% GC)
+  minimum time:     4.479 ms (0.00% GC)
+  median time:      11.387 ms (0.00% GC)
+  mean time:        11.209 ms (0.00% GC)
+  maximum time:     20.322 ms (0.00% GC)
   --------------
-  samples:          437
+  samples:          447
   evals/sample:     1</pre>
 </div>
 
@@ -12218,7 +12418,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
@@ -12297,7 +12497,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
@@ -12313,7 +12513,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[5]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12321,10 +12521,10 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     447.539 ms (0.00% GC)
-  median time:      468.505 ms (0.00% GC)
-  mean time:        477.589 ms (0.00% GC)
-  maximum time:     531.947 ms (0.00% GC)
+  minimum time:     430.149 ms (0.00% GC)
+  median time:      444.670 ms (0.00% GC)
+  mean time:        469.967 ms (0.00% GC)
+  maximum time:     563.758 ms (0.00% GC)
   --------------
   samples:          11
   evals/sample:     1</pre>
@@ -12338,7 +12538,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">matmul_by_loop!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;kji&quot;</span><span class="p">)</span>
@@ -12352,7 +12552,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12360,12 +12560,12 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     481.634 ms (0.00% GC)
-  median time:      503.827 ms (0.00% GC)
-  mean time:        511.376 ms (0.00% GC)
-  maximum time:     565.566 ms (0.00% GC)
+  minimum time:     473.348 ms (0.00% GC)
+  median time:      483.225 ms (0.00% GC)
+  mean time:        486.455 ms (0.00% GC)
+  maximum time:     509.115 ms (0.00% GC)
   --------------
-  samples:          10
+  samples:          11
   evals/sample:     1</pre>
 </div>
 
@@ -12389,7 +12589,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">matmul_by_loop!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;ikj&quot;</span><span class="p">)</span>
@@ -12403,7 +12603,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[7]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12411,10 +12611,10 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     2.692 s (0.00% GC)
-  median time:      2.790 s (0.00% GC)
-  mean time:        2.790 s (0.00% GC)
-  maximum time:     2.889 s (0.00% GC)
+  minimum time:     2.383 s (0.00% GC)
+  median time:      2.643 s (0.00% GC)
+  mean time:        2.643 s (0.00% GC)
+  maximum time:     2.903 s (0.00% GC)
   --------------
   samples:          2
   evals/sample:     1</pre>
@@ -12428,7 +12628,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">matmul_by_loop!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;kij&quot;</span><span class="p">)</span>
@@ -12442,7 +12642,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[8]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12450,12 +12650,12 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     2.531 s (0.00% GC)
-  median time:      2.570 s (0.00% GC)
-  mean time:        2.570 s (0.00% GC)
-  maximum time:     2.608 s (0.00% GC)
+  minimum time:     2.403 s (0.00% GC)
+  median time:      2.411 s (0.00% GC)
+  mean time:        2.411 s (0.00% GC)
+  maximum time:     2.419 s (0.00% GC)
   --------------
-  samples:          2
+  samples:          3
   evals/sample:     1</pre>
 </div>
 
@@ -12479,7 +12679,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">matmul_by_loop!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;ijk&quot;</span><span class="p">)</span>
@@ -12493,7 +12693,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12501,10 +12701,10 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     951.636 ms (0.00% GC)
-  median time:      1.234 s (0.00% GC)
-  mean time:        1.206 s (0.00% GC)
-  maximum time:     1.492 s (0.00% GC)
+  minimum time:     952.224 ms (0.00% GC)
+  median time:      958.913 ms (0.00% GC)
+  mean time:        1.042 s (0.00% GC)
+  maximum time:     1.344 s (0.00% GC)
   --------------
   samples:          5
   evals/sample:     1</pre>
@@ -12518,7 +12718,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">matmul_by_loop!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s">&quot;ijk&quot;</span><span class="p">)</span>
@@ -12532,7 +12732,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12540,10 +12740,10 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     942.745 ms (0.00% GC)
-  median time:      1.088 s (0.00% GC)
-  mean time:        1.158 s (0.00% GC)
-  maximum time:     1.528 s (0.00% GC)
+  minimum time:     951.335 ms (0.00% GC)
+  median time:      994.415 ms (0.00% GC)
+  mean time:        1.033 s (0.00% GC)
+  maximum time:     1.253 s (0.00% GC)
   --------------
   samples:          5
   evals/sample:     1</pre>
@@ -12569,7 +12769,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">A_mul_B!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
@@ -12583,7 +12783,7 @@ Assume the storage is column-major, such as in Julia. There are 6 variants of th
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[11]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
 
 <div class="output_html rendered_html output_subarea output_execute_result">
 A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(C::<b>Union{Base.ReshapedArray{T,2,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T}, DenseArray{T,2}, SubArray{T,2,A,I,L} where L} where I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex, Int64, Range{Int64}},N} where N} where A<:Union{Base.ReshapedArray{T,N,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T} where N where T, DenseArray}</b>, A::<b>Union{Union{Base.ReshapedArray{T,1,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T}, DenseArray{T,1}, SubArray{T,1,A,I,L} where L} where I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex, Int64, Range{Int64}},N} where N} where A<:Union{Base.ReshapedArray{T,N,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T} where N where T, DenseArray}, Union{Base.ReshapedArray{T,2,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T}, DenseArray{T,2}, SubArray{T,2,A,I,L} where L} where I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex, Int64, Range{Int64}},N} where N} where A<:Union{Base.ReshapedArray{T,N,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T} where N where T, DenseArray}}</b>, B::<b>Union{Union{Base.ReshapedArray{T,1,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T}, DenseArray{T,1}, SubArray{T,1,A,I,L} where L} where I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex, Int64, Range{Int64}},N} where N} where A<:Union{Base.ReshapedArray{T,N,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T} where N where T, DenseArray}, Union{Base.ReshapedArray{T,2,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T}, DenseArray{T,2}, SubArray{T,2,A,I,L} where L} where I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex, Int64, Range{Int64}},N} where N} where A<:Union{Base.ReshapedArray{T,N,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T} where N where T, DenseArray}}</b>) at <a href="https://github.com/JuliaLang/julia/tree/d386e40c17d43b79fc89d3e579fc04547241787c/base/linalg/matmul.jl#L148" target="_blank">linalg/matmul.jl:148</a>
@@ -12597,7 +12797,7 @@ A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">A_mul_B!</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
@@ -12611,7 +12811,7 @@ A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[12]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12619,12 +12819,12 @@ A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     7.205 ms (0.00% GC)
-  median time:      7.734 ms (0.00% GC)
-  mean time:        10.006 ms (0.00% GC)
-  maximum time:     21.711 ms (0.00% GC)
+  minimum time:     7.096 ms (0.00% GC)
+  median time:      7.280 ms (0.00% GC)
+  mean time:        7.448 ms (0.00% GC)
+  maximum time:     10.894 ms (0.00% GC)
   --------------
-  samples:          499
+  samples:          670
   evals/sample:     1</pre>
 </div>
 
@@ -12636,7 +12836,7 @@ A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">Base</span><span class="o">.</span><span class="n">LinAlg</span><span class="o">.</span><span class="n">BLAS</span><span class="o">.</span><span class="n">gemm!</span><span class="p">(</span><span class="sc">&#39;N&#39;</span><span class="p">,</span> <span class="sc">&#39;N&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
@@ -12650,7 +12850,7 @@ A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12658,12 +12858,12 @@ A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     4.847 ms (0.00% GC)
-  median time:      5.365 ms (0.00% GC)
-  mean time:        7.113 ms (0.00% GC)
-  maximum time:     14.955 ms (0.00% GC)
+  minimum time:     4.842 ms (0.00% GC)
+  median time:      5.061 ms (0.00% GC)
+  mean time:        5.705 ms (0.00% GC)
+  maximum time:     16.833 ms (0.00% GC)
   --------------
-  samples:          701
+  samples:          874
   evals/sample:     1</pre>
 </div>
 
@@ -12679,7 +12879,7 @@ A_mul_B!<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}}</i>(
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To appreciate the efforts in an optimized BLAS implementation such as OpenBLAS (evolved from GotoBLAS), see the <a href="https://www.quora.com/What-algorithm-does-BLAS-use-for-matrix-multiplication-Of-all-the-considerations-e-g-cache-popular-instruction-sets-Big-O-etc-which-one-turned-out-to-be-the-primary-bottleneck">Quora question</a>, especially the <a href="https://youtu.be/JzNpKDW07rw">video</a>. Bottomline is</p>
-<blockquote><p>Get familiar with (good implementations of) BLAS/LAPACK and use them as much as possible.</p>
+<blockquote><p><strong>Get familiar with (good implementations of) BLAS/LAPACK and use them as much as possible.</strong></p>
 </blockquote>
 
 </div>
@@ -12705,7 +12905,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -12727,7 +12927,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[14]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12735,10 +12935,10 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     100.965 μs (0.00% GC)
-  median time:      120.843 μs (0.00% GC)
-  mean time:        169.375 μs (0.00% GC)
-  maximum time:     1.365 ms (0.00% GC)
+  minimum time:     108.709 μs (0.00% GC)
+  median time:      136.560 μs (0.00% GC)
+  mean time:        141.652 μs (0.00% GC)
+  maximum time:     1.009 ms (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12752,7 +12952,35 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">which</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+*<i>{T<:Union{Complex{Float32}, Complex{Float64}, Float32, Float64}, S}</i>(A::<b>Union{Base.ReshapedArray{T,2,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T}, DenseArray{T,2}, SubArray{T,2,A,I,L} where L} where I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex, Int64, Range{Int64}},N} where N} where A<:Union{Base.ReshapedArray{T,N,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T} where N where T, DenseArray}</b>, x::<b>Union{Base.ReshapedArray{S,1,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T}, DenseArray{S,1}, SubArray{S,1,A,I,L} where L} where I<:Tuple{Vararg{Union{Base.AbstractCartesianIndex, Int64, Range{Int64}},N} where N} where A<:Union{Base.ReshapedArray{T,N,A,MI} where MI<:Tuple{Vararg{Base.MultiplicativeInverses.SignedMultiplicativeInverse{Int64},N} where N} where A<:Union{DenseArray, SubArray{T,N,P,I,true} where I<:Tuple{Union{Base.Slice, UnitRange},Vararg{Any,N} where N} where P where N where T} where N where T, DenseArray}</b>) at <a href="https://github.com/JuliaLang/julia/tree/d386e40c17d43b79fc89d3e579fc04547241787c/base/linalg/matmul.jl#L74" target="_blank">linalg/matmul.jl:74</a>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># dispatch to BLAS</span>
@@ -12767,7 +12995,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[15]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12775,10 +13003,10 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     96.906 μs (0.00% GC)
-  median time:      131.863 μs (0.00% GC)
-  mean time:        186.847 μs (0.00% GC)
-  maximum time:     1.266 ms (0.00% GC)
+  minimum time:     110.028 μs (0.00% GC)
+  median time:      150.350 μs (0.00% GC)
+  mean time:        203.158 μs (0.00% GC)
+  maximum time:     2.248 ms (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12792,7 +13020,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># let&#39;s force transpose</span>
@@ -12807,7 +13035,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[16]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12815,12 +13043,12 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  7.64 MiB
   allocs estimate:  3
   --------------
-  minimum time:     2.803 ms (0.00% GC)
-  median time:      3.035 ms (0.00% GC)
-  mean time:        3.370 ms (15.98% GC)
-  maximum time:     9.841 ms (29.55% GC)
+  minimum time:     2.909 ms (0.00% GC)
+  median time:      3.582 ms (0.00% GC)
+  mean time:        3.956 ms (16.06% GC)
+  maximum time:     13.355 ms (28.46% GC)
   --------------
-  samples:          1477
+  samples:          1259
   evals/sample:     1</pre>
 </div>
 
@@ -12832,7 +13060,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># pre-allocate result</span>
@@ -12848,7 +13076,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[17]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12856,10 +13084,10 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
   memory estimate:  0 bytes
   allocs estimate:  0
   --------------
-  minimum time:     94.538 μs (0.00% GC)
-  median time:      118.305 μs (0.00% GC)
-  mean time:        126.410 μs (0.00% GC)
-  maximum time:     467.560 μs (0.00% GC)
+  minimum time:     101.399 μs (0.00% GC)
+  median time:      147.288 μs (0.00% GC)
+  mean time:        175.533 μs (0.00% GC)
+  maximum time:     954.276 μs (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12885,7 +13113,7 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -12909,69 +13137,66 @@ will first transpose <code>A</code> then perform matrix multiplication, causing 
 Stacktrace:
  [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
  [2] <span class="ansi-bold">abs</span><span class="ansi-bold">(</span>::Array{Float64,2}<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
- [3] <span class="ansi-bold">##core#723</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:316</span>
- [4] <span class="ansi-bold">##sample#724</span><span class="ansi-bold">(</span>::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:322</span>
- [5] <span class="ansi-bold">#_run#16</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:350</span>
- [6] <span class="ansi-bold">(::BenchmarkTools.#kw##_run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#_run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
+ [3] <span class="ansi-bold">##core#727</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:316</span>
+ [4] <span class="ansi-bold">##sample#728</span><span class="ansi-bold">(</span>::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:322</span>
+ [5] <span class="ansi-bold">#_run#16</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:350</span>
+ [6] <span class="ansi-bold">(::BenchmarkTools.#kw##_run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#_run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
  [7] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
- [8] <span class="ansi-bold">#run_result#19</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:44</span>
- [9] <span class="ansi-bold">(::BenchmarkTools.#kw##run_result)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#run_result, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
- [10] <span class="ansi-bold">#run#21</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
- [11] <span class="ansi-bold">(::Base.#kw##run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Base.#run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
- [12] <span class="ansi-bold">warmup</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:100</span>
+ [8] <span class="ansi-bold">#run_result#19</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:44</span>
+ [9] <span class="ansi-bold">(::BenchmarkTools.#kw##run_result)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#run_result, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
+ [10] <span class="ansi-bold">#run#21</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
+ [11] <span class="ansi-bold">(::Base.#kw##run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Base.#run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
+ [12] <span class="ansi-bold">warmup</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:100</span>
  [13] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:522</span>
- [14] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:71</span>
- [15] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/execute_request.jl:158</span>
- [16] <span class="ansi-bold">(::Compat.#inner#17{Array{Any,1},IJulia.#execute_request,Tuple{ZMQ.Socket,IJulia.Msg}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:385</span>
- [17] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
- [18] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
-while loading In[18], in expression starting on line 234
+ [14] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/execute_request.jl:158</span>
+ [15] <span class="ansi-bold">(::Compat.#inner#17{Array{Any,1},IJulia.#execute_request,Tuple{ZMQ.Socket,IJulia.Msg}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:385</span>
+ [16] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [17] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[23], in expression starting on line 234
 <span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">abs(x::AbstractArray{T}) where T &lt;: Number is deprecated, use abs.(x) instead.</span>
 Stacktrace:
  [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
  [2] <span class="ansi-bold">abs</span><span class="ansi-bold">(</span>::Array{Float64,2}<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
- [3] <span class="ansi-bold">##core#723</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:316</span>
- [4] <span class="ansi-bold">##sample#724</span><span class="ansi-bold">(</span>::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:322</span>
- [5] <span class="ansi-bold">#_run#16</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:350</span>
- [6] <span class="ansi-bold">(::BenchmarkTools.#kw##_run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#_run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
+ [3] <span class="ansi-bold">##core#727</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:316</span>
+ [4] <span class="ansi-bold">##sample#728</span><span class="ansi-bold">(</span>::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:322</span>
+ [5] <span class="ansi-bold">#_run#16</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:350</span>
+ [6] <span class="ansi-bold">(::BenchmarkTools.#kw##_run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#_run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
  [7] <span class="ansi-bold">anonymous</span> at <span class="ansi-bold">./&lt;missing&gt;:?</span>
- [8] <span class="ansi-bold">#run_result#19</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:44</span>
- [9] <span class="ansi-bold">(::BenchmarkTools.#kw##run_result)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#run_result, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
- [10] <span class="ansi-bold">#run#21</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
- [11] <span class="ansi-bold">(::Base.#kw##run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Base.#run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
- [12] <span class="ansi-bold">(::BenchmarkTools.#kw##warmup)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#warmup, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
- [13] <span class="ansi-bold">#tune!#26</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:155</span>
- [14] <span class="ansi-bold">tune!</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:155</span>
+ [8] <span class="ansi-bold">#run_result#19</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:44</span>
+ [9] <span class="ansi-bold">(::BenchmarkTools.#kw##run_result)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#run_result, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
+ [10] <span class="ansi-bold">#run#21</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
+ [11] <span class="ansi-bold">(::Base.#kw##run)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Base.#run, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
+ [12] <span class="ansi-bold">(::BenchmarkTools.#kw##warmup)</span><span class="ansi-bold">(</span>::Array{Any,1}, ::BenchmarkTools.#warmup, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">./&lt;missing&gt;:0</span>
+ [13] <span class="ansi-bold">#tune!#26</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:155</span>
+ [14] <span class="ansi-bold">tune!</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:155</span>
  [15] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:522</span>
- [16] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:71</span>
- [17] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/execute_request.jl:158</span>
- [18] <span class="ansi-bold">(::Compat.#inner#17{Array{Any,1},IJulia.#execute_request,Tuple{ZMQ.Socket,IJulia.Msg}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:385</span>
- [19] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
- [20] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
-while loading In[18], in expression starting on line 235
+ [16] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/execute_request.jl:158</span>
+ [17] <span class="ansi-bold">(::Compat.#inner#17{Array{Any,1},IJulia.#execute_request,Tuple{ZMQ.Socket,IJulia.Msg}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:385</span>
+ [18] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [19] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[23], in expression starting on line 235
 <span class="ansi-yellow-intense-fg ansi-bold">WARNING: </span><span class="ansi-yellow-fg">abs(x::AbstractArray{T}) where T &lt;: Number is deprecated, use abs.(x) instead.</span>
 Stacktrace:
  [1] <span class="ansi-bold">depwarn</span><span class="ansi-bold">(</span>::String, ::Symbol<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:70</span>
  [2] <span class="ansi-bold">abs</span><span class="ansi-bold">(</span>::Array{Float64,2}<span class="ansi-bold">)</span> at <span class="ansi-bold">./deprecated.jl:57</span>
- [3] <span class="ansi-bold">##core#723</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:316</span>
- [4] <span class="ansi-bold">##sample#724</span><span class="ansi-bold">(</span>::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:322</span>
- [5] <span class="ansi-bold">#_run#16</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:350</span>
- [6] <span class="ansi-bold">_run</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:344</span>
- [7] <span class="ansi-bold">#run_result#19</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:44</span>
- [8] <span class="ansi-bold">#run#21</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
- [9] <span class="ansi-bold">run</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#722&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
+ [3] <span class="ansi-bold">##core#727</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:316</span>
+ [4] <span class="ansi-bold">##sample#728</span><span class="ansi-bold">(</span>::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:322</span>
+ [5] <span class="ansi-bold">#_run#16</span><span class="ansi-bold">(</span>::Bool, ::String, ::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:350</span>
+ [6] <span class="ansi-bold">_run</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:344</span>
+ [7] <span class="ansi-bold">#run_result#19</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:44</span>
+ [8] <span class="ansi-bold">#run#21</span><span class="ansi-bold">(</span>::Array{Any,1}, ::Function, ::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}, ::BenchmarkTools.Parameters<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
+ [9] <span class="ansi-bold">run</span><span class="ansi-bold">(</span>::BenchmarkTools.Benchmark{Symbol(&#34;##benchmark#726&#34;)}<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/BenchmarkTools/src/execution.jl:67</span>
  [10] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">./loading.jl:522</span>
- [11] <span class="ansi-bold">include_string</span><span class="ansi-bold">(</span>::Module, ::String, ::String<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:71</span>
- [12] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/execute_request.jl:158</span>
- [13] <span class="ansi-bold">(::Compat.#inner#17{Array{Any,1},IJulia.#execute_request,Tuple{ZMQ.Socket,IJulia.Msg}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:385</span>
- [14] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
- [15] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
-while loading In[18], in expression starting on line 236
+ [11] <span class="ansi-bold">execute_request</span><span class="ansi-bold">(</span>::ZMQ.Socket, ::IJulia.Msg<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/execute_request.jl:158</span>
+ [12] <span class="ansi-bold">(::Compat.#inner#17{Array{Any,1},IJulia.#execute_request,Tuple{ZMQ.Socket,IJulia.Msg}})</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/Compat/src/Compat.jl:385</span>
+ [13] <span class="ansi-bold">eventloop</span><span class="ansi-bold">(</span>::ZMQ.Socket<span class="ansi-bold">)</span> at <span class="ansi-bold">/Users/huazhou/.julia/v0.6/IJulia/src/eventloop.jl:8</span>
+ [14] <span class="ansi-bold">(::IJulia.##14#17)</span><span class="ansi-bold">(</span><span class="ansi-bold">)</span> at <span class="ansi-bold">./task.jl:335</span>
+while loading In[23], in expression starting on line 236
 </pre>
 </div>
 </div>
 
-<div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12979,12 +13204,12 @@ while loading In[18], in expression starting on line 236
   memory estimate:  22.92 MiB
   allocs estimate:  240
   --------------
-  minimum time:     7.059 ms (18.26% GC)
-  median time:      8.311 ms (20.66% GC)
-  mean time:        9.030 ms (19.62% GC)
-  maximum time:     22.880 ms (18.91% GC)
+  minimum time:     7.062 ms (18.87% GC)
+  median time:      7.582 ms (19.88% GC)
+  mean time:        9.103 ms (19.75% GC)
+  maximum time:     26.794 ms (17.30% GC)
   --------------
-  samples:          553
+  samples:          551
   evals/sample:     1</pre>
 </div>
 
@@ -12996,7 +13221,7 @@ while loading In[18], in expression starting on line 236
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># no temporary arrays created</span>
@@ -13011,7 +13236,7 @@ while loading In[18], in expression starting on line 236
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[19]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13019,12 +13244,12 @@ while loading In[18], in expression starting on line 236
   memory estimate:  7.63 MiB
   allocs estimate:  27
   --------------
-  minimum time:     2.388 ms (0.00% GC)
-  median time:      2.841 ms (0.00% GC)
-  mean time:        3.292 ms (15.35% GC)
-  maximum time:     6.836 ms (36.33% GC)
+  minimum time:     2.589 ms (0.00% GC)
+  median time:      3.110 ms (0.00% GC)
+  mean time:        3.657 ms (16.53% GC)
+  maximum time:     11.023 ms (33.54% GC)
   --------------
-  samples:          1516
+  samples:          1365
   evals/sample:     1</pre>
 </div>
 
@@ -13036,7 +13261,7 @@ while loading In[18], in expression starting on line 236
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># no memory allocation at all!</span>
@@ -13052,7 +13277,7 @@ while loading In[18], in expression starting on line 236
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13060,12 +13285,12 @@ while loading In[18], in expression starting on line 236
   memory estimate:  128 bytes
   allocs estimate:  4
   --------------
-  minimum time:     1.881 ms (0.00% GC)
-  median time:      2.078 ms (0.00% GC)
-  mean time:        2.244 ms (0.00% GC)
-  maximum time:     7.443 ms (0.00% GC)
+  minimum time:     1.961 ms (0.00% GC)
+  median time:      2.232 ms (0.00% GC)
+  mean time:        2.350 ms (0.00% GC)
+  maximum time:     8.337 ms (0.00% GC)
   --------------
-  samples:          2219
+  samples:          2116
   evals/sample:     1</pre>
 </div>
 
@@ -13089,7 +13314,7 @@ while loading In[18], in expression starting on line 236
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">srand</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -13107,7 +13332,7 @@ while loading In[18], in expression starting on line 236
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[26]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13115,10 +13340,10 @@ while loading In[18], in expression starting on line 236
   memory estimate:  488.47 KiB
   allocs estimate:  5
   --------------
-  minimum time:     59.435 μs (0.00% GC)
-  median time:      234.976 μs (0.00% GC)
-  mean time:        212.179 μs (12.02% GC)
-  maximum time:     2.077 ms (83.09% GC)
+  minimum time:     64.237 μs (0.00% GC)
+  median time:      266.307 μs (0.00% GC)
+  mean time:        237.880 μs (12.22% GC)
+  maximum time:     2.320 ms (77.69% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -13132,7 +13357,7 @@ while loading In[18], in expression starting on line 236
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># view avoids creating a separate sub-matrix</span>
@@ -13147,7 +13372,7 @@ while loading In[18], in expression starting on line 236
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13155,10 +13380,10 @@ while loading In[18], in expression starting on line 236
   memory estimate:  1.20 KiB
   allocs estimate:  36
   --------------
-  minimum time:     98.137 μs (0.00% GC)
-  median time:      100.773 μs (0.00% GC)
-  mean time:        104.831 μs (0.00% GC)
-  maximum time:     308.522 μs (0.00% GC)
+  minimum time:     98.406 μs (0.00% GC)
+  median time:      107.452 μs (0.00% GC)
+  mean time:        121.689 μs (0.00% GC)
+  maximum time:     1.269 ms (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -13182,7 +13407,7 @@ while loading In[18], in expression starting on line 236
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="p">@</span><span class="n">views</span> <span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
@@ -13196,7 +13421,7 @@ while loading In[18], in expression starting on line 236
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -13204,10 +13429,10 @@ while loading In[18], in expression starting on line 236
   memory estimate:  1.34 KiB
   allocs estimate:  40
   --------------
-  minimum time:     98.771 μs (0.00% GC)
-  median time:      104.838 μs (0.00% GC)
-  mean time:        106.785 μs (0.00% GC)
-  maximum time:     332.537 μs (0.00% GC)
+  minimum time:     98.835 μs (0.00% GC)
+  median time:      100.799 μs (0.00% GC)
+  mean time:        114.490 μs (0.00% GC)
+  maximum time:     812.846 μs (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -13221,7 +13446,7 @@ while loading In[18], in expression starting on line 236
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
