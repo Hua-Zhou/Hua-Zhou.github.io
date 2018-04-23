@@ -11764,14 +11764,14 @@ div#notebook {
 <h2 id="Q1.-Nonnegative-Matrix-Factorization">Q1. Nonnegative Matrix Factorization<a class="anchor-link" href="#Q1.-Nonnegative-Matrix-Factorization">&#182;</a></h2><p>Nonnegative matrix factorization (NNMF) was introduced by <a href="https://www.nature.com/articles/44565">Lee and Seung (1999)</a> as an analog of principal components and vector quantization with applications in data compression and clustering. In this homework we consider algorithms for fitting NNMF and (optionally) high performance computing using graphical processing units (GPUs).</p>
 <p><img src="./nnmf.png" width="500" align="center"/></p>
 <p>In mathematical terms, one approximates a data matrix $\mathbf{X} \in \mathbb{R}^{m \times n}$ with nonnegative entries $x_{ij}$ by a product of two low-rank matrices $\mathbf{V} \in \mathbb{R}^{m \times r}$ and $\mathbf{W} \in \mathbb{R}^{r \times n}$ with nonnegative entries $v_{ik}$ and $w_{kj}$. Consider minimization of the squared Frobenius norm
-\begin{eqnarray<em>}
-    L(\mathbf{V}, \mathbf{W}) = |\mathbf{X} - \mathbf{V} \mathbf{W}|_{\text{F}}^2 = \sum_i \sum<em>j \left(x</em>{ij} - \sum<em>k v</em>{ik} w<em>{kj} \right)^2, \quad v</em>{ik} \ge 0, w_{kj} \ge 0,
-\end{eqnarray</em>}
+$$
+    L(\mathbf{V}, \mathbf{W}) = \|\mathbf{X} - \mathbf{V} \mathbf{W}\|_{\text{F}}^2 = \sum_i \sum_j \left(x_{ij} - \sum_k v_{ik} w_{kj} \right)^2, \quad v_{ik} \ge 0, w_{kj} \ge 0,
+$$
 which should lead to a good factorization. Later on we will learn how to drive a majorization-minimization (MM) algorithm, which has interative updates
-\begin{eqnarray<em>}
-    v<em>{ik}^{(t+1)} &amp;=&amp; v</em>{ik}^{(t)} \frac{\sum<em>j x</em>{ij} w_{kj}^{(t)}}{\sum<em>j b</em>{ij}^{(t)} w<em>{kj}^{(t)}} \
-    w</em>{kj}^{(t+1)} &amp;=&amp; w_{kj}^{(t)} \frac{\sum<em>i x</em>{ij} v_{ik}^{(t)}}{\sum<em>i b</em>{ij}^{(t)} v_{ik}^{(t)}}.
-\end{eqnarray</em>}</p>
+$$
+    v_{ik}^{(t+1)} = v_{ik}^{(t)} \frac{\sum_j x_{ij} w_{kj}^{(t)}}{\sum_j b_{ij}^{(t)} w_{kj}^{(t)}}, \quad 
+    w_{kj}^{(t+1)} = w_{kj}^{(t)} \frac{\sum_i x_{ij} v_{ik}^{(t)}}{\sum_i b_{ij}^{(t)} v_{ik}^{(t)}}.
+$$</p>
 <ol>
 <li><p>Implement the algorithm with arguments $\mathbf{X}$ (data, each row is a vectorized image), rank $r$, convergence tolerance, and optional starting point.</p>
 <div class="highlight"><pre><span></span><span class="k">function</span><span class="nf"> nnmf</span><span class="p">(</span>
@@ -11791,9 +11791,9 @@ which should lead to a good factorization. Later on we will learn how to drive a
 Read in the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw2/nnmf-2429-by-361-face.txt"><code>nnmf-2429-by-361-face.txt</code></a> file, e.g., using <a href="https://docs.julialang.org/en/stable/stdlib/io-network/#Base.DataFmt.readdlm-Tuple{Any,Char,Type,Char}"><code>readdlm()</code></a> function, and display a couple sample images, e.g., using <a href="https://github.com/JuliaImages/ImageView.jl">ImageView.jl</a> package.</p>
 </li>
 <li><p>Report the run times, using <code>@time</code>, of your function for fitting NNMF on the MIT CBCL face data set at ranks $r=10, 20, 30, 40, 50$. For ease of comparison (and grading), please start your algorithm with the provided $\mathbf{V}^{(0)}$ (first $r$ columns of <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw2/V0.txt"><code>V0.txt</code></a>) and $\mathbf{W}^{(0)}$ (first $r$ rows of <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw2/W0.txt"><code>W0.txt</code></a>) and stopping criterion
-\begin{eqnarray<em>}
+$$
  \frac{|L^{(t+1)} - L^{(t)}|}{|L^{(t)}| + 1} \le 10^{-4}.
-\end{eqnarray</em>}</p>
+$$</p>
 </li>
 <li><p>Choose an $r \in \{10, 20, 30, 40, 50\}$ and start your algorithm from a different $\mathbf{V}^{(0)}$ and $\mathbf{W}^{(0)}$. Do you obtain the same objective value and $(\mathbf{V}, \mathbf{W})$? Explain what you find.</p>
 </li>
