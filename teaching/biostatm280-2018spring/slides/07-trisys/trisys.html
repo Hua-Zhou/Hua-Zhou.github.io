@@ -11751,6 +11751,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Triangular-systems" data-toc-modified-id="Triangular-systems-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Triangular systems</a></div><div class="lev2 toc-item"><a href="#Lower-triangular-system" data-toc-modified-id="Lower-triangular-system-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Lower triangular system</a></div><div class="lev2 toc-item"><a href="#Upper-triangular-system" data-toc-modified-id="Upper-triangular-system-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Upper triangular system</a></div><div class="lev2 toc-item"><a href="#Implementation" data-toc-modified-id="Implementation-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Implementation</a></div><div class="lev2 toc-item"><a href="#Some-algebraic-facts-of-triangular-system" data-toc-modified-id="Some-algebraic-facts-of-triangular-system-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Some algebraic facts of triangular system</a></div></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Triangular-systems">Triangular systems<a class="anchor-link" href="#Triangular-systems">&#182;</a></h1>
 </div>
 </div>
@@ -11857,6 +11867,7 @@ $$</p>
 </li>
 <li><p>Julia</p>
 <ul>
+<li>The left divide <code>\</code> operator in Julia is used for solving linear equations or least squares problem.  </li>
 <li>If <code>A</code> is a triangular matrix, the command <code>A \ b</code> uses forward or backward substitution  </li>
 <li>Or we can call the BLAS wrapper functions directly: <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsv!"><code>trsv!</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsv"><code>trsv</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsm"><code>trsm</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsm!"><code>trsm!</code></a></li>
 </ul>
@@ -12294,12 +12305,12 @@ $$</p>
   memory estimate:  15.55 MiB
   allocs estimate:  22
   --------------
-  minimum time:     43.370 ms (0.00% GC)
-  median time:      46.152 ms (2.87% GC)
-  mean time:        46.692 ms (2.28% GC)
-  maximum time:     57.471 ms (4.05% GC)
+  minimum time:     45.093 ms (0.00% GC)
+  median time:      50.140 ms (3.11% GC)
+  mean time:        50.127 ms (2.49% GC)
+  maximum time:     55.333 ms (0.00% GC)
   --------------
-  samples:          108
+  samples:          100
   evals/sample:     1</pre>
 </div>
 
@@ -12334,10 +12345,10 @@ $$</p>
   memory estimate:  8.02 KiB
   allocs estimate:  4
   --------------
-  minimum time:     1.970 μs (0.00% GC)
-  median time:      2.466 μs (0.00% GC)
-  mean time:        2.979 μs (11.43% GC)
-  maximum time:     162.637 μs (95.94% GC)
+  minimum time:     2.232 μs (0.00% GC)
+  median time:      2.728 μs (0.00% GC)
+  mean time:        3.355 μs (10.53% GC)
+  maximum time:     206.033 μs (93.15% GC)
   --------------
   samples:          10000
   evals/sample:     9</pre>
@@ -12374,12 +12385,12 @@ $$</p>
   memory estimate:  7.64 MiB
   allocs estimate:  7
   --------------
-  minimum time:     1.950 ms (0.00% GC)
-  median time:      2.864 ms (0.00% GC)
-  mean time:        3.674 ms (21.15% GC)
-  maximum time:     18.864 ms (39.93% GC)
+  minimum time:     2.564 ms (0.00% GC)
+  median time:      3.212 ms (0.00% GC)
+  mean time:        4.040 ms (21.96% GC)
+  maximum time:     10.679 ms (31.87% GC)
   --------------
-  samples:          1354
+  samples:          1233
   evals/sample:     1</pre>
 </div>
 
@@ -12414,10 +12425,10 @@ $$</p>
   memory estimate:  8.03 KiB
   allocs estimate:  5
   --------------
-  minimum time:     2.265 μs (0.00% GC)
-  median time:      2.847 μs (0.00% GC)
-  mean time:        3.537 μs (14.32% GC)
-  maximum time:     235.852 μs (96.14% GC)
+  minimum time:     2.589 μs (0.00% GC)
+  median time:      3.088 μs (0.00% GC)
+  mean time:        3.684 μs (12.47% GC)
+  maximum time:     250.764 μs (96.42% GC)
   --------------
   samples:          10000
   evals/sample:     9</pre>
