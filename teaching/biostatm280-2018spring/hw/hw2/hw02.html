@@ -11767,11 +11767,14 @@ div#notebook {
 $$
     L(\mathbf{V}, \mathbf{W}) = \|\mathbf{X} - \mathbf{V} \mathbf{W}\|_{\text{F}}^2 = \sum_i \sum_j \left(x_{ij} - \sum_k v_{ik} w_{kj} \right)^2, \quad v_{ik} \ge 0, w_{kj} \ge 0,
 $$
-which should lead to a good factorization. Later on we will learn how to drive a majorization-minimization (MM) algorithm, which has interative updates
+which should lead to a good factorization. Later in the course we will learn how to drive a majorization-minimization (MM) algorithm, which has interative updates
 $$
-    v_{ik}^{(t+1)} = v_{ik}^{(t)} \frac{\sum_j x_{ij} w_{kj}^{(t)}}{\sum_j b_{ij}^{(t)} w_{kj}^{(t)}}, \quad 
-    w_{kj}^{(t+1)} = w_{kj}^{(t)} \frac{\sum_i x_{ij} v_{ik}^{(t)}}{\sum_i b_{ij}^{(t)} v_{ik}^{(t)}}.
-$$</p>
+    v_{ik}^{(t+1)} = v_{ik}^{(t)} \frac{\sum_j x_{ij} w_{kj}^{(t)}}{\sum_j b_{ij}^{(t)} w_{kj}^{(t)}}, \quad \text{where } b_{ij}^{(t)} = \sum_k v_{ik}^{(t)} w_{kj}^{(t)},
+$$
+$$
+    w_{kj}^{(t+1)} = w_{kj}^{(t)} \frac{\sum_i x_{ij} v_{ik}^{(t)}}{\sum_i b_{ij}^{(t+1/2)} v_{ik}^{(t)}}, \quad \text{where } b_{ij}^{(t+1/2)} = \sum_k v_{ik}^{(t+1)} w_{kj}^{(t)}.
+$$
+Superscript $t$ indicates iteration number. Efficiency (both speed and memory) will be the most important criterion when grading this problem.</p>
 <ol>
 <li><p>Implement the algorithm with arguments $\mathbf{X}$ (data, each row is a vectorized image), rank $r$, convergence tolerance, and optional starting point.</p>
 <div class="highlight"><pre><span></span><span class="k">function</span><span class="nf"> nnmf</span><span class="p">(</span>
@@ -11785,7 +11788,6 @@ $$</p>
  <span class="c"># implementation</span>
 <span class="k">end</span>
 </pre></div>
-<p>Efficiency (both speed and memory) will be the most important criterion when grading this question.</p>
 </li>
 <li><p>Database 1 from the <a href="http://cbcl.mit.edu">MIT Center for Biological and Computational Learning (CBCL)</a> reduces to a matrix $\mathbf{X}$ containing $m = 2,429$ gray-scale face images with $n = 19 \times 19 = 361$ pixels per face. Each image (row) is scaled to have mean and standard deviation 0.25.<br>
 Read in the <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw2/nnmf-2429-by-361-face.txt"><code>nnmf-2429-by-361-face.txt</code></a> file, e.g., using <a href="https://docs.julialang.org/en/stable/stdlib/io-network/#Base.DataFmt.readdlm-Tuple{Any,Char,Type,Char}"><code>readdlm()</code></a> function, and display a couple sample images, e.g., using <a href="https://github.com/JuliaImages/ImageView.jl">ImageView.jl</a> package.</p>
