@@ -12438,7 +12438,7 @@ Stacktrace:
 <div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">L</span><span class="p">]</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">Achol</span><span class="p">)</span> <span class="c"># determine rank from Cholesky factor</span>
 </pre></div>
 
 </div>
@@ -12450,6 +12450,64 @@ Stacktrace:
 
 
 <div class="output_area"><div class="prompt output_prompt">Out[20]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">rank</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c"># determine rank from SVD, which is more numerically stable</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">L</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12469,7 +12527,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">U</span><span class="p">]</span>
@@ -12483,7 +12541,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[21]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12503,7 +12561,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span><span class="p">[:</span><span class="n">p</span><span class="p">]</span>
@@ -12517,7 +12575,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[22]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12537,7 +12595,7 @@ Stacktrace:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># P A P&#39; = L U</span>
@@ -12552,7 +12610,7 @@ Stacktrace:
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[23]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[25]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
@@ -12598,7 +12656,7 @@ $$<ul>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># this is a person w/o any numerical analsyis training</span>
@@ -12610,76 +12668,16 @@ $$<ul>
 <span class="c"># this is an efficiency-savvy person </span>
 <span class="k">function</span><span class="nf"> logpdf_mvn_2</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">Σ</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">Σchol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">Σ</span><span class="p">)</span>
+    <span class="n">Σchol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">Symmetric</span><span class="p">(</span><span class="n">Σ</span><span class="p">))</span>
     <span class="o">-</span> <span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="n">π</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">logdet</span><span class="p">(</span><span class="n">Σchol</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">sum</span><span class="p">(</span><span class="n">abs2</span><span class="p">,</span> <span class="n">Σchol</span><span class="p">[:</span><span class="n">L</span><span class="p">]</span> \ <span class="n">y</span><span class="p">)</span>
 <span class="k">end</span>
-</pre></div>
 
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[24]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>logpdf_mvn_2 (generic function with 1 method)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">Distributions</span>
-
-<span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span> <span class="c"># seed</span>
-
-<span class="n">n</span>   <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">Σ</span>   <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="n">Σ</span> <span class="o">=</span> <span class="n">Σ</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Σ</span> <span class="o">+</span> <span class="n">I</span> <span class="c"># covariance matrix</span>
-<span class="n">y</span>   <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">MvNormal</span><span class="p">(</span><span class="n">Σ</span><span class="p">))</span> <span class="c"># one randdom sample from N(0, Σ)</span>
-
-<span class="c"># at least they give same answer</span>
-<span class="p">@</span><span class="n">show</span> <span class="n">logpdf_mvn_1</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
-<span class="p">@</span><span class="n">show</span> <span class="n">logpdf_mvn_2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">);</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>logpdf_mvn_1(y, Σ) = -4396.173284372774
-logpdf_mvn_2(y, Σ) = -4396.173284372773
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">logpdf_mvn_1</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
+<span class="c"># better memory efficiency</span>
+<span class="k">function</span><span class="nf"> logpdf_mvn_3</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">Σ</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">Σchol</span> <span class="o">=</span> <span class="n">cholfact</span><span class="p">(</span><span class="n">Symmetric</span><span class="p">(</span><span class="n">Σ</span><span class="p">))</span>
+    <span class="o">-</span> <span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="n">π</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">logdet</span><span class="p">(</span><span class="n">Σchol</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">dot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σchol</span> \ <span class="n">y</span><span class="p">)</span>
+<span class="k">end</span>
 </pre></div>
 
 </div>
@@ -12694,17 +12692,7 @@ logpdf_mvn_2(y, Σ) = -4396.173284372773
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  23.42 MiB
-  allocs estimate:  26
-  --------------
-  minimum time:     68.620 ms (2.54% GC)
-  median time:      71.903 ms (2.40% GC)
-  mean time:        78.875 ms (2.36% GC)
-  maximum time:     147.430 ms (2.54% GC)
-  --------------
-  samples:          64
-  evals/sample:     1</pre>
+<pre>logpdf_mvn_3 (generic function with 1 method)</pre>
 </div>
 
 </div>
@@ -12718,6 +12706,85 @@ logpdf_mvn_2(y, Σ) = -4396.173284372773
 <div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">Distributions</span>
+
+<span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span> <span class="c"># seed</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">Σ</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="n">Σ</span> <span class="o">=</span> <span class="n">Σ</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">Σ</span> <span class="o">+</span> <span class="n">I</span> <span class="c"># covariance matrix</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">MvNormal</span><span class="p">(</span><span class="n">Σ</span><span class="p">))</span> <span class="c"># one randdom sample from N(0, Σ)</span>
+
+<span class="c"># at least they give same answer</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">logpdf_mvn_1</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">logpdf_mvn_2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">logpdf_mvn_3</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">);</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>logpdf_mvn_1(y, Σ) = -4396.173284372774
+logpdf_mvn_2(y, Σ) = -4396.173284372773
+logpdf_mvn_3(y, Σ) = -4396.173284372773
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">logpdf_mvn_1</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[28]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  23.42 MiB
+  allocs estimate:  26
+  --------------
+  minimum time:     68.818 ms (2.48% GC)
+  median time:      77.068 ms (2.30% GC)
+  mean time:        81.321 ms (2.25% GC)
+  maximum time:     131.659 ms (2.40% GC)
+  --------------
+  samples:          62
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">logpdf_mvn_2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
 </pre></div>
 
@@ -12729,20 +12796,59 @@ logpdf_mvn_2(y, Σ) = -4396.173284372773
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[27]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
   memory estimate:  15.27 MiB
-  allocs estimate:  15
+  allocs estimate:  14
   --------------
-  minimum time:     12.246 ms (0.00% GC)
-  median time:      14.219 ms (12.05% GC)
-  mean time:        15.400 ms (9.06% GC)
-  maximum time:     41.230 ms (6.79% GC)
+  minimum time:     10.761 ms (0.00% GC)
+  median time:      12.785 ms (13.40% GC)
+  mean time:        12.987 ms (10.33% GC)
+  maximum time:     19.108 ms (10.46% GC)
   --------------
-  samples:          325
+  samples:          385
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">logpdf_mvn_3</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[30]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  7.64 MiB
+  allocs estimate:  10
+  --------------
+  minimum time:     8.802 ms (0.00% GC)
+  median time:      9.325 ms (0.00% GC)
+  mean time:        10.130 ms (7.36% GC)
+  maximum time:     14.764 ms (15.79% GC)
+  --------------
+  samples:          493
   evals/sample:     1</pre>
 </div>
 
@@ -12803,7 +12909,7 @@ logpdf_mvn_2(y, Σ) = -4396.173284372773
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
