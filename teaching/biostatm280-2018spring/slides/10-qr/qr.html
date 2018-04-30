@@ -11751,10 +11751,21 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#QR-Decomposition" data-toc-modified-id="QR-Decomposition-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>QR Decomposition</a></div><div class="lev2 toc-item"><a href="#Definition" data-toc-modified-id="Definition-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Definition</a></div><div class="lev2 toc-item"><a href="#QR-by-Gram-Schmidt" data-toc-modified-id="QR-by-Gram-Schmidt-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>QR by Gram-Schmidt</a></div><div class="lev2 toc-item"><a href="#QR-by-Householder-transform" data-toc-modified-id="QR-by-Householder-transform-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>QR by Householder transform</a></div><div class="lev2 toc-item"><a href="#Householder-QR-with-column-pivoting" data-toc-modified-id="Householder-QR-with-column-pivoting-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Householder QR with column pivoting</a></div><div class="lev2 toc-item"><a href="#Implementation" data-toc-modified-id="Implementation-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Implementation</a></div><div class="lev2 toc-item"><a href="#QR-by-Givens-rotation" data-toc-modified-id="QR-by-Givens-rotation-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>QR by Givens rotation</a></div><div class="lev2 toc-item"><a href="#Further-reading" data-toc-modified-id="Further-reading-17"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>Further reading</a></div></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="QR-Decomposition">QR Decomposition<a class="anchor-link" href="#QR-Decomposition">&#182;</a></h1><ul>
 <li><p>We learnt Cholesky decomposition as <strong>one</strong> approach for solving linear regression.</p>
 </li>
-<li><p>A second approach for linear regression uses QR decomposition. <strong>This is how the <code>lm()</code> function in R does linear regression.</strong></p>
+<li><p>A second approach for linear regression uses QR decomposition.<br>
+  <strong>This is how the <code>lm()</code> function in R does linear regression.</strong></p>
 </li>
 </ul>
 
@@ -11853,8 +11864,8 @@ $$
 where</p>
 <ul>
 <li>$\mathbf{Q} \in \mathbb{R}^{n \times n}$, $\mathbf{Q}^T \mathbf{Q} = \mathbf{I}_n$   <ul>
-<li>First $p$ columns of $\mathbf{Q}$ form an orthonormal basis of ${\cal C}(\mathbf{X})$ (column space of $\mathbf{X}$)      </li>
-<li>Last $n-p$ columns of $\mathbf{Q}$ form an orthonormal basis of ${\cal N}(\mathbf{X})$ (null space of $\mathbf{X}$)</li>
+<li>First $p$ columns of $\mathbf{Q}$ form an orthonormal basis of ${\cal C}(\mathbf{X})$ (<strong>column space</strong> of $\mathbf{X}$)      </li>
+<li>Last $n-p$ columns of $\mathbf{Q}$ form an orthonormal basis of ${\cal N}(\mathbf{X}^T)$ (<strong>null space</strong> of $\mathbf{X}^T$)</li>
 </ul>
 </li>
 <li>$\mathbf{R} \in \mathbb{R}^{n \times p}$  is upper triangular  </li>
@@ -12029,7 +12040,7 @@ costs $4np$ flops. <strong>We never explicitly form the Householder matrices.</s
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Householder-QR-with-column-pivoting">Householder QR with column pivoting<a class="anchor-link" href="#Householder-QR-with-column-pivoting">&#182;</a></h2><p>Consider rank deficient $\mathbf{X}$.</p>
 <ul>
-<li><p>At the $j$-th stage, swap the column in $\mathbf{X}(j:n,j:p)$ with maximum $\ell_2$ norm to be the pivot column. If the maximum $\ell_2$ norm is 0, it stops, ending with
+<li><p>At the $j$-th stage, swap the column in $\mathbf{X}[j:n,j:p]$ with maximum $\ell_2$ norm to be the pivot column. If the maximum $\ell_2$ norm is 0, it stops, ending with
 $$
 \mathbf{X} \mathbf{P} = \mathbf{Q} \begin{pmatrix} \mathbf{R}_{11} & \mathbf{R}_{12} \\ \mathbf{0}_{(n-r) \times r} & \mathbf{0}_{(n-r) \times (p-r)} \end{pmatrix},
 $$
@@ -12100,7 +12111,7 @@ for any orthogonal matrix $\mathbf{Q}$.</p>
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">cholfact</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">X</span><span class="p">)</span> \ <span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">y</span><span class="p">)</span> <span class="c"># cholesky approach</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">cholfact</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">X</span><span class="p">)</span> \ <span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">y</span><span class="p">)</span> <span class="c"># least squares solution by Cholesky</span>
 </pre></div>
 
 </div>
