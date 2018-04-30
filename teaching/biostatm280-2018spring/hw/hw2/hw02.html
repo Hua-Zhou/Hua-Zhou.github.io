@@ -11772,7 +11772,7 @@ $$
     v_{ik}^{(t+1)} = v_{ik}^{(t)} \frac{\sum_j x_{ij} w_{kj}^{(t)}}{\sum_j b_{ij}^{(t)} w_{kj}^{(t)}}, \quad \text{where } b_{ij}^{(t)} = \sum_k v_{ik}^{(t)} w_{kj}^{(t)},
 $$
 $$
-    w_{kj}^{(t+1)} = w_{kj}^{(t)} \frac{\sum_i x_{ij} v_{ik}^{(t)}}{\sum_i b_{ij}^{(t+1/2)} v_{ik}^{(t)}}, \quad \text{where } b_{ij}^{(t+1/2)} = \sum_k v_{ik}^{(t+1)} w_{kj}^{(t)}.
+    w_{kj}^{(t+1)} = w_{kj}^{(t)} \frac{\sum_i x_{ij} v_{ik}^{(t+1)}}{\sum_i b_{ij}^{(t+1/2)} v_{ik}^{(t+1)}}, \quad \text{where } b_{ij}^{(t+1/2)} = \sum_k v_{ik}^{(t+1)} w_{kj}^{(t)}.
 $$
 Superscript $t$ indicates iteration number. Efficiency (both speed and memory) will be the most important criterion when grading this problem.</p>
 <ol>
@@ -11786,6 +11786,8 @@ Superscript $t$ indicates iteration number. Efficiency (both speed and memory) w
  <span class="n">W</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="n">eltype</span><span class="p">(</span><span class="n">X</span><span class="p">)}</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
  <span class="p">)</span>
  <span class="c"># implementation</span>
+ <span class="c"># Output</span>
+ <span class="k">return</span> <span class="n">V</span><span class="p">,</span> <span class="n">W</span>
 <span class="k">end</span>
 </pre></div>
 </li>
