@@ -11804,19 +11804,36 @@ on paper using sweep operator.</p>
 $$
   \mathbf{A} = \begin{pmatrix} \mathbf{A}_{11} & \mathbf{A}_{12} \\ \mathbf{A}_{21} & \mathbf{A}_{22} \end{pmatrix}.
 $$
-If possible, sweep on the diagonal entries of $\mathbf{A}_{11}$ yields<br>
-$$
-  \begin{pmatrix}</p>
-<ul>
-<li>\mathbf{A}<em>{11}^{-1} &amp; \mathbf{A}</em>{11}^{-1} \mathbf{A}<em>{12} \
-\mathbf{A}</em>{21} \mathbf{A}<em>{11}^{-1} &amp; \mathbf{A}</em>{22} - \mathbf{A}<em>{21} \mathbf{A}</em>{11}^{-1} \mathbf{A}<em>{12}
-\end{pmatrix}.
-$$
-Order dose **not** matter. The block $\mathbf{A}</em>{22} - \mathbf{A}<em>{21} \mathbf{A}</em>{11}^{-1} \mathbf{A}<em>{12}$ is recognized as the **Schur complement** of $\mathbf{A}</em>{11}$.</li>
+If possible, sweep on the diagonal entries of $\mathbf{A}_{11}$ yields</p>
+</li>
 </ul>
-</li>
-<li><p>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$.</p>
-</li>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$
+    \begin{pmatrix} 
+    - \mathbf{A}_{11}^{-1} & \mathbf{A}_{11}^{-1} \mathbf{A}_{12} \\
+    \mathbf{A}_{21} \mathbf{A}_{11}^{-1} & \mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}
+    \end{pmatrix}.
+$$<p><br>
+Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_{21} \mathbf{A}_{11}^{-1} \mathbf{A}_{12}$ is recognized as the <strong>Schur complement</strong> of $\mathbf{A}_{11}$.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$. </li>
 </ul>
 <h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><ul>
 <li><p>Invert a matrix <em>in place</em>. $n^3$ flops.<br>
