@@ -11783,7 +11783,7 @@ div#notebook {
 <span class="n">X</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="c"># predictor matrix</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>    <span class="c"># response vector</span>
 
-<span class="c"># finds the least square solution</span>
+<span class="c"># finds the least squares solution</span>
 <span class="n">X</span> \ <span class="n">y</span>
 </pre></div>
 
@@ -11857,40 +11857,38 @@ div#notebook {
 <h2 id="Definition">Definition<a class="anchor-link" href="#Definition">&#182;</a></h2><ul>
 <li><p>Assume $\mathbf{X} \in \mathbb{R}^{n \times p}$ has full column rank.</p>
 </li>
-<li><p><strong>Full QR decomposition</strong>:
+<li><p><strong>Full QR decomposition</strong>:<br>
 $$
-  \mathbf{X} = \mathbf{Q} \mathbf{R},
+  \mathbf{X} = \mathbf{Q} \mathbf{R},  
 $$
 where</p>
 <ul>
-<li>$\mathbf{Q} \in \mathbb{R}^{n \times n}$, $\mathbf{Q}^T \mathbf{Q} = \mathbf{I}_n$   <ul>
+<li>$\mathbf{Q} \in \mathbb{R}^{n \times n}$, $\mathbf{Q}^T \mathbf{Q} = \mathbf{I}_n$. In other words, $\mathbf{Q}$ is an orthogonal matrix.  <ul>
 <li>First $p$ columns of $\mathbf{Q}$ form an orthonormal basis of ${\cal C}(\mathbf{X})$ (<strong>column space</strong> of $\mathbf{X}$)      </li>
 <li>Last $n-p$ columns of $\mathbf{Q}$ form an orthonormal basis of ${\cal N}(\mathbf{X}^T)$ (<strong>null space</strong> of $\mathbf{X}^T$)</li>
 </ul>
 </li>
-<li>$\mathbf{R} \in \mathbb{R}^{n \times p}$  is upper triangular  </li>
+<li>$\mathbf{R} \in \mathbb{R}^{n \times p}$  is upper triangular.  </li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p><strong>Skinny (or thin) QR decomposition</strong>:
 $$
   \mathbf{X} = \mathbf{Q} \mathbf{R},
 $$
 where</p>
 <ul>
-<li>$\mathbf{Q} \in \mathbb{R}^{n \times p}$, $\mathbf{Q}^T \mathbf{Q} = \mathbf{I}_p$  </li>
-<li>$\mathbf{R} \in \mathbb{R}^{p \times p}$  is an upper triangular matrix with positive diagonal entries  </li>
+<li>$\mathbf{Q} \in \mathbb{R}^{n \times p}$, $\mathbf{Q}^T \mathbf{Q} = \mathbf{I}_p$. In other words, $\mathbf{Q}$ has orthonormal columns.    </li>
+<li>$\mathbf{R} \in \mathbb{R}^{p \times p}$  is an upper triangular matrix with positive diagonal entries.  </li>
 </ul>
 </li>
-<li><p>Note given QR decompositin $\mathbf{X} = \mathbf{Q} \mathbf{R}$,
+<li><p>Given QR decompositin $\mathbf{X} = \mathbf{Q} \mathbf{R}$,
 $$
   \mathbf{X}^T \mathbf{X} = \mathbf{R}^T \mathbf{Q}^T \mathbf{Q} \mathbf{R} = \mathbf{R}^T \mathbf{R}.
 $$
-Therefore $\mathbf{R}$ is the same as the upper triangular Choleksy factor of $\mathbf{X}^T \mathbf{X}$.</p>
+Therefore $\mathbf{R}$ is the same as the upper triangular Choleksy factor of the Gram matrix $\mathbf{X}^T \mathbf{X}$.</p>
 </li>
 <li><p>There are 3 algorithms to compute QR: (modified) Gram-Schmidt, Householder transform, (fast) Givens transform.</p>
-<p>In particular, the Householder transform for QR is implemented in LAPACK and thus used in R and Julia.</p>
+<p>In particular, the <strong>Householder transform</strong> for QR is implemented in LAPACK and thus used in R and Julia.</p>
 </li>
 </ul>
 
@@ -11954,7 +11952,7 @@ $$</li>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="QR-by-Householder-transform">QR by Householder transform<a class="anchor-link" href="#QR-by-Householder-transform">&#182;</a></h2><p><img src="http://www-history.mcs.st-andrews.ac.uk/BigPictures/Householder_2.jpeg" width="150" align="center"/></p>
 <ul>
-<li><p>This is the algorithm implemented in LAPACK for QR decomposition. In other words, this is the algorithm for solving linear regression in R.</p>
+<li><p>This is the algorithm implemented in LAPACK. In other words, this is the algorithm for solving linear regression in R.</p>
 </li>
 <li><p>Assume $\mathbf{X} = (\mathbf{x}_1, \ldots, \mathbf{x}_p) \in \mathbb{R}^{n \times p}$ has full column rank.</p>
 </li>
