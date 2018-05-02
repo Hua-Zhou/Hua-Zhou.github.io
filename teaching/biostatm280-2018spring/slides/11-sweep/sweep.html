@@ -11751,7 +11751,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Sweep-operator" data-toc-modified-id="Sweep-operator-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Sweep operator</a></div><div class="lev2 toc-item"><a href="#Applications" data-toc-modified-id="Applications-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Applications</a></div><div class="lev2 toc-item"><a href="#Implementation" data-toc-modified-id="Implementation-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Implementation</a></div><div class="lev2 toc-item"><a href="#Further-reading" data-toc-modified-id="Further-reading-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Further reading</a></div></p>
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Sweep-operator" data-toc-modified-id="Sweep-operator-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Sweep operator</a></div><div class="lev2 toc-item"><a href="#Definition" data-toc-modified-id="Definition-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Definition</a></div><div class="lev2 toc-item"><a href="#Applications" data-toc-modified-id="Applications-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Applications</a></div><div class="lev3 toc-item"><a href="#Linear-regression-(as-done-in-SAS)" data-toc-modified-id="Linear-regression-(as-done-in-SAS)-121"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>Linear regression (as done in SAS)</a></div><div class="lev3 toc-item"><a href="#Invert-a-matrix-in-place" data-toc-modified-id="Invert-a-matrix-in-place-122"><span class="toc-item-num">1.2.2&nbsp;&nbsp;</span>Invert a matrix <em>in place</em></a></div><div class="lev3 toc-item"><a href="#Conditional-multivariate-normal-density-calculation" data-toc-modified-id="Conditional-multivariate-normal-density-calculation-123"><span class="toc-item-num">1.2.3&nbsp;&nbsp;</span>Conditional multivariate normal density calculation</a></div><div class="lev3 toc-item"><a href="#Stepwise-regression" data-toc-modified-id="Stepwise-regression-124"><span class="toc-item-num">1.2.4&nbsp;&nbsp;</span>Stepwise regression</a></div><div class="lev3 toc-item"><a href="#MANOVA" data-toc-modified-id="MANOVA-125"><span class="toc-item-num">1.2.5&nbsp;&nbsp;</span>MANOVA</a></div><div class="lev2 toc-item"><a href="#Implementation" data-toc-modified-id="Implementation-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Implementation</a></div><div class="lev2 toc-item"><a href="#Further-reading" data-toc-modified-id="Further-reading-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Further reading</a></div></p>
 
 </div>
 </div>
@@ -11761,7 +11761,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sweep-operator">Sweep operator<a class="anchor-link" href="#Sweep-operator">&#182;</a></h1><ul>
+<h1 id="Sweep-operator">Sweep operator<a class="anchor-link" href="#Sweep-operator">&#182;</a></h1><h2 id="Definition">Definition<a class="anchor-link" href="#Definition">&#182;</a></h2><ul>
 <li><p>We learnt Cholesky decomposition and QR decomposition approaches for solving linear regression.</p>
 </li>
 <li><p>The popular statistical software SAS uses sweep operator for linear regression and matrix inversion.</p>
@@ -11835,20 +11835,7 @@ Order dose <strong>not</strong> matter. The block $\mathbf{A}_{22} - \mathbf{A}_
 <ul>
 <li>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$. </li>
 </ul>
-<h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><ul>
-<li><p>Invert a matrix <em>in place</em>. $n^3$ flops.<br>
-Recall that inversion by Cholesky costs $(1/3)n^3 + (4/3) n^3 = (5/3) n^3$ flops and needs to allocate a matrix of same size.</p>
-</li>
-<li><p>Stepwise regression.</p>
-</li>
-<li><p>Conditional multivariate normal density calculation.</p>
-</li>
-<li><p>MANOVA.</p>
-</li>
-<li><p>Linear regression (as done in SAS).</p>
-</li>
-</ul>
-<p>Sweep on the Gram matrix 
+<h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><h3 id="Linear-regression-(as-done-in-SAS)">Linear regression (as done in SAS)<a class="anchor-link" href="#Linear-regression-(as-done-in-SAS)">&#182;</a></h3><p>Sweep on the Gram matrix 
 $$
 \begin{pmatrix} 
     \mathbf{X}^T \mathbf{X} & \mathbf{X}^T \mathbf{y} \\ 
@@ -11869,7 +11856,8 @@ $$
 \end{eqnarray*}
 $$<p><br>
 In total $np^2 + p^3$ flops.</p>
-<h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
+<h3 id="Invert-a-matrix-in-place">Invert a matrix <em>in place</em><a class="anchor-link" href="#Invert-a-matrix-in-place">&#182;</a></h3><p>$n^3$ flops. Recall that inversion by Cholesky costs $(1/3)n^3 + (4/3) n^3 = (5/3) n^3$ flops and needs to allocate a matrix of same size.</p>
+<h3 id="Conditional-multivariate-normal-density-calculation">Conditional multivariate normal density calculation<a class="anchor-link" href="#Conditional-multivariate-normal-density-calculation">&#182;</a></h3><h3 id="Stepwise-regression">Stepwise regression<a class="anchor-link" href="#Stepwise-regression">&#182;</a></h3><h3 id="MANOVA">MANOVA<a class="anchor-link" href="#MANOVA">&#182;</a></h3><h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
 <li><a href="https://github.com/joshday/SweepOperator.jl">SweepOperator.jl</a> package (by Josh Day) implements the sweep operator.</li>
 </ul>
 
@@ -11881,7 +11869,8 @@ In total $np^2 + p^3$ flops.</p>
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">SweepOperator</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># Pkg.add(&quot;SweepOperator&quot;)</span>
+<span class="k">using</span> <span class="n">SweepOperator</span>
 
 <span class="n">srand</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
 
@@ -12031,6 +12020,42 @@ In total $np^2 + p^3$ flops.</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Julia Version 0.6.2
+Commit d386e40c17 (2017-12-13 18:08 UTC)
+Platform Info:
+  OS: macOS (x86_64-apple-darwin14.5.0)
+  CPU: Intel(R) Core(TM) i7-6920HQ CPU @ 2.90GHz
+  WORD_SIZE: 64
+  BLAS: libopenblas (USE64BITINT DYNAMIC_ARCH NO_AFFINITY Haswell)
+  LAPACK: libopenblas64_
+  LIBM: libopenlibm
+  LLVM: libLLVM-3.9.1 (ORCJIT, skylake)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
