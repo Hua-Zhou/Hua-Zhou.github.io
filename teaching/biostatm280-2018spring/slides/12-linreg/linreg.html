@@ -11818,19 +11818,20 @@ div#notebook {
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">SweepOperator</span><span class="p">,</span> <span class="n">BenchmarkTools</span>
 
-<span class="k">function</span><span class="nf"> linreg_cholesky</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span>
-    <span class="n">cholfact!</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span> \ <span class="p">(</span><span class="n">X</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
-<span class="k">end</span>
+<span class="n">linreg_cholesky</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span> <span class="o">=</span> <span class="n">cholfact!</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">X</span><span class="p">)</span> \ <span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">y</span><span class="p">)</span>
 
-<span class="k">function</span><span class="nf"> linreg_qr</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span>
-    <span class="n">X</span> \ <span class="n">y</span>
-<span class="k">end</span>
+<span class="n">linreg_qr</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span> <span class="o">=</span> <span class="n">X</span> \ <span class="n">y</span>
 
 <span class="k">function</span><span class="nf"> linreg_sweep</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">tableau</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span><span class="o">&#39;</span> <span class="o">*</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span>
     <span class="n">sweep!</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">p</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">tableau</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">p</span><span class="p">,</span> <span class="k">end</span><span class="p">]</span>
+<span class="k">end</span>
+
+<span class="k">function</span><span class="nf"> linreg_svd</span><span class="p">(</span><span class="n">y</span><span class="p">::</span><span class="n">Vector</span><span class="p">,</span> <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">)</span>
+    <span class="n">xsvd</span> <span class="o">=</span> <span class="n">svdfact</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">xsvd</span><span class="p">[:</span><span class="n">V</span><span class="p">]</span> <span class="o">*</span> <span class="p">((</span><span class="n">xsvd</span><span class="p">[:</span><span class="n">U</span><span class="p">]</span><span class="o">&#39;</span><span class="n">y</span><span class="p">)</span> <span class="o">./</span> <span class="n">xsvd</span><span class="p">[:</span><span class="n">S</span><span class="p">])</span>
 <span class="k">end</span>
 </pre></div>
 
@@ -11846,7 +11847,7 @@ div#notebook {
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>linreg_sweep (generic function with 1 method)</pre>
+<pre>linreg_svd (generic function with 1 method)</pre>
 </div>
 
 </div>
@@ -11866,9 +11867,11 @@ div#notebook {
 <span class="n">X</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
+<span class="c"># check these methods give same answer</span>
 <span class="p">@</span><span class="n">show</span> <span class="n">linreg_cholesky</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 <span class="p">@</span><span class="n">show</span> <span class="n">linreg_qr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-<span class="p">@</span><span class="n">show</span> <span class="n">linreg_sweep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">linreg_sweep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="p">@</span><span class="n">show</span> <span class="n">linreg_svd</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">);</span>
 </pre></div>
 
 </div>
@@ -11884,6 +11887,7 @@ div#notebook {
 <pre>linreg_cholesky(y,X) = [0.390365,0.262759,0.149047]
 linreg_qr(y,X) = [0.390365,0.262759,0.149047]
 linreg_sweep(y,X) = [0.390365,0.262759,0.149047]
+linreg_svd(y,X) = [0.390365,0.262759,0.149047]
 </pre>
 </div>
 </div>
@@ -11920,12 +11924,12 @@ linreg_sweep(y,X) = [0.390365,0.262759,0.149047]
   memory estimate:  708.34 KiB
   allocs estimate:  10
   --------------
-  minimum time:     2.276 ms (0.00% GC)
-  median time:      3.192 ms (0.00% GC)
-  mean time:        3.409 ms (1.30% GC)
-  maximum time:     17.219 ms (0.00% GC)
+  minimum time:     2.189 ms (0.00% GC)
+  median time:      2.494 ms (0.00% GC)
+  mean time:        2.538 ms (1.30% GC)
+  maximum time:     6.754 ms (0.00% GC)
   --------------
-  samples:          1445
+  samples:          1954
   evals/sample:     1</pre>
 </div>
 
@@ -11959,12 +11963,12 @@ linreg_sweep(y,X) = [0.390365,0.262759,0.149047]
   memory estimate:  6.03 MiB
   allocs estimate:  622
   --------------
-  minimum time:     8.959 ms (0.00% GC)
-  median time:      10.813 ms (0.00% GC)
-  mean time:        11.047 ms (2.68% GC)
-  maximum time:     21.195 ms (0.00% GC)
+  minimum time:     8.809 ms (0.00% GC)
+  median time:      9.374 ms (0.00% GC)
+  mean time:        9.511 ms (2.71% GC)
+  maximum time:     12.391 ms (0.00% GC)
   --------------
-  samples:          451
+  samples:          524
   evals/sample:     1</pre>
 </div>
 
@@ -11998,12 +12002,12 @@ linreg_sweep(y,X) = [0.390365,0.262759,0.149047]
   memory estimate:  4.05 MiB
   allocs estimate:  2465
   --------------
-  minimum time:     12.576 ms (0.00% GC)
-  median time:      14.654 ms (0.00% GC)
-  mean time:        15.217 ms (1.73% GC)
-  maximum time:     23.027 ms (0.00% GC)
+  minimum time:     11.989 ms (0.00% GC)
+  median time:      12.475 ms (0.00% GC)
+  mean time:        12.868 ms (1.88% GC)
+  maximum time:     18.407 ms (7.49% GC)
   --------------
-  samples:          328
+  samples:          388
   evals/sample:     1</pre>
 </div>
 
@@ -12016,6 +12020,45 @@ linreg_sweep(y,X) = [0.390365,0.262759,0.149047]
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="p">@</span><span class="n">benchmark</span> <span class="n">linreg_svd</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  8.74 MiB
+  allocs estimate:  22
+  --------------
+  minimum time:     54.382 ms (0.00% GC)
+  median time:      55.866 ms (0.00% GC)
+  mean time:        56.163 ms (0.73% GC)
+  maximum time:     59.908 ms (0.00% GC)
+  --------------
+  samples:          89
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
