@@ -11778,13 +11778,13 @@ that drive the objective $L^{(t)} = L(\mathbf{V}^{(t)}, \mathbf{W}^{(t)})$ downh
 <ol>
 <li><p>Implement the algorithm with arguments: $\mathbf{X}$ (data, each row is a vectorized image), rank $r$, convergence tolerance, and optional starting point.</p>
 <div class="highlight"><pre><span></span><span class="k">function</span><span class="nf"> nnmf</span><span class="p">(</span>
- <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">,</span> 
- <span class="n">r</span><span class="p">::</span><span class="kt">Int</span><span class="p">;</span>
- <span class="n">maxiter</span><span class="p">::</span><span class="kt">Int</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> 
- <span class="n">tol</span><span class="p">::</span><span class="n">eltype</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>
- <span class="n">V</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="n">eltype</span><span class="p">(</span><span class="n">X</span><span class="p">)}</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">r</span><span class="p">),</span>
- <span class="n">W</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="n">eltype</span><span class="p">(</span><span class="n">X</span><span class="p">)}</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
- <span class="p">)</span>
+ <span class="n">X</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="n">T</span><span class="p">},</span>
+ <span class="n">r</span><span class="p">::</span><span class="n">Integer</span><span class="p">;</span>
+ <span class="n">maxiter</span><span class="p">::</span><span class="n">Integer</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> 
+ <span class="n">tol</span><span class="p">::</span><span class="n">Number</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>
+ <span class="n">V</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="n">T</span><span class="p">}</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">r</span><span class="p">),</span>
+ <span class="n">W</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="n">T</span><span class="p">}</span><span class="o">=</span><span class="n">rand</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+ <span class="p">)</span> <span class="n">where</span> <span class="n">T</span> <span class="o">&lt;:</span> <span class="n">AbstractFloat</span>
  <span class="c"># implementation</span>
  <span class="c"># Output</span>
  <span class="k">return</span> <span class="n">V</span><span class="p">,</span> <span class="n">W</span>
