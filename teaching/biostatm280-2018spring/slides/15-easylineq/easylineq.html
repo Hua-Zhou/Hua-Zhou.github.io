@@ -11827,12 +11827,12 @@ div#notebook {
   memory estimate:  15.95 KiB
   allocs estimate:  5
   --------------
-  minimum time:     739.008 μs (0.00% GC)
-  median time:      931.755 μs (0.00% GC)
-  mean time:        1.127 ms (0.07% GC)
-  maximum time:     4.613 ms (0.00% GC)
+  minimum time:     729.697 μs (0.00% GC)
+  median time:      743.364 μs (0.00% GC)
+  mean time:        778.562 μs (0.06% GC)
+  maximum time:     2.414 ms (62.58% GC)
   --------------
-  samples:          4408
+  samples:          6392
   evals/sample:     1</pre>
 </div>
 
@@ -11867,13 +11867,13 @@ div#notebook {
   memory estimate:  15.95 KiB
   allocs estimate:  5
   --------------
-  minimum time:     2.158 μs (0.00% GC)
-  median time:      3.088 μs (0.00% GC)
-  mean time:        4.701 μs (22.05% GC)
-  maximum time:     304.640 μs (96.55% GC)
+  minimum time:     3.791 μs (0.00% GC)
+  median time:      4.701 μs (0.00% GC)
+  mean time:        5.935 μs (14.60% GC)
+  maximum time:     267.824 μs (95.83% GC)
   --------------
   samples:          10000
-  evals/sample:     9</pre>
+  evals/sample:     8</pre>
 </div>
 
 </div>
@@ -11985,12 +11985,12 @@ div#notebook {
   memory estimate:  7.65 MiB
   allocs estimate:  8
   --------------
-  minimum time:     12.811 ms (0.00% GC)
-  median time:      14.951 ms (0.00% GC)
-  mean time:        16.320 ms (3.43% GC)
-  maximum time:     62.748 ms (0.00% GC)
+  minimum time:     12.552 ms (0.00% GC)
+  median time:      13.446 ms (0.00% GC)
+  mean time:        13.404 ms (4.16% GC)
+  maximum time:     16.647 ms (0.00% GC)
   --------------
-  samples:          306
+  samples:          373
   evals/sample:     1</pre>
 </div>
 
@@ -12025,10 +12025,10 @@ div#notebook {
   memory estimate:  23.89 KiB
   allocs estimate:  6
   --------------
-  minimum time:     13.183 μs (0.00% GC)
-  median time:      15.355 μs (0.00% GC)
-  mean time:        17.816 μs (7.68% GC)
-  maximum time:     1.776 ms (97.12% GC)
+  minimum time:     12.511 μs (0.00% GC)
+  median time:      14.714 μs (0.00% GC)
+  mean time:        17.326 μs (8.28% GC)
+  maximum time:     2.081 ms (97.27% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12081,12 +12081,12 @@ div#notebook {
   memory estimate:  7.95 KiB
   allocs estimate:  2
   --------------
-  minimum time:     773.806 μs (0.00% GC)
-  median time:      835.609 μs (0.00% GC)
-  mean time:        861.995 μs (0.03% GC)
-  maximum time:     4.149 ms (0.00% GC)
+  minimum time:     762.721 μs (0.00% GC)
+  median time:      946.558 μs (0.00% GC)
+  mean time:        1.051 ms (0.02% GC)
+  maximum time:     7.309 ms (0.00% GC)
   --------------
-  samples:          5772
+  samples:          4721
   evals/sample:     1</pre>
 </div>
 
@@ -12121,10 +12121,10 @@ div#notebook {
   memory estimate:  7.97 KiB
   allocs estimate:  3
   --------------
-  minimum time:     299.516 μs (0.00% GC)
-  median time:      363.247 μs (0.00% GC)
-  mean time:        385.947 μs (0.11% GC)
-  maximum time:     2.366 ms (82.12% GC)
+  minimum time:     320.558 μs (0.00% GC)
+  median time:      380.211 μs (0.00% GC)
+  mean time:        430.062 μs (0.07% GC)
+  maximum time:     4.834 ms (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12142,7 +12142,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Block-diagonal-matrix">Block diagonal matrix<a class="anchor-link" href="#Block-diagonal-matrix">&#182;</a></h2><p>Block diagonal: Suppose $n = \sum_i n_i$. $(\sum_i n_i)^3$ vs $\sum_i n_i^3$.</p>
-<p>Julia has a <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blkdiag#Base.blkdiag"><code>blkdiag</code></a> function that generates a <strong>full</strong> matrix. Anyone interested writing a <code>BlockDiagonal.jl</code> package?</p>
+<p>Julia has a <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blkdiag#Base.LinAlg.blkdiag"><code>blkdiag</code></a> function that generates a <strong>sparse</strong> matrix. Anyone interested writing a <code>BlockDiagonal.jl</code> package?</p>
 
 </div>
 </div>
@@ -12214,7 +12214,7 @@ $$
     (\mathbf{C}^T \otimes \mathbf{A}) \text{vec}(\mathbf{B}) &=& \text{vec}(\mathbf{A} \mathbf{B} \mathbf{C}).
 \end{eqnarray*}    
 $$
-to avoid forming and doing computation on the potentially huge matrix $\mathbf{A} \otimes \mathbf{B}$.</p>
+to avoid forming and doing computation on the potentially huge Kronecker $\mathbf{A} \otimes \mathbf{B}$.</p>
 
 </div>
 </div>
@@ -12294,10 +12294,10 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     105.706 μs (0.00% GC)
-  median time:      125.913 μs (0.00% GC)
-  mean time:        128.057 μs (0.00% GC)
-  maximum time:     901.994 μs (0.00% GC)
+  minimum time:     100.168 μs (0.00% GC)
+  median time:      186.690 μs (0.00% GC)
+  mean time:        201.362 μs (0.00% GC)
+  maximum time:     2.580 ms (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12334,10 +12334,10 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     6.833 μs (0.00% GC)
-  median time:      7.521 μs (0.00% GC)
-  mean time:        8.325 μs (2.25% GC)
-  maximum time:     385.589 μs (94.62% GC)
+  minimum time:     6.943 μs (0.00% GC)
+  median time:      7.599 μs (0.00% GC)
+  mean time:        8.241 μs (2.32% GC)
+  maximum time:     483.364 μs (95.82% GC)
   --------------
   samples:          10000
   evals/sample:     5</pre>
@@ -12374,12 +12374,12 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
   memory estimate:  7.63 MiB
   allocs estimate:  8
   --------------
-  minimum time:     9.097 ms (0.00% GC)
-  median time:      10.173 ms (0.00% GC)
-  mean time:        10.997 ms (7.98% GC)
-  maximum time:     78.238 ms (85.51% GC)
+  minimum time:     9.110 ms (0.00% GC)
+  median time:      11.609 ms (0.00% GC)
+  mean time:        11.827 ms (8.51% GC)
+  maximum time:     68.000 ms (85.06% GC)
   --------------
-  samples:          454
+  samples:          422
   evals/sample:     1</pre>
 </div>
 
@@ -12414,12 +12414,12 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
   memory estimate:  1.33 MiB
   allocs estimate:  53
   --------------
-  minimum time:     3.344 ms (0.00% GC)
-  median time:      3.491 ms (0.00% GC)
-  mean time:        3.672 ms (0.95% GC)
-  maximum time:     14.893 ms (0.00% GC)
+  minimum time:     3.326 ms (0.00% GC)
+  median time:      3.434 ms (0.00% GC)
+  mean time:        3.631 ms (0.99% GC)
+  maximum time:     7.742 ms (0.00% GC)
   --------------
-  samples:          1359
+  samples:          1375
   evals/sample:     1</pre>
 </div>
 
@@ -12455,12 +12455,12 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
   memory estimate:  7.64 MiB
   allocs estimate:  10
   --------------
-  minimum time:     10.076 ms (0.00% GC)
-  median time:      10.522 ms (0.00% GC)
-  mean time:        10.712 ms (4.99% GC)
-  maximum time:     12.816 ms (13.44% GC)
+  minimum time:     10.132 ms (0.00% GC)
+  median time:      11.326 ms (0.00% GC)
+  mean time:        11.478 ms (5.48% GC)
+  maximum time:     16.560 ms (0.00% GC)
   --------------
-  samples:          466
+  samples:          435
   evals/sample:     1</pre>
 </div>
 
@@ -12525,12 +12525,12 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
   memory estimate:  1.36 MiB
   allocs estimate:  64
   --------------
-  minimum time:     3.848 ms (0.00% GC)
-  median time:      3.904 ms (0.00% GC)
-  mean time:        4.012 ms (0.90% GC)
-  maximum time:     5.691 ms (9.91% GC)
+  minimum time:     3.825 ms (0.00% GC)
+  median time:      3.928 ms (0.00% GC)
+  mean time:        4.094 ms (0.92% GC)
+  maximum time:     6.442 ms (0.00% GC)
   --------------
-  samples:          1245
+  samples:          1220
   evals/sample:     1</pre>
 </div>
 
@@ -12559,6 +12559,13 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre><span class="ansi-cyan-intense-fg ansi-bold">INFO: </span><span class="ansi-cyan-fg">Recompiling stale cache file /Users/huazhou/.julia/lib/v0.6/IterativeSolvers.ji for module IterativeSolvers.
+</span></pre>
+</div>
+</div>
 
 <div class="output_area"><div class="prompt output_prompt">Out[18]:</div>
 
@@ -12597,10 +12604,10 @@ to avoid forming and doing computation on the potentially huge matrix $\mathbf{A
   memory estimate:  33.30 KiB
   allocs estimate:  27
   --------------
-  minimum time:     33.350 μs (0.00% GC)
-  median time:      35.946 μs (0.00% GC)
-  mean time:        41.878 μs (6.79% GC)
-  maximum time:     2.910 ms (95.15% GC)
+  minimum time:     31.181 μs (0.00% GC)
+  median time:      34.950 μs (0.00% GC)
+  mean time:        40.390 μs (8.18% GC)
+  maximum time:     2.927 ms (94.92% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12721,12 +12728,12 @@ $$</p>
   memory estimate:  7.64 MiB
   allocs estimate:  9
   --------------
-  minimum time:     8.826 ms (0.00% GC)
-  median time:      9.621 ms (0.00% GC)
-  mean time:        10.153 ms (5.76% GC)
-  maximum time:     25.516 ms (10.87% GC)
+  minimum time:     8.913 ms (0.00% GC)
+  median time:      9.119 ms (0.00% GC)
+  mean time:        9.485 ms (6.82% GC)
+  maximum time:     12.387 ms (15.54% GC)
   --------------
-  samples:          492
+  samples:          527
   evals/sample:     1</pre>
 </div>
 
@@ -12761,10 +12768,10 @@ $$</p>
   memory estimate:  76.16 KiB
   allocs estimate:  26
   --------------
-  minimum time:     19.691 μs (0.00% GC)
-  median time:      24.759 μs (0.00% GC)
-  mean time:        34.777 μs (21.82% GC)
-  maximum time:     3.248 ms (97.15% GC)
+  minimum time:     19.164 μs (0.00% GC)
+  median time:      24.648 μs (0.00% GC)
+  mean time:        34.932 μs (24.29% GC)
+  maximum time:     4.617 ms (98.44% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12801,10 +12808,10 @@ $$</p>
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     178.184 μs (0.00% GC)
-  median time:      202.171 μs (0.00% GC)
-  mean time:        207.340 μs (0.00% GC)
-  maximum time:     555.101 μs (0.00% GC)
+  minimum time:     193.856 μs (0.00% GC)
+  median time:      203.398 μs (0.00% GC)
+  mean time:        205.489 μs (0.00% GC)
+  maximum time:     531.061 μs (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12841,13 +12848,13 @@ $$</p>
   memory estimate:  24.06 KiB
   allocs estimate:  5
   --------------
-  minimum time:     4.799 μs (0.00% GC)
-  median time:      6.529 μs (0.00% GC)
-  mean time:        9.382 μs (19.91% GC)
-  maximum time:     490.339 μs (96.04% GC)
+  minimum time:     4.910 μs (0.00% GC)
+  median time:      6.397 μs (0.00% GC)
+  mean time:        8.787 μs (20.79% GC)
+  maximum time:     374.038 μs (96.19% GC)
   --------------
   samples:          10000
-  evals/sample:     6</pre>
+  evals/sample:     7</pre>
 </div>
 
 </div>
