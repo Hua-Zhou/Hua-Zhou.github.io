@@ -11787,7 +11787,10 @@ $n \approx 10^9$ in May 2017.</p>
 </ul>
 <p>The process defines a Markov chain on the space of $n$ pages. Stationary distribution of this Markov chain gives the ranks (probabilities) of each page.</p>
 <ul>
-<li><p>Stationary distribution is the top left eigenvector of the transition matrix $\mathbf{P}$ corresponding to eigenvalue 1. Equivalently it can be cast as a linear equation.</p>
+<li><p>Stationary distribution is the top left eigenvector of the transition matrix $\mathbf{P}$ corresponding to eigenvalue 1. Equivalently it can be cast as a linear equation.
+$$
+  (\mathbf{I} - \mathbf{P}^T) \mathbf{x} = \mathbf{0}.
+$$</p>
 </li>
 <li><p>Gene Golub: Largest matrix computation in world.</p>
 </li>
@@ -11942,6 +11945,7 @@ $$</p>
 <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">A</span><span class="o">&#39;</span> <span class="o">+</span> <span class="p">(</span><span class="mi">2</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">I</span>
 <span class="p">@</span><span class="n">show</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="c"># dense matrix representation of A</span>
 <span class="n">Afull</span> <span class="o">=</span> <span class="n">full</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="p">@</span><span class="n">show</span> <span class="nb">typeof</span><span class="p">(</span><span class="n">Afull</span><span class="p">)</span>
 <span class="c"># actual sparsity level</span>
@@ -12002,12 +12006,12 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  31.33 KiB
   allocs estimate:  2
   --------------
-  minimum time:     5.219 ms (0.00% GC)
-  median time:      7.761 ms (0.00% GC)
-  mean time:        8.355 ms (0.00% GC)
-  maximum time:     16.742 ms (0.00% GC)
+  minimum time:     5.618 ms (0.00% GC)
+  median time:      7.455 ms (0.00% GC)
+  mean time:        7.712 ms (0.00% GC)
+  maximum time:     14.812 ms (0.00% GC)
   --------------
-  samples:          596
+  samples:          646
   evals/sample:     1</pre>
 </div>
 
@@ -12042,10 +12046,10 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  31.33 KiB
   allocs estimate:  2
   --------------
-  minimum time:     70.906 μs (0.00% GC)
-  median time:      76.773 μs (0.00% GC)
-  mean time:        87.932 μs (1.61% GC)
-  maximum time:     2.699 ms (0.00% GC)
+  minimum time:     66.647 μs (0.00% GC)
+  median time:      69.379 μs (0.00% GC)
+  mean time:        74.066 μs (2.24% GC)
+  maximum time:     1.427 ms (92.48% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -12083,12 +12087,12 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  122.10 MiB
   allocs estimate:  11
   --------------
-  minimum time:     279.073 ms (2.86% GC)
-  median time:      292.323 ms (2.74% GC)
-  mean time:        309.835 ms (4.00% GC)
-  maximum time:     409.355 ms (1.97% GC)
+  minimum time:     277.813 ms (2.90% GC)
+  median time:      279.444 ms (2.87% GC)
+  mean time:        284.541 ms (3.83% GC)
+  maximum time:     335.722 ms (17.85% GC)
   --------------
-  samples:          17
+  samples:          18
   evals/sample:     1</pre>
 </div>
 
@@ -12160,12 +12164,12 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  94.36 KiB
   allocs estimate:  13
   --------------
-  minimum time:     1.013 ms (0.00% GC)
-  median time:      1.063 ms (0.00% GC)
-  mean time:        1.089 ms (0.54% GC)
-  maximum time:     2.946 ms (63.65% GC)
+  minimum time:     1.034 ms (0.00% GC)
+  median time:      1.061 ms (0.00% GC)
+  mean time:        1.100 ms (0.51% GC)
+  maximum time:     3.343 ms (58.19% GC)
   --------------
-  samples:          4579
+  samples:          4537
   evals/sample:     1</pre>
 </div>
 
@@ -12230,12 +12234,12 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  63.11 KiB
   allocs estimate:  13
   --------------
-  minimum time:     1.110 ms (0.00% GC)
-  median time:      1.180 ms (0.00% GC)
-  mean time:        1.199 ms (0.27% GC)
-  maximum time:     2.886 ms (56.43% GC)
+  minimum time:     1.116 ms (0.00% GC)
+  median time:      1.215 ms (0.00% GC)
+  mean time:        1.232 ms (0.26% GC)
+  maximum time:     3.518 ms (65.23% GC)
   --------------
-  samples:          4161
+  samples:          4050
   evals/sample:     1</pre>
 </div>
 
@@ -12300,12 +12304,12 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  94.81 KiB
   allocs estimate:  38
   --------------
-  minimum time:     1.118 ms (0.00% GC)
-  median time:      1.175 ms (0.00% GC)
-  mean time:        1.206 ms (0.51% GC)
-  maximum time:     3.631 ms (58.71% GC)
+  minimum time:     1.123 ms (0.00% GC)
+  median time:      1.165 ms (0.00% GC)
+  mean time:        1.210 ms (0.39% GC)
+  maximum time:     2.644 ms (55.17% GC)
   --------------
-  samples:          4138
+  samples:          4121
   evals/sample:     1</pre>
 </div>
 
@@ -12370,10 +12374,10 @@ typeof(Afull) = Array{Float64,2}
   memory estimate:  126.86 KiB
   allocs estimate:  31
   --------------
-  minimum time:     229.820 μs (0.00% GC)
-  median time:      250.275 μs (0.00% GC)
-  mean time:        267.249 μs (3.47% GC)
-  maximum time:     2.298 ms (86.19% GC)
+  minimum time:     229.348 μs (0.00% GC)
+  median time:      237.998 μs (0.00% GC)
+  mean time:        254.097 μs (3.40% GC)
+  maximum time:     2.293 ms (81.10% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
