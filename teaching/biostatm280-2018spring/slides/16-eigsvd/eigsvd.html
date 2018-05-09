@@ -11895,7 +11895,7 @@ is the SVD of $\mathbf{A}$.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Applications-of-eigen-decomposition-and-SVD">Applications of eigen-decomposition and SVD<a class="anchor-link" href="#Applications-of-eigen-decomposition-and-SVD">&#182;</a></h2><h3 id="Principal-components-analysis-(PCA).">Principal components analysis (PCA).<a class="anchor-link" href="#Principal-components-analysis-(PCA).">&#182;</a></h3><p>$\mathbf{X} \in \mathbb{R}^{n \times p}$ is a centered data matrix. Perform SVD $\mathbf{X} = \mathbf{U} \Sigma \mathbf{V}^T$ or equivalently $\mathbf{X}^T \mathbf{X} = \mathbf{V} \Sigma^2 \mathbf{V}^T$. The linear combinations $\tilde{\mathbf{x}}_i = \mathbf{X} \mathbf{v}_i$ are the principal components (PC) and have variance $\sigma_i^2$.</p>
+<h2 id="Applications-of-eigen-decomposition-and-SVD">Applications of eigen-decomposition and SVD<a class="anchor-link" href="#Applications-of-eigen-decomposition-and-SVD">&#182;</a></h2><h3 id="Principal-components-analysis-(PCA).">Principal components analysis (PCA).<a class="anchor-link" href="#Principal-components-analysis-(PCA).">&#182;</a></h3><p>$\mathbf{X} \in \mathbb{R}^{n \times p}$ is a centered data matrix. Perform SVD $\mathbf{X} = \mathbf{U} \Sigma \mathbf{V}^T$ or equivalently eigendecomposition $\mathbf{X}^T \mathbf{X} = \mathbf{V} \Sigma^2 \mathbf{V}^T$. The linear combinations $\tilde{\mathbf{x}}_i = \mathbf{X} \mathbf{v}_i$ are the <strong>principal components</strong> (PC) and have variance $\sigma_i^2$.</p>
 <ul>
 <li>Dimension reduction: reduce dimensionality $p$ to $q \ll p$. Use top PCs $\tilde{\mathbf{x}}_1, \ldots, \tilde{\mathbf{x}}_q$ in visualization and downstream analysis.</li>
 </ul>
@@ -11953,9 +11953,9 @@ where $\Sigma^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0
 
 <div class="output_text output_subarea output_execute_result">
 <pre>3×5 Array{Float64,2}:
- -0.0206529  -0.0639712  -0.497591   -0.465689   0.128749 
- -0.148128    0.421655    0.16462     0.081262  -0.0487151
- -0.34071    -0.300478   -0.0882157   0.024384  -0.178026 </pre>
+  0.505106  -0.870296   0.0979913  0.199144  -0.498414 
+  0.402924   0.294313   0.102994   0.092308  -0.20111  
+ -0.39884   -0.476916  -0.704075   0.146974  -0.0350199</pre>
 </div>
 
 </div>
@@ -12673,12 +12673,12 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  7.99 MiB
   allocs estimate:  18
   --------------
-  minimum time:     137.093 ms (0.00% GC)
-  median time:      150.819 ms (0.00% GC)
-  mean time:        164.062 ms (0.33% GC)
-  maximum time:     234.914 ms (0.96% GC)
+  minimum time:     137.042 ms (0.00% GC)
+  median time:      138.698 ms (0.00% GC)
+  mean time:        138.771 ms (0.36% GC)
+  maximum time:     141.342 ms (0.00% GC)
   --------------
-  samples:          31
+  samples:          37
   evals/sample:     1</pre>
 </div>
 
@@ -12713,12 +12713,12 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  23.25 MiB
   allocs estimate:  21
   --------------
-  minimum time:     354.121 ms (0.58% GC)
-  median time:      383.483 ms (0.54% GC)
-  mean time:        387.281 ms (1.79% GC)
-  maximum time:     458.776 ms (11.29% GC)
+  minimum time:     306.944 ms (0.67% GC)
+  median time:      308.574 ms (0.67% GC)
+  mean time:        313.533 ms (1.72% GC)
+  maximum time:     356.924 ms (14.05% GC)
   --------------
-  samples:          13
+  samples:          16
   evals/sample:     1</pre>
 </div>
 
@@ -12957,12 +12957,12 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  4.11 MiB
   allocs estimate:  12
   --------------
-  minimum time:     61.123 ms (0.00% GC)
-  median time:      63.978 ms (0.00% GC)
-  mean time:        68.538 ms (0.33% GC)
-  maximum time:     93.862 ms (1.80% GC)
+  minimum time:     62.264 ms (0.00% GC)
+  median time:      63.718 ms (0.00% GC)
+  mean time:        64.701 ms (0.47% GC)
+  maximum time:     78.200 ms (0.00% GC)
   --------------
-  samples:          73
+  samples:          78
   evals/sample:     1</pre>
 </div>
 
@@ -12996,12 +12996,12 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  17.23 MiB
   allocs estimate:  16
   --------------
-  minimum time:     118.140 ms (0.00% GC)
-  median time:      121.103 ms (0.97% GC)
-  mean time:        123.224 ms (1.93% GC)
-  maximum time:     174.281 ms (28.81% GC)
+  minimum time:     122.035 ms (0.00% GC)
+  median time:      125.075 ms (0.99% GC)
+  mean time:        127.033 ms (1.94% GC)
+  maximum time:     171.955 ms (28.95% GC)
   --------------
-  samples:          41
+  samples:          40
   evals/sample:     1</pre>
 </div>
 
@@ -13175,10 +13175,10 @@ typeof(Afull) = Symmetric{Float64,Array{Float64,2}}
   memory estimate:  123.48 MiB
   allocs estimate:  22
   --------------
-  minimum time:     4.842 s (0.17% GC)
-  median time:      4.859 s (0.70% GC)
-  mean time:        4.859 s (0.70% GC)
-  maximum time:     4.875 s (1.22% GC)
+  minimum time:     4.941 s (0.18% GC)
+  median time:      4.950 s (0.70% GC)
+  mean time:        4.950 s (0.70% GC)
+  maximum time:     4.959 s (1.22% GC)
   --------------
   samples:          2
   evals/sample:     1</pre>
@@ -13214,12 +13214,12 @@ typeof(Afull) = Symmetric{Float64,Array{Float64,2}}
   memory estimate:  840.39 KiB
   allocs estimate:  1822
   --------------
-  minimum time:     36.473 ms (0.00% GC)
-  median time:      40.405 ms (0.00% GC)
-  mean time:        43.417 ms (0.11% GC)
-  maximum time:     69.789 ms (0.00% GC)
+  minimum time:     36.317 ms (0.00% GC)
+  median time:      39.390 ms (0.00% GC)
+  mean time:        39.560 ms (0.11% GC)
+  maximum time:     44.672 ms (3.30% GC)
   --------------
-  samples:          116
+  samples:          127
   evals/sample:     1</pre>
 </div>
 
