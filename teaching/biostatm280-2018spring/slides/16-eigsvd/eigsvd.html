@@ -11916,8 +11916,8 @@ is achieved by $\mathbf{Y} = \sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i^T$ 
 <ul>
 <li>Gene Golub's $897 \times 598$ picture requires $2691 \times 598 \times 8 = 12,873,744$ bytes (3 RGB channels).  </li>
 <li>Rank 120 approximation requires $120 \times (2691+598) \times 8 = 3,157,440$ bytes. </li>
-<li>Rank 50 approximation requires $50 \times (2691+598) \times 6 = 1,315,600$ bytes. </li>
-<li>Rank 12 approximation requires $12 \times (2691+598) \times 6 = 315,744$ bytes.</li>
+<li>Rank 50 approximation requires $50 \times (2691+598) \times 8 = 1,315,600$ bytes. </li>
+<li>Rank 12 approximation requires $12 \times (2691+598) \times 8 = 315,744$ bytes.</li>
 </ul>
 <p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/3/image_7.img.jpg/1490211663024.jpg" width="150" align="center"/></p>
 <p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/2/image_6.img.jpg/1490211662986.jpg" width="150" align="center"/></p>
@@ -11926,7 +11926,7 @@ is achieved by $\mathbf{Y} = \sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i^T$ 
 $$
 \mathbf{A}^+ = \mathbf{V} \Sigma^+ \mathbf{U}^T,
 $$
-where $\Sigma^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0)$, $r= \text{rank}(\mathbf{A})$. This is how the <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.pinv"><code>pinv</code></a> function is implemented in Julia.</p>
+where $\Sigma^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0)$, $r= \text{rank}(\mathbf{A})$. This is how the <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.LinAlg.pinv"><code>pinv</code></a> function is implemented in Julia.</p>
 
 </div>
 </div>
@@ -11953,9 +11953,9 @@ where $\Sigma^+ = \text{diag}(\sigma_1^{-1}, \ldots, \sigma_r^{-1}, 0, \ldots, 0
 
 <div class="output_text output_subarea output_execute_result">
 <pre>3×5 Array{Float64,2}:
-  0.505106  -0.870296   0.0979913  0.199144  -0.498414 
-  0.402924   0.294313   0.102994   0.092308  -0.20111  
- -0.39884   -0.476916  -0.704075   0.146974  -0.0350199</pre>
+ 0.427013     0.0888668   0.0964091   0.37396    0.26257 
+ 0.358517     0.0510759   0.214358   -0.420113   0.137496
+ 0.00805499  -0.080998   -0.50504     0.295226  -0.180994</pre>
 </div>
 
 </div>
@@ -12187,7 +12187,7 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="QR-algorithm-for-symmetric-eigen-decomposition">QR algorithm for symmetric eigen-decomposition<a class="anchor-link" href="#QR-algorithm-for-symmetric-eigen-decomposition">&#182;</a></h3><p>Assume $\mathbf{A} \in \mathbb{R}^{n \times n}$ symmetric.</p>
 <ul>
-<li><p>Reading: <a href="http://hua-zhou.github.io/teaching/biostatm280-2017spring/readings/qr.pdf">The QR algorithm</a> by Beresford N. Parlett.</p>
+<li><p>Reading: <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/readings/qr.pdf">The QR algorithm</a> by Beresford N. Parlett.</p>
 </li>
 <li><p>This is the algorithm implemented in LAPACK: used by Julia, Matlab, R.</p>
 </li>
@@ -12224,7 +12224,7 @@ $$</p>
 </tbody>
 </table>
 <ul>
-<li><p>Message: Don't request eigenvectors unless necessary. Use <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.eigvals"><code>eigvals</code></a> in Julia to request only eigenvalues.</p>
+<li><p>Message: Don't request eigenvectors unless necessary. Use <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.LinAlg.eigvals"><code>eigvals</code></a> in Julia to request only eigenvalues.</p>
 </li>
 <li><p>The <strong>unsymmetric QR algorithm</strong> obtains the real Schur decomposition of an asymmetric matrix $\mathbf{A}$.</p>
 </li>
@@ -12673,12 +12673,12 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  7.99 MiB
   allocs estimate:  18
   --------------
-  minimum time:     137.042 ms (0.00% GC)
-  median time:      138.698 ms (0.00% GC)
-  mean time:        138.771 ms (0.36% GC)
-  maximum time:     141.342 ms (0.00% GC)
+  minimum time:     137.309 ms (0.00% GC)
+  median time:      155.528 ms (0.00% GC)
+  mean time:        174.524 ms (0.27% GC)
+  maximum time:     222.454 ms (0.75% GC)
   --------------
-  samples:          37
+  samples:          29
   evals/sample:     1</pre>
 </div>
 
@@ -12713,10 +12713,10 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  23.25 MiB
   allocs estimate:  21
   --------------
-  minimum time:     306.944 ms (0.67% GC)
-  median time:      308.574 ms (0.67% GC)
-  mean time:        313.533 ms (1.72% GC)
-  maximum time:     356.924 ms (14.05% GC)
+  minimum time:     304.373 ms (0.64% GC)
+  median time:      310.200 ms (0.63% GC)
+  mean time:        330.251 ms (1.78% GC)
+  maximum time:     426.362 ms (0.55% GC)
   --------------
   samples:          16
   evals/sample:     1</pre>
@@ -12957,12 +12957,12 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  4.11 MiB
   allocs estimate:  12
   --------------
-  minimum time:     62.264 ms (0.00% GC)
-  median time:      63.718 ms (0.00% GC)
-  mean time:        64.701 ms (0.47% GC)
-  maximum time:     78.200 ms (0.00% GC)
+  minimum time:     60.028 ms (0.00% GC)
+  median time:      60.798 ms (0.00% GC)
+  mean time:        61.538 ms (0.32% GC)
+  maximum time:     77.827 ms (0.00% GC)
   --------------
-  samples:          78
+  samples:          82
   evals/sample:     1</pre>
 </div>
 
@@ -12996,12 +12996,12 @@ eigmin(A::<b>Union{Hermitian{#s268,#s267}, Hermitian{Complex{#s268},#s267}, Symm
   memory estimate:  17.23 MiB
   allocs estimate:  16
   --------------
-  minimum time:     122.035 ms (0.00% GC)
-  median time:      125.075 ms (0.99% GC)
-  mean time:        127.033 ms (1.94% GC)
-  maximum time:     171.955 ms (28.95% GC)
+  minimum time:     116.675 ms (0.00% GC)
+  median time:      120.056 ms (0.94% GC)
+  mean time:        121.681 ms (1.87% GC)
+  maximum time:     167.393 ms (29.17% GC)
   --------------
-  samples:          40
+  samples:          42
   evals/sample:     1</pre>
 </div>
 
@@ -13175,12 +13175,12 @@ typeof(Afull) = Symmetric{Float64,Array{Float64,2}}
   memory estimate:  123.48 MiB
   allocs estimate:  22
   --------------
-  minimum time:     4.941 s (0.18% GC)
-  median time:      4.950 s (0.70% GC)
-  mean time:        4.950 s (0.70% GC)
-  maximum time:     4.959 s (1.22% GC)
+  minimum time:     5.379 s (0.17% GC)
+  median time:      5.379 s (0.17% GC)
+  mean time:        5.379 s (0.17% GC)
+  maximum time:     5.379 s (0.17% GC)
   --------------
-  samples:          2
+  samples:          1
   evals/sample:     1</pre>
 </div>
 
@@ -13214,12 +13214,12 @@ typeof(Afull) = Symmetric{Float64,Array{Float64,2}}
   memory estimate:  840.39 KiB
   allocs estimate:  1822
   --------------
-  minimum time:     36.317 ms (0.00% GC)
-  median time:      39.390 ms (0.00% GC)
-  mean time:        39.560 ms (0.11% GC)
-  maximum time:     44.672 ms (3.30% GC)
+  minimum time:     36.341 ms (0.00% GC)
+  median time:      40.440 ms (0.00% GC)
+  mean time:        42.443 ms (0.11% GC)
+  maximum time:     58.579 ms (0.00% GC)
   --------------
-  samples:          127
+  samples:          118
   evals/sample:     1</pre>
 </div>
 
