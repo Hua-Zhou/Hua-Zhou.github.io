@@ -12247,7 +12247,7 @@ $r_i = \sum_j a_{ij}$ is the out-degree of page $i$. That is $r_i$ is the number
 <li>A dense eigen-solver.  </li>
 <li>A simple iterative eigen-solver such as the power method.  </li>
 </ol>
-<p>For iterative methods, you can use the <a href="https://github.com/JuliaMath/IterativeSolvers.jl"><code>IterativeSolvers.jl</code></a> package. Make sure to utilize the special structure of $\mathbf{P}$ (diagonal + rank 1) to speed up the matrix-vector multiplication.</p>
+<p>For iterative methods, you can use the <a href="https://github.com/JuliaMath/IterativeSolvers.jl"><code>IterativeSolvers.jl</code></a> package. Make sure to utilize the special structure of $\mathbf{P}$ (sparse + rank 1) to speed up the matrix-vector multiplication.</p>
 
 </div>
 </div>
