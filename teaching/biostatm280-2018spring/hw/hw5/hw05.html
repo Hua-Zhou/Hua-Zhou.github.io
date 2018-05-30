@@ -11761,7 +11761,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Consider again the MLE of the Dirichlet-multinomial model. In <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw04.html">HW4</a>, we worked out a Newton's method. In this homework, we explore the EM and MM approach.</p>
+<p>Consider again the MLE of the Dirichlet-multinomial model. In <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw4/hw04.html">HW4</a>, we worked out a Newton's method. In this homework, we explore the MM and EM approach.</p>
 
 </div>
 </div>
@@ -11868,10 +11868,10 @@ The quantities $s_{jk}$, $r_k$, $\max_i x_{ij}$ and $\max_i |\mathbf{x}_i|$ only
 <span class="s">* `obsinfo`: the observed information matrix at MLE. </span>
 <span class="s">&quot;&quot;&quot;</span>
 <span class="k">function</span><span class="nf"> dirmult_mm</span><span class="p">(</span>
-        <span class="n">X</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">;</span> 
-        <span class="n">α0</span><span class="p">::</span><span class="n">Vector</span> <span class="o">=</span> <span class="n">dirmult_mom</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> 
-        <span class="n">maxiters</span><span class="p">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> 
-        <span class="n">tolfun</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">::</span><span class="n">AbstractMatrix</span><span class="p">;</span> 
+    <span class="n">α0</span><span class="p">::</span><span class="n">Vector</span> <span class="o">=</span> <span class="n">dirmult_mom</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> 
+    <span class="n">maxiters</span><span class="p">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> 
+    <span class="n">tolfun</span> <span class="o">=</span> <span class="mf">1e-6</span>
     <span class="p">)</span>
     
     <span class="c"># your code here</span>
@@ -11905,7 +11905,7 @@ The quantities $s_{jk}$, $r_k$, $\max_i x_{ij}$ and $\max_i |\mathbf{x}_i|$ only
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Q6">Q6<a class="anchor-link" href="#Q6">&#182;</a></h2><p>Re-do <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw04.html#Q9">HW4 Q9</a> using your new <code>dirmult_mm</code> function. Compare the number of iterations and run time by MM algorithm to those by Newton's method. Comment on the efficiency of Newton's algorithm vs MM algorithm for this problem.</p>
+<h2 id="Q6">Q6<a class="anchor-link" href="#Q6">&#182;</a></h2><p>Re-do <a href="http://hua-zhou.github.io/teaching/biostatm280-2018spring/hw/hw4/hw04.html#Q9">HW4 Q9</a> using your new <code>dirmult_mm</code> function. Compare the number of iterations and run time by MM algorithm to those by Newton's method. Comment on the efficiency of Newton's algorithm vs MM algorithm for this problem.</p>
 
 </div>
 </div>
