@@ -12081,7 +12081,7 @@ where $\mathbf{J}(\beta)^T = [\nabla \mu_1(\beta), \ldots, \nabla \mu_n(\beta)] 
 </li>
 <li><p><strong>Gauss-Newton</strong> (= "Fisher's scoring algorithm") uses $\mathbf{I}(\beta)$, which is always psd.
 $$
-  \boxed{ \beta^{(t+1)} = \beta^{(t)} + s \mathbf{I} (\beta^{(t)})^{-1} \nabla L(\beta^{(t)}) }
+  \boxed{ \beta^{(t+1)} = \beta^{(t)} + s [\mathbf{I} (\beta^{(t)})]^{-1} \nabla L(\beta^{(t)}) }
 $$</p>
 </li>
 <li><p><strong>Levenberg-Marquardt</strong> method, aka <strong>damped least squares algorithm (DLS)</strong>, adds a ridge term to the approximate Hessian
