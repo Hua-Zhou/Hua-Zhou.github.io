@@ -21,6 +21,8 @@ Tucker version of the tensor regression.
 J Zhai, J Kim, K Knox, H Twigg, **H Zhou**, and J Zhou. (2018) Variance component selection with applications to microbiome taxonomic data, [_Frontiers in Microbiology_](https://doi.org/10.3389/fmicb.2018.00509), 9:509. \[[pdf](./media/pdf/Zhai18MicrobiomeVCSelection.pdf)\]  
 Variance component penalization method for microbiome taxa association study.
 
+J Kim, Y Zhang, J Day, and **H Zhou**. (2018) MGLM: an R package for multivariate categorical data analysis. [_The R Journal_](http://hua-zhou.github.io/teaching/biostatm280-2018spring/schedule.html), in press. \[[pdf](./media/pdf/KimZhangDayZhou18MGLM)\]
+
 C Li and **H Zhou**. (2017) svt: Singular value thresholding in MATLAB, [_Journal of Statistical Software_](https://www.jstatsoft.org/v081/c02), 81(2):1-13. \[[pdf](https://www.jstatsoft.org/index.php/jss/article/view/v081c02/v81c02.pdf)\]
 
 J Zhou, T Hu, D Qiao, M Cho, and **H Zhou**. (2016) Boosting gene mapping power and efficiency with efficient exact variance component tests of SNP sets, [_Genetics_](http://www.genetics.org/content/204/3/921), 204(3):921-931. \[[pdf](./media/pdf/ZhouHuQiaoChoZhou16Boost.pdf)\]  
