@@ -7,7 +7,7 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generating individualized treatment decision trees and random forests, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1451337), in press.
+K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generating individualized treatment decision trees and random forests, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1451337), in press. \[[pdf](./media/pdf/DoubledayZhouFuZhou18IndividualizedTreatmentTrees.pdf)\]
 
 B Gaines, J Kim, and **H Zhou**. (2018) Algorithms for fitting the constrained lasso, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1473777), in press.
 
@@ -21,7 +21,7 @@ Tucker version of the tensor regression.
 J Zhai, J Kim, K Knox, H Twigg, **H Zhou**, and J Zhou. (2018) Variance component selection with applications to microbiome taxonomic data, [_Frontiers in Microbiology_](https://doi.org/10.3389/fmicb.2018.00509), 9:509. \[[pdf](./media/pdf/Zhai18MicrobiomeVCSelection.pdf)\]  
 Variance component penalization method for microbiome taxa association study.
 
-J Kim, Y Zhang, J Day, and **H Zhou**. (2018) MGLM: an R package for multivariate categorical data analysis. [_The R Journal_](http://hua-zhou.github.io/teaching/biostatm280-2018spring/schedule.html), in press. \[[pdf](./media/pdf/KimZhangDayZhou18MGLM)\]
+J Kim, Y Zhang, J Day, and **H Zhou**. (2018) MGLM: an R package for multivariate categorical data analysis. [_The R Journal_](https://journal.r-project.org/archive/2018/RJ-2018-015/index.html), in press. \[[pdf](./media/pdf/KimZhangDayZhou18MGLM.pdf)\]
 
 C Li and **H Zhou**. (2017) svt: Singular value thresholding in MATLAB, [_Journal of Statistical Software_](https://www.jstatsoft.org/v081/c02), 81(2):1-13. \[[pdf](https://www.jstatsoft.org/index.php/jss/article/view/v081c02/v81c02.pdf)\]
 
