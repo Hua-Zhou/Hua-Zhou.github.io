@@ -7,7 +7,8 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-**H Zhou**, L Hu, J Zhou, and K Lange. (2018) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](), in press. 
+**H Zhou**, L Hu, J Zhou, and K Lange. (2018) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](), in press.  
+A new optimization algorithm for find MLE of variance components models. 
 
 K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generating individualized treatment decision trees and random forests, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1451337), in press. \[[pdf](./media/pdf/DoubledayZhouFuZhou18IndividualizedTreatmentTrees.pdf)\]
 
