@@ -12,7 +12,7 @@ A new optimization algorithm for find MLE of variance components models.
 
 K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generating individualized treatment decision trees and random forests, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1451337), in press. \[[pdf](./media/pdf/DoubledayZhouFuZhou18IndividualizedTreatmentTrees.pdf)\]
 
-B Gaines, J Kim, and **H Zhou**. (2018) Algorithms for fitting the constrained lasso, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1473777), in press. \[[pdf](./media/pdf/GainesKimZhou08CLasso.pdf)\]
+B Gaines, J Kim, and **H Zhou**. (2018) Algorithms for fitting the constrained lasso, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1473777), 27(4):861-871. \[[pdf](./media/pdf/GainesKimZhou08CLasso.pdf)\]
 
 L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component estimation and selection in logistic linear mixed models, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0220), in press.  
 
