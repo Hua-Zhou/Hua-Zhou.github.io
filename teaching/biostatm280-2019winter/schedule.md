@@ -17,7 +17,7 @@ Readings:
 
 | Week | Tuesday | Thursday | Homework |
 |:-----------|:-----------|:------------|:------------|
-| 1 | [1/8](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2018/2018/01/08/week1-day1.html) introduction, course logistics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/01-intro/intro.Rmd), [html](./slides/01-intro/intro.html)\] | 1/10 Linux basics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd), [html](./slides/02-linux/linux.html)\] | HW1: |  
+| 1 | [1/8](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/08/week1-day1.html) introduction, course logistics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/01-intro/intro.Rmd), [html](./slides/01-intro/intro.html)\] | 1/10 Linux basics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd), [html](./slides/02-linux/linux.html)\] | HW1: |  
 | 2 | 1/15 reproducible research, Git/GitHub | 1/17 RMarkdown |  
 | 3 | 1/22 data visualization with ggplot2 | 1/24 data transformation with dplyr| HW2: |   
 | 4 | 1/29 dplyr | 1/31 tidy data | |  
