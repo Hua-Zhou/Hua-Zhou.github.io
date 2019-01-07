@@ -32,12 +32,11 @@ This is a tentative list of topics:
 * Linux basics  
 * Collaborative research using Git/GitHub   
 * Reproducible research using RMarkdown   
-* R programming  
+* TidyVerse (data tidying, wrangling, and visualization)  
+* Shiny (interactive data presentation)  
 * Cluster computing @ UCLA  
 * Cloud computing  
 * Docker  
-* TidyVerse  
-* Shiny  
 * Selected tools for data science: pandas, spark, scikit-learn, TensorFlow  
 
 ### Prerequisite
