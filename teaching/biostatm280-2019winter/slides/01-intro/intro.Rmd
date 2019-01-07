@@ -1,0 +1,53 @@
+---
+title: "Course Introduction"
+author: "Dr. Hua Zhou @ UCLA"
+date: "Jan 8, 2019"
+output:
+  # ioslides_presentation: default
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: Biostat M280
+bibliography: ../bib-HZ.bib
+csl: ../apa.csl
+---
+<!-- I could not get R Markdown's citations to work as the works cited at the
+  end would not continue onto multiple slides.  If you know how to fix that, 
+  please let me know. -->
+
+# What is this course about?
+
+## Statistics and data science
+
+- This course (Biostat M280) is used as a placeholder for _Biostat 203B: Introduction to Data Science_, which is pending approval.
+
+- Statistics, the science of _data analysis_, is the applied mathematics in the 21st century.
+
+- Data is increasing in [volume, velocity, and variety](http://www.forbes.com/sites/oreillymedia/2012/01/19/volume-velocity-variety-what-you-need-to-know-about-big-data/).
+
+## Classification of data sets by @Huber94HugeData; -@Huber96MassiveData {.smaller}
+
+| Data Size | Bytes          | Storage Mode               |
+|-----------|----------------|----------------------------|
+| tiny      | $10^2$         | piece of paper             |
+| small     | $10^4$         | a few pieces of paper      |
+| medium    | $10^6$ (MB)    | a floppy disk              |
+| large     | $10^8$         | hard disk                  |
+| huge      | $10^9$ (GB)    | hard disk(s)               |
+| massive   | $10^{12}$ (TB) | hard disk(s); RAID storage |
+
+## Four V's of big data
+
+<p align="center">
+  <img src="./4-Vs-of-big-data.jpg" height="450" width="700">
+</p>
+Source: [IBM](http://www.ibmbigdatahub.com/infographic/four-vs-big-data).
+
+## Course desciption
+
+- This course introduces some computing skills and software tools for handling potentially big public health data.
+
+- Read [syllabus](http://hua-zhou.github.io/teaching/biostatm280-2019winter/syllabus.html) for a tentative list of topics and course logistics.
+
+## References
+
