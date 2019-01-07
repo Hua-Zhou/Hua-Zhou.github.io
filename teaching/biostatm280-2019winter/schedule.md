@@ -17,13 +17,13 @@ Readings:
 
 | Week | Tuesday | Thursday | Homework |
 |:-----------|:-----------|:------------|:------------|
-| 1 | [1/8](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/08/week1-day1.html) introduction, course logistics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/01-intro/intro.Rmd), [html](./slides/01-intro/intro.html)\] | 1/10 Linux basics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd), [html](./slides/02-linux/linux.html)\] | HW1: |  
-| 2 | 1/15 reproducible research, Git/GitHub | 1/17 RMarkdown |  
-| 3 | 1/22 data visualization with ggplot2 | 1/24 data transformation with dplyr| HW2: |   
-| 4 | 1/29 dplyr | 1/31 tidy data | |  
-| 5 | 2/5 stringr | 2/7 shiny for interactive document | HW3: |
-| 6 | 2/12 Databases | 2/14 cluster computing at UCLA | |  
-| 7 | 2/19 cloud computing with GCP | 2/21 Docker | HW4: |    
-| 8 | 2/26 distributed data analysis with sparklyr | 2/28 distributed data analysis with sparklyr | |  
-| 9 | 3/5 R programming (benchmark, debug, profile) | 3/7 Rcpp, parallel computing, R package | HW5: |  
-| 10 | 3/12 neural network and deep learning (intro.) | 3/14 neural network and deep learning (examples) | | 
+| 1 | [1/8](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/08/week1-day1.html) introduction, course logistics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/01-intro/intro.Rmd), [html](./slides/01-intro/intro.html)\] | 1/10 Linux basics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd), [html](./slides/02-linux/linux.html)\] |  
+| 2 | 1/15 reproducible research, Git/GitHub | 1/17 RMarkdown | HW1: |    
+| 3 | 1/22 data visualization with ggplot2 | 1/24 data transformation with dplyr|  
+| 4 | 1/29 dplyr | 1/31 tidy data | HW2: |     
+| 5 | 2/5 stringr | 2/7 shiny for interactive document |  
+| 6 | 2/12 Databases | 2/14 cluster computing at UCLA | HW3: |    
+| 7 | 2/19 cloud computing with GCP | 2/21 Docker |  
+| 8 | 2/26 distributed data analysis with sparklyr | 2/28 distributed data analysis with sparklyr | HW4: |    
+| 9 | 3/5 R programming (benchmark, debug, profile) | 3/7 Rcpp, parallel computing, R package |  
+| 10 | 3/12 neural network and deep learning (intro.) | 3/14 neural network and deep learning (examples) | HW5: |  
