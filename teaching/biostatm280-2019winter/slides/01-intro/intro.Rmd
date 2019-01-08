@@ -15,8 +15,6 @@ csl: ../apa.csl
   end would not continue onto multiple slides.  If you know how to fix that, 
   please let me know. -->
 
-# What is this course about?
-
 ## Statistics and data science
 
 - This course (Biostat M280) is used as a placeholder for _Biostat 203B: Introduction to Data Science_, which is pending approval.
