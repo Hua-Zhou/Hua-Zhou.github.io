@@ -32,9 +32,7 @@ Linux is _the_ most common platform for scientific computing.
 
 - The teaching server for this class runs CentOS 7.
 
-- MacOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to Mac OS terminal as well. Windows/DOS, unfortunately, is a totally different breed.
-
-## {.smaller}
+- MacOS was originally derived from Unix/Linux (Darwin kernel). It is POSIX compliant. Most shell commands we review here apply to MacOS terminal as well. Windows/DOS, unfortunately, is a totally different breed.
 
 - Show distribution/version on Linux:
     ```{bash}
@@ -54,7 +52,7 @@ or
 
 # Linux shells
 
-## Linux shells
+## Shells
 
 - A shell translates commands to OS instructions.
 
@@ -63,8 +61,6 @@ or
 - Sometimes a script or a command does not run simply because it's written for another shell.
 
 - We mostly use `bash` shell commands in this class.
-
-----
 
 - Determine the current shell:
     ```{bash}
@@ -75,8 +71,6 @@ or
     ```{bash}
     cat /etc/shells
     ```
-
-----
 
 - Change to another shell:
     ```{bash, eval=FALSE}
@@ -102,7 +96,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - Username completion: `cd ~[TAB][TAB]`.
 
-- Hostname completion `ssh huazhou@[TAB][TAB]`.
+- Hostname completion `ssh hwachou@[TAB][TAB]`.
 
 - It can also be customized to auto-complete other stuff such as options and command's arguments. Google `bash completion` for more information.
 
@@ -111,7 +105,7 @@ Bash provides the following standard completion for the Linux users by default. 
 ## Linux directory structure
 
 <p align="center">
-  <img src="./linux_directory_structure.png" height="300" width="450">
+  <img src="./linux_directory_structure.png" height="400" width="600">
 </p>
 - Upon log in, user is at his/her home directory.
 
@@ -127,21 +121,15 @@ Bash provides the following standard completion for the Linux users by default. 
     ls
     ```
 
-## {.smaller}
-
 - `ls -l` lists detailed contents of a directory:  
     ```{bash}
     ls -l
     ```
 
-## {.smaller}
-
 - `ls -al` lists all contents of a directory, including those start with `.` (hidden folders):
     ```{bash, small=TRUE}
     ls -al
     ```
-
-----
 
 - `..` denotes the parent of current working directory.
 
@@ -181,7 +169,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - `groups userid` shows which group(s) a user belongs to:
     ```{bash}
-    groups huazhou
+    groups hwachou
     ```
 
 ## Manipulate files and directories
@@ -200,9 +188,9 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - `rm -rf` deletes a directory and all contents in that directory (be cautious using the `-f` option ...).
 
-## Find files {.smaller}
+## Find files
 
-- `locate` locates a file by name:
+- `locate` locates a file by name (need `mlocate` program installed):
     ```{bash}
     locate linux.Rmd
     ```
@@ -212,17 +200,15 @@ Bash provides the following standard completion for the Linux users by default. 
     which R
     ```
 
-----
-
 - `find` is similar to `locate` but has more functionalities, e.g., select files by age, size, permissions, .... , and is ubiquitous.
     ```{bash}
     find linux.Rmd
     ```
     ```{bash}
-    find /home/huazhou -name linux.Rmd
+    find /home/hwachou -name linux.Rmd
     ```
 
-## Wildcard characters {.smaller}
+## Wildcard characters
 
 | Wildcard   | Matches                             |
 |------------|-------------------------------------|
@@ -235,8 +221,6 @@ Bash provides the following standard completion for the Linux users by default. 
 | `[!set]`   | any character not in set            |
 | `[a-z]`    | any lowercase letter                |
 | `[0-9]`    | any number (same as `[0123456789]`) |
-
-## {.smaller}
 
 -
     ```{bash}
@@ -258,7 +242,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - `cat` prints the contents of a file:
     ```{bash, size='smallsize'}
-    cat linux.Rmd
+    cat runSim.R
     ```
 
 ----
@@ -267,8 +251,6 @@ Bash provides the following standard completion for the Linux users by default. 
     ```{bash}
     head linux.Rmd
     ```
-
-----
 
 - `tail -l` prints the last $l$ lines of a file:
     ```{bash}
@@ -293,21 +275,15 @@ Bash provides the following standard completion for the Linux users by default. 
     grep 'CentOS' linux.Rmd
     ```
 
-----
-
 - Search multiple text files:
     ```{bash}
     grep 'CentOS' *.Rmd
     ```
 
-----
-
 - Show matching line numbers:
     ```{bash}
     grep -n 'CentOS' linux.Rmd
     ```
-
-----
 
 - Find all files in current directory with `.png` extension:
     ```{bash}
@@ -336,8 +312,6 @@ Bash provides the following standard completion for the Linux users by default. 
     ```{bash}
     awk -F: '{ print $1 }' /etc/passwd | sort | head -5
     ```
-
-----
     
 - Print number of lines in a file, as `NR` stands for Number of Rows:
     ```{bash}
@@ -352,8 +326,6 @@ or
     wc -l < /etc/passwd
     ```
 
-----
-
 - Print login names with UID in range `1000-1035`:
     ```{bash}
     awk -F: '{if ($3 >= 1000 && $3 <= 1035) print}' /etc/passwd
@@ -363,8 +335,6 @@ or
     ```{bash}
     awk -F: '{OFS = ","} {print $1, $7}' /etc/passwd
     ```
-
-----
 
 - Print login names and indicate those with UID>1000 as `vip`:
     ```{bash}
@@ -405,8 +375,6 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
     - `CTRL-x CTRL-w` to save as.  
     - `CTRL-x CTRL-c` to quit.
 
-----
-
 - Google `emacs cheatsheet`
 
 <p align="center">
@@ -427,8 +395,6 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
     - `:q!<Return>` quits vi without saving latest changes.  
     - `:w<Return>` saves changes.
     - `:wq<Return>` quits `vi` and saves changes.      
-
-----
 
 - Google `vi cheatsheet`
 
@@ -454,28 +420,20 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
     ps
     ```
 
-----
-
 - All current running processes:
     ```{bash}
     ps -eaf
     ```
-
-----
 
 - All Python processes:
     ```{bash}
     ps -eaf | grep python
     ```
 
-----
-
 - Process with PID=1:
     ```{bash}
     ps -fp 1
     ```
-
-----
 
 - All processes owned by a user:
     ```{bash}
@@ -513,7 +471,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - On Linux or Mac, access the teaching server by
     ```{bash, eval=FALSE}
-    ssh username@35.227.165.60
+    ssh username@server.biostat-m280.info
     ```
 
 - Windows machines need the [PuTTY](http://www.putty.org) program (free).
@@ -526,7 +484,7 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - Log into multiple machines using the same key.
 
-- Seamless use of many services: Git, svn, Amazon EC2 cloud service, parallel computing on multiple hosts, etc.
+- Seamless use of many services: Git, AWS or Google cloud service, parallel computing on multiple hosts, etc.
 
 - Many servers only allow key authentication and do not accept password authentication.
 
@@ -550,13 +508,13 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - Messages from your computer to server is signed with your private key (digital signatures) and can be verified by anyone who has your public key (authentication).
 
-## Steps for generate keys {.smaller}
+## Steps for generate keys
 
 - On Linux or Mac, to generate a key pair:
     ```{bash, eval=FALSE}
     ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
     ```   
-    - `[KEY_FILENAME]` is the name that you want to use for your SSH key files. For example, a filename of `my-ssh-key` generates a private key file named `my-ssh-key` and a public key file named `my-ssh-key.pub`.  
+    - `[KEY_FILENAME]` is the name that you want to use for your SSH key files. For example, a filename of `id_rsa` generates a private key file named `id_rsa` and a public key file named `id_rsa.pub`.  
     
     - `[USERNAME]` is the user for whom you will apply this SSH key.   
     
@@ -571,12 +529,12 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 
 - Append the public key to the `~/.ssh/authorized_keys` file of any Linux machine we want to SSH to, e.g.,
     ```{bash, eval=FALSE}
-    ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
+    ssh-copy-id -i ~/.ssh/[KEY_FILENAME] [USERNAME]@server.biostat-m280.info
     ```
 
 - Test your new key.
     ```{bash, eval=FALSE}
-    ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@35.227.165.60
+    ssh -i ~/.ssh/[KEY_FILENAME] [USERNAME]@server.biostat-m280.info
     ```
 
 - Now you don't need password each time you connect from your machine to the teaching server.
@@ -594,11 +552,11 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 - `scp` securely transfers files between machines using SSH.
     ```{bash, eval=FALSE}
     ## copy file from local to remote
-    scp localfile username@35.227.165.60:/pathtofolder
+    scp localfile username@server.biostat-m280.info:/pathtofolder
     ```
     ```{bash, eval=FALSE}
     ## copy file from remote to local
-    scp username@35.227.165.60:/pathtofile pathtolocalfolder
+    scp username@server.biostat-m280.info:/pathtofile pathtolocalfolder
     ```
 
 - `sftp` is FTP via SSH.
