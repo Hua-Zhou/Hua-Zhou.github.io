@@ -49,7 +49,7 @@ The prerequisite for this course is _Biostat 203A: Introduction to Data Manageme
 
 ### Course Webpage
 
-[biostat-m280.info](biostat-m280.info) or [http://hua-zhou.github.io/teaching/biostatm280-2019winter/](http://hua-zhou.github.io/teaching/biostatm280-2019winter/)
+[http://biostat-m280.info](http://biostat-m280.info) or [http://hua-zhou.github.io/teaching/biostatm280-2019winter/](http://hua-zhou.github.io/teaching/biostatm280-2019winter/)
 
 ### Course Materials
 
