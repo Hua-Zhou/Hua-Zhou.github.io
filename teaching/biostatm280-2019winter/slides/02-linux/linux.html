@@ -289,7 +289,7 @@ $(document).ready(function () {
 </ul>
 <hr />
 <ul>
-<li><p>Show distribution/version on Mac:</p>
+<li><p>Show distribution/version on MacOS:</p>
 <pre class="bash"><code>sw_vers -productVersion</code></pre>
 <p>or</p>
 <pre class="bash"><code>system_profiler SPSoftwareDataType</code></pre></li>
@@ -342,10 +342,421 @@ $(document).ready(function () {
 <img src="data:image/png;base64,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" height="400" width="600">
 </p>
 <ul>
-<li>Upon log in, user is at his/her home directory.</li>
+<li><p>Upon log in, user is at his/her home directory.</p></li>
+<li><p><code>tree</code> command (if installed) displays directory structure.<br />
+<code>tree -L levels</code> display levels directories deep.</p>
+<pre class="bash"><code># display only directories in levels 1, 2 from root directory
+tree -d -L 2 /</code></pre>
+<pre><code>## /
+## ├── bin -&gt; usr/bin
+## ├── boot
+## │   ├── efi
+## │   ├── grub
+## │   └── grub2
+## ├── dev
+## │   ├── block
+## │   ├── bsg
+## │   ├── char
+## │   ├── cpu
+## │   ├── disk
+## │   ├── fd -&gt; /proc/self/fd
+## │   ├── hugepages
+## │   ├── input
+## │   ├── mapper
+## │   ├── mqueue
+## │   ├── net
+## │   ├── pts
+## │   ├── raw
+## │   ├── shm
+## │   ├── snd
+## │   └── vfio
+## ├── etc
+## │   ├── acpi
+## │   ├── alternatives
+## │   ├── audisp
+## │   ├── audit
+## │   ├── bash_completion.d
+## │   ├── binfmt.d
+## │   ├── chkconfig.d
+## │   ├── cron.d
+## │   ├── cron.daily
+## │   ├── cron.hourly
+## │   ├── cron.monthly
+## │   ├── cron.weekly
+## │   ├── cups
+## │   ├── dbus-1
+## │   ├── dconf
+## │   ├── default
+## │   ├── depmod.d
+## │   ├── dhcp
+## │   ├── dracut.conf.d
+## │   ├── egl
+## │   ├── firewalld
+## │   ├── fonts
+## │   ├── gcrypt
+## │   ├── gdbinit.d
+## │   ├── ghostscript
+## │   ├── glvnd
+## │   ├── gnupg
+## │   ├── groff
+## │   ├── grub.d
+## │   ├── gss
+## │   ├── ImageMagick
+## │   ├── init.d -&gt; rc.d/init.d
+## │   ├── iproute2
+## │   ├── java
+## │   ├── jvm
+## │   ├── jvm-commmon
+## │   ├── kernel
+## │   ├── krb5.conf.d
+## │   ├── ld.so.conf.d
+## │   ├── libnl
+## │   ├── logrotate.d
+## │   ├── maven
+## │   ├── modprobe.d
+## │   ├── modules-load.d
+## │   ├── my.cnf.d
+## │   ├── NetworkManager
+## │   ├── ntp
+## │   ├── openldap
+## │   ├── opt
+## │   ├── pam.d
+## │   ├── pkcs11
+## │   ├── pki
+## │   ├── plymouth
+## │   ├── pm
+## │   ├── polkit-1
+## │   ├── popt.d
+## │   ├── postfix
+## │   ├── ppp
+## │   ├── prelink.conf.d
+## │   ├── profile.d
+## │   ├── python
+## │   ├── qemu-ga
+## │   ├── rc0.d -&gt; rc.d/rc0.d
+## │   ├── rc1.d -&gt; rc.d/rc1.d
+## │   ├── rc2.d -&gt; rc.d/rc2.d
+## │   ├── rc3.d -&gt; rc.d/rc3.d
+## │   ├── rc4.d -&gt; rc.d/rc4.d
+## │   ├── rc5.d -&gt; rc.d/rc5.d
+## │   ├── rc6.d -&gt; rc.d/rc6.d
+## │   ├── rc.d
+## │   ├── rpm
+## │   ├── rstudio
+## │   ├── rsyslog.d
+## │   ├── rwtab.d
+## │   ├── sasl2
+## │   ├── security
+## │   ├── selinux
+## │   ├── shiny-server
+## │   ├── skel
+## │   ├── ssh
+## │   ├── ssl
+## │   ├── statetab.d
+## │   ├── subversion
+## │   ├── sudoers.d
+## │   ├── sysconfig
+## │   ├── sysctl.d
+## │   ├── systemd
+## │   ├── terminfo
+## │   ├── tmpfiles.d
+## │   ├── tuned
+## │   ├── udev
+## │   ├── wpa_supplicant
+## │   ├── X11
+## │   ├── xdg
+## │   ├── xinetd.d
+## │   ├── yum
+## │   └── yum.repos.d
+## ├── home
+## │   ├── anorthrup
+## │   ├── bhsiao
+## │   ├── brendon.chau
+## │   ├── bryanmkevan
+## │   ├── dereklee20
+## │   ├── edenaxe
+## │   ├── elliewky
+## │   ├── elviscuihan
+## │   ├── ethanpark26
+## │   ├── fangyw1995
+## │   ├── haowenxu930622
+## │   ├── huazhou
+## │   ├── huijun.an
+## │   ├── hujuehao
+## │   ├── hwachou
+## │   ├── juhkim111
+## │   ├── kaversioniano
+## │   ├── kristenmae
+## │   ├── liuweijie12345678
+## │   ├── lucymjimenez
+## │   ├── menrge666
+## │   ├── peterljw
+## │   ├── qedo
+## │   ├── sdkwok2
+## │   ├── seancampeau
+## │   ├── shelleyjung
+## │   ├── shiny
+## │   ├── shryu94
+## │   ├── sijiawang0729
+## │   ├── suedez
+## │   ├── suneeta.godbole
+## │   ├── wenyan1996
+## │   ├── xiayu960112
+## │   ├── yoonjun05
+## │   ├── yunh
+## │   └── zfy917
+## ├── lib -&gt; usr/lib
+## ├── lib64 -&gt; usr/lib64
+## ├── media
+## ├── mnt
+## ├── opt
+## │   └── shiny-server
+## ├── proc
+## │   ├── 1
+## │   ├── 10
+## │   ├── 11
+## │   ├── 12
+## │   ├── 125
+## │   ├── 13
+## │   ├── 133
+## │   ├── 13957
+## │   ├── 14
+## │   ├── 15268
+## │   ├── 1548
+## │   ├── 1551
+## │   ├── 1552
+## │   ├── 1599
+## │   ├── 16
+## │   ├── 1600
+## │   ├── 1623
+## │   ├── 1625
+## │   ├── 1630
+## │   ├── 16314
+## │   ├── 1637
+## │   ├── 1639
+## │   ├── 1640
+## │   ├── 1641
+## │   ├── 1642
+## │   ├── 1645
+## │   ├── 1646
+## │   ├── 1647
+## │   ├── 1648
+## │   ├── 1649
+## │   ├── 1667
+## │   ├── 17
+## │   ├── 1702
+## │   ├── 1715
+## │   ├── 17242
+## │   ├── 1739
+## │   ├── 1743
+## │   ├── 17769
+## │   ├── 17774
+## │   ├── 17775
+## │   ├── 17804
+## │   ├── 18
+## │   ├── 18127
+## │   ├── 18132
+## │   ├── 18133
+## │   ├── 18134
+## │   ├── 18651
+## │   ├── 19
+## │   ├── 19584
+## │   ├── 2
+## │   ├── 20094
+## │   ├── 20136
+## │   ├── 20166
+## │   ├── 20184
+## │   ├── 20185
+## │   ├── 21
+## │   ├── 22
+## │   ├── 23
+## │   ├── 24
+## │   ├── 2486
+## │   ├── 26
+## │   ├── 2621
+## │   ├── 27
+## │   ├── 2736
+## │   ├── 28
+## │   ├── 29
+## │   ├── 3
+## │   ├── 3013
+## │   ├── 31
+## │   ├── 3104
+## │   ├── 3154
+## │   ├── 3161
+## │   ├── 32
+## │   ├── 3271
+## │   ├── 33
+## │   ├── 3325
+## │   ├── 34
+## │   ├── 3402
+## │   ├── 3406
+## │   ├── 3478
+## │   ├── 3481
+## │   ├── 3497
+## │   ├── 36
+## │   ├── 37
+## │   ├── 38
+## │   ├── 3809
+## │   ├── 39
+## │   ├── 4054
+## │   ├── 4056
+## │   ├── 4057
+## │   ├── 41
+## │   ├── 42
+## │   ├── 43
+## │   ├── 4333
+## │   ├── 4360
+## │   ├── 4361
+## │   ├── 4362
+## │   ├── 4365
+## │   ├── 4366
+## │   ├── 4383
+## │   ├── 44
+## │   ├── 4402
+## │   ├── 4404
+## │   ├── 4435
+## │   ├── 45
+## │   ├── 4533
+## │   ├── 46
+## │   ├── 4673
+## │   ├── 4797
+## │   ├── 48
+## │   ├── 49
+## │   ├── 4965
+## │   ├── 5
+## │   ├── 50
+## │   ├── 51
+## │   ├── 5161
+## │   ├── 52
+## │   ├── 53
+## │   ├── 54
+## │   ├── 55
+## │   ├── 56
+## │   ├── 57
+## │   ├── 58
+## │   ├── 59
+## │   ├── 6
+## │   ├── 60
+## │   ├── 66
+## │   ├── 67
+## │   ├── 68
+## │   ├── 69
+## │   ├── 7
+## │   ├── 77
+## │   ├── 79
+## │   ├── 8
+## │   ├── 80
+## │   ├── 81
+## │   ├── 83
+## │   ├── 9
+## │   ├── 96
+## │   ├── 97
+## │   ├── 9733
+## │   ├── 98
+## │   ├── acpi
+## │   ├── bus
+## │   ├── driver
+## │   ├── fs
+## │   ├── irq
+## │   ├── net -&gt; self/net
+## │   ├── scsi
+## │   ├── self -&gt; 20185
+## │   ├── sys
+## │   ├── sysvipc
+## │   └── tty
+## ├── root [error opening dir]
+## ├── run
+## │   ├── blkid
+## │   ├── chrony
+## │   ├── chrony-helper
+## │   ├── console
+## │   ├── cryptsetup
+## │   ├── cups
+## │   ├── dbus
+## │   ├── faillock
+## │   ├── firewalld
+## │   ├── initramfs
+## │   ├── lock
+## │   ├── log
+## │   ├── mongodb
+## │   ├── mount
+## │   ├── netreport
+## │   ├── NetworkManager
+## │   ├── plymouth
+## │   ├── sepermit
+## │   ├── setrans
+## │   ├── sudo
+## │   ├── svnserve
+## │   ├── systemd
+## │   ├── tmpfiles.d
+## │   ├── tuned
+## │   ├── udev
+## │   └── user
+## ├── sbin -&gt; usr/sbin
+## ├── srv
+## │   └── shiny-server
+## ├── sys
+## │   ├── block
+## │   ├── bus
+## │   ├── class
+## │   ├── dev
+## │   ├── devices
+## │   ├── firmware
+## │   ├── fs
+## │   ├── hypervisor
+## │   ├── kernel
+## │   ├── module
+## │   └── power
+## ├── tmp
+## │   ├── hsperfdata_root
+## │   ├── rstudio-rsession
+## │   ├── RtmpDJfYXk
+## │   ├── RtmpGslzf9
+## │   ├── ssh-Etp9sHsiEr
+## │   ├── ssh-gm6c4P99YMZn
+## │   ├── ssh-jZOyqA7AO0px
+## │   ├── systemd-private-58340b8cf9344725b08bc28f9278dac7-chronyd.service-ay8GxJ
+## │   ├── systemd-private-58340b8cf9344725b08bc28f9278dac7-cups.service-yfYPC7
+## │   └── systemd-private-e694ba7e50c2429d8d0e012d069fbd7a-chronyd.service-Vg1zCd
+## ├── usr
+## │   ├── bin
+## │   ├── etc
+## │   ├── games
+## │   ├── include
+## │   ├── lib
+## │   ├── lib64
+## │   ├── libexec
+## │   ├── local
+## │   ├── sbin
+## │   ├── share
+## │   ├── src
+## │   └── tmp -&gt; ../var/tmp
+## └── var
+##     ├── adm
+##     ├── cache
+##     ├── db
+##     ├── empty
+##     ├── games
+##     ├── gopher
+##     ├── kerberos
+##     ├── lib
+##     ├── local
+##     ├── lock -&gt; ../run/lock
+##     ├── log
+##     ├── mail -&gt; spool/mail
+##     ├── nis
+##     ├── opt
+##     ├── preserve
+##     ├── run -&gt; ../run
+##     ├── spool
+##     ├── tmp
+##     └── yp
+## 
+## 404 directories</code></pre></li>
 </ul>
 </div>
-<div id="move-around-the-file-system" class="section level2 smaller">
+<div id="move-around-the-file-system" class="section level2">
 <h2>Move around the file system</h2>
 <ul>
 <li><p><code>pwd</code> prints absolute path to the current working directory:</p>
@@ -369,7 +780,7 @@ $(document).ready(function () {
 ## Vi_Cheat_Sheet.pdf</code></pre></li>
 <li><p><code>ls -l</code> lists detailed contents of a directory:</p>
 <pre class="bash"><code>ls -l</code></pre>
-<pre><code>## total 4228
+<pre><code>## total 4244
 ## -rw-rw-r--. 1 hwachou hwachou     263 Jan  8 06:08 autoSim.R
 ## -rw-rw-r--. 1 hwachou hwachou  110345 Jan  8 06:08 Emacs_Reference_Card.pdf
 ## -rw-rw-r--. 1 hwachou hwachou  321281 Jan  8 06:08 key_authentication_1.png
@@ -377,8 +788,8 @@ $(document).ready(function () {
 ## -rw-rw-r--. 1 hwachou hwachou   11662 Jan  8 06:08 linux_directory_structure.png
 ## -rw-rw-r--. 1 hwachou hwachou   42472 Jan  8 06:08 linux_filepermission_oct.png
 ## -rw-rw-r--. 1 hwachou hwachou  102188 Jan  8 06:08 linux_filepermission.png
-## -rw-r--r--. 1 hwachou hwachou 2787176 Jan  8 06:41 linux.html
-## -rw-rw-r--. 1 hwachou hwachou   20101 Jan  8 06:41 linux.Rmd
+## -rw-r--r--. 1 hwachou hwachou 2800875 Jan  8 19:03 linux.html
+## -rw-rw-r--. 1 hwachou hwachou   20488 Jan  8 19:07 linux.Rmd
 ## -rw-rw-r--. 1 hwachou hwachou     381 Jan  8 06:08 meanEst.R
 ## -rw-rw-r--. 1 hwachou hwachou  141962 Jan  8 06:08 Richard_Stallman_2013.png
 ## -rw-rw-r--. 1 hwachou hwachou     498 Jan  8 06:08 runSim.R
@@ -386,8 +797,8 @@ $(document).ready(function () {
 ## -rw-rw-r--. 1 hwachou hwachou  199492 Jan  8 06:08 Vi_Cheat_Sheet.pdf</code></pre></li>
 <li><p><code>ls -al</code> lists all contents of a directory, including those start with <code>.</code> (hidden folders):</p>
 <pre class="bash"><code>ls -al</code></pre>
-<pre><code>## total 4236
-## drwxrwxr-x. 2 hwachou hwachou    4096 Jan  8 06:41 .
+<pre><code>## total 4252
+## drwxrwxr-x. 2 hwachou hwachou    4096 Jan  8 19:03 .
 ## drwxrwxr-x. 4 hwachou hwachou      71 Jan  8 06:02 ..
 ## -rw-rw-r--. 1 hwachou hwachou     263 Jan  8 06:08 autoSim.R
 ## -rw-rw-r--. 1 hwachou hwachou  110345 Jan  8 06:08 Emacs_Reference_Card.pdf
@@ -396,10 +807,10 @@ $(document).ready(function () {
 ## -rw-rw-r--. 1 hwachou hwachou   11662 Jan  8 06:08 linux_directory_structure.png
 ## -rw-rw-r--. 1 hwachou hwachou   42472 Jan  8 06:08 linux_filepermission_oct.png
 ## -rw-rw-r--. 1 hwachou hwachou  102188 Jan  8 06:08 linux_filepermission.png
-## -rw-r--r--. 1 hwachou hwachou 2787176 Jan  8 06:41 linux.html
-## -rw-rw-r--. 1 hwachou hwachou   20101 Jan  8 06:41 linux.Rmd
+## -rw-r--r--. 1 hwachou hwachou 2800875 Jan  8 19:03 linux.html
+## -rw-rw-r--. 1 hwachou hwachou   20488 Jan  8 19:07 linux.Rmd
 ## -rw-rw-r--. 1 hwachou hwachou     381 Jan  8 06:08 meanEst.R
-## -rw-r--r--. 1 hwachou hwachou    4074 Jan  8 06:41 .RData
+## -rw-r--r--. 1 hwachou hwachou    4077 Jan  8 19:03 .RData
 ## -rw-rw-r--. 1 hwachou hwachou  141962 Jan  8 06:08 Richard_Stallman_2013.png
 ## -rw-rw-r--. 1 hwachou hwachou     498 Jan  8 06:08 runSim.R
 ## -rw-rw-r--. 1 hwachou hwachou  469335 Jan  8 06:08 screenshot_top.png
@@ -572,30 +983,64 @@ ls -l *.png</code></pre>
 </ul>
 <hr />
 <ul>
-<li><p><code>head -l</code> prints the first <span class="math inline">\(l\)</span> lines of a file:</p>
-<pre class="bash"><code>head linux.Rmd</code></pre>
-<pre><code>## ---
-## title: &quot;Linux Basics&quot;
-## author: &quot;Dr. Hua Zhou @ UCLA&quot;
-## date: &quot;Jan 10, 2019&quot;
-## subtitle: Biostat M280
-## output:
-##   # ioslides_presentation: default
-##   html_document:
-##     toc: true
-##     toc_depth: 4</code></pre></li>
-<li><p><code>tail -l</code> prints the last <span class="math inline">\(l\)</span> lines of a file:</p>
-<pre class="bash"><code>tail linux.Rmd</code></pre>
-<pre><code>## -
-##     ```{bash}
-##     Rscript autoSim.R
-##     ```
+<li><p><code>head</code> prints the first 10 lines of a file:</p>
+<pre class="bash"><code>head runSim.R</code></pre>
+<pre><code>## ## parsing command arguments
+## for (arg in commandArgs(TRUE)) {
+##   eval(parse(text=arg))
+## }
 ## 
-##     ```{bash, echo=FALSE, eval=TRUE}
-##     rm n*.txt *.Rout
-##     ```
-##     
-## - Now we just need write a script to collect results from the output files.</code></pre></li>
+## ## check if a given integer is prime
+## isPrime = function(n) {
+##   if (n &lt;= 3) {
+##     return (TRUE)
+##   }</code></pre>
+<p><code>head -l</code> prints the first <span class="math inline">\(l\)</span> lines of a file:</p>
+<pre class="bash"><code>head -15 runSim.R</code></pre>
+<pre><code>## ## parsing command arguments
+## for (arg in commandArgs(TRUE)) {
+##   eval(parse(text=arg))
+## }
+## 
+## ## check if a given integer is prime
+## isPrime = function(n) {
+##   if (n &lt;= 3) {
+##     return (TRUE)
+##   }
+##   if (any((n %% 2:floor(sqrt(n))) == 0)) {
+##     return (FALSE)
+##   }
+##   return (TRUE)
+## }</code></pre></li>
+<li><p><code>tail</code> prints the last 10 lines of a file:</p>
+<pre class="bash"><code>tail runSim.R</code></pre>
+<pre><code>##   n = length(x)
+##   ind = sapply(1:n, isPrime)
+##   return (mean(x[ind]))
+## }
+## 
+## # simulate data
+## x = rnorm(n)
+## 
+## # estimate mean
+## estMeanPrimes(x)</code></pre>
+<p><code>tail -l</code> prints the last <span class="math inline">\(l\)</span> lines of a file:</p>
+<pre class="bash"><code>tail -15 runSim.R</code></pre>
+<pre><code>##   return (TRUE)
+## }
+## 
+## ## estimate mean only using observation with prime indices
+## estMeanPrimes = function (x) {
+##   n = length(x)
+##   ind = sapply(1:n, isPrime)
+##   return (mean(x[ind]))
+## }
+## 
+## # simulate data
+## x = rnorm(n)
+## 
+## # estimate mean
+## estMeanPrimes(x)</code></pre></li>
 </ul>
 </div>
 <div id="less-is-more-more-is-less" class="section level2">
@@ -635,14 +1080,14 @@ grep 'CentOS' linux.Rmd</code></pre>
 <pre class="bash"><code>grep -n 'CentOS' linux.Rmd</code></pre>
 <pre><code>## 31:- RHEL/CentOS is popular on servers.
 ## 33:- The teaching server for this class runs CentOS 7.
-## 272:- Show lines that contain string `CentOS`:
-## 275:    grep 'CentOS' linux.Rmd
-## 280:    grep 'CentOS' *.Rmd
-## 285:    grep -n 'CentOS' linux.Rmd
-## 302:- Replace `CentOS` by `RHEL` in a text file:
-## 304:    sed 's/CentOS/RHEL/' linux.Rmd | grep RHEL</code></pre></li>
+## 288:- Show lines that contain string `CentOS`:
+## 291:    grep 'CentOS' linux.Rmd
+## 296:    grep 'CentOS' *.Rmd
+## 301:    grep -n 'CentOS' linux.Rmd
+## 318:- Replace `CentOS` by `RHEL` in a text file:
+## 320:    sed 's/CentOS/RHEL/' linux.Rmd | grep RHEL</code></pre></li>
 <li><p>Find all files in current directory with <code>.png</code> extension:</p>
-<pre class="bash"><code>ls | grep '\.png$'</code></pre>
+<pre class="bash"><code>ls | grep '.png$'</code></pre>
 <pre><code>## key_authentication_1.png
 ## key_authentication_2.png
 ## linux_directory_structure.png
@@ -652,7 +1097,7 @@ grep 'CentOS' linux.Rmd</code></pre>
 ## screenshot_top.png</code></pre></li>
 <li><p>Find all directories in the current directory:</p>
 <pre class="bash"><code>ls -al | grep '^d'</code></pre>
-<pre><code>## drwxrwxr-x. 2 hwachou hwachou    4096 Jan  8 06:41 .
+<pre><code>## drwxrwxr-x. 2 hwachou hwachou    4096 Jan  8 19:03 .
 ## drwxrwxr-x. 4 hwachou hwachou      71 Jan  8 06:02 ..</code></pre></li>
 </ul>
 </div>
@@ -938,24 +1383,24 @@ grep 'CentOS' linux.Rmd</code></pre>
 <li><p>Each process has Process ID (PID), Username (UID), Parent process ID (PPID), Time and data process started (STIME), time running (TIME), etc.</p>
 <pre class="bash"><code>ps</code></pre>
 <pre><code>##   PID TTY          TIME CMD
-##  4459 ?        00:00:32 rsession
 ##  4965 ?        00:00:00 ssh-agent
 ##  5161 ?        00:00:00 ssh-agent
-##  8674 ?        00:00:00 sshd
-##  9002 ?        00:00:00 R
-##  9082 ?        00:00:00 sh
-##  9083 ?        00:00:00 ps</code></pre></li>
+## 15268 ?        00:00:32 rsession
+## 17774 ?        00:00:00 sshd
+## 20166 ?        00:00:00 R
+## 20252 ?        00:00:00 sh
+## 20253 ?        00:00:00 ps</code></pre></li>
 <li><p>All current running processes:</p>
 <pre class="bash"><code>ps -eaf</code></pre>
 <pre><code>## UID        PID  PPID  C STIME TTY          TIME CMD
-## root         1     0  0 05:16 ?        00:00:01 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
+## root         1     0  0 05:16 ?        00:00:02 /usr/lib/systemd/systemd --switched-root --system --deserialize 22
 ## root         2     0  0 05:16 ?        00:00:00 [kthreadd]
 ## root         3     2  0 05:16 ?        00:00:00 [ksoftirqd/0]
 ## root         5     2  0 05:16 ?        00:00:00 [kworker/0:0H]
 ## root         6     2  0 05:16 ?        00:00:00 [kworker/u16:0]
 ## root         7     2  0 05:16 ?        00:00:00 [migration/0]
 ## root         8     2  0 05:16 ?        00:00:00 [rcu_bh]
-## root         9     2  0 05:16 ?        00:00:01 [rcu_sched]
+## root         9     2  0 05:16 ?        00:00:03 [rcu_sched]
 ## root        10     2  0 05:16 ?        00:00:00 [lru-add-drain]
 ## root        11     2  0 05:16 ?        00:00:00 [watchdog/0]
 ## root        12     2  0 05:16 ?        00:00:00 [watchdog/1]
@@ -999,8 +1444,7 @@ grep 'CentOS' linux.Rmd</code></pre>
 ## root        57     2  0 05:16 ?        00:00:00 [md]
 ## root        58     2  0 05:16 ?        00:00:00 [edac-poller]
 ## root        59     2  0 05:16 ?        00:00:00 [watchdogd]
-## root        60     2  0 05:16 ?        00:00:00 [kworker/0:1]
-## root        61     2  0 05:16 ?        00:00:00 [kworker/4:1]
+## root        60     2  0 05:16 ?        00:00:01 [kworker/0:1]
 ## root        66     2  0 05:16 ?        00:00:00 [kswapd0]
 ## root        67     2  0 05:16 ?        00:00:00 [ksmd]
 ## root        68     2  0 05:16 ?        00:00:00 [khugepaged]
@@ -1018,9 +1462,8 @@ grep 'CentOS' linux.Rmd</code></pre>
 ## root      1548     2  0 05:16 ?        00:00:00 [virtscsi-scan]
 ## root      1551     2  0 05:16 ?        00:00:00 [scsi_eh_0]
 ## root      1552     2  0 05:16 ?        00:00:00 [scsi_tmf_0]
-## root      1555     2  0 05:16 ?        00:00:00 [kworker/u16:2]
 ## root      1599     2  0 05:16 ?        00:00:00 [kworker/3:1]
-## root      1600     2  0 05:16 ?        00:00:00 [kworker/5:1]
+## root      1600     2  0 05:16 ?        00:00:01 [kworker/5:1]
 ## root      1623     2  0 05:16 ?        00:00:00 [bioset]
 ## root      1625     2  0 05:16 ?        00:00:00 [xfsalloc]
 ## root      1630     2  0 05:16 ?        00:00:00 [xfs_mru_cache]
@@ -1031,11 +1474,11 @@ grep 'CentOS' linux.Rmd</code></pre>
 ## root      1642     2  0 05:16 ?        00:00:00 [xfs-reclaim/sda]
 ## root      1645     2  0 05:16 ?        00:00:00 [xfs-log/sda1]
 ## root      1646     2  0 05:16 ?        00:00:00 [xfs-eofblocks/s]
-## root      1647     2  0 05:16 ?        00:00:02 [xfsaild/sda1]
+## root      1647     2  0 05:16 ?        00:00:11 [xfsaild/sda1]
 ## root      1648     2  0 05:16 ?        00:00:00 [kworker/4:1H]
 ## root      1649     2  0 05:16 ?        00:00:00 [kworker/0:1H]
 ## root      1667     2  0 05:16 ?        00:00:00 [kworker/4:2]
-## root      1702     1  0 05:16 ?        00:00:00 /usr/lib/systemd/systemd-journald
+## root      1702     1  0 05:16 ?        00:00:01 /usr/lib/systemd/systemd-journald
 ## root      1715     2  0 05:16 ?        00:00:00 [kworker/1:2]
 ## root      1739     1  0 05:16 ?        00:00:00 /usr/lib/systemd/systemd-udevd
 ## root      1743     1  0 05:16 ?        00:00:00 /sbin/auditd
@@ -1048,68 +1491,75 @@ grep 'CentOS' linux.Rmd</code></pre>
 ## root      3161     1  0 05:16 ?        00:00:00 /opt/shiny-server/ext/node/bin/shiny-server /opt/shiny-server/lib/main.js
 ## root      3271     1  0 05:16 ?        00:00:00 /usr/sbin/crond -n
 ## root      3325     1  0 05:16 ?        00:00:00 /usr/sbin/acpid
-## root      3390     2  0 05:16 ?        00:00:00 [kworker/3:2]
 ## root      3402     1  0 05:16 tty1     00:00:00 /sbin/agetty --noclear tty1 linux
 ## root      3406     1  0 05:16 ttyS0    00:00:00 /sbin/agetty --keep-baud 115200 38400 9600 ttyS0 vt220
-## rstudio+  3478     1  0 05:16 ?        00:00:04 /usr/lib/rstudio-server/bin/rserver
+## rstudio+  3478     1  0 05:16 ?        00:00:20 /usr/lib/rstudio-server/bin/rserver
 ## root      3481     1  0 05:16 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
-## root      3497     1  0 05:16 ?        00:00:00 /usr/sbin/NetworkManager --no-daemon
+## root      3497     1  0 05:16 ?        00:00:01 /usr/sbin/NetworkManager --no-daemon
 ## root      3809  3497  0 05:16 ?        00:00:00 /sbin/dhclient -d -q -sf /usr/libexec/nm-dhcp-helper -pf /var/run/dhclient-eth0.pid -lf /var/lib/NetworkManager/dhclient-41b5db38-b54b-449d-8471-1311ba0d5b71-eth0.lease -cf /var/lib/NetworkManager/dhclient-eth0.conf eth0
 ## root      4054     1  0 05:16 ?        00:00:00 /usr/sbin/cupsd -f
-## root      4056     1  0 05:16 ?        00:00:00 /usr/sbin/rsyslogd -n
-## root      4057     1  0 05:16 ?        00:00:00 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
+## root      4056     1  0 05:16 ?        00:00:03 /usr/sbin/rsyslogd -n
+## root      4057     1  0 05:16 ?        00:00:06 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
 ## root      4333     1  0 05:16 ?        00:00:00 /usr/libexec/postfix/master -w
-## postfix   4359  4333  0 05:16 ?        00:00:00 pickup -l -t unix -u
 ## postfix   4360  4333  0 05:16 ?        00:00:00 qmgr -l -t unix -u
 ## root      4361     1  0 05:16 ?        00:00:00 /usr/sbin/sshd -D
-## root      4362     1  0 05:16 ?        00:00:00 /usr/bin/python /usr/bin/google_network_daemon
-## root      4365     1  0 05:16 ?        00:00:00 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root      4366     1  0 05:16 ?        00:00:00 /usr/bin/python /usr/bin/google_accounts_daemon
+## root      4362     1  0 05:16 ?        00:00:02 /usr/bin/python /usr/bin/google_network_daemon
+## root      4365     1  0 05:16 ?        00:00:01 /usr/bin/python /usr/bin/google_clock_skew_daemon
+## root      4366     1  0 05:16 ?        00:00:04 /usr/bin/python /usr/bin/google_accounts_daemon
 ## root      4383     2  0 05:16 ?        00:00:00 [kworker/6:2]
 ## root      4402     2  0 05:17 ?        00:00:00 [kworker/6:1H]
 ## root      4404     2  0 05:17 ?        00:00:00 [kworker/3:1H]
 ## root      4435     2  0 05:17 ?        00:00:00 [kworker/2:1H]
-## hwachou   4459  3478  0 05:18 ?        00:00:32 /usr/lib/rstudio-server/bin/rsession -u hwachou --launcher-token 73AB1622
 ## root      4533     2  0 05:21 ?        00:00:00 [kworker/5:1H]
-## root      4620     2  0 05:28 ?        00:00:00 [kworker/5:0]
 ## root      4673     2  0 05:29 ?        00:00:00 [kworker/0:0]
 ## root      4797     2  0 05:31 ?        00:00:00 [kworker/7:1H]
 ## hwachou   4965     1  0 05:48 ?        00:00:00 ssh-agent -s
 ## hwachou   5161     1  0 05:58 ?        00:00:00 ssh-agent -s
-## hwachou   5232  4459  0 06:01 pts/1    00:00:00 bash -l
-## root      5368  4361  0 06:03 ?        00:00:00 sshd: huazhou [priv]
-## huazhou   5371  5368  0 06:03 ?        00:00:00 sshd: huazhou@pts/2
-## huazhou   5372  5371  0 06:03 pts/2    00:00:00 -bash
-## huazhou   5373  5371  0 06:03 ?        00:00:00 /usr/libexec/openssh/sftp-server
-## root      8020     2  0 06:30 ?        00:00:00 [kworker/2:0]
-## root      8436     2  0 06:35 ?        00:00:00 [kworker/2:1]
-## root      8670  4361  0 06:40 ?        00:00:00 sshd: hwachou [priv]
-## hwachou   8674  8670  0 06:40 ?        00:00:00 sshd: hwachou@pts/0
-## hwachou   8675  8674  0 06:40 pts/0    00:00:00 -bash
-## root      8977     2  0 06:46 ?        00:00:00 [kworker/2:2]
-## hwachou   9002  4459 89 06:48 ?        00:00:00 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render('/home/hwachou/Hua-Zhou.github.io/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd',~+~~+~encoding~+~=~+~'UTF-8');
-## hwachou   9084  9002  0 06:48 ?        00:00:00 sh -c 'bash'  -c 'ps -eaf' 2&gt;&amp;1
-## hwachou   9085  9084  0 06:48 ?        00:00:00 ps -eaf</code></pre></li>
+## root      9733     2  0 07:27 ?        00:00:00 [kworker/3:0]
+## root     13957     2  0 14:13 ?        00:00:00 [kworker/5:0]
+## hwachou  15268  3478  0 16:11 ?        00:00:32 /usr/lib/rstudio-server/bin/rsession -u hwachou --launcher-token 73AB1622
+## root     16314     2  0 17:03 ?        00:00:00 [kworker/4:1]
+## root     17242     2  0 18:33 ?        00:00:00 [kworker/u16:1]
+## root     17769  4361  0 18:37 ?        00:00:00 sshd: hwachou [priv]
+## hwachou  17774 17769  0 18:37 ?        00:00:00 sshd: hwachou@pts/0
+## hwachou  17775 17774  0 18:37 pts/0    00:00:00 -bash
+## postfix  17804  4333  0 18:37 ?        00:00:00 pickup -l -t unix -u
+## root     18127  4361  0 18:43 ?        00:00:00 sshd: huazhou [priv]
+## huazhou  18132 18127  0 18:43 ?        00:00:00 sshd: huazhou@pts/1
+## huazhou  18133 18132  0 18:43 pts/1    00:00:00 -bash
+## huazhou  18134 18132  0 18:43 ?        00:00:00 /usr/libexec/openssh/sftp-server
+## root     18651     2  0 18:47 ?        00:00:00 [kworker/2:1]
+## root     19584     2  0 18:53 ?        00:00:00 [kworker/2:0]
+## root     20094     2  0 19:04 ?        00:00:00 [kworker/2:2]
+## root     20136     2  0 19:05 ?        00:00:00 [kworker/4:0]
+## hwachou  20166 15268 94 19:07 ?        00:00:00 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render('/home/hwachou/Hua-Zhou.github.io/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd',~+~~+~encoding~+~=~+~'UTF-8');
+## hwachou  20254 20166  0 19:07 ?        00:00:00 sh -c 'bash'  -c 'ps -eaf' 2&gt;&amp;1
+## hwachou  20255 20254  0 19:07 ?        00:00:00 ps -eaf</code></pre></li>
 <li><p>All Python processes:</p>
 <pre class="bash"><code>ps -eaf | grep python</code></pre>
 <pre><code>## root      3481     1  0 05:16 ?        00:00:00 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
-## root      4057     1  0 05:16 ?        00:00:00 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
-## root      4362     1  0 05:16 ?        00:00:00 /usr/bin/python /usr/bin/google_network_daemon
-## root      4365     1  0 05:16 ?        00:00:00 /usr/bin/python /usr/bin/google_clock_skew_daemon
-## root      4366     1  0 05:16 ?        00:00:00 /usr/bin/python /usr/bin/google_accounts_daemon
-## hwachou   9086  9002  0 06:48 ?        00:00:00 sh -c 'bash'  -c 'ps -eaf | grep python' 2&gt;&amp;1
-## hwachou   9087  9086  0 06:48 ?        00:00:00 bash -c ps -eaf | grep python
-## hwachou   9089  9087  0 06:48 ?        00:00:00 grep python</code></pre></li>
+## root      4057     1  0 05:16 ?        00:00:06 /usr/bin/python2 -Es /usr/sbin/tuned -l -P
+## root      4362     1  0 05:16 ?        00:00:02 /usr/bin/python /usr/bin/google_network_daemon
+## root      4365     1  0 05:16 ?        00:00:01 /usr/bin/python /usr/bin/google_clock_skew_daemon
+## root      4366     1  0 05:16 ?        00:00:04 /usr/bin/python /usr/bin/google_accounts_daemon
+## hwachou  20256 20166  0 19:07 ?        00:00:00 sh -c 'bash'  -c 'ps -eaf | grep python' 2&gt;&amp;1
+## hwachou  20257 20256  0 19:07 ?        00:00:00 bash -c ps -eaf | grep python
+## hwachou  20259 20257  0 19:07 ?        00:00:00 grep python</code></pre></li>
 <li><p>Process with PID=1:</p>
 <pre class="bash"><code>ps -fp 1</code></pre>
 <pre><code>## UID        PID  PPID  C STIME TTY          TIME CMD
-## root         1     0  0 05:16 ?        00:00:01 /usr/lib/systemd/systemd --switched-root --system --deserialize 22</code></pre></li>
+## root         1     0  0 05:16 ?        00:00:02 /usr/lib/systemd/systemd --switched-root --system --deserialize 22</code></pre></li>
 <li><p>All processes owned by a user:</p>
-<pre class="bash"><code>ps -fu huazhou</code></pre>
+<pre class="bash"><code>ps -fu hwachou</code></pre>
 <pre><code>## UID        PID  PPID  C STIME TTY          TIME CMD
-## huazhou   5371  5368  0 06:03 ?        00:00:00 sshd: huazhou@pts/2
-## huazhou   5372  5371  0 06:03 pts/2    00:00:00 -bash
-## huazhou   5373  5371  0 06:03 ?        00:00:00 /usr/libexec/openssh/sftp-server</code></pre></li>
+## hwachou   4965     1  0 05:48 ?        00:00:00 ssh-agent -s
+## hwachou   5161     1  0 05:58 ?        00:00:00 ssh-agent -s
+## hwachou  15268  3478  0 16:11 ?        00:00:32 /usr/lib/rstudio-server/bin/rsession -u hwachou --launcher-token 73AB1622
+## hwachou  17774 17769  0 18:37 ?        00:00:00 sshd: hwachou@pts/0
+## hwachou  17775 17774  0 18:37 pts/0    00:00:00 -bash
+## hwachou  20166 15268 97 19:07 ?        00:00:00 /usr/lib64/R/bin/exec/R --slave --no-save --no-restore -e rmarkdown::render('/home/hwachou/Hua-Zhou.github.io/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd',~+~~+~encoding~+~=~+~'UTF-8');
+## hwachou  20262 20166  0 19:07 ?        00:00:00 sh -c 'bash'  -c 'ps -fu hwachou' 2&gt;&amp;1
+## hwachou  20263 20262  0 19:07 ?        00:00:00 ps -fu hwachou</code></pre></li>
 </ul>
 </div>
 <div id="kill-processes" class="section level2">
@@ -1341,7 +1791,7 @@ print(x)</code></pre>
 <pre class="bash"><code>R CMD BATCH '--args n=100' runSim.R</code></pre>
 <p>or</p>
 <pre class="bash"><code>Rscript runSim.R n=100</code></pre>
-<pre><code>## [1] 0.014086</code></pre></li>
+<pre><code>## [1] -0.07909343</code></pre></li>
 </ul>
 </div>
 <div id="run-long-jobs" class="section level2">
@@ -1352,7 +1802,7 @@ print(x)</code></pre>
 <li><p><code>nohup</code> is POSIX standard thus available on Linux and MacOS.</p></li>
 <li><p>Run <code>runSim.R</code> in background and writes output to <code>nohup.out</code>:</p>
 <pre class="bash"><code>nohup Rscript runSim.R n=100 &amp;</code></pre>
-<pre><code>## [1] -0.2273795</code></pre></li>
+<pre><code>## [1] -0.04218271</code></pre></li>
 </ul>
 </div>
 <div id="screen" class="section level2">

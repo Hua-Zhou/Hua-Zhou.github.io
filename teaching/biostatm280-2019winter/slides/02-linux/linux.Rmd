@@ -41,7 +41,7 @@ Linux is _the_ most common platform for scientific computing.
 
 ----
 
-- Show distribution/version on Mac:
+- Show distribution/version on MacOS:
     ```{bash, eval=FALSE}
     sw_vers -productVersion
     ```
@@ -107,9 +107,17 @@ Bash provides the following standard completion for the Linux users by default. 
 <p align="center">
   <img src="./linux_directory_structure.png" height="400" width="600">
 </p>
+
 - Upon log in, user is at his/her home directory.
 
-## Move around the file system {.smaller}
+- `tree` command (if installed) displays directory structure.   
+`tree -L levels` display levels directories deep.
+    ```{bash}
+    # display only directories in levels 1, 2 from root directory
+    tree -d -L 2 /
+    ```
+
+## Move around the file system
 
 - `pwd` prints absolute path to the current working directory:
     ```{bash}
@@ -247,14 +255,22 @@ Bash provides the following standard completion for the Linux users by default. 
 
 ----
 
-- `head -l` prints the first $l$ lines of a file:
+- `head` prints the first 10 lines of a file:
     ```{bash}
-    head linux.Rmd
+    head runSim.R
+    ```
+`head -l` prints the first $l$ lines of a file:
+    ```{bash}
+    head -15 runSim.R
     ```
 
-- `tail -l` prints the last $l$ lines of a file:
+- `tail` prints the last 10 lines of a file:
     ```{bash}
-    tail linux.Rmd
+    tail runSim.R
+    ```
+`tail -l` prints the last $l$ lines of a file:
+    ```{bash}
+    tail -15 runSim.R
     ```
 
 ## `less` is more; `more` is less
@@ -287,7 +303,7 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - Find all files in current directory with `.png` extension:
     ```{bash}
-    ls | grep '\.png$'
+    ls | grep '.png$'
     ```
 
 - Find all directories in the current directory:
@@ -437,7 +453,7 @@ Source: [Editor War](http://en.wikipedia.org/wiki/Editor_war) on Wikipedia.
 
 - All processes owned by a user:
     ```{bash}
-    ps -fu huazhou
+    ps -fu hwachou
     ```
 
 ## Kill processes
