@@ -1,0 +1,43 @@
+
+R version 3.4.3 (2017-11-30) -- "Kite-Eating Tree"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ## check if a given integer is prime
+> isPrime = function(n) {
++   if (n <= 3) {
++     return (TRUE)
++   }
++   if (any((n %% 2:floor(sqrt(n))) == 0)) {
++     return (FALSE)
++   }
++   return (TRUE)
++ }
+> 
+> ## estimate mean only using observation with prime indices
+> estMeanPrimes = function (x) {
++   n = length(x)
++   ind = sapply(1:n, isPrime)
++   return (mean(x[ind]))
++ }
+> 
+> print(estMeanPrimes(rnorm(100000)))
+[1] -0.0007942292
+> 
+> proc.time()
+   user  system elapsed 
+  0.504   0.054   0.553 
