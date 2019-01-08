@@ -9,6 +9,10 @@ title: BIOSTAT M280
 
 This course is used as a placeholder for the new course **Biostat 203B: Introduction to Data Science**. Please check syllabus carefully to be sure it is the course you want to take.
 
+### Course Description
+
+Computing skills and software tools for handling potentially big public health data.   
+
 ### Lectures  
 
 Tue/Thu 1p-2:30p @ CHS 61-269   
@@ -45,7 +49,7 @@ The prerequisite for this course is _Biostat 203A: Introduction to Data Manageme
 
 ### Course Webpage
 
-[http://hua-zhou.github.io/teaching/biostatm280-2019winter/](http://hua-zhou.github.io/teaching/biostatm280-2019winter/)
+[http://biostat-m280.info](http://biostat-m280.info) or [http://hua-zhou.github.io/teaching/biostatm280-2019winter/](http://hua-zhou.github.io/teaching/biostatm280-2019winter/)
 
 ### Course Materials
 
