@@ -684,7 +684,7 @@ and then issue commands in R
     print(x)
     ```
 
-## {.smaller}
+----
 
 - [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/02-linux/runSim.R) has components: (1) method implementation, (2) data generator with unspecified parameter `n`, (3) estimation based on generated data, and (4) **command argument parser**.
 ```{bash, echo=FALSE}
