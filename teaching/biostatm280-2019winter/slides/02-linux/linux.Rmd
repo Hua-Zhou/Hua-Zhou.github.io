@@ -203,17 +203,17 @@ Bash provides the following standard completion for the Linux users by default. 
     locate linux.Rmd
     ```
 
-- `which` locates a program:
-    ```{bash}
-    which R
-    ```
-
 - `find` is similar to `locate` but has more functionalities, e.g., select files by age, size, permissions, .... , and is ubiquitous.
     ```{bash}
     find linux.Rmd
     ```
     ```{bash}
     find /home/hwachou -name linux.Rmd
+    ```
+
+- `which` locates a program (executable file):
+    ```{bash}
+    which R
     ```
 
 ## Wildcard characters
@@ -252,7 +252,7 @@ Bash provides the following standard completion for the Linux users by default. 
     ```{bash, size='smallsize'}
     cat runSim.R
     ```
-
+    
 ----
 
 - `head` prints the first 10 lines of a file:
@@ -272,6 +272,12 @@ Bash provides the following standard completion for the Linux users by default. 
     ```{bash}
     tail -15 runSim.R
     ```
+
+----
+
+- Questions: 
+    - How to see the 2nd line of the file and nothing else?  
+    - What about the penultimate (2nd to last) line?
 
 ## `less` is more; `more` is less
 
@@ -324,9 +330,15 @@ Bash provides the following standard completion for the Linux users by default. 
 
 - `awk` is a filter and report writer.
 
+- First let's display first lines of the file `/etc/passwd`:
+    ```{bash}
+    head /etc/passwd
+    ```
+Each line contains fields (1) user name, (2) password, (3) user ID, (4) group ID, (5) user ID info, (6) home directory, and (7) command shell, spearated by `:`.
+
 - Print sorted list of login names:
     ```{bash}
-    awk -F: '{ print $1 }' /etc/passwd | sort | head -5
+    awk -F: '{ print $1 }' /etc/passwd | sort | head -10
     ```
     
 - Print number of lines in a file, as `NR` stands for Number of Rows:
@@ -337,7 +349,7 @@ or
     ```{bash}
     wc -l /etc/passwd
     ```
-or
+or (not displaying file name)
     ```{bash}
     wc -l < /etc/passwd
     ```
