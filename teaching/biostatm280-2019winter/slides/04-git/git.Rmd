@@ -1,6 +1,6 @@
 ---
 title: "Git and GitHub"
-author: "Dr. Hua Zhou"
+author: "Dr. Hua Zhou @ UCLA"
 date: "Jan 15, 2019"
 output:
   # ioslides_presentation: default
@@ -46,7 +46,13 @@ Statisticians, as opposed to closet mathematicians, rarely do things in vacuum.
 
 - [GitHub](github.com) is becoming a de facto central repository for open source development. E.g., all packages in Julia are distributed through GitHub; [Hadley Wickham](http://r-pkgs.had.co.nz) also recommends Git/GitHub as the best practices for R package development.
 
-- Advertise yourself through GitHub.
+- **Advertise** yourself through GitHub.
+
+- AmStat article: [What Is Data Science Specialization, and What Can It Do for You?](http://magazine.amstat.org/blog/2018/01/01/data-science-mooc/)
+
+> What should an employer look for when they see a certification on a résumé?
+>
+> For our program, and likely data science in general, they should look at the applicant’s GitHub page. They should see interesting project and code contributions.
 
 ## Available version control tools
 
@@ -158,11 +164,11 @@ Name and email appear in each commit you make.
 
 - Initialize a project.
 
-    - Create a repository, e.g., `biostat-m280-2018-winter` on the server.
+    - Create a repository, e.g., `biostat-m280-2019-winter` on the server.
     
     - Clone the repository to your local machine:
     ```{bash, eval=FALSE}
-    git clone git@github.com:biostat-m280-2018-winter.git
+    git clone git@github.com:biostat-m280-2019-winter.git
     ```
 
 - Working with your local copy.
