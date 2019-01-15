@@ -580,11 +580,11 @@ SSH (secure shell) is the dominant cryptographic network protocol for secure net
 - `scp` securely transfers files between machines using SSH.
     ```{bash, eval=FALSE}
     ## copy file from local to remote
-    scp localfile username@server.biostat-m280.info:/pathtofolder
+    scp [LOCALFILE] [USERNAME]@server.biostat-m280.info:/[PATHTOFOLDER]
     ```
     ```{bash, eval=FALSE}
     ## copy file from remote to local
-    scp username@server.biostat-m280.info:/pathtofile pathtolocalfolder
+    scp [USERNAME]@server.biostat-m280.info:/[PATHTOFILE] [PATHTOLOCALFOLDER]
     ```
 
 - `sftp` is FTP via SSH.
@@ -741,7 +741,7 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
 
 - We consider a simulation study in R but the same approach could be used with code written in Julia, Matlab, Python, etc.
 
-- Python in many ways makes a better _glue_; we may discuss this later in the course.
+- Python in many ways makes a better _glue_.
 
 ----
 
@@ -772,4 +772,4 @@ R in conjuction with `nohup` or `screen` can be used to orchestrate a large simu
     rm n*.txt *.Rout
     ```
     
-- Now we just need write a script to collect results from the output files.
+- Now we just need to write a script to collect results from the output files.
