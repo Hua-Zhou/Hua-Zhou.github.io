@@ -19,11 +19,11 @@ Readings:
 |:-----------|:-----------|:------------|:------------|
 | 1 | [1/8](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/08/week1-day1.html) introduction, course logistics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/01-intro/intro.Rmd), [html](./slides/01-intro/intro.html)\] | [1/10](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/10/week1-day2.html) Linux basics \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/02-linux/linux.Rmd), [html](./slides/02-linux/linux.html)\] |  
 | 2 | [1/15](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/15/week2-day1.html) reproducible research \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/03-repres/repres.Rmd), [html](./slides/03-repres/repres.html)\], Git/GitHub \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/04-git/git.Rmd), [html](./slides/04-git/git.html)\] | [1/17](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/17/week2-day2.html) RMarkdown \[[tutorial](http://rmarkdown.rstudio.com/lesson-1.html), [cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)\] | HW1: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/hw/hw1/hw1.Rmd), [html](./hw/hw1/hw1.html) |    
-| 3 | 1/22 data visualization with ggplot2 | 1/24 data transformation with dplyr|  
-| 4 | 1/29 dplyr | 1/31 tidy data | HW2: |     
-| 5 | 2/5 stringr | 2/7 shiny for interactive document |  
-| 6 | 2/12 Databases | 2/14 cluster computing at UCLA | HW3: |    
-| 7 | 2/19 cloud computing with GCP | 2/21 Docker |  
-| 8 | 2/26 distributed data analysis with sparklyr | 2/28 distributed data analysis with sparklyr | HW4: |    
-| 9 | 3/5 R programming (benchmark, debug, profile) | 3/7 Rcpp, parallel computing, R package |  
+| 3 | 1/22 R programming (benchmark, debug, profile) \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/05-advr/advr1.Rmd), [html](./slides/05-advr/advr1.html)\] | 1/24 Rcpp, parallel computing, R package \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/05-advr/advr2.Rmd), [html](./slides/05-advr/advr2.html)\] |  
+| 4 | 1/29 data visualization with ggplot2 | 1/31 data transformation with dplyr | HW2: |     
+| 5 | 2/5 dplyr | 2/7 tidy data |  
+| 6 | 2/12 stringr | 2/14 shiny for interactive document | HW3: |    
+| 7 | 2/19 Databases | 2/21 cluster computing at UCLA |  
+| 8 | 2/26 cloud computing with GCP | 2/28 Docker | HW4: |    
+| 9 | 3/5 distributed data analysis with sparklyr | 3/7 distributed data analysis with sparklyr |  
 | 10 | 3/12 neural network and deep learning (intro.) | 3/14 neural network and deep learning (examples) | HW5: |  
