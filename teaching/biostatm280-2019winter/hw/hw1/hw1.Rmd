@@ -1,0 +1,59 @@
+---
+title: "Biostat M280 Homework 1"
+subtitle: Due Jan 25 @ 11:59PM
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q1. Git/GitHub
+
+**No handwritten homework reports are accepted for this course.** We work with Git and GitHub. Efficient and abundant use of Git, e.g., frequent and well-documented commits, is an important criterion for grading your homework.
+
+1. Apply for the [Student Developer Pack](https://education.github.com/pack) at GitHub using your UCLA email.
+
+2. Create a **private** repository `biostat-m280-2019-winter` and add `Hua-Zhou` and `juhkim111` as your collaborators with write permission.
+
+3. Top directories of the repository should be `hw1`, `hw2`, ... Maintain two branches `master` and `develop`. The `develop` branch will be your main playground, the place where you develop solution (code) to homework problems and write up report. The `master` branch will be your presentation area. Submit your homework files (R markdown file `Rmd`, `html` file converted from R markdown, all code and data sets to reproduce results) in `master` branch.
+
+4. After each homework due date, teaching assistant and instructor will check out your master branch for grading. Tag each of your homework submissions with tag names `hw1`, `hw2`, ... Tagging time will be used as your submission time. That means if you tag your `hw1` submission after deadline, penalty points will be deducted for late submission.
+
+## Q1. Linux Shell Commands
+
+The `/home/m280data/NYCHVS` folder on teaching server contains data sets from the New York City Housing and Vacancy Survey. See ASA Data Challenge Expo [website](https://www1.nyc.gov/site/hpd/about/nychvs-asa-data-challenge-expo.page) for further details.
+    ```{bash}
+    ls -l /home/m280data/NYCHVS
+    ```
+Please, do **not** put these data files into Git; they are big. Also do not copy them into your directory. Just read from the data folder `/home/m280data/NYCHVS` directly.
+
+
+
+## Q3. R Batch Run
+
+In class we discussed using R to organize simulation studies. 
+
+1. Expand the [`runSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2019winter/slides/02-linux/runSim.R) script to include arguments `seed` (random seed), `n` (sample size), `dist` (distribution) and `rep` (number of simulation replicates). When `dist="gaussian"`, generate data from standard normal; when `dist="t1"`, generate data from t-distribution with degree of freedom 1 (same as Cauchy distribution); when `dist="t5"`, generate data from t-distribution with degree of freedom 5. Calling `runSim.R` will (1) set random seed according to argument `seed`, (2) generate data according to argument `dist`, (3) compute the primed-indexed average estimator and the classical sample average estimator for each simulation replicate, (4) report the average mean squared error (MSE)
+$$
+  \frac{\sum_{r=1}^{\text{rep}} (\widehat \mu_r - \mu_{\text{true}})^2}{\text{rep}}
+$$
+for both methods.
+
+2. Modify the [`autoSim.R`](http://hua-zhou.github.io/teaching/biostatm280-2019winter/slides/02-linux/autoSim.R) script to run simulations with combinations of sample sizes `nVals = seq(100, 500, by=100)` and distributions `distTypes = c("gaussian", "t1", "t5")` and write output to appropriately named files. Use `rep = 50`, and `seed = 280`. 
+
+3. Write an R script to collect simulation results from output files and print average MSEs in a table of format
+
+| $n$ | Method   | gaussian | $t_5$ | $t_1$ |
+|-----|----------|-------|-------|----------|
+| 100 | PrimeAvg |       |       |          |
+| 100 | SampAvg  |       |       |          |
+| 200 | PrimeAvg |       |       |          |
+| 200 | SampAvg  |       |       |          |
+| 300 | PrimeAvg |       |       |          |
+| 300 | SampAvg  |       |       |          |
+| 400 | PrimeAvg |       |       |          |
+| 400 | SampAvg  |       |       |          |
+| 500 | PrimeAvg |       |       |          |
+| 500 | SampAvg  |       |       |          |
+
