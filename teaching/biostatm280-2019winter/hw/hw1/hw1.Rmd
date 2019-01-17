@@ -26,7 +26,7 @@ The `/home/m280data/NYCHVS` folder on teaching server contains a data set from t
     ```{bash}
     ls -l /home/m280data/NYCHVS
     ```
-Please, do **not** put these data files into Git; they are big. Also do **not** copy them into your directory. Just read from the data folder `/home/m280data/NYCHVS` directly.
+Please, do **not** put these data files into Git; they are big. Also do **not** copy them into your directory. Just read from the data folder `/home/m280data/NYCHVS` directly. Use Bash commands to answer following questions.
 
 1. Display the first few lines of `NYCHVS_1991.csv`.
 
@@ -44,15 +44,6 @@ Please, do **not** put these data files into Git; they are big. Also do **not** 
 
 0. What unique values does the second variable `borough` take in `NYCHVS_1991.csv`? Tabulate how many times each value appears.
 
-0. What's the difference between the following two commands?
-    ```{bash eval=FALSE}
-    echo 'hello, world' > test1.txt
-    ```
-    and
-    ```{bash eval=FALSE}
-    echo 'hello, world' >> test2.txt
-    ```
-    
 ## Q3. More fun with shell
 
 1. You and your friend just have finished reading *Pride and Prejudice* by Jane Austen. Among the four main characters in the book, Elizabeth, Jane, Lydia, and Darcy, your friend thinks that Darcy was the most mentioned. You, however, are certain it was Elizabeth. Obtain the full text of the novel from <https://www.gutenberg.org/files/1342/1342.txt> and save to your local folder. 
@@ -70,9 +61,18 @@ Do **not** put this text file `pride_and_prejudice.txt` in Git. Using a `for` lo
     ```
 Using `chmod` make the file executable by the owner, and run 
     ```{bash eval=FALSE}
-    ./middle.sh /home/m280data/NYCHPV/NYCHVS_1991.csv 20 5
+    ./middle.sh pride_and_prejudice.txt 20 5
     ```
 Explain the output. Explain the meaning of `"$1"`, `"$2"`, and `"$3"` in this shell script. Why do we need the first line of the shell script?
+
+0. What's the difference between the following two commands?
+    ```{bash eval=FALSE}
+    echo 'hello, world' > test1.txt
+    ```
+    and
+    ```{bash eval=FALSE}
+    echo 'hello, world' >> test2.txt
+    ```
 
 ## Q4. R Batch Run
 
