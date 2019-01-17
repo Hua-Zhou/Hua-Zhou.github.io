@@ -52,6 +52,15 @@ Please, do **not** put these data files into Git; they are big. Also do **not** 
     ```
 Do **not** put this text file `pride_and_prejudice.txt` in Git. Using a `for` loop, how would you tabulate the number of times each of the four characters is mentioned?
 
+0. What's the difference between the following two commands?
+    ```{bash eval=FALSE}
+    echo 'hello, world' > test1.txt
+    ```
+    and
+    ```{bash eval=FALSE}
+    echo 'hello, world' >> test2.txt
+    ```
+
 0. Using your favorite text editor (e.g., `vi`), type the following and save the file as `middle.sh`:
     ```{bash eval=FALSE}
     #!/bin/sh
@@ -64,15 +73,6 @@ Using `chmod` make the file executable by the owner, and run
     ./middle.sh pride_and_prejudice.txt 20 5
     ```
 Explain the output. Explain the meaning of `"$1"`, `"$2"`, and `"$3"` in this shell script. Why do we need the first line of the shell script?
-
-0. What's the difference between the following two commands?
-    ```{bash eval=FALSE}
-    echo 'hello, world' > test1.txt
-    ```
-    and
-    ```{bash eval=FALSE}
-    echo 'hello, world' >> test2.txt
-    ```
 
 ## Q4. R Batch Run
 
