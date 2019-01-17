@@ -96,6 +96,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -103,14 +106,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -135,41 +198,62 @@ $(document).ready(function () {
 <li><p>Top directories of the repository should be <code>hw1</code>, <code>hw2</code>, … Maintain two branches <code>master</code> and <code>develop</code>. The <code>develop</code> branch will be your main playground, the place where you develop solution (code) to homework problems and write up report. The <code>master</code> branch will be your presentation area. Submit your homework files (R markdown file <code>Rmd</code>, <code>html</code> file converted from R markdown, all code and data sets to reproduce results) in <code>master</code> branch.</p></li>
 <li><p>After each homework due date, teaching assistant and instructor will check out your master branch for grading. Tag each of your homework submissions with tag names <code>hw1</code>, <code>hw2</code>, … Tagging time will be used as your submission time. That means if you tag your <code>hw1</code> submission after deadline, penalty points will be deducted for late submission.</p></li>
 </ol>
-<!-- ## Q2. Linux Shell Commands -->
-<!-- The `35.227.165.60:/home/m280-data/hw1` folder contains a typical genetic data set in plink format. If interested, you can read plink documentation at <http://zzz.bwh.harvard.edu/plink/>. But it's definitely not necessary for this homework. -->
-<!-- - `merge-geno.bim` contains information of each genetic marker (SNP). Each line is a SNP and has 6 fields:   -->
-<!-- `Chromosome`, `SNP ID`, `Genetic Distance (morgan)`, `Base Pair Position (bp)`, `Allele 1`, `Allele 2`. -->
-<!--     ```{bash} -->
-<!--     head /home/m280-data/hw1/merge-geno.bim -->
-<!--     ``` -->
-<!-- - `merge-geno.fam` contains individual information. Each line is one individual and has 6 fields:   -->
-<!-- `Family ID`, `Person ID`, `Father ID`, `Mother ID`, `Sex` coded as 1 (male) or 2 (female), `Affection Status`   -->
-<!-- `Father ID = 0` means that person's father is not in this data set. Similarly `Mother ID` = 0 means that person's mother is not in this data set. -->
-<!--     ```{bash} -->
-<!--     head -20 /home/m280-data/hw1/merge-geno.fam -->
-<!--     ``` -->
-<!-- - `merge-geno.bed` contains genotypes of each individual in binary format. We don't need this file for this homework. -->
-<!-- Please, do **not** put these data files into Git; they are huge. You even don't need to copy them into your directory. Just read from the data folder `/home/m280-data/hw1` directly. -->
-<!-- Use Linux shell commands to answer following questions.  -->
-<!-- 1. How many persons are in the data set (statisticians call this `n`)? How many SNPs are in the data set (statisticians call this `p`)? -->
-<!-- 2. Which chromosomes does this data set contain? How many SNPs are in each chromosome? -->
-<!-- 3. MAP4 (microtubule-associated protein 4) is a gene on chromosome 3 spanning positions 47,892,180 bp -- 48,130,769 bp. How many SNPs are located within MAP4 gene? -->
-<!-- 4. Statistical geneticists often have to reformat a data set to feed into various analysis programs. For example, to use the Mendel software <http://www.genetics.ucla.edu/software/mendel>, we have to reformat the data set to be read by Mendel. -->
-<!--       - Mendel's SNP definition file is similar to the plink `bim` file but has format   -->
-<!--       `SNP ID`, `Chromosome`, `Base Pair Position`   -->
-<!--       with each field separated by a comma. Write a Linux shell command to convert `merge-geno.bim` to Mendel SNP definition file. The first few lines of the Mendel SNP definition file should look like -->
-<!--     ```{bash, echo=FALSE, eval=TRUE} -->
-<!--     head mendel_snpdef.txt -->
-<!--     ``` -->
-<!--     - Mendel's pedigree file is similar to the plink `fam` file but has format   -->
-<!--     `Family ID`, `Person ID`, `Father ID`, `Mother ID`, `Sex` coded as M or F, `Twin Status`   -->
-<!--     with each field separated by a comma. Write a Linux shell command to convert `merge-geno.fam` to Mendel pedigree file. Since twin status is not available in plink format, we put nothing for that field. Also Mendel limits Person ID to have length less than or equal to 8 characters, so we have to strip the string `T2DG` from the IDs. First few lines of the Mendel pedigree should look like -->
-<!--     ```{bash, echo=FALSE, eval=TRUE} -->
-<!--     head -20 mendel_ped.txt -->
-<!--     ``` -->
 </div>
-<div id="q3.-r-batch-run" class="section level2">
-<h2>Q3. R Batch Run</h2>
+<div id="q2.-linux-shell-commands" class="section level2">
+<h2>Q2. Linux Shell Commands</h2>
+<p>The <code>/home/m280data/NYCHVS</code> folder on teaching server contains a data set from the New York City Housing and Vacancy Survey. See <a href="https://www1.nyc.gov/site/hpd/about/nychvs-asa-data-challenge-expo.page">2019 ASA Data Challenge Expo</a> for further details.</p>
+<pre><code>```bash
+ls -l /home/m280data/NYCHVS
+```
+
+```
+## total 74960
+## -r--r--r--. 1 hwachou hwachou  5524433 Jan 17 03:51 NYCHVS_1991.csv
+## -r--r--r--. 1 hwachou hwachou  5854176 Jan 17 03:52 NYCHVS_1993.csv
+## -r--r--r--. 1 hwachou hwachou  6530552 Jan 17 03:52 NYCHVS_1996.csv
+## -r--r--r--. 1 hwachou hwachou  6445160 Jan 17 03:52 NYCHVS_1999.csv
+## -r--r--r--. 1 hwachou hwachou  7219516 Jan 17 03:52 NYCHVS_2002.csv
+## -r--r--r--. 1 hwachou hwachou  7253152 Jan 17 03:52 NYCHVS_2005.csv
+## -r--r--r--. 1 hwachou hwachou  8521473 Jan 17 03:52 NYCHVS_2008.csv
+## -r--r--r--. 1 hwachou hwachou  7696926 Jan 17 03:52 NYCHVS_2011.csv
+## -r--r--r--. 1 hwachou hwachou  6872681 Jan 17 03:52 NYCHVS_2014.csv
+## -r--r--r--. 1 hwachou hwachou 14821469 Jan 17 03:52 NYCHVS_2017.csv
+```</code></pre>
+<p>Please, do <strong>not</strong> put these data files into Git; they are big. Also do <strong>not</strong> copy them into your directory. Just read from the data folder <code>/home/m280data/NYCHVS</code> directly.</p>
+<ol style="list-style-type: decimal">
+<li><p>Display the first few lines of <code>NYCHVS_1991.csv</code>.</p></li>
+<li><p>Display number of lines in each <code>csv</code> file.</p></li>
+<li><p>Display the 3 files that have the least number of lines</p></li>
+<li><p>What’s the output of following bash script?</p>
+<pre class="bash"><code>for datafile in /home/m280data/NYCHVS/*.csv
+  do
+    ls $datafile
+  done</code></pre></li>
+<li><p>What unique values does the second variable <code>borough</code> take in <code>NYCHVS_1991.csv</code>? Tabulate how many times each value appears.</p></li>
+<li><p>What’s the difference between the following two commands?</p>
+<pre class="bash"><code>echo 'hello, world' &gt; test1.txt</code></pre>
+<p>and</p>
+<pre class="bash"><code>echo 'hello, world' &gt;&gt; test2.txt</code></pre></li>
+</ol>
+</div>
+<div id="q3.-more-fun-with-shell" class="section level2">
+<h2>Q3. More fun with shell</h2>
+<ol style="list-style-type: decimal">
+<li><p>You and your friend just have finished reading <em>Pride and Prejudice</em> by Jane Austen. Among the four main characters in the book, Elizabeth, Jane, Lydia, and Darcy, your friend thinks that Darcy was the most mentioned. You, however, are certain it was Elizabeth. Obtain the full text of the novel from <a href="https://www.gutenberg.org/files/1342/1342.txt" class="uri">https://www.gutenberg.org/files/1342/1342.txt</a> and save to your local folder.</p>
+<pre class="bash"><code>curl https://www.gutenberg.org/files/1342/1342.txt &gt; pride_and_prejudice.txt</code></pre>
+<p>Do <strong>not</strong> put this text file <code>pride_and_prejudice.txt</code> in Git. Using a <code>for</code> loop, how would you tabulate the number of times each of the four characters is mentioned?</p></li>
+<li><p>Using your favorite text editor (e.g., <code>vi</code>), type the following and save the file as <code>middle.sh</code>:</p>
+<pre class="bash"><code>#!/bin/sh
+# Select lines from the middle of a file.
+# Usage: bash middle.sh filename end_line num_lines
+head -n &quot;$2&quot; &quot;$1&quot; | tail -n &quot;$3&quot;</code></pre>
+<p>Using <code>chmod</code> make the file executable by the owner, and run</p>
+<pre class="bash"><code>./middle.sh /home/m280data/NYCHPV/NYCHVS_1991.csv 20 5</code></pre>
+<p>Explain the output. Explain the meaning of <code>&quot;$1&quot;</code>, <code>&quot;$2&quot;</code>, and <code>&quot;$3&quot;</code> in this shell script. Why do we need the first line of the shell script?</p></li>
+</ol>
+</div>
+<div id="q4.-r-batch-run" class="section level2">
+<h2>Q4. R Batch Run</h2>
 <p>In class we discussed using R to organize simulation studies.</p>
 <ol style="list-style-type: decimal">
 <li><p>Expand the <a href="http://hua-zhou.github.io/teaching/biostatm280-2019winter/slides/02-linux/runSim.R"><code>runSim.R</code></a> script to include arguments <code>seed</code> (random seed), <code>n</code> (sample size), <code>dist</code> (distribution) and <code>rep</code> (number of simulation replicates). When <code>dist=&quot;gaussian&quot;</code>, generate data from standard normal; when <code>dist=&quot;t1&quot;</code>, generate data from t-distribution with degree of freedom 1 (same as Cauchy distribution); when <code>dist=&quot;t5&quot;</code>, generate data from t-distribution with degree of freedom 5. Calling <code>runSim.R</code> will (1) set random seed according to argument <code>seed</code>, (2) generate data according to argument <code>dist</code>, (3) compute the primed-indexed average estimator and the classical sample average estimator for each simulation replicate, (4) report the average mean squared error (MSE) <span class="math display">\[
@@ -183,7 +267,7 @@ $(document).ready(function () {
 <tr class="header">
 <th><span class="math inline">\(n\)</span></th>
 <th>Method</th>
-<th>gaussian</th>
+<th>Gaussian</th>
 <th><span class="math inline">\(t_5\)</span></th>
 <th><span class="math inline">\(t_1\)</span></th>
 </tr>
