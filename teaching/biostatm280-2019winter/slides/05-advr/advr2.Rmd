@@ -1,7 +1,7 @@
 ---
 title: "Select Topics in R Programming - Part II"
 author: "Dr. Hua Zhou @ UCLA"
-date: "Jan 22, 2018"
+date: "Jan 22, 2019"
 subtitle: Biostat M280
 output: 
   html_document:

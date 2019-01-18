@@ -128,7 +128,9 @@ First generate test data:
 ```{r}
 times <- 4e5
 cols <- 150
-data <- as.data.frame(x = matrix(rnorm(times * cols, mean = 5), ncol = cols))
+data <-
+  as.data.frame(x = matrix(rnorm(times * cols, mean = 5),
+                           ncol = cols))
 data <- cbind(id = paste0("g", seq_len(times)), data)
 ```
 Original code for centering columns of a dataframe:
@@ -179,8 +181,8 @@ profvis({
  
  # Given a column, normalize values and return them
  col_norm <- function(col) {
-   col - mean(col)
-   }
+ col - mean(col)
+ }
  
  # Apply the normalizer function over all columns except id
  data1[, names(data1) != "id"] <-
@@ -246,7 +248,7 @@ Learning sources:
 - _Advanced R_: <http://adv-r.had.co.nz/Exceptions-Debugging.html>  
 - RStudio tutorial: <https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio>  
 
-Demo code: [parlindrome.R](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/05-advr/palindrome.R), [crazy-talk.R](https://github.com/Hua-Zhou/Hua-Zhou.github.io/blob/master/teaching/biostatm280-2018winter/slides/05-advr/crazy-talk.R).
+Demo code: [parlindrome.R](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2018winter/slides/15-advr/palindrome.R), [crazy-talk.R](https://github.com/Hua-Zhou/Hua-Zhou.github.io/blob/master/teaching/biostatm280-2018winter/slides/15-advr/crazy-talk.R).
 
 - breakpoint
 
