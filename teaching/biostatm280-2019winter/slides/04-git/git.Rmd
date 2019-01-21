@@ -168,7 +168,7 @@ Name and email appear in each commit you make.
     
     - Clone the repository to your local machine:
     ```{bash, eval=FALSE}
-    git clone git@github.com:biostat-m280-2019-winter.git
+    git clone git@github.com:[USERNAME]/biostat-m280-2019-winter.git
     ```
 
 - Working with your local copy.
