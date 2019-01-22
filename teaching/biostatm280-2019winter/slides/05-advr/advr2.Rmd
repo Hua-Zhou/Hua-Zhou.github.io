@@ -64,6 +64,10 @@ sessionInfo()
 
 - [Julia illustration](http://hua-zhou.github.io/teaching/biostatm280-2017spring/slides/02-juliaintro/juliaintro.html#Just-in-time-compilation-(JIT)).
 
+<p align="center">
+![](./julia_compile.png){width=400px} ![](./julia_introspect.png){width=400px}
+</p>
+
 - Since R 2.1.4, the `compiler` package by Luke Tierney is distributed with base R. `compiler` package compiles an R function into bytecode.
 
 ### Example: summing a vector
@@ -88,7 +92,7 @@ x = seq(from = 0, to = 100, by = 0.0001)
 microbenchmark(sum_r(x))
 ```
 
-Let's compile the function into bytecode `ctestfor` and benchmark again:
+Let's compile the function into bytecode `sum_rc` and benchmark again:
 ```{r}
 library(compiler)
 sum_rc <- cmpfun(sum_r)
@@ -207,7 +211,7 @@ My suggestion: avoid all these hassles of **two language problem**, just use Jul
     1. Option 1: Manually run multiple R sessions.
 
     2. Option 2: Make multiple `system("Rscript")` calls. Typically automated
-by a scripting language (Python, Perl, shell script) or within R (HW1 Q3).  
+by a scripting language (Python, Perl, shell script) or within R (HW1 Q34.  
 
     3. Option 3: Use package `parallel`. 
 
@@ -227,7 +231,7 @@ by a scripting language (Python, Perl, shell script) or within R (HW1 Q3).
 
 ### Simulation example
     
-Let's re-visit the simulation example considered in earlier lecture and [HW1 Q34(http://hua-zhou.github.io/teaching/biostatm280-20189inter/hw/hw1/hw1.html).
+Let's re-visit the simulation example considered in earlier lecture and [HW1 Q3(http://hua-zhou.github.io/teaching/biostatm280-2018inter/hw/hw1/hw1.html).
 
 We have a "new" method that estimates the population mean by averaging the observations indexed by prime numbers.
 ```{r}
