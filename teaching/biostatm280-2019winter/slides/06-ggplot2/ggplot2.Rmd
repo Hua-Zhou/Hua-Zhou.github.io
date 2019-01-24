@@ -11,9 +11,7 @@ subtitle: Biostat M280
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-  fig.width = 5, fig.height = 3.5, fig.align = 'center',
-  cache = TRUE)
+knitr::opts_chunk$set(fig.align = 'center', cache = TRUE)
 ```
 
 ## Outline

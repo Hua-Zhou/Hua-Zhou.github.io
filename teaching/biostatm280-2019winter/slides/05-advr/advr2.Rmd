@@ -211,7 +211,7 @@ My suggestion: avoid all these hassles of **two language problem**, just use Jul
     1. Option 1: Manually run multiple R sessions.
 
     2. Option 2: Make multiple `system("Rscript")` calls. Typically automated
-by a scripting language (Python, Perl, shell script) or within R (HW1 Q34.  
+by a scripting language (Python, Perl, shell script) or within R (HW1 Q3.  
 
     3. Option 3: Use package `parallel`. 
 
@@ -231,7 +231,7 @@ by a scripting language (Python, Perl, shell script) or within R (HW1 Q34.
 
 ### Simulation example
     
-Let's re-visit the simulation example considered in earlier lecture and [HW1 Q3(http://hua-zhou.github.io/teaching/biostatm280-2018inter/hw/hw1/hw1.html).
+Let's re-visit the simulation example considered in earlier lecture and [HW1 Q4](http://hua-zhou.github.io/teaching/biostatm280-2019winter/hw/hw1/hw1.html).
 
 We have a "new" method that estimates the population mean by averaging the observations indexed by prime numbers.
 ```{r}
