@@ -134,11 +134,6 @@ We obtaine the convergence rates of the multivariate versions of several classic
 **H Zhou** and K Dorman. (2005) A branching process model of drug resistant HIV, book chapter in [_Deterministic and stochastic models of AIDS epidemics and HIV infections with intervention_](http://www.amazon.com/dp/9812561390), 457-496, World Sci. Publ., Hackensack, NJ.   
 We apply the numerical methods for continuous-time multi-type branching processes with immigration to study the development of drug-resistant HIV in vivo.
 
-### Non-refereed
-
-**H Zhou**. (2006) Scrambling a Rubik's cube. \[[pdf](./media/pdf/rubik.pdf)\]  
-We compute the character tables of the pocket cube (2-by-2-by-2 Rubik's cube) group and the Rubik's cube group and considered some specific random walks on these groups. The question of  "How many twists are needed to thoroughly scramble the full Rubic's cube?" is still open.
-
    [2]: http://www.stat.ncsu.edu/people/zhou/courses/st810/notes/SurveyPaper.pdf
    [3]: http://arxiv.org/abs/1204.3331
    [4]: http://bioinformatics.oxfordjournals.org/content/29/12/1568
