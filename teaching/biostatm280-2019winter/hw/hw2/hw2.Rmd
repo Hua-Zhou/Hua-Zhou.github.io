@@ -1,0 +1,45 @@
+---
+title: "Biostat M280 Homework 2"
+subtitle: Due Feb 8 @ 11:59PM
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<p align="center">
+  <img src="./fizzbuzz.jpg" height="375">
+</p>
+
+## Q1. Travis CI
+
+1. Read the blog post [_Adding CI To RMarkdown Documents_](http://www.goring.org/resources/Adding_CI_To_RMarkdown.html) by Simon Goring. Understand what is continuous integration (CI) and why we need CI.
+
+2. Set up Travis CI for your homework 2 solution, e.g., `hw2sol.Rmd`. Graders will look for a CI passing badge on the `README.Rmd` page of your repository:
+
+<p align="center">
+  <img src="./passing.svg" height="175">
+</p>
+
+
+## Q2. FizzBuzz Test
+
+The FizzBuzz test is a common programming interview question used to establish if a candidate can actually program in a language that they claim experience in. The problem statement is as follows:
+
+> "Write a program that given a list of numbers as input, prints each number on their own line. But for multiples of three print "Fizz" instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”."
+
+1. Your goal here is to implement FizzBuzz as a generalized function in R called `fizzbuzz`. Your fizzbuzz function should conform to the description provided above in terms of output, but should accept an integer argument (which can either be a scalar or vector). As such, your function should correctly print `Fizz`, `Buzz`, `FizzBuzz`, or the actual number for each integer supplied on a separate line. You should program defensively - validate any input and make sure that you have a sane response to any invalid input.
+
+    You must also include a write up of your implementation that broadly describes how you approached the problem and constructed your solution (think something along the lines of the methods section of a journal article).
+
+    This is not a terribly complex or difficult task, and solutions in R and many other languages are easily Googleable - the point of this exercise is again to get used to the workflow and tools: RStudio, RMarkdown, Git/GitHub, Travis, etc. - so use this homework as an opportunity to familiarize yourself and get comfortable with these tools.
+
+2. Use your FizzBuzz function to display the correct output for a variety of inputs, make sure to show what happens for both good and bad input. 
+
+## Q3. Rcpp
+
+1. Read the online book [_Rcpp For Everyone_](https://teuder.github.io/rcpp4everyone_en/) by Masaki E. Tsuda.
+
+2. Re-do FizzBuzz test using Rcpp. 
+
