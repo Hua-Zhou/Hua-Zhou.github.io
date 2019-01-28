@@ -16,21 +16,14 @@ knitr::opts_chunk$set(fig.align = 'center', cache = TRUE)
 
 ## Outline
 
-We will spend next couple lectures studying R. I'll closely follow a few great books by Hadley Wickham.
+We will spend next couple lectures studying some R packages for typical data science projects.
 
 * Data wrangling (import, visualization, transformation, tidy).  
   [R for Data Science](http://r4ds.had.co.nz) by Garrett Grolemund and Hadley Wickham.
 
-* R programming, Rcpp.  
-  [Advanced R](http://adv-r.had.co.nz) by Hadley Wickham.
-
-* R package development.  
-  [R Packages](http://r-pkgs.had.co.nz) by Hadley Wickham.
-
 * Web applications by Shiny.
 
 * Interface with databases, eg., SQL and Apache Spark.
-
 
 ##
 
@@ -60,6 +53,8 @@ A typical data science project:
     ```{r}
     mpg
     ```
+
+- Tibbles are a generalized form of data frames, extensively used in tidyverse.
     
 - `displ`: engine size, in litres.  
     `hwy`: highway fuel efficiency, in mile per gallen (mpg).
@@ -73,6 +68,8 @@ A typical data science project:
     ggplot(data = mpg) + 
       geom_point(mapping = aes(x = displ, y = hwy))
     ```
+    
+- An aesthetic maps data to a specifc feature of plot. 
 
 - Check available aesthetics for a geometric object by `?geom_point`.
 
@@ -225,6 +222,7 @@ A typical data science project:
     ggplot(data = diamonds) + 
       stat_count(mapping = aes(x = cut))
     ```
+
 - `stat_count()` has a default geom `geom_bar()`.
 
 ----
@@ -325,7 +323,7 @@ normalize height:
 
 ----
 
-- `coord_fixed()` specifies aspect ratio:
+- `coord_fixed()` specifies aspect ratio (x / y):
     ```{r}
     ggplot(data = mpg, mapping = aes(x = class, y = hwy)) + 
       geom_boxplot() + 
