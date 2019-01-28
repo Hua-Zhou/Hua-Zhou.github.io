@@ -29,11 +29,11 @@ The FizzBuzz test is a common programming interview question used to establish i
 
 > "Write a program that given a list of numbers as input, prints each number on their own line. But for multiples of three print "Fizz" instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”."
 
-1. Your goal here is to implement FizzBuzz as a generalized function in R called `fizzbuzz`. Your fizzbuzz function should conform to the description provided above in terms of output, but should accept an integer argument (which can either be a scalar or vector). As such, your function should correctly print `Fizz`, `Buzz`, `FizzBuzz`, or the actual number for each integer supplied on a separate line. You should program defensively - validate any input and make sure that you have a sane response to any invalid input.
+1. Your goal here is to implement FizzBuzz as an R function called `fizzbuzz`. Your fizzbuzz function should conform to the description provided above in terms of output and accept an integer argument, which can either be a scalar or vector. As such, your function should correctly print `Fizz`, `Buzz`, `FizzBuzz`, or the actual number for each integer supplied on a separate line. You should program defensively - validate any input and make sure that you have a sane response to any invalid input.
 
     You must also include a write up of your implementation that broadly describes how you approached the problem and constructed your solution (think something along the lines of the methods section of a journal article).
 
-    This is not a terribly complex or difficult task, and solutions in R and many other languages are easily Googleable - the point of this exercise is again to get used to the workflow and tools: RStudio, RMarkdown, Git/GitHub, Travis, etc. - so use this homework as an opportunity to familiarize yourself and get comfortable with these tools.
+    This is not a terribly complex or difficult task, and solutions in R and many other languages are easily Googleable - the point of this exercise is again to get used to the workflow and tools: RStudio, RMarkdown, Git/GitHub, Travis, etc.
 
 2. Use your FizzBuzz function to display the correct output for a variety of inputs, make sure to show what happens for both good and bad input. 
 
