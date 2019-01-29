@@ -2,12 +2,12 @@
 title: "Data Visualization With ggplot2"
 author: "Dr. Hua Zhou @ UCLA"
 date: "Jan 29, 2018"
+subtitle: Biostat M280
 output:
   # ioslides_presentation: default
   html_document:
-  toc: true
-  toc_depth: 4  
-subtitle: Biostat M280
+    toc: true
+    toc_depth: 4  
 ---
 
 ```{r setup, include=FALSE}
@@ -24,8 +24,6 @@ We will spend next couple lectures studying some R packages for typical data sci
 * Web applications by Shiny.
 
 * Interface with databases, eg., SQL and Apache Spark.
-
-##
 
 A typical data science project:
 
