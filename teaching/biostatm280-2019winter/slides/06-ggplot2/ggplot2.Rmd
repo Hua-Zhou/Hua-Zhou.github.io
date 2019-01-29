@@ -54,7 +54,7 @@ A typical data science project:
     mpg
     ```
 
-- Tibbles are a generalized form of data frames, extensively used in tidyverse.
+- Tibbles are a generalized form of data frames, which are extensively used in tidyverse.
     
 - `displ`: engine size, in litres.  
     `hwy`: highway fuel efficiency, in mile per gallen (mpg).
