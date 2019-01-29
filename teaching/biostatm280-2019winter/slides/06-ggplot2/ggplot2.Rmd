@@ -45,6 +45,12 @@ A typical data science project:
     library("tidyverse")
     ```
 
+## Data visualization
+
+> “The simple graph has brought more information to the data analyst’s mind than any other device.”  
+> 
+> John Tukey
+
 ## `mpg` data
 
 - `mpg` data is available from the `ggplot2` package:
@@ -579,3 +585,7 @@ automatically adds scales
 ggplot(mpg, aes(displ, hwy)) + geom_point()
 ggsave("my-plot.pdf")
 ```
+
+## Cheat sheet  
+
+[RStudio cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is extremely handy.
