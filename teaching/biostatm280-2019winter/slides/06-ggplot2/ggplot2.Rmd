@@ -236,6 +236,11 @@ A typical data science project:
     ggplot(data = diamonds) + 
       geom_bar(mapping = aes(x = cut, y = ..prop.., group = 1))    
     ```
+    Note the aesthetics mapping `group=1` overwrites the default grouping (by `cut`) by considering all observations as a group. Without this we get
+    ```{r}
+    ggplot(data = diamonds) + 
+      geom_bar(mapping = aes(x = cut, y = ..prop..))    
+    ```
     
 ----
 
@@ -588,4 +593,4 @@ ggsave("my-plot.pdf")
 
 ## Cheat sheet  
 
-[RStudio cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is extremely handy.
+[RStudio cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is extremely helpful.
