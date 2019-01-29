@@ -1,13 +1,13 @@
 ---
 title: "Data Transformation With dplyr"
-author: "Dr. Hua Zhou"
+author: "Dr. Hua Zhou @ UCLA"
 date: "Jan 31, 2019"
 subtitle: Biostat M280
 output:
   # ioslides_presentation: default
   html_document:
-  toc: true
-  toc_depth: 4  
+    toc: true
+    toc_depth: 4  
 ---
 
 ```{r setup, include=FALSE}
@@ -37,11 +37,11 @@ flights
 
 ## dplyr basics
 
-* Pick observations by their values: `filter()`.
+* Pick observations (rows) by their values: `filter()`.
 
 * Reorder the rows: `arrange()`.
 
-* Pick variables by their names: `select()`.
+* Pick variables (columns) by their names: `select()`.
 
 * Create new variables with functions of existing variables: `mutate()`.
 

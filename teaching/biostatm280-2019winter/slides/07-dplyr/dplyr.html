@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Dr. Hua Zhou" />
+<meta name="author" content="Dr. Hua Zhou @ UCLA" />
 
 
 <title>Data Transformation With dplyr</title>
@@ -186,11 +186,52 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Data Transformation With dplyr</h1>
 <h3 class="subtitle"><em>Biostat M280</em></h3>
-<h4 class="author"><em>Dr. Hua Zhou</em></h4>
+<h4 class="author"><em>Dr. Hua Zhou @ UCLA</em></h4>
 <h4 class="date"><em>Jan 31, 2019</em></h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#section"></a></li>
+<li><a href="#nycflights13-data">nycflights13 data</a></li>
+<li><a href="#dplyr-basics">dplyr basics</a></li>
+<li><a href="#manipulate-rows-cases">Manipulate rows (cases)</a><ul>
+<li><a href="#filter-rows-with-filter">Filter rows with <code>filter()</code></a></li>
+<li><a href="#remove-rows-with-duplicate-values">Remove rows with duplicate values</a></li>
+<li><a href="#sample-rows">Sample rows</a></li>
+<li><a href="#select-rows-by-position">Select rows by position</a></li>
+<li><a href="#arrange-rows-with-arrange">Arrange rows with <code>arrange()</code></a></li>
+</ul></li>
+<li><a href="#manipulate-columns-variables">Manipulate columns (variables)</a><ul>
+<li><a href="#select-columns-with-select">Select columns with <code>select()</code></a></li>
+<li><a href="#add-new-variables-with-mutate">Add new variables with <code>mutate()</code></a></li>
+</ul></li>
+<li><a href="#summaries">Summaries</a><ul>
+<li><a href="#summaries-with-summarise">Summaries with <code>summarise()</code></a></li>
+<li><a href="#pipe">Pipe</a></li>
+<li><a href="#other-summary-functions">Other summary functions</a></li>
+<li><a href="#grouped-mutates-and-filters">Grouped mutates (and filters)</a></li>
+</ul></li>
+<li><a href="#combine-tables">Combine tables</a><ul>
+<li><a href="#section-1"></a></li>
+<li><a href="#relational-data">Relational data</a></li>
+<li><a href="#keys">Keys</a></li>
+</ul></li>
+<li><a href="#combine-variables-columns">Combine variables (columns)</a><ul>
+<li><a href="#demo-tables">Demo tables</a></li>
+<li><a href="#inner-join">Inner join</a></li>
+<li><a href="#outer-join">Outer join</a></li>
+<li><a href="#duplicate-keys">Duplicate keys</a></li>
+<li><a href="#defining-the-key-columns">Defining the key columns</a></li>
+</ul></li>
+<li><a href="#combine-cases-rows">Combine cases (rows)</a><ul>
+<li><a href="#semi-join">Semi-join</a></li>
+<li><a href="#anti-join">Anti-join</a></li>
+<li><a href="#set-operations">Set operations</a></li>
+</ul></li>
+</ul>
+</div>
 
 <div id="section" class="section level2">
 <h2></h2>
@@ -229,9 +270,9 @@ flights</code></pre>
 <div id="dplyr-basics" class="section level2">
 <h2>dplyr basics</h2>
 <ul>
-<li><p>Pick observations by their values: <code>filter()</code>.</p></li>
+<li><p>Pick observations (rows) by their values: <code>filter()</code>.</p></li>
 <li><p>Reorder the rows: <code>arrange()</code>.</p></li>
-<li><p>Pick variables by their names: <code>select()</code>.</p></li>
+<li><p>Pick variables (columns) by their names: <code>select()</code>.</p></li>
 <li><p>Create new variables with functions of existing variables: <code>mutate()</code>.</p></li>
 <li><p>Collapse many values down to a single summary: <code>summarise()</code>.</p></li>
 </ul>
