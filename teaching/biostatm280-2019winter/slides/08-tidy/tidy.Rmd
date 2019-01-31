@@ -219,6 +219,11 @@ A typical data science project:
 
 ## Excel files
 
+<p align="center">
+<img src="./mathlife.jpeg">
+</p>
+
+
 - readxl package (part of tidyverse) reads both xls and xlsx files:
     ```{r}
     library(readxl)
