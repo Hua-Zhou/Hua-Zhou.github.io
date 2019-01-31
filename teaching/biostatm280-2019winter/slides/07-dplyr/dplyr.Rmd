@@ -14,8 +14,6 @@ output:
 knitr::opts_chunk$set(fig.align = 'center', cache = TRUE)
 ```
 
-##
-
 A typical data science project:
 
 <p align="center">
@@ -403,8 +401,6 @@ flights
     ```
 
 # Combine tables
-
-## 
 
 nycflights13 has >1 tables:
 
