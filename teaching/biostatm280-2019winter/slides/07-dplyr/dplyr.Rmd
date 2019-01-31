@@ -25,13 +25,31 @@ A typical data science project:
 - Available from the nycflights13 package. 
 
 - 336,776 flights that departed from New York City in 2013:
-```{r}
-library("tidyverse")
-```
-```{r}
-library("nycflights13")
-flights
-```
+    ```{r}
+    library("tidyverse")
+    ```
+    ```{r}
+    library("nycflights13")
+    flights
+    ```
+
+- To display more rows:
+    ```{r}
+    flights %>% print(n = 20)
+    ```
+  Note `%>%` is the pipe is tidyverse. Above command is equivalent to `print(flights, n = 20)`.
+
+- To display all rows:
+    ```{r, eval = FALSE}
+    flights %>% print(n = nrow(.))
+    ```
+    Do **not** try this on the `flights` data, which has too many rows.
+    
+- To display more columns (variables):
+    ```{r}
+    flights %>% print(width = Inf)
+    ```
+    The `width` argument controls the screen width.
 
 ## dplyr basics
 
@@ -68,6 +86,11 @@ flights
     ```{r}
     distinct(flights, month, .keep_all = TRUE)
     ```
+    
+- With `.keep_all = FALSE`, only distince values of the variable are selected:
+    ```{r}
+    distinct(flights, month)
+    ```
 
 ## Sample rows
 
@@ -96,6 +119,12 @@ flights
     ```{r}
     top_n(flights, 5)
     ```
+    Use `wt` argument to specify using which varible to order. Default is the last argument.
+    
+- Bottome `n` rows:
+    ```{r}
+    top_n(flights, -5)
+    ```
 
 ## Arrange rows with `arrange()`
 
@@ -118,6 +147,11 @@ flights
 - Select columns by variable name:
     ```{r}
     select(flights, year, month, day)
+    ```
+
+- Pull values of _one_ column as a vector:
+    ```{r, eval = FALSE}
+    pull(flights, year)
     ```
 
 ----
@@ -402,7 +436,7 @@ flights
 
 # Combine tables
 
-nycflights13 has >1 tables:
+nycflights13 package has >1 tables:
 
 - We already know a lot about flights:
     ```{r}
@@ -455,18 +489,20 @@ nycflights13 has >1 tables:
 
 -
     ```{r}
-    x <- tribble(
+    (x <- tribble(
       ~key, ~val_x,
          1, "x1",
          2, "x2",
          3, "x3"
-    )
-    y <- tribble(
+    ))
+    ```
+    ```{r}
+    (y <- tribble(
       ~key, ~val_y,
          1, "y1",
          2, "y2",
          4, "y3"
-    )
+    ))
     ```
 
 ## Inner join
@@ -493,10 +529,19 @@ Same as
 - Three types of outer joins:
 
     - A **left join** keeps all observations in `x`.
+    ```{r}
+    left_join(x, y, by = "key")
+    ```
 
     - A **right join** keeps all observations in `y`.
+    ```{r}
+    right_join(x, y, by = "key")
+    ```
     
     - A **full join** keeps all observations in `x` or `y`.
+    ```{r}
+    full_join(x, y, by = "key")
+    ```
     
     <p align="center">
     <img src="./join-outer.png" height="275">
@@ -645,16 +690,18 @@ Same as
 
 - Generate two tables:
     ```{r}
-    df1 <- tribble(
+    (df1 <- tribble(
       ~x, ~y,
        1,  1,
        2,  1
-    )
-    df2 <- tribble(
+    ))
+    ```
+    ```{r}
+    (df2 <- tribble(
       ~x, ~y,
        1,  1,
        1,  2
-    )
+    ))
     ```
 
 ----
@@ -685,3 +732,7 @@ Same as
     ```{r}
     setdiff(df2, df1)
     ```
+    
+## Cheat sheet  
+
+[RStudio cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) is extremely helpful.    
