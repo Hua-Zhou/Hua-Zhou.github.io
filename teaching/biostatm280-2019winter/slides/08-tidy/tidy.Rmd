@@ -14,8 +14,6 @@ output:
 knitr::opts_chunk$set(fig.align = 'center', cache = TRUE)
 ```
 
-## Workflow
-
 A typical data science project:
 
 <p align="center">
@@ -150,7 +148,7 @@ A typical data science project:
 
 ----
 
-- Read from a local file [heights.csv](http://hua-zhou.github.io/teaching/biostatm280-2018winter/slides/08-tidy/heights.csv):
+- Read from a local file [heights.csv](http://hua-zhou.github.io/teaching/biostatm280-2019winter/slides/08-tidy/heights.csv):
     ```{r}
     (heights <- read_csv("heights.csv"))
     ```
