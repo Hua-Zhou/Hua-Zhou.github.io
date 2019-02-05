@@ -250,6 +250,7 @@ for a complete list.
 - 
     ```{r}
     x <- "1888 is the longest year in Roman numerals: MDCCCLXXXVIII"
+    # match either C or CC, being greedy here
     str_view(x, "CC?")
     # greedy matches
     str_view(x, "CC+")
