@@ -10,7 +10,7 @@ output:
     toc_depth: 4
 ---
 
-```{r setup}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(fig.width=5, fig.height=3.5, fig.align='center', cache=FALSE)
 ```
 
@@ -40,7 +40,7 @@ knitr::opts_chunk$set(fig.width=5, fig.height=3.5, fig.align='center', cache=FAL
 
 ## Basics
 
-- Strings are enclosed by double quotes or? single quotes:
+- Strings are enclosed by double quotes or single quotes:
     ```{r}
     string1 <- "This is a string"
     string2 <- 'If I want to include a "quote" inside a string, I use single quotes'
@@ -59,15 +59,14 @@ knitr::opts_chunk$set(fig.width=5, fig.height=3.5, fig.align='center', cache=FAL
     x <- c("\"", "\\")
     x
     ```
-vs `writeLines()`:
-    ```{r}
-    writeLines(x)
-    ```
 vs `cat`:    
     ```{r}
     cat(x)
     ```
-    
+vs `writeLines()`:
+    ```{r}
+    writeLines(x)
+    ```
     
 ----    
 
@@ -197,13 +196,11 @@ for a complete list.
     ```{r}
     str_view(c("abc", "a.c", "bef"), "a\\.c")
     ```
-
-- To match a literal `\`:
+    To match a literal `\`:
     ```{r}
     str_view("a\\b", "\\\\")
     ```
-
-- Regex escapes live on top of regular string escapes, so there needs to be two levels of escapes.
+    **Regex escapes live on top of regular string escapes, so there needs to be two levels of escapes.**
 
 <p align="center">
 <img src="./escape.png" height="75">
@@ -233,17 +230,9 @@ for a complete list.
 
 ----
 
-- Other special matches:
-
-    - `\d`: matches any digit.
-    
-    - `\s`: matches any whitespace (e.g. space, tab, newline).
-    
+- Alternation  
     - `[abc]`: matches a, b, or c.
-    
     - `[^abc]`: matches anything except a, b, or c.
-    
-    - alternation
     ```{r}
     str_view(c("grey", "gray"), "gr(e|a)y")
     ```
@@ -300,26 +289,26 @@ for a complete list.
     text = "<div class='main'> <div> <a href='here.pdf'>Here!</a> </div> </div>"
     str_extract(text, "<div>.*</div>")
     ```
-    If we add ? after a quantifier, the matching will be ungreedy (find the shortest possible match, not the longest).
+    If we add ? after a quantifier, the matching will be lazy (find the shortest possible match, not the longest).
     ```{r}
     str_extract(text, "<div>.*?</div>")
     ```
 
 ## Grouping and backreference
 
-- Group together parts of a regular expression for modification or capture.
-    - `(a|b)`: match literal a or b, group either  
-    - `a(bc)`: match literal a or abc, group bc or ""  
-    - `(?:abc)`: non-capturing group  
-    - `(abc)def(hig)`: match abcdefhig, group abc and hig
+<!-- - Group together parts of a regular expression for modification or capture. -->
+<!--     - `(a|b)`: match literal a or b, group either   -->
+<!--     - `a(bc)`: match literal a or abc, group bc or ""   -->
+<!--     - `(?:abc)`: non-capturing group   -->
+<!--     - `(abc)def(hig)`: match abcdefhig, group abc and hig -->
 
-- Example
-    ```{r}
-    text = c("Bob Smith", "Alice Smith", "Apple")
-    str_extract(text, "^[:alpha:]+")
-    str_match(text, "^([:alpha:]+) [:alpha:]+")
-    str_match(text, "^([:alpha:]+) ([:alpha:]+)")
-    ```
+<!-- - Example -->
+<!--     ```{r} -->
+<!--     text = c("Bob Smith", "Alice Smith", "Apple") -->
+<!--     str_extract(text, "^[:alpha:]+") -->
+<!--     str_match(text, "^([:alpha:]+) [:alpha:]+") -->
+<!--     str_match(text, "^([:alpha:]+) ([:alpha:]+)") -->
+<!--     ``` -->
 
 - `fruit` is a character vector pre-defined in `stringr` package:
     ```{r}
@@ -328,6 +317,7 @@ for a complete list.
 
 - Parentheses define groups, which can be back-referenced as `\1`, `\2`, ...
     ```{r}
+    # only show matched strings
     str_view(fruit, "(..)\\1", match = TRUE)
     ```
     
@@ -589,6 +579,6 @@ same as
     str_replace_all(text, "[1-5a-ep]", "*")
     ```
     
-# Teaser: how to validate email address
+# Teaser: how to validate email address using RegEx
 
 <https://r4ds.had.co.nz/strings.html#tools>
