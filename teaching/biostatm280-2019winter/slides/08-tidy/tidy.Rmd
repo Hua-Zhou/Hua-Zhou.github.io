@@ -51,7 +51,7 @@ A typical data science project:
 
 ----
 
-- Create tibble from individual vectors:
+- Create tibble from individual vectors. Note values for y are recycled:
     ```{r}
     tibble(
       x = 1:5, 
