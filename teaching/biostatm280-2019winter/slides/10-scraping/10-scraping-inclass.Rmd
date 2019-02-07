@@ -51,7 +51,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
     - Actor
 
 <p align="center">
-  <img src="./imdb.png" height="275">
+  <img src="http://hua-zhou.github.io/teaching/biostatm280-2019winter/slides/10-scraping/imdb.png" height="275">
 </p>
 
 ### Rank
@@ -59,7 +59,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
 - Use SelectorGadget to highlight the element we want to scrape
 
 <p align="center">
-  <img src="./selectorgadget.png" height="275">
+  <img src="http://hua-zhou.github.io/teaching/biostatm280-2019winter/slides/10-scraping/selectorgadget.png" height="275">
 </p>
 
 - Use the CSS selector to get the rankings
