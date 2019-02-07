@@ -192,15 +192,20 @@ for a complete list.
     str_view(x, ".a.")
     ```
 
-- To match a literal `.`:
+- **Regex escapes live on top of regular string escapes, so there needs to be two levels of escapes.**.  
+    To match a literal `.`:
+    ```{r, error=TRUE}
+    # doesn't work because "a\.c" is treated as a regular expression
+    str_view(c("abc", "a.c", "bef"), "a\.c")
+    ```
     ```{r}
+    # regular expression needs double escape
     str_view(c("abc", "a.c", "bef"), "a\\.c")
     ```
     To match a literal `\`:
     ```{r}
     str_view("a\\b", "\\\\")
     ```
-    **Regex escapes live on top of regular string escapes, so there needs to be two levels of escapes.**
 
 <p align="center">
 <img src="./escape.png" height="75">
@@ -231,7 +236,7 @@ for a complete list.
 ----
 
 - Alternation  
-    - `[abc]`: matches a, b, or c.
+    - `[abc]`: matches a, b, or c. Same as `(a|b|c)`.
     - `[^abc]`: matches anything except a, b, or c.
     ```{r}
     str_view(c("grey", "gray"), "gr(e|a)y")
@@ -461,6 +466,7 @@ same as
 
 - `str_extract()` gives us the complete match:
     ```{r}
+    # why "([^ ]+)" match a word?
     noun <- "(a|the) ([^ ]+)"
 
     has_noun <- sentences %>%
