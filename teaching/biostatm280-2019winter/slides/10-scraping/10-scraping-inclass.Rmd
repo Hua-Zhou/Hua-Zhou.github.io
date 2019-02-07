@@ -1,0 +1,153 @@
+---
+title: "Web Scraping"
+author: "Dr. Hua Zhou @ UCLA"
+date: "Feb 7, 2019"
+output:
+  # ioslides_presentation: default
+  html_document:
+    toc: true
+    toc_depth: 4  
+subtitle: Biostat M280
+---
+
+## Web scraping
+
+There is wealth of data on internet. How to scrape them and analyze them?
+
+## rvest
+
+[rvest](https://github.com/hadley/rvest) is an R package written by Hadley Wickham which makes web scraping easy.
+
+## Scraping from webpage
+
+- Suppose we want to analyze the most popular feature films in 2018.
+
+- Install the [SelectorGadget](https://selectorgadget.com/) extension for Chrome.
+
+- The 100 most popular feature films released in 2018 can be accessed at page <https://www.imdb.com/search/title?count=100&release_date=2018,2018&title_type=feature>.
+
+- We can scrape the html using rvest:
+    ```{r}
+    # Loading the rvest and tidyverse package
+    library("rvest")
+    library("tidyverse")
+    # Specifying the url for desired website to be scraped
+    url <- 'http://www.imdb.com/search/title?count=100&release_date=2018,2018&title_type=feature'
+    # Reading the HTML code from the website
+    (webpage <- read_html(url))
+    ```
+
+- We want to scrape following 11 features from this page:
+    - Rank
+    - Title
+    - Description
+    - Runtime
+    - Genre
+    - Rating
+    - Metascore
+    - Votes
+    - Gross_Eerning_in_Mil
+    - Director
+    - Actor
+
+<p align="center">
+  <img src="./imdb.png" height="275">
+</p>
+
+### Rank
+
+- Use SelectorGadget to highlight the element we want to scrape
+
+<p align="center">
+  <img src="./selectorgadget.png" height="275">
+</p>
+
+- Use the CSS selector to get the rankings
+    ```{r}
+    # Use CSS selectors to scrap the rankings section
+    (rank_data_html <- html_nodes(webpage, '.text-primary'))
+    # Convert the ranking data to text
+    (rank_data <- html_text(rank_data_html))
+    # Turn into numerical values
+    (rank_data <- as.integer(rank_data))
+    ```
+
+### Title - TODO
+
+
+### Description
+
+-
+    ```{r}
+    # Using CSS selectors to scrap the description section
+    (description_data_html <- html_nodes(webpage, '.ratings-bar+ .text-muted'))
+    # Converting the description data to text
+    description_data <- html_text(description_data_html)
+    # take a look at first few
+    head(description_data)
+    # strip the '\n'
+    description_data <- str_replace(description_data, "^\\n\\s+", "")
+    head(description_data)
+    ```
+
+### Runtime - TODO
+
+### Genre
+
+-
+    ```{r}
+    # Using CSS selectors to scrap the Movie genre section
+    genre_data_html <- html_nodes(webpage, '.genre')
+    # Converting the genre data to text
+    genre_data <- html_text(genre_data_html)
+    # Let's have a look at the runtime
+    head(genre_data)    
+    # Data-Preprocessing: removing \n
+    genre_data <- str_replace(genre_data, "^\\n", "")
+    # Data-Preprocessing: removing excess spaces
+    genre_data <- str_replace_all(genre_data, "\\s+", "")
+    # taking only the first genre of each movie
+    genre_data <- str_replace(genre_data, ",.*", "")
+    # Convering each genre from text to factor
+    #genre_data <- as.factor(genre_data)
+    # Let's have another look at the genre data
+    head(genre_data)
+    ```
+
+### Rating - TODO
+
+
+### Votes - TODO
+
+### Director - TODO
+
+### Actor - TODO
+
+### Metascore - TODO
+
+### Gross - TODO
+
+## Visualizing movie data - TODO
+
+- Form a tibble:
+    ```{r, eval=FALSE}
+    # Combining all the lists to form a data frame
+    (movies <- tibble(Rank = rank_data, Title = title_data,
+    Description = description_data, Runtime = runtime_data,
+    Genre = genre_data, Rating = rating_data,
+    Metascore = metascore_data, Votes = votes_data,                                     
+    Gross_Earning_in_Mil = gross_data,
+    Director = directors_data, Actor = actors_data))
+    ```
+    
+- How many top 100 movies are in each genre? - TODO
+
+- Which genre is most profitable in terms of gross earnings? - TODO
+
+- Is there relationship between gross earning and rating? Find the best selling movie in each genre - TODO
+
+## Scraping image data from Google
+
+
+## Scraping finance data
+
