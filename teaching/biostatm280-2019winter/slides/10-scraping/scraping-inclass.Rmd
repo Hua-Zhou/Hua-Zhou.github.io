@@ -12,7 +12,7 @@ subtitle: Biostat M280
 
 ## Web scraping
 
-There is wealth of data on internet. How to scrape them and analyze them?
+There is a wealth of data on internet. How to scrape them and analyze them?
 
 ## rvest
 
@@ -72,7 +72,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
     (rank_data <- as.integer(rank_data))
     ```
 
-### Title - TODO (Group 1)
+### Title - TODO
 
 
 ### Description
@@ -90,7 +90,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
     head(description_data)
     ```
 
-### Runtime - TODO (Group 2)
+### Runtime - TODO
 
 ### Genre
 
@@ -110,36 +110,67 @@ There is wealth of data on internet. How to scrape them and analyze them?
     head(genre_data)
     ```
 
-### Rating - TODO (Group 3)
+### Rating
 
-### Votes - TODO (Group 4)
+-
+    ```{r}
+    # Using CSS selectors to scrap the IMDB rating section
+    rating_data_html <- html_nodes(webpage, '.ratings-imdb-rating strong')
+    # Converting the ratings data to text
+    rating_data <- html_text(rating_data_html)
+    # Let's have a look at the ratings
+    head(rating_data)
+    # Data-Preprocessing: converting ratings to numerical
+    rating_data <- as.numeric(rating_data)
+    # Let's have another look at the ratings data
+    rating_data
+    ```
 
-### Director - TODO (Group 5)
+### Votes - TODO
 
-### Actor - TODO (Group 6)
+### Director
 
-### Metascore - TODO (Group 7)
+-
+    ```{r}
+    # Using CSS selectors to scrap the directors section
+    (directors_data_html <- html_nodes(webpage,'.text-muted+ p a:nth-child(1)'))
+    # Converting the directors data to text
+    directors_data <- html_text(directors_data_html)
+    # Let's have a look at the directors data
+    head(directors_data)
+    # Data-Preprocessing: converting directors data into factors
+    (directors_data <- as.factor(directors_data))
+    ```
 
-### Gross - TODO (Group 8)
+### Actor - TODO
 
-## Visualizing movie data - TODO
+### Metascore - TODO
+
+Be careful with missing data.
+
+### Gross - TODO
+
+Be careful with missing data.
+
+## Visualizing movie data
 
 - Form a tibble:
     ```{r, eval=FALSE}
     # Combining all the lists to form a data frame
-    (movies <- tibble(Rank = rank_data, Title = title_data,
-    Description = description_data, Runtime = runtime_data,
-    Genre = genre_data, Rating = rating_data,
-    Metascore = metascore_data, Votes = votes_data,                                     
-    Gross_Earning_in_Mil = gross_data,
-    Director = directors_data, Actor = actors_data))
+    movies <- tibble(Rank = rank_data, Title = title_data,
+                      Description = description_data, Runtime = runtime_data,
+                      Genre = genre_data, Rating = rating_data,
+                      Metascore = metascore_data, Votes = votes_data,                                     
+                      Gross_Earning_in_Mil = gross_data,
+                      Director = directors_data, Actor = actors_data)
+    movies %>%> print(width=Inf)
     ```
     
 - How many top 100 movies are in each genre? - TODO
 
 - Which genre is most profitable in terms of gross earnings? - TODO
 
-- Is there relationship between gross earning and rating? Find the best selling movie in each genre - TODO
+- Is there relationship between gross earning and rating? Find the best selling movie (by gross earning) in each genre - TODO
 
 ## Scraping image data from Google
 

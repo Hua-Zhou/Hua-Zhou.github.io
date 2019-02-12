@@ -195,7 +195,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
 
 ### Metascore
 
-- 
+- Be careful with missing data.
     ```{r}
     # Using CSS selectors to scrap the metascore section
     metascore_data_html <- html_nodes(webpage, '.metascore')
@@ -217,7 +217,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
     
 ### Gross
 
--
+- Be careful with missing data.
     ```{r}
     # Using CSS selectors to scrap the gross revenue section
     gross_data_html <- html_nodes(webpage,'.ghost~ .text-muted+ span')
@@ -227,7 +227,8 @@ There is wealth of data on internet. How to scrape them and analyze them?
     head(gross_data)
     # Data-Preprocessing: removing '$' and 'M' signs
     gross_data <- str_replace(gross_data, "M", "")
-    gross_data <- str_sub(gross_data, 2, 6)
+    gross_data <- str_sub(gross_data, 2, 10)
+    #(gross_data <- str_extract(gross_data, "[:digit:]+.[:digit:]+"))
     gross_data <- as.numeric(gross_data)
     # Let's check the length of gross data
     length(gross_data)
@@ -272,7 +273,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
       labs(y = "Gross earning in millions")
     ```
 
-- Is there a relationship between gross earning and rating? Find the best selling movie in each genre    
+- Is there a relationship between gross earning and rating? Find the best selling movie (by gross earning) in each genre    
     ```{r}
     library("ggrepel")
     (best_in_genre <- movies %>%
