@@ -13,7 +13,8 @@ Readings:
 * [_R for Data Science_](http://r4ds.had.co.nz) by Hadley Wickham and Garrett Grolemund.  
 * [_Advanced R_](http://adv-r.had.co.nz) by Hadley Wickham.  
 * [_R Packages_](http://r-pkgs.had.co.nz) by Hadley Wickham.  
-* [_Rcpp For Everyone_](https://teuder.github.io/rcpp4everyone_en/) by Masaki E. Tsuda.
+* [_Rcpp For Everyone_](https://teuder.github.io/rcpp4everyone_en/) by Masaki E. Tsuda.  
+* [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J.J. Allaire, and Garrett Grolemund.  
 
 
 | Week | Tuesday | Thursday | Homework |
@@ -23,8 +24,8 @@ Readings:
 | 3 | [1/22](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/22/week3-day1.html) R programming (benchmark, debug, profile) \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/05-advr/advr1.Rmd), [html](./slides/05-advr/advr1.html)\] | [1/24](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/24/week3-day2.html) Rcpp, parallel computing, R package \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/05-advr/advr2.Rmd), [html](./slides/05-advr/advr2.html)\] |  
 | 4 | [1/29](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/29/week4-day1.html) data visualization with ggplot2 \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/06-ggplot2/ggplot2.Rmd), [html](./slides/06-ggplot2/ggplot2.html)\] | [1/31](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/01/31/week4-day2.html) data transformation with dplyr \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/07-dplyr/dplyr.Rmd), [html](./slides/07-dplyr/dplyr.html)\] | HW2: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/hw/hw2/hw2.Rmd), [html](./hw/hw2/hw2.html) |     
 | 5 | [2/5](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/02/05/week5-day1.html) tidy data \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/08-tidy/tidy.Rmd), [html](./slides/08-tidy/tidy.html)\], strings \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/09-strings/stringr.Rmd), [html](./slides/09-strings/stringr.html)\] | [2/7](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/02/07/week5-day2.html) web scraping \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/10-scraping/10-scraping-inclass.Rmd), [html](./slides/10-scraping/10-scraping-inclass.html)\] | | 
-| 6 | 2/12 | 2/14 shiny for interactive document | HW3: |    
-| 7 | 2/19 Databases | 2/21 cluster computing at UCLA |  
+| 6 | [2/12](http://hua-zhou.github.io/teaching/biostatm280-2019winter/biostatm280winter2019/2019/02/12/week6-day1.html) shiny for interactive document \[slides: [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/11-shiny/shiny.Rmd), [html](https://hua-zhou.shinyapps.io/shiny_slides_m280_2019winter/)\] | 2/14 Databases | HW3: |    
+| 7 | 2/19  | 2/21 cluster computing at UCLA |  
 | 8 | 2/26 cloud computing with GCP | 2/28 Docker | HW4: |    
 | 9 | 3/5 distributed data analysis with sparklyr | 3/7 distributed data analysis with sparklyr |  
 | 10 | 3/12 neural network and deep learning (intro.) | 3/14 neural network and deep learning (examples) | HW5: |  

@@ -1,0 +1,189 @@
+---
+title: "Interactive Documents With shiny"
+author: "Dr. Hua Zhou @ UCLA"
+date: "Feb 12, 2019"
+subtitle: Biostat M280
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+  #ioslides_presentation
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = FALSE)
+library("tidyverse")
+```
+
+## Why Shiny?
+
+<p align="center">
+<img src="./data-science.png" height="275">
+</p>
+
+- Better presentations of data and ideas!
+    - One of the most critical skills for data scientists.
+
+- Josh Katz's [dialect quiz on NYT](https://www.nytimes.com/interactive/2014/upshot/dialect-quiz-map.html).
+
+- [Another good representation of data](https://research.hackerrank.com/student-developer/2018).
+
+## Inputs and outputs 
+
+### Numeric input, table output
+
+```{r, echo = FALSE}
+numericInput("rows", "How many diamonds?", 5)
+
+renderTable({
+  head(diamonds, input$rows)
+})
+```
+
+### Slider input, plot output
+
+```{r, echo = FALSE}
+sliderInput("bins", "Number of bins:", min = 1, max = 300, value = 30)
+
+renderPlot({
+  ggplot(data = diamonds) +
+    geom_histogram(mapping = aes(x = carat), bins = input$bins)
+})
+```
+
+----
+
+- Check the [Shiny cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/shiny.pdf) for a list of inputs and outputs.
+
+## Building a Shiny app
+
+- Basic parts of a shiny app: <http://shiny.rstudio.com/articles/basics.html>
+
+- How to build a shiny app: <http://shiny.rstudio.com/articles/build.html>
+
+- How to launch a shiny app: <http://shiny.rstudio.com/articles/running.html>
+
+----
+
+- Skeleton of a Shiny app:
+    ```{r, echo = TRUE, eval = FALSE}
+    library(shiny)
+    ui <- fluidPage()
+    server <- function(input, output) {}
+    shinyApp(ui = ui, server = server)
+    ```
+
+- A Shiny app has 3 components:
+
+    1. `ui`: assemble the HTML user interface for your app.
+
+    2. `server`: a function with instructions on how to build and rebuild the R objects displayed in the UI.
+
+    3. `shinyApp`: combines `ui` and `server` into an app.
+
+## Shiny app: first example
+
+1. In RStudio, `File` -> `New File` -> `Shiny Web App...` creates a demo Shiny app using the `faithful` data set in base R. Recall the `faithful` data
+    ```{r}
+    head(faithful)
+    ```
+
+2. Deploy your Shiny app to [shinyapps.io](shinyapps.io).
+
+## Shiny app: censusVis
+
+<http://shiny.rstudio.com/tutorial/written-tutorial/lesson5/>
+
+- `counties.rds` contains demographic data for each county in the United States from 2010 census:
+    ```{r}
+    counties <- readRDS("census-app/data/counties.rds")
+    head(counties)
+    ```
+
+----
+
+- Use `maps` package, `mapproj` package and `helpers.R` file to plot maps:
+    ```{r, message = FALSE}
+    library(maps)
+    library(mapproj)
+    source("census-app/helpers.R")
+    percent_map(counties$white, "darkgreen", "% White")
+    ```
+
+----
+
+- Shiny app.
+    ```{r, echo = FALSE, eval = FALSE}
+    #setwd("census-app")
+    #shinyAppDir(getwd())
+    #shinyAppDir("census-app")
+    #source("./census-app/app.R")
+    runApp("census-app")
+    ```
+
+- [Code](https://github.com/Hua-Zhou/Hua-Zhou.github.io/tree/master/teaching/biostatm280-2019winter/slides/11-shiny/census-app) for the Shiny app `census-app`.
+
+----
+
+- The `shinyApp` function is run once, when you launch your app.  
+- The `server` function is run once each time a user visits your app.  
+- The R expressions inside `render*` functions are run many times. Shiny runs them once each time a user change the value of a widget. 
+- Source scripts, load libraries, and read data sets at the beginning of `app.R` outside of the `server` function. Shiny will only run this code once, which is all you need to set your server up to run the R expressions contained in server.  
+- Define user specific objects inside `server` function, but outside of any `render*` calls. These would be objects that you think each user will need their own personal copy of. For example, an object that records the user’s session information. This code will be run once per user.
+
+## Shiny app: reactive expressions
+
+- <http://shiny.rstudio.com/tutorial/written-tutorial/lesson6/>
+
+- [Code](https://github.com/Hua-Zhou/Hua-Zhou.github.io/tree/master/teaching/biostatm280-2019winter/slides/11-shiny/stockVis) for the Shiny app `stockVis`.
+
+---
+
+- Without using reactive expression:
+    ```{r, eval = FALSE}
+    output$plot <- renderPlot({
+      data <- getSymbols(input$symb, src = "google",
+                         from = input$dates[1],
+                         to = input$dates[2],
+                         auto.assign = FALSE)
+    
+      chartSeries(data, theme = chartTheme("white"),
+                  type = "line", log.scale = input$log, TA = NULL)
+    })
+    ```
+Each time `renderPlot` re-runs:  
+1. it re-fetches the data from Google finance with `getSymbols`, and
+2. it re-draws the chart with the correct axis.
+
+---- 
+
+- With **reactive expression**:
+    ```{r, eval = FALSE}
+    dataInput <- reactive({
+      getSymbols(input$symb, src = "google", 
+                 from = input$dates[1],
+                 to = input$dates[2],
+                 auto.assign = FALSE)
+    })
+    
+    output$plot <- renderPlot({
+      chartSeries(dataInput(), theme = chartTheme("white"), 
+                  type = "line", log.scale = input$log, TA = NULL)
+    })
+    ```
+
+----
+
+- A reactive expression saves its result the first time you run it.
+
+- The next time the reactive expression is called, it checks if the saved value has become out of date (i.e., whether the widgets it depends on have changed).
+
+- If the value is out of date, the reactive object will recalculate it (and then save the new result).
+
+- If the value is up-to-date, the reactive expression will return the saved value without doing any computation.
+
+## Get ideas for presenting your data
+
+- Browse the [Gallery](http://shiny.rstudio.com/gallery/).
+
