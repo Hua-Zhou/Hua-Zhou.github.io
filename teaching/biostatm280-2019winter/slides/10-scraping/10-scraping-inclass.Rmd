@@ -72,7 +72,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
     (rank_data <- as.integer(rank_data))
     ```
 
-### Title - TODO
+### Title - TODO (Group 1)
 
 
 ### Description
@@ -90,7 +90,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
     head(description_data)
     ```
 
-### Runtime - TODO
+### Runtime - TODO (Group 2)
 
 ### Genre
 
@@ -100,32 +100,27 @@ There is wealth of data on internet. How to scrape them and analyze them?
     genre_data_html <- html_nodes(webpage, '.genre')
     # Converting the genre data to text
     genre_data <- html_text(genre_data_html)
-    # Let's have a look at the runtime
+    # Let's have a look at the genre data
     head(genre_data)    
-    # Data-Preprocessing: removing \n
-    genre_data <- str_replace(genre_data, "^\\n", "")
-    # Data-Preprocessing: removing excess spaces
-    genre_data <- str_replace_all(genre_data, "\\s+", "")
-    # taking only the first genre of each movie
-    genre_data <- str_replace(genre_data, ",.*", "")
+    # Data-Preprocessing: retrieve the first word
+    genre_data <- str_extract(genre_data, "[:alpha:]+")    
     # Convering each genre from text to factor
     #genre_data <- as.factor(genre_data)
     # Let's have another look at the genre data
     head(genre_data)
     ```
 
-### Rating - TODO
+### Rating - TODO (Group 3)
 
+### Votes - TODO (Group 4)
 
-### Votes - TODO
+### Director - TODO (Group 5)
 
-### Director - TODO
+### Actor - TODO (Group 6)
 
-### Actor - TODO
+### Metascore - TODO (Group 7)
 
-### Metascore - TODO
-
-### Gross - TODO
+### Gross - TODO (Group 8)
 
 ## Visualizing movie data - TODO
 
@@ -147,7 +142,6 @@ There is wealth of data on internet. How to scrape them and analyze them?
 - Is there relationship between gross earning and rating? Find the best selling movie in each genre - TODO
 
 ## Scraping image data from Google
-
 
 ## Scraping finance data
 

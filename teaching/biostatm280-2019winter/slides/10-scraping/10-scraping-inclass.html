@@ -197,16 +197,16 @@ $(document).ready(function () {
 <li><a href="#rvest">rvest</a></li>
 <li><a href="#scraping-from-webpage">Scraping from webpage</a><ul>
 <li><a href="#rank">Rank</a></li>
-<li><a href="#title---todo">Title - TODO</a></li>
+<li><a href="#title---todo-group-1">Title - TODO (Group 1)</a></li>
 <li><a href="#description">Description</a></li>
-<li><a href="#runtime---todo">Runtime - TODO</a></li>
+<li><a href="#runtime---todo-group-2">Runtime - TODO (Group 2)</a></li>
 <li><a href="#genre">Genre</a></li>
-<li><a href="#rating---todo">Rating - TODO</a></li>
-<li><a href="#votes---todo">Votes - TODO</a></li>
-<li><a href="#director---todo">Director - TODO</a></li>
-<li><a href="#actor---todo">Actor - TODO</a></li>
-<li><a href="#metascore---todo">Metascore - TODO</a></li>
-<li><a href="#gross---todo">Gross - TODO</a></li>
+<li><a href="#rating---todo-group-3">Rating - TODO (Group 3)</a></li>
+<li><a href="#votes---todo-group-4">Votes - TODO (Group 4)</a></li>
+<li><a href="#director---todo-group-5">Director - TODO (Group 5)</a></li>
+<li><a href="#actor---todo-group-6">Actor - TODO (Group 6)</a></li>
+<li><a href="#metascore---todo-group-7">Metascore - TODO (Group 7)</a></li>
+<li><a href="#gross---todo-group-8">Gross - TODO (Group 8)</a></li>
 </ul></li>
 <li><a href="#visualizing-movie-data---todo">Visualizing movie data - TODO</a></li>
 <li><a href="#scraping-image-data-from-google">Scraping image data from Google</a></li>
@@ -233,12 +233,12 @@ $(document).ready(function () {
 library(&quot;rvest&quot;)</code></pre>
 <pre><code>## Loading required package: xml2</code></pre>
 <pre class="r"><code>library(&quot;tidyverse&quot;)</code></pre>
-<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 3.1.0     ✔ purrr   0.2.5
 ## ✔ tibble  2.0.1     ✔ dplyr   0.7.8
 ## ✔ tidyr   0.8.2     ✔ stringr 1.3.1
 ## ✔ readr   1.3.1     ✔ forcats 0.3.0</code></pre>
-<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter()         masks stats::filter()
 ## ✖ readr::guess_encoding() masks rvest::guess_encoding()
 ## ✖ dplyr::lag()            masks stats::lag()
@@ -325,8 +325,8 @@ url &lt;- 'http://www.imdb.com/search/title?count=100&amp;release_date=2018,2018
 ##  [86]  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100</code></pre></li>
 </ul>
 </div>
-<div id="title---todo" class="section level3">
-<h3>Title - TODO</h3>
+<div id="title---todo-group-1" class="section level3">
+<h3>Title - TODO (Group 1)</h3>
 </div>
 <div id="description" class="section level3">
 <h3>Description</h3>
@@ -335,49 +335,49 @@ url &lt;- 'http://www.imdb.com/search/title?count=100&amp;release_date=2018,2018
 (description_data_html &lt;- html_nodes(webpage, '.ratings-bar+ .text-muted'))</code></pre>
 <pre><code>## {xml_nodeset (100)}
 ##  [1] &lt;p class=&quot;text-muted&quot;&gt;\n    The story of the legendary rock band &lt;a ...
-##  [2] &lt;p class=&quot;text-muted&quot;&gt;\n    Arthur Curry, the human-born heir to th ...
+##  [2] &lt;p class=&quot;text-muted&quot;&gt;\n    A small group of American soldiers find ...
 ##  [3] &lt;p class=&quot;text-muted&quot;&gt;\n    A working-class Italian-American bounce ...
-##  [4] &lt;p class=&quot;text-muted&quot;&gt;\n    In early 18th century England, a frail  ...
-##  [5] &lt;p class=&quot;text-muted&quot;&gt;\n    A musician helps a young singer find fa ...
-##  [6] &lt;p class=&quot;text-muted&quot;&gt;\n    A year in the life of a middle-class fa ...
-##  [7] &lt;p class=&quot;text-muted&quot;&gt;\n    The story of &lt;a href=&quot;/name/nm0155515&quot;&gt; ...
+##  [4] &lt;p class=&quot;text-muted&quot;&gt;\n    Arthur Curry, the human-born heir to th ...
+##  [5] &lt;p class=&quot;text-muted&quot;&gt;\n    In early 18th century England, a frail  ...
+##  [6] &lt;p class=&quot;text-muted&quot;&gt;\n    A musician helps a young singer find fa ...
+##  [7] &lt;p class=&quot;text-muted&quot;&gt;\n    The Incredibles hero family takes on a  ...
 ##  [8] &lt;p class=&quot;text-muted&quot;&gt;\n    In a post-apocalyptic world where citie ...
 ##  [9] &lt;p class=&quot;text-muted&quot;&gt;\n    Set in contemporary Chicago, amid a tim ...
-## [10] &lt;p class=&quot;text-muted&quot;&gt;\n    Teen Miles Morales becomes Spider-Man o ...
-## [11] &lt;p class=&quot;text-muted&quot;&gt;\n    A darkness swirls at the center of a wo ...
-## [12] &lt;p class=&quot;text-muted&quot;&gt;\n    Five years after an ominous unseen pres ...
-## [13] &lt;p class=&quot;text-muted&quot;&gt;\n    Goku and Vegeta encounter Broly, a Saiy ...
-## [14] &lt;p class=&quot;text-muted&quot;&gt;\n    Ron Stallworth, an African American pol ...
-## [15] &lt;p class=&quot;text-muted&quot;&gt;\n    A 90-year-old horticulturist and Korean ...
-## [16] &lt;p class=&quot;text-muted&quot;&gt;\n    A look at the life of the astronaut, &lt;a ...
-## [17] &lt;p class=&quot;text-muted&quot;&gt;\n    In a post-apocalyptic world, a family i ...
-## [18] &lt;p class=&quot;text-muted&quot;&gt;\n    T'Challa, heir to the hidden but advanc ...
-## [19] &lt;p class=&quot;text-muted&quot;&gt;\n    On the run in the year of 1987, Bumbleb ...
-## [20] &lt;p class=&quot;text-muted&quot;&gt;\n    A man stranded in the Arctic after an a ...
+## [10] &lt;p class=&quot;text-muted&quot;&gt;\n    A war-hardened Crusader and his Moorish ...
+## [11] &lt;p class=&quot;text-muted&quot;&gt;\n    A year in the life of a middle-class fa ...
+## [12] &lt;p class=&quot;text-muted&quot;&gt;\n    The story of &lt;a href=&quot;/name/nm0155515&quot;&gt; ...
+## [13] &lt;p class=&quot;text-muted&quot;&gt;\n    Teen Miles Morales becomes Spider-Man o ...
+## [14] &lt;p class=&quot;text-muted&quot;&gt;\n    The Avengers and their allies must be w ...
+## [15] &lt;p class=&quot;text-muted&quot;&gt;\n    Ron Stallworth, an African American pol ...
+## [16] &lt;p class=&quot;text-muted&quot;&gt;\n    Five years after an ominous unseen pres ...
+## [17] &lt;p class=&quot;text-muted&quot;&gt;\n    When Lee Israel falls out of step with  ...
+## [18] &lt;p class=&quot;text-muted&quot;&gt;\n    A darkness swirls at the center of a wo ...
+## [19] &lt;p class=&quot;text-muted&quot;&gt;\n    As Scott Lang balances being both a Sup ...
+## [20] &lt;p class=&quot;text-muted&quot;&gt;\n    French dancers gather in a remote, empt ...
 ## ...</code></pre>
 <pre class="r"><code># Converting the description data to text
 description_data &lt;- html_text(description_data_html)
 # take a look at first few
 head(description_data)</code></pre>
 <pre><code>## [1] &quot;\n    The story of the legendary rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).&quot;                                                                         
-## [2] &quot;\n    Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land.&quot;                                                                
+## [2] &quot;\n    A small group of American soldiers find horror behind enemy lines on the eve of D-Day.&quot;                                                                                                                         
 ## [3] &quot;\n    A working-class Italian-American bouncer becomes the driver of an African-American classical pianist on a tour of venues through the 1960s American South.&quot;                                                     
-## [4] &quot;\n    In early 18th century England, a frail Queen Anne occupies the throne and her close friend, Lady Sarah, governs the country in her stead. When a new servant, Abigail, arrives, her charm endears her to Sarah.&quot;
-## [5] &quot;\n    A musician helps a young singer find fame, even as age and alcoholism send his own career into a downward spiral.&quot;                                                                                              
-## [6] &quot;\n    A year in the life of a middle-class family's maid in Mexico City in the early 1970s.&quot;</code></pre>
+## [4] &quot;\n    Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land.&quot;                                                                
+## [5] &quot;\n    In early 18th century England, a frail Queen Anne occupies the throne and her close friend, Lady Sarah, governs the country in her stead. When a new servant, Abigail, arrives, her charm endears her to Sarah.&quot;
+## [6] &quot;\n    A musician helps a young singer find fame, even as age and alcoholism send his own career into a downward spiral.&quot;</code></pre>
 <pre class="r"><code># strip the '\n'
 description_data &lt;- str_replace(description_data, &quot;^\\n\\s+&quot;, &quot;&quot;)
 head(description_data)</code></pre>
 <pre><code>## [1] &quot;The story of the legendary rock band Queen and lead singer Freddie Mercury, leading up to their famous performance at Live Aid (1985).&quot;                                                                         
-## [2] &quot;Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land.&quot;                                                                
+## [2] &quot;A small group of American soldiers find horror behind enemy lines on the eve of D-Day.&quot;                                                                                                                         
 ## [3] &quot;A working-class Italian-American bouncer becomes the driver of an African-American classical pianist on a tour of venues through the 1960s American South.&quot;                                                     
-## [4] &quot;In early 18th century England, a frail Queen Anne occupies the throne and her close friend, Lady Sarah, governs the country in her stead. When a new servant, Abigail, arrives, her charm endears her to Sarah.&quot;
-## [5] &quot;A musician helps a young singer find fame, even as age and alcoholism send his own career into a downward spiral.&quot;                                                                                              
-## [6] &quot;A year in the life of a middle-class family's maid in Mexico City in the early 1970s.&quot;</code></pre></li>
+## [4] &quot;Arthur Curry, the human-born heir to the underwater kingdom of Atlantis, goes on a quest to prevent a war between the worlds of ocean and land.&quot;                                                                
+## [5] &quot;In early 18th century England, a frail Queen Anne occupies the throne and her close friend, Lady Sarah, governs the country in her stead. When a new servant, Abigail, arrives, her charm endears her to Sarah.&quot;
+## [6] &quot;A musician helps a young singer find fame, even as age and alcoholism send his own career into a downward spiral.&quot;</code></pre></li>
 </ul>
 </div>
-<div id="runtime---todo" class="section level3">
-<h3>Runtime - TODO</h3>
+<div id="runtime---todo-group-2" class="section level3">
+<h3>Runtime - TODO (Group 2)</h3>
 </div>
 <div id="genre" class="section level3">
 <h3>Genre</h3>
@@ -386,44 +386,40 @@ head(description_data)</code></pre>
 genre_data_html &lt;- html_nodes(webpage, '.genre')
 # Converting the genre data to text
 genre_data &lt;- html_text(genre_data_html)
-# Let's have a look at the runtime
+# Let's have a look at the genre data
 head(genre_data)    </code></pre>
 <pre><code>## [1] &quot;\nBiography, Drama, Music            &quot;   
-## [2] &quot;\nAction, Adventure, Fantasy            &quot;
+## [2] &quot;\nAction, Adventure, Horror            &quot; 
 ## [3] &quot;\nBiography, Comedy, Drama            &quot;  
-## [4] &quot;\nBiography, Comedy, Drama            &quot;  
-## [5] &quot;\nDrama, Music, Romance            &quot;     
-## [6] &quot;\nDrama            &quot;</code></pre>
-<pre class="r"><code># Data-Preprocessing: removing \n
-genre_data &lt;- str_replace(genre_data, &quot;^\\n&quot;, &quot;&quot;)
-# Data-Preprocessing: removing excess spaces
-genre_data &lt;- str_replace_all(genre_data, &quot;\\s+&quot;, &quot;&quot;)
-# taking only the first genre of each movie
-genre_data &lt;- str_replace(genre_data, &quot;,.*&quot;, &quot;&quot;)
+## [4] &quot;\nAction, Adventure, Fantasy            &quot;
+## [5] &quot;\nBiography, Comedy, Drama            &quot;  
+## [6] &quot;\nDrama, Music, Romance            &quot;</code></pre>
+<pre class="r"><code># Data-Preprocessing: retrieve the first word
+genre_data &lt;- str_extract(genre_data, &quot;[:alpha:]+&quot;)    
 # Convering each genre from text to factor
 #genre_data &lt;- as.factor(genre_data)
 # Let's have another look at the genre data
 head(genre_data)</code></pre>
-<pre><code>## [1] &quot;Biography&quot; &quot;Action&quot;    &quot;Biography&quot; &quot;Biography&quot; &quot;Drama&quot;     &quot;Drama&quot;</code></pre></li>
+<pre><code>## [1] &quot;Biography&quot; &quot;Action&quot;    &quot;Biography&quot; &quot;Action&quot;    &quot;Biography&quot; &quot;Drama&quot;</code></pre></li>
 </ul>
 </div>
-<div id="rating---todo" class="section level3">
-<h3>Rating - TODO</h3>
+<div id="rating---todo-group-3" class="section level3">
+<h3>Rating - TODO (Group 3)</h3>
 </div>
-<div id="votes---todo" class="section level3">
-<h3>Votes - TODO</h3>
+<div id="votes---todo-group-4" class="section level3">
+<h3>Votes - TODO (Group 4)</h3>
 </div>
-<div id="director---todo" class="section level3">
-<h3>Director - TODO</h3>
+<div id="director---todo-group-5" class="section level3">
+<h3>Director - TODO (Group 5)</h3>
 </div>
-<div id="actor---todo" class="section level3">
-<h3>Actor - TODO</h3>
+<div id="actor---todo-group-6" class="section level3">
+<h3>Actor - TODO (Group 6)</h3>
 </div>
-<div id="metascore---todo" class="section level3">
-<h3>Metascore - TODO</h3>
+<div id="metascore---todo-group-7" class="section level3">
+<h3>Metascore - TODO (Group 7)</h3>
 </div>
-<div id="gross---todo" class="section level3">
-<h3>Gross - TODO</h3>
+<div id="gross---todo-group-8" class="section level3">
+<h3>Gross - TODO (Group 8)</h3>
 </div>
 </div>
 <div id="visualizing-movie-data---todo" class="section level2">
