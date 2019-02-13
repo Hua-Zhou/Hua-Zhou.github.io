@@ -309,12 +309,21 @@ There is a wealth of data on internet. How to scrape them and analyze them?
 
 - Read blog <https://www.r-bloggers.com/how-to-scrape-images-from-google/>
 
-- For example, to download first 10 images from search term "Adidas logo":
+- For example, to download first 10 images from search term "ucla":
     ```{r}
     source("scrapeGoogleImages.R")
     ### exchange the search terms here!
     (gg <- scrapeJSSite(searchTerm = "ucla"))
     downloadImages(as.character(gg$images), 1)
+    ```
+
+- Let's peek into the R code:
+    ```{bash}
+    cat scrapeGoogleImages.R
+    ```
+    It substitues the query term in the JavaScript, which then use `phantomjs` (a barebone, non-GUI browser) to scrape the webpage into `1.html`. Then download images in `1.html` to the `images` folder.
+    ```{bash}
+    ls images/
     ```
 
 ## Scraping finance data
@@ -323,6 +332,7 @@ There is a wealth of data on internet. How to scrape them and analyze them?
     ```{r}
     library(quantmod)
     stock <- getSymbols("AAPL", src = "yahoo", auto.assign = FALSE)
+    head(stock)
     chartSeries(stock, theme = chartTheme("white"),
                 type = "line", log.scale = FALSE, TA = NULL)
     ```
