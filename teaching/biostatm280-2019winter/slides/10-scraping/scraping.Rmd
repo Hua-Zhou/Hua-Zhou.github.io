@@ -12,7 +12,7 @@ subtitle: Biostat M280
 
 ## Web scraping
 
-There is wealth of data on internet. How to scrape them and analyze them?
+There is a wealth of data on internet. How to scrape them and analyze them?
 
 ## rvest
 
@@ -307,22 +307,22 @@ There is wealth of data on internet. How to scrape them and analyze them?
 
 ## Scraping image data from Google
 
-<!-- - Read blog <https://www.r-bloggers.com/how-to-scrape-images-from-google/> -->
+- Read blog <https://www.r-bloggers.com/how-to-scrape-images-from-google/>
 
-<!-- - For example, to download first 10 images from search term "Adidas logo": -->
-<!--     ```{r} -->
-<!--     source("scrapeGoogleImages.R") -->
-<!--     ### exchange the search terms here! -->
-<!--     (gg <- scrapeJSSite(searchTerm = "ucla")) -->
-<!--     downloadImages(as.character(gg$images), 1) -->
-<!--     ``` -->
+- For example, to download first 10 images from search term "Adidas logo":
+    ```{r}
+    source("scrapeGoogleImages.R")
+    ### exchange the search terms here!
+    (gg <- scrapeJSSite(searchTerm = "ucla"))
+    downloadImages(as.character(gg$images), 1)
+    ```
 
-<!-- ## Scraping finance data -->
+## Scraping finance data
 
-<!-- - `quantmod` package contains many utility functions for retrieving and plotting finance data. E.g., -->
-<!--     ```{r} -->
-<!--     library(quantmod) -->
-<!--     stock <- getSymbols("AAPL", src = "yahoo", auto.assign = FALSE) -->
-<!--     chartSeries(stock, theme = chartTheme("white"),  -->
-<!--                 type = "line", log.scale = FALSE, TA = NULL) -->
-<!--     ``` -->
+- `quantmod` package contains many utility functions for retrieving and plotting finance data. E.g.,
+    ```{r}
+    library(quantmod)
+    stock <- getSymbols("AAPL", src = "yahoo", auto.assign = FALSE)
+    chartSeries(stock, theme = chartTheme("white"),
+                type = "line", log.scale = FALSE, TA = NULL)
+    ```
