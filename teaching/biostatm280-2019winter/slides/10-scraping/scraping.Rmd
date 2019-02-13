@@ -211,7 +211,7 @@ There is wealth of data on internet. How to scrape them and analyze them?
     length(metascore_data)
     # Visual inspection finds 69, 74, 87 don't have metascore
     ms <- rep(NA, 100)
-    ms[-c(69, 74, 87)] <- metascore_data
+    ms[-c(85, 93, 96)] <- metascore_data
     (metascore_data <- ms)
     ```
     
@@ -237,6 +237,26 @@ There is wealth of data on internet. How to scrape them and analyze them?
     gs_data[-c(6, 12, 29, 40, 61, 69, 71, 74, 78, 82, 84:87, 90)] <- gross_data
     (gross_data <- gs_data)
     ```
+
+## Missing entries
+
+- Following code programatically figures out missing entries for metascore.
+    ```{r}
+    # Use CSS selectors to scrap the rankings section
+    (rank_metascore_data_html <- html_nodes(webpage, '.unfavorable , .favorable , .mixed , .text-primary'))
+    # Convert the ranking data to text
+    (rank_metascore_data <- html_text(rank_metascore_data_html))
+    # Strip spaces
+    (rank_metascore_data <- str_replace(rank_metascore_data, "\\s+", ""))
+    # a rank followed by another rank means the metascore for the 1st rank is missing
+    (isrank <- str_detect(rank_metascore_data, "\\.$"))
+    (ismissing <- isrank[1:length(rank_metascore_data)-1] & 
+      isrank[2:length(rank_metascore_data)])
+    (missingpos <- as.integer(rank_metascore_data[ismissing]))
+    #(rank_metascore_data <- as.integer(rank_metascore_data))
+    ```
+
+- You (students) should work out the code for finding missing positions for gross.
 
 ## Visualizing movie data
 
@@ -277,33 +297,32 @@ There is wealth of data on internet. How to scrape them and analyze them?
     ```{r}
     library("ggrepel")
     (best_in_genre <- movies %>%
-      group_by(Genre) %>%
-      filter(row_number(desc(Gross_Earning_in_Mil)) == 1))
+        group_by(Genre) %>%
+        filter(row_number(desc(Gross_Earning_in_Mil)) == 1))
     ggplot(movies, mapping = aes(x = Rating, y = Gross_Earning_in_Mil)) +
       geom_point(mapping = aes(size = Votes, color = Genre)) + 
       ggrepel::geom_label_repel(aes(label = Title), data = best_in_genre) +
       labs(y = "Gross earning in millions")
     ```
-    
+
 ## Scraping image data from Google
 
-- Read blog <https://www.r-bloggers.com/how-to-scrape-images-from-google/>
+<!-- - Read blog <https://www.r-bloggers.com/how-to-scrape-images-from-google/> -->
 
-- For example, to download first 10 images from search term "Adidas logo"
+<!-- - For example, to download first 10 images from search term "Adidas logo": -->
+<!--     ```{r} -->
+<!--     source("scrapeGoogleImages.R") -->
+<!--     ### exchange the search terms here! -->
+<!--     (gg <- scrapeJSSite(searchTerm = "ucla")) -->
+<!--     downloadImages(as.character(gg$images), 1) -->
+<!--     ``` -->
 
-```{r}
-source("scrapeGoogleImages.R")
-### exchange the search terms here!
-(gg <- scrapeJSSite(searchTerm = "ucla"))
-downloadImages(as.character(gg$images), 1)
-```
+<!-- ## Scraping finance data -->
 
-## Scraping finance data
-
-- `quantmod` package contains many utility functions for retrieving and plotting finance data. E.g.,
-    ```{r}
-    library(quantmod)
-    stock <- getSymbols("AAPL", src = "yahoo", auto.assign = FALSE)
-    chartSeries(stock, theme = chartTheme("white"), 
-                type = "line", log.scale = FALSE, TA = NULL)
-    ```
+<!-- - `quantmod` package contains many utility functions for retrieving and plotting finance data. E.g., -->
+<!--     ```{r} -->
+<!--     library(quantmod) -->
+<!--     stock <- getSymbols("AAPL", src = "yahoo", auto.assign = FALSE) -->
+<!--     chartSeries(stock, theme = chartTheme("white"),  -->
+<!--                 type = "line", log.scale = FALSE, TA = NULL) -->
+<!--     ``` -->
