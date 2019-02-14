@@ -307,24 +307,47 @@ There is a wealth of data on internet. How to scrape them and analyze them?
 
 ## Scraping image data from Google
 
-- Read blog <https://www.r-bloggers.com/how-to-scrape-images-from-google/>
+<!-- - Read blog <https://www.r-bloggers.com/how-to-scrape-images-from-google/> -->
 
-- For example, to download first 10 images from search term "ucla":
-    ```{r}
-    source("scrapeGoogleImages.R")
-    ### exchange the search terms here!
-    (gg <- scrapeJSSite(searchTerm = "ucla"))
-    downloadImages(as.character(gg$images), 1)
-    ```
+<!-- - For example, to download first 10 images from search term "ucla": -->
+<!--     ```{r} -->
+<!--     source("scrapeGoogleImages.R") -->
+<!--     ### exchange the search terms here! -->
+<!--     (gg <- scrapeJSSite(searchTerm = "ucla")) -->
+<!--     downloadImages(as.character(gg$images), "ucla") -->
+<!--     ``` -->
 
-- Let's peek into the R code:
-    ```{bash}
-    cat scrapeGoogleImages.R
-    ```
-    It substitues the query term in the JavaScript, which then use `phantomjs` (a barebone, non-GUI browser) to scrape the webpage into `1.html`. Then download images in `1.html` to the `images` folder.
-    ```{bash}
-    ls images/
-    ```
+<!-- - Let's peek into the R code: -->
+<!--     ```{bash} -->
+<!--     cat scrapeGoogleImages.R -->
+<!--     ``` -->
+<!--     It substitues the query term in the JavaScript, which then use `phantomjs` (a barebone, non-GUI browser) to scrape the webpage into `1.html`. Then download images in `1.html` to the `images` folder. -->
+<!--     ```{bash} -->
+<!--     ls images/ -->
+<!--     ``` -->
+
+```{r}
+searchTerm <- "ucla"
+# tbm=isch (images), app (apps), bks (books), nws (news), pts (patents), vid (videos)
+# <https://stenevang.wordpress.com/2013/02/22/google-advanced-power-search-url-request-parameters/>
+(url <- paste0("https://www.google.com/search?q=", searchTerm,
+              "&source=lnms&tbm=isch&sa=X&tbs=isz:m"))
+webpage <- read_html(url)
+(imageurl <- webpage %>% html_nodes("img") %>% html_attr("src"))
+```
+
+```{r}
+downloadImages <- function(files, brand, outPath="images"){
+  for(i in 1:length(files)){
+    download.file(files[i], destfile = paste0(outPath, "/", brand, "_", i, ".jpg"), mode = 'wb')
+  }
+}
+downloadImages(imageurl, "ucla")
+```
+
+```{bash}
+ls images/
+```
 
 ## Scraping finance data
 
