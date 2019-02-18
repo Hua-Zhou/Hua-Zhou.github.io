@@ -1,5 +1,5 @@
 ---
-title: "Biostat M280 Homework 3 (Data Visualization)"
+title: "Biostat M280 Homework 3"
 subtitle: Due Mar 1 @ 11:59PM
 output: html_document
 ---
@@ -7,6 +7,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+Use tidyverse and bash to explore following two data sets.
 
 ## Q1 LA City Employee Payroll
 
