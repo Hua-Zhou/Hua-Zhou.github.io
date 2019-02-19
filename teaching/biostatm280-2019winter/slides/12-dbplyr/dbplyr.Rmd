@@ -157,6 +157,9 @@ Import the `nyc` data set into the SQLite database:
 library("DBI")
 library("RSQLite")
 library("tidyverse")
+```
+
+```{r, eval=FALSE}
 if (Sys.info()[["sysname"]] == "Linux") {
   db <- dbConnect(RSQLite::SQLite(), 
                   dbname = "/home/m280data/nyc_parking/NYParkingViolations.sqlite")
