@@ -1,7 +1,7 @@
 ---
 title: "Working with Databases - Part I"
 author: "Dr. Hua Zhou @ UCLA"
-date: "2/14/2019"
+date: "Feb 19, 2019"
 output: 
   html_document:
     toc: true
@@ -144,7 +144,7 @@ We can do much better if we are careful about how we structure our data, specifi
 
 ## Create a SQLite database
 
-Create a SQLite database _in memory_ for learning purpose.
+Create a SQLite database `employee.sqlite` (or _in memory_) for learning purpose.
 ```{r}
 library("DBI")
 library("RSQLite")
@@ -210,7 +210,7 @@ dbDisconnect(con)
 
 # SQL Queries
 
-Following we demonstrate some common SQL commands, although all task can be achieved by uisng dlyr as well.
+Following we demonstrate some common SQL commands, although all task can be achieved by using dplyr as well.
 
 ## Connecting
 
