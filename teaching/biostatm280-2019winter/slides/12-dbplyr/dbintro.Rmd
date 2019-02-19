@@ -196,6 +196,7 @@ dbListTables(con)
 ## Querying tables
 
 ```{r}
+# select all columns from table employees
 res <- dbSendQuery(con, "SELECT * FROM employees")
 # execute the query
 dbFetch(res)
