@@ -312,13 +312,15 @@ system.time(
 
 ### Bar plot
 
-Suppose we want the bar plot of number of tickets on each weekday. We encounter error with the usual ggplot2 command:
+Suppose we want the bar plot of number of tickets on each weekday. We encounter error (???) with the usual ggplot2 command:
 ```{r, error = TRUE}
 nyc_sql %>%
   ggplot() + 
     geom_bar(aes(x = Issue_WDay))
 ```
-This is becasue ggplot2 needs to compute the count per category by going through all the rows. But here `nyc_sql` is just a pointer to the SQLite table. We have to use the **transform in database, plot in R** strategy.
+Apparently current version of ggplot2 (v3.1.0) works for `tbl_dbi/tbl_sql/tbl_lazy` now. 
+
+Older version of ggplot2, e.g., v2.2.1, will output error. This is becasue ggplot2 needed to compute the count per category by going through all the rows. But here `nyc_sql` is just a pointer to the SQLite table. We have to use the **transform in database, plot in R** strategy.
 ```{r}
 nyc_sql %>%
   group_by(Issue_WDay) %>%
