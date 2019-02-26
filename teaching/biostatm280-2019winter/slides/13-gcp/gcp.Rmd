@@ -142,21 +142,31 @@ We will demonstrate how to start using GCP.
     
     - Click `Create`.
     
-- At the `VM Instances` page, you can see a list of all instances in your project and their IP addresses. We use the external IP address, e.g., `35.230.116.91`, for SSH connection.
+- At the `VM Instances` page, you can see a list of all instances in your project and their IP addresses. We use the external IP address, e.g., `35.235.124.120`, for SSH connection.
 
-- Note if we stop the instance and start again. The external IP address may change. To keep a fixed external IP address, go to `VPC network` then `External IP addresses` and make the desired external IP address `static` (vs ephemeral). Note that if no instance is using a `static` IP address, you will be charged for the idle `static` IP.
-    
 <p align="center">
 <img src="./gcp_vminstances.png" height="225">
 </p>
+
+- Note if we stop the instance and start again. The external IP address may change. To keep a fixed external IP address, go to `VPC network` then `External IP addresses` and make the desired external IP address `static` (vs ephemeral). Note that if no instance is using a `static` IP address, you will be charged for the idle `static` IP.
+
+<p align="center">
+<img src="./gcp_external_ip.png" height="225">
+</p>
+    
     
 ## Step 2: set up SSH keys
 
 There are several ways to connect to the VM instance you just created. Most often we want to be able to SSH into the VM instance from other machines, e.g., your own laptop. By default, VM instance only accept key authentication. So it's necessary to set up the SSH key first.
 
-- Click the `SSH` button on `VM Instances` page will bring out a terminal in browser as super user, e.g., `huazhou_g_ucla_edu` (your gmail account name).
+**Option 1: SSH in browser**
 
-- In that browser, you can set up your own SSH keys:
+- Click the `SSH` button on `VM Instances` page will bring out a terminal in browser as super user, e.g., `huazhou_g_ucla_edu` (my gmail account name).
+
+
+**Option 2: Manually set up SSH**
+
+- First use browser SSH to set up your own SSH keys:
 ```{bash, eval = FALSE}
 cd
 mkdir .ssh
@@ -171,8 +181,28 @@ chmod go-rwx authorized_keys
 
 - Now you should be able to connect to the VM instance from any machine with the matching private key:
 ```{bash, eval = FALSE}
-ssh username@35.230.116.91
+ssh username@35.235.124.120
 ```
+
+**Option 3: Set up instance specific key in GCP**
+
+- On the VM Instances page, click the instance you want to set up key. Click Edit.
+
+- We can enter public key in the SSH Keys section. 
+
+<p align="center">
+<img src="./gcp_instancekey.png" height="225">
+</p>
+
+**Option 4: Set up project-wise key in GCP**
+
+- Click the Metadata tab on the left. 
+
+- Enter public key in the SSH Keys section. This will apply to all instances in the project.
+
+<p align="center">
+<img src="./gcp_metadata.png" height="225">
+</p>
 
 ## Step 3: install software
 
@@ -209,7 +239,15 @@ sudo systemctl status rstudio-server.service
 
 - By default, port 8787 used by R Studio Server is blocked by VM firewall. On GCP console, go to `VPC network` and then `Firewall rules`, create a rule for R Studio Server (tcp: 8787), apply that rule to your VM instance.
 
-- Now you should be able to access R Studio Server on the VM instance by pointing your browser to address `http://35.230.116.91:8787`.
+<p align="center">
+<img src="./gcp_firewall_rules.png" height="225">
+</p>
+
+<p align="center">
+<img src="./gcp_firewall_tags.png" height="225">
+</p>
+
+- Now you should be able to access R Studio Server on the VM instance by pointing your browser to address `http://35.235.124.120:8787`.
     
 ### Set up a regular user
 
@@ -228,7 +266,7 @@ The `-m` option creates the home folder `/home/huazhou`.
 sudo passwd huazhou
 ```
 
-- Now you should be able to log in the R Studio Server from browser `http://35.230.116.91:8787` using username `huazhou` and corresponding password.
+- Now you should be able to log in the R Studio Server from browser `http://35.235.124.120:8787` using username `huazhou` and corresponding password.
 
 - To SSH into VM instance as the regular user `huazhou`, you need to set up the key (similar to set up key for superuser).
 
@@ -241,6 +279,10 @@ su - huazhou
 
 ### Install R packages
 
+- Install R packages using `install.packages()` function in R. 
+
+- Install as superuser will make packages availalbe to all users on this instance.
+
 - When installing R packages, it often fails because certain Linux libraries are absent. 
 
 - Pay attention to the error messages, and install those libraries using `yum`. 
@@ -248,7 +290,7 @@ su - huazhou
 - E.g., try installing `tidyverse` may yield following errors
 ```{r, eval = FALSE}
 ERROR: dependencies ‘httr’, ‘rvest’, ‘xml2’ are not available for package ‘tidyverse’
-* removing ‘/home/huazhou/R/x86_64-redhat-linux-gnu-library/3.4/tidyverse’
+* removing ‘/usr/lib64/R/library/tidyverse’
 ```
 You can install these Linux dependencies `curl`, `openssl`, and `libxml2` by:
 ```{bash, eval = FALSE}
@@ -316,7 +358,7 @@ git clone git@github.com:Hua-Zhou/biostat-m280-2019-winter.git
     <img src="./amazon_p2.jpg" height="225">
     </p>
     
-    - GCP recently announced [TPU (tensor processing units)](https://cloud.google.com/tpu/) for deep learning. Each Cloud TPU offers up to 180 teraflops of computing performance as well as 64 gigabytes of ultra-high-bandwidth memory.
+    - GCP offers [TPU (tensor processing units)](https://cloud.google.com/tpu/) for deep learning. Each Cloud TPU offers up to 180 teraflops of computing performance as well as 64 gigabytes of ultra-high-bandwidth memory.
 
     <p align="center">
     <img src="./gcp_tpu.png" height="225">
