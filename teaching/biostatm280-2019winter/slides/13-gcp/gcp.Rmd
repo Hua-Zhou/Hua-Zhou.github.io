@@ -194,7 +194,7 @@ ssh username@35.235.124.120
 <img src="./gcp_instancekey.png" height="225">
 </p>
 
-**Option 4: Set up project-wise key in GCP**
+**Option 4: Set up project-wide key in GCP**
 
 - Click the Metadata tab on the left. 
 
