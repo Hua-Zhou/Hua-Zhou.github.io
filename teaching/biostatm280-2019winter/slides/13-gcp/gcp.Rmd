@@ -346,7 +346,7 @@ git clone git@github.com:Hua-Zhou/biostat-m280-2019-winter.git
 
 ## Go forth and use the cloud
 
-- Using cloud (AWS, Azure, GCP, ...) is easy.
+- Using cloud (AWS, Azure, GCP, ...) is easy, as far as we know the fundamentals such as Linux, scripting, SSH, keys, and so on.
 
 - Easy to launch cluster instances or other heavily customized instances (SQL server, BigQuery, ML engine, Genomics, ...).
 
