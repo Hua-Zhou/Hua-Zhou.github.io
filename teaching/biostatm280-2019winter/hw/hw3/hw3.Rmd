@@ -46,4 +46,4 @@ The SQLite database `/home/m280data/la_parking/LA_Parking_Citations.sqlite` on t
 
 0. If you've been ticketed in LA County, did you find your ticket in this data set?
 
-0. Read the blog <http://www.brettrics.com/9-million-parking-tickets-la/> and try to reproduce plots using your data.
+0. Read the blog <http://www.brettrics.com/9-million-parking-tickets-la/> and try to reproduce plots using your data. [pdf](./What\ 9\ Million\ Parking\ Tickets\ Says\ About\ Los\ Angeles\ ·\ Brettrics.pdf) 
