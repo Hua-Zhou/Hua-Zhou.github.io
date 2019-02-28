@@ -352,13 +352,13 @@ git clone git@github.com:Hua-Zhou/biostat-m280-2019-winter.git
 
 - Massive computing at your fingertips. 
 
-    - Amazon EC2 [P2 instances](https://aws.amazon.com/ec2/instance-types/p2) offer on a single virtual machine 16 GPUs, with 40,000 parallel processing cores, and 732 GB memory, yielding 70 teraflops of single precision floating point performance or 23 teraflops of double-precision. 
+    - Amazon EC2 [P2 instances](https://aws.amazon.com/ec2/instance-types/p2) offer on a single virtual machine 16 GPUs, with 40,000 parallel processing cores, and 732 GB memory, yielding **70 teraflops** of single precision floating point performance or **23 teraflops** of double-precision. 
 
     <p align="center">
     <img src="./amazon_p2.jpg" height="225">
     </p>
     
-    - GCP offers [TPU (tensor processing units)](https://cloud.google.com/tpu/) for deep learning. Each Cloud TPU offers up to 180 teraflops of computing performance as well as 64 gigabytes of ultra-high-bandwidth memory.
+    - GCP offers [TPU (tensor processing units)](https://cloud.google.com/tpu/) for deep learning. Each Cloud TPU offers up to **180 teraflops** of computing performance as well as 64 gigabytes of ultra-high-bandwidth memory.
 
     <p align="center">
     <img src="./gcp_tpu.png" height="225">

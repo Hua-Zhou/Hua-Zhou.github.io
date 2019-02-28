@@ -46,9 +46,11 @@ Scenario 3: You made a fancy Shiny app. You want to deploy in AWS or GCP and sca
 ![](./shinyio-quota-email.png){width=700px}
 </p>
 
-Scenario 4: You develop a piece of software. You want to debug/test on different versions of R, on different OS (MacOS, Linux, Windows).
+Scenario 4: You develop a software package and want to debug/test on different versions of R, on different OS (MacOS, Linux, Windows).
 
-Scenario 5: Reproducible research. Hardware and software evolve fast. Simulation results in research papers are often hard to reproduce due to the changing computing environment. We can use Docker to containerize a simulation experiment (specific versions of OS and software), which can reproduce same results in any future moment.
+Scenario 5: You develop a software package, which unfortunately only works on Linux. You want Mac and Windows users can use your package as well.
+
+Scenario 6: Reproducible research. Hardware and software evolve fast. Simulation results in research papers are often hard to reproduce due to the changing computing environment. We can use Docker to containerize a simulation experiment (specific versions of OS and software), which can reproduce same results in any future moment.
 
 ## Learning objectives
 
@@ -79,6 +81,8 @@ docker system prune -a -f
 # kill all containers and then remove them
 docker container kill $(docker container ls -a -q)
 docker container rm $(docker container ls -a -q)
+# remoeve all Docker iamges
+docker image rm $(docker image ls -a -q)
 ```
 
 ### Installation
