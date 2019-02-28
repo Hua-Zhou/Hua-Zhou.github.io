@@ -21,6 +21,11 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 - In a more complex (buisiness) environment, different apps may have different or conflicting dependencies, making configuration and deployment an excessive overhead. 
 
+<p align="center">
+![](./fullstack.png){width=400px}
+</p>
+
+
 - Alternative approach: each app, together with its computing enrivonment and database, can be **containerized**.
 
 - **Paradigm**: develop apps locally (with potentially different toolchain), deploy (at scale) anywhere.
@@ -29,7 +34,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ![](./container_diagram.png){width=300px}
 </p>
 
-## Why do _we_ care?
+## Why do _we_ (students, researchers) care?
 
 Scenario 1: You have a Windows machine, but want to learn the open source toolchains on Linux.
 
@@ -71,11 +76,14 @@ We will follow the tutorial [Get started with Docker](https://docs.docker.com/ge
 ```{bash, echo = FALSE, include = FALSE, error = TRUE}
 # remove: all stopped containers, all networks not used by at least one container, all images without at least one container associated to them, all build cache
 docker system prune -a -f
+# kill all containers and then remove them
+docker container kill $(docker container ls -a -q)
+docker container rm $(docker container ls -a -q)
 ```
 
 ### Installation
 
-[Download](https://docs.docker.com/install/) and install the Docker CE (Community Edition) on your computer.
+[Download](https://www.docker.com/products/docker-desktop) and install the Docker Desktop on your computer.
 
 ### Docker survival commands
 
@@ -136,22 +144,23 @@ docker swarm leave --force      # Take down a single node swarm from the manager
 
 ### Containerize a web app
 
-We use Docker to develop an app that serves a webpage.
+We use Docker to develop an app that serves a webpage <http://server.biostat-m280.info> on the teaching server, which is a GCP instance.
 
 #### Essential components
 
 - [`requirements.txt`](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/14-docker/requirements.txt) lists the Python dependencies:
-```{bash}
+```{bash, eval=TRUE}
 cat requirements.txt
 ```
+Flask is Python tool for web development. Redis is a in-memory database system.
 
 - [`app.py`](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/14-docker/app.py) is the Python code for serving a webpage.
-```{bash}
+```{bash, eval=TRUE}
 cat app.py
 ```
 
 - [`Dockerfile`](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/14-docker/Dockerfile) instructs Docker how to put things together in a container:
-```{bash}
+```{bash, eval=TRUE}
 cat Dockerfile
 ```
 See [python on Docker Hub](https://hub.docker.com/_/python/) for details on the `python:2.7-slim` image.
@@ -234,7 +243,7 @@ Following [`docker-compose.yml`](https://raw.githubusercontent.com/Hua-Zhou/Hua-
 
 - Define the `webnet` network with the default settings (which is a load-balanced overlay network).
 
-```{bash}
+```{bash, eval=TRUE}
 cat docker-compose.yml
 ```
 
@@ -268,7 +277,7 @@ A **stack** is a group of interrelated services that share dependencies, and can
 Here we want to add two more services: a `visualizer` for visualizing services and a `redis` database for counting webpage visits. 
 
 The only thing we need to do is to update the `docker-composer.yml` file. Let's name the new file [`docker-compose-stack.yml`](https://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/14-docker/docker-compose-stack.yml) to avoid confusion:
-```{bash}
+```{bash, eval=TRUE}
 cat docker-compose-stack.yml
 ```
 Then deploy
