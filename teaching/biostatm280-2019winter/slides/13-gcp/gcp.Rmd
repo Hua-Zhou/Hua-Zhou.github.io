@@ -373,4 +373,4 @@ git clone git@github.com:Hua-Zhou/biostat-m280-2019-winter.git
 
 ## Final word
 
-> Before requesting massive computing resources, always examine your code and algorithm. Most likely you can gain order of magnitude efficiency (say 100 folder speedup) by educated choice of algorithms and careful coding. You'll see a dozen examples Spring M280.
+> Before requesting massive computing resources, always examine your code and algorithm. Most likely you can gain order of magnitude efficiency (say 100 folder speedup) by educated choice of algorithms and careful coding. You'll see a dozen examples in Spring M280.
