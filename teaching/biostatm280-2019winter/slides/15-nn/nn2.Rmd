@@ -38,6 +38,11 @@ sessionInfo()
 
 - Mobile device deployment: TensorFlow Lite (May 2017) for Android and iOS.
 
+<p align="center">
+![](./tf_toolkit_hierarchy.png){width=600px}
+</p>
+
+
 - Used in a variety of Google apps: speech recognition (Google assistant), Gmail (Smart Reply), search, translate, self-driving car ...
 
 > when you have a hammer, everything looks like a nail.  

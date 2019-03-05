@@ -1,5 +1,5 @@
 ---
-title: "Nerual Networks and Deep Learning - Part I (Theory)"
+title: "Nerual Networks and Deep Learning - Part I (Introduction)"
 author: "Dr. Hua Zhou @ UCLA"
 date: "3/5/2019"
 output: 
@@ -79,9 +79,8 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
     ![](./esl-fig-11-3.png){width=500px}
     </p>    
     
-    - **Rectifier**. $\sigma(v) = v_+ = max(0, v)$. A unit employing the rectifier is called a **rectified linear unit (ReLU)**. According to Wikipedia:  
-    > The rectifier is, as of 2018, the most popular activation function for deep neural networks.    
-    
+    - **Rectifier**. $\sigma(v) = v_+ = max(0, v)$. A unit employing the rectifier is called a **rectified linear unit (ReLU)**. According to Wikipedia: _The rectifier is, as of 2018, the most popular activation function for deep neural networks_.    
+
     - **Softplus**. $\sigma(v) = \log (1 + \exp v)$.
 <p align="center">
 ![](./Rectifier_and_softplus_functions.svg){width=400px}
@@ -139,8 +138,6 @@ Y_k &=& f_k(X) = g_k(T), \quad k = 1, \ldots, K.
 
     **AdaGrad** and **RMSProp** improve the stability of SGD by trying to incorpoate Hessian information in a computationally cheap way. 
 
-- The **unversal approximation theorem** states that a feed-forward network with a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of $\mathbb{R}^n$, under mild assumptions on the activation function.
-
 - Neural network model is a **projection pursuit** type additive model: 
 $$
 f(X) = \beta_0 + \sum_{m=1}^M \beta_m \sigma(\alpha_{m0} + \alpha_M^T X).
@@ -159,6 +156,14 @@ $$
 <p align="center">
 ![](./ufldl-network-3322.png){width=400px}
 </p>
+
+## Universal approximation properties
+
+- Boolean Approximation: an MLP of one hidden layer1 can represent any boolean function exactly.
+
+- Continuous Approximation: an MLP of one hidden layer can approximate any bounded continuous function with arbitrary accuracy.
+
+- Arbitrary Approximation: an MLP of two hidden layers can approximate any function with arbitrary accuracy.
 
 ## Practical issues
 
@@ -188,6 +193,9 @@ Figure from [Srivastava, Hinton, Krizhevsky, Sutskever, and Salakhutdinov (2014)
 ## Convolutional neural networks (CNN)
 
 Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
+<p align="center">
+![](./fully-vs-locally-connected-network.png){width=500px}
+</p>
 
 - **Fully connected networks** don't scale well with dimension of input images. E.g. $96 \times 96$ images have about $10^4$ input units, and assuming you want to learn 100 features, you have about $10^6$ parameters to learn.
 
@@ -264,6 +272,8 @@ net-5: two hidden layers, locally connected, two levels of weight sharing (was t
 
 
 ## Example: image classification
+
+Source: <http://cs231n.github.io/convolutional-networks/>
 
 - [Krizhevsky, Sutskever, Hinton (2012)](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf)
 
@@ -353,3 +363,13 @@ Souces: <http://web.stanford.edu/class/cs224n/>
     <p align="center">
     ![](./colah-lstm3-gate.png){width=100px}
     </p>
+    
+## Generative Adversarial Networks (GANs)
+
+Souces: <https://medium.com/ai-society/gans-from-scratch-1-a-deep-introduction-with-code-in-pytorch-and-tensorflow-cb03cdcdba0f>   
+<https://skymind.ai/wiki/generative-adversarial-network-gan>  
+
+
+
+
+
