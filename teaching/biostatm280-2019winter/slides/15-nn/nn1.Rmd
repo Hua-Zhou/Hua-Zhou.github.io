@@ -1,5 +1,5 @@
 ---
-title: "Nerual Networks and Deep Learning - Part I (Introduction)"
+title: "Neural Networks and Deep Learning - Part I (Introduction)"
 author: "Dr. Hua Zhou @ UCLA"
 date: "3/5/2019"
 output: 
@@ -230,7 +230,7 @@ Sources: <https://colah.github.io/posts/2014-07-Conv-Nets-Modular/>
 ![](./convnet-car.png){width=700px}
 </p>
 
-## Example: handwritten digit recognition. 
+## Example: handwritten digit recognition 
 
 <p align="center">
 ![](./esl-fig-11-9.png){width=500px}
@@ -366,10 +366,41 @@ Souces: <http://web.stanford.edu/class/cs224n/>
     
 ## Generative Adversarial Networks (GANs)
 
-Souces: <https://medium.com/ai-society/gans-from-scratch-1-a-deep-introduction-with-code-in-pytorch-and-tensorflow-cb03cdcdba0f>   
+Souces: <https://sites.google.com/view/cvpr2018tutorialongans/>  
+<https://medium.com/ai-society/gans-from-scratch-1-a-deep-introduction-with-code-in-pytorch-and-tensorflow-cb03cdcdba0f>   
 <https://skymind.ai/wiki/generative-adversarial-network-gan>  
 
+* Applications:
+
+    * Image-to-image translation 
+    
+    <p align="center">
+    ![](./image-to-image-translation.jpg){width=600px}
+    </p>
+
+    * AI-generated celebrity photos: <https://www.youtube.com/watch?v=G06dEcZ-QTg>
+    
+    * Self play
+
+<p align="center">
+![](./alpha-go.png){width=600px}
+</p>
+
+* GAN:
+
+<p align="center">
+![](./gan.jpg){width=600px}
+</p>
 
 
+* Value function of GAN
+$$
+\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}(x)} [\log D(x)] + \mathbb{E}_{z \sim p_z(z)} [\log (1 - D(G(z)))].
+$$
 
+* Training GAN
+
+<p align="center">
+![](./training-gan.png){width=600px}
+</p>
 
