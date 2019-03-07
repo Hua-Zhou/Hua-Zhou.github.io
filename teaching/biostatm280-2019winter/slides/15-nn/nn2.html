@@ -240,8 +240,13 @@ $(document).ready(function () {
 <div id="rrstudio" class="section level2">
 <h2>R/RStudio</h2>
 <p>R users can access Keras and TensorFlow via the <code>keras</code> and <code>tensorflow</code> packages.</p>
+<pre class="r"><code>#install.packages(&quot;keras&quot;)
+library(keras)
+install_keras()
+# install_keras(tensorflow = &quot;gpu&quot;) # if NVIDIA GPU is available</code></pre>
 <!-- Questions: -->
 <!-- - How much is CPU usage? Are all cores being used? -->
+<!-- - Is training loss monotone? Is validation loss monotone? Is testing error monotone? -->
 <!-- - What are epoches? Does loss always decrease with epoches? Does training error always decrease with epoches? -->
 <!-- -  -->
 </div>

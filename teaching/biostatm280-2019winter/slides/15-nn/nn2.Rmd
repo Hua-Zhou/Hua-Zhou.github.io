@@ -57,9 +57,18 @@ sessionInfo()
 
 R users can access Keras and TensorFlow via the `keras` and `tensorflow` packages. 
 
+```{r, eval=FALSE}
+#install.packages("keras")
+library(keras)
+install_keras()
+# install_keras(tensorflow = "gpu") # if NVIDIA GPU is available
+```
+
 <!-- Questions: -->
 
 <!-- - How much is CPU usage? Are all cores being used? -->
+
+<!-- - Is training loss monotone? Is validation loss monotone? Is testing error monotone? -->
 
 <!-- - What are epoches? Does loss always decrease with epoches? Does training error always decrease with epoches? -->
 
