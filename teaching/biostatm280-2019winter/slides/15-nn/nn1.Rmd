@@ -370,6 +370,9 @@ Souces: <https://sites.google.com/view/cvpr2018tutorialongans/>
 <https://medium.com/ai-society/gans-from-scratch-1-a-deep-introduction-with-code-in-pytorch-and-tensorflow-cb03cdcdba0f>   
 <https://skymind.ai/wiki/generative-adversarial-network-gan>  
 
+> The coolest idea in deep learning in the last 20 years.  
+> - Yann LeCun on GANs.
+
 * Applications:
 
     * Image-to-image translation 

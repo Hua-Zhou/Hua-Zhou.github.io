@@ -82,6 +82,6 @@ install_keras()
 
 [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/mnist_cnn.Rmd), [html](./mnist_cnn.html).
 
-## Example: Generate text from Nietzsche’s writings
+<!-- ## Example: Generate text from Nietzsche’s writings -->
 
-[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/nietzsche_lstm.Rmd), [html](./nietzsche_lstm.html).
+<!-- [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/nietzsche_lstm.Rmd), [html](./nietzsche_lstm.html). -->
