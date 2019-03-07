@@ -64,6 +64,10 @@ cat(nrow(x_test), 'test samples\n')
 y_train <- to_categorical(y_train, num_classes)
 y_test <- to_categorical(y_test, num_classes)
 ```
+```{r}
+image(t(x_train[1, 28:1, ,]), useRaster=TRUE, axes=FALSE, col=grey(seq(0, 1, length = 256)))
+y_train[1, ]
+```
 
 ## Define model
 
@@ -92,7 +96,7 @@ model %>% compile(
 summary(model)
 ```
 
-## Train and evaluate
+## Train and evaluate (on local CPU)
 
 ```{r}
 system.time({
@@ -117,3 +121,33 @@ scores <- model %>% evaluate(
 cat('Test loss:', scores[[1]], '\n')
 cat('Test accuracy:', scores[[2]], '\n')
 ```
+
+## Train and evaluate (on GCP ML Engine)
+
+Step 1: Install `cloudml` package, which provides an R interface to GCP Machine Learning Engine, and gcloud tools:
+```{r, eval=FALSE}
+library(cloudml)
+gcloud_install()
+#gcloud_init() # to change GCP account setting
+```
+Step 2: Turn on ML Engine API in GCP and give CE instance permision to access ML Engines.
+
+Step 3: Submit job, wrapped in R script `mnist_cnn.R`, to a GCP ML Engine instance without GPU (training took 2032 sec):
+```{r, eval=FALSE}
+library(cloudml)
+cloudml_train("mnist_cnn.R", master_type = "standard")
+```
+To submit to a GCP ML Engine instance with a single NVIDIA Tesla K80 GPU (training took 125 secs)
+```{r, eval=FALSE}
+cloudml_train("mnist_cnn.R", master_type = "standard_gpu")
+```
+To submit to a GCP ML Engine instance with a single NVIDIA P100 GPU (training took 77 secs)
+```{r, eval=FALSE}
+cloudml_train("mnist_cnn.R", master_type = "standard_p100")
+```
+To submit to a GCP ML Engine instance with a cloud TPU (training took ??? secs)
+```{r, eval=FALSE}
+cloudml_train("mnist_cnn.R", master_type = "cloud_tpu")
+```
+
+See available ML Engine machine types at <https://cloud.google.com/ml-engine/docs/tensorflow/machine-types#machine_type_table>
