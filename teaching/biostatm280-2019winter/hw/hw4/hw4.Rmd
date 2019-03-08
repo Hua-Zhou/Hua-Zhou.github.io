@@ -1,0 +1,27 @@
+---
+title: "Biostat M280 Homework 4"
+subtitle: Due Mar 22 @ 11:59PM
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+For this homework, you can work as a team of size $\le 4$. For each question, your report should have a clear description of role of each team member, and Git log should reflect individual contribution to the project as well.
+
+## Q1 Learn by doing
+
+I found the [TensorFlow for R Blog](https://blogs.rstudio.com/tensorflow/) series at RStudio quite illuminating. Choose one blog that interests you and do following.  
+
+1. Reproduce the results in the blog.  
+
+2. Make your own twists. For example, try different tuning parameter values and report what you found, or try a new data set, or apply the method to a new application.
+
+## Q2 Deep learning on smart phone
+
+Professor May Wang in Department of Community Health Sciences (CHS) studies obesity in children and intervention strategies to prevent obesity. She asked me whether it is possible to develop an app such that a user takes a photo of a meal and the app will recognize and record the type of food (pizza, mac and cheese, burger, ...). 
+
+Your job: produce a prototype app for iPhone or Android smart phone. 
+
+
