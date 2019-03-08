@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-For this homework, you can work as a team of size $\le 3$. You can create a new private GitHub repository for collaboration (need to add @Hua-Zhou and @juhkim111 as collaborators) or re-use the current repository of a team representative. For each question, your report should have a clear description of role of each team member, and Git log should reflect individual contribution to the project.
+For this homework, you can work as a team of size $\le 5$. You can create a new private GitHub repository for collaboration (need to add @Hua-Zhou and @juhkim111 as collaborators) or re-use the current repository of a team representative. For each question, your report should have a clear description of role of each team member, and Git log should reflect individual contribution to the project.
 
 ## Q1 Learn by doing
 
