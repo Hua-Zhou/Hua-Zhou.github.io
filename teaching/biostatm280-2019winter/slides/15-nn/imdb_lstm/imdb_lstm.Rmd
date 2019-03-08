@@ -1,7 +1,7 @@
 ---
 title: "IMDB - LSTM"
-author: "Dr. Hua Zhou"
-date: "3/15/2018"
+author: "Dr. Hua Zhou @ UCLA"
+date: "3/7/2019"
 output: 
   html_document:
     toc: true
@@ -17,6 +17,7 @@ sessionInfo()
 
 Source: <https://tensorflow.rstudio.com/keras/articles/examples/imdb_lstm.html>
 
+## Prepare data
 
 ```{r}
 library(keras)
@@ -29,6 +30,7 @@ maxlen <- 80
 
 cat('Loading data...\n')
 imdb <- dataset_imdb(num_words = max_features)
+
 x_train <- imdb$train$x
 y_train <- imdb$train$y
 x_test <- imdb$test$x
@@ -42,7 +44,11 @@ x_train <- pad_sequences(x_train, maxlen = maxlen)
 x_test <- pad_sequences(x_test, maxlen = maxlen)
 cat('x_train shape:', dim(x_train), '\n')
 cat('x_test shape:', dim(x_test), '\n')
+```
 
+## Build model
+
+```{r}
 cat('Build model...\n')
 model <- keras_model_sequential()
 model %>%
@@ -57,7 +63,11 @@ model %>% compile(
   metrics = c('accuracy')
 )
 summary(model)
+```
 
+## Training
+
+```{r}
 cat('Train...\n')
 model %>% fit(
   x_train, y_train,
@@ -65,7 +75,11 @@ model %>% fit(
   epochs = 1,
   validation_data = list(x_test, y_test)
 )
+```
 
+## Testing
+
+```{r}
 scores <- model %>% evaluate(
   x_test, y_test,
   batch_size = batch_size

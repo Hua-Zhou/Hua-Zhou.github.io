@@ -76,12 +76,12 @@ install_keras()
 
 ## Example: MNIST - MLP
 
-[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/mnist_mlp.Rmd), [html](./mnist_mlp.html).
+[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/mnist_mlp/mnist_mlp.Rmd), [html](./mnist_mlp/mnist_mlp.html).
 
 ## Example: MNIST - CNN
 
-[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/mnist_cnn.Rmd), [html](./mnist_cnn.html).
+[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/mnist_cnn/mnist_cnn.Rmd), [html](./mnist_cnn/mnist_cnn.html).
 
-<!-- ## Example: Generate text from Nietzsche’s writings -->
+## Example: Generate text from Nietzsche’s writings
 
-<!-- [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/nietzsche_lstm.Rmd), [html](./nietzsche_lstm.html). -->
+[Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/nietzsche_lstm/nietzsche_lstm.Rmd), [html](./nietzsche_lstm/nietzsche_lstm.html).

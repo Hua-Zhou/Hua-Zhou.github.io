@@ -55,6 +55,7 @@ text <- read_lines(path) %>%
   tokenize_characters(strip_non_alphanum = FALSE, simplify = TRUE)
 
 print(sprintf("corpus length: %d", length(text)))
+text[1:100]
 ```
 Find unique characters:
 ```{r}
@@ -76,10 +77,12 @@ dataset <- map(
 dataset <- transpose(dataset)
 dataset$sentece[[1]]
 dataset$sentece[[2]]
+dataset$sentece[[3]]
 dataset$next_char[[1]]
 dataset$next_char[[2]]
+dataset$next_char[[3]]
 ```
-
+Turn characters into one-hot coding. Eeach sentence is represented by a 40-by-57 binary matrix.
 ```{r}
 # Vectorization
 X <- array(0, dim = c(length(dataset$sentece), maxlen, length(chars)))
@@ -106,7 +109,7 @@ y[1, ]
 model <- keras_model_sequential()
 
 model %>%
-  layer_lstm(128, input_shape = c(maxlen, length(chars))) %>%
+  layer_lstm(units = 128, input_shape = c(maxlen, length(chars))) %>%
   layer_dense(length(chars)) %>%
   layer_activation("softmax")
 
@@ -124,6 +127,7 @@ summary(model)
 ```{r}
 # Training & Results ----------------------------------------------------
 
+# large temperature means more uniform from character set
 sample_mod <- function(preds, temperature = 1) {
   preds <- log(preds) / temperature
   exp_preds <- exp(preds)
@@ -135,7 +139,7 @@ sample_mod <- function(preds, temperature = 1) {
 }
 
 system.time({
-for(iteration in 1:60) {
+for(iteration in 1:20) {
   
   cat(sprintf("iteration: %02d ---------------\n\n", iteration))
   
