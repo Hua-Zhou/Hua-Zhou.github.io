@@ -8,7 +8,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-For this homework, you can work as a team of size $\le 4$. For each question, your report should have a clear description of role of each team member, and Git log should reflect individual contribution to the project as well.
+For this homework, you can work as a team of size $\le 3$. You can create a new private GitHub repository for collaboration (need to add @Hua-Zhou and @juhkim111 as collaborators) or re-use the current repository of a team representative. For each question, your report should have a clear description of role of each team member, and Git log should reflect individual contribution to the project.
 
 ## Q1 Learn by doing
 
@@ -24,4 +24,6 @@ Professor May Wang in Department of Community Health Sciences (CHS) studies obes
 
 Your job: produce a prototype app for iPhone or Android smart phone. 
 
-
+Resources:  
+1. There are plenty of tutorials and YouTube clips on making apps for iPhone or Android.  
+2. Google's [Cloud Vision API](https://cloud.google.com/vision/) may supply an easy solution.  
