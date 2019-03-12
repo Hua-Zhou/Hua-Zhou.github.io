@@ -154,6 +154,14 @@ Results are saved to the `runs` folder.
 
 See available ML Engine machine types at <https://cloud.google.com/ml-engine/docs/tensorflow/machine-types#machine_type_table>
 
+Check job status:     
+```{r, eval=FALSE}
+job_status("cloudml_2019_03_12_004910758")
+```
+Collect job output:   
+```{r, eval=FALSE}
+job_collect("cloudml_2019_03_12_004910758")
+```
 List previous runs:
 ```{r, eval=FALSE}
 ls_runs()
