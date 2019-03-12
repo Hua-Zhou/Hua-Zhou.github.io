@@ -1,0 +1,102 @@
+
+> library(keras)
+
+> batch_size <- 128
+
+> num_classes <- 10
+
+> epochs <- 12
+
+> img_rows <- 28
+
+> img_cols <- 28
+
+> mnist <- dataset_mnist()
+
+> x_train <- mnist$train$x
+
+> y_train <- mnist$train$y
+
+> x_test <- mnist$test$x
+
+> y_test <- mnist$test$y
+
+> x_train <- array_reshape(x_train, c(nrow(x_train), 
++     img_rows, img_cols, 1))
+
+> x_test <- array_reshape(x_test, c(nrow(x_test), img_rows, 
++     img_cols, 1))
+
+> input_shape <- c(img_rows, img_cols, 1)
+
+> x_train <- x_train/255
+
+> x_test <- x_test/255
+
+> cat("x_train_shape:", dim(x_train), "\n")
+x_train_shape: 60000 28 28 1 
+
+> cat(nrow(x_train), "train samples\n")
+60000 train samples
+
+> cat(nrow(x_test), "test samples\n")
+10000 test samples
+
+> y_train <- to_categorical(y_train, num_classes)
+
+> y_test <- to_categorical(y_test, num_classes)
+
+> image(t(x_train[1, 28:1, , ]), useRaster = TRUE, axes = FALSE, 
++     col = grey(seq(0, 1, length = 256)))
+
+> y_train[1, ]
+ [1] 0 0 0 0 0 1 0 0 0 0
+
+> model <- keras_model_sequential()
+
+> model %>% layer_conv_2d(filters = 32, kernel_size = c(3, 
++     3), activation = "relu", input_shape = input_shape) %>% layer_conv_2d(filters = 64,  .... [TRUNCATED] 
+
+> model %>% compile(loss = loss_categorical_crossentropy, 
++     optimizer = optimizer_adadelta(), metrics = c("accuracy"))
+
+> summary(model)
+________________________________________________________________________________
+Layer (type)                        Output Shape                    Param #     
+================================================================================
+conv2d_1 (Conv2D)                   (None, 26, 26, 32)              320         
+________________________________________________________________________________
+conv2d_2 (Conv2D)                   (None, 24, 24, 64)              18496       
+________________________________________________________________________________
+max_pooling2d_1 (MaxPooling2D)      (None, 12, 12, 64)              0           
+________________________________________________________________________________
+dropout_1 (Dropout)                 (None, 12, 12, 64)              0           
+________________________________________________________________________________
+flatten_1 (Flatten)                 (None, 9216)                    0           
+________________________________________________________________________________
+dense_1 (Dense)                     (None, 128)                     1179776     
+________________________________________________________________________________
+dropout_2 (Dropout)                 (None, 128)                     0           
+________________________________________________________________________________
+dense_2 (Dense)                     (None, 10)                      1290        
+================================================================================
+Total params: 1,199,882
+Trainable params: 1,199,882
+Non-trainable params: 0
+________________________________________________________________________________
+
+> system.time({
++     history <- model %>% fit(x_train, y_train, batch_size = batch_size, 
++         epochs = epochs, verbose = 1, validation_data = l .... [TRUNCATED] 
+   user  system elapsed 
+ 98.961  25.184 124.873 
+
+> plot(history)
+
+> scores <- model %>% evaluate(x_test, y_test, verbose = 0)
+
+> cat("Test loss:", scores[[1]], "\n")
+Test loss: 0.02551303 
+
+> cat("Test accuracy:", scores[[2]], "\n")
+Test accuracy: 0.9913 
