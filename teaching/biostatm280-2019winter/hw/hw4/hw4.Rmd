@@ -26,4 +26,5 @@ Your job: produce a prototype app for iPhone or Android smart phone.
 
 Resources:  
 1. There are plenty of tutorials and YouTube clips on making apps for iPhone or Android.  
-2. Google's [Cloud Vision API](https://cloud.google.com/vision/) may supply an easy solution.  
+2. Google's [Cloud Vision API](https://cloud.google.com/vision/) may supply an easy cloud solution.  
+3. [TensorFlow Lite](https://www.tensorflow.org/lite) may provide an easy mobile solution.  
