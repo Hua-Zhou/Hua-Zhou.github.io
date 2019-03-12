@@ -204,19 +204,15 @@ $(document).ready(function () {
 
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 3.5.2 (2018-12-20)
-## Platform: x86_64-redhat-linux-gnu (64-bit)
-## Running under: CentOS Linux 7 (Core)
+## Platform: x86_64-apple-darwin15.6.0 (64-bit)
+## Running under: macOS Mojave 10.14.3
 ## 
 ## Matrix products: default
-## BLAS/LAPACK: /usr/lib64/R/lib/libRblas.so
+## BLAS: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRblas.0.dylib
+## LAPACK: /Library/Frameworks/R.framework/Versions/3.5/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
-##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
 ## 
 ## attached base packages:
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
@@ -224,8 +220,8 @@ $(document).ready(function () {
 ## loaded via a namespace (and not attached):
 ##  [1] compiler_3.5.2  magrittr_1.5    tools_3.5.2     htmltools_0.3.6
 ##  [5] yaml_2.2.0      Rcpp_1.0.0      stringi_1.2.4   rmarkdown_1.11 
-##  [9] knitr_1.21      stringr_1.3.1   xfun_0.4        digest_0.6.18  
-## [13] evaluate_0.12</code></pre>
+##  [9] knitr_1.21      stringr_1.4.0   xfun_0.4        digest_0.6.18  
+## [13] evaluate_0.13</code></pre>
 <p>Source: <a href="https://tensorflow.rstudio.com/keras/articles/examples/mnist_acgan.html" class="uri">https://tensorflow.rstudio.com/keras/articles/examples/mnist_acgan.html</a></p>
 <p>In this example, we train a Generative Adversarial Network (GAN) on the <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST</a> data set.</p>
 <ul>
@@ -380,11 +376,11 @@ discriminator</code></pre>
 ## ===========================================================================
 ## input_1 (InputLayer)    (None, 1, 28, 28 0                                 
 ## ___________________________________________________________________________
-## sequential_1 (Sequentia (None, 12544)    387840   input_1[0][0]            
+## sequential (Sequential) (None, 12544)    387840   input_1[0][0]            
 ## ___________________________________________________________________________
-## generation (Dense)      (None, 1)        12545    sequential_1[1][0]       
+## generation (Dense)      (None, 1)        12545    sequential[1][0]         
 ## ___________________________________________________________________________
-## auxiliary (Dense)       (None, 10)       125450   sequential_1[1][0]       
+## auxiliary (Dense)       (None, 10)       125450   sequential[1][0]         
 ## ===========================================================================
 ## Total params: 525,835
 ## Trainable params: 525,835
@@ -403,16 +399,16 @@ generator</code></pre>
 ## ===========================================================================
 ## input_3 (InputLayer)    (None, 1)        0                                 
 ## ___________________________________________________________________________
-## embedding_1 (Embedding) (None, 1, 100)   1000     input_3[0][0]            
+## embedding (Embedding)   (None, 1, 100)   1000     input_3[0][0]            
 ## ___________________________________________________________________________
 ## input_2 (InputLayer)    (None, 100)      0                                 
 ## ___________________________________________________________________________
-## flatten_2 (Flatten)     (None, 100)      0        embedding_1[0][0]        
+## flatten_1 (Flatten)     (None, 100)      0        embedding[0][0]          
 ## ___________________________________________________________________________
-## multiply_1 (Multiply)   (None, 100)      0        input_2[0][0]            
-##                                                   flatten_2[0][0]          
+## multiply (Multiply)     (None, 100)      0        input_2[0][0]            
+##                                                   flatten_1[0][0]          
 ## ___________________________________________________________________________
-## sequential_2 (Sequentia (None, 1, 28, 28 8171521  multiply_1[0][0]         
+## sequential_1 (Sequentia (None, 1, 28, 28 8171521  multiply[0][0]           
 ## ===========================================================================
 ## Total params: 8,172,521
 ## Trainable params: 8,172,521
@@ -478,7 +474,7 @@ combined %&gt;% compile(
     y &lt;- c(rep(1L, batch_size), rep(0L, batch_size)) %&gt;% matrix(ncol = 1)
     aux_y &lt;- c(label_batch, sampled_labels) %&gt;% matrix(ncol = 1)
     
-    # Check if the discriminator can figure itself out
+    # Train discriminator on 2*batch size (real + fake) images
     disc_loss &lt;- train_on_batch(
       discriminator, x = X, 
       y = list(y, aux_y)
@@ -611,86 +607,14 @@ combined %&gt;% compile(
 <div id="collect-results-from-cloud-ml" class="section level2">
 <h2>Collect results from Cloud ML</h2>
 <p>Collect job output:</p>
+<pre class="r"><code>library(cloudml)
+job_collect(&quot;cloudml_2019_03_12_154649238&quot;)</code></pre>
+<p>View runs:</p>
 <pre class="r"><code>library(cloudml)</code></pre>
 <pre><code>## Loading required package: tfruns</code></pre>
-<pre class="r"><code>job_collect(&quot;cloudml_2019_03_12_154649238&quot;)</code></pre>
-<pre><code>## Downloading job from gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/*...</code></pre>
-<pre><code>## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot001.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot002.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot003.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot004.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot005.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot006.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot007.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot009.png...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot008.png...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/source.tar.gz...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot011.png...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot010.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/properties/end...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot012.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot013.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot014.png...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/properties/context...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/evaluation.json...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/properties/script...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/properties/output...
-## Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/properties/type...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/properties/completed...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/tfruns.d/properties/start...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-Copying gs://biostat-m280-2019-winter/r-cloudml/runs/cloudml_2019_03_12_154649238/plots/Rplot015.png...
-## / [0/24 files][    0.0 B/452.9 KiB]   0% Done                                   
-/ [1/24 files][ 25.1 KiB/452.9 KiB]   5% Done                                   
-/ [2/24 files][ 58.3 KiB/452.9 KiB]  12% Done                                   
-/ [3/24 files][ 89.5 KiB/452.9 KiB]  19% Done                                   
-/ [4/24 files][ 89.5 KiB/452.9 KiB]  19% Done                                   
-/ [5/24 files][121.5 KiB/452.9 KiB]  26% Done                                   
-/ [6/24 files][146.2 KiB/452.9 KiB]  32% Done                                   
-/ [7/24 files][174.5 KiB/452.9 KiB]  38% Done                                   
-/ [8/24 files][205.3 KiB/452.9 KiB]  45% Done                                   
-/ [9/24 files][235.3 KiB/452.9 KiB]  51% Done                                   
-/ [10/24 files][266.7 KiB/452.9 KiB]  58% Done                                  
-/ [11/24 files][297.0 KiB/452.9 KiB]  65% Done                                  
-/ [12/24 files][325.0 KiB/452.9 KiB]  71% Done                                  
-/ [13/24 files][332.7 KiB/452.9 KiB]  73% Done                                  
-/ [14/24 files][361.0 KiB/452.9 KiB]  79% Done                                  
-/ [15/24 files][391.5 KiB/452.9 KiB]  86% Done                                  
-/ [16/24 files][422.3 KiB/452.9 KiB]  93% Done                                  
-/ [17/24 files][449.9 KiB/452.9 KiB]  99% Done                                  
-/ [18/24 files][449.9 KiB/452.9 KiB]  99% Done                                  
-/ [19/24 files][450.0 KiB/452.9 KiB]  99% Done                                  
-/ [20/24 files][450.0 KiB/452.9 KiB]  99% Done                                  
-/ [21/24 files][450.0 KiB/452.9 KiB]  99% Done                                  
-/ [22/24 files][452.8 KiB/452.9 KiB]  99% Done                                  
-/ [23/24 files][452.8 KiB/452.9 KiB]  99% Done                                  
-/ [24/24 files][452.9 KiB/452.9 KiB] 100% Done                                  
-## Operation completed over 24 objects/452.9 KiB.</code></pre>
-<p>View runs:</p>
 <pre class="r"><code>view_run(&quot;runs/cloudml_2019_03_12_154649238&quot;)</code></pre>
-<pre><code>## starting httpd help server ... done</code></pre>
+<pre><code>## starting httpd help server ...</code></pre>
+<pre><code>##  done</code></pre>
 </div>
 
 

@@ -246,7 +246,7 @@ for(epoch in 1:epochs){
     y <- c(rep(1L, batch_size), rep(0L, batch_size)) %>% matrix(ncol = 1)
     aux_y <- c(label_batch, sampled_labels) %>% matrix(ncol = 1)
     
-    # Check if the discriminator can figure itself out
+    # Train discriminator on 2*batch size (real + fake) images
     disc_loss <- train_on_batch(
       discriminator, x = X, 
       y = list(y, aux_y)
@@ -380,7 +380,7 @@ for(epoch in 1:epochs){
 ## Collect results from Cloud ML
 
 Collect job output:   
-```{r}
+```{r, eval=FALSE}
 library(cloudml)
 job_collect("cloudml_2019_03_12_154649238")
 ```
