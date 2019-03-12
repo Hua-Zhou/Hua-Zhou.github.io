@@ -1,0 +1,209 @@
+
+> library(keras)
+
+> library(progress)
+
+> library(abind)
+
+> k_set_image_data_format("channels_first")
+
+> mnist <- dataset_mnist()
+
+> mnist$train$x <- (mnist$train$x - 127.5)/127.5
+
+> mnist$test$x <- (mnist$test$x - 127.5)/127.5
+
+> mnist$train$x <- array_reshape(mnist$train$x, c(60000, 
++     1, 28, 28))
+
+> mnist$test$x <- array_reshape(mnist$test$x, c(10000, 
++     1, 28, 28))
+
+> num_train <- dim(mnist$train$x)[1]
+
+> num_test <- dim(mnist$test$x)[1]
+
+> build_generator <- function(latent_size) {
++     cnn <- keras_model_sequential()
++     cnn %>% layer_dense(1024, input_shape = latent_size, activati .... [TRUNCATED] 
+
+> build_discriminator <- function() {
++     cnn <- keras_model_sequential()
++     cnn %>% layer_conv_2d(32, c(3, 3), padding = "same", strides = c(2,  .... [TRUNCATED] 
+
+> epochs <- 15
+
+> batch_size <- 100
+
+> latent_size <- 100
+
+> adam_lr <- 5e-05
+
+> adam_beta_1 <- 0.5
+
+> discriminator <- build_discriminator()
+
+> discriminator %>% compile(optimizer = optimizer_adam(lr = adam_lr, 
++     beta_1 = adam_beta_1), loss = list("binary_crossentropy", 
++     "sparse_c ..." ... [TRUNCATED] 
+
+> discriminator
+Model
+________________________________________________________________________________
+Layer (type)              Output Shape      Param #  Connected to               
+================================================================================
+input_1 (InputLayer)      (None, 1, 28, 28) 0                                   
+________________________________________________________________________________
+sequential_1 (Sequential) (None, 12544)     387840   input_1[0][0]              
+________________________________________________________________________________
+generation (Dense)        (None, 1)         12545    sequential_1[1][0]         
+________________________________________________________________________________
+auxiliary (Dense)         (None, 10)        125450   sequential_1[1][0]         
+================================================================================
+Total params: 525,835
+Trainable params: 525,835
+Non-trainable params: 0
+________________________________________________________________________________
+
+
+
+> generator <- build_generator(latent_size)
+
+> generator %>% compile(optimizer = optimizer_adam(lr = adam_lr, 
++     beta_1 = adam_beta_1), loss = "binary_crossentropy")
+
+> generator
+Model
+________________________________________________________________________________
+Layer (type)              Output Shape      Param #  Connected to               
+================================================================================
+input_3 (InputLayer)      (None, 1)         0                                   
+________________________________________________________________________________
+embedding_1 (Embedding)   (None, 1, 100)    1000     input_3[0][0]              
+________________________________________________________________________________
+input_2 (InputLayer)      (None, 100)       0                                   
+________________________________________________________________________________
+flatten_2 (Flatten)       (None, 100)       0        embedding_1[0][0]          
+________________________________________________________________________________
+multiply_1 (Multiply)     (None, 100)       0        input_2[0][0]              
+                                                     flatten_2[0][0]            
+________________________________________________________________________________
+sequential_2 (Sequential) (None, 1, 28, 28) 8171521  multiply_1[0][0]           
+================================================================================
+Total params: 8,172,521
+Trainable params: 8,172,521
+Non-trainable params: 0
+________________________________________________________________________________
+
+
+
+> latent <- layer_input(shape = list(latent_size))
+
+> image_class <- layer_input(shape = list(1), dtype = "int32")
+
+> fake <- generator(list(latent, image_class))
+
+> freeze_weights(discriminator)
+
+> results <- discriminator(fake)
+
+> combined <- keras_model(list(latent, image_class), 
++     results)
+
+> combined %>% compile(optimizer = optimizer_adam(lr = adam_lr, 
++     beta_1 = adam_beta_1), loss = list("binary_crossentropy", 
++     "sparse_catego ..." ... [TRUNCATED] 
+
+> for (epoch in 1:epochs) {
++     num_batches <- trunc(num_train/batch_size)
++     pb <- progress_bar$new(total = num_batches, format = sprintf("epoch ..." ... [TRUNCATED] 
+
+Testing for epoch 01:
+     generator (train) : loss 3.25 |  1.00 |  2.25
+      generator (test) : loss 2.15 |  0.95 |  1.21
+ discriminator (train) : loss 2.29 |  0.62 |  1.68
+  discriminator (test) : loss 1.58 |  0.70 |  0.88
+
+Testing for epoch 02:
+     generator (train) : loss 1.45 |  1.06 |  0.39
+      generator (test) : loss 1.61 |  1.49 |  0.12
+ discriminator (train) : loss 1.10 |  0.64 |  0.46
+  discriminator (test) : loss 0.65 |  0.38 |  0.27
+
+Testing for epoch 03:
+     generator (train) : loss 1.26 |  1.11 |  0.15
+      generator (test) : loss 1.29 |  1.17 |  0.12
+ discriminator (train) : loss 0.91 |  0.61 |  0.29
+  discriminator (test) : loss 0.66 |  0.44 |  0.22
+
+Testing for epoch 04:
+     generator (train) : loss 1.22 |  1.11 |  0.11
+      generator (test) : loss 0.87 |  0.82 |  0.05
+ discriminator (train) : loss 0.85 |  0.60 |  0.25
+  discriminator (test) : loss 0.81 |  0.64 |  0.17
+
+Testing for epoch 05:
+     generator (train) : loss 1.18 |  1.10 |  0.08
+      generator (test) : loss 0.98 |  0.95 |  0.03
+ discriminator (train) : loss 0.81 |  0.60 |  0.21
+  discriminator (test) : loss 0.67 |  0.54 |  0.13
+
+Testing for epoch 06:
+     generator (train) : loss 1.14 |  1.08 |  0.06
+      generator (test) : loss 0.79 |  0.70 |  0.09
+ discriminator (train) : loss 0.77 |  0.60 |  0.17
+  discriminator (test) : loss 0.94 |  0.79 |  0.15
+
+Testing for epoch 07:
+     generator (train) : loss 0.96 |  0.92 |  0.04
+      generator (test) : loss 0.89 |  0.86 |  0.03
+ discriminator (train) : loss 0.79 |  0.65 |  0.14
+  discriminator (test) : loss 0.72 |  0.62 |  0.10
+
+Testing for epoch 08:
+     generator (train) : loss 0.95 |  0.92 |  0.03
+      generator (test) : loss 0.70 |  0.69 |  0.01
+ discriminator (train) : loss 0.77 |  0.65 |  0.12
+  discriminator (test) : loss 0.81 |  0.73 |  0.08
+
+Testing for epoch 09:
+     generator (train) : loss 0.92 |  0.90 |  0.02
+      generator (test) : loss 0.86 |  0.86 |  0.00
+ discriminator (train) : loss 0.75 |  0.65 |  0.10
+  discriminator (test) : loss 0.66 |  0.59 |  0.07
+
+Testing for epoch 10:
+     generator (train) : loss 0.89 |  0.88 |  0.02
+      generator (test) : loss 0.91 |  0.90 |  0.01
+ discriminator (train) : loss 0.73 |  0.65 |  0.09
+  discriminator (test) : loss 0.59 |  0.53 |  0.06
+
+Testing for epoch 11:
+     generator (train) : loss 0.86 |  0.85 |  0.02
+      generator (test) : loss 0.74 |  0.73 |  0.01
+ discriminator (train) : loss 0.74 |  0.66 |  0.08
+  discriminator (test) : loss 0.72 |  0.66 |  0.05
+
+Testing for epoch 12:
+     generator (train) : loss 0.81 |  0.80 |  0.01
+      generator (test) : loss 0.70 |  0.70 |  0.00
+ discriminator (train) : loss 0.75 |  0.68 |  0.07
+  discriminator (test) : loss 0.70 |  0.65 |  0.04
+
+Testing for epoch 13:
+     generator (train) : loss 0.78 |  0.77 |  0.01
+      generator (test) : loss 0.67 |  0.66 |  0.00
+ discriminator (train) : loss 0.75 |  0.68 |  0.07
+  discriminator (test) : loss 0.71 |  0.67 |  0.04
+
+Testing for epoch 14:
+     generator (train) : loss 0.76 |  0.75 |  0.01
+      generator (test) : loss 0.70 |  0.70 |  0.00
+ discriminator (train) : loss 0.75 |  0.69 |  0.06
+  discriminator (test) : loss 0.71 |  0.67 |  0.04
+
+Testing for epoch 15:
+     generator (train) : loss 0.75 |  0.74 |  0.01
+      generator (test) : loss 0.67 |  0.67 |  0.00
+ discriminator (train) : loss 0.75 |  0.69 |  0.06
+  discriminator (test) : loss 0.72 |  0.68 |  0.04

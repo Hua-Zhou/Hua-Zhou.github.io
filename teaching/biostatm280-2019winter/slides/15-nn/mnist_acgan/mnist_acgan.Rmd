@@ -202,7 +202,8 @@ combined %>% compile(
 
 ## Training 
 
-```{r}
+It took about 33 mins to train 15 epochs on a single NVIDIA P100 GPU.
+```{r, eval=FALSE}
 for(epoch in 1:epochs){
   
   num_batches <- trunc(num_train / batch_size)
@@ -376,4 +377,16 @@ for(epoch in 1:epochs){
 }
 ```
 
+## Collect results from Cloud ML
+
+Collect job output:   
+```{r}
+library(cloudml)
+job_collect("cloudml_2019_03_12_154649238")
+```
+View runs:
+```{r}
+library(cloudml)
+view_run("runs/cloudml_2019_03_12_154649238")
+```
 
