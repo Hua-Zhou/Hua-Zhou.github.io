@@ -299,11 +299,11 @@ summary(model)</code></pre>
 <pre><code>## ___________________________________________________________________________
 ## Layer (type)                     Output Shape                  Param #     
 ## ===========================================================================
-## embedding_1 (Embedding)          (None, None, 128)             2560000     
+## embedding (Embedding)            (None, None, 128)             2560000     
 ## ___________________________________________________________________________
-## lstm_1 (LSTM)                    (None, 64)                    49408       
+## lstm (LSTM)                      (None, 64)                    49408       
 ## ___________________________________________________________________________
-## dense_1 (Dense)                  (None, 1)                     65          
+## dense (Dense)                    (None, 1)                     65          
 ## ===========================================================================
 ## Total params: 2,609,473
 ## Trainable params: 2,609,473
@@ -314,24 +314,27 @@ summary(model)</code></pre>
 <h2>Training</h2>
 <pre class="r"><code>cat('Train...\n')</code></pre>
 <pre><code>## Train...</code></pre>
-<pre class="r"><code>model %&gt;% fit(
+<pre class="r"><code>system.time({
+model %&gt;% fit(
   x_train, y_train,
   batch_size = batch_size,
   epochs = 1,
   validation_data = list(x_test, y_test)
-)</code></pre>
+)
+})</code></pre>
+<pre><code>##    user  system elapsed 
+## 362.438  78.789 116.410</code></pre>
 </div>
 <div id="testing" class="section level2">
 <h2>Testing</h2>
 <pre class="r"><code>scores &lt;- model %&gt;% evaluate(
   x_test, y_test,
   batch_size = batch_size
-)
-
-cat('Test score:', scores[[1]])</code></pre>
-<pre><code>## Test score: 0.3768122</code></pre>
+)</code></pre>
+<pre class="r"><code>cat('Test score:', scores[[1]])</code></pre>
+<pre><code>## Test score: 0.3913732</code></pre>
 <pre class="r"><code>cat('Test accuracy', scores[[2]])</code></pre>
-<pre><code>## Test accuracy 0.83316</code></pre>
+<pre><code>## Test accuracy 0.8264</code></pre>
 </div>
 
 
