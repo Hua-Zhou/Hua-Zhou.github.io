@@ -141,7 +141,8 @@ To submit to a GCP ML Engine instance with a single NVIDIA Tesla K80 GPU (traini
 ```{r, eval=FALSE}
 cloudml_train("mnist_cnn.R", master_type = "standard_gpu")
 ```
-To submit to a GCP ML Engine instance with a single NVIDIA P100 GPU (training took 77 secs)
+To submit to a GCP ML Engine instance with a single [NVIDIA P100 GPU](https://www.nvidia.com/en-us/data-center/tesla-p100/)
+(training took 77 secs)
 ```{r, eval=FALSE}
 cloudml_train("mnist_cnn.R", master_type = "standard_p100")
 ```
@@ -149,5 +150,15 @@ To submit to a GCP ML Engine instance with a cloud TPU (training took ??? secs)
 ```{r, eval=FALSE}
 cloudml_train("mnist_cnn.R", master_type = "cloud_tpu")
 ```
+Results are saved to the `runs` folder.
 
 See available ML Engine machine types at <https://cloud.google.com/ml-engine/docs/tensorflow/machine-types#machine_type_table>
+
+List previous runs:
+```{r, eval=FALSE}
+ls_runs()
+```
+View run reports:
+```{r, eval=FALSE}
+view_run("runs/cloudml_2019_03_12_004910758")
+```
