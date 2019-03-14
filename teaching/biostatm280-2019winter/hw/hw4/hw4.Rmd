@@ -16,7 +16,7 @@ I found the [TensorFlow for R Blog](https://blogs.rstudio.com/tensorflow/) serie
 
 1. Reproduce the results in the blog.  
 
-2. Make your own twists. For example, try different tuning parameter values and report what you found, or try a new data set, or apply the method to a new application.
+2. Make your own tweaks. For example, try different tuning parameter values and report what you found, or try a new data set, or apply the method to a new application.
 
 ## Q2 Deep learning on smart phone
 
