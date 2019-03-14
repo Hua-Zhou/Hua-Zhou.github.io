@@ -90,7 +90,7 @@ install_keras()
 
 [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/imdb_lstm/imdb_lstm.Rmd), [html](./imdb_lstm/imdb_lstm.html).
 
-## Example: generate face handwritten digits from MNIST - GAN
+## Example: Generate handwritten digits from MNIST - GAN
 
 [Rmd](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019winter/slides/15-nn/mnist_acgan/mnist_acgan.Rmd), [html](./mnist_acgan/mnist_acgan.html).
 
