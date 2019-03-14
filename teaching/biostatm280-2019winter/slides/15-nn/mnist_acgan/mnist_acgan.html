@@ -427,7 +427,25 @@ combined &lt;- keras_model(list(latent, image_class), results)
 combined %&gt;% compile(
   optimizer = optimizer_adam(lr = adam_lr, beta_1 = adam_beta_1),
   loss = list(&quot;binary_crossentropy&quot;, &quot;sparse_categorical_crossentropy&quot;)
-)</code></pre>
+)
+combined</code></pre>
+<pre><code>## Model
+## ___________________________________________________________________________
+## Layer (type)            Output Shape     Param #  Connected to             
+## ===========================================================================
+## input_4 (InputLayer)    (None, 100)      0                                 
+## ___________________________________________________________________________
+## input_5 (InputLayer)    (None, 1)        0                                 
+## ___________________________________________________________________________
+## model_1 (Model)         (None, 1, 28, 28 8172521  input_4[0][0]            
+##                                                   input_5[0][0]            
+## ___________________________________________________________________________
+## model (Model)           [(None, 1), (Non 525835   model_1[1][0]            
+## ===========================================================================
+## Total params: 8,698,356
+## Trainable params: 8,172,521
+## Non-trainable params: 525,835
+## ___________________________________________________________________________</code></pre>
 </div>
 <div id="training" class="section level2">
 <h2>Training</h2>
