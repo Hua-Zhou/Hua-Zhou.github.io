@@ -198,6 +198,7 @@ $(document).ready(function () {
 <li><a href="#training-parameters">Training parameters</a></li>
 <li><a href="#build-models">Build models</a></li>
 <li><a href="#training">Training</a></li>
+<li><a href="#run-job-in-gcp-ml-engine">Run job in GCP ML Engine</a></li>
 <li><a href="#collect-results-from-cloud-ml">Collect results from Cloud ML</a></li>
 </ul>
 </div>
@@ -449,7 +450,6 @@ combined</code></pre>
 </div>
 <div id="training" class="section level2">
 <h2>Training</h2>
-<p>It took about 33 mins to train 15 epochs on a single NVIDIA P100 GPU.</p>
 <pre class="r"><code>for(epoch in 1:epochs){
   
   num_batches &lt;- trunc(num_train / batch_size)
@@ -621,6 +621,12 @@ combined</code></pre>
   ((img + 1)/2) %&gt;% as.raster() %&gt;%
     plot()
 }</code></pre>
+</div>
+<div id="run-job-in-gcp-ml-engine" class="section level2">
+<h2>Run job in GCP ML Engine</h2>
+<p>It took about 33 mins to train 15 epochs on a single NVIDIA P100 GPU.</p>
+<pre class="r"><code>library(cloudml)
+cloudml_train(&quot;mnist_acgan.R&quot;, master_type = &quot;standard_p100&quot;)</code></pre>
 </div>
 <div id="collect-results-from-cloud-ml" class="section level2">
 <h2>Collect results from Cloud ML</h2>

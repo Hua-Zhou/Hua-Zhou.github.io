@@ -203,7 +203,6 @@ combined
 
 ## Training 
 
-It took about 33 mins to train 15 epochs on a single NVIDIA P100 GPU.
 ```{r, eval=FALSE}
 for(epoch in 1:epochs){
   
@@ -376,6 +375,14 @@ for(epoch in 1:epochs){
   ((img + 1)/2) %>% as.raster() %>%
     plot()
 }
+```
+
+## Run job in GCP ML Engine
+
+It took about 33 mins to train 15 epochs on a single NVIDIA P100 GPU.
+```{r, eval=FALSE}
+library(cloudml)
+cloudml_train("mnist_acgan.R", master_type = "standard_p100")
 ```
 
 ## Collect results from Cloud ML
