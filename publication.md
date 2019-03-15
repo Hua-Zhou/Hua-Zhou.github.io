@@ -7,10 +7,11 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-
-
-**H Zhou**, L Hu, J Zhou, and K Lange. (2018) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), in press.  
+**H Zhou**, L Hu, J Zhou, and K Lange. (2019) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), in press.  
 A new optimization algorithm for find MLE of variance components models. 
+
+**H Zhou**, J Sinsheimer, D Bates, B Chu, C German, S Ji, K Keys, J Kim, S Ko, G Mosher, J Papp, E Sobel, J Zhai, J Zhou, and K Lange. (2019) OpenMendel: a cooperative programming project for statistical genetics, [_Human Genetics_](), in press.  
+Overview of the [OpenMendel project](https://github.com/openmendel).
 
 K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generating individualized treatment decision trees and random forests, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1451337), 27(4):849-860. \[[pdf](./media/pdf/DoubledayZhouFuZhou18IndividualizedTreatmentTrees.pdf)\]
 
@@ -26,7 +27,7 @@ Tucker version of the tensor regression.
 J Zhai, J Kim, K Knox, H Twigg, **H Zhou**, and J Zhou. (2018) Variance component selection with applications to microbiome taxonomic data, [_Frontiers in Microbiology_](https://doi.org/10.3389/fmicb.2018.00509), 9:509. \[[pdf](./media/pdf/Zhai18MicrobiomeVCSelection.pdf)\]  
 Variance component penalization method for microbiome taxa association study.
 
-J Zhai, K Knox, H Twigg, **H Zhou**, and J Zhou. (2018) Exact variance component tests for longitudinal microbiome studies, [_Genetic Epidemiology_](https://doi.org/10.1002/gepi.22185), in press.
+J Zhai, K Knox, H Twigg, **H Zhou**, and J Zhou. (2019) Exact variance component tests for longitudinal microbiome studies, [_Genetic Epidemiology_](https://doi.org/10.1002/gepi.22185), 43:250-262. \[[pdf](./media/pdf/ZhaiKnoxTwiggZhouZhou19MicrobiomeTest.pdf)\]
 
 J Kim, Y Zhang, J Day, and **H Zhou**. (2018) MGLM: an R package for multivariate categorical data analysis. [_The R Journal_](https://journal.r-project.org/archive/2018/RJ-2018-015/index.html), 10(1):73-90. \[[pdf](./media/pdf/KimZhangDayZhou18MGLM.pdf)\]
 
