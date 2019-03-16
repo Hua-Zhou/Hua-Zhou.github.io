@@ -7,7 +7,7 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-**H Zhou**, L Hu, J Zhou, and K Lange. (2019) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), in press.  
+**H Zhou**, L Hu, J Zhou, and K Lange. (2019) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), in press. [[pdf](./media/pdf/ZhouHuZhouLange19VCMM.pdf)\]  
 A new optimization algorithm for find MLE of variance components models. 
 
 **H Zhou**, J Sinsheimer, D Bates, B Chu, C German, S Ji, K Keys, J Kim, S Ko, G Mosher, J Papp, E Sobel, J Zhai, J Zhou, and K Lange. (2019) OpenMendel: a cooperative programming project for statistical genetics, [_Human Genetics_](), in press.  
