@@ -1,6 +1,6 @@
 ---
 layout: post_teaching
-title: TensorFlow Lite on iOS
+title: TensorFlow Lite on Android
 category: biostatm280winter2019
 ---
 
