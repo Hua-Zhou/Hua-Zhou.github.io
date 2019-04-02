@@ -21,8 +21,8 @@ title: Teaching
 2013 spring
 
 * BIOSTAT 203B, Introduction to Data Science  
-[2018 winter](http://hua-zhou.github.io/teaching/biostatm280-2018winter/)
+[2019 winter](http://hua-zhou.github.io/teaching/biostatm280-2019winter/), 2018 winter
 
 * BIOSTAT M280/BIOMATH M280/STAT 230, Statistical Computing  
-[2018 spring](http://hua-zhou.github.io/teaching/biostatm280-2018spring/), 2017 spring, 2016 winter
+[2019 spring](http://hua-zhou.github.io/teaching/biostatm280-2019spring/), 2018 spring, 2018 winter, 2017 spring, 2016 winter
 
