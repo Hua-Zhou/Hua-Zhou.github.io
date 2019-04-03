@@ -24,4 +24,4 @@ Office hours: Tue/Thu @ 2:30pm-3:30pm
 ### Teaching Assistant
 
 Chris German <germc3@ucla.edu>  
-Office hours: Wed 12p-2p @ CHS A1-241 (Computer Lab)
+Office hours: Wed 12p-2p @ CHS A1-279 (Consulting Room)
