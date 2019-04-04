@@ -50,7 +50,7 @@ Some useful resources are listed below. None of them is required.
 
 ### Attendance
 
-Class attendance is mandatory.
+Class attendance is **mandatory**.
 
 ### Homework
 
