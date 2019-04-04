@@ -18,7 +18,7 @@ Readings:
 | Week | Tuesday | Thursday | Homework |
 |:-----------|:-----------|:------------|:------------|
 | 1 | [4/2](http://hua-zhou.github.io/teaching/biostatm280-2019spring/biostatm280spring2019/2019/04/02/week1-day1.html) introduction and course logistics \[slides: [ipynb](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019spring/slides/01-intro/intro.ipynb), [html](./slides/01-intro/intro.html)\] | 4/4 computer languages, Julia intro. \[slides: [ipynb](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019spring/slides/02-juliaintro/juliaintro.ipynb), [html](./slides/02-juliaintro/juliaintro.html)\] | |
-| 2 | 4/9 Julia programming | 4/11 reproducible research and Jupyter Notebook | HW1 |
+| 2 | 4/9 plotting in Julia \[slides: [ipynb](http://raw.githubusercontent.com/Hua-Zhou/Hua-Zhou.github.io/master/teaching/biostatm280-2019spring/slides/02-juliaintro/juliaplots.ipynb), [html](./slides/02-juliaintro/juliaplots.html)\] | 4/11 reproducible research and Jupyter Notebook | HW1 |
 | 3 | 4/16 computer arithmetic | 4/18 algo. intro. | |
 | 4 | 4/23 BLAS | 4/25 triangular systems | HW2 |
 | 5 | 4/30 GE/LU, Cholesky | 5/2 QR (GS, Householder, Givens) | |
