@@ -1,7 +1,7 @@
 using Profile
 
-function tally(x)
-    s = 0
+function tally(x::Array)
+    s = zero(eltype(x))
     for v in x
         s += v
     end
