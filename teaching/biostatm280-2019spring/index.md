@@ -19,7 +19,7 @@ Tue/Thu 1pm-2:20pm @ CHS 33-105A
 Office: CHS 21-254A  
 Phone: (310)794-7835  
 Email: <huazhou@ucla.edu>  
-Office hours: Tue/Thu @ 2:30pm-3:30pm 
+Office hours: Tue/Thu @ 2:20pm-3:20pm 
 
 ### Teaching Assistant
 
