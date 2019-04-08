@@ -13189,8 +13189,7 @@ div#notebook {
 <div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">IJulia</span>
 <span class="n">notebook</span><span class="p">()</span> <span class="c"># using home as working directory</span>
 </pre></div>
-</li>
-<li><p>To invoke Jupyter notebook using current directory as the working directory</p>
+<p>or, using current directory as the working directory, by</p>
 <div class="highlight"><pre><span></span><span class="n">notebook</span><span class="p">(</span><span class="n">dir</span><span class="o">=</span><span class="n">pwd</span><span class="p">())</span> <span class="c"># using home as working directory</span>
 </pre></div>
 </li>
@@ -13198,7 +13197,7 @@ div#notebook {
 </li>
 <li><p>Useful to know some keyboard shortcuts. I frequently use</p>
 <ul>
-<li><code>shift+return</code>: execute current cell. </li>
+<li><code>shift + return</code>: execute current cell. </li>
 <li><code>b</code>: create a cell below current cell.</li>
 <li><code>a</code>: create a cell above current cell.
 Check more shortcuts in menu <code>Help</code> -&gt; <code>Keyboard Shortcuts</code>.</li>
@@ -13210,9 +13209,21 @@ Check more shortcuts in menu <code>Help</code> -&gt; <code>Keyboard Shortcuts</c
 <span class="n">Conda</span><span class="o">.</span><span class="n">add_chanel</span><span class="p">(</span><span class="s">&quot;conda-forge&quot;</span><span class="p">)</span>
 <span class="n">Conda</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s">&quot;jupyter_contrib_nbextensions&quot;</span><span class="p">)</span>
 </pre></div>
-<p>|</p>
 </li>
-<li>Notebook can be saved as other formats such as html, LaTeX, Markdown, Julia code, and many others, via menu <code>File</code> -&gt; <code>Download as</code>. In your homework, please submit both notebook (ipynb) and html.</li>
+<li><p>Notebook can be <strong>converted to other formats</strong> such as html, LaTeX, Markdown, Julia code, and many others, via menu <code>File</code> -&gt; <code>Download as</code>. For your homework, please submit both notebook (ipynb) and html.</p>
+</li>
+<li><p><strong>Mathematical formula</strong> can can be typeset as LaTeX in Markdown cells. For example, inline math: $e^{i \pi} + 1 = 0$ and displayed math
+$$
+  e^x = \sum_{i=0}^\infty \frac{1}{i!} x^i.
+$$
+For multiline displayed math:
+\begin{eqnarray*}
+  e^x &amp;=&amp; \sum_{i=0}^\infty \frac{1}{i!} x^i \\
+  &amp;\approx&amp; 1 + x + \frac{x^2}{2}.
+\end{eqnarray*}</p>
+</li>
+<li><p>If you have a lot of commonly used LaTeX macros, put them in a <code>.tex</code> file and load them using the notebook extension <code>Load TeX macros</code>.</p>
+</li>
 </ul>
 
 </div>
@@ -13237,9 +13248,9 @@ Check more shortcuts in menu <code>Help</code> -&gt; <code>Keyboard Shortcuts</c
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Workshops-at-UCLA">Workshops at UCLA<a class="anchor-link" href="#Workshops-at-UCLA">&#182;</a></h2><p>IDRE (Institute for Digital Research and Education) at UCLA is offering seminars and workshops on computing and technology. Most are free. For example,</p>
 <ul>
-<li><p>Introduction to Jupyter, Apr 17</p>
+<li><p>Introduction to Jupyter, <strong>Apr 17</strong></p>
 </li>
-<li><p>Using Jupyter with Hoffman2 and HPC Systems, Apr 24</p>
+<li><p>Using Jupyter with Hoffman2 and HPC Systems, <strong>Apr 24</strong></p>
 </li>
 </ul>
 <p>See <a href="https://idre.ucla.edu/calendar">IDRE calendar</a> for details.</p>
