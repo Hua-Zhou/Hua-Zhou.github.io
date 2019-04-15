@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Triangular-systems" data-toc-modified-id="Triangular-systems-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Triangular systems</a></div><div class="lev2 toc-item"><a href="#Lower-triangular-system" data-toc-modified-id="Lower-triangular-system-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Lower triangular system</a></div><div class="lev2 toc-item"><a href="#Upper-triangular-system" data-toc-modified-id="Upper-triangular-system-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Upper triangular system</a></div><div class="lev2 toc-item"><a href="#Implementation" data-toc-modified-id="Implementation-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Implementation</a></div><div class="lev2 toc-item"><a href="#Some-algebraic-facts-of-triangular-system" data-toc-modified-id="Some-algebraic-facts-of-triangular-system-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Some algebraic facts of triangular system</a></div></p>
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Triangular-systems" data-toc-modified-id="Triangular-systems-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Triangular systems</a></div><div class="lev2 toc-item"><a href="#Lower-triangular-system" data-toc-modified-id="Lower-triangular-system-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Lower triangular system</a></div><div class="lev2 toc-item"><a href="#Upper-triangular-system" data-toc-modified-id="Upper-triangular-system-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Upper triangular system</a></div><div class="lev2 toc-item"><a href="#Implementation" data-toc-modified-id="Implementation-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Implementation</a></div><div class="lev2 toc-item"><a href="#Some-algebraic-facts-of-triangular-system" data-toc-modified-id="Some-algebraic-facts-of-triangular-system-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Some algebraic facts of triangular system</a></div><div class="lev2 toc-item"><a href="#Julia-types-for-triangular-matrices" data-toc-modified-id="Julia-types-for-triangular-matrices-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Julia types for triangular matrices</a></div></p>
 
 </div>
 </div>
@@ -13264,7 +13264,7 @@ $$</p>
 <ul>
 <li>The left divide <code>\</code> operator in Julia is used for solving linear equations or least squares problem.  </li>
 <li>If <code>A</code> is a triangular matrix, the command <code>A \ b</code> uses forward or backward substitution  </li>
-<li>Or we can call the BLAS wrapper functions directly: <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsv!"><code>trsv!</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsv"><code>trsv</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsm"><code>trsm</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/?highlight=blas#Base.LinAlg.BLAS.trsm!"><code>trsm!</code></a></li>
+<li>Or we can call the BLAS wrapper functions directly: <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.BLAS.trsv!"><code>trsv!</code></a>, <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.BLAS.trsv"><code>trsv</code></a>, <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.BLAS.trsm!"><code>trsm!</code></a>, <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.BLAS.trsm"><code>trsm</code></a></li>
 </ul>
 </li>
 </ul>
@@ -13451,7 +13451,7 @@ $$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(Ptr{Float64} @0x0000000118414050, Ptr{Float64} @0x0000000118414050)</pre>
+<pre>(Ptr{Float64} @0x000000010f12c170, Ptr{Float64} @0x000000010f12c170)</pre>
 </div>
 
 </div>
@@ -13603,6 +13603,15 @@ $$</p>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Julia-types-for-triangular-matrices">Julia types for triangular matrices<a class="anchor-link" href="#Julia-types-for-triangular-matrices">&#182;</a></h2><p><a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.LowerTriangular">LowerTriangular</a>, UnitLowerTriangular, 
+<a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/#LinearAlgebra.UpperTriangular">UpperTriangular</a>, UnitUpperTriangular.</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[10]:</div>
@@ -13614,6 +13623,7 @@ $$</p>
 <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
 <span class="c"># if we don&#39;t tell Julia it&#39;s triangular: O(n^3) complexity</span>
+<span class="c"># tril(A) returns a full triangular matrix, same as Matlab</span>
 <span class="nd">@benchmark</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">tril</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">))</span>
 </pre></div>
 
@@ -13637,12 +13647,12 @@ $$</p>
   memory estimate:  15.55 MiB
   allocs estimate:  16
   --------------
-  minimum time:     43.153 ms (0.00% GC)
-  median time:      48.107 ms (2.88% GC)
-  mean time:        48.893 ms (3.13% GC)
-  maximum time:     89.084 ms (43.83% GC)
+  minimum time:     42.712 ms (0.00% GC)
+  median time:      44.874 ms (2.45% GC)
+  mean time:        45.532 ms (2.76% GC)
+  maximum time:     89.663 ms (43.22% GC)
   --------------
-  samples:          103
+  samples:          110
   evals/sample:     1</pre>
 </div>
 
@@ -13681,13 +13691,13 @@ $$</p>
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     2.694 μs (0.00% GC)
-  median time:      3.022 μs (0.00% GC)
-  mean time:        3.700 μs (11.95% GC)
-  maximum time:     341.672 μs (98.58% GC)
+  minimum time:     1.676 μs (0.00% GC)
+  median time:      2.282 μs (0.00% GC)
+  mean time:        3.285 μs (28.33% GC)
+  maximum time:     4.328 ms (99.91% GC)
   --------------
   samples:          10000
-  evals/sample:     9</pre>
+  evals/sample:     10</pre>
 </div>
 
 </div>
@@ -13702,6 +13712,7 @@ $$</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># if we don&#39;t tell Julia it&#39;s triangular: O(n^3) complexity</span>
+<span class="c"># tril(A) returns a full triangular matrix, same as Matlab</span>
 <span class="nd">@benchmark</span> <span class="n">det</span><span class="p">(</span><span class="n">tril</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">))</span>
 </pre></div>
 
@@ -13725,12 +13736,12 @@ $$</p>
   memory estimate:  7.64 MiB
   allocs estimate:  4
   --------------
-  minimum time:     2.055 ms (0.00% GC)
-  median time:      2.151 ms (0.00% GC)
-  mean time:        2.541 ms (21.89% GC)
-  maximum time:     46.182 ms (96.16% GC)
+  minimum time:     2.024 ms (0.00% GC)
+  median time:      2.134 ms (0.00% GC)
+  mean time:        2.428 ms (19.43% GC)
+  maximum time:     45.379 ms (96.47% GC)
   --------------
-  samples:          1960
+  samples:          2051
   evals/sample:     1</pre>
 </div>
 
@@ -13769,13 +13780,13 @@ $$</p>
   memory estimate:  7.95 KiB
   allocs estimate:  2
   --------------
-  minimum time:     2.606 μs (0.00% GC)
-  median time:      3.193 μs (0.00% GC)
-  mean time:        4.440 μs (24.98% GC)
-  maximum time:     5.216 ms (99.88% GC)
+  minimum time:     1.847 μs (0.00% GC)
+  median time:      2.398 μs (0.00% GC)
+  mean time:        3.347 μs (28.12% GC)
+  maximum time:     4.376 ms (99.89% GC)
   --------------
   samples:          10000
-  evals/sample:     9</pre>
+  evals/sample:     10</pre>
 </div>
 
 </div>
