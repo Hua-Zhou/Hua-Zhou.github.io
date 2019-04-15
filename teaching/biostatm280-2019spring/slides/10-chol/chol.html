@@ -13170,15 +13170,15 @@ Environment:
 </ul>
 <blockquote><p><strong>The structure should be exploited whenever solving a problem.</strong></p>
 </blockquote>
-<p>Common structures include: symmetry, definiteness, sparsity, Kronecker product, low rank, ...</p>
+<p>Common structures include: symmetry, positive (semi)definiteness, sparsity, Kronecker product, low rank, ...</p>
 <ul>
 <li><p>LU decomposition (Gaussian Elimination) is <strong>not</strong> used in statistics so often because most of time statisticians deal with positive (semi)definite matrix. (That's why I hate to see <code>solve()</code> in R code.)</p>
 </li>
-<li><p>Consider solving the normal equation 
+<li><p>For example, in the normal equation 
 $$
   \mathbf{X}^T \mathbf{X} \beta = \mathbf{X}^T \mathbf{y}
 $$
-for linear regression. The coefficient matrix $\mathbf{X}^T \mathbf{X}$ is symmetric and positive semidefinite. How to exploit this structure?</p>
+for linear regression, the coefficient matrix $\mathbf{X}^T \mathbf{X}$ is symmetric and positive semidefinite. How to exploit this structure?</p>
 </li>
 </ul>
 <h2 id="Cholesky-decomposition">Cholesky decomposition<a class="anchor-link" href="#Cholesky-decomposition">&#182;</a></h2><ul>
@@ -13686,7 +13686,7 @@ U factor:
 
 <span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="c"># seed</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">A</span><span class="o">&#39;</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">A</span><span class="o">&#39;</span> <span class="c"># A has rank 3</span>
 </pre></div>
 
     </div>
@@ -13764,7 +13764,7 @@ Stacktrace:
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="kt">Val</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="n">check</span><span class="o">=</span><span class="kc">false</span><span class="p">)</span> <span class="c"># turn off keyword check</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Achol</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="kt">Val</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span> <span class="n">check</span><span class="o">=</span><span class="kc">false</span><span class="p">)</span> <span class="c"># turn off checking pd</span>
 </pre></div>
 
     </div>
@@ -14130,6 +14130,18 @@ $$<ul>
     <div class="prompt"></div>
 
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>┌ Info: Recompiling stale cache file /Users/huazhou/.julia/compiled/v1.1/Distributions/xILW0.ji for Distributions [31c24e10-a181-5473-b8eb-7969acd0382f]
+└ @ Base loading.jl:1184
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>logpdf_mvn_1(y, Σ) = -4428.363091873411
 logpdf_mvn_2(y, Σ) = -4428.363091873412
@@ -14170,12 +14182,12 @@ logpdf_mvn_3(y, Σ) = -4428.363091873412
   memory estimate:  15.78 MiB
   allocs estimate:  14
   --------------
-  minimum time:     37.692 ms (0.00% GC)
-  median time:      44.986 ms (4.45% GC)
-  mean time:        49.038 ms (4.40% GC)
-  maximum time:     106.513 ms (49.38% GC)
+  minimum time:     37.433 ms (0.00% GC)
+  median time:      40.203 ms (3.73% GC)
+  mean time:        42.566 ms (3.85% GC)
+  maximum time:     101.772 ms (49.43% GC)
   --------------
-  samples:          102
+  samples:          118
   evals/sample:     1</pre>
 </div>
 
@@ -14213,12 +14225,12 @@ logpdf_mvn_3(y, Σ) = -4428.363091873412
   memory estimate:  15.27 MiB
   allocs estimate:  10
   --------------
-  minimum time:     8.070 ms (0.00% GC)
-  median time:      10.428 ms (19.40% GC)
-  mean time:        10.655 ms (15.89% GC)
-  maximum time:     60.847 ms (85.04% GC)
+  minimum time:     7.957 ms (0.00% GC)
+  median time:      9.499 ms (16.29% GC)
+  mean time:        9.226 ms (13.50% GC)
+  maximum time:     55.657 ms (84.43% GC)
   --------------
-  samples:          469
+  samples:          541
   evals/sample:     1</pre>
 </div>
 
@@ -14256,12 +14268,12 @@ logpdf_mvn_3(y, Σ) = -4428.363091873412
   memory estimate:  7.64 MiB
   allocs estimate:  8
   --------------
-  minimum time:     6.400 ms (0.00% GC)
-  median time:      6.957 ms (0.00% GC)
-  mean time:        7.907 ms (11.99% GC)
-  maximum time:     55.378 ms (87.77% GC)
+  minimum time:     6.358 ms (0.00% GC)
+  median time:      6.662 ms (0.00% GC)
+  mean time:        7.468 ms (9.59% GC)
+  maximum time:     54.304 ms (87.59% GC)
   --------------
-  samples:          631
+  samples:          668
   evals/sample:     1</pre>
 </div>
 
