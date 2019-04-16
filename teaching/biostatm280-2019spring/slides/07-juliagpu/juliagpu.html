@@ -13277,7 +13277,7 @@ Platform Info:
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="GPGPU-in-Julia">GPGPU in Julia<a class="anchor-link" href="#GPGPU-in-Julia">&#182;</a></h2><p>GPU support by Julia is under active development. Check <a href="https://github.com/JuliaGPU">JuliaGPU</a> for currently available packages.</p>
-<p>There are at least two paradigms to program GPU.</p>
+<p>There are at least three paradigms to program GPU in Julia.</p>
 <ul>
 <li><p><strong>CUDA</strong> is an ecosystem exclusively for Nvidia GPUs. There are extensive CUDA libraries for scientific computing: CuBLAS, CuRAND, CuSparse, CuSolve, CuDNN, ...</p>
 <p>The <a href="https://github.com/JuliaGPU/CuArrays.jl">CuArray.jl</a> package allows defining arrays on Nvidia GPUs and overloads many common operations. CuArrays.jl supports Julia v1.0+.</p>
@@ -13285,10 +13285,13 @@ Platform Info:
 <li><p><strong>OpenCL</strong> is a standard supported multiple manufacturers (Nvidia, AMD, Intel, Apple, ...), but lacks some libraries essential for statistical computing.</p>
 <p>The <a href="https://github.com/JuliaGPU/CLArrays.jl">CLArray.jl</a> package allows defining arrays on OpenCL devices and overloads many common operations. <strong>Currently CLArrays.jl only supports Julia v0.6</strong>.</p>
 </li>
-<li><p>Most recent Apple operating system iOS 10.14 (Mojave) does <strong>not</strong> support CUDA yet.</p>
+<li><p><a href="https://arrayfire.com"><strong>ArrayFire</strong></a> is a high performance library that works on both CUDA or OpenCL framework.</p>
+<p>The <a href="https://github.com/JuliaGPU/ArrayFire.jl">ArrayFire.jl</a> package wraps the library for julia.</p>
+</li>
+<li><p><strong>Warning:</strong> Most recent Apple operating system iOS 10.14 (Mojave) does <strong>not</strong> support CUDA yet.</p>
 </li>
 </ul>
-<p>Because my laptop has an AMD GPU, I'll illustrate using OpenCL on Julia v0.6.4.</p>
+<p>Because my laptop has an AMD Radeon GPU, I'll illustrate using OpenCL on Julia <strong>v0.6.4</strong>.</p>
 
 </div>
 </div>
@@ -13555,7 +13558,7 @@ Device: CL AMD Radeon Pro 460 Compute Engine
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="elementiwise-operations">elementiwise operations<a class="anchor-link" href="#elementiwise-operations">&#182;</a></h2>
+<h2 id="Elementiwise-operations">Elementiwise operations<a class="anchor-link" href="#Elementiwise-operations">&#182;</a></h2>
 </div>
 </div>
 </div>
