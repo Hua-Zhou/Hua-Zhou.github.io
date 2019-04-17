@@ -11,7 +11,7 @@ Computational tools for research in (bio)statistics, including numerical linear 
 
 ### Lecture Time and Location
 
-Tue/Thu 1pm-2:20pm @ CHS 33-105A    
+Tue/Thu 1pm-2:50pm @ CHS 33-105A    
 
 ### Instructor
 
@@ -19,7 +19,7 @@ Tue/Thu 1pm-2:20pm @ CHS 33-105A
 Office: CHS 21-254A  
 Phone: (310)794-7835  
 Email: <huazhou@ucla.edu>  
-Office hours: Tue/Thu @ 2:20pm-3:20pm 
+Office hours: Tue/Thu @ 4:15pm-5:15pm 
 
 ### Teaching Assistant
 

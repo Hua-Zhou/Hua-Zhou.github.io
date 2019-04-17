@@ -7,7 +7,7 @@ title: BIOSTAT M280
 
 ### Lecture
 
-Tue/Thu 1pm-2:20pm @ CHS 33-105A    
+Tue/Thu 1pm-2:50pm @ CHS 33-105A    
 
 ### Instructor
 
@@ -15,7 +15,7 @@ Tue/Thu 1pm-2:20pm @ CHS 33-105A
 Office: CHS 21-254A  
 Phone: (310)794-7835  
 Email: <huazhou@ucla.edu>  
-Office hours: Tue/Thu @ 2:20pm-3:20pm
+Office hours: Tue/Thu @ 4:15pm-5:15pm
 
 ### Teaching Assistant
 
@@ -27,7 +27,7 @@ Office hours: Wed 12p-2p @ CHS A1-279 (Consulting Room)
 This is a tentative list of topics:  
 
 * Julia programming  
-* Reproducible research Jupyter Notebook  
+* Reproducible research and Jupyter Notebook  
 * Computer arithmetic  
 * Numerical linear algebra  
 * Numerical optimization  
