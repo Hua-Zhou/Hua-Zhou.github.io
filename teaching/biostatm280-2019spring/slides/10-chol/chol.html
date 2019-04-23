@@ -13181,6 +13181,13 @@ $$
 for linear regression, the coefficient matrix $\mathbf{X}^T \mathbf{X}$ is symmetric and positive semidefinite. How to exploit this structure?</p>
 </li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Cholesky-decomposition">Cholesky decomposition<a class="anchor-link" href="#Cholesky-decomposition">&#182;</a></h2><ul>
 <li><p><strong>Theorem</strong>: Let $\mathbf{A} \in \mathbb{R}^{n \times n}$ be symmetric and positive definite. Then $\mathbf{A} = \mathbf{L} \mathbf{L}^T$, where $\mathbf{L}$ is lower triangular with positive diagonal entries and is unique.<br>
 <strong>Proof</strong> (by induction):<br>
@@ -14110,8 +14117,9 @@ $$<ul>
 <span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span> <span class="c"># seed</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">Σ</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="n">Σ</span> <span class="o">=</span> <span class="n">transpose</span><span class="p">(</span><span class="n">Σ</span><span class="p">)</span> <span class="o">*</span> <span class="n">Σ</span> <span class="o">+</span> <span class="nb">I</span> <span class="c"># covariance matrix</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">MvNormal</span><span class="p">(</span><span class="n">Σ</span><span class="p">))</span> <span class="c"># one randdom sample from N(0, Σ)</span>
+<span class="c"># a pd matrix</span>
+<span class="n">Σ</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">{</span><span class="kt">Float64</span><span class="p">},</span> <span class="kt">Symmetric</span><span class="p">([</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">,</span> <span class="n">j</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">]))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">MvNormal</span><span class="p">(</span><span class="n">Σ</span><span class="p">))</span> <span class="c"># one random sample from N(0, Σ)</span>
 
 <span class="c"># at least they give same answer</span>
 <span class="nd">@show</span> <span class="n">logpdf_mvn_1</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">Σ</span><span class="p">)</span>
@@ -14133,9 +14141,9 @@ $$<ul>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>logpdf_mvn_1(y, Σ) = -4428.363091873411
-logpdf_mvn_2(y, Σ) = -4428.363091873412
-logpdf_mvn_3(y, Σ) = -4428.363091873412
+<pre>logpdf_mvn_1(y, Σ) = -4878.375103770505
+logpdf_mvn_2(y, Σ) = -4878.375103770553
+logpdf_mvn_3(y, Σ) = -4878.375103770553
 </pre>
 </div>
 </div>
@@ -14172,12 +14180,12 @@ logpdf_mvn_3(y, Σ) = -4428.363091873412
   memory estimate:  15.78 MiB
   allocs estimate:  14
   --------------
-  minimum time:     37.473 ms (0.00% GC)
-  median time:      40.028 ms (4.40% GC)
-  mean time:        40.667 ms (4.36% GC)
-  maximum time:     85.003 ms (54.71% GC)
+  minimum time:     37.747 ms (0.00% GC)
+  median time:      41.845 ms (3.56% GC)
+  mean time:        42.982 ms (3.71% GC)
+  maximum time:     85.951 ms (54.02% GC)
   --------------
-  samples:          124
+  samples:          117
   evals/sample:     1</pre>
 </div>
 
@@ -14215,12 +14223,12 @@ logpdf_mvn_3(y, Σ) = -4428.363091873412
   memory estimate:  15.27 MiB
   allocs estimate:  10
   --------------
-  minimum time:     7.924 ms (0.00% GC)
-  median time:      9.977 ms (18.28% GC)
-  mean time:        9.885 ms (15.08% GC)
-  maximum time:     55.579 ms (84.54% GC)
+  minimum time:     7.946 ms (0.00% GC)
+  median time:      9.517 ms (16.00% GC)
+  mean time:        9.518 ms (12.95% GC)
+  maximum time:     59.474 ms (82.87% GC)
   --------------
-  samples:          505
+  samples:          525
   evals/sample:     1</pre>
 </div>
 
@@ -14258,12 +14266,12 @@ logpdf_mvn_3(y, Σ) = -4428.363091873412
   memory estimate:  7.64 MiB
   allocs estimate:  8
   --------------
-  minimum time:     6.375 ms (0.00% GC)
-  median time:      7.452 ms (0.00% GC)
-  mean time:        8.008 ms (10.98% GC)
-  maximum time:     68.736 ms (87.01% GC)
+  minimum time:     6.353 ms (0.00% GC)
+  median time:      6.571 ms (0.00% GC)
+  mean time:        7.318 ms (9.51% GC)
+  maximum time:     54.287 ms (88.08% GC)
   --------------
-  samples:          623
+  samples:          682
   evals/sample:     1</pre>
 </div>
 
@@ -14287,7 +14295,7 @@ logpdf_mvn_3(y, Σ) = -4428.363091873412
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Linear-regression">Linear regression<a class="anchor-link" href="#Linear-regression">&#182;</a></h3><ul>
-<li>Cholesky decomposition is <strong>one</strong> approach to solve linear regression.<ul>
+<li>Cholesky decomposition is <strong>one</strong> approach to solve linear regression. Assume $\mathbf{X} \in \mathbb{R}^{n \times p}$ and $\mathbf{y} \in \mathbb{R}^n$.  <ul>
 <li>Compute $\mathbf{X}^T \mathbf{X}$: $np^2$ flops  </li>
 <li>Compute $\mathbf{X}^T \mathbf{y}$: $2np$ flops  </li>
 <li>Cholesky decomposition of $\mathbf{X}^T \mathbf{X}$: $\frac{1}{3} p^3$ flops  </li>
