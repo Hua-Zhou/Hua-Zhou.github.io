@@ -13246,7 +13246,8 @@ Environment:
 
 <span class="k">function</span> <span class="n">linreg_sweep</span><span class="p">(</span><span class="n">y</span><span class="o">::</span><span class="kt">Vector</span><span class="p">,</span> <span class="n">X</span><span class="o">::</span><span class="kt">Matrix</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">tableau</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span><span class="o">&#39;</span> <span class="o">*</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span>
+    <span class="n">xy</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span>
+    <span class="n">tableau</span> <span class="o">=</span> <span class="n">xy</span><span class="o">&#39;</span><span class="n">xy</span>
     <span class="n">sweep!</span><span class="p">(</span><span class="n">tableau</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="n">p</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">tableau</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">p</span><span class="p">,</span> <span class="k">end</span><span class="p">]</span>
 <span class="k">end</span>
@@ -13360,12 +13361,12 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
   memory estimate:  708.31 KiB
   allocs estimate:  8
   --------------
-  minimum time:     1.627 ms (0.00% GC)
-  median time:      1.880 ms (0.00% GC)
-  mean time:        2.034 ms (2.60% GC)
-  maximum time:     39.739 ms (94.94% GC)
+  minimum time:     1.667 ms (0.00% GC)
+  median time:      1.875 ms (0.00% GC)
+  mean time:        1.944 ms (3.01% GC)
+  maximum time:     40.307 ms (94.65% GC)
   --------------
-  samples:          2443
+  samples:          2560
   evals/sample:     1</pre>
 </div>
 
@@ -13400,15 +13401,15 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  5.29 MiB
-  allocs estimate:  10
+  memory estimate:  2.99 MiB
+  allocs estimate:  7
   --------------
-  minimum time:     5.917 ms (0.00% GC)
-  median time:      8.163 ms (0.00% GC)
-  mean time:        8.263 ms (3.71% GC)
-  maximum time:     46.054 ms (80.93% GC)
+  minimum time:     5.354 ms (0.00% GC)
+  median time:      7.343 ms (0.00% GC)
+  mean time:        7.474 ms (2.83% GC)
+  maximum time:     46.085 ms (81.96% GC)
   --------------
-  samples:          604
+  samples:          668
   evals/sample:     1</pre>
 </div>
 
@@ -13446,12 +13447,12 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
   memory estimate:  4.04 MiB
   allocs estimate:  2444
   --------------
-  minimum time:     10.650 ms (0.00% GC)
-  median time:      11.839 ms (0.00% GC)
-  mean time:        12.381 ms (3.91% GC)
-  maximum time:     53.331 ms (77.60% GC)
+  minimum time:     11.478 ms (0.00% GC)
+  median time:      12.846 ms (0.00% GC)
+  mean time:        13.651 ms (4.39% GC)
+  maximum time:     55.801 ms (76.79% GC)
   --------------
-  samples:          404
+  samples:          366
   evals/sample:     1</pre>
 </div>
 
@@ -13489,12 +13490,12 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
   memory estimate:  8.06 MiB
   allocs estimate:  16
   --------------
-  minimum time:     31.310 ms (0.00% GC)
-  median time:      32.685 ms (0.00% GC)
-  mean time:        33.506 ms (3.06% GC)
-  maximum time:     83.788 ms (59.74% GC)
+  minimum time:     31.277 ms (0.00% GC)
+  median time:      34.451 ms (0.00% GC)
+  mean time:        35.342 ms (3.33% GC)
+  maximum time:     92.845 ms (59.89% GC)
   --------------
-  samples:          150
+  samples:          142
   evals/sample:     1</pre>
 </div>
 
