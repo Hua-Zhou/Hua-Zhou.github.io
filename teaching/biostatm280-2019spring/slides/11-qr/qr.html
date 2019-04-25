@@ -13520,7 +13520,8 @@ for any orthogonal matrix $\mathbf{Q}$.</p>
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">cholesky</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">X</span><span class="p">)</span> <span class="o">\</span> <span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">y</span><span class="p">)</span> <span class="c"># least squares solution by Cholesky</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># same as</span>
+<span class="n">qr</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">\</span> <span class="n">y</span>
 </pre></div>
 
     </div>
@@ -13540,6 +13541,42 @@ for any orthogonal matrix $\mathbf{Q}$.</p>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>3-element Array{Float64,1}:
+ -0.6130947263291078
+ -0.7800615507222622
+  0.3634934302764104</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">cholesky</span><span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">X</span><span class="p">)</span> <span class="o">\</span> <span class="p">(</span><span class="n">X</span><span class="o">&#39;</span><span class="n">y</span><span class="p">)</span> <span class="c"># least squares solution by Cholesky</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3-element Array{Float64,1}:
  -0.6130947263291076
  -0.7800615507222624
   0.3634934302764099</pre>
@@ -13553,7 +13590,7 @@ for any orthogonal matrix $\mathbf{Q}$.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># QR factorization with column pivoting</span>
@@ -13570,7 +13607,7 @@ for any orthogonal matrix $\mathbf{Q}$.</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13604,153 +13641,7 @@ permutation:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">xqr</span><span class="o">.</span><span class="n">Q</span> <span class="c"># Q matrix; remember assembling Q is expensive</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>5×5 LinearAlgebra.QRPackedQ{Float64,Array{Float64,2}}:
- -0.377941   -0.70935    -0.0804225  -0.586254   -0.0618207
-  0.733832    0.161768   -0.101458   -0.650763   -0.039191 
- -0.314263    0.384947   -0.75494    -0.116185   -0.411851 
-  0.463213   -0.565162   -0.483764    0.464867   -0.12608  
- -0.0729644   0.0553323  -0.423411   -0.0566828   0.899514 </pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">xqr</span><span class="o">.</span><span class="n">R</span> <span class="c"># R matrix</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3×3 Array{Float64,2}:
- 2.33547  1.05335  1.6342  
- 0.0      1.96822  0.560522
- 0.0      0.0      1.39999 </pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">xqr</span><span class="o">.</span><span class="n">p</span> <span class="c"># pivot vector</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[9]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3-element Array{Int64,1}:
- 2
- 3
- 1</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">xqr</span><span class="o">.</span><span class="n">P</span> <span class="c"># pivot matrix</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[10]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>3×3 Array{Float64,2}:
- 0.0  0.0  1.0
- 1.0  0.0  0.0
- 0.0  1.0  0.0</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">xqr</span> <span class="o">\</span> <span class="n">y</span> <span class="c"># least squares solution</span>
@@ -13766,7 +13657,7 @@ permutation:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -13786,11 +13677,11 @@ permutation:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># thin Q matrix multiplication (a sequence of Householder transforms)</span>
-<span class="n">xqr</span><span class="o">.</span><span class="n">Q</span> <span class="o">*</span> <span class="n">xqr</span><span class="o">.</span><span class="n">R</span> <span class="c"># recovers X (with columns permuted)</span>
+<span class="n">norm</span><span class="p">(</span><span class="n">xqr</span><span class="o">.</span><span class="n">Q</span> <span class="o">*</span> <span class="n">xqr</span><span class="o">.</span><span class="n">R</span> <span class="o">-</span> <span class="n">X</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">xqr</span><span class="o">.</span><span class="n">p</span><span class="p">])</span> <span class="c"># recovers X (with columns permuted)</span>
 </pre></div>
 
     </div>
@@ -13803,57 +13694,13 @@ permutation:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>5×3 Array{Float64,2}:
- -0.88267   -1.79426    -1.12783 
-  1.71384    1.09138     1.14786 
- -0.733952   0.426628   -1.35471 
-  1.08182   -0.624434   -0.237065
- -0.170406   0.0320486  -0.680994</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># full Q matrix multiplication (a sequence of Householder transforms)</span>
-<span class="n">xqr</span><span class="o">.</span><span class="n">Q</span> <span class="o">*</span> <span class="n">X</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[13]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>5×3 Array{Float64,2}:
- -0.0979551  -1.44678    0.233739 
- -0.323541   -0.993352  -0.778317 
-  2.12703     1.43571    0.721265 
- -0.540141   -0.498016  -1.94864  
-  0.120277    0.255394   0.0748896</pre>
+<pre>9.924559042135032e-16</pre>
 </div>
 
 </div>
