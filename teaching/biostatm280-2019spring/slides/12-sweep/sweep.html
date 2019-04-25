@@ -13234,9 +13234,9 @@ $$<p></p>
 <ul>
 <li>Pd and determinant: $\mathbf{A}$ is pd if and only if each diagonal entry can be swept in succession and is positive until it is swept. When a diagonal entry of a pd matrix $\mathbf{A}$ is swept, it becomes negative and remains negative thereafter. Taking the product of diagonal entries just before each is swept yields the determinant of $\mathbf{A}$. </li>
 </ul>
-<h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><h3 id="Linear-regression-(as-done-in-SAS)">Linear regression (as done in SAS)<a class="anchor-link" href="#Linear-regression-(as-done-in-SAS)">&#182;</a></h3><p>Sweep on the Gram matrix 
+<h2 id="Applications">Applications<a class="anchor-link" href="#Applications">&#182;</a></h2><h3 id="Linear-regression-(as-done-in-SAS)">Linear regression (as done in SAS)<a class="anchor-link" href="#Linear-regression-(as-done-in-SAS)">&#182;</a></h3><p>Sweep on the (augmented) Gram matrix 
 $$
-\begin{pmatrix} 
+\begin{pmatrix} \mathbf{X}, \mathbf{y} \end{pmatrix}^T \begin{pmatrix} \mathbf{X}, \mathbf{y} \end{pmatrix} = \begin{pmatrix} 
     \mathbf{X}^T \mathbf{X} &amp; \mathbf{X}^T \mathbf{y} \\ 
     \mathbf{y}^T \mathbf{X} &amp; \mathbf{y}^T \mathbf{y} 
 \end{pmatrix}
@@ -13268,16 +13268,11 @@ In total $np^2 + p^3$ flops.</p>
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># Pkg.add(&quot;SweepOperator&quot;)</span>
-<span class="k">using</span> <span class="n">SweepOperator</span><span class="p">,</span> <span class="n">Random</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">SweepOperator</span>
 
-<span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># predictor matrix</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>    <span class="c"># response vector</span>
-
-<span class="c"># form the augmented Gram matrix</span>
-<span class="n">G</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span><span class="o">&#39;</span> <span class="o">*</span> <span class="p">[</span><span class="n">X</span> <span class="n">y</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="kt">Float64</span><span class="o">.</span><span class="p">([</span><span class="mi">9</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -13296,11 +13291,10 @@ In total $np^2 + p^3$ flops.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4×4 Array{Float64,2}:
-  9.589    -4.98208  -5.70052  -1.83933
- -4.98208   4.94476   3.81663   2.82462
- -5.70052   3.81663   5.45442   2.46008
- -1.83933   2.82462   2.46008   4.98343</pre>
+<pre>3×3 Array{Float64,2}:
+  9.0  2.0  -2.0
+  2.0  1.0   0.0
+ -2.0  0.0   4.0</pre>
 </div>
 
 </div>
@@ -13314,7 +13308,8 @@ In total $np^2 + p^3$ flops.</p>
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">sweep!</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">sweep!</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># sweep (1, 1) entry</span>
 </pre></div>
 
     </div>
@@ -13333,11 +13328,10 @@ In total $np^2 + p^3$ flops.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4×4 Array{Float64,2}:
- -0.312747  -0.136595  -0.231278  0.379547
- -4.98208   -0.499383   0.206676  0.650887
- -5.70052    3.81663   -0.569668  0.39225 
- -1.83933    2.82462    2.46008   2.87807 </pre>
+<pre>3×3 Array{Float64,2}:
+ -0.111111  0.222222  -0.222222
+  2.0       0.555556   0.444444
+ -2.0       0.0        3.55556 </pre>
 </div>
 
 </div>
@@ -13351,8 +13345,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># least squares solution by QR</span>
-<span class="n">X</span> <span class="o">\</span> <span class="n">y</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">sweep!</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c"># sweep (2, 2) entry</span>
 </pre></div>
 
     </div>
@@ -13371,10 +13364,10 @@ In total $np^2 + p^3$ flops.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>3-element Array{Float64,1}:
- 0.3795466676698624
- 0.6508866456093488
- 0.392250419565355 </pre>
+<pre>3×3 Array{Float64,2}:
+ -0.2   0.4  -0.4
+  2.0  -1.8   0.8
+ -2.0   0.0   3.2</pre>
 </div>
 
 </div>
@@ -13388,8 +13381,7 @@ In total $np^2 + p^3$ flops.</p>
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># inverse sweep to restore original matrix</span>
-<span class="n">sweep!</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">3</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="n">sweep!</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c"># sweep (3, 3) entry, we are left with -inv(B)</span>
 </pre></div>
 
     </div>
@@ -13408,11 +13400,84 @@ In total $np^2 + p^3$ flops.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4×4 Array{Float64,2}:
-  9.589    -4.98208  -5.70052  -1.83933
- -4.98208   4.94476   3.81663   2.82462
- -5.70052   3.81663   5.45442   2.46008
- -1.83933   2.82462   2.46008   4.98343</pre>
+<pre>3×3 Array{Float64,2}:
+ -0.25   0.5  -0.125 
+  2.0   -2.0   0.25  
+ -2.0    0.0  -0.3125</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># check correctness</span>
+<span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3×3 Array{Float64,2}:
+  0.25   -0.5    0.125 
+ -0.5     2.0   -0.25  
+  0.125  -0.25   0.3125</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># inverse sweep to bring negative inverse back to original matrix</span>
+<span class="n">sweep!</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">3</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>3×3 Array{Float64,2}:
+  9.0  2.0  -2.0        
+  2.0  1.0  -1.11022e-16
+ -2.0  0.0   4.0        </pre>
 </div>
 
 </div>
