@@ -21,7 +21,7 @@ L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component 
 
 X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2018) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), in press.  
 
-X Li, D Xu, **H Zhou**, and L Li. (2018) Tucker tensor regression and neuroimaging analysis, [_Statistics in Biosciences_](https://doi.org/10.1007/s12561-018-9215-6), 10(3):520-545.  
+X Li, D Xu, **H Zhou**, and L Li. (2018) Tucker tensor regression and neuroimaging analysis, [_Statistics in Biosciences_](https://doi.org/10.1007/s12561-018-9215-6), 10(3):520-545. \[[pdf](./media/pdf/LiXuZhouLi18TuckerReg.pdf)\]  
 Tucker version of the tensor regression.
 
 J Zhai, J Kim, K Knox, H Twigg, **H Zhou**, and J Zhou. (2018) Variance component selection with applications to microbiome taxonomic data, [_Frontiers in Microbiology_](https://doi.org/10.3389/fmicb.2018.00509), 9:509. \[[pdf](./media/pdf/Zhai18MicrobiomeVCSelection.pdf)\]  
