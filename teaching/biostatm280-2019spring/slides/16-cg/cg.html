@@ -13294,7 +13294,7 @@ The iterates $\mathbf{x}^{(t)}$ converge to the solution in at most $n$ steps.</
 </li>
 </ol>
 </li>
-<li><p>Computation cost per iteration is one matrix vector multiplication: $\mathbf{A} \mathbf{p}^{(t)}$.<br>
+<li><p>Computation cost per iteration is <strong>one</strong> matrix vector multiplication: $\mathbf{A} \mathbf{p}^{(t)}$.<br>
 Consider PageRank problem, $\mathbf{A}$ has dimension $n \approx 10^{10}$ but is highly structured (sparse + low rank). Each matrix vector multiplication takes $O(n)$.</p>
 </li>
 <li><p>Theorem: If $\mathbf{A}$ has $r$ distinct eigenvalues, $\mathbf{x}^{(t)}$ converges to solution $\mathbf{x}^*$ in at most $r$ steps.</p>
@@ -13431,7 +13431,7 @@ Choose $\mathbf{C}$ such that</p>
 </li>
 </ul>
 <h3 id="Julia">Julia<a class="anchor-link" href="#Julia">&#182;</a></h3><ul>
-<li><p><a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.LinAlg.eigs-Tuple{Any}"><code>eigs</code></a>, <a href="https://docs.julialang.org/en/stable/stdlib/linalg/#Base.LinAlg.svds"><code>svds</code></a>. <a href="http://hua-zhou.github.io/teaching/biostatm280-2019spring/slides/17-eigsvd/eigsvd.html#Lanczos/Arnoldi-iterative-method-for-top-eigen-pairs">Numerical examples</a> later.</p>
+<li><p><code>eigs</code> and <code>svds</code> in the <a href="https://github.com/JuliaLinearAlgebra/Arpack.jl">Arpack.jl</a> package. <a href="http://hua-zhou.github.io/teaching/biostatm280-2019spring/slides/17-eigsvd/eigsvd.html#Lanczos/Arnoldi-iterative-method-for-top-eigen-pairs">Numerical examples</a> later.</p>
 </li>
 <li><p><a href="https://github.com/JuliaMath/IterativeSolvers.jl"><code>IterativeSolvers.jl</code></a> package. <a href="http://hua-zhou.github.io/teaching/biostatm280-2019spring/slides/15-iterative/iterative.html#Numerical-examples">CG numerical examples</a></p>
 </li>
@@ -13456,7 +13456,8 @@ Choose $\mathbf{C}$ such that</p>
 <span class="n">y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">β</span> <span class="o">+</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
 <span class="n">β̂_qr</span> <span class="o">=</span> <span class="n">X</span> <span class="o">\</span> <span class="n">y</span>
-<span class="nd">@benchmark</span> <span class="n">X</span> <span class="o">\</span> <span class="n">y</span>
+<span class="c"># least squares by QR</span>
+<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">X</span> <span class="o">\</span> <span class="o">$</span><span class="n">y</span>
 </pre></div>
 
     </div>
@@ -13479,10 +13480,10 @@ Choose $\mathbf{C}$ such that</p>
   memory estimate:  1.42 GiB
   allocs estimate:  37941
   --------------
-  minimum time:     5.215 s (3.91% GC)
-  median time:      5.215 s (3.91% GC)
-  mean time:        5.215 s (3.91% GC)
-  maximum time:     5.215 s (3.91% GC)
+  minimum time:     5.273 s (3.75% GC)
+  median time:      5.273 s (3.75% GC)
+  mean time:        5.273 s (3.75% GC)
+  maximum time:     5.273 s (3.75% GC)
   --------------
   samples:          1
   evals/sample:     1</pre>
@@ -13501,7 +13502,8 @@ Choose $\mathbf{C}$ such that</p>
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">β̂_lsqr</span> <span class="o">=</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nd">@show</span> <span class="n">norm</span><span class="p">(</span><span class="n">β̂_qr</span> <span class="o">-</span> <span class="n">β̂_lsqr</span><span class="p">)</span>
-<span class="nd">@benchmark</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c"># least squares by lsqr</span>
+<span class="nd">@benchmark</span> <span class="n">lsqr</span><span class="p">(</span><span class="o">$</span><span class="n">X</span><span class="p">,</span> <span class="o">$</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13533,14 +13535,14 @@ Choose $\mathbf{C}$ such that</p>
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
   memory estimate:  11.59 MiB
-  allocs estimate:  1347
+  allocs estimate:  1346
   --------------
-  minimum time:     26.159 ms (0.00% GC)
-  median time:      29.088 ms (9.79% GC)
-  mean time:        29.579 ms (6.38% GC)
-  maximum time:     80.032 ms (59.64% GC)
+  minimum time:     27.830 ms (0.00% GC)
+  median time:      33.014 ms (9.64% GC)
+  mean time:        33.342 ms (6.71% GC)
+  maximum time:     79.455 ms (58.42% GC)
   --------------
-  samples:          169
+  samples:          150
   evals/sample:     1</pre>
 </div>
 
@@ -13552,15 +13554,57 @@ Choose $\mathbf{C}$ such that</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">β̂_lsmr</span> <span class="o">=</span> <span class="n">lsmr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nd">@show</span> <span class="n">norm</span><span class="p">(</span><span class="n">β̂_qr</span> <span class="o">-</span> <span class="n">β̂_lsmr</span><span class="p">)</span>
-<span class="nd">@benchmark</span> <span class="n">lsmr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c"># least squares by lsmr</span>
+<span class="nd">@benchmark</span> <span class="n">lsmr</span><span class="p">(</span><span class="o">$</span><span class="n">X</span><span class="p">,</span> <span class="o">$</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>norm(β̂_qr - β̂_lsmr) = 0.02228791821986182
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  4.06 MiB
+  allocs estimate:  611
+  --------------
+  minimum time:     17.400 ms (0.00% GC)
+  median time:      18.889 ms (0.00% GC)
+  mean time:        19.848 ms (4.36% GC)
+  maximum time:     68.393 ms (68.56% GC)
+  --------------
+  samples:          252
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
