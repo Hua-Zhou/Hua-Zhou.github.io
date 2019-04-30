@@ -13124,8 +13124,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Q1---Big-$n$-linear-regression">Q1 - Big $n$ linear regression<a class="anchor-link" href="#Q1---Big-$n$-linear-regression">&#182;</a></h2><p>People often think linear regression on a dataset with more than 100 million observations is a big data problem. Now we learnt various methods for solving linear regression and should realize that, with right choice of algorithm, it is a problem that can be handled by any moderate computer.</p>
-<p>Please do <strong>not</strong> put data files in Git. For grading purpose (reproducibility), we will assume that data files are in the same directory as the Jupyter notebook file.</p>
+<h2 id="Q1---Big-$n$-linear-regression">Q1 - Big $n$ linear regression<a class="anchor-link" href="#Q1---Big-$n$-linear-regression">&#182;</a></h2><p>People often think linear regression on a dataset with million of observations is a big data problem. Now we learnt various methods for solving linear regression and should realize that, with right choice of algorithm, it is a problem that can be handled by any moderate computer.</p>
 
 </div>
 </div>
@@ -13184,6 +13183,7 @@ end
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Please do <strong>not</strong> put data files in Git. For grading purpose (reproducibility), we will assume that data files are in the same directory as the Jupyter notebook file.</p>
 <p>Find out how many data points are in each year.</p>
 
 </div>
@@ -13203,7 +13203,7 @@ end
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Q1(3)">Q1(3)<a class="anchor-link" href="#Q1(3)">&#182;</a></h3><p>Review the <a href="http://hua-zhou.github.io/teaching/biostatm280-2019spring/slides/13-linreg/linreg.html">Summary of Linear Regression</a> and choose one method in the table to solve the linear regression.</p>
-<p>Report the estimated regression coefficients $\widehat \beta$, estimated variance $\widehat \sigma^2 = \sum_i (y_i - \widehat y_i)^2 / (n - 1)$, and standard errors.</p>
+<p>Report the estimated regression coefficients $\widehat \beta$, estimated variance $\widehat \sigma^2 = \sum_i (y_i - \widehat y_i)^2 / (n - 1)$, and standard errors of $\widehat \beta$.</p>
 <p>Hint: It took my laptop less than 3 minutes to import data and fit linear regression.</p>
 
 </div>
@@ -13212,7 +13212,7 @@ end
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Q1(4)">Q1(4)<a class="anchor-link" href="#Q1(4)">&#182;</a></h3><p>Go to your resume/cv and claim you have experience performing analytics on data with hundred millions of observations.</p>
+<h3 id="Q1(4)">Q1(4)<a class="anchor-link" href="#Q1(4)">&#182;</a></h3><p>Go to your resume/cv and claim you have experience performing analytics on data with millions of observations.</p>
 
 </div>
 </div>
@@ -13372,7 +13372,7 @@ Environment:
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> 35.613530 seconds (434.77 M allocations: 17.350 GiB, 15.24% gc time)
+<pre> 37.143025 seconds (434.77 M allocations: 17.350 GiB, 15.11% gc time)
 </pre>
 </div>
 </div>
@@ -13587,7 +13587,7 @@ DepDelay  ArrDelay  UniqueCarrier  Distance
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  1.539766 seconds (1.45 M allocations: 1.355 GiB, 16.70% gc time)
+<pre>  1.536713 seconds (1.45 M allocations: 1.355 GiB, 17.07% gc time)
 </pre>
 </div>
 </div>
@@ -13800,10 +13800,13 @@ populating internal database...
 <li>number of pages</li>
 <li>number of edges</li>
 <li>number of dangling nodes (pages with no out links)</li>
+<li>histogram of in-degrees</li>
 <li>which page has max in-degree?</li>
+<li>histogram of in-degrees</li>
 <li>which page has max out-degree?</li>
 <li>visualize the sparsity pattern of $\mathbf{A}$</li>
 </ul>
+<p>Hint: For plots, you can use the <a href="https://github.com/Evizero/UnicodePlots.jl">UnicodePlots.jl</a> package.</p>
 
 </div>
 </div>
@@ -13826,7 +13829,7 @@ populating internal database...
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Q2(5)">Q2(5)<a class="anchor-link" href="#Q2(5)">&#182;</a></h3><p>List the top 20 ranked URLs you found.</p>
+<h3 id="Q2(5)">Q2(5)<a class="anchor-link" href="#Q2(5)">&#182;</a></h3><p>List the top 20 nodes you found.</p>
 
 </div>
 </div>
@@ -13842,7 +13845,7 @@ populating internal database...
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Q2(7)">Q2(7)<a class="anchor-link" href="#Q2(7)">&#182;</a></h3><p>Go to your resume/cv and claim you have experience performing analysis on a million-by-million network.</p>
+<h3 id="Q2(7)">Q2(7)<a class="anchor-link" href="#Q2(7)">&#182;</a></h3><p>Go to your resume/cv and claim you have experience performing analysis on a networks of one million nodes.</p>
 
 </div>
 </div>
