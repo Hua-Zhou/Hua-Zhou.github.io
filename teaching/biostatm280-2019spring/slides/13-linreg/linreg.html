@@ -13167,48 +13167,48 @@ Environment:
 <h1 id="Summary-of-linear-regression">Summary of linear regression<a class="anchor-link" href="#Summary-of-linear-regression">&#182;</a></h1><p>Methods for solving linear regression $\widehat \beta = (\mathbf{X}^T \mathbf{X})^{-1} \mathbf{X}^T \mathbf{y}$:</p>
 <table>
 <thead><tr>
-<th>Method</th>
-<th>Flops</th>
-<th>Remarks</th>
-<th>Software</th>
-<th>Stability</th>
+<th style="text-align:center">Method</th>
+<th style="text-align:center">Flops</th>
+<th style="text-align:center">Remarks</th>
+<th style="text-align:center">Software</th>
+<th style="text-align:center">Stability</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Sweep</td>
-<td>$np^2 + p^3$</td>
-<td>$(X^TX)^{-1}$ available</td>
-<td>SAS</td>
-<td>less stable</td>
+<td style="text-align:center">Sweep</td>
+<td style="text-align:center">$np^2 + p^3$</td>
+<td style="text-align:center">$(X^TX)^{-1}$ available</td>
+<td style="text-align:center">SAS</td>
+<td style="text-align:center">less stable</td>
 </tr>
 <tr>
-<td>Cholesky</td>
-<td>$np^2 + p^3/3$</td>
-<td></td>
-<td></td>
-<td>less stable</td>
+<td style="text-align:center">Cholesky</td>
+<td style="text-align:center">$np^2 + p^3/3$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">less stable</td>
 </tr>
 <tr>
-<td>QR by Householder</td>
-<td>$2np^2 - (2/3)p^3$</td>
-<td></td>
-<td>R</td>
-<td>stable</td>
+<td style="text-align:center">QR by Householder</td>
+<td style="text-align:center">$2np^2 - (2/3)p^3$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">R</td>
+<td style="text-align:center">stable</td>
 </tr>
 <tr>
-<td>QR by MGS</td>
-<td>$2np^2$</td>
-<td>$Q_1$ available</td>
-<td></td>
-<td>stable</td>
+<td style="text-align:center">QR by MGS</td>
+<td style="text-align:center">$2np^2$</td>
+<td style="text-align:center">$Q_1$ available</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">stable</td>
 </tr>
 <tr>
-<td>QR by SVD</td>
-<td>$4n^2p + 8np^2 + 9p^3$</td>
-<td>$X = UDV^T$</td>
-<td></td>
-<td>most stable</td>
+<td style="text-align:center">QR by SVD</td>
+<td style="text-align:center">$4n^2p + 8np^2 + 9p^3$</td>
+<td style="text-align:center">$X = UDV^T$</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">most stable</td>
 </tr>
 </tbody>
 </table>
@@ -13235,7 +13235,7 @@ Environment:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">SweepOperator</span><span class="p">,</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">LinearAlgebra</span>
@@ -13268,7 +13268,7 @@ Environment:
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -13285,7 +13285,7 @@ Environment:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Random</span>
@@ -13331,7 +13331,7 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">300</span>
@@ -13351,7 +13351,7 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13361,12 +13361,55 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
   memory estimate:  708.31 KiB
   allocs estimate:  8
   --------------
-  minimum time:     1.667 ms (0.00% GC)
-  median time:      1.875 ms (0.00% GC)
-  mean time:        1.944 ms (3.01% GC)
-  maximum time:     40.307 ms (94.65% GC)
+  minimum time:     1.590 ms (0.00% GC)
+  median time:      1.756 ms (0.00% GC)
+  mean time:        1.821 ms (2.78% GC)
+  maximum time:     39.979 ms (95.16% GC)
   --------------
-  samples:          2560
+  samples:          2733
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">linreg_sweep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  2.99 MiB
+  allocs estimate:  7
+  --------------
+  minimum time:     5.200 ms (0.00% GC)
+  median time:      7.225 ms (0.00% GC)
+  mean time:        7.300 ms (2.58% GC)
+  maximum time:     48.544 ms (82.00% GC)
+  --------------
+  samples:          684
   evals/sample:     1</pre>
 </div>
 
@@ -13381,7 +13424,7 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">linreg_sweep</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">linreg_qr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13401,15 +13444,15 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  2.99 MiB
-  allocs estimate:  7
+  memory estimate:  4.04 MiB
+  allocs estimate:  2444
   --------------
-  minimum time:     5.354 ms (0.00% GC)
-  median time:      7.343 ms (0.00% GC)
-  mean time:        7.474 ms (2.83% GC)
-  maximum time:     46.085 ms (81.96% GC)
+  minimum time:     10.474 ms (0.00% GC)
+  median time:      11.760 ms (0.00% GC)
+  mean time:        12.302 ms (3.93% GC)
+  maximum time:     52.806 ms (76.80% GC)
   --------------
-  samples:          668
+  samples:          406
   evals/sample:     1</pre>
 </div>
 
@@ -13424,7 +13467,7 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">linreg_qr</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">linreg_svd</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13444,58 +13487,15 @@ linreg_svd(y, X) = [0.390365, 0.262759, 0.149047]
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  4.04 MiB
-  allocs estimate:  2444
-  --------------
-  minimum time:     11.478 ms (0.00% GC)
-  median time:      12.846 ms (0.00% GC)
-  mean time:        13.651 ms (4.39% GC)
-  maximum time:     55.801 ms (76.79% GC)
-  --------------
-  samples:          366
-  evals/sample:     1</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">linreg_svd</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[7]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
   memory estimate:  8.06 MiB
   allocs estimate:  16
   --------------
-  minimum time:     31.277 ms (0.00% GC)
-  median time:      34.451 ms (0.00% GC)
-  mean time:        35.342 ms (3.33% GC)
-  maximum time:     92.845 ms (59.89% GC)
+  minimum time:     31.354 ms (0.00% GC)
+  median time:      32.280 ms (0.00% GC)
+  mean time:        33.278 ms (3.04% GC)
+  maximum time:     84.534 ms (59.10% GC)
   --------------
-  samples:          142
+  samples:          151
   evals/sample:     1</pre>
 </div>
 
