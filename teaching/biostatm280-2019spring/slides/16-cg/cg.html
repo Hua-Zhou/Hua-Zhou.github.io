@@ -13402,9 +13402,9 @@ Choose $\mathbf{C}$ such that</p>
 </li>
 <li><p><strong>Lanczos bidiagonalization</strong> algorithm: top singular triplets of large matrix.</p>
 </li>
-<li><p><strong>LSQR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$. Algebraically equivalent to applying CG to the normal equation $(\mathbf{X}^T \mathbf{X} + \lambda^2 I)\mathbf{x} = \mathbf{X}^T \mathbf{y}$.</p>
+<li><p><strong>LSQR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$. Algebraically equivalent to applying CG to the normal equation $(\mathbf{X}^T \mathbf{X} + \lambda^2 I) \beta = \mathbf{X}^T \mathbf{y}$.</p>
 </li>
-<li><p><strong>LSMR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$. Algebraically equivalent to applying MINRES to the normal equation $(\mathbf{X}^T \mathbf{X} + \lambda^2 I)\mathbf{x} = \mathbf{X}^T \mathbf{y}$.</p>
+<li><p><strong>LSMR</strong>: least square problem $\min \|\mathbf{y} - \mathbf{X} \beta\|_2^2$. Algebraically equivalent to applying MINRES to the normal equation $(\mathbf{X}^T \mathbf{X} + \lambda^2 I) \beta = \mathbf{X}^T \mathbf{y}$.</p>
 </li>
 </ul>
 
@@ -13425,7 +13425,7 @@ Choose $\mathbf{C}$ such that</p>
 <li><p>Get familiar with the <strong>reverse communication interface (RCI)</strong> for utilizing iterative solvers:</p>
 <div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="n">gmres</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">x</span> <span class="p">=</span> <span class="n">gmres</span><span class="p">(@</span><span class="n">Afun</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="n">eigs</span><span class="p">(</span><span class="n">A</span><span class="p">)}</span>
+<span class="n">eigs</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="n">eigs</span><span class="p">(@</span><span class="n">Afun</span><span class="p">)</span>
 </pre></div>
 </li>
