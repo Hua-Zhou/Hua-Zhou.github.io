@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Conjugate-Gradient-and-Krylov-Subspace-Methods" data-toc-modified-id="Conjugate-Gradient-and-Krylov-Subspace-Methods-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Conjugate Gradient and Krylov Subspace Methods</a></div><div class="lev2 toc-item"><a href="#Introduction" data-toc-modified-id="Introduction-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Introduction</a></div><div class="lev2 toc-item"><a href="#Conjugate-gradient-(CG)-method" data-toc-modified-id="Conjugate-gradient-(CG)-method-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Conjugate gradient (CG) method</a></div><div class="lev2 toc-item"><a href="#Pre-conditioned-conjugate-gradient-(PCG)" data-toc-modified-id="Pre-conditioned-conjugate-gradient-(PCG)-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Pre-conditioned conjugate gradient (PCG)</a></div><div class="lev2 toc-item"><a href="#Other-Krylov-subspace-methods" data-toc-modified-id="Other-Krylov-subspace-methods-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Other Krylov subspace methods</a></div><div class="lev2 toc-item"><a href="#Software" data-toc-modified-id="Software-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Software</a></div><div class="lev3 toc-item"><a href="#Matlab" data-toc-modified-id="Matlab-151"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Matlab</a></div><div class="lev3 toc-item"><a href="#Julia" data-toc-modified-id="Julia-152"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Julia</a></div><div class="lev2 toc-item"><a href="#Further-reading" data-toc-modified-id="Further-reading-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Further reading</a></div></p>
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Conjugate-Gradient-and-Krylov-Subspace-Methods" data-toc-modified-id="Conjugate-Gradient-and-Krylov-Subspace-Methods-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Conjugate Gradient and Krylov Subspace Methods</a></div><div class="lev2 toc-item"><a href="#Introduction" data-toc-modified-id="Introduction-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Introduction</a></div><div class="lev2 toc-item"><a href="#Conjugate-gradient-(CG)-method" data-toc-modified-id="Conjugate-gradient-(CG)-method-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Conjugate gradient (CG) method</a></div><div class="lev2 toc-item"><a href="#Pre-conditioned-conjugate-gradient-(PCG)" data-toc-modified-id="Pre-conditioned-conjugate-gradient-(PCG)-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Pre-conditioned conjugate gradient (PCG)</a></div><div class="lev3 toc-item"><a href="#Example-of-PCG" data-toc-modified-id="Example-of-PCG-131"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Example of PCG</a></div><div class="lev2 toc-item"><a href="#Other-Krylov-subspace-methods" data-toc-modified-id="Other-Krylov-subspace-methods-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Other Krylov subspace methods</a></div><div class="lev2 toc-item"><a href="#Software" data-toc-modified-id="Software-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Software</a></div><div class="lev3 toc-item"><a href="#Matlab" data-toc-modified-id="Matlab-151"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Matlab</a></div><div class="lev3 toc-item"><a href="#Julia" data-toc-modified-id="Julia-152"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Julia</a></div><div class="lev4 toc-item"><a href="#Least-squares-example" data-toc-modified-id="Least-squares-example-1521"><span class="toc-item-num">1.5.2.1&nbsp;&nbsp;</span>Least squares example</a></div><div class="lev2 toc-item"><a href="#Further-reading" data-toc-modified-id="Further-reading-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Further reading</a></div></p>
 
 </div>
 </div>
@@ -13254,7 +13254,8 @@ $$</p>
 <ol>
 <li>Given $\mathbf{x}^{(0)}$</li>
 <li>Initialize: $\mathbf{r}^{(0)} \gets \mathbf{A} \mathbf{x}^{(0)} - \mathbf{b}$, $\mathbf{p}^{(0)} \gets - \mathbf{r}^{(0)}$, $t=0$</li>
-<li>While $\mathbf{r}^{(0)} \ne \mathbf{0}$<ol>
+<li><p>While $\mathbf{r}^{(0)} \ne \mathbf{0}$</p>
+<ol>
 <li>$\alpha^{(t)} \gets - \frac{\mathbf{r}^{(t)T} \mathbf{p}^{(t)}}{\mathbf{p}^{(t)T} \mathbf{A} \mathbf{p}^{(t)}}$</li>
 <li>$\mathbf{x}^{(t+1)} \gets \mathbf{x}^{(t)} + \alpha^{(t)} \mathbf{p}^{(t)}$</li>
 <li>$\mathbf{r}^{(t+1)} \gets \mathbf{A} \mathbf{x}^{(t+1)} - \mathbf{b}$</li>
@@ -13262,6 +13263,7 @@ $$</p>
 <li>$\mathbf{p}^{(t+1)} \gets - \mathbf{r}^{(t+1)} + \beta^{(t+1)} \mathbf{p}^{(t)}$</li>
 <li>$t \gets t+1$</li>
 </ol>
+<p>Remark: The initial conjugate direction $\mathbf{p}^{(0)} \gets - \mathbf{r}^{(0)}$ is crucial.</p>
 </li>
 </ol>
 </li>
@@ -13385,6 +13387,371 @@ Choose $\mathbf{C}$ such that</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-of-PCG">Example of PCG<a class="anchor-link" href="#Example-of-PCG">&#182;</a></h3><p><a href="https://github.com/mohamed82008/Preconditioners.jl">Preconditioners.jl</a> wraps a bunch of preconditioners.</p>
+<p>We use the Wathen matrix (sparse and positive definite) as a test matrix.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">MatrixDepot</span><span class="p">,</span> <span class="n">IterativeSolvers</span><span class="p">,</span> <span class="n">LinearAlgebra</span><span class="p">,</span> <span class="n">SparseArrays</span>
+
+<span class="c"># Wathen matrix of dimension 30401 x 30401</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">matrixdepot</span><span class="p">(</span><span class="s">&quot;wathen&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>include group.jl for user defined matrix generators
+verify download of index files...
+used remote site is https://sparse.tamu.edu/?per_page=All
+populating internal database...
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[2]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>30401×30401 SparseMatrixCSC{Float64,Int64} with 471601 stored entries:
+  [1    ,     1]  =  12.9515
+  [2    ,     1]  =  -12.9515
+  [3    ,     1]  =  4.31717
+  [202  ,     1]  =  -12.9515
+  [203  ,     1]  =  -17.2687
+  [303  ,     1]  =  4.31717
+  [304  ,     1]  =  -17.2687
+  [305  ,     1]  =  6.47576
+  [1    ,     2]  =  -12.9515
+  [2    ,     2]  =  69.0747
+  [3    ,     2]  =  -12.9515
+  [202  ,     2]  =  43.1717
+  ⋮
+  [30200, 30400]  =  36.1534
+  [30399, 30400]  =  -10.846
+  [30400, 30400]  =  57.8454
+  [30401, 30400]  =  -10.846
+  [30097, 30401]  =  5.42301
+  [30098, 30401]  =  -14.4614
+  [30099, 30401]  =  3.61534
+  [30199, 30401]  =  -14.4614
+  [30200, 30401]  =  -10.846
+  [30399, 30401]  =  3.61534
+  [30400, 30401]  =  -10.846
+  [30401, 30401]  =  10.846</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">UnicodePlots</span>
+<span class="n">spy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre><span class="ansi-bold">                      Sparsity Pattern</span>
+<span class="ansi-black-intense-fg">         ┌──────────────────────────────────────────┐</span>    
+       <span class="ansi-black-intense-fg">1</span><span class="ansi-black-intense-fg"> │</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span> <span class="ansi-red-fg">&gt; 0</span>
+        <span class="ansi-black-intense-fg"> │</span>⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span> <span class="ansi-blue-fg">&lt; 0</span>
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+        <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-magenta-fg">⡀</span>⠀<span class="ansi-black-intense-fg">│</span>    
+   <span class="ansi-black-intense-fg">30401</span><span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-magenta-fg">⠈</span><span class="ansi-magenta-fg">⠻</span><span class="ansi-magenta-fg">⣦</span><span class="ansi-black-intense-fg">│</span>    
+<span class="ansi-black-intense-fg">         └──────────────────────────────────────────┘</span>    
+<span class="ansi-black-intense-fg">         1</span><span class="ansi-black-intense-fg">                    </span><span class="ansi-black-intense-fg">                  30401</span>
+                         nz = 471601</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># sparsity level</span>
+<span class="n">count</span><span class="p">(</span><span class="o">!</span><span class="n">iszero</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="n">length</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.0005102687577359558</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># rhs</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c"># solve Ax=b by CG</span>
+<span class="n">xcg</span> <span class="o">=</span> <span class="n">cg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+<span class="nd">@benchmark</span> <span class="n">cg</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">,</span> <span class="o">$</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  1.16 MiB
+  allocs estimate:  23
+  --------------
+  minimum time:     143.481 ms (0.00% GC)
+  median time:      149.096 ms (0.00% GC)
+  mean time:        152.887 ms (0.20% GC)
+  maximum time:     175.385 ms (0.00% GC)
+  --------------
+  samples:          33
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Compute the incomplete cholesky preconditioner:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Preconditioners</span>
+<span class="nd">@time</span> <span class="n">p</span> <span class="o">=</span> <span class="n">CholeskyPreconditioner</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre> 22.499244 seconds (1.95 M allocations: 7.306 GiB, 1.02% gc time)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>CholeskyPreconditioner{Float64,SparseMatrixCSC{Float64,Int64}}([3.59882 0.0 … 0.0 0.0; -3.59882 7.49154 … 0.0 0.0; … ; 0.0 0.0 … 5.09253 0.0; 0.0 0.0 … -0.16044 2.5317], 2)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pre-conditioned conjugate gradient:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># solver Ax=b by PCG</span>
+<span class="n">xpcg</span> <span class="o">=</span> <span class="n">cg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Pl</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="c"># same answer?</span>
+<span class="n">norm</span><span class="p">(</span><span class="n">xcg</span> <span class="o">-</span> <span class="n">xpcg</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>5.043872222791385e-7</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># PCG is &gt;10 fold faster than CG</span>
+<span class="nd">@benchmark</span> <span class="n">cg</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">,</span> <span class="o">$</span><span class="n">b</span><span class="p">,</span> <span class="n">Pl</span><span class="o">=$</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[8]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  1.16 MiB
+  allocs estimate:  32
+  --------------
+  minimum time:     13.694 ms (0.00% GC)
+  median time:      14.835 ms (0.00% GC)
+  mean time:        15.095 ms (0.71% GC)
+  maximum time:     18.935 ms (0.00% GC)
+  --------------
+  samples:          331
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Other-Krylov-subspace-methods">Other Krylov subspace methods<a class="anchor-link" href="#Other-Krylov-subspace-methods">&#182;</a></h2><ul>
 <li><p>We leant about CG/PCG, which is for solving $\mathbf{A} \mathbf{x} = \mathbf{b}$, $\mathbf{A}$ pd.</p>
 </li>
@@ -13442,9 +13809,16 @@ Choose $\mathbf{C}$ such that</p>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Least-squares-example">Least squares example<a class="anchor-link" href="#Least-squares-example">&#182;</a></h4>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">IterativeSolvers</span><span class="p">,</span> <span class="n">LinearAlgebra</span><span class="p">,</span> <span class="n">Random</span><span class="p">,</span> <span class="n">SparseArrays</span>
@@ -13470,7 +13844,7 @@ Choose $\mathbf{C}$ such that</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
@@ -13480,10 +13854,10 @@ Choose $\mathbf{C}$ such that</p>
   memory estimate:  1.42 GiB
   allocs estimate:  37941
   --------------
-  minimum time:     5.273 s (3.75% GC)
-  median time:      5.273 s (3.75% GC)
-  mean time:        5.273 s (3.75% GC)
-  maximum time:     5.273 s (3.75% GC)
+  minimum time:     5.619 s (1.37% GC)
+  median time:      5.619 s (1.37% GC)
+  mean time:        5.619 s (1.37% GC)
+  maximum time:     5.619 s (1.37% GC)
   --------------
   samples:          1
   evals/sample:     1</pre>
@@ -13497,7 +13871,7 @@ Choose $\mathbf{C}$ such that</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">β̂_lsqr</span> <span class="o">=</span> <span class="n">lsqr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -13527,7 +13901,7 @@ Choose $\mathbf{C}$ such that</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13537,12 +13911,12 @@ Choose $\mathbf{C}$ such that</p>
   memory estimate:  11.59 MiB
   allocs estimate:  1346
   --------------
-  minimum time:     27.830 ms (0.00% GC)
-  median time:      33.014 ms (9.64% GC)
-  mean time:        33.342 ms (6.71% GC)
-  maximum time:     79.455 ms (58.42% GC)
+  minimum time:     26.817 ms (0.00% GC)
+  median time:      31.141 ms (11.82% GC)
+  mean time:        30.855 ms (6.77% GC)
+  maximum time:     36.993 ms (13.95% GC)
   --------------
-  samples:          150
+  samples:          163
   evals/sample:     1</pre>
 </div>
 
@@ -13554,7 +13928,7 @@ Choose $\mathbf{C}$ such that</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">β̂_lsmr</span> <span class="o">=</span> <span class="n">lsmr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -13584,7 +13958,7 @@ Choose $\mathbf{C}$ such that</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -13594,12 +13968,12 @@ Choose $\mathbf{C}$ such that</p>
   memory estimate:  4.06 MiB
   allocs estimate:  611
   --------------
-  minimum time:     17.400 ms (0.00% GC)
-  median time:      18.889 ms (0.00% GC)
-  mean time:        19.848 ms (4.36% GC)
-  maximum time:     68.393 ms (68.56% GC)
+  minimum time:     16.091 ms (0.00% GC)
+  median time:      17.828 ms (0.00% GC)
+  mean time:        18.311 ms (3.95% GC)
+  maximum time:     23.067 ms (19.72% GC)
   --------------
-  samples:          252
+  samples:          273
   evals/sample:     1</pre>
 </div>
 
@@ -13613,7 +13987,10 @@ Choose $\mathbf{C}$ such that</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Further-reading">Further reading<a class="anchor-link" href="#Further-reading">&#182;</a></h2><ul>
-<li>Chapter 5 of <a href="https://ucla.worldcat.org/title/numerical-optimization/oclc/209918411&amp;referer=brief_results">Numerical Optimization</a> by Jorge Nocedal and Stephen Wright (1999).</li>
+<li><p>Chapter 5 of <a href="https://ucla.worldcat.org/title/numerical-optimization/oclc/209918411&amp;referer=brief_results">Numerical Optimization</a> by Jorge Nocedal and Stephen Wright (1999).</p>
+</li>
+<li><p>Sections 11.3-11.5 of <a href="https://ucla.worldcat.org/title/matrix-computations/oclc/824733531&amp;referer=brief_results">Matrix Computations</a> by Gene Golub and Charles Van Loan (2013).</p>
+</li>
 </ul>
 
 </div>

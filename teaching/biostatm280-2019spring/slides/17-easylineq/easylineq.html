@@ -13183,37 +13183,16 @@ Environment:
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">LinearAlgebra</span><span class="p">,</span> <span class="n">MatrixDepot</span><span class="p">,</span> <span class="n">Random</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">LinearAlgebra</span><span class="p">,</span> <span class="n">Random</span>
 
 <span class="c"># generate random data</span>
 <span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="c"># a full matrix</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="c"># a diagonal matrix stored as Matrix{Float64}</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>include group.jl for user defined matrix generators
-verify download of index files...
-used remote site is https://sparse.tamu.edu/?per_page=All
-populating internal database...
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -13223,8 +13202,8 @@ populating internal database...
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># check `istril(A)` and `istriu(A)` (O(n^2)), then call `Diagonal(A) \ b` (O(n))</span>
-<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">A</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># should give link: https://github.com/JuliaLang/julia/blob/5b637df34396034b0dd353e603ab3d61322369fb/stdlib/LinearAlgebra/src/generic.jl#L956</span>
+<span class="nd">@which</span> <span class="n">A</span> <span class="o">\</span> <span class="n">b</span>
 </pre></div>
 
     </div>
@@ -13241,19 +13220,8 @@ populating internal database...
 
 
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  15.89 KiB
-  allocs estimate:  3
-  --------------
-  minimum time:     749.716 μs (0.00% GC)
-  median time:      896.366 μs (0.00% GC)
-  mean time:        939.223 μs (0.19% GC)
-  maximum time:     10.474 ms (90.80% GC)
-  --------------
-  samples:          5255
-  evals/sample:     1</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+\(A::<b>AbstractArray{T,2} where T</b>, B::<b>Union{AbstractArray{T,1}, AbstractArray{T,2}} where T</b>) in LinearAlgebra at <a href="file:///Users/osx/buildbot/slave/package_osx64/build/usr/share/julia/stdlib/v1.1/LinearAlgebra/src/generic.jl" target="_blank">/Users/osx/buildbot/slave/package_osx64/build/usr/share/julia/stdlib/v1.1/LinearAlgebra/src/generic.jl:892</a>
 </div>
 
 </div>
@@ -13267,8 +13235,8 @@ populating internal database...
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># O(n) computation, no extra array allocation</span>
-<span class="nd">@benchmark</span> <span class="kt">Diagonal</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># check `istril(A)` and `istriu(A)` (O(n^2)), then call `Diagonal(A) \ b` (O(n))</span>
+<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">A</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -13291,10 +13259,54 @@ populating internal database...
   memory estimate:  15.89 KiB
   allocs estimate:  3
   --------------
-  minimum time:     2.955 μs (0.00% GC)
-  median time:      3.752 μs (0.00% GC)
-  mean time:        5.650 μs (32.29% GC)
-  maximum time:     5.704 ms (99.88% GC)
+  minimum time:     746.903 μs (0.00% GC)
+  median time:      769.459 μs (0.00% GC)
+  mean time:        798.657 μs (0.19% GC)
+  maximum time:     9.535 ms (90.32% GC)
+  --------------
+  samples:          6197
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># O(n) computation, no extra array allocation</span>
+<span class="nd">@benchmark</span> <span class="kt">Diagonal</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  15.89 KiB
+  allocs estimate:  3
+  --------------
+  minimum time:     3.056 μs (0.00% GC)
+  median time:      3.809 μs (0.00% GC)
+  mean time:        5.851 μs (30.47% GC)
+  maximum time:     5.294 ms (99.88% GC)
   --------------
   samples:          10000
   evals/sample:     9</pre>
@@ -13319,7 +13331,7 @@ populating internal database...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span> 
@@ -13342,7 +13354,7 @@ populating internal database...
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[5]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -13385,7 +13397,7 @@ populating internal database...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># convert to a full matrix</span>
@@ -13405,7 +13417,7 @@ populating internal database...
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -13415,12 +13427,12 @@ populating internal database...
   memory estimate:  7.65 MiB
   allocs estimate:  5
   --------------
-  minimum time:     9.880 ms (0.00% GC)
-  median time:      11.567 ms (0.00% GC)
-  mean time:        11.933 ms (5.39% GC)
-  maximum time:     49.549 ms (81.12% GC)
+  minimum time:     9.734 ms (0.00% GC)
+  median time:      10.579 ms (0.00% GC)
+  mean time:        10.938 ms (6.19% GC)
+  maximum time:     47.785 ms (80.36% GC)
   --------------
-  samples:          419
+  samples:          457
   evals/sample:     1</pre>
 </div>
 
@@ -13432,7 +13444,7 @@ populating internal database...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># specialized algorithm for tridiagonal matrix, O(n) flops</span>
@@ -13449,7 +13461,7 @@ populating internal database...
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -13459,10 +13471,10 @@ populating internal database...
   memory estimate:  23.86 KiB
   allocs estimate:  5
   --------------
-  minimum time:     14.076 μs (0.00% GC)
-  median time:      15.770 μs (0.00% GC)
-  mean time:        23.907 μs (31.32% GC)
-  maximum time:     49.821 ms (99.95% GC)
+  minimum time:     14.103 μs (0.00% GC)
+  median time:      16.662 μs (0.00% GC)
+  mean time:        24.038 μs (29.14% GC)
+  maximum time:     48.492 ms (99.95% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -13484,61 +13496,17 @@ populating internal database...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">tril</span><span class="p">(</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="c"># a lower-triangular full matrix</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">tril</span><span class="p">(</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span> <span class="c"># a lower-triangular matrix stored as Matrix{Float64}</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
 <span class="c"># check istril() then triangular solve</span>
 <span class="nd">@benchmark</span> <span class="o">$</span><span class="n">A</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  7.94 KiB
-  allocs estimate:  1
-  --------------
-  minimum time:     719.595 μs (0.00% GC)
-  median time:      853.351 μs (0.00% GC)
-  mean time:        911.268 μs (0.00% GC)
-  maximum time:     2.482 ms (0.00% GC)
-  --------------
-  samples:          5402
-  evals/sample:     1</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># triangular solve directly; save the cost of istril()</span>
-<span class="nd">@benchmark</span> <span class="kt">LowerTriangular</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -13561,10 +13529,54 @@ populating internal database...
   memory estimate:  7.94 KiB
   allocs estimate:  1
   --------------
-  minimum time:     295.829 μs (0.00% GC)
-  median time:      344.353 μs (0.00% GC)
-  mean time:        374.818 μs (0.00% GC)
-  maximum time:     1.375 ms (0.00% GC)
+  minimum time:     747.004 μs (0.00% GC)
+  median time:      874.891 μs (0.00% GC)
+  mean time:        910.269 μs (0.00% GC)
+  maximum time:     2.001 ms (0.00% GC)
+  --------------
+  samples:          5411
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># triangular solve directly; save the cost of istril()</span>
+<span class="nd">@benchmark</span> <span class="kt">LowerTriangular</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  7.94 KiB
+  allocs estimate:  1
+  --------------
+  minimum time:     294.950 μs (0.00% GC)
+  median time:      325.817 μs (0.00% GC)
+  mean time:        334.716 μs (0.00% GC)
+  maximum time:     818.166 μs (0.00% GC)
   --------------
   samples:          10000
   evals/sample:     1</pre>
@@ -13579,15 +13591,15 @@ populating internal database...
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Block-diagonal-matrix">Block diagonal matrix<a class="anchor-link" href="#Block-diagonal-matrix">&#182;</a></h2><p>Block diagonal: Suppose $n = \sum_i n_i$. $(\sum_i n_i)^3$ vs $\sum_i n_i^3$.</p>
-<p>Julia has a <a href="https://docs.julialang.org/en/v1/stdlib/SparseArrays/#SparseArrays.blockdiag"><code>blockdiag</code></a> function that generates a <strong>sparse</strong> matrix. Anyone interested writing a <code>BlockDiagonal.jl</code> package?</p>
+<h2 id="Block-diagonal-matrix">Block diagonal matrix<a class="anchor-link" href="#Block-diagonal-matrix">&#182;</a></h2><p>Block diagonal: Suppose $n = \sum_b n_b$. For linear equations, $(\sum_b n_b)^3$ (without using block diagonal structure) vs $\sum_b n_b^3$ (using block diagonal structure).</p>
+<p>Julia has a <a href="https://docs.julialang.org/en/v1/stdlib/SparseArrays/#SparseArrays.blockdiag"><code>blockdiag</code></a> function that generates a <strong>sparse</strong> matrix. <strong>Anyone interested writing a <code>BlockDiagonal.jl</code> package?</strong></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">SparseArrays</span>
@@ -13609,7 +13621,7 @@ populating internal database...
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -13651,7 +13663,7 @@ populating internal database...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">UnicodePlots</span>
@@ -13668,7 +13680,7 @@ populating internal database...
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13715,10 +13727,12 @@ populating internal database...
 $$
 \begin{eqnarray*}
     (\mathbf{A} \otimes \mathbf{B})^{-1} &amp;=&amp; \mathbf{A}^{-1} \otimes \mathbf{B}^{-1} \\
-    (\mathbf{C}^T \otimes \mathbf{A}) \text{vec}(\mathbf{B}) &amp;=&amp; \text{vec}(\mathbf{A} \mathbf{B} \mathbf{C}).
+    (\mathbf{C}^T \otimes \mathbf{A}) \text{vec}(\mathbf{B}) &amp;=&amp; \text{vec}(\mathbf{A} \mathbf{B} \mathbf{C}) \\
+    \text{det}(\mathbf{A} \otimes \mathbf{B}) &amp;=&amp; [\text{det}(\mathbf{A})]^p [\text{det}(\mathbf{B})]^m, \quad \mathbf{A} \in \mathbb{R}^{m \times m}, \mathbf{B} \in \mathbb{R}^{p \times p}
 \end{eqnarray*}    
 $$
-to avoid forming and doing computation on the potentially huge Kronecker $\mathbf{A} \otimes \mathbf{B}$.</p>
+to avoid forming and doing costly computation on the potentially huge Kronecker $\mathbf{A} \otimes \mathbf{B}$.</p>
+<p><strong>Anyone interested writing a package?</strong></p>
 
 </div>
 </div>
@@ -13736,10 +13750,12 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">MatrixDepot</span>
+
+<span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
 
 <span class="c"># a 7701-by-7701 sparse pd matrix</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">matrixdepot</span><span class="p">(</span><span class="s">&quot;wathen&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
@@ -13759,7 +13775,21 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>include group.jl for user defined matrix generators
+verify download of index files...
+used remote site is https://sparse.tamu.edu/?per_page=All
+populating internal database...
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -13776,7 +13806,7 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">UnicodePlots</span>
@@ -13793,7 +13823,7 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[13]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
@@ -13835,55 +13865,11 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># dense matrix-vector multiplication</span>
 <span class="nd">@benchmark</span> <span class="o">$</span><span class="n">Afull</span> <span class="o">*</span> <span class="o">$</span><span class="n">b</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  60.27 KiB
-  allocs estimate:  2
-  --------------
-  minimum time:     21.032 ms (0.00% GC)
-  median time:      26.259 ms (0.00% GC)
-  mean time:        26.229 ms (0.00% GC)
-  maximum time:     28.736 ms (0.00% GC)
-  --------------
-  samples:          191
-  evals/sample:     1</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># sparse matrix-vector multiplication</span>
-<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">A</span> <span class="o">*</span> <span class="o">$</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -13906,12 +13892,12 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
   memory estimate:  60.27 KiB
   allocs estimate:  2
   --------------
-  minimum time:     98.763 μs (0.00% GC)
-  median time:      132.080 μs (0.00% GC)
-  mean time:        144.069 μs (6.30% GC)
-  maximum time:     3.772 ms (95.62% GC)
+  minimum time:     18.410 ms (0.00% GC)
+  median time:      19.803 ms (0.00% GC)
+  mean time:        19.930 ms (0.00% GC)
+  maximum time:     26.712 ms (0.00% GC)
   --------------
-  samples:          10000
+  samples:          251
   evals/sample:     1</pre>
 </div>
 
@@ -13926,9 +13912,8 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 <div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve via dense Cholesky</span>
-<span class="n">xchol</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="n">Afull</span><span class="p">)</span> <span class="o">\</span> <span class="n">b</span>
-<span class="nd">@benchmark</span> <span class="n">cholesky</span><span class="p">(</span><span class="o">$</span><span class="n">Afull</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># sparse matrix-vector multiplication</span>
+<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">A</span> <span class="o">*</span> <span class="o">$</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -13948,13 +13933,58 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
+  memory estimate:  60.27 KiB
+  allocs estimate:  2
+  --------------
+  minimum time:     109.226 μs (0.00% GC)
+  median time:      147.636 μs (0.00% GC)
+  mean time:        163.660 μs (6.25% GC)
+  maximum time:     4.575 ms (95.78% GC)
+  --------------
+  samples:          10000
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve via dense Cholesky</span>
+<span class="n">xchol</span> <span class="o">=</span> <span class="n">cholesky</span><span class="p">(</span><span class="n">Afull</span><span class="p">)</span> <span class="o">\</span> <span class="n">b</span>
+<span class="nd">@benchmark</span> <span class="n">cholesky</span><span class="p">(</span><span class="o">$</span><span class="n">Afull</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
   memory estimate:  452.52 MiB
   allocs estimate:  8
   --------------
-  minimum time:     1.699 s (0.64% GC)
-  median time:      1.715 s (1.60% GC)
-  mean time:        1.735 s (2.22% GC)
-  maximum time:     1.790 s (4.31% GC)
+  minimum time:     1.711 s (1.55% GC)
+  median time:      1.769 s (1.50% GC)
+  mean time:        1.760 s (2.15% GC)
+  maximum time:     1.798 s (4.19% GC)
   --------------
   samples:          3
   evals/sample:     1</pre>
@@ -13968,7 +13998,7 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># solve via sparse Cholesky</span>
@@ -13998,7 +14028,7 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -14008,12 +14038,12 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
   memory estimate:  13.45 MiB
   allocs estimate:  55
   --------------
-  minimum time:     15.145 ms (0.00% GC)
-  median time:      17.266 ms (3.99% GC)
-  mean time:        17.041 ms (2.45% GC)
-  maximum time:     22.618 ms (3.68% GC)
+  minimum time:     14.926 ms (0.00% GC)
+  median time:      17.012 ms (4.32% GC)
+  mean time:        16.666 ms (2.68% GC)
+  maximum time:     20.364 ms (3.64% GC)
   --------------
-  samples:          294
+  samples:          300
   evals/sample:     1</pre>
 </div>
 
@@ -14025,7 +14055,7 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># sparse solve via conjugate gradient</span>
@@ -14057,7 +14087,7 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -14067,12 +14097,12 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
   memory estimate:  302.20 KiB
   allocs estimate:  23
   --------------
-  minimum time:     31.188 ms (0.00% GC)
-  median time:      32.588 ms (0.00% GC)
-  mean time:        33.124 ms (0.12% GC)
-  maximum time:     40.652 ms (7.76% GC)
+  minimum time:     29.848 ms (0.00% GC)
+  median time:      33.203 ms (0.00% GC)
+  mean time:        33.728 ms (0.11% GC)
+  maximum time:     39.849 ms (0.00% GC)
   --------------
-  samples:          151
+  samples:          149
   evals/sample:     1</pre>
 </div>
 
@@ -14086,9 +14116,10 @@ to avoid forming and doing computation on the potentially huge Kronecker $\mathb
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Easy-plus-low-rank">Easy plus low rank<a class="anchor-link" href="#Easy-plus-low-rank">&#182;</a></h2><p>Easy plus low rank: $\mathbf{U} \in \mathbb{R}^{n \times r}$, $\mathbf{V} \in \mathbb{R}^{r \times n}$, $r \ll n$. Woodbury formula
-$$
-    (\mathbf{A} + \mathbf{U} \mathbf{V}^T)^{-1} = \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_r + \mathbf{V}^T \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^T \mathbf{A}^{-1},
-$$</p>
+\begin{eqnarray*}
+    (\mathbf{A} + \mathbf{U} \mathbf{V}^T)^{-1} &amp;=&amp; \mathbf{A}^{-1} - \mathbf{A}^{-1} \mathbf{U} (\mathbf{I}_r + \mathbf{V}^T \mathbf{A}^{-1} \mathbf{U})^{-1} \mathbf{V}^T \mathbf{A}^{-1} \\
+    \text{det}(\mathbf{A} + \mathbf{U} \mathbf{V}^T) &amp;=&amp; \text{det}(\mathbf{A}) \text{det}(\mathbf{I}_r + \mathbf{V} \mathbf{A}^{-1} \mathbf{U}^T).
+\end{eqnarray*}</p>
 <ul>
 <li>Keep HW2 Q2 in mind.  </li>
 <li><a href="https://github.com/timholy/WoodburyMatrices.jl"><code>WoodburyMatrices.jl</code></a> package can be useful.</li>
@@ -14099,7 +14130,7 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">Random</span><span class="p">,</span> <span class="n">WoodburyMatrices</span>
@@ -14112,9 +14143,9 @@ $$</p>
 <span class="n">B</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 <span class="n">D</span> <span class="o">=</span> <span class="kt">Diagonal</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="n">r</span><span class="p">))</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="c"># W = A + B * D * B&#39;</span>
+<span class="c"># Woodbury structure: W = A + B * D * B&#39;</span>
 <span class="n">W</span> <span class="o">=</span> <span class="n">SymWoodbury</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
-<span class="n">Wfull</span> <span class="o">=</span> <span class="kt">Symmetric</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">W</span><span class="p">))</span>
+<span class="n">Wfull</span> <span class="o">=</span> <span class="kt">Symmetric</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">W</span><span class="p">))</span> <span class="c"># stored as a Matrix{Float64}</span>
 </pre></div>
 
     </div>
@@ -14127,7 +14158,7 @@ $$</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[19]:</div>
+    <div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -14170,55 +14201,11 @@ $$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve via Cholesky</span>
-<span class="nd">@benchmark</span> <span class="n">cholesky</span><span class="p">(</span><span class="o">$</span><span class="n">Wfull</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[20]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  7.64 MiB
-  allocs estimate:  7
-  --------------
-  minimum time:     6.349 ms (0.00% GC)
-  median time:      7.202 ms (0.00% GC)
-  mean time:        7.439 ms (8.63% GC)
-  maximum time:     14.403 ms (0.00% GC)
-  --------------
-  samples:          671
-  evals/sample:     1</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve using Woodbury formula</span>
-<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">W</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># compares storage</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">summarysize</span><span class="p">(</span><span class="n">W</span><span class="p">),</span> <span class="n">Base</span><span class="o">.</span><span class="n">summarysize</span><span class="p">(</span><span class="n">Wfull</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14237,17 +14224,7 @@ $$</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>BenchmarkTools.Trial: 
-  memory estimate:  75.45 KiB
-  allocs estimate:  24
-  --------------
-  minimum time:     23.092 μs (0.00% GC)
-  median time:      49.268 μs (0.00% GC)
-  mean time:        61.230 μs (16.89% GC)
-  maximum time:     3.733 ms (97.75% GC)
-  --------------
-  samples:          10000
-  evals/sample:     1</pre>
+<pre>(48200, 8000056)</pre>
 </div>
 
 </div>
@@ -14261,8 +14238,8 @@ $$</p>
 <div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># multiplication without using Woodbury structure</span>
-<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">Wfull</span> <span class="o">*</span> <span class="o">$</span><span class="n">b</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve via Cholesky</span>
+<span class="nd">@benchmark</span> <span class="n">cholesky</span><span class="p">(</span><span class="o">$</span><span class="n">Wfull</span><span class="p">)</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -14282,15 +14259,15 @@ $$</p>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
-  memory estimate:  7.94 KiB
-  allocs estimate:  1
+  memory estimate:  7.64 MiB
+  allocs estimate:  7
   --------------
-  minimum time:     33.535 μs (0.00% GC)
-  median time:      36.190 μs (0.00% GC)
-  mean time:        39.831 μs (0.00% GC)
-  maximum time:     259.373 μs (0.00% GC)
+  minimum time:     6.363 ms (0.00% GC)
+  median time:      7.741 ms (0.00% GC)
+  mean time:        7.891 ms (7.37% GC)
+  maximum time:     11.226 ms (16.99% GC)
   --------------
-  samples:          10000
+  samples:          633
   evals/sample:     1</pre>
 </div>
 
@@ -14305,8 +14282,8 @@ $$</p>
 <div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="c"># multiplication using Woodbury structure</span>
-<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">W</span> <span class="o">*</span> <span class="o">$</span><span class="n">b</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># solve using Woodbury formula</span>
+<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">W</span> <span class="o">\</span> <span class="o">$</span><span class="n">b</span>
 </pre></div>
 
     </div>
@@ -14326,16 +14303,192 @@ $$</p>
 
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
+  memory estimate:  75.45 KiB
+  allocs estimate:  24
+  --------------
+  minimum time:     21.169 μs (0.00% GC)
+  median time:      44.107 μs (0.00% GC)
+  mean time:        53.582 μs (16.66% GC)
+  maximum time:     3.355 ms (97.85% GC)
+  --------------
+  samples:          10000
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># multiplication without using Woodbury structure</span>
+<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">Wfull</span> <span class="o">*</span> <span class="o">$</span><span class="n">b</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[24]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  7.94 KiB
+  allocs estimate:  1
+  --------------
+  minimum time:     32.940 μs (0.00% GC)
+  median time:      36.441 μs (0.00% GC)
+  mean time:        42.473 μs (0.00% GC)
+  maximum time:     286.755 μs (0.00% GC)
+  --------------
+  samples:          10000
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># multiplication using Woodbury structure</span>
+<span class="nd">@benchmark</span> <span class="o">$</span><span class="n">W</span> <span class="o">*</span> <span class="o">$</span><span class="n">b</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[25]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
   memory estimate:  24.06 KiB
   allocs estimate:  5
   --------------
-  minimum time:     4.018 μs (0.00% GC)
-  median time:      5.883 μs (0.00% GC)
-  mean time:        8.184 μs (29.84% GC)
-  maximum time:     528.814 μs (98.21% GC)
+  minimum time:     3.303 μs (0.00% GC)
+  median time:      4.979 μs (0.00% GC)
+  mean time:        7.868 μs (31.06% GC)
+  maximum time:     676.630 μs (97.59% GC)
   --------------
   samples:          10000
-  evals/sample:     7</pre>
+  evals/sample:     8</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># determinant without using Woodbury structure</span>
+<span class="nd">@benchmark</span> <span class="n">det</span><span class="p">(</span><span class="o">$</span><span class="n">Wfull</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[26]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  8.13 MiB
+  allocs estimate:  7
+  --------------
+  minimum time:     12.604 ms (0.00% GC)
+  median time:      14.318 ms (0.00% GC)
+  mean time:        14.982 ms (3.26% GC)
+  maximum time:     48.041 ms (0.00% GC)
+  --------------
+  samples:          334
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="c"># determinant using Woodbury structure</span>
+<span class="nd">@benchmark</span> <span class="n">det</span><span class="p">(</span><span class="o">$</span><span class="n">W</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[27]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  138.05 KiB
+  allocs estimate:  28
+  --------------
+  minimum time:     28.124 μs (0.00% GC)
+  median time:      89.737 μs (0.00% GC)
+  mean time:        111.692 μs (19.05% GC)
+  maximum time:     4.253 ms (97.56% GC)
+  --------------
+  samples:          10000
+  evals/sample:     1</pre>
 </div>
 
 </div>
@@ -14357,7 +14510,7 @@ $$
     (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1} \mathbf{V} \mathbf{A}^{-1} &amp; - (\mathbf{V} \mathbf{A}^{-1} \mathbf{V}^T)^{-1}
     \end{pmatrix}.
 $$
-Anyone interested writing a package?</p>
+<strong>Anyone interested writing a package?</strong></p>
 
 </div>
 </div>
