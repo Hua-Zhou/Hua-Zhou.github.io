@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Conjugate-Gradient-and-Krylov-Subspace-Methods" data-toc-modified-id="Conjugate-Gradient-and-Krylov-Subspace-Methods-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Conjugate Gradient and Krylov Subspace Methods</a></div><div class="lev2 toc-item"><a href="#Introduction" data-toc-modified-id="Introduction-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Introduction</a></div><div class="lev2 toc-item"><a href="#Conjugate-gradient-(CG)-method" data-toc-modified-id="Conjugate-gradient-(CG)-method-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Conjugate gradient (CG) method</a></div><div class="lev2 toc-item"><a href="#Pre-conditioned-conjugate-gradient-(PCG)" data-toc-modified-id="Pre-conditioned-conjugate-gradient-(PCG)-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Pre-conditioned conjugate gradient (PCG)</a></div><div class="lev3 toc-item"><a href="#Example-of-PCG" data-toc-modified-id="Example-of-PCG-131"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Example of PCG</a></div><div class="lev2 toc-item"><a href="#Other-Krylov-subspace-methods" data-toc-modified-id="Other-Krylov-subspace-methods-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Other Krylov subspace methods</a></div><div class="lev2 toc-item"><a href="#Software" data-toc-modified-id="Software-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Software</a></div><div class="lev3 toc-item"><a href="#Matlab" data-toc-modified-id="Matlab-151"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Matlab</a></div><div class="lev3 toc-item"><a href="#Julia" data-toc-modified-id="Julia-152"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Julia</a></div><div class="lev4 toc-item"><a href="#Least-squares-example" data-toc-modified-id="Least-squares-example-1521"><span class="toc-item-num">1.5.2.1&nbsp;&nbsp;</span>Least squares example</a></div><div class="lev2 toc-item"><a href="#Further-reading" data-toc-modified-id="Further-reading-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Further reading</a></div></p>
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Conjugate-Gradient-and-Krylov-Subspace-Methods" data-toc-modified-id="Conjugate-Gradient-and-Krylov-Subspace-Methods-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Conjugate Gradient and Krylov Subspace Methods</a></div><div class="lev2 toc-item"><a href="#Introduction" data-toc-modified-id="Introduction-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Introduction</a></div><div class="lev2 toc-item"><a href="#Conjugate-gradient-(CG)-method" data-toc-modified-id="Conjugate-gradient-(CG)-method-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Conjugate gradient (CG) method</a></div><div class="lev2 toc-item"><a href="#Pre-conditioned-conjugate-gradient-(PCG)" data-toc-modified-id="Pre-conditioned-conjugate-gradient-(PCG)-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>Pre-conditioned conjugate gradient (PCG)</a></div><div class="lev3 toc-item"><a href="#Example-of-PCG" data-toc-modified-id="Example-of-PCG-131"><span class="toc-item-num">1.3.1&nbsp;&nbsp;</span>Example of PCG</a></div><div class="lev2 toc-item"><a href="#Other-Krylov-subspace-methods" data-toc-modified-id="Other-Krylov-subspace-methods-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>Other Krylov subspace methods</a></div><div class="lev2 toc-item"><a href="#Software" data-toc-modified-id="Software-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>Software</a></div><div class="lev3 toc-item"><a href="#Matlab" data-toc-modified-id="Matlab-151"><span class="toc-item-num">1.5.1&nbsp;&nbsp;</span>Matlab</a></div><div class="lev3 toc-item"><a href="#Julia" data-toc-modified-id="Julia-152"><span class="toc-item-num">1.5.2&nbsp;&nbsp;</span>Julia</a></div><div class="lev4 toc-item"><a href="#Least-squares-example" data-toc-modified-id="Least-squares-example-1521"><span class="toc-item-num">1.5.2.1&nbsp;&nbsp;</span>Least squares example</a></div><div class="lev4 toc-item"><a href="#Use-LinearMaps-in-iterative-solvers" data-toc-modified-id="Use-LinearMaps-in-iterative-solvers-1522"><span class="toc-item-num">1.5.2.2&nbsp;&nbsp;</span>Use LinearMaps in iterative solvers</a></div><div class="lev2 toc-item"><a href="#Further-reading" data-toc-modified-id="Further-reading-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>Further reading</a></div></p>
 
 </div>
 </div>
@@ -13435,31 +13435,31 @@ populating internal database...
 
 <div class="output_text output_subarea output_execute_result">
 <pre>30401×30401 SparseMatrixCSC{Float64,Int64} with 471601 stored entries:
-  [1    ,     1]  =  12.9515
-  [2    ,     1]  =  -12.9515
-  [3    ,     1]  =  4.31717
-  [202  ,     1]  =  -12.9515
-  [203  ,     1]  =  -17.2687
-  [303  ,     1]  =  4.31717
-  [304  ,     1]  =  -17.2687
-  [305  ,     1]  =  6.47576
-  [1    ,     2]  =  -12.9515
-  [2    ,     2]  =  69.0747
-  [3    ,     2]  =  -12.9515
-  [202  ,     2]  =  43.1717
+  [1    ,     1]  =  2.18448
+  [2    ,     1]  =  -2.18448
+  [3    ,     1]  =  0.728159
+  [202  ,     1]  =  -2.18448
+  [203  ,     1]  =  -2.91263
+  [303  ,     1]  =  0.728159
+  [304  ,     1]  =  -2.91263
+  [305  ,     1]  =  1.09224
+  [1    ,     2]  =  -2.18448
+  [2    ,     2]  =  11.6505
+  [3    ,     2]  =  -2.18448
+  [202  ,     2]  =  7.28159
   ⋮
-  [30200, 30400]  =  36.1534
-  [30399, 30400]  =  -10.846
-  [30400, 30400]  =  57.8454
-  [30401, 30400]  =  -10.846
-  [30097, 30401]  =  5.42301
-  [30098, 30401]  =  -14.4614
-  [30099, 30401]  =  3.61534
-  [30199, 30401]  =  -14.4614
-  [30200, 30401]  =  -10.846
-  [30399, 30401]  =  3.61534
-  [30400, 30401]  =  -10.846
-  [30401, 30401]  =  10.846</pre>
+  [30200, 30400]  =  15.0471
+  [30399, 30400]  =  -4.51414
+  [30400, 30400]  =  24.0754
+  [30401, 30400]  =  -4.51414
+  [30097, 30401]  =  2.25707
+  [30098, 30401]  =  -6.01885
+  [30099, 30401]  =  1.50471
+  [30199, 30401]  =  -6.01885
+  [30200, 30401]  =  -4.51414
+  [30399, 30401]  =  1.50471
+  [30400, 30401]  =  -4.51414
+  [30401, 30401]  =  4.51414</pre>
 </div>
 
 </div>
@@ -13593,12 +13593,12 @@ populating internal database...
   memory estimate:  1.16 MiB
   allocs estimate:  23
   --------------
-  minimum time:     143.481 ms (0.00% GC)
-  median time:      149.096 ms (0.00% GC)
-  mean time:        152.887 ms (0.20% GC)
-  maximum time:     175.385 ms (0.00% GC)
+  minimum time:     195.939 ms (0.00% GC)
+  median time:      199.963 ms (0.00% GC)
+  mean time:        200.412 ms (0.21% GC)
+  maximum time:     210.798 ms (5.05% GC)
   --------------
-  samples:          33
+  samples:          25
   evals/sample:     1</pre>
 </div>
 
@@ -13639,7 +13639,7 @@ populating internal database...
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> 22.499244 seconds (1.95 M allocations: 7.306 GiB, 1.02% gc time)
+<pre> 22.336321 seconds (1.95 M allocations: 7.306 GiB, 1.01% gc time)
 </pre>
 </div>
 </div>
@@ -13652,7 +13652,7 @@ populating internal database...
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CholeskyPreconditioner{Float64,SparseMatrixCSC{Float64,Int64}}([3.59882 0.0 … 0.0 0.0; -3.59882 7.49154 … 0.0 0.0; … ; 0.0 0.0 … 5.09253 0.0; 0.0 0.0 … -0.16044 2.5317], 2)</pre>
+<pre>CholeskyPreconditioner{Float64,SparseMatrixCSC{Float64,Int64}}([1.478 0.0 … 0.0 0.0; -1.478 3.0767 … 0.0 0.0; … ; 0.0 0.0 … 3.48688 0.0; 0.0 0.0 … -0.209846 1.73063], 2)</pre>
 </div>
 
 </div>
@@ -13696,7 +13696,7 @@ populating internal database...
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>5.043872222791385e-7</pre>
+<pre>4.2404710199864254e-7</pre>
 </div>
 
 </div>
@@ -13734,12 +13734,12 @@ populating internal database...
   memory estimate:  1.16 MiB
   allocs estimate:  32
   --------------
-  minimum time:     13.694 ms (0.00% GC)
-  median time:      14.835 ms (0.00% GC)
-  mean time:        15.095 ms (0.71% GC)
-  maximum time:     18.935 ms (0.00% GC)
+  minimum time:     13.705 ms (0.00% GC)
+  median time:      14.927 ms (0.00% GC)
+  mean time:        15.060 ms (0.71% GC)
+  maximum time:     18.903 ms (10.66% GC)
   --------------
-  samples:          331
+  samples:          332
   evals/sample:     1</pre>
 </div>
 
@@ -13854,10 +13854,10 @@ populating internal database...
   memory estimate:  1.42 GiB
   allocs estimate:  37941
   --------------
-  minimum time:     5.619 s (1.37% GC)
-  median time:      5.619 s (1.37% GC)
-  mean time:        5.619 s (1.37% GC)
-  maximum time:     5.619 s (1.37% GC)
+  minimum time:     5.171 s (1.41% GC)
+  median time:      5.171 s (1.41% GC)
+  mean time:        5.171 s (1.41% GC)
+  maximum time:     5.171 s (1.41% GC)
   --------------
   samples:          1
   evals/sample:     1</pre>
@@ -13911,12 +13911,12 @@ populating internal database...
   memory estimate:  11.59 MiB
   allocs estimate:  1346
   --------------
-  minimum time:     26.817 ms (0.00% GC)
-  median time:      31.141 ms (11.82% GC)
-  mean time:        30.855 ms (6.77% GC)
-  maximum time:     36.993 ms (13.95% GC)
+  minimum time:     27.416 ms (0.00% GC)
+  median time:      34.065 ms (11.22% GC)
+  mean time:        34.335 ms (6.47% GC)
+  maximum time:     45.718 ms (13.40% GC)
   --------------
-  samples:          163
+  samples:          146
   evals/sample:     1</pre>
 </div>
 
@@ -13968,13 +13968,467 @@ populating internal database...
   memory estimate:  4.06 MiB
   allocs estimate:  611
   --------------
-  minimum time:     16.091 ms (0.00% GC)
-  median time:      17.828 ms (0.00% GC)
-  mean time:        18.311 ms (3.95% GC)
-  maximum time:     23.067 ms (19.72% GC)
+  minimum time:     17.392 ms (0.00% GC)
+  median time:      18.636 ms (0.00% GC)
+  mean time:        19.384 ms (3.91% GC)
+  maximum time:     26.789 ms (17.91% GC)
   --------------
-  samples:          273
+  samples:          258
   evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Use-LinearMaps-in-iterative-solvers">Use LinearMaps in iterative solvers<a class="anchor-link" href="#Use-LinearMaps-in-iterative-solvers">&#182;</a></h4><p>In many applications, it is advantageous to define linear maps indead of forming the actual (sparse) matrix. For a linear map, we need to specify how it acts on right- and left-multiplication on a vector. The <a href="https://github.com/Jutho/LinearMaps.jl"><code>LinearMaps.jl</code></a> package is exactly for this purpose and interfaces nicely with <code>IterativeSolvers.jl</code>, <code>Arnoldi.jl</code> and other iterative solver packages.</p>
+<p>Applications:</p>
+<ol>
+<li>The matrix is not sparse but admits special structure, e.g., easy + low rank (PageRank), Kronecker proudcts, etc.  </li>
+<li>Less memory usage. </li>
+<li>Linear algebra on a standardized (centered and scaled) sparse matrix.</li>
+</ol>
+<p>Consider the differencing operator that takes differences between neighboring pixels.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">LinearMaps</span><span class="p">,</span> <span class="n">IterativeSolvers</span>
+
+<span class="c"># Overwrite y with A * x</span>
+<span class="c"># left difference assuming periodic boundary conditions</span>
+<span class="k">function</span> <span class="n">leftdiff!</span><span class="p">(</span><span class="n">y</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">x</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span> 
+    <span class="n">N</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="n">N</span> <span class="o">||</span> <span class="n">throw</span><span class="p">(</span><span class="kt">DimensionMismatch</span><span class="p">())</span>
+    <span class="nd">@inbounds</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">N</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">mod1</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)]</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">y</span>
+<span class="k">end</span>
+
+<span class="c"># Overwrite y with A&#39; * x</span>
+<span class="c"># minus right difference</span>
+<span class="k">function</span> <span class="n">mrightdiff!</span><span class="p">(</span><span class="n">y</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">x</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span> 
+    <span class="n">N</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">length</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="n">N</span> <span class="o">||</span> <span class="n">throw</span><span class="p">(</span><span class="kt">DimensionMismatch</span><span class="p">())</span>
+    <span class="nd">@inbounds</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">N</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">mod1</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)]</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">y</span>
+<span class="k">end</span>
+
+<span class="c"># define linear map</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">LinearMap</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="n">leftdiff!</span><span class="p">,</span> <span class="n">mrightdiff!</span><span class="p">,</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ismutating</span><span class="o">=</span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>LinearMaps.FunctionMap{Float64}(leftdiff!, mrightdiff!, 100, 100; ismutating=true, issymmetric=false, ishermitian=false, isposdef=false)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Linear maps can be used like a regular matrix.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="nd">@show</span> <span class="n">size</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c"># vector of all 1s</span>
+<span class="nd">@show</span> <span class="n">D</span> <span class="o">*</span> <span class="n">v</span>
+<span class="nd">@show</span> <span class="n">D</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">v</span><span class="p">;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>size(D) = (100, 100)
+D * v = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+D&#39; * v = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we form the corresponding dense matrix, it will look like</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="kt">Matrix</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>100×100 Array{Float64,2}:
+  1.0   0.0   0.0   0.0   0.0   0.0  …   0.0   0.0   0.0   0.0   0.0  -1.0
+ -1.0   1.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0  -1.0   1.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0  -1.0   1.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0  -1.0   1.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0  -1.0   1.0  …   0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0  -1.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0  …   0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  ⋮                             ⋮    ⋱         ⋮                          
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0  …   0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      1.0   0.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0  …  -1.0   1.0   0.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0  -1.0   1.0   0.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0  -1.0   1.0   0.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0  -1.0   1.0   0.0
+  0.0   0.0   0.0   0.0   0.0   0.0      0.0   0.0   0.0   0.0  -1.0   1.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we form the corresponding sparse matrix, it will look like</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">SparseArrays</span>
+<span class="n">sparse</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[15]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>100×100 SparseMatrixCSC{Float64,Int64} with 200 stored entries:
+  [1  ,   1]  =  1.0
+  [2  ,   1]  =  -1.0
+  [2  ,   2]  =  1.0
+  [3  ,   2]  =  -1.0
+  [3  ,   3]  =  1.0
+  [4  ,   3]  =  -1.0
+  [4  ,   4]  =  1.0
+  [5  ,   4]  =  -1.0
+  [5  ,   5]  =  1.0
+  [6  ,   5]  =  -1.0
+  [6  ,   6]  =  1.0
+  [7  ,   6]  =  -1.0
+  ⋮
+  [95 ,  95]  =  1.0
+  [96 ,  95]  =  -1.0
+  [96 ,  96]  =  1.0
+  [97 ,  96]  =  -1.0
+  [97 ,  97]  =  1.0
+  [98 ,  97]  =  -1.0
+  [98 ,  98]  =  1.0
+  [99 ,  98]  =  -1.0
+  [99 ,  99]  =  1.0
+  [100,  99]  =  -1.0
+  [1  , 100]  =  -1.0
+  [100, 100]  =  1.0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">UnicodePlots</span>
+<span class="n">spy</span><span class="p">(</span><span class="n">sparse</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre><span class="ansi-bold">                    Sparsity Pattern</span>
+<span class="ansi-black-intense-fg">       ┌──────────────────────────────────────────┐</span>    
+     <span class="ansi-black-intense-fg">1</span><span class="ansi-black-intense-fg"> │</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-black-intense-fg">│</span> <span class="ansi-red-fg">&gt; 0</span>
+      <span class="ansi-black-intense-fg"> │</span>⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span> <span class="ansi-blue-fg">&lt; 0</span>
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀⠀⠀<span class="ansi-black-intense-fg">│</span>    
+      <span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span>⠀⠀<span class="ansi-black-intense-fg">│</span>    
+   <span class="ansi-black-intense-fg">100</span><span class="ansi-black-intense-fg"> │</span>⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀<span class="ansi-blue-fg">⠈</span><span class="ansi-magenta-fg">⠳</span><span class="ansi-magenta-fg">⣄</span><span class="ansi-black-intense-fg">│</span>    
+<span class="ansi-black-intense-fg">       └──────────────────────────────────────────┘</span>    
+<span class="ansi-black-intense-fg">       1</span><span class="ansi-black-intense-fg">                    </span><span class="ansi-black-intense-fg">                    100</span>
+                        nz = 200</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Compute top singular values using iterative method (Arnoldi).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Arpack</span>
+<span class="n">Arpack</span><span class="o">.</span><span class="n">svds</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">nsv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(SVD{Float64,Float64,Array{Float64,2}}([-0.1 0.0640197 -0.126101; 0.1 -0.0559754 0.129872; … ; -0.1 0.0793195 -0.117083; 0.1 -0.0718113 0.121832], [2.0, 1.99901, 1.99901], [0.1 -0.1 … 0.1 -0.1; -0.0600272 0.0518684 … -0.0756027 0.067949; 0.12805 -0.131566 … 0.119517 -0.124028]), 3, 35, 573, [0.0400615, 0.00610398, 0.0278884, 0.0776812, 0.08746, 0.00602873, 0.212726, 0.0333012, -0.0523244, 0.144026  …  0.083757, 0.0931424, -0.0237672, 0.00677622, 0.042755, 0.0557526, 0.0887591, 0.102905, 0.0669487, 0.0562545])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">LinearAlgebra</span>
+<span class="c"># check solution against the direct method for SVD</span>
+<span class="n">svdvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>100-element Array{Float64,1}:
+ 2.0                   
+ 1.999013120731463     
+ 1.9990131207314623    
+ 1.9960534568565431    
+ 1.9960534568565427    
+ 1.99112392920616      
+ 1.9911239292061598    
+ 1.9842294026289555    
+ 1.9842294026289549    
+ 1.9753766811902758    
+ 1.9753766811902744    
+ 1.9645745014573777    
+ 1.9645745014573768    
+ ⋮                     
+ 0.37476262917144926   
+ 0.3128689300804618    
+ 0.31286893008046174   
+ 0.25066646712860846   
+ 0.25066646712860846   
+ 0.18821662663702868   
+ 0.18821662663702865   
+ 0.1255810390586268    
+ 0.12558103905862675   
+ 0.06282151815625672   
+ 0.06282151815625658   
+ 2.5308506128625597e-18</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Compute top eigenvalues of the Gram matrix <code>D'D</code> using iterative method (Arnoldi).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="n">Arpack</span><span class="o">.</span><span class="n">eigs</span><span class="p">(</span><span class="n">D</span><span class="o">&#39;</span><span class="n">D</span><span class="p">,</span> <span class="n">nev</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">which</span><span class="o">=:</span><span class="n">LM</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>([4.0, 3.99605, 3.99605], [0.1 -0.00939969 -0.141109; -0.1 0.000520858 0.14142; … ; 0.1 -0.0270112 -0.138818; -0.1 0.0182414 0.14024], 3, 30, 493, [0.103736, 0.0100948, 0.0228213, -0.0164503, 0.10995, 0.0865899, 0.124362, -0.161938, -0.0933529, 0.125877  …  -0.0628246, -0.0637099, 0.0916849, 0.179155, 0.14872, 0.214858, 0.0147322, 0.146649, -0.206126, 0.0174464])</pre>
 </div>
 
 </div>
