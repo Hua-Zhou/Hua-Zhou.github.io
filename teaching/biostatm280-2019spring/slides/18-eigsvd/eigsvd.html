@@ -13321,10 +13321,9 @@ $$
 $$
 is achieved by $\mathbf{Y} = \sum_{i=1}^r \sigma_i \mathbf{u}_i \mathbf{v}_i^T$ with optimal value $\sum_{i=r}^{p} \sigma_i^2$, where $(\sigma_i, \mathbf{u}_i, \mathbf{v}_i)$ are singular values and vectors of $\mathbf{X}$.</p>
 <ul>
-<li>Gene Golub's $897 \times 598$ picture requires $2691 \times 598 \times 8 = 12,873,744$ bytes (3 RGB channels).  </li>
-<li>Rank 120 approximation requires $120 \times (2691+598) \times 8 = 3,157,440$ bytes. </li>
-<li>Rank 50 approximation requires $50 \times (2691+598) \times 8 = 1,315,600$ bytes. </li>
-<li>Rank 12 approximation requires $12 \times (2691+598) \times 8 = 315,744$ bytes.</li>
+<li>Gene Golub's $897 \times 598$ picture requires $3 \times 897 \times 598 \times 8 = 12,873,744$ bytes (3 RGB channels).  </li>
+<li>Rank 50 approximation requires $3 \times 50 \times (897 + 598) \times 8 = 1,794,000$ bytes. </li>
+<li>Rank 12 approximation requires $12 \times (2691+598) \times 8 = 430,560$ bytes.</li>
 </ul>
 <p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/3/image_7.img.jpg/1490211663024.jpg" width="150" align="center"/></p>
 <p><img src="https://www.mathworks.com/content/mathworks/www/en/company/newsletters/articles/professor-svd/_jcr_content/mainParsys/columns/2/image_6.img.jpg/1490211662986.jpg" width="150" align="center"/></p>
@@ -14018,7 +14017,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 <div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">Random</span><span class="p">,</span> <span class="n">LinearAlgebra</span>
 
 <span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -14082,7 +14081,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># requesting eigenvalues only is cheaper</span>
-<span class="nd">@benchmark</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nd">@benchmark</span> <span class="n">eigvals</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14105,10 +14104,10 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
   memory estimate:  7.99 MiB
   allocs estimate:  12
   --------------
-  minimum time:     52.712 ms (0.00% GC)
-  median time:      54.303 ms (0.00% GC)
-  mean time:        56.825 ms (1.72% GC)
-  maximum time:     94.771 ms (41.78% GC)
+  minimum time:     51.468 ms (0.00% GC)
+  median time:      53.455 ms (0.00% GC)
+  mean time:        56.937 ms (1.71% GC)
+  maximum time:     90.630 ms (42.63% GC)
   --------------
   samples:          88
   evals/sample:     1</pre>
@@ -14126,7 +14125,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># requesting eigenvectors requires extra work</span>
-<span class="nd">@benchmark</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nd">@benchmark</span> <span class="n">eigen</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14149,12 +14148,55 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
   memory estimate:  23.25 MiB
   allocs estimate:  15
   --------------
-  minimum time:     207.024 ms (0.00% GC)
-  median time:      222.048 ms (0.82% GC)
-  mean time:        224.806 ms (2.51% GC)
-  maximum time:     258.967 ms (18.40% GC)
+  minimum time:     205.445 ms (0.89% GC)
+  median time:      209.609 ms (0.87% GC)
+  mean time:        216.630 ms (2.57% GC)
+  maximum time:     254.303 ms (16.41% GC)
   --------------
-  samples:          23
+  samples:          24
+  evals/sample:     1</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">eigvecs</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>BenchmarkTools.Trial: 
+  memory estimate:  23.25 MiB
+  allocs estimate:  14
+  --------------
+  minimum time:     204.879 ms (0.00% GC)
+  median time:      209.036 ms (0.88% GC)
+  mean time:        214.619 ms (2.56% GC)
+  maximum time:     253.332 ms (18.86% GC)
+  --------------
+  samples:          24
   evals/sample:     1</pre>
 </div>
 
@@ -14191,7 +14233,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
@@ -14210,7 +14252,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[17]:</div>
+    <div class="prompt output_prompt">Out[18]:</div>
 
 
 
@@ -14227,7 +14269,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Asvd</span><span class="o">.</span><span class="n">U</span>
@@ -14243,7 +14285,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -14265,7 +14307,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># Vt is cheaper to extract than V</span>
@@ -14282,7 +14324,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[19]:</div>
+    <div class="prompt output_prompt">Out[20]:</div>
 
 
 
@@ -14302,7 +14344,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Asvd</span><span class="o">.</span><span class="n">V</span>
@@ -14318,7 +14360,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[20]:</div>
+    <div class="prompt output_prompt">Out[21]:</div>
 
 
 
@@ -14338,7 +14380,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Asvd</span><span class="o">.</span><span class="n">S</span>
@@ -14354,7 +14396,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[21]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 
@@ -14382,7 +14424,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="n">Random</span><span class="o">.</span><span class="n">seed!</span><span class="p">(</span><span class="mi">280</span><span class="p">)</span>
@@ -14402,7 +14444,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[22]:</div>
+    <div class="prompt output_prompt">Out[23]:</div>
 
 
 
@@ -14412,12 +14454,12 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
   memory estimate:  4.11 MiB
   allocs estimate:  10
   --------------
-  minimum time:     41.801 ms (0.00% GC)
-  median time:      43.732 ms (0.00% GC)
-  mean time:        45.491 ms (1.34% GC)
-  maximum time:     83.421 ms (47.17% GC)
+  minimum time:     41.828 ms (0.00% GC)
+  median time:      42.782 ms (0.00% GC)
+  mean time:        43.549 ms (1.38% GC)
+  maximum time:     83.223 ms (47.96% GC)
   --------------
-  samples:          110
+  samples:          115
   evals/sample:     1</pre>
 </div>
 
@@ -14429,7 +14471,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
@@ -14445,7 +14487,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[23]:</div>
+    <div class="prompt output_prompt">Out[24]:</div>
 
 
 
@@ -14455,12 +14497,12 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
   memory estimate:  17.23 MiB
   allocs estimate:  13
   --------------
-  minimum time:     80.560 ms (0.00% GC)
-  median time:      84.102 ms (1.80% GC)
-  mean time:        87.474 ms (3.39% GC)
-  maximum time:     150.003 ms (34.51% GC)
+  minimum time:     80.442 ms (0.00% GC)
+  median time:      83.371 ms (1.96% GC)
+  mean time:        85.080 ms (3.41% GC)
+  maximum time:     133.522 ms (36.34% GC)
   --------------
-  samples:          58
+  samples:          59
   evals/sample:     1</pre>
 </div>
 
@@ -14484,9 +14526,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </li>
 <li><p>Both methods are also adapted to obtain top singular values/vectors of large sparse or structured matrices.</p>
 </li>
-<li><p>We will give an overview of these methods together with the conjugate gradient method for solving large linear system.</p>
-</li>
-<li><p><code>eigs</code> and <code>svds</code> in Julia <a href="https://github.com/JuliaLinearAlgebra/Arpack.jl">Arpack.jl package</a> and Matlab are wrappers of the ARPACK package, which implements Lanczos and Arnoldi methods.</p>
+<li><p><code>eigs</code> and <code>svds</code> in Julia <a href="https://github.com/JuliaLinearAlgebra/Arpack.jl">Arpack.jl</a> package and Matlab are wrappers of the ARPACK package, which implements Lanczos and Arnoldi methods.</p>
 </li>
 </ul>
 
@@ -14495,7 +14535,7 @@ eigmin(A::<b>Union{Hermitian{#s623,#s622}, Hermitian{Complex{#s623},#s622}, Symm
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="p">;</span><span class="n">julia</span> <span class="o">-</span><span class="nb">e</span> <span class="err">&#39;</span><span class="k">using</span> <span class="n">MatrixDepot</span><span class="p">;</span> <span class="n">Base</span><span class="o">.</span><span class="n">Filesystem</span><span class="o">.</span><span class="n">rm</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">pathof</span><span class="p">(</span><span class="n">MatrixDepot</span><span class="p">))</span> <span class="o">*</span> <span class="s">&quot;/../data/db.data&quot;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">true</span><span class="p">)</span><span class="o">&#39;</span>
@@ -14529,7 +14569,7 @@ populating internal database...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">MatrixDepot</span><span class="p">,</span> <span class="n">SparseArrays</span>
@@ -14572,7 +14612,7 @@ typeof(Afull) = Array{Float64,2}
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[26]:</div>
 
 
 
@@ -14589,7 +14629,7 @@ typeof(Afull) = Array{Float64,2}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">UnicodePlots</span>
@@ -14606,7 +14646,7 @@ typeof(Afull) = Array{Float64,2}
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[27]:</div>
 
 
 
@@ -14648,7 +14688,7 @@ typeof(Afull) = Array{Float64,2}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="c"># top 5 eigenvalues by LAPACK (QR algorithm)</span>
@@ -14670,14 +14710,14 @@ typeof(Afull) = Array{Float64,2}
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> 33.618230 seconds (15.99 k allocations: 495.840 MiB, 0.05% gc time)
+<pre> 40.262428 seconds (15.99 k allocations: 495.840 MiB, 0.04% gc time)
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[27]:</div>
+    <div class="prompt output_prompt">Out[28]:</div>
 
 
 
@@ -14699,7 +14739,7 @@ typeof(Afull) = Array{Float64,2}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Arpack</span>
@@ -14721,14 +14761,14 @@ typeof(Afull) = Array{Float64,2}
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  1.607633 seconds (6.15 M allocations: 299.585 MiB, 6.76% gc time)
+<pre>  1.674473 seconds (6.15 M allocations: 299.667 MiB, 6.51% gc time)
 </pre>
 </div>
 </div>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[28]:</div>
+    <div class="prompt output_prompt">Out[29]:</div>
 
 
 
@@ -14745,10 +14785,10 @@ typeof(Afull) = Array{Float64,2}
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">eigs</span><span class="p">(</span><span class="n">A</span><span class="p">;</span> <span class="n">nev</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ritzvec</span><span class="o">=</span><span class="kc">false</span><span class="p">,</span> <span class="n">which</span><span class="o">=:</span><span class="n">LM</span><span class="p">)</span>
+<div class=" highlight hl-julia"><pre><span></span><span class="nd">@benchmark</span> <span class="n">eigs</span><span class="p">(</span><span class="o">$</span><span class="n">A</span><span class="p">;</span> <span class="n">nev</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ritzvec</span><span class="o">=</span><span class="kc">false</span><span class="p">,</span> <span class="n">which</span><span class="o">=:</span><span class="n">LM</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14761,7 +14801,7 @@ typeof(Afull) = Array{Float64,2}
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[29]:</div>
+    <div class="prompt output_prompt">Out[30]:</div>
 
 
 
@@ -14769,14 +14809,14 @@ typeof(Afull) = Array{Float64,2}
 <div class="output_text output_subarea output_execute_result">
 <pre>BenchmarkTools.Trial: 
   memory estimate:  1.55 MiB
-  allocs estimate:  230
+  allocs estimate:  229
   --------------
-  minimum time:     20.606 ms (0.00% GC)
-  median time:      22.497 ms (0.00% GC)
-  mean time:        23.360 ms (0.63% GC)
-  maximum time:     32.294 ms (0.00% GC)
+  minimum time:     20.790 ms (0.00% GC)
+  median time:      21.838 ms (0.00% GC)
+  mean time:        22.499 ms (0.60% GC)
+  maximum time:     28.661 ms (0.00% GC)
   --------------
-  samples:          214
+  samples:          223
   evals/sample:     1</pre>
 </div>
 
