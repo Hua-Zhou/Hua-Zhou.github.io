@@ -13192,7 +13192,7 @@ Show that, regardless the shape of $\mathbf{X}$, there is always a unique global
 \end{eqnarray*}
 where $\mathbf{y}_{-k}$ and $\mathbf{X}_{-k}$ are the data with the $k$-th observation taken out. The optimal $\lambda$ can to chosen to minimize the cross-validation square error
 \begin{eqnarray*}
-    C(\lambda) = \frac 1n \sum_{k=1}^n [y_k - \mathbf{x}_k^T \widehat{\beta}(\lambda)]^2.
+    C(\lambda) = \frac 1n \sum_{k=1}^n [y_k - \mathbf{x}_k^T \widehat{\beta}_k(\lambda)]^2.
 \end{eqnarray*}
 However computing $n$ ridge solution paths $\widehat{\beta}_k(\lambda)$ is expensive. Show that, using SVD $\mathbf{X}=\mathbf{U} \Sigma \mathbf{V}^T$, 
 \begin{eqnarray*}
