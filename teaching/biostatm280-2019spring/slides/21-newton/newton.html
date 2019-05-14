@@ -13197,20 +13197,89 @@ $$
 $$
 We call this <strong>naive Newton's method</strong>.</p>
 </li>
-<li><p><strong>Stability issue</strong>: naive Newton's iterate is <strong>not</strong> guaranteed to be an ascent algorithm. It's equally happy to head uphill or downhill. Remedies:</p>
+<li><p><strong>Stability issue</strong>: naive Newton's iterate is <strong>not</strong> guaranteed to be an ascent algorithm. It's equally happy to head uphill or downhill. Following example shows that the Newton iterate converges to a local maximum, converges to a local minimum, or diverges depending on starting points.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-julia"><pre><span></span><span class="k">using</span> <span class="n">Plots</span><span class="p">;</span> <span class="n">gr</span><span class="p">()</span>
+<span class="k">using</span> <span class="n">LaTeXStrings</span><span class="p">,</span> <span class="n">ForwardDiff</span>
+
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">ForwardDiff</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c"># gradient</span>
+<span class="n">d2f</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">ForwardDiff</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c"># hessian</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="c"># start point: 2.0 (local maximum), 2.75 (diverge), 4.0 (local minimum)</span>
+<span class="n">titletext</span> <span class="o">=</span> <span class="s">&quot;Starting point: </span><span class="si">$x</span><span class="s">&quot;</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="nd">@animate</span> <span class="k">for</span> <span class="n">iter</span> <span class="kp">in</span> <span class="mi">0</span><span class="o">:</span><span class="mi">10</span>
+    <span class="n">iter</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="kd">global</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">d2f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">\</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Plots</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="nb">π</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="nb">π</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">),</span> <span class="n">legend</span><span class="o">=</span><span class="nb">nothing</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">titletext</span><span class="p">)</span>
+    <span class="n">Plots</span><span class="o">.</span><span class="n">plot!</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)],</span> <span class="n">shape</span><span class="o">=:</span><span class="n">circle</span><span class="p">)</span>
+    <span class="n">Plots</span><span class="o">.</span><span class="n">annotate!</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">text</span><span class="p">(</span><span class="n">latexstring</span><span class="p">(</span><span class="s">&quot;x^{(</span><span class="si">$iter</span><span class="s">)}&quot;</span><span class="p">),</span> <span class="o">:</span><span class="n">right</span><span class="p">))</span>
+<span class="k">end</span>
+<span class="n">gif</span><span class="p">(</span><span class="n">anim</span><span class="p">,</span> <span class="s">&quot;./tmp.gif&quot;</span><span class="p">,</span> <span class="n">fps</span> <span class="o">=</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>┌ Info: Saved animation to 
+│   fn = /Users/huazhou/Documents/github.com/Hua-Zhou.github.io/teaching/biostatm280-2019spring/slides/21-newton/tmp.gif
+└ @ Plots /Users/huazhou/.julia/packages/Plots/4OMIA/src/animation.jl:90
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="./newton_demo_1.gif" alt="">
+<img src="./newton_demo_2.gif" alt="">
+<img src="./newton_demo_3.gif" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p>Remedies for the instability issue:</p>
 <ol>
 <li>approximate $-d^2L(\theta^{(t)})$ by a positive definite $\mathbf{A}$ (if it's not), <strong>and</strong> </li>
-<li>line search (backtracking).<br>
-Why insist on a <em>positive definite</em> approximation of Hessian? By first-order Taylor expansion,
+<li>line search (backtracking).   </li>
+</ol>
+</li>
+<li><p>Why insist on a <em>positive definite</em> approximation of Hessian? By first-order Taylor expansion,
 $$
 \begin{eqnarray*}
-&amp; &amp; L(\theta^{(t)} + s \Delta \theta^{(t)}) - L(\theta^{(t)}) \\
-&amp;=&amp; dL(\theta^{(t)}) s \Delta \theta^{(t)} + o(s) \\
-&amp;=&amp; s \cdot dL(\theta^{(t)}) [\mathbf{A}^{(t)}]^{-1} \nabla L(\theta^{(t)}) + o(s).
+  &amp; &amp; L(\theta^{(t)} + s \Delta \theta^{(t)}) - L(\theta^{(t)}) \\
+  &amp;=&amp; dL(\theta^{(t)}) s \Delta \theta^{(t)} + o(s) \\
+  &amp;=&amp; s \cdot dL(\theta^{(t)}) [\mathbf{A}^{(t)}]^{-1} \nabla L(\theta^{(t)}) + o(s).
 \end{eqnarray*}
 $$
-For $s$ sufficiently small, right hand side is strictly positive when $\mathbf{A}^{(t)}$ is positive definite.</li>
-</ol>
+For $s$ sufficiently small, right hand side is strictly positive when $\mathbf{A}^{(t)}$ is positive definite.</p>
 </li>
 <li><p>In summary, a <strong>practical Newton-type algorithm</strong> iterates according to
 $$
@@ -13243,12 +13312,12 @@ only needs to be calculated once. Cost of line search mainly lies in objective f
 <h2 id="Fisher's-scoring-method">Fisher's scoring method<a class="anchor-link" href="#Fisher's-scoring-method">&#182;</a></h2><ul>
 <li><p><strong>Fisher's scoring method</strong>: replace $-d^2L(\theta)$ by the expected Fisher information matrix
 $$
-  \mathbf{I}(\theta) = \mathbf{E}[-d^2L(\theta)] = \mathbf{E}[\nabla L(\theta) dL(\theta)] \succeq \mathbf{0}_{p \times p},
+  \mathbf{FIM}(\theta) = \mathbf{E}[-d^2L(\theta)] = \mathbf{E}[\nabla L(\theta) dL(\theta)] \succeq \mathbf{0}_{p \times p},
 $$
 which is psd under exchangeability of expectation and differentiation.</p>
 <p>Therefore the Fisher's scoring algorithm iterates according to
 $$
-  \boxed{ \theta^{(t+1)} = \theta^{(t)} + s [\mathbf{I}(\theta^{(t)})]^{-1} \nabla L(\theta^{(t)})}.
+  \boxed{ \theta^{(t+1)} = \theta^{(t)} + s [\mathbf{FIM}(\theta^{(t)})]^{-1} \nabla L(\theta^{(t)})}.
 $$</p>
 </li>
 </ul>
@@ -13429,19 +13498,19 @@ $$
 \begin{eqnarray*}
   \nabla f(\beta) &amp;=&amp; - \sum_{i=1}^n [y_i - \mu_i(\beta)] \nabla \mu_i(\beta) \\
   d^2 f(\beta) &amp;=&amp; \sum_{i=1}^n \nabla \mu_i(\beta) d \mu_i(\beta) - \sum_{i=1}^n [y_i - \mu_i(\beta)] d^2 \mu_i(\beta) \\
-  \mathbf{I}(\beta) &amp;=&amp; \sum_{i=1}^n \nabla \mu_i(\beta) d \mu_i(\beta) = \mathbf{J}(\beta)^T \mathbf{J}(\beta),
+  \mathbf{FIM}(\beta) &amp;=&amp; \sum_{i=1}^n \nabla \mu_i(\beta) d \mu_i(\beta) = \mathbf{J}(\beta)^T \mathbf{J}(\beta),
 \end{eqnarray*}
 $$
 where $\mathbf{J}(\beta)^T = [\nabla \mu_1(\beta), \ldots, \nabla \mu_n(\beta)] \in \mathbb{R}^{p \times n}$.</p>
 </li>
 <li><p><strong>Gauss-Newton</strong> (= "Fisher's scoring algorithm") uses $\mathbf{I}(\beta)$, which is always psd.
 $$
-  \boxed{ \beta^{(t+1)} = \beta^{(t)} + s [\mathbf{I} (\beta^{(t)})]^{-1} \nabla L(\beta^{(t)}) }
+  \boxed{ \beta^{(t+1)} = \beta^{(t)} + s [\mathbf{FIM} (\beta^{(t)})]^{-1} \nabla L(\beta^{(t)}) }
 $$</p>
 </li>
 <li><p><strong>Levenberg-Marquardt</strong> method, aka <strong>damped least squares algorithm (DLS)</strong>, adds a ridge term to the approximate Hessian
 $$
-  \boxed{ \beta^{(t+1)} = \beta^{(t)} + s [\mathbf{I} (\beta^{(t)}) + \tau \mathbf{I}_p]^{-1} \nabla L(\beta^{(t)}) }
+  \boxed{ \beta^{(t+1)} = \beta^{(t)} + s [\mathbf{FIM} (\beta^{(t)}) + \tau \mathbf{I}_p]^{-1} \nabla L(\beta^{(t)}) }
 $$
 bridging between Gauss-Newton and steepest descent.</p>
 </li>
