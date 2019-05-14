@@ -13279,7 +13279,7 @@ $$
   &amp;=&amp; s \cdot dL(\theta^{(t)}) [\mathbf{A}^{(t)}]^{-1} \nabla L(\theta^{(t)}) + o(s).
 \end{eqnarray*}
 $$
-For $s$ sufficiently small, right hand side is strictly positive when $\mathbf{A}^{(t)}$ is positive definite.</p>
+For $s$ sufficiently small, right hand side is strictly positive when $\mathbf{A}^{(t)}$ is positive definite. The quantity $\{dL(\theta^{(t)}) [\mathbf{A}^{(t)}]^{-1} \nabla L(\theta^{(t)})\}^{1/2}$ is termed the <strong>Newton decrement</strong></p>
 </li>
 <li><p>In summary, a <strong>practical Newton-type algorithm</strong> iterates according to
 $$
@@ -13345,8 +13345,8 @@ $$
 where
 $$
 \begin{eqnarray*}
-  \mathbf{E} (y_i) = p_i &amp;=&amp; \frac{e^{\mathbf{x}_i^T \beta}}{1+ e^{\mathbf{x}_i^T \beta}} \quad \text{(mean function, inverse link function)} \\
-  \mathbf{x}_i^T \beta &amp;=&amp; \ln \left( \frac{p_i}{1-p_i} \right) \quad \text{(logit link function)}.
+  \mathbf{E} (y_i) = p_i &amp;=&amp; \frac{e^{\eta_i}}{1+ e^{\eta_i}} \quad \text{(mean function, inverse link function)} \\
+  \eta_i = \mathbf{x}_i^T \beta &amp;=&amp; \ln \left( \frac{p_i}{1-p_i} \right) \quad \text{(logit link function)}.
 \end{eqnarray*}
 $$</p>
 </li>
@@ -13361,7 +13361,7 @@ $$
     &amp;=&amp; \sum_{i=1}^n (y_i - p_i) \mathbf{x}_i = \mathbf{X}^T (\mathbf{y} - \mathbf{p})  \\
     - d^2L_n(\beta) &amp;=&amp; \sum_{i=1}^n p_i(1-p_i) \mathbf{x}_i \mathbf{x}_i^T = \mathbf{X}^T \mathbf{W} \mathbf{X}, \quad
     \text{where } \mathbf{W} &amp;=&amp; \text{diag}(w_1,\ldots,w_n), w_i = p_i (1-p_i) \\
-    \mathbf{I}_n(\beta) &amp;=&amp; \mathbf{E} [- d^2L_n(\beta)] = - d^2L_n(\beta).
+    \mathbf{FIM}_n(\beta) &amp;=&amp; \mathbf{E} [- d^2L_n(\beta)] = - d^2L_n(\beta).
 \end{eqnarray*}
 $$<ul>
 <li>Newton's method == Fisher's scoring iteration: 
@@ -13436,18 +13436,18 @@ $$
 \begin{eqnarray*}
     \nabla L_n(\beta) &amp;=&amp; \sum_{i=1}^n \frac{(y_i-\mu_i) \mu_i'(\eta_i)}{\sigma_i^2} \mathbf{x}_i \\
     - d^2 L_n(\beta) &amp;=&amp; \sum_{i=1}^n \frac{[\mu_i'(\eta_i)]^2}{\sigma_i^2} \mathbf{x}_i \mathbf{x}_i^T - \sum_{i=1}^n \frac{(y_i - \mu_i) \theta''(\eta_i)}{\sigma_i^2} \mathbf{x}_i \mathbf{x}_i^T    \\
-    \mathbf{I}_n(\beta) &amp;=&amp; \mathbf{E} [- d^2 L_n(\beta)] = \sum_{i=1}^n \frac{[\mu_i'(\eta_i)]^2}{\sigma_i^2} \mathbf{x}_i \mathbf{x}_i^T = \mathbf{X}^T \mathbf{W} \mathbf{X}.
+    \mathbf{FIM}_n(\beta) &amp;=&amp; \mathbf{E} [- d^2 L_n(\beta)] = \sum_{i=1}^n \frac{[\mu_i'(\eta_i)]^2}{\sigma_i^2} \mathbf{x}_i \mathbf{x}_i^T = \mathbf{X}^T \mathbf{W} \mathbf{X}.
 \end{eqnarray*}    
 $$<ul>
 <li><p>Fisher scoring method
 $$
-  \beta^{(t+1)} = \beta^{(t)} + s [\mathbf{I}(\beta^{(t)})]^{-1} \nabla L_n(\beta^{(t)})
+  \beta^{(t+1)} = \beta^{(t)} + s [\mathbf{FIM}(\beta^{(t)})]^{-1} \nabla L_n(\beta^{(t)})
 $$
 IRWLS with weights $w_i = [\mu_i(\eta_i)]^2/\sigma_i^2$ and some working responses $z_i$.</p>
 </li>
 <li><p>For <strong>canonical link</strong>, $\theta = \eta$, the second term of Hessian vanishes and Hessian coincides with Fisher information matrix. Convex problem 😄
 $$
-  \text{Fisher's scoring = Newton's method}.
+  \text{Fisher's scoring == Newton's method}.
 $$</p>
 </li>
 <li><p>Non-canonical link, non-convex problem 😞
