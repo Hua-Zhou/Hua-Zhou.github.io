@@ -13131,7 +13131,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Q1(1)">Q1(1)<a class="anchor-link" href="#Q1(1)">&#182;</a></h3><p>Read in the <a href="http://hua-zhou.github.io/teaching/biostatm280-2019spring/hw/hw4/longley.txt"><code>longley.txt</code></a> with the response (<code>number of people employed</code>) in the first column and six explanatory variables in the other columns (<code>GNP implicit price deflator</code>, <code>Gross National Product</code>, <code>number of unemployed</code>, <code>number of people in the armed forces</code>, <code>noninstitutionalized population $\ge 14$ years of age</code>, <code>year</code>). Include an intercept in your model.</p>
+<h3 id="Q1(1)">Q1(1)<a class="anchor-link" href="#Q1(1)">&#182;</a></h3><p>Read in the <a href="http://hua-zhou.github.io/teaching/biostatm280-2019spring/hw/hw4/longley.txt"><code>longley.txt</code></a> with the response (<code>number of people employed</code>) in the first column and six explanatory variables in the other columns (<code>GNP implicit price deflator</code>, <code>Gross National Product</code>, <code>number of unemployed</code>, <code>number of people in the armed forces</code>, <code>noninstitutionalized population &gt;=14 years of age</code>, <code>year</code>). Include an intercept in your model.</p>
 
 </div>
 </div>
@@ -13196,7 +13196,7 @@ where $\mathbf{y}_{-k}$ and $\mathbf{X}_{-k}$ are the data with the $k$-th obser
 \end{eqnarray*}
 However computing $n$ ridge solution paths $\widehat{\beta}_k(\lambda)$ is expensive. Show that, using SVD $\mathbf{X}=\mathbf{U} \Sigma \mathbf{V}^T$, 
 \begin{eqnarray*}
-    C(\lambda) = \frac 1n \sum_{k=1}^n \left[ \frac{\tilde y_k - \sum_{j=1}^r u_{kj} \tilde y_j \left( \frac{\sigma_j^2}{\sigma_j^2 + \lambda} \right)}{1 - \sum_{j=1}^r u_{kj}^2 \left( \frac{\sigma_j^2}{\sigma_j^2 + \lambda} \right)} \right]^2,
+    C(\lambda) = \frac 1n \sum_{k=1}^n \left[ \frac{y_k - \sum_{j=1}^r u_{kj} \tilde y_j \left( \frac{\sigma_j^2}{\sigma_j^2 + \lambda} \right)}{1 - \sum_{j=1}^r u_{kj}^2 \left( \frac{\sigma_j^2}{\sigma_j^2 + \lambda} \right)} \right]^2,
 \end{eqnarray*}
 where $\tilde{\mathbf{y}} = \mathbf{U}^T \mathbf{y}$.</p>
 
