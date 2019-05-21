@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Convexity,-Duality,-and-Optimality-Conditions-(BV-Chapter-5)">Convexity, Duality, and Optimality Conditions (BV Chapter 5)<a class="anchor-link" href="#Convexity,-Duality,-and-Optimality-Conditions-(BV-Chapter-5)">&#182;</a></h1><h2 id="Convexity">Convexity<a class="anchor-link" href="#Convexity">&#182;</a></h2><p><img src="./convex_plot.png" width="500" align="center"/></p>
+<h1 id="Convexity,-Duality,-and-Optimality-Conditions-(KL-Chapter-11,-BV-Chapter-5)">Convexity, Duality, and Optimality Conditions (KL Chapter 11, BV Chapter 5)<a class="anchor-link" href="#Convexity,-Duality,-and-Optimality-Conditions-(KL-Chapter-11,-BV-Chapter-5)">&#182;</a></h1><h2 id="Convexity">Convexity<a class="anchor-link" href="#Convexity">&#182;</a></h2><p><img src="./convex_plot.png" width="400" align="center"/></p>
 <ul>
 <li><p>A function $f: \mathbb{R}^n \mapsto \mathbb{R}$ is <strong>convex</strong> if</p>
 <ol>
@@ -13128,15 +13128,15 @@ div#notebook {
 </li>
 <li><p><strong>Supporting hyperplane inequality</strong>. A differentiable function $f$ is convex if and only if 
 $$
-f(\mathbf{x}) \ge f(\mathbf{y}) + \langle \nabla f(\mathbf{y}), \mathbf{x}-\mathbf{y} \rangle
+f(\mathbf{x}) \ge f(\mathbf{y}) + \nabla f(\mathbf{y})^T (\mathbf{x}-\mathbf{y})
 $$ 
 for all $\mathbf{x}, \mathbf{y} \in \text{dom} f$.</p>
 </li>
-<li><p>Second-order condition for convexity. A twice differentiable function $f$ is convex if and only if $\nabla^2f(\mathbf{x})$ is psd for all $\mathbf{x} \in \text{dom} f$. It is strictly convex if and only if $\nabla^2f(\mathbf{x})$ is pd for all $\mathbf{x} \in \text{dom} f$.</p>
+<li><p><strong>Second-order condition for convexity</strong>. A twice differentiable function $f$ is convex if and only if $\nabla^2f(\mathbf{x})$ is psd for all $\mathbf{x} \in \text{dom} f$. It is strictly convex if and only if $\nabla^2f(\mathbf{x})$ is pd for all $\mathbf{x} \in \text{dom} f$.</p>
 </li>
 <li><p>Convexity and global optima. Suppose $f$ is a convex function.</p>
 <ol>
-<li>Any stationary point $\mathbf{y}$, i.e., $\nabla f(\mathbf{y})=\mathbf{0}$, is a global minimum. (Proof: By supporting hyperplane inequality, $f(\mathbf{x}) \ge f(\mathbf{y}) + \langle \nabla f(\mathbf{y}), \mathbf{x} - \mathbf{y} \rangle = f(\mathbf{y})$ for all $\mathbf{x} \in \text{dom} f$.) </li>
+<li>Any stationary point $\mathbf{y}$, i.e., $\nabla f(\mathbf{y})=\mathbf{0}$, is a global minimum. (Proof: By supporting hyperplane inequality, $f(\mathbf{x}) \ge f(\mathbf{y}) + \nabla f(\mathbf{y})^T (\mathbf{x} - \mathbf{y}) = f(\mathbf{y})$ for all $\mathbf{x} \in \text{dom} f$.) </li>
 <li>Any local minimum is a global minimum.  </li>
 <li>The set of (global) minima is convex. </li>
 <li>If $f$ is strictly convex, then the global minimum, if exists, is unique.</li>
@@ -13156,7 +13156,7 @@ $$
   \mathbf{E}_f (\log f) \ge \mathbf{E}_f (\log g),
 $$
 with equality if and only if $f = g$ almost everywhere on $\mu$.</p>
-<p>Proof: Apply Jensen's inequality to the convex function $- \ln(t)$ and random variable $W=g(x)/f(x)$.</p>
+<p>Proof: Apply Jensen's inequality to the convex function $- \ln(t)$ and random variable $W=g(X)/f(X)$ where $X \sim f$.</p>
 <p>Important applications of information inequality: M-estimation, EM algorithm.</p>
 </li>
 </ul>
@@ -13179,7 +13179,7 @@ with equality if and only if $f = g$ almost everywhere on $\mu$.</p>
 \begin{eqnarray*}
   L(\mathbf{x}, \lambda, \nu) = f_0(\mathbf{x}) + \sum_{i=1}^m \lambda_i f_i(\mathbf{x}) + \sum_{i=1}^p \nu_i h_i(\mathbf{x}).
 \end{eqnarray*}
-The vectors $\lambda = (\lambda_1,\ldots, \lambda_m)^T$ and $\nu = (\nu_1,\ldots,\nu_p)^T$ are called the <strong>dual variables</strong> or <strong>Lagrange multiplier vectors</strong>.</p>
+The vectors $\lambda = (\lambda_1,\ldots, \lambda_m)^T$ and $\nu = (\nu_1,\ldots,\nu_p)^T$ are called the <strong>Lagrange multiplier vectors</strong> or <strong>dual variables</strong>.</p>
 </li>
 <li><p>The <strong>Lagrange dual function</strong> is the minimum value of the Langrangian over $\mathbf{x}$
 \begin{eqnarray*}
@@ -13224,7 +13224,7 @@ with $f_0,\ldots,f_m$ convex, we usually (but not always) have the <strong>stron
 \begin{eqnarray*}
   f_i(\mathbf{x}) &lt; 0, \quad i = 1,\ldots,m, \quad \mathbf{A} \mathbf{x} = \mathbf{b}.
 \end{eqnarray*}
-Such as point is also called <strong>strictly feasible</strong>.</p>
+Such a point is also called <strong>strictly feasible</strong>.</p>
 </li>
 </ul>
 
@@ -13234,8 +13234,9 @@ Such as point is also called <strong>strictly feasible</strong>.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="KKT-optimality-conditions">KKT optimality conditions<a class="anchor-link" href="#KKT-optimality-conditions">&#182;</a></h2><p>Read KL Section 11.4 for more details. KKT is "one of the great triumphs of
-20th century applied mathematics".</p>
+<h2 id="KKT-optimality-conditions">KKT optimality conditions<a class="anchor-link" href="#KKT-optimality-conditions">&#182;</a></h2><p>KKT is "one of the great triumphs of 20th century applied mathematics" (KL Chapter 11).</p>
+<p><img src="./KKT_KuhnTucker.png" width="400" align="center"/></p>
+<p><img src="./KKT_Karush.png" width="400" align="center"/></p>
 <h3 id="Nonconvex-problem">Nonconvex problem<a class="anchor-link" href="#Nonconvex-problem">&#182;</a></h3><ul>
 <li><p>Assume $f_0,\ldots,f_m,h_1,\ldots,h_p$ are differentiable. Let $\mathbf{x}^\star$ and $(\lambda^\star, \nu^\star)$ be any primal and dual optimal points with zero duality gap, i.e., strong duality holds.</p>
 </li>
