@@ -13116,6 +13116,14 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Newton's-Method-for-Constrained-Optimization-(BV-Chapters-10,-11)" data-toc-modified-id="Newton's-Method-for-Constrained-Optimization-(BV-Chapters-10,-11)-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Newton's Method for Constrained Optimization (BV Chapters 10, 11)</a></div><div class="lev2 toc-item"><a href="#Equality-constraint" data-toc-modified-id="Equality-constraint-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Equality constraint</a></div><div class="lev3 toc-item"><a href="#KKT-condition" data-toc-modified-id="KKT-condition-111"><span class="toc-item-num">1.1.1&nbsp;&nbsp;</span>KKT condition</a></div><div class="lev3 toc-item"><a href="#Newton-algorithm" data-toc-modified-id="Newton-algorithm-112"><span class="toc-item-num">1.1.2&nbsp;&nbsp;</span>Newton algorithm</a></div><div class="lev2 toc-item"><a href="#Inequality-constraint---interior-point-method" data-toc-modified-id="Inequality-constraint---interior-point-method-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>Inequality constraint - interior point method</a></div><div class="lev3 toc-item"><a href="#Barrier-method" data-toc-modified-id="Barrier-method-121"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>Barrier method</a></div><div class="lev3 toc-item"><a href="#Primal-dual-interior-point-method" data-toc-modified-id="Primal-dual-interior-point-method-122"><span class="toc-item-num">1.2.2&nbsp;&nbsp;</span>Primal-dual interior-point method</a></div></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Newton's-Method-for-Constrained-Optimization-(BV-Chapters-10,-11)">Newton's Method for Constrained Optimization (BV Chapters 10, 11)<a class="anchor-link" href="#Newton's-Method-for-Constrained-Optimization-(BV-Chapters-10,-11)">&#182;</a></h1>
 </div>
 </div>
@@ -13147,7 +13155,7 @@ where $\nu$ is the vector of Langrange multipliers.</p>
 </li>
 </ul>
 <h3 id="Newton-algorithm">Newton algorithm<a class="anchor-link" href="#Newton-algorithm">&#182;</a></h3><ul>
-<li><p>Denote <strong>Newton direction</strong> by $\Delta \mathbf{x}$. By second order Taylor expansion
+<li><p>Let $\mathbf{x}$ be a feasible point, i.e., $\mathbf{A} \mathbf{x} = \mathbf{b}$, and denote <strong>Newton direction</strong> by $\Delta \mathbf{x}$. By second order Taylor expansion
 \begin{eqnarray*}
   f(\mathbf{x} + \Delta \mathbf{x}) \approx f(\mathbf{x}) + \nabla f(\mathbf{x})^T \Delta \mathbf{x} + \frac 12 \Delta \mathbf{x}^T \nabla^2 f(\mathbf{x}) \Delta \mathbf{x}.
 \end{eqnarray*}
@@ -13165,8 +13173,10 @@ To maximize the quadratic approximation subject to constraint $\mathbf{A}(\mathb
 \mathbf{0}
 \end{pmatrix}
 \end{eqnarray*}
-for the Newton direction. When $\nabla^2 f(\mathbf{x})$ is pd and $\mathbf{A}$ has full row rank, the KKT matrix is nonsingular therefore the Newton direction is uniquely determined.</li>
+for the Newton direction. </li>
 </ul>
+</li>
+<li><p>When $\nabla^2 f(\mathbf{x})$ is pd and $\mathbf{A}$ has full row rank, the KKT matrix is nonsingular therefore the Newton direction is uniquely determined.</p>
 </li>
 <li><p>Line search is similar to the unconstrained case.</p>
 </li>
@@ -13233,7 +13243,7 @@ where $f_0, \ldots, f_m: \mathbb{R}^n \mapsto \mathbb{R}$ are convex and and twi
 \begin{eqnarray*}
   \mathbf{A} \mathbf{x}^\star = \mathbf{b}, f_i(\mathbf{x}^\star) &amp;\le&amp; 0, i = 1,\ldots,m \quad (\text{primal feasibility}) \\
   \lambda^\star &amp;\succeq&amp; \mathbf{0} \\
-  \nabla f_0(\mathbf{x}^\star) + \sum_{i=1}^m \lambda_i^\star \nabla f_i(\mathbf{x}^\star) + \mathbf{A}^T \nu^* &amp;=&amp; \mathbf{0} \quad \quad \quad \quad \quad \quad (\text{dual feasibility}) \\
+  \nabla f_0(\mathbf{x}^\star) + \sum_{i=1}^m \lambda_i^\star \nabla f_i(\mathbf{x}^\star) + \mathbf{A}^T \nu^\star &amp;=&amp; \mathbf{0} \quad \quad \quad \quad \quad \quad (\text{dual feasibility}) \\
   \lambda_i^\star f_i(\mathbf{x}^\star) &amp;=&amp; 0, \quad i = 1,\ldots,m.
 \end{eqnarray*}</p>
 </li>
@@ -13296,7 +13306,7 @@ by the barrier method.</li>
 <h3 id="Primal-dual-interior-point-method">Primal-dual interior-point method<a class="anchor-link" href="#Primal-dual-interior-point-method">&#182;</a></h3><ul>
 <li><p>Difference from barrier method: no double loop.</p>
 </li>
-<li><p>In the barrier method, it can be show that a point $\mathbf{x}$ is equal to $\mathbf{x}^\star(t)$ if and only if
+<li><p>In the barrier method, it can be show that a point $\mathbf{x}$ is equal to $\mathbf{x}^\star(t)$ if and only if<br>
 \begin{eqnarray*}
   \nabla f<em>0(\mathbf{x}) + \sum</em>{i=1}^m \lambda_i \nabla f_i(\mathbf{x}) + \mathbf{A}^T \nu &amp;=&amp; \mathbf{0} \</p>
 <ul>
@@ -13305,7 +13315,7 @@ by the barrier method.</li>
 \end{eqnarray*}</li>
 </ul>
 </li>
-<li><p>We define the KKT residual
+<li><p>We define the KKT residual<br>
 \begin{eqnarray*}
   r_t(\mathbf{x}, \lambda, \nu) = \begin{pmatrix}
   \nabla f_0(\mathbf{x}) + Df(\mathbf{x})^T \lambda + \mathbf{A}^T \nu \</p>
@@ -13332,7 +13342,7 @@ f_m(\mathbf{x})
 \end{eqnarray*}</li>
 </ul>
 </li>
-<li><p>Denote the current point and Newton step as
+<li><p>Denote the current point and Newton step as<br>
 \begin{eqnarray*}
   \mathbf{y} = (\mathbf{x}, \lambda, \nu), \quad \Delta \mathbf{y} = (\Delta \mathbf{x}, \Delta \lambda, \Delta \nu).
 \end{eqnarray*}
