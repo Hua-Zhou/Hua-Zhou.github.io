@@ -13123,6 +13123,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>We only consider convex optimization in this lecture.</p>
 <h2 id="Equality-constraint">Equality constraint<a class="anchor-link" href="#Equality-constraint">&#182;</a></h2><ul>
 <li>Consider equality constrained optimization
 \begin{eqnarray*}
@@ -13148,9 +13149,9 @@ where $\nu$ is the vector of Langrange multipliers.</p>
 <h3 id="Newton-algorithm">Newton algorithm<a class="anchor-link" href="#Newton-algorithm">&#182;</a></h3><ul>
 <li><p>Denote <strong>Newton direction</strong> by $\Delta \mathbf{x}$. By second order Taylor expansion
 \begin{eqnarray*}
-  f(\mathbf{x}^{(t)} + \Delta \mathbf{x}) \approx f(\mathbf{x}^{(t)}) + \nabla f(\mathbf{x}^{(t)})^T \Delta \mathbf{x} + \frac 12 \Delta \mathbf{x}^T \nabla^2 f(\mathbf{\theta}^{(t)}) \Delta \mathbf{x}.
+  f(\mathbf{x} + \Delta \mathbf{x}) \approx f(\mathbf{x}) + \nabla f(\mathbf{x})^T \Delta \mathbf{x} + \frac 12 \Delta \mathbf{x}^T \nabla^2 f(\mathbf{x}) \Delta \mathbf{x}.
 \end{eqnarray*}
-To maximize the quadratic approximation subject to constraint $\mathbf{A}(\mathbf{x}^{(t)} + \Delta \mathbf{x}) = \mathbf{b}$, we solve the KKT equation
+To maximize the quadratic approximation subject to constraint $\mathbf{A}(\mathbf{x} + \Delta \mathbf{x}) = \mathbf{b}$, we solve the KKT equation
 \begin{eqnarray*}
   \begin{pmatrix}
   \nabla^2 f(\mathbf{x}) &amp; \mathbf{A}^T \\
@@ -13178,11 +13179,7 @@ for the Newton direction. When $\nabla^2 f(\mathbf{x})$ is pd and $\mathbf{A}$ h
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p><strong>Infeasible Newton step</strong>. So far we assume we start with a feasible point. How to derive Newton step from an infeasible point $\mathbf{x}$? From the KKT condition and use the first-order approximation
-\begin{eqnarray*}
-  \nabla f(\mathbf{x} + \Delta \mathbf{x}) \approx \nabla f(\mathbf{x}) + \nabla^2 f(\mathbf{x}) \Delta \mathbf{x}
-\end{eqnarray*}
-for the gradient, we obtain
+<li><p><strong>Infeasible Newton step</strong>. So far we assume that we start with a feasible point. How to derive Newton step from an infeasible point $\mathbf{x}$? Again from the KKT condition,
 \begin{eqnarray*}
   \begin{pmatrix}
   \nabla^2 f(\mathbf{x}) &amp; \mathbf{A}^T \\
@@ -13203,7 +13200,8 @@ Writing the updated dual variable $\omega = \nu + \Delta \nu$, we have the equiv
   \end{pmatrix}.
 \end{eqnarray*}
 The righthand side is recognized as the primal and dual residuals. Therefore the infeasible Newton step is also interpreted as a <strong>primal-dual mtehod</strong>.</p>
-<p>It can be shown that the norm of the residual decreases along the Newton direction. Therefore line search is based on the norm of residual.</p>
+</li>
+<li><p>It can be shown that the norm of the residual decreases along the Newton direction. Therefore line search is based on the norm of residual.</p>
 </li>
 </ul>
 
@@ -13233,9 +13231,9 @@ where $f_0, \ldots, f_m: \mathbb{R}^n \mapsto \mathbb{R}$ are convex and and twi
 </li>
 <li><p>KKT condition:
 \begin{eqnarray*}
-  \mathbf{A} \mathbf{x}^\star = \mathbf{b}, f_i(\mathbf{x}^\star) &amp;\le&amp; 0, i = 1,\ldots,m \\
+  \mathbf{A} \mathbf{x}^\star = \mathbf{b}, f_i(\mathbf{x}^\star) &amp;\le&amp; 0, i = 1,\ldots,m \quad (\text{primal feasibility}) \\
   \lambda^\star &amp;\succeq&amp; \mathbf{0} \\
-  \nabla f_0(\mathbf{x}^\star) + \sum_{i=1}^m \lambda_i^\star \nabla f_i(\mathbf{x}^\star) + \mathbf{A}^T \nu^* &amp;=&amp; \mathbf{0} \\
+  \nabla f_0(\mathbf{x}^\star) + \sum_{i=1}^m \lambda_i^\star \nabla f_i(\mathbf{x}^\star) + \mathbf{A}^T \nu^* &amp;=&amp; \mathbf{0} \quad \quad \quad \quad \quad \quad (\text{dual feasibility}) \\
   \lambda_i^\star f_i(\mathbf{x}^\star) &amp;=&amp; 0, \quad i = 1,\ldots,m.
 \end{eqnarray*}</p>
 </li>
@@ -13268,8 +13266,9 @@ where $t&gt;0$ is a parameter tuning the approximation accuracy. As $t$ increase
   &amp;\text{minimize}&amp; t f_0(\mathbf{x}) - \sum_{i=1}^m \log(-f_i(\mathbf{x})) \\
   &amp;\text{subject to}&amp; \mathbf{A} \mathbf{x} = \mathbf{b},
 \end{eqnarray*}
-increasing the parameter $t$ at each step and starting each Newton minimization at the solution of the problem for the previous value of $t$.</p>
-<p>The function $\phi(\mathbf{x}) = - \sum_{i=1}^m \log (-f_i(\mathbf{x}))$ is called the <strong>logarithmic barrier</strong> or <strong>log barrier</strong> function.</p>
+increasing the parameter $t$ at each step and starting each Newton minimization at the solution for the previous value of $t$.</p>
+</li>
+<li><p>The function $\phi(\mathbf{x}) = - \sum_{i=1}^m \log (-f_i(\mathbf{x}))$ is called the <strong>logarithmic barrier</strong> or <strong>log barrier</strong> function.</p>
 </li>
 <li><p>Denote the solution at $t$ by $\mathbf{x}^\star(t)$. Using duality theory, it can be shown
 \begin{eqnarray*}
@@ -13279,11 +13278,11 @@ increasing the parameter $t$ at each step and starting each Newton minimization 
 </ul>
 <p><img src="./lp_centralpath.png" width="500" align="center"/></p>
 <ul>
-<li>Feasibility and phase I methods. Barrier method has to start from a strictly feasible point. We can find such a point by solving
+<li>Feasibility and phase I methods. Barrier method has to start from a <strong>strictly feasible point</strong>. We can find such a point by solving
 \begin{eqnarray*}
   &amp;\text{minimize}&amp; s \\
   &amp;\text{subject to}&amp; f_i(\mathbf{x}) \le s, \quad i = 1,\ldots,m \\
-  &amp; &amp; \mathbf{A} \mathbf{x} = \mathbf{b},
+  &amp; &amp; \mathbf{A} \mathbf{x} = \mathbf{b}
 \end{eqnarray*}
 by the barrier method.</li>
 </ul>
@@ -13295,7 +13294,7 @@ by the barrier method.</li>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Primal-dual-interior-point-method">Primal-dual interior-point method<a class="anchor-link" href="#Primal-dual-interior-point-method">&#182;</a></h3><ul>
-<li><p>In the barrier method, the modified KKT conditions at fixed $t$ is
+<li><p>In the barrier method, it can be show that a point $\mathbf{x}$ is equal to $\mathbf{x}^\star(t)$ if and only if
 \begin{eqnarray*}
   \nabla f<em>0(\mathbf{x}) + \sum</em>{i=1}^m \lambda_i \nabla f_i(\mathbf{x}) + \mathbf{A}^T \nu &amp;=&amp; \mathbf{0} \</p>
 <ul>
