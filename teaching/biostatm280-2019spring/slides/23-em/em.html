@@ -13274,28 +13274,29 @@ h(\mathbf{y}) = \sum_{j=1}^k \pi_j h_j(\mathbf{y} \mid \mu_j, \Omega_j), \quad \
 $$
 where
 $$
-  h_j(\mathbf{y} \mid \mu_j, \Omega_j) = \left( \frac{1}{2\pi} \right)^{d/2} |\det(\Omega_j)|^{-1/2} e^{- \frac 12 (\mathbf{y} - \mu_j)^T \Omega_j^{-1} (\mathbf{y} - \mu_j)}
+  h_j(\mathbf{y} \mid \mu_j, \Omega_j) = \left( \frac{1}{2\pi} \right)^{d/2} \det(\Omega_j)^{-1/2} e^{- \frac 12 (\mathbf{y} - \mu_j)^T \Omega_j^{-1} (\mathbf{y} - \mu_j)}
 $$ 
 are multivariate normals $N_d(\mu_j, \Omega_j)$.</p>
 </li>
-<li><p>Given data $\mathbf{y}_1,\ldots,\mathbf{y}_n$, want to estimate parameters
+<li><p>Given iid data points $\mathbf{y}_1,\ldots,\mathbf{y}_n$, want to estimate parameters
 $$
 \theta = (\pi_1, \ldots, \pi_k, \mu_1, \ldots, \mu_k, \Omega_1,\ldots,\Omega_k)
 $$
 subject to constraint $\pi_j \ge 0, \sum_{j=1}^d \pi_j = 1, \Omega_j \succeq \mathbf{0}$.</p>
 </li>
 <li><p>(Incomplete) data log-likelihood is 
-$$
-\ln g(\mathbf{y}_1,\ldots,\mathbf{y}_n|\theta) = \sum_{i=1}^n \ln h(\mathbf{y}_i) = \sum_{i=1}^n \ln \sum_{j=1}^k \pi_j h_j(\mathbf{y}_i \mid \mu_j, \Omega_j).
-$$</p>
+\begin{eqnarray*}
+  \ln g(\mathbf{y}_1,\ldots,\mathbf{y}_n|\theta) &amp;=&amp; \sum_{i=1}^n \ln h(\mathbf{y}_i) = \sum_{i=1}^n \ln \sum_{j=1}^k \pi_j h_j(\mathbf{y}_i \mid \mu_j, \Omega_j) \\
+  &amp;=&amp; \sum_{i=1}^n \ln \left[ \sum_{j=1}^k \pi_j \left( \frac{1}{2\pi} \right)^{d/2} \det(\Omega_j)^{-1/2} e^{- \frac 12 (\mathbf{y}_i - \mu_j)^T \Omega_j^{-1} (\mathbf{y}_i - \mu_j)} \right].
+\end{eqnarray*}</p>
 </li>
-<li><p>Let $z_{ij} = I \{\mathbf{y}_i$ comes from group $j \}$. Complete data likelihood is
+<li><p>Let $z_{ij} = I \{\mathbf{y}_i$ comes from group $j \}$ be the missing data. The complete data likelihood is
 $$
 \begin{eqnarray*}
   f(\mathbf{y},\mathbf{z} | \theta) = \prod_{i=1}^n \prod_{j=1}^k [\pi_j h_j(\mathbf{y}_i|\mu_j,\Omega_j)]^{z_{ij}}
 \end{eqnarray*}
 $$
-and thus complete log-likelihood is
+and thus the complete log-likelihood is
 $$
 \begin{eqnarray*}
   \ln f(\mathbf{y},\mathbf{z} | \theta) = \sum_{i=1}^n \sum_{j=1}^k z_{ij} [\ln \pi_j + \ln h_j(\mathbf{y}_i|\mu_j,\Omega_j)].
