@@ -13118,7 +13118,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="MM-Algorithm-(KL-Chapter-12)">MM Algorithm (KL Chapter 12)<a class="anchor-link" href="#MM-Algorithm-(KL-Chapter-12)">&#182;</a></h1><p><img src="https://people.healthsciences.ucla.edu/institution/photo?personnel%5Fid=45702" width="200" align="center"/></p>
 <p><img src="http://cdn3.bigcommerce.com/s-q8xt814/products/608/images/955/OT147large__19280.1468256169.380.500.jpg?c=2" width="200" align="center"/></p>
-<ul>
+<h2 id="MM-algorithm">MM algorithm<a class="anchor-link" href="#MM-algorithm">&#182;</a></h2><ul>
 <li>Recall our picture for understanding the ascent property of EM</li>
 </ul>
 <p><img src="./mm_illustration.pdf" width="300" align="center"/></p>
@@ -13222,6 +13222,49 @@ $$</li>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="MM-example:-t-distribution-revisited">MM example: t-distribution revisited<a class="anchor-link" href="#MM-example:-t-distribution-revisited">&#182;</a></h2><ul>
+<li><p>Recall that given iid data $\mathbf{w}_1, \ldots, \mathbf{w}_n$ from multivariate $t$-distribution $t_p(\mu,\Sigma,\nu)$, the log-likelihood is
+\begin{eqnarray*}
+  L(\mu, \Sigma, \nu) &amp;=&amp; - \frac{np}{2} \log (\pi \nu) + n \left[ \log \Gamma \left(\frac{\nu+p}{2}\right) - \log \Gamma \left(\frac{\nu}{2}\right) \right]  \\
+  &amp;&amp; - \frac n2 \log \det \Sigma + \frac n2 (\nu + p) \log \nu \\
+  &amp;&amp; - \frac{\nu + p}{2} \sum_{j=1}^n \log [\nu + \delta (\mathbf{w}_j,\mu;\Sigma) ].
+\end{eqnarray*}</p>
+</li>
+<li><p>Early on we discussed EM algorithm and its variants for maximizing the log-likelihood.</p>
+</li>
+<li><p>Since $t \mapsto - \log t$ is a convex function, we can invoke the supporting hyperplane inequality to minorize the terms $- \log [\nu + \delta (\mathbf{w}_j,\mu;\Sigma)$:
+\begin{eqnarray*}</p>
+<ul>
+<li>\log [\nu + \delta (\mathbf{w}_j,\mu;\Sigma)] &amp;\ge&amp; - \log [\nu^{(t)} + \delta (\mathbf{w}_j,\mu^{(t)};\Sigma^{(t)})] - \frac{\nu + \delta (\mathbf{w}_j,\mu;\Sigma) - \nu^{(t)} - \delta (\mathbf{w}_j,\mu^{(t)};\Sigma^{(t)})}{\nu^{(t)} + \delta (\mathbf{w}_j,\mu^{(t)};\Sigma^{(t)})} \
+&amp;=&amp; - \frac{\nu + \delta (\mathbf{w}_j,\mu;\Sigma)}{\nu^{(t)} + \delta (\mathbf{w}_j,\mu^{(t)};\Sigma^{(t)})} + c^{(t)},
+\end{eqnarray*}
+where $c^{(t)}$ is a constant irrelevant to optimization.</li>
+</ul>
+</li>
+<li><p>This yields a minorization function
+\begin{eqnarray*}
+  g(\mu, \Sigma, \nu) &amp;=&amp; - \frac{np}{2} \log (\pi \nu) + n \left[ \log \Gamma \left(\frac{\nu+p}{2}\right) - \log \Gamma \left(\frac{\nu}{2}\right) \right]  \\
+  &amp;&amp; - \frac n2 \log \det \Sigma + \frac n2 (\nu + p) \log \nu \\
+  &amp;&amp; - \frac{\nu + p}{2} \sum_{j=1}^n \frac{\nu + \delta (\mathbf{w}_j,\mu;\Sigma)}{\nu^{(t)} + \delta (\mathbf{w}_j,\mu^{(t)};\Sigma^{(t)})} + c^{(t)}.
+\end{eqnarray*}
+Now we can deploy the block ascent strategy.</p>
+<ul>
+<li>Fixing $\nu$, update of $\mu$ and $\Sigma$ are same as in EM algorithm.  </li>
+<li>Fixing $\mu$ and $\Sigma$, we can update $\nu$ by working on the observed log-likelihood directly.  </li>
+</ul>
+</li>
+</ul>
+<p>Overall this MM algorithm coincides with ECME.</p>
+<ul>
+<li>An alternative MM derivation leads to the optimal EM algorithm derived in Meng and van Dyk (1997). See <a href="https://doi.org/10.1214/08-STS264">Wu and Lange (2010)</a>.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="MM-example:-non-negative-matrix-factorization-(NNMF)">MM example: non-negative matrix factorization (NNMF)<a class="anchor-link" href="#MM-example:-non-negative-matrix-factorization-(NNMF)">&#182;</a></h2><p><img src="./nnmf.png" width="500" align="center"/></p>
 <ul>
 <li><p>Nonnegative matrix factorization (NNMF) was introduced by Lee and Seung (<a href="http://www.nature.com/nature/journal/v401/n6755/abs/401788a0.html">1999</a>, <a href="https://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf">2001</a>) as an analog of principal components and vector quantization with applications in data compression and clustering.</p>
@@ -13254,7 +13297,7 @@ $$
 \end{eqnarray*}
 $$</p>
 </li>
-<li><p>The update is extremely simple
+<li><p>The update in matrix notation is extremely simple
 $$
 \begin{eqnarray*}
   \mathbf{B}^{(t)} &amp;=&amp; \mathbf{V}^{(t)} \mathbf{W}^{(t)} \\
@@ -13317,40 +13360,37 @@ $$
 $$
 where $\mathbf{Z}^{(t)} = P_\Omega(\mathbf{Y}) + P_{\Omega^\perp}(\mathbf{X}^{(t)})$. "fill in missing entries by the current imputation"</p>
 </li>
-<li><p><strong>Minimization step</strong>:</p>
-</li>
-</ul>
-<p>Rewrite the surrogate function
+<li><p><strong>Minimization step</strong>: Rewrite the surrogate function
 $$
 \begin{eqnarray*}
-    g(\mathbf{X}|\mathbf{X}^{(t)}) = \frac{1}{2} \|\mathbf{X}\|_{\text{F}}^2  - \text{tr}(\mathbf{X}^T \mathbf{Z}^{(t)}) + \frac{1}{2} \|\mathbf{Z}^{(t)}\|_{\text{F}}^2 + \lambda \|\mathbf{X}\|_*.
+  g(\mathbf{X}|\mathbf{X}^{(t)}) = \frac{1}{2} \|\mathbf{X}\|_{\text{F}}^2  - \text{tr}(\mathbf{X}^T \mathbf{Z}^{(t)}) + \frac{1}{2} \|\mathbf{Z}^{(t)}\|_{\text{F}}^2 + \lambda \|\mathbf{X}\|_*.
 \end{eqnarray*}
 $$
 Let $\sigma_i$ be the (ordered) singular values of $\mathbf{X}$ and $\omega_i$ be the (ordered) singular values of $\mathbf{Z}^{(t)}$. Observe
 $$
 \begin{eqnarray*}
-    \|\mathbf{X}\|_{\text{F}}^2 &amp;=&amp; \|\sigma(\mathbf{X})\|_2^2 = \sum_{i} \sigma_i^2 \\
-    \|\mathbf{Z}^{(t)}\|_{\text{F}}^2 &amp;=&amp; \|\sigma(\mathbf{Z}^{(t)})\|_2^2 = \sum_{i} \omega_i^2
+  \|\mathbf{X}\|_{\text{F}}^2 &amp;=&amp; \|\sigma(\mathbf{X})\|_2^2 = \sum_{i} \sigma_i^2 \\
+  \|\mathbf{Z}^{(t)}\|_{\text{F}}^2 &amp;=&amp; \|\sigma(\mathbf{Z}^{(t)})\|_2^2 = \sum_{i} \omega_i^2
 \end{eqnarray*}
 $$
 and by the <a href="https://en.wikipedia.org/wiki/Trace_inequalities#Von_Neumann.27s_trace_inequality">Fan-von Neuman's inequality</a>
 $$
 \begin{eqnarray*}
-    \text{tr}(\mathbf{X}^T \mathbf{Z}^{(t)}) \le \sum_i \sigma_i \omega_i
+  \text{tr}(\mathbf{X}^T \mathbf{Z}^{(t)}) \le \sum_i \sigma_i \omega_i
 \end{eqnarray*}
 $$
 with equality achieved if and only if the left and right singular vectors of the two matrices coincide. Thus we should choose $\mathbf{X}$ to have same singular vectors as $\mathbf{Z}^{(t)}$ and
 $$
 \begin{eqnarray*}
-    g(\mathbf{X}|\mathbf{X}^{(t)}) &amp;=&amp; \frac{1}{2} \sum_i \sigma_i^2 - \sum_i \sigma_i \omega_i + \frac{1}{2} \sum_i \omega_i^2 + \lambda \sum_i \sigma_i \\
-    &amp;=&amp; \frac{1}{2} \sum_i (\sigma_i - \omega_i)^2 + \lambda \sum_i \sigma_i,
+  g(\mathbf{X}|\mathbf{X}^{(t)}) &amp;=&amp; \frac{1}{2} \sum_i \sigma_i^2 - \sum_i \sigma_i \omega_i + \frac{1}{2} \sum_i \omega_i^2 + \lambda \sum_i \sigma_i \\
+  &amp;=&amp; \frac{1}{2} \sum_i (\sigma_i - \omega_i)^2 + \lambda \sum_i \sigma_i,
 \end{eqnarray*}
 $$
 with minimizer given by <strong>singular value thresholding</strong>
 $$
-    \sigma_i^{(t+1)} = (\omega_i - \lambda)_+.
+  \sigma_i^{(t+1)} = \max(0, \omega_i - \lambda) = (\omega_i - \lambda)_+.
 $$</p>
-<ul>
+</li>
 <li><p>Algorithm for matrix completion:</p>
 <ul>
 <li>Initialize $\mathbf{X}^{(0)} \in \mathbb{R}^{m \times n}$</li>

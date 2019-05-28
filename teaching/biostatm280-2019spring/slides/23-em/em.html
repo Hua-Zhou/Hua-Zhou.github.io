@@ -13446,7 +13446,7 @@ is the Mahalanobis squared distance between $\mathbf{w}$ and $\mu$.</p>
 \begin{eqnarray*}
   L(\mu, \Sigma, \nu) &amp;=&amp; - \frac{np}{2} \log (\pi \nu) + n \left[ \log \Gamma \left(\frac{\nu+p}{2}\right) - \log \Gamma \left(\frac{\nu}{2}\right) \right]  \\
   &amp;&amp; - \frac n2 \log \det \Sigma + \frac n2 (\nu + p) \log \nu \\
-  &amp;&amp; - \frac{\nu + p}{2} \sum_{j=1}^n \ln [\nu + \delta (\mathbf{w}_j,\mu;\Sigma) ]
+  &amp;&amp; - \frac{\nu + p}{2} \sum_{j=1}^n \log [\nu + \delta (\mathbf{w}_j,\mu;\Sigma) ]
 \end{eqnarray*}
 How to compute the MLE $(\hat \mu, \hat \Sigma, \hat \nu)$?</p>
 </li>
