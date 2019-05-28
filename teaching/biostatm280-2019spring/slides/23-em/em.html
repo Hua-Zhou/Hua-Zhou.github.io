@@ -13422,7 +13422,7 @@ See KL Example 11.3.1 for multinomial MLE. See KL Example 11.2.3 for multivariat
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Example:-t-distribution">Example: t distribution<a class="anchor-link" href="#Example:-t-distribution">&#182;</a></h3><h4 id="EM">EM<a class="anchor-link" href="#EM">&#182;</a></h4><ul>
-<li><p>$\mathbf{W} \in \mathbb{R}^{p}$ is a multivariate $t$-distribution $t_p(\mu,\Sigma,\nu)$ if $\mathbf{W} \sim N(\mu, \Sigma/u)$ and $u \sim \text{gamma}(\frac{\nu}{2}, \frac{\nu}{2})$.</p>
+<li><p>$\mathbf{W} \in \mathbb{R}^{p}$ is a multivariate $t$-distribution $t_p(\mu,\Sigma,\nu)$ if $\mathbf{W} \sim N(\mu, \Sigma/u)$ and $u \sim \text{gamma}\left(\frac{\nu}{2}, \frac{\nu}{2}\right)$.</p>
 </li>
 <li><p>Widely used for robust modeling.</p>
 </li>
@@ -13434,7 +13434,7 @@ with mean $\mathbf{E}(U)=\alpha/\beta$, and $\mathbf{E}(\log U) = \psi(\alpha) -
 </li>
 <li><p>Density of $\mathbf{W}$ is
 \begin{eqnarray*}
-  f_p(\mathbf{w} \mid \mu, \Sigma, \nu) = \frac{\Gamma(\frac{\nu+p}{2}) \text{det}(\Sigma)^{-1/2}}{(\pi \nu)^{p/2} \Gamma(\nu/2) [1 + \delta (\mathbf{w},\mu;\Sigma)/\nu]^{(\nu+p)/2}},
+  f_p(\mathbf{w} \mid \mu, \Sigma, \nu) = \frac{\Gamma \left(\frac{\nu+p}{2}\right) \text{det}(\Sigma)^{-1/2}}{(\pi \nu)^{p/2} \Gamma(\nu/2) [1 + \delta (\mathbf{w},\mu;\Sigma)/\nu]^{(\nu+p)/2}},
 \end{eqnarray*}
 where
 \begin{eqnarray*}
@@ -13450,7 +13450,7 @@ is the Mahalanobis squared distance between $\mathbf{w}$ and $\mu$.</p>
 \end{eqnarray*}
 How to compute the MLE $(\hat \mu, \hat \Sigma, \hat \nu)$?</p>
 </li>
-<li><p>$\mathbf{W}_j | u_j$ independent $N(\mu,\Sigma/u_j)$ and $U_j$ iid gamma($\frac{\nu}{2},\frac{\nu}{2}$).</p>
+<li><p>$\mathbf{W}_j | u_j$ independent $N(\mu,\Sigma/u_j)$ and $U_j$ iid gamma $\left(\frac{\nu}{2},\frac{\nu}{2}\right)$.</p>
 </li>
 <li><p>Missing data: $\mathbf{z}=(u_1,\ldots,u_n)^T$.</p>
 </li>
@@ -13512,7 +13512,7 @@ Notice down-weighting of outliers is obvious in the update.</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Efficient-data-augmentation">Efficient data augmentation<a class="anchor-link" href="#Efficient-data-augmentation">&#182;</a></h4><p>Assume $\nu$ known:</p>
 <ul>
-<li><p>Write $\mathbf{W}_j = \mu + \mathbf{C}_j / U_j^{1/2}$, where $\mathbf{C}_j$ is $N(\mathbf{0},\Sigma)$ independent of $U_j$ which is gamma$(\frac{\nu}{2},\frac{\nu}{2})$.</p>
+<li><p>Write $\mathbf{W}_j = \mu + \mathbf{C}_j / U_j^{1/2}$, where $\mathbf{C}_j$ is $N(\mathbf{0},\Sigma)$ independent of $U_j$ which is gamma$\left(\frac{\nu}{2},\frac{\nu}{2}\right)$.</p>
 </li>
 <li><p>$\mathbf{W}_j = \mu + \det (\Sigma)^{-a/2} \mathbf{C}_j / U_j^{1/2}(a)$, where $U_j(a) = \det(\Sigma)^{-a} U_j$.</p>
 </li>
