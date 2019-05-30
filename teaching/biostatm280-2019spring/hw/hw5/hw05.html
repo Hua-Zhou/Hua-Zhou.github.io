@@ -13274,7 +13274,7 @@ Is the log-likelihood a concave function?</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-julia"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
@@ -13301,7 +13301,7 @@ Is the log-likelihood a concave function?</p>
 <span class="k">function</span> <span class="n">dirmult_newton</span><span class="p">(</span><span class="n">X</span><span class="o">::</span><span class="kt">Matrix</span><span class="p">;</span> <span class="n">α0</span><span class="o">::</span><span class="kt">Union</span><span class="p">{</span><span class="kt">Vector</span><span class="p">,</span> <span class="n">Nothing</span><span class="p">}</span> <span class="o">=</span> <span class="nb">nothing</span><span class="p">,</span> 
             <span class="n">maxiters</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">tolfun</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span>
     
-    <span class="c"># set default starting point from Q7</span>
+    <span class="c"># if α0==nothing, set default starting point from Q7</span>
     
     <span class="c"># Newton loop</span>
     <span class="k">for</span> <span class="n">iter</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">maxiters</span>
@@ -13337,7 +13337,7 @@ Is the log-likelihood a concave function?</p>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13363,7 +13363,7 @@ Is the log-likelihood a concave function?</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Q10">Q10<a class="anchor-link" href="#Q10">&#182;</a></h2><p>As $\alpha / |\alpha| \to \mathbf{p}$, the Dirichlet-multinomial distribution converges to a multinomial with parameter $\mathbf{p}$. Therefore multinomial can be considered as a special Dirichlet-multinomial with $|\alpha|=\infty$. Perform a likelihood ratio test (LRT) whether Dirichlet-multinomial offers a better fit than multinomial for digits 0, 1, ..., 9 respectively.</p>
+<h2 id="Q10">Q10<a class="anchor-link" href="#Q10">&#182;</a></h2><p>As $|\alpha| \to \infty$ and $\alpha / |\alpha| \to \mathbf{p}$, the Dirichlet-multinomial distribution converges to a multinomial with parameter $\mathbf{p}$. Therefore multinomial can be considered as a special Dirichlet-multinomial with $|\alpha|=\infty$. Perform a likelihood ratio test (LRT) whether Dirichlet-multinomial offers a better fit than multinomial for digits 0, 1, ..., 9 respectively.</p>
 
 </div>
 </div>
