@@ -13113,6 +13113,14 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">&#182;</a></h1><p><p><div class="lev1 toc-item"><a href="#Optimization-Examples---Linear-Programming" data-toc-modified-id="Optimization-Examples---Linear-Programming-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Optimization Examples - Linear Programming</a></div><div class="lev2 toc-item"><a href="#Linear-programming-(LP)" data-toc-modified-id="Linear-programming-(LP)-11"><span class="toc-item-num">1.1&nbsp;&nbsp;</span>Linear programming (LP)</a></div><div class="lev2 toc-item"><a href="#LP-example:-compressed-sensing" data-toc-modified-id="LP-example:-compressed-sensing-12"><span class="toc-item-num">1.2&nbsp;&nbsp;</span>LP example: compressed sensing</a></div><div class="lev3 toc-item"><a href="#Generate-a-sparse-signal-and-sub-sampling" data-toc-modified-id="Generate-a-sparse-signal-and-sub-sampling-121"><span class="toc-item-num">1.2.1&nbsp;&nbsp;</span>Generate a sparse signal and sub-sampling</a></div><div class="lev3 toc-item"><a href="#Solve-LP-by-calling-Gurobi-directly-(not-recommended)" data-toc-modified-id="Solve-LP-by-calling-Gurobi-directly-(not-recommended)-122"><span class="toc-item-num">1.2.2&nbsp;&nbsp;</span>Solve LP by calling Gurobi directly (not recommended)</a></div><div class="lev3 toc-item"><a href="#Solve-LP-by-DCP-(disciplined-convex-programming)-interface-Convex.jl" data-toc-modified-id="Solve-LP-by-DCP-(disciplined-convex-programming)-interface-Convex.jl-123"><span class="toc-item-num">1.2.3&nbsp;&nbsp;</span>Solve LP by DCP (disciplined convex programming) interface Convex.jl</a></div><div class="lev2 toc-item"><a href="#LP-example:-quantile-regression" data-toc-modified-id="LP-example:-quantile-regression-13"><span class="toc-item-num">1.3&nbsp;&nbsp;</span>LP example: quantile regression</a></div><div class="lev2 toc-item"><a href="#LP-Example:-ell_1-regression" data-toc-modified-id="LP-Example:-ell_1-regression-14"><span class="toc-item-num">1.4&nbsp;&nbsp;</span>LP Example: $\ell_1$ regression</a></div><div class="lev2 toc-item"><a href="#LP-Example:-ell_\infty-regression-(Chebychev-approximation)" data-toc-modified-id="LP-Example:-ell_\infty-regression-(Chebychev-approximation)-15"><span class="toc-item-num">1.5&nbsp;&nbsp;</span>LP Example: $\ell_\infty$ regression (Chebychev approximation)</a></div><div class="lev2 toc-item"><a href="#LP-Example:-Dantzig-selector" data-toc-modified-id="LP-Example:-Dantzig-selector-16"><span class="toc-item-num">1.6&nbsp;&nbsp;</span>LP Example: Dantzig selector</a></div><div class="lev2 toc-item"><a href="#LP-Example:-1-norm-SVM" data-toc-modified-id="LP-Example:-1-norm-SVM-17"><span class="toc-item-num">1.7&nbsp;&nbsp;</span>LP Example: 1-norm SVM</a></div></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
@@ -13242,7 +13250,7 @@ can be transformed to an LP
 \end{eqnarray*}
 in $\mathbf{y}$ and $z$, via transformation of variables
 \begin{eqnarray*}
-  \mathbf{y} = \frac{\mathbf{x}}{\mathbf{e}^T \mathbf{x} + f}, \quad z = \frac{d}{\mathbf{e}^T \mathbf{x} + f}.
+  \mathbf{y} = \frac{\mathbf{x}}{\mathbf{e}^T \mathbf{x} + f}, \quad z = \frac{1}{\mathbf{e}^T \mathbf{x} + f}.
 \end{eqnarray*}
 See Section 4.3.2 of Boyd and Vandenberghe (2004) for proof.</p>
 </li>
@@ -16828,7 +16836,7 @@ fig.select("#img-70fe85ad-311")
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Solve-LP-by-calling-Gurobi-directly-(not-recommended).">Solve LP by calling Gurobi directly (not recommended).<a class="anchor-link" href="#Solve-LP-by-calling-Gurobi-directly-(not-recommended).">&#182;</a></h3><p>Gurobi model formulation:<br>
+<h3 id="Solve-LP-by-calling-Gurobi-directly-(not-recommended)">Solve LP by calling Gurobi directly (not recommended)<a class="anchor-link" href="#Solve-LP-by-calling-Gurobi-directly-(not-recommended)">&#182;</a></h3><p>Gurobi model formulation:<br>
 \begin{eqnarray*}
     &amp;\text{minimize}&amp; (1/2) x' H x + f' x \\
     &amp;s.t.&amp; A x \le b \\
@@ -20428,7 +20436,8 @@ fig.select("#img-6f99bd8c-311")
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Solve-LP-by-DCP-(disciplined-convex-programming)-interface-Convex.jl">Solve LP by DCP (disciplined convex programming) interface Convex.jl<a class="anchor-link" href="#Solve-LP-by-DCP-(disciplined-convex-programming)-interface-Convex.jl">&#182;</a></h3>
+<h3 id="Solve-LP-by-DCP-(disciplined-convex-programming)-interface-Convex.jl">Solve LP by DCP (disciplined convex programming) interface Convex.jl<a class="anchor-link" href="#Solve-LP-by-DCP-(disciplined-convex-programming)-interface-Convex.jl">&#182;</a></h3><p>Check <a href="https://convexjl.readthedocs.io/en/latest/operations.html">Convex.jl documentation</a> for a list of supported operations.</p>
+
 </div>
 </div>
 </div>
