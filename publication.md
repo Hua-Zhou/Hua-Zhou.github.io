@@ -11,7 +11,7 @@ K Keys, **H Zhou**, K Lange. (2019) Proximal distance algorithms: theory and pra
 
 W Hu, W Shen, **H Zhou**, D Kong. (2019) Matrix linear discriminant analysis, [_Technometrics_](https://doi.org/10.1080/00401706.2019.1610069), in press.  
 
-**H Zhou**, L Hu, J Zhou, and K Lange. (2019) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), in press. \[[pdf](./media/pdf/ZhouHuZhouLange19VCMM.pdf)\]  
+**H Zhou**, L Hu, J Zhou, and K Lange. (2019) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), 28(2):350-361. \[[pdf](./media/pdf/ZhouHuZhouLange19VCMM.pdf)\]  
 A new optimization algorithm for find MLE of variance components models. 
 
 **H Zhou**, J Sinsheimer, D Bates, B Chu, C German, S Ji, K Keys, J Kim, S Ko, G Mosher, J Papp, E Sobel, J Zhai, J Zhou, and K Lange. (2019) OpenMendel: a cooperative programming project for statistical genetics, [_Human Genetics_](https://doi.org/10.1007/s00439-019-02001-z), in press. \[[pdf](./media/pdf/Zhou19OpenMendel.pdf)\]   
