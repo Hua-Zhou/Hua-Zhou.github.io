@@ -9,7 +9,7 @@ Please feel free to email me <huazhou@ucla.edu> if you have any comments.
 
 K Keys, **H Zhou**, K Lange. (2019) Proximal distance algorithms: theory and practice, [_Journal of Machine Learning Research_](http://jmlr.org/papers/v20/17-687.html), 20(66):1-38. \[[pdf](./media/pdf/KevinZhouLange19ProxDist.pdf)\]
 
-W Hu, W Shen, **H Zhou**, D Kong. (2019) Matrix linear discriminant analysis, [_Technometrics_](https://doi.org/10.1080/00401706.2019.1610069), in press.  
+W Hu, W Shen, **H Zhou**, D Kong. (2019) Matrix linear discriminant analysis, [_Technometrics_](https://doi.org/10.1080/00401706.2019.1610069), in press. \[[pdf](./media/pdf/HuShenZhouKong19MatrixLDA.pdf)\]  
 
 **H Zhou**, L Hu, J Zhou, and K Lange. (2019) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), 28(2):350-361. \[[pdf](./media/pdf/ZhouHuZhouLange19VCMM.pdf)\]  
 A new optimization algorithm for find MLE of variance components models. 
