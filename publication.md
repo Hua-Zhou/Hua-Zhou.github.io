@@ -21,7 +21,7 @@ K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generati
 
 B Gaines, J Kim, and **H Zhou**. (2018) Algorithms for fitting the constrained lasso, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1473777), 27(4):861-871. \[[pdf](./media/pdf/GainesKimZhou08CLasso.pdf)\]
 
-L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component estimation and selection in logistic linear mixed models, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0220), in press.  
+L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component estimation and selection in logistic linear mixed models, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0220), 28:1585-1605. \[[pdf](./media/pdf/HuLvZhouZhou19GLMM.pdf)\]  
 
 X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2018) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), in press.  
 
