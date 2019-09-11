@@ -23,7 +23,7 @@ B Gaines, J Kim, and **H Zhou**. (2018) Algorithms for fitting the constrained l
 
 L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component estimation and selection in logistic linear mixed models, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0220), 28:1585-1605. \[[pdf](./media/pdf/HuLvZhouZhou19GLMM.pdf)\]  
 
-X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2018) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), in press.  
+X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2019) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), 29:1977-2005. \[[pdf](./media/pdf/Zhang19TensorGEE.pdf)\]  
 
 X Li, D Xu, **H Zhou**, and L Li. (2018) Tucker tensor regression and neuroimaging analysis, [_Statistics in Biosciences_](https://doi.org/10.1007/s12561-018-9215-6), 10(3):520-545. \[[pdf](./media/pdf/LiXuZhouLi18TuckerReg.pdf)\]  
 Tucker version of the tensor regression.
@@ -112,7 +112,7 @@ The use of importance sampling can dramatically reduce the variance of boostrap 
 **H Zhou**, D Alexander, M Sehl, J Sinsheimer, E Sobel, and K Lange. (2011) Penalized regression for genome-wide association screening of sequence data, [_Pacific Symposium of Biocomputing_][20], 16:106-117. \[[pdf](./media/pdf/ZhouAlexanderSehlSobelLange11PBS.pdf)\]\[[Mendel][6]\]  
 This companion paper introduces weights to calibrate the penalties and covers more details on the implementation of penalized regression in the statistical genetics analysis software [Mendel][6].
 
-**H Zhou**, M Sehl, J Sinsheimer, and K Lange. (2010) Association screening of common and rare genetic variants by penalized regression, [_Bioinformatics_][22], 26(19):2357-2382. \[[pdf](./media/pdf/ZhouSehlSinsheimerSobelLange10RVLasso.pdf)\]\[[Mendel][6]\]  
+**H Zhou**, M Sehl, J Sinsheimer, and K Lange. (2010) Association screening of common and rare genetic variants by penalized regression, [_Bioinformatics_](10.1093/bioinformatics/btq448), 26(19):2357-2382. \[[pdf](./media/pdf/ZhouSehlSinsheimerSobelLange10RVLasso.pdf)\]  
 Application of penalized linear and logistic regressions to genome-wide association studies (GWAS). A mixture of lasso and group penalties are used to select causal rare variants present in sequence data.
 
 **H Zhou**, K Lange, and M Suchard. (2010) Graphics processing units and high-dimensional optimization, [_Statistical Science_][24], 25:311-324. \[[pdf](./media/pdf/ZhouSuchardLange10GPU.pdf)\]  
@@ -130,10 +130,10 @@ Clinical implications of the cancer extinction model are summarized in this pape
 **H Zhou** and K Lange. (2009) Rating movies and rating the raters who rate them, [_The American Statistician_][32], 63(4):297–307. \[[pdf](./media/pdf/ZhouLange09MovieRating.pdf)\]  
 If you ever heard of [Netflix grand prize][34], you might be interested in reading this short report. Instead of the prediction problem challenged by Netflix, we focus more on the modeling. Our simple model is able to identify quirky raters, supply a ranking of movies, and should be able to predict unseen ratings. We only fit the model to the [MovieLens][35] data set. Interested readers should try this on the (much larger) Netflix data set.
 
-**H Zhou** and K Lange. (2009) Composition Markov chains of multinomial type, [_Advances in Applied Probability_][36], 41(1):270-291. \[[pdf](./media/pdf/ZhouLange09Multinomial.pdf)\]  
+**H Zhou** and K Lange. (2009) Composition Markov chains of multinomial type, [_Advances in Applied Probability_](https://doi.org/10.1239/aap/1240319585), 41(1):270-291. \[[pdf](./media/pdf/ZhouLange09Multinomial.pdf)\]  
 We describe a class of Markov chains that take a system of multivariate Krawtchouk polynomials constructed by [Robert Griffiths][38] as eigenfunctions.  
 
-K Khare and **H Zhou**. (2009) Rates of convergence of some multivariate Markov chains with polynomial eigenfunctions, [_Annals of Applied Probability_][40], 19(2):737-777. \[[pdf](./media/pdf/KhareZhou09AAP.pdf)\]  
+K Khare and **H Zhou**. (2009) Rates of convergence of some multivariate Markov chains with polynomial eigenfunctions, [_Annals of Applied Probability_](10.1214/08-AAP562), 19(2):737-777. \[[pdf](./media/pdf/KhareZhou09AAP.pdf)\]  
 We obtaine the convergence rates of the multivariate versions of several classical Markov chains using spectral method. Specific examples include the multivariate Moran process in population genetics and its variants in community ecology, Dirichlet-Multinomial Gibbs sampler, generalizations of Ehrenfest chains, multivariate normal autoregressive processes, and so on.
 
 **H Zhou** and K Dorman. (2005) A branching process model of drug resistant HIV, book chapter in [_Deterministic and stochastic models of AIDS epidemics and HIV infections with intervention_](http://www.amazon.com/dp/9812561390), 457-496, World Sci. Publ., Hackensack, NJ.   
