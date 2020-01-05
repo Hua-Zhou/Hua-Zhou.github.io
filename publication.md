@@ -19,7 +19,7 @@ Linear discriminant analysis for matrix-variate data.
 **H Zhou**, L Hu, J Zhou, and K Lange. (2019) MM algorithms for variance components models. [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1529601), 28(2):350-361. \[[pdf](./media/pdf/ZhouHuZhouLange19VCMM.pdf)\]  
 A new optimization algorithm for find MLE of variance components models. 
 
-**H Zhou**, J Sinsheimer, D Bates, B Chu, C German, S Ji, K Keys, J Kim, S Ko, G Mosher, J Papp, E Sobel, J Zhai, J Zhou, and K Lange. (2019) OpenMendel: a cooperative programming project for statistical genetics, [_Human Genetics_](https://doi.org/10.1007/s00439-019-02001-z), in press. \[[pdf](./media/pdf/Zhou19OpenMendel.pdf)\]   
+**H Zhou**, J Sinsheimer, D Bates, B Chu, C German, S Ji, K Keys, J Kim, S Ko, G Mosher, J Papp, E Sobel, J Zhai, J Zhou, and K Lange. (2020) OpenMendel: a cooperative programming project for statistical genetics, [_Human Genetics_](https://doi.org/10.1007/s00439-019-02001-z), 139(1):61-71. \[[pdf](./media/pdf/Zhou19OpenMendel.pdf)\]   
 Overview of the [OpenMendel project](https://github.com/openmendel).
 
 K Doubleday, **H Zhou**, H Fu, and J Zhou. (2018) A novel algorithm for generating individualized treatment decision trees and random forests, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2018.1451337), 27(4):849-860. \[[pdf](./media/pdf/DoubledayZhouFuZhou18IndividualizedTreatmentTrees.pdf)\]
