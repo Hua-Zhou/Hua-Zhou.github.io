@@ -28,7 +28,11 @@ B Gaines, J Kim, and **H Zhou**. (2018) Algorithms for fitting the constrained l
 
 L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component estimation and selection in logistic linear mixed models, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0220), 28:1585-1605. \[[pdf](./media/pdf/HuLvZhouZhou19GLMM.pdf)\]  
 
-X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2019) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), 29:1977-2005. \[[pdf](./media/pdf/Zhang19TensorGEE.pdf)\]  
+EJ Min, E Chi, and **H Zhou**. (2020) Tensor canonical correlation analysis. [_STAT_](https://doi.org/10.1002/sta4.253), in press. \[[pdf](./media/pdf/MinChiZhou20TCCA.pdf)\]   
+Canonical correlation analysis (CCA) with tensor data.  
+
+X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2019) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), 29:1977-2005. \[[pdf](./media/pdf/Zhang19TensorGEE.pdf)\]   
+GEE for tensor data.  
 
 X Li, D Xu, **H Zhou**, and L Li. (2018) Tucker tensor regression and neuroimaging analysis, [_Statistics in Biosciences_](https://doi.org/10.1007/s12561-018-9215-6), 10(3):520-545. \[[pdf](./media/pdf/LiXuZhouLi18TuckerReg.pdf)\]  
 Tucker version of the tensor regression.
