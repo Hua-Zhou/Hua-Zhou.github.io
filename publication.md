@@ -7,6 +7,9 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
+J Day, **H Zhou**. (2020) OnlineStats.jl: A Julia package for statistics on data streams, [_Journal of Open Source Software_](https://doi.org/10.21105/joss.01816), 5(46):1816. \[[pdf](./media/pdf/DayZhou20OnlineStats.pdf)\]  
+A highly efficient and extensible framework for performing statistical estimation and inference on streaming data.  
+
 K Keys, **H Zhou**, K Lange. (2019) Proximal distance algorithms: theory and practice, [_Journal of Machine Learning Research_](http://jmlr.org/papers/v20/17-687.html), 20(66):1-38. \[[pdf](./media/pdf/KevinZhouLange19ProxDist.pdf)\]  
 A class of algorithms for constrained optimization based on distance majorization.  
 
