@@ -7,6 +7,10 @@ title: Publication
 
 Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
+J Zhou, J Zhai, **H Zhou**, Y Chen, S Guerra, I Robey, G Weinstock, E Weinstock, Q Dong, K Knox, and H Twigg III. (2020) Supraglottic lung microbiome taxa are associated with pulmonary abnormalities in an HIV longitudinal cohort, [_American Journal of Respiratory and Critical Care Medicine_](https://www.atsjournals.org/doi/10.1164/rccm.202004-1086LE).
+
+I Ipsen, **H Zhou**. (2020) Probabilistic error analysis for inner products, [_SIAM Journal of Matrix Analysis_]().
+
 J Day, **H Zhou**. (2020) OnlineStats.jl: A Julia package for statistics on data streams, [_Journal of Open Source Software_](https://doi.org/10.21105/joss.01816), 5(46):1816. \[[pdf](./media/pdf/DayZhou20OnlineStats.pdf)\]  
 A highly efficient and extensible framework for performing statistical estimation and inference on streaming data.  
 
@@ -33,7 +37,7 @@ B Gaines, J Kim, and **H Zhou**. (2018) Algorithms for fitting the constrained l
 
 L Hu, W Lu, J Zhou, and **H Zhou**. (2018) MM algorithms for variance component estimation and selection in logistic linear mixed models, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0220), 28:1585-1605. \[[pdf](./media/pdf/HuLvZhouZhou19GLMM.pdf)\]  
 
-EJ Min, E Chi, and **H Zhou**. (2020) Tensor canonical correlation analysis. [_STAT_](https://doi.org/10.1002/sta4.253), in press. \[[pdf](./media/pdf/MinChiZhou20TCCA.pdf)\]   
+EJ Min, E Chi, and **H Zhou**. (2020) Tensor canonical correlation analysis. [_STAT_](https://doi.org/10.1002/sta4.253), 8:e253. \[[pdf](./media/pdf/MinChiZhou20TCCA.pdf)\]   
 Canonical correlation analysis (CCA) with tensor data.  
 
 X Zhang, L Li, **H Zhou**, Y Zhou, D Shen, and ADNI. (2019) Tensor generalized estimating equations for longitudinal imaging analysis, [_Statistica Sinica_](https://doi.org/10.5705/ss.202017.0153), 29:1977-2005. \[[pdf](./media/pdf/Zhang19TensorGEE.pdf)\]   
