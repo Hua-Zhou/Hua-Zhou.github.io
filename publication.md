@@ -20,6 +20,8 @@ A class of algorithms for constrained optimization based on distance majorizatio
 C German, J Sinsheimer, Y Klimentidis, **H Zhou**, and J Zhou. (2020) Ordered multinomial regression for genetic association analysis of ordinal phenotypes at Biobank scale, [_Genetic Epidemiology_](https://doi.org/10.1002/gepi.22276), 44:248-260. \[[pdf](./media/pdf/German19OrdinalGWAS.pdf)\]  
 GWAS tool for ordinal traits.  
 
+B Chu, K Keys, C German, **H Zhou**, J Sinsheimer, and K Lange. (2020) Iterative hard thresholding in GWAS: generalized linear models, prior weights, and double sparsity, [_GigaScience_](https://academic.oup.com/gigascience/article/9/6/giaa044/5850823), 9(6):gia044. [pdf](./media/pdf/Chu20IHTGWAS.pdf)  
+
 B vonHoldt, A DeCandia, E Heppenheimer, H Janowitz-Koch, R Shi, **H Zhou**, C German, K Brzeski, K Cassidy, D Stahler, and J Sinsheimer. (2020) Heritability of inter‐pack aggression in a wild pedigreed population of North American gray wolves, [_Molecular Ecology_](https://doi.org/10.1111/mec.15349), 29(10):1764-1775. \[[pdf](./media/pdf/vonHoldt20GrayWolveAgression.pdf)\]  
 
 W Hu, W Shen, **H Zhou**, and D Kong. (2020) Matrix linear discriminant analysis, [_Technometrics_](https://doi.org/10.1080/00401706.2019.1610069), 62(2):196-205. \[[pdf](./media/pdf/HuShenZhouKong20MatrixLDA.pdf)\]  
