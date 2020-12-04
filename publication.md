@@ -12,7 +12,7 @@ Convex co-clustering of tensor data.
 
 J Zhou, J Zhai, **H Zhou**, Y Chen, S Guerra, I Robey, G Weinstock, E Weinstock, Q Dong, K Knox, and H Twigg III. (2020) Supraglottic lung microbiome taxa are associated with pulmonary abnormalities in an HIV longitudinal cohort, [_American Journal of Respiratory and Critical Care Medicine_](https://www.atsjournals.org/doi/10.1164/rccm.202004-1086LE).
 
-I Ipsen, **H Zhou**. (2020) Probabilistic error analysis for inner products, [_SIAM Journal of Matrix Analysis_]().
+I Ipsen, **H Zhou**. (2020) Probabilistic error analysis for inner products, [_SIAM Journal of Matrix Analysis_](https://epubs.siam.org/doi/abs/10.1137/19M1270434), 41(4):1726-1741.  
 
 J Day, **H Zhou**. (2020) OnlineStats.jl: A Julia package for statistics on data streams, [_Journal of Open Source Software_](https://doi.org/10.21105/joss.01816), 5(46):1816. \[[pdf](./media/pdf/DayZhou20OnlineStats.pdf)\]  
 A highly efficient and extensible framework for performing statistical estimation and inference on streaming data.  
