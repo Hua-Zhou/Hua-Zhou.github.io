@@ -10,7 +10,7 @@ Please feel free to email me <huazhou@ucla.edu> if you have any comments.
 E Chi, B Gaines, W Sun, **H Zhou**, and J Yang. (2020) Provable convex co-clustering of tensors. [_Journal of Machine Learning Research_](https://jmlr.org/papers/v21/18-155.html), 21(214):1-58. \[[pdf](./media/pdf/ChiGainesSunZhouYang20CoCo.pdf)\]   
 Convex co-clustering of tensor data.  
 
-J Zhou, J Zhai, **H Zhou**, Y Chen, S Guerra, I Robey, G Weinstock, E Weinstock, Q Dong, K Knox, and H Twigg III. (2020) Supraglottic lung microbiome taxa are associated with pulmonary abnormalities in an HIV longitudinal cohort, [_American Journal of Respiratory and Critical Care Medicine_](https://www.atsjournals.org/doi/10.1164/rccm.202004-1086LE).
+J Zhou, J Zhai, **H Zhou**, Y Chen, S Guerra, I Robey, G Weinstock, E Weinstock, Q Dong, K Knox, and H Twigg III. (2020) Supraglottic lung microbiome taxa are associated with pulmonary abnormalities in an HIV longitudinal cohort, [_American Journal of Respiratory and Critical Care Medicine_](https://www.atsjournals.org/doi/10.1164/rccm.202004-1086LE), 202(12):1727-1731. \[[pdf](./media/pdf/Zhou20LungMicrobiome.pdf)\]
 
 I Ipsen, **H Zhou**. (2020) Probabilistic error analysis for inner products, [_SIAM Journal of Matrix Analysis_](https://epubs.siam.org/doi/abs/10.1137/19M1270434), 41(4):1726-1741.  
 
