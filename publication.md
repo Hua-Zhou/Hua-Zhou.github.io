@@ -5,14 +5,29 @@ title: Publication
 
 ### Publication
 
-Please feel free to email me <huazhou@ucla.edu> if you have any comments. 
+Feel free to email me <huazhou@ucla.edu> if you have any comments. 
+
+K Lange, J Won, A Landeros, and **H Zhou**. (2021) Nonconvex optimization via MM algorithms: convergence theory. [_Wiley StatsRef: Statistics Reference Online_](https://doi.org/10.1002/9781118445112.stat08295). \[[pdf](./media/pdf/LangeWonAlfonsoZhou21MMConv.pdf)\]  
+
+J Kim, J Shen, A  Wang, D Mehrotra, S Ko, J Zhou, and **H Zhou**. (2021) VCSEL: Prioritizing SNP-set by penalized variance component selection, [_Annals of Applied Statistics_](), in press.  
+
+C German, J Sinsheimer, J Zhou, and **H Zhou**. (2021) WiSER: robust and scalable estimation and inference of within-subject variances from intensive longitudinal data, [_Biometrics_](https://doi.org/10.1111/biom.13506), in press.  
+Efficient method and software for studying the mean and within-subject variability of longitudinal measurements.  
+
+J Won, **H Zhou**, and K Lange. (2021) Orthogonal trace-sum maximization: applications, local algorithms, and global optimality. [_SIAM Journal on Matrix Analysis and Applications_](https://doi.org/10.1137/20M1363388), 42(2):859-882. \[[pdf](./media/pdf/WonZhouLange21OTSM.pdf)\]  
+A simple certificate for checking when a local solution is global optimal for generalized canonical correlation analysis (CCA), generalized procrustes problem, and other problems. 
+
+W Yu, **H Zhou**, J Goldin, W Wong, and G Kim. (2021) End-to-end domain knowledge assisted automatic diagnosis of idiopathic pulmonary fibrosis (IPF) using high resolution computed tomography (HRCT), [_Medical Physics_](https://doi.org/10.1002/mp.14754), 48(5):2458--2467. \[[pdf](./media/pdf/YuZhouGoldinWongKim21IPF.pdf)\]   
+Deep learning tool for diagnosing IPF from CT scans.
+
+S Ji, C German, K Lange, J Sinsheimer, **H Zhou**, J Zhou, and E Sobel. (2021) Modern simulation utilities for genetic analysis, [_BMC Bioinformatics_](https://doi.org/10.1186/s12859-021-04086-8), 22:228. \[[pdf](./media/pdf/Ji21GeneticSimulation.pdf)\]  
 
 E Chi, B Gaines, W Sun, **H Zhou**, and J Yang. (2020) Provable convex co-clustering of tensors. [_Journal of Machine Learning Research_](https://jmlr.org/papers/v21/18-155.html), 21(214):1-58. \[[pdf](./media/pdf/ChiGainesSunZhouYang20CoCo.pdf)\]   
 Convex co-clustering of tensor data.  
 
 J Zhou, J Zhai, **H Zhou**, Y Chen, S Guerra, I Robey, G Weinstock, E Weinstock, Q Dong, K Knox, and H Twigg III. (2020) Supraglottic lung microbiome taxa are associated with pulmonary abnormalities in an HIV longitudinal cohort, [_American Journal of Respiratory and Critical Care Medicine_](https://www.atsjournals.org/doi/10.1164/rccm.202004-1086LE), 202(12):1727-1731. \[[pdf](./media/pdf/Zhou20LungMicrobiome.pdf)\]
 
-I Ipsen, **H Zhou**. (2020) Probabilistic error analysis for inner products, [_SIAM Journal of Matrix Analysis_](https://epubs.siam.org/doi/abs/10.1137/19M1270434), 41(4):1726-1741.  
+I Ipsen, **H Zhou**. (2020) Probabilistic error analysis for inner products, [_SIAM Journal of Matrix Analysis_](https://epubs.siam.org/doi/abs/10.1137/19M1270434), 41(4):1726-1741. \[[pdf](./media/pdf/IpsenZhou20ProbError.pdf)\]  
 
 J Day, **H Zhou**. (2020) OnlineStats.jl: A Julia package for statistics on data streams, [_Journal of Open Source Software_](https://doi.org/10.21105/joss.01816), 5(46):1816. \[[pdf](./media/pdf/DayZhou20OnlineStats.pdf)\]  
 A highly efficient and extensible framework for performing statistical estimation and inference on streaming data.  
