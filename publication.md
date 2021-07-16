@@ -7,11 +7,12 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-S Ko, **H Zhou**, J Zhou, and J Won. (2021) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://www.e-publications.org/ims/submission/STS/user/submissionFile/43799?confirm=23c34361). \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]  
+S Ko, **H Zhou**, J Zhou, and J Won. (2021) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://www.e-publications.org/ims/submission/STS/user/submissionFile/43799?confirm=23c34361), in press. \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]  
 
 K Lange, J Won, A Landeros, and **H Zhou**. (2021) Nonconvex optimization via MM algorithms: convergence theory. [_Wiley StatsRef: Statistics Reference Online_](https://doi.org/10.1002/9781118445112.stat08295). \[[pdf](./media/pdf/LangeWonAlfonsoZhou21MMConv.pdf)\]  
 
-J Kim, J Shen, A  Wang, D Mehrotra, S Ko, J Zhou, and **H Zhou**. (2021) VCSEL: Prioritizing SNP-set by penalized variance component selection, [_Annals of Applied Statistics_](), in press.  
+J Kim, J Shen, A  Wang, D Mehrotra, S Ko, J Zhou, and **H Zhou**. (2021) VCSEL: Prioritizing SNP-set by penalized variance component selection, [_Annals of Applied Statistics_](https://www.e-publications.org/ims/submission/AOAS/user/submissionFile/47287?confirm=4282ed2c), in press. \[[pdf](./media/pdf/KimShenWangMehrotraKoZhouZhou21VCSEL.pdf)\]  
+Penalization methods for selecting variance components.  
 
 C German, J Sinsheimer, J Zhou, and **H Zhou**. (2021) WiSER: robust and scalable estimation and inference of within-subject variances from intensive longitudinal data, [_Biometrics_](https://doi.org/10.1111/biom.13506), in press.  
 Efficient method and software for studying the mean and within-subject variability of longitudinal measurements.  
