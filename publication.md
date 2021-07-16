@@ -7,6 +7,8 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
+S Ko, **H Zhou**, J Zhou, and J Won. (2021) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://www.e-publications.org/ims/submission/STS/user/submissionFile/43799?confirm=23c34361). \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]  
+
 K Lange, J Won, A Landeros, and **H Zhou**. (2021) Nonconvex optimization via MM algorithms: convergence theory. [_Wiley StatsRef: Statistics Reference Online_](https://doi.org/10.1002/9781118445112.stat08295). \[[pdf](./media/pdf/LangeWonAlfonsoZhou21MMConv.pdf)\]  
 
 J Kim, J Shen, A  Wang, D Mehrotra, S Ko, J Zhou, and **H Zhou**. (2021) VCSEL: Prioritizing SNP-set by penalized variance component selection, [_Annals of Applied Statistics_](), in press.  
