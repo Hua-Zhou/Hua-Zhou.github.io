@@ -14,7 +14,7 @@ K Lange, J Won, A Landeros, and **H Zhou**. (2021) Nonconvex optimization via MM
 J Kim, J Shen, A  Wang, D Mehrotra, S Ko, J Zhou, and **H Zhou**. (2021) VCSEL: Prioritizing SNP-set by penalized variance component selection, [_Annals of Applied Statistics_](https://www.e-publications.org/ims/submission/AOAS/user/submissionFile/47287?confirm=4282ed2c), in press. \[[pdf](./media/pdf/KimShenWangMehrotraKoZhouZhou21VCSEL.pdf)\]  
 Penalization methods for selecting variance components.  
 
-C German, J Sinsheimer, J Zhou, and **H Zhou**. (2021) WiSER: robust and scalable estimation and inference of within-subject variances from intensive longitudinal data, [_Biometrics_](https://doi.org/10.1111/biom.13506), in press.  
+C German, J Sinsheimer, J Zhou, and **H Zhou**. (2021) WiSER: robust and scalable estimation and inference of within-subject variances from intensive longitudinal data, [_Biometrics_](https://doi.org/10.1111/biom.13506), in press. \[[pdf](./media/pdf/GermanSinsheimerZhouZhou21WiSER.pdf)\]  
 Efficient method and software for studying the mean and within-subject variability of longitudinal measurements.  
 
 J Won, **H Zhou**, and K Lange. (2021) Orthogonal trace-sum maximization: applications, local algorithms, and global optimality. [_SIAM Journal on Matrix Analysis and Applications_](https://doi.org/10.1137/20M1363388), 42(2):859-882. \[[pdf](./media/pdf/WonZhouLange21OTSM.pdf)\]  
