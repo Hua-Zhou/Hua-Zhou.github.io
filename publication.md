@@ -23,7 +23,13 @@ A simple certificate for checking when a local solution is global optimal for ge
 W Yu, **H Zhou**, J Goldin, W Wong, and G Kim. (2021) End-to-end domain knowledge assisted automatic diagnosis of idiopathic pulmonary fibrosis (IPF) using high resolution computed tomography (HRCT), [_Medical Physics_](https://doi.org/10.1002/mp.14754), 48(5):2458--2467. \[[pdf](./media/pdf/YuZhouGoldinWongKim21IPF.pdf)\]   
 Deep learning tool for diagnosing IPF from CT scans.
 
+B Chu, E Sobel, R Wasiolek, S Ko, J Sinsheimer, **H Zhou**, and K Lange. (2021) A fast Data-Driven method for genotype imputation, phasing, and local ancestry inference: MendelImpute.jl, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btab489), in press. \[[pdf](./media/pdf/Chu21MendelImpute.pdf)\]  
+
 S Ji, C German, K Lange, J Sinsheimer, **H Zhou**, J Zhou, and E Sobel. (2021) Modern simulation utilities for genetic analysis, [_BMC Bioinformatics_](https://doi.org/10.1186/s12859-021-04086-8), 22:228. \[[pdf](./media/pdf/Ji21GeneticSimulation.pdf)\]  
+
+M Zhang, Y Liu, **H Zhou**, J Watkins, and J Zhou. (2021) A novel nonlinear dimension reduction approach to infer population structure for low-coverage sequencing data, [_BMC Bioinformatics_](https://doi.org/10.1186/s12859-021-04265-7), 22:348. \[[pdf](./media/pdf/ZhangLiuZhouWatkinsZhou21MCPCA.pdf)\] 
+
+G Nam, ZF Zhang, JY Rao, **H Zhou**, and SY Jung. (2021) Interactions between adiponectin-pathway polymorphisms and obesity on postmenopausal breast cancer risk among African American women: the WHI SHARe Study, [_Frontiers in Oncology_](https://doi.org/10.3389/fonc.2021.698198), 11:2819. \[[pdf](./media/pdf/Nam21WHIShare.pdf)\]   
 
 E Chi, B Gaines, W Sun, **H Zhou**, and J Yang. (2020) Provable convex co-clustering of tensors. [_Journal of Machine Learning Research_](https://jmlr.org/papers/v21/18-155.html), 21(214):1-58. \[[pdf](./media/pdf/ChiGainesSunZhouYang20CoCo.pdf)\]   
 Convex co-clustering of tensor data.  
