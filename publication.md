@@ -7,23 +7,25 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-S Ko, **H Zhou**, J Zhou, and J Won. (2021) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://www.e-publications.org/ims/submission/STS/user/submissionFile/43799?confirm=23c34361), in press. \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]  
+X Zhou, J Zhou, and **H Zhou**. (2021) Bag of little bootstraps for massive anddistributed longitudinal data, [_Statistical Analysis and Data Mining_](https://doi.org/10.1002/sam.11563), in press. \[[pdf](./media/pdf/ZhouZhouZhou21LMM-BLB.pdf)\]   
+
+B Chu, E Sobel, R Wasiolek, S Ko, J Sinsheimer, **H Zhou**, and K Lange. (2021) A fast data-driven method for genotype imputation, phasing, and local ancestry inference: MendelImpute.jl, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btab489), 37(24):4756--4763. \[[pdf](./media/pdf/ChuSobelWasiolekKoSinsheimerZhouLange21MendelImpute.pdf)\]   
+
+S Ko, **H Zhou**, J Zhou, and J Won. (2021) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://www.e-publications.org/ims/submission/STS/user/submissionFile/43799?confirm=23c34361), in press. \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]   
 
 K Lange, J Won, A Landeros, and **H Zhou**. (2021) Nonconvex optimization via MM algorithms: convergence theory. [_Wiley StatsRef: Statistics Reference Online_](https://doi.org/10.1002/9781118445112.stat08295). \[[pdf](./media/pdf/LangeWonAlfonsoZhou21MMConv.pdf)\]  
 
-J Kim, J Shen, A  Wang, D Mehrotra, S Ko, J Zhou, and **H Zhou**. (2021) VCSEL: Prioritizing SNP-set by penalized variance component selection, [_Annals of Applied Statistics_](https://www.e-publications.org/ims/submission/AOAS/user/submissionFile/47287?confirm=4282ed2c), in press. \[[pdf](./media/pdf/KimShenWangMehrotraKoZhouZhou21VCSEL.pdf)\]  
+J Kim, J Shen, A  Wang, D Mehrotra, S Ko, J Zhou, and **H Zhou**. (2021) VCSEL: Prioritizing SNP-set by penalized variance component selection, [_Annals of Applied Statistics_](http://dx.doi.org/10.1214/21-AOAS1491), 15(4):1652-1672. \[[pdf](./media/pdf/KimShenWangMehrotraKoZhouZhou21VCSEL.pdf)\]  
 Penalization methods for selecting variance components.  
 
 C German, J Sinsheimer, J Zhou, and **H Zhou**. (2021) WiSER: robust and scalable estimation and inference of within-subject variances from intensive longitudinal data, [_Biometrics_](https://doi.org/10.1111/biom.13506), in press. \[[pdf](./media/pdf/GermanSinsheimerZhouZhou21WiSER.pdf)\]  
 Efficient method and software for studying the mean and within-subject variability of longitudinal measurements.  
 
 J Won, **H Zhou**, and K Lange. (2021) Orthogonal trace-sum maximization: applications, local algorithms, and global optimality. [_SIAM Journal on Matrix Analysis and Applications_](https://doi.org/10.1137/20M1363388), 42(2):859-882. \[[pdf](./media/pdf/WonZhouLange21OTSM.pdf)\]  
-A simple certificate for checking when a local solution is global optimal for generalized canonical correlation analysis (CCA), generalized procrustes problem, and other problems. 
+A simple certificate for checking when a local solution is global optimal for generalized canonical correlation analysis (CCA), generalized procrustes problem, and other problems.  
 
 W Yu, **H Zhou**, J Goldin, W Wong, and G Kim. (2021) End-to-end domain knowledge assisted automatic diagnosis of idiopathic pulmonary fibrosis (IPF) using high resolution computed tomography (HRCT), [_Medical Physics_](https://doi.org/10.1002/mp.14754), 48(5):2458--2467. \[[pdf](./media/pdf/YuZhouGoldinWongKim21IPF.pdf)\]   
-Deep learning tool for diagnosing IPF from CT scans.
-
-B Chu, E Sobel, R Wasiolek, S Ko, J Sinsheimer, **H Zhou**, and K Lange. (2021) A fast Data-Driven method for genotype imputation, phasing, and local ancestry inference: MendelImpute.jl, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btab489), in press. \[[pdf](./media/pdf/Chu21MendelImpute.pdf)\]  
+Deep learning tool for diagnosing IPF from CT scans.  
 
 S Ji, C German, K Lange, J Sinsheimer, **H Zhou**, J Zhou, and E Sobel. (2021) Modern simulation utilities for genetic analysis, [_BMC Bioinformatics_](https://doi.org/10.1186/s12859-021-04086-8), 22:228. \[[pdf](./media/pdf/Ji21GeneticSimulation.pdf)\]  
 
