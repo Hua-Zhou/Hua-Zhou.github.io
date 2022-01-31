@@ -7,7 +7,9 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-X Zhou, J Zhou, and **H Zhou**. (2021) Bag of little bootstraps for massive anddistributed longitudinal data, [_Statistical Analysis and Data Mining_](https://doi.org/10.1002/sam.11563), in press. \[[pdf](./media/pdf/ZhouZhouZhou21LMM-BLB.pdf)\]   
+S Ko, C German, A Jensen, J Shen, A Wang, D Mehrotra, Y Sun, J Sinsheimer, **H Zhou**, and J Zhou. (2022) GWAS of longitudinal trajectories at biobank scale, [_The American Journal of Human Genetics_](), in press. 
+
+X Zhou, J Zhou, and **H Zhou**. (2021) Bag of little bootstraps for massive and distributed longitudinal data, [_Statistical Analysis and Data Mining_](https://doi.org/10.1002/sam.11563), in press. \[[pdf](./media/pdf/ZhouZhouZhou21LMM-BLB.pdf)\]   
 
 B Chu, E Sobel, R Wasiolek, S Ko, J Sinsheimer, **H Zhou**, and K Lange. (2021) A fast data-driven method for genotype imputation, phasing, and local ancestry inference: MendelImpute.jl, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btab489), 37(24):4756--4763. \[[pdf](./media/pdf/ChuSobelWasiolekKoSinsheimerZhouLange21MendelImpute.pdf)\]   
 
