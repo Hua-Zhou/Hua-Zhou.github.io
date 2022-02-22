@@ -7,10 +7,9 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-S Ko, C German, A Jensen, J Shen, A Wang, D Mehrotra, Y Sun, J Sinsheimer, **H Zhou**, and J Zhou. (2022) GWAS of longitudinal trajectories at biobank scale, [_The American Journal of Human Genetics_](), in press. 
+S Ko, C German, A Jensen, J Shen, A Wang, D Mehrotra, Y Sun, J Sinsheimer, **H Zhou**, and J Zhou. (2022) GWAS of longitudinal trajectories at biobank scale, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.01.018), in press. \[[pdf](./media/pdf/Ko22TrajGWAS.pdf)\]
 
 J Kim, A Jensen, S Ko, S Raghavan, L Philips, A Hung, Y Sun, **H Zhou**, P Reaven, and J Zhou. (2022) Systematic heritability and heritability enrichment analysis for diabetes complications in UK Biobank and ACCORD studies, [_Diabetes_](), in press.
-
 
 X Zhou, J Zhou, and **H Zhou**. (2021) Bag of little bootstraps for massive and distributed longitudinal data, [_Statistical Analysis and Data Mining_](https://doi.org/10.1002/sam.11563), in press. \[[pdf](./media/pdf/ZhouZhouZhou21LMM-BLB.pdf)\]   
 
