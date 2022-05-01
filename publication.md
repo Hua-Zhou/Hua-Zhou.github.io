@@ -7,13 +7,17 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-S Ko, C German, A Jensen, J Shen, A Wang, D Mehrotra, Y Sun, J Sinsheimer, **H Zhou**, and J Zhou. (2022) GWAS of longitudinal trajectories at biobank scale, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.01.018), in press. \[[pdf](./media/pdf/Ko22TrajGWAS.pdf)\]
+S Ko, C German, A Jensen, J Shen, A Wang, D Mehrotra, Y Sun, J Sinsheimer, **H Zhou**, and J Zhou. (2022) GWAS of longitudinal trajectories at biobank scale, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.01.018), 109(3):433-445. \[[pdf](./media/pdf/Ko22TrajGWAS.pdf)\]
 
-J Kim, A Jensen, S Ko, S Raghavan, L Philips, A Hung, Y Sun, **H Zhou**, P Reaven, and J Zhou. (2022) Systematic heritability and heritability enrichment analysis for diabetes complications in UK Biobank and ACCORD studies, [_Diabetes_](https://doi.org/10.2337/db21-0839), in press. \[[pdf](./media/pdf/Kim22DiabetesCompHeritability.pdf)\]
+J Kim, A Jensen, S Ko, S Raghavan, L Philips, A Hung, Y Sun, **H Zhou**, P Reaven, and J Zhou. (2022) Systematic heritability and heritability enrichment analysis for diabetes complications in UK Biobank and ACCORD studies, [_Diabetes_](https://doi.org/10.2337/db21-0839), 71(5):1137-1148. \[[pdf](./media/pdf/Kim22DiabetesCompHeritability.pdf)\]
 
-X Zhou, J Zhou, and **H Zhou**. (2021) Bag of little bootstraps for massive and distributed longitudinal data, [_Statistical Analysis and Data Mining_](https://doi.org/10.1002/sam.11563), in press. \[[pdf](./media/pdf/ZhouZhouZhou21LMM-BLB.pdf)\]   
+X Zhou, J Zhou, and **H Zhou**. (2022) Bag of little bootstraps for massive and distributed longitudinal data, [_Statistical Analysis and Data Mining_](https://doi.org/10.1002/sam.11563), 15(3):314-321. \[[pdf](./media/pdf/ZhouZhouZhou21LMM-BLB.pdf)\]   
 
-B Chu, E Sobel, R Wasiolek, S Ko, J Sinsheimer, **H Zhou**, and K Lange. (2021) A fast data-driven method for genotype imputation, phasing, and local ancestry inference: MendelImpute.jl, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btab489), 37(24):4756--4763. \[[pdf](./media/pdf/ChuSobelWasiolekKoSinsheimerZhouLange21MendelImpute.pdf)\]   
+K Doubleday, J Zhou, **H Zhou**, and H Fu. (2022) Risk controlled decision trees and random forests for precision medicine, [_Statistics in Medicine_](https://doi.org/10.1002/sim.9253), 41(4):719-735. \[[pdf](./media/pdf/DoubledayZhouZhouFu22ConstrRF.pdf)\]   
+
+S Li, N Li, H Wang, J Zhou, **H Zhou**, and G Li. (2022) Efficient algorithms and implementation of a semiparametric joint model for longitudinal and competing risks data with applications to massive biobank data, [_Computational and Mathematical Methods in Medicine_](https://doi.org/10.1155/2022/1362913), 2022:1362913. \[[pdf](./media/pdf/LiLiWangZhouZhouLi22BiobankCmpRisk.pdf)\] 
+
+B Chu, E Sobel, R Wasiolek, S Ko, J Sinsheimer, **H Zhou**, and K Lange. (2021) A fast data-driven method for genotype imputation, phasing, and local ancestry inference: MendelImpute.jl, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btab489), 37(24):4756-4763. \[[pdf](./media/pdf/ChuSobelWasiolekKoSinsheimerZhouLange21MendelImpute.pdf)\]   
 
 S Ko, **H Zhou**, J Zhou, and J Won. (2021) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://www.e-publications.org/ims/submission/STS/user/submissionFile/43799?confirm=23c34361), in press. \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]   
 
@@ -35,7 +39,7 @@ S Ji, C German, K Lange, J Sinsheimer, **H Zhou**, J Zhou, and E Sobel. (2021) M
 
 M Zhang, Y Liu, **H Zhou**, J Watkins, and J Zhou. (2021) A novel nonlinear dimension reduction approach to infer population structure for low-coverage sequencing data, [_BMC Bioinformatics_](https://doi.org/10.1186/s12859-021-04265-7), 22:348. \[[pdf](./media/pdf/ZhangLiuZhouWatkinsZhou21MCPCA.pdf)\] 
 
-G Nam, ZF Zhang, JY Rao, **H Zhou**, and SY Jung. (2021) Interactions between adiponectin-pathway polymorphisms and obesity on postmenopausal breast cancer risk among African American women: the WHI SHARe Study, [_Frontiers in Oncology_](https://doi.org/10.3389/fonc.2021.698198), 11:2819. \[[pdf](./media/pdf/Nam21WHIShare.pdf)\]   
+G Nam, ZF Zhang, JY Rao, **H Zhou**, and SY Jung. (2021) Interactions between adiponectin-pathway polymorphisms and obesity on postmenopausal breast cancer risk among African American women: the WHI SHARe Study, [_Frontiers in Oncology_](https://doi.org/10.3389/fonc.2021.698198), 11:698198. \[[pdf](./media/pdf/Nam21WHIShare.pdf)\]   
 
 E Chi, B Gaines, W Sun, **H Zhou**, and J Yang. (2020) Provable convex co-clustering of tensors. [_Journal of Machine Learning Research_](https://jmlr.org/papers/v21/18-155.html), 21(214):1-58. \[[pdf](./media/pdf/ChiGainesSunZhouYang20CoCo.pdf)\]   
 Convex co-clustering of tensor data.  
