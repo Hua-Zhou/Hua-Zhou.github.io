@@ -9,7 +9,7 @@ Feel free to email me <huazhou@ucla.edu> if you have any comments.
 
 J Won, T Zhang, and **H Zhou**. (2022) Orthogonal trace-sum maximization: tightness of the semidefinite relaxation and guarantee of locally optimal solutions. _SIAM Journal of Optimization_, [arXiv](https://arxiv.org/abs/2110.05701).  
 
-A Landeros, O Madrid Padilla, **H Zhou**, and K Lange. (2022) Extensions to the proximal distance method of constrained optimization, _Journal of Machine Learning Research_, [arXiv](https://arxiv.org/abs/2009.00801).  
+A Landeros, O Madrid Padilla, **H Zhou**, and K Lange. (2022) Extensions to the proximal distance method of constrained optimization, [_Journal of Machine Learning Research_](http://jmlr.org/papers/v23/20-964.html), 23(182):1-45.  
 
 S Ko, C German, A Jensen, J Shen, A Wang, D Mehrotra, Y Sun, J Sinsheimer, **H Zhou**, and J Zhou. (2022) GWAS of longitudinal trajectories at biobank scale, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.01.018), 109(3):433-445. \[[pdf](./media/pdf/Ko22TrajGWAS.pdf)\]
 
