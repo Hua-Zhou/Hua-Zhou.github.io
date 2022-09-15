@@ -7,7 +7,7 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-J Won, T Zhang, and **H Zhou**. (2022) Orthogonal trace-sum maximization: tightness of the semidefinite relaxation and guarantee of locally optimal solutions. [_SIAM Journal of Optimization_](https://epubs.siam.org/doi/abs/10.1137/21M1422707) 32(3):2180-2207. \[[pdf](./media/pdf/WonZhangZhou22OTSM)\].  
+J Won, T Zhang, and **H Zhou**. (2022) Orthogonal trace-sum maximization: tightness of the semidefinite relaxation and guarantee of locally optimal solutions. [_SIAM Journal of Optimization_](https://epubs.siam.org/doi/abs/10.1137/21M1422707) 32(3):2180-2207. \[[pdf](./media/pdf/WonZhangZhou22OTSM.pdf)\].  
 
 A Landeros, O Madrid Padilla, **H Zhou**, and K Lange. (2022) Extensions to the proximal distance method of constrained optimization, [_Journal of Machine Learning Research_](http://jmlr.org/papers/v23/20-964.html), 23(182):1-45. \[[pdf](./media/pdf/LanderosPadillaZhouLange22ProxDist.pdf)\]  
 
@@ -104,7 +104,8 @@ Exact score and likelihood ratio tests for testing SNP sets.
 Y Zhang, **H Zhou**, J Zhou, and W Sun. (2017) Regression models for multivariate count data. [_Journal of Computational and Graphical Statistics_](http://www.tandfonline.com/doi/abs/10.1080/10618600.2016.1154063), 26(1):1-13. \[[pdf](./media/pdf/ZhangZhouZhouSun17mglm.pdf)\]  
 Regression model using Dirichlet-multinomial, negative multinomial, and generalized Dirichlet-multinomial distributions.  
 
-**H Zhou**, J Blangero, T Dyer, K Chan, K Lange, and E Sobel. (2017) Fast genome-wide QTL association mappingon pedigree and population data, [_Genetic Epidemiology_](http://onlinelibrary.wiley.com/doi/10.1002/gepi.21988/abstract), 41(3):174-186. \[[pdf](./media/pdf/ZhouBlangeroThomasChanLangeSobel17PedGWAS.pdf)\]  
+**H Zhou**, J Blangero, T Dyer, K Chan, K Lange, and E Sobel. (2017) Fast genome-wide QTL association mapping
+on pedigree and population data, [_Genetic Epidemiology_](http://onlinelibrary.wiley.com/doi/10.1002/gepi.21988/abstract), 41(3):174-186. \[[pdf](./media/pdf/ZhouBlangeroThomasChanLangeSobel17PedGWAS.pdf)\]  
 Method for [Mendel software](https://www.genetics.ucla.edu/software/mendel) Option 29 (Pedigree GWAS).   
 
 B Zhang, **H Zhou**, L Wang, and C Sung. (2017) Classification based on neuroimaging data by tensor boosting, [*International Joint Conference on Neural Networks (IJCNN)*](http://ieeexplore.ieee.org/abstract/document/7965985/), 1174-1179.  \[[pdf](./media/pdf/Zhang17TensorBoosting.pdf)\]  
