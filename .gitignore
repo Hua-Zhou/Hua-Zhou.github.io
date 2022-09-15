@@ -3,3 +3,5 @@ _site
 .Rhistory
 .ipynb_checkpoints
 .Rproj.user
+
+Gemfile.lock
