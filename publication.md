@@ -23,7 +23,7 @@ S Li, N Li, H Wang, J Zhou, **H Zhou**, and G Li. (2022) Efficient algorithms an
 
 B Chu, E Sobel, R Wasiolek, S Ko, J Sinsheimer, **H Zhou**, and K Lange. (2021) A fast data-driven method for genotype imputation, phasing, and local ancestry inference: MendelImpute.jl, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btab489), 37(24):4756-4763. \[[pdf](./media/pdf/ChuSobelWasiolekKoSinsheimerZhouLange21MendelImpute.pdf)\]   
 
-S Ko, **H Zhou**, J Zhou, and J Won. (2021) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://www.e-publications.org/ims/submission/STS/user/submissionFile/43799?confirm=23c34361), in press. \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]   
+S Ko, **H Zhou**, J Zhou, and J Won. (2022) High-performance statistical computing in the computing environments of the 2020s. [_Statistical Science_](https://doi.org/10.1214/21-STS835), 37(4):494-518. \[[pdf](./media/pdf/KoZhouZhouWon21StatComp.pdf)\]   
 
 K Lange, J Won, A Landeros, and **H Zhou**. (2021) Nonconvex optimization via MM algorithms: convergence theory. [_Wiley StatsRef: Statistics Reference Online_](https://doi.org/10.1002/9781118445112.stat08295). \[[pdf](./media/pdf/LangeWonAlfonsoZhou21MMConv.pdf)\]  
 
