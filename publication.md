@@ -7,7 +7,11 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-J Won, T Zhang, and **H Zhou**. (2022) Orthogonal trace-sum maximization: tightness of the semidefinite relaxation and guarantee of locally optimal solutions. [_SIAM Journal of Optimization_](https://epubs.siam.org/doi/abs/10.1137/21M1422707) 32(3):2180-2207. \[[pdf](./media/pdf/WonZhangZhou22OTSM.pdf)\].  
+S Ko, B Chu, D Peterson, C Okenwa, J Papp, D Alexander, E Sobel, **H Zhou**, K Lange. (2023) Unsupervised discovery of ancestry informative markers and genetic admixture proportions in biobank-scale data sets, [_The American Journal of Human Genetics_](). [bioRxiv](https://www.biorxiv.org/content/10.1101/2022.10.22.513294v1)   
+
+K Lange and **H Zhou**. (2022) A lagacy of EM algorithms. [_International Statistical Review_](http://dx.doi.org/10.1111/insr.12526), 92(S1): S52-S66. \[[pdf](./media/pdf/LangeZhou22NanLairdEM.pdf)\]  
+
+J Won, T Zhang, and **H Zhou**. (2022) Orthogonal trace-sum maximization: tightness of the semidefinite relaxation and guarantee of locally optimal solutions. [_SIAM Journal of Optimization_](https://epubs.siam.org/doi/abs/10.1137/21M1422707) 32(3):2180-2207. \[[pdf](./media/pdf/WonZhangZhou22OTSM.pdf)\]  
 
 A Landeros, O Madrid Padilla, **H Zhou**, and K Lange. (2022) Extensions to the proximal distance method of constrained optimization, [_Journal of Machine Learning Research_](http://jmlr.org/papers/v23/20-964.html), 23(182):1-45. \[[pdf](./media/pdf/LanderosPadillaZhouLange22ProxDist.pdf)\]  
 
