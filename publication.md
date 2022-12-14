@@ -7,7 +7,7 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-S Ko, B Chu, D Peterson, C Okenwa, J Papp, D Alexander, E Sobel, **H Zhou**, K Lange. (2023) Unsupervised discovery of ancestry informative markers and genetic admixture proportions in biobank-scale data sets, [_The American Journal of Human Genetics_](). [bioRxiv](https://www.biorxiv.org/content/10.1101/2022.10.22.513294v1)   
+S Ko, B Chu, D Peterson, C Okenwa, J Papp, D Alexander, E Sobel, **H Zhou**, K Lange. (2023) Unsupervised discovery of ancestry informative markers and genetic admixture proportions in biobank-scale data sets, [_The American Journal of Human Genetics_](). \[[bioRxiv](https://www.biorxiv.org/content/10.1101/2022.10.22.513294v1)\]   
 
 K Lange and **H Zhou**. (2022) A lagacy of EM algorithms. [_International Statistical Review_](http://dx.doi.org/10.1111/insr.12526), 92(S1): S52-S66. \[[pdf](./media/pdf/LangeZhou22NanLairdEM.pdf)\]  
 
