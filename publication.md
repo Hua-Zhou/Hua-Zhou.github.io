@@ -7,7 +7,9 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-S Ko, B Chu, D Peterson, C Okenwa, J Papp, D Alexander, E Sobel, **H Zhou**, K Lange. (2023) Unsupervised discovery of ancestry informative markers and genetic admixture proportions in biobank-scale data sets, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.12.008). \[[pdf](./media/pdf/Ko23OpenAdmixture.pdf)\]   
+Q Heng, **H Zhou**, and E Chi. (2023) Bayesian trend filtering via proximal Markov Chain Monte Carlo, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2023.2170089), in press. [arXiv](https://arxiv.org/abs/2201.00092)
+
+S Ko, B Chu, D Peterson, C Okenwa, J Papp, D Alexander, E Sobel, **H Zhou**, and K Lange. (2023) Unsupervised discovery of ancestry informative markers and genetic admixture proportions in biobank-scale data sets, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.12.008). \[[pdf](./media/pdf/Ko23OpenAdmixture.pdf)\]   
 
 K Lange and **H Zhou**. (2022) A lagacy of EM algorithms. [_International Statistical Review_](http://dx.doi.org/10.1111/insr.12526), 92(S1): S52-S66. \[[pdf](./media/pdf/LangeZhou22NanLairdEM.pdf)\]  
 
