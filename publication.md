@@ -7,11 +7,9 @@ title: Publication
 
 Feel free to email me <huazhou@ucla.edu> if you have any comments. 
 
-D Kim, A Jensen, K Jones, S Raghavan, L Phillips, A Hung, Y Sun, G Li, P Reaven, **H Zhou**, and J Zhou. (2023) A platform for phenotyping disease progression and associated longitudinal risk factors in large-scale EHRs, with application to incident diabetes complications in the UK Biobank, [_JAMIA Open_}, in press.
+D Kim, A Jensen, K Jones, S Raghavan, L Phillips, A Hung, Y Sun, G Li, P Reaven, **H Zhou**, and J Zhou. (2023) A platform for phenotyping disease progression and associated longitudinal risk factors in large-scale EHRs, with application to incident diabetes complications in the UK Biobank, [_JAMIA Open_](), in press.
 
 Q Heng, **H Zhou**, and E Chi. (2023) Bayesian trend filtering via proximal Markov Chain Monte Carlo, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2023.2170089), in press. [arXiv](https://arxiv.org/abs/2201.00092)
-
-M Xu, **H Zhou**, Y Hu, and L Duan. (2023) Bayesian inference using the proximal mapping: uncertainty quantification under varying dimensionality, [_Journal of American Statistical Association_](), in press. [arXiv](https://arxiv.org/abs/2108.04851)
 
 S Ko, B Chu, D Peterson, C Okenwa, J Papp, D Alexander, E Sobel, **H Zhou**, and K Lange. (2023) Unsupervised discovery of ancestry informative markers and genetic admixture proportions in biobank-scale data sets, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.12.008). \[[pdf](./media/pdf/Ko23OpenAdmixture.pdf)\]   
 
