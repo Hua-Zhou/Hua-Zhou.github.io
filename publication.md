@@ -11,7 +11,7 @@ D Kim, A Jensen, K Jones, S Raghavan, L Phillips, A Hung, Y Sun, G Li, P Reaven,
 
 D Kim, A Binder, **H Zhou**, and S Jung. (2023) DNA methylation patterns associated with breast cancer prognosis that are specific to tumor subtype and menopausal status, [_Frontier in Genetics_](https://doi.org/10.3389/fgene.2023.1133443), 14:1133443. \[[pdf](./media/pdf/Kim23BCEwas.pdf)\]   
 
-M Xu, **H Zhou**, Y Hu, and L Duan. (2023) Bayesian inference using the proximal mapping: uncertainty quantification under varying dimensionality. [_Journal of American Statistical Association_]() (Theory and Methods), in press. [arXiv](https://arxiv.org/abs/2108.04851)
+M Xu, **H Zhou**, Y Hu, and L Duan. (2023) Bayesian inference using the proximal mapping: uncertainty quantification under varying dimensionality. [_Journal of American Statistical Association_](https://www.tandfonline.com/doi/full/10.1080/01621459.2023.2220170) (Theory and Methods), in press. [arXiv](https://arxiv.org/abs/2108.04851)
 
 Q Heng, **H Zhou**, and E Chi. (2023) Bayesian trend filtering via proximal Markov Chain Monte Carlo, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2023.2170089), in press. [arXiv](https://arxiv.org/abs/2201.00092)
 
