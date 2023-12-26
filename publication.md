@@ -13,7 +13,7 @@ D Kim, A Binder, **H Zhou**, and S Jung. (2023) DNA methylation patterns associa
 
 M Xu, **H Zhou**, Y Hu, and L Duan. (2023) Bayesian inference using the proximal mapping: uncertainty quantification under varying dimensionality. [_Journal of American Statistical Association_](https://www.tandfonline.com/doi/full/10.1080/01621459.2023.2220170) (Theory and Methods), in press. [arXiv](https://arxiv.org/abs/2108.04851)
 
-Q Heng, **H Zhou**, and E Chi. (2023) Bayesian trend filtering via proximal Markov Chain Monte Carlo, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2023.2170089), 32(3):938-949. \[[pdf](./media/pdf/QiangZhouChi23ProxMCMCTrendFiltering.pdf)\]
+Q Heng, **H Zhou**, and E Chi. (2023) Bayesian trend filtering via proximal Markov Chain Monte Carlo, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2023.2170089), 32(3):938-949. \[[pdf](./media/pdf/HengZhouChi23ProxMCMC.pdf)\]
 
 B Chu, S Ko, JJ Zhou, A Jensen, **H Zhou**, JS Sinsheimer, and K Lange. (2023) Multivariate genome-wide association analysis by iterative hard thresholding, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btad193), 39(4):btad193. \[[pdf](./media/pdf/Chu23MvIHT.pdf)\]  
 

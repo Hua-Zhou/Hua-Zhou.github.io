@@ -1,5 +1,4 @@
-url: "http://hua-zhou.github.io"
-markdown: kramdown
-gems:
-  - jekyll-redirect-from
-  
+theme: jekyll-theme-minimal
+title: Hua Zhou Homepage
+google_analytics: UA-42646483-1
+url: http://hua-zhou.github.io
