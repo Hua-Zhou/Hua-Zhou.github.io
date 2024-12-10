@@ -11,13 +11,15 @@ D Kim, A Jensen, K Jones, S Raghavan, L Phillips, A Hung, Y Sun, G Li, P Reaven,
 
 D Kim, A Binder, **H Zhou**, and S Jung. (2023) DNA methylation patterns associated with breast cancer prognosis that are specific to tumor subtype and menopausal status, [_Frontier in Genetics_](https://doi.org/10.3389/fgene.2023.1133443), 14:1133443. \[[pdf](./media/pdf/Kim23BCEwas.pdf)\]   
 
-X Zhou, Q Heng, E Chi, and **Hua Zhou**. (2024) Proximal MCMC for Bayesian inference of constrained and regularized estimation. [_American Statistician_](https://doi.org/10.1080/00031305.2024.2308821), in press.
+X Zhou, Q Heng, E Chi, and **Hua Zhou**. (2024) Proximal MCMC for Bayesian inference of constrained and regularized estimation. [_American Statistician_](https://doi.org/10.1080/00031305.2024.2308821), 78(4): 379-390. \[[pdf](./media/pdf/ZhouHengChiZhou24ProxMCMC.pdf)\] 
 
-M Xu, **H Zhou**, Y Hu, and L Duan. (2023) Bayesian inference using the proximal mapping: uncertainty quantification under varying dimensionality. [_Journal of American Statistical Association_](https://doi.org/10.1080/01621459.2023.2220170) (Theory and Methods), in press. [arXiv](https://arxiv.org/abs/2108.04851)
+M Xu, **H Zhou**, Y Hu, and L Duan. (2024) Bayesian inference using the proximal mapping: uncertainty quantification under varying dimensionality. [_Journal of American Statistical Association_](https://doi.org/10.1080/01621459.2023.2220170) (Theory and Methods), 119(547): 1847-1858. \[[pdf](./media/pdf/XuZhouHuDuan24ProxPrior.pdf)\]
 
 Q Heng, **H Zhou**, and E Chi. (2023) Bayesian trend filtering via proximal Markov Chain Monte Carlo, [_Journal of Computational and Graphical Statistics_](https://doi.org/10.1080/10618600.2023.2170089), 32(3):938-949. \[[pdf](./media/pdf/HengZhouChi23ProxMCMC.pdf)\]
 
 B Chu, S Ko, JJ Zhou, A Jensen, **H Zhou**, JS Sinsheimer, and K Lange. (2023) Multivariate genome-wide association analysis by iterative hard thresholding, [_Bioinformatics_](https://doi.org/10.1093/bioinformatics/btad193), 39(4):btad193. \[[pdf](./media/pdf/Chu23MvIHT.pdf)\]  
+
+S Ko, E Sobel, **H Zhou**, and K Lange. (2024) Estimation of genetic admixture proportions via haplotypes, [_Computational and Structural Biotechnology Journal_](https://doi.org/10.1016/j.csbj.2024.11.043), 23: 4384-4395. \[[pdf](./media/pdf/KoSobelZhouLange24HaploAdmixture.pdf)\]
 
 S Ko, B Chu, D Peterson, C Okenwa, J Papp, D Alexander, E Sobel, **H Zhou**, and K Lange. (2023) Unsupervised discovery of ancestry informative markers and genetic admixture proportions in biobank-scale data sets, [_The American Journal of Human Genetics_](https://doi.org/10.1016/j.ajhg.2022.12.008), 110:314-325. \[[pdf](./media/pdf/Ko23OpenAdmixture.pdf)\]   
 
