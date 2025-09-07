@@ -9,13 +9,13 @@ title: Teaching
 [2020 spring](https://ucla-biostat-200c-2020spring.github.io/)
 
 * BIOSTAT 203B, Introduction to Data Science  
-[2023 winter](https://ucla-biostat-203b.github.io/2023winter), [2022 winter](https://ucla-biostat-203b.github.io/2022winter), [2021 winter](https://ucla-biostat203b-2021winter.github.io/), [2020 winter](https://ucla-biostat203b-2020winter.github.io), 2019 winter, 2018 winter
+[2025 winter](https://ucla-biostat-203b.github.io/2025winter), 2024 winter, 2023 winter, 2022 winter, 2021 winter, 2020 winter, 2019 winter, 2018 winter
 
 * BIOSTAT 216, Mathematical Methods for Biostatistics    
-[2023 fall](https://ucla-biostat-216.github.io/2023fall), [2022 fall](https://ucla-biostat-216.github.io/2022fall), [2021 fall](https://ucla-biostat216-2021fall.github.io), [2019 fall](https://ucla-biostat216-2019fall.github.io)
+[2024 fall](https://ucla-biostat-216.github.io/2024fall), 2023 fall, 2022 fall, 2021 fall, 2019 fall
 
 * Biostat 257, Statistical Computing (in Julia)    
-[2023 spring](https://ucla-biostat-257.github.io/2023spring/), [2022 spring](https://ucla-biostat-257.github.io/2022spring/), [2021 spring](https://ucla-biostat-257-2021spring.github.io/), [2020 spring](https://ucla-biostat-257-2020spring.github.io/)
+[2025 spring](https://ucla-biostat-257.github.io/2025spring/), 2024 spring, 2023 spring, 2022 spring, 2021 spring, 2020 spring
 
 * BIOSTAT M280/BIOMATH M280/STAT 230, Statistical Computing  
 [2019 spring](http://hua-zhou.github.io/teaching/biostatm280-2019spring/), 2018 spring, 2018 winter, 2017 spring, 2016 winter
